@@ -9,7 +9,7 @@ class EmployeeUnitTest {
   def whenEmployeeSalaryIncremented_thenCorrectSalary() = {
     val employee = new Employee("John Doe", 1000)
     employee.incrementSalary()
-    assertEquals(1020, employee.salary)
+    assertEquals(1021, employee.salary)
   }
 
   @Test
