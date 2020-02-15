@@ -6,6 +6,14 @@ object AbstractClassesAndTraits {
     implicit val logTag: String = getClass.getSimpleName
   }
 
+  trait Animal {
+    def name(): String
+  }
+
+  case class Sheep() extends Log with Animal {
+    def name() = "sheep"
+  }
+
   abstract class Product(name: String, id: Int) {
     def productCode(): String = s"$name:$id"
   }
