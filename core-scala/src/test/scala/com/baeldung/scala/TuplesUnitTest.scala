@@ -4,6 +4,7 @@ import org.scalatest.{Matchers, WordSpec}
 
 class TuplesUnitTest extends WordSpec with Matchers {
   val tuple = ("Joe", 34)
+  val swappedTuple = (34, "Joe")
 
   "Tuples" should {
     "accessing values use _.1, _.2 syntax" in {
@@ -32,7 +33,7 @@ class TuplesUnitTest extends WordSpec with Matchers {
       iterator.map(_.toString).toList shouldBe List("Joe", "34")
     }
     "swap elements" in {
-      tuple.swap shouldBe (34, "Joe")
+      tuple.swap shouldBe swappedTuple
     }
   }
 }
