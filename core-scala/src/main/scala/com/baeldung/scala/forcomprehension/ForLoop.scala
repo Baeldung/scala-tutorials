@@ -55,12 +55,14 @@ trait ForLoop {
     }
   }
 
+  // Iterating a Map of String to Strings
   def iterateMap  (map: Map[String, String]): Unit = {
     for ((key,value) <- map) {
       sideEffectFunction(s"""$key is for $value""")
     }
   }
 
+  // Iterating a Map of String to List of Strings
   def iterateMapMultipleGenerators (deck: Map[String, List[String]]): Unit = {
     for {
       (suit, cards) <- deck
@@ -70,12 +72,14 @@ trait ForLoop {
     }
   }
 
+  // Pure List iteration
   def pureIteration (numbers: List[Int]): List[String] = {
     for (number <- numbers) yield {
       s"""$number + $number = ${number + number}"""
     }
   }
 
+  // Pure multiple Optional with for-comprehension
   def forComprehensionWithOptionals (someIntValue: Option[Int], someStringValue: Option[String]): Option[String] = {
     for {
       intValue <- someIntValue
@@ -85,6 +89,7 @@ trait ForLoop {
     }
   }
 
+  // Pure multiple Optional with map/flatMap
   def mapOptionals (someIntValue: Option[Int], someStringValue: Option[String]): Option[String] = {
     someIntValue.flatMap(intValue => someStringValue.map(stringValue => s"""$intValue is $stringValue"""))
   }
