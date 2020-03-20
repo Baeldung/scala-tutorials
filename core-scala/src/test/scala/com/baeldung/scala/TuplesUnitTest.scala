@@ -4,7 +4,6 @@ import org.scalatest.{Matchers, WordSpec}
 
 class TuplesUnitTest extends WordSpec with Matchers {
   val tuple = ("Joe", 34)
-  val swappedTuple = (34, "Joe")
 
   "Tuples" should {
     "accessing values use _.1, _.2 syntax" in {
@@ -18,22 +17,6 @@ class TuplesUnitTest extends WordSpec with Matchers {
     }
     "not contain more then 22 elements" in {
       "(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23)" shouldNot compile
-    }
-  }
-
-  "Tuples2" should {
-    "return product arity" in {
-      tuple.productArity shouldBe 2
-    }
-    "return product prefix" in {
-      tuple.productPrefix shouldBe "Tuple2"
-    }
-    "return product iterator" in {
-      val iterator = tuple.productIterator
-      iterator.map(_.toString).toList shouldBe List("Joe", "34")
-    }
-    "swap elements" in {
-      tuple.swap shouldBe swappedTuple
     }
   }
 }
