@@ -33,71 +33,75 @@ class ForLoopTest {
     forLoopTest.clean()
   }
 
+  //givenXXX_whenYYY_thenZZZ or whenXXX_thenYYY
+
   @Test
-  def iterateRangeToTest (): Unit = {
+  def gevenInclusiveRange_whenForLoop_thenIterateOverEachElement (): Unit = {
     forLoopTest.iterateRangeTo(rangeTo)
     val expected = Seq(1, 2, 3)
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def iterateRangeUntilTest (): Unit = {
+  def gevenExclusiveRange_whenForLoop_thenIterateOverEachElement (): Unit = {
     forLoopTest.iterateRangeUntil(rangeUntil)
     val expected = Seq(1, 2)
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def multipleGeneratorsTest (): Unit = {
+  def gevenExclusiveAndInclusiveRange_whenForLoopWithMltipleGenerators_thenCartesianProduct (): Unit = {
     forLoopTest.multipleGenerators(rangeTo, rangeUntil)
     val expected = Seq("1, 1", "1, 2", "2, 1", "2, 2", "3, 1", "3, 2")
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def iterateCollectionTest (): Unit = {
+  def gevenCollection_whenForLoop_thenIterateOverEachElement (): Unit = {
     forLoopTest.iterateCollection(colors)
     val expected = Seq("R", "G", "B")
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def iterateCollectionWithMultipleGeneratorsTest (): Unit = {
+  def gevenCollection_whenForLoopWithMltipleGenerators_thenAllPossibleCombinations (): Unit = {
     forLoopTest.iterateCollectionWithMultipleGenerators(colors)
-    val expected = List("RRR ", "RRG ", "RRB ", "RGR ", "RGG ", "RGB ", "RBR ", "RBG ", "RBB ", "GRR ", "GRG ", "GRB ", "GGR ", "GGG ", "GGB ", "GBR ", "GBG ", "GBB ", "BRR ", "BRG ", "BRB ", "BGR ", "BGG ", "BGB ", "BBR ", "BBG ", "BBB ")
+    val expected = List("RRR ", "RRG ", "RRB ", "RGR ", "RGG ", "RGB ", "RBR ", "RBG ", "RBB ",
+                        "GRR ", "GRG ", "GRB ", "GGR ", "GGG ", "GGB ", "GBR ", "GBG ", "GBB ",
+                        "BRR ", "BRG ", "BRB ", "BGR ", "BGG ", "BGB ", "BBR ", "BBG ", "BBB ")
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def iterateCollectionsWithGuardsTest (): Unit = {
+  def gevenCollection_whenForLoopWithMltipleGeneratorsAndGuards_thenUniqueLettersCombinations (): Unit = {
     forLoopTest.iterateCollectionsWithGuards(colors)
     val expected = List("RGB ", "RBG ", "GRB ", "GBR ", "BRG ", "BGR ")
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def iterateMapTest (): Unit = {
+  def gevenMap_whenForLoop_thenCollectionOfStrings (): Unit = {
     forLoopTest.iterateMap(map)
     val expected = List("R is for Red", "G is for Green", "B is for Blue")
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def iterateMapMultipleGeneratorsTest (): Unit = {
+  def gevenMap_whenForLoopWithMltipleGenerators_thenAllCombinationsOfKeyAndValueList (): Unit = {
     forLoopTest.iterateMapMultipleGenerators(deck)
     val expected = List("A of ♣", "K of ♣", "Q of ♣", "J of ♦", "10 of ♦", "9 of ♥", "8 of ♥", "7 of ♥", "A of ♠", "K of ♠", "J of ♠", "6 of ♠")
     assertEquals(expected, forLoopTest.sideEffectResult)
   }
 
   @Test
-  def pureIterationTest (): Unit = {
+  def gevenCollection_whenForComprehension_thenReturnedCollectionOfStrings (): Unit = {
     val result = forLoopTest.pureIteration(numbers)
     val expected = List("1 + 1 = 2", "2 + 2 = 4", "3 + 3 = 6")
     assertEquals(expected, result)
   }
 
   @Test
-  def forComprehensionWithOptionalsTest (): Unit = {
+  def gevenOptionals_whenForComprehensionOrMap_thenReturnedOptional (): Unit = {
 
     val resultFor = forLoopTest.forComprehensionWithOptionals(someIntValue, someStringValue)
     val resultMap = forLoopTest.mapOptionals(someIntValue, someStringValue)
