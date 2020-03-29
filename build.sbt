@@ -7,5 +7,6 @@ lazy val root = (project in file("core-scala"))
   .settings(
     name := "core-scala",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "joda-time" % "joda-time" % "2.10.5"
   )
