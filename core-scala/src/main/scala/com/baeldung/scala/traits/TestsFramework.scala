@@ -31,9 +31,9 @@ trait Testable {
   // abstract fields
   val name: String
   val tests: List[Test[_]]
-  // concrete methods
+  // concrete method
   def testsNames: List[String] = tests.map(_.name)
-  // abstract type
+  // abstract methods
   def setUp(): Unit
 }
 
