@@ -48,7 +48,7 @@ abstract class Test[Type](val name: String) {
 }
 
 trait LoggableResult[Type] extends Result[Type] with Loggable {
-  override val result: Type = {
+  abstract override val result: Type = {
     val res = super.result
     info("The result is $res")
     res
@@ -56,7 +56,7 @@ trait LoggableResult[Type] extends Result[Type] with Loggable {
 }
 
 trait Result[Type] {
-  val result: Type
+  def result: Type
 }
 
 trait Loggable {
