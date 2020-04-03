@@ -14,7 +14,7 @@ class ForLoopImplementation extends ForLoop {
   }
 }
 
-class ForLoopTest {
+class ForLoopUnitTest {
   val forLoopTest = new ForLoopImplementation
   val rangeTo: Range = 1 to 3
   val rangeUntil: Range = 1 until 3
