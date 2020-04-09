@@ -1,6 +1,7 @@
 package com.baeldung.scala.scalatest
 
 import org.scalatest.{FlatSpec, Matchers}
+import org.scalactic.StringNormalizations._
 
 class ExampleFlatSpecWithMatchers extends FlatSpec with Matchers {
 
@@ -10,7 +11,11 @@ class ExampleFlatSpecWithMatchers extends FlatSpec with Matchers {
     number shouldEqual 25
   }
 
-  it should "also let us check equality using be" in {
+  it should "also let us customize equality" in {
+    " baeldung  " should equal("baeldung")(after being trimmed)
+  }
+
+  it should "let us check equality using be" in {
     val number = 25
     number should be(25)
     number shouldBe 25
