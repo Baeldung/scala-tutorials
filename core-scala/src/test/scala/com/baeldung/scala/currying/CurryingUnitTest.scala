@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.currying
 
 import org.junit.Test
 import org.scalatest.Matchers
