@@ -4,7 +4,7 @@ import scala.concurrent.Future
 
 abstract class Databases[F[_]]
 
-trait StaticRoles[F[_]] { self: Databases[F] =>
+trait StaticRoles[F[_]] { this: Databases[F] =>
   def abc: String
 }
 
