@@ -74,7 +74,7 @@ class ScoreUnitTest {
   }
 
   @Test
-  def givenScore_whenGetStudioCalledSet_thenStudiosAreReturned() = {
+  def givenScore_whenGetStudioCalled_thenStudiosAreReturned() = {
 
     val composer = "Hans Zimmer"
     val engineer = "Matt Dunkley"
