@@ -13,3 +13,4 @@ This module contains articles about Scala's core features
 - [Partial Functions in Scala](https://www.baeldung.com/scala/partial-functions)
 - [Introduction to Testing With ScalaTest](https://www.baeldung.com/scala/scalatest)
 - [For Loops in Scala](https://www.baeldung.com/scala/for-loops)
+- [A Guide to Sorting in Scala](https://www.baeldung.com/scala/sorting)
