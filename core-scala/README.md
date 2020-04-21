@@ -12,3 +12,4 @@ This module contains articles about Scala's core features
 - [Guide to lazy val in Scala](https://www.baeldung.com/scala/lazy-val)
 - [Partial Functions in Scala](https://www.baeldung.com/scala/partial-functions)
 - [Introduction to Testing With ScalaTest](https://www.baeldung.com/scala/scalatest)
+- [For Loops in Scala](https://www.baeldung.com/scala/for-loops)
