@@ -10,6 +10,6 @@ object Variables extends App {
   println(variable)
   println(variable)
 
-  variable = 2
-  println(variable)
+  var secretNumber: Int = 5
+  secretNumber = 1
 }
