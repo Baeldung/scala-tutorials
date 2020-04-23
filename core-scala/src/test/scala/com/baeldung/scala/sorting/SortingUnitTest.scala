@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.sorting
 
 import org.junit.Test
 import org.scalatest.{Matchers, WordSpec}
@@ -38,7 +38,8 @@ class SortingUnitTest extends WordSpec with Matchers {
 
   @Test
   def givenUsers_whenSorted_thenSortUsingReverseOrdering(): Unit = {
-    implicit val userOrdering: Ordering[User] = Ordering.by[User, Int](_.age).reverse
+    implicit val userOrdering: Ordering[User] =
+      Ordering.by[User, Int](_.age).reverse
 
     users.sorted shouldBe List(
       User("Mike", 43),
