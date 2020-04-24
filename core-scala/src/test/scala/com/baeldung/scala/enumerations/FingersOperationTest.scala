@@ -36,9 +36,6 @@ class FingersOperationTest {
 
     @Test
     def givenFingers_whenValuesCalled_thenOrderedValuesReturned() = {
-        assertEquals(
-            List(Index, Middle, Ring, Little, Thumb),
-            Fingers.values.toList,
-        )
+        assertEquals(List(Index, Middle, Ring, Little, Thumb), Fingers.values.toList)
     }
 }
