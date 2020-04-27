@@ -1,10 +1,13 @@
-package com.baeldung.scala.traitvsabastractclass;
+package com.baeldung.scala.traitvsabastractclass
+
 
 object TraitVsAbstractClass {
 
-  abstract class Shape(name: String, color: String){
+  abstract class Shape(name: String, color: String) {
     def perimeter: Double
+
     def area: Double
+
     def description(): Unit = {
       println(s"I am a ${color} ${name}.")
     }
@@ -12,15 +15,18 @@ object TraitVsAbstractClass {
 
   class Square(length: Double, name: String, color: String) extends Shape(name, color) {
     def perimeter: Double = length * length
+
     def area: Double = length * 4
   }
-
 
   trait Shape2 {
     val color: String
     var name: String
+
     def perimeter: Double
+
     def area: Double
+
     def description(): Unit = {
       println(s"I am a ${color} ${name}.")
     }
@@ -29,10 +35,11 @@ object TraitVsAbstractClass {
   class Square2(length: Double, shape_name: String, shape_color: String) extends Shape2 {
     override val color: String = shape_color
     var name = shape_name
+
     def perimeter: Double = length * length
+
     def area: Double = length * 4
   }
-
 
   trait A {
     def a: String = "I am from trait A"
@@ -51,7 +58,6 @@ object TraitVsAbstractClass {
       println(d)
     }
   }
-
 
   def main(args: Array[String]): Unit = {
     var square = new Square(3.00, "square", "green")
