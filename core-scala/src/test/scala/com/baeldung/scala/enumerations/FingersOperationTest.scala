@@ -8,34 +8,34 @@ import org.junit.Test
 
 class FingersOperationTest {
 
-    @Test
-    def givenAFinger_whenIsShortestCalled_thenCorrectValueReturned() = {
-        val operation = new FingersOperation()
+  @Test
+  def givenAFinger_whenIsShortestCalled_thenCorrectValueReturned() = {
+    val operation = new FingersOperation()
 
-        assertTrue(operation.isShortest(Little))
-        assertFalse(operation.isShortest(Index))
-    }
+    assertTrue(operation.isShortest(Little))
+    assertFalse(operation.isShortest(Index))
+  }
 
-    @Test
-    def givenFingers_whenTwoLongestCalled_thenCorrectValuesReturned() = {
-        val operation = new FingersOperation()
+  @Test
+  def givenFingers_whenTwoLongestCalled_thenCorrectValuesReturned() = {
+    val operation = new FingersOperation()
 
-        assertEquals(List(Index, Middle), operation.twoLongest())
-    }
+    assertEquals(List(Index, Middle), operation.twoLongest())
+  }
 
-    @Test
-    def givenStringValueOfFinger_whenWithNameCalled_thenCorrectValueReturned() = {
-        assertEquals(Middle, Fingers.withName("The Middle Finger"))
-    }
+  @Test
+  def givenStringValueOfFinger_whenWithNameCalled_thenCorrectValueReturned() = {
+    assertEquals(Middle, Fingers.withName("The Middle Finger"))
+  }
 
-    @Test
-    def givenAFinger_whenIdAndtoStringCalled_thenCorrectValueReturned() = {
-        assertEquals(6, Thumb.id)
-        assertEquals("Shorty Finger", Little.toString())
-    }
+  @Test
+  def givenAFinger_whenIdAndtoStringCalled_thenCorrectValueReturned() = {
+    assertEquals(6, Thumb.id)
+    assertEquals("Shorty Finger", Little.toString())
+  }
 
-    @Test
-    def givenFingers_whenValuesCalled_thenOrderedValuesReturned() = {
-        assertEquals(List(Index, Middle, Ring, Little, Thumb), Fingers.values.toList)
-    }
+  @Test
+  def givenFingers_whenValuesCalled_thenOrderedValuesReturned() = {
+    assertEquals(List(Index, Middle, Ring, Little, Thumb), Fingers.values.toList)
+  }
 }
