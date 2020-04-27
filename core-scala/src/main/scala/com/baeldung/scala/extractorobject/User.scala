@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.extractorobject
 
 class User(val name: String, val age: Int)
 
