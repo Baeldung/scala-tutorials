@@ -2,6 +2,42 @@ package com.baeldung.scala.variance
 
 object Variance {
 
+  class Person(val name: String)
+  class Employee(name: String, val salary: Int) extends Person(name)
+  class Manager(name: String, salary: Int, val manages: List[Employee]) extends Employee(name, salary)
+
+  class Assert[-T](expr: T => Boolean) {
+    def assert(target: T): Boolean = expr(target)
+  }
+
+  val alice = new Person("Alice")
+  val bob = new Employee("Bob", 50000)
+  val kris = new Manager("Kris", 100000, List(bob))
+
+  val personAssert = new Assert[Person](p => p.name == "Alice")
+  val employeeAssert = new Assert[Employee](e => e.name == "Bob" && e.salary < 70000)
+  val managerAssert = new Assert[Manager](m => m.manages.nonEmpty)
+
+  def testEmployee(assert: Assert[Employee], employee: Employee): Boolean =
+    assert.assert(employee)
+
+  testEmployee(employeeAssert, bob)
+  // testEmployee(personAssert, bob)
+  // testEmployee(managerAssert, bob)
+
+  trait Test[T] {
+    def asserts: List[Assert[T]]
+    def execute(target: T): Boolean =
+      asserts
+        .map(a => a.assert(target))
+        .reduce(_ && _)
+  }
+
+  class TestEmployee(val asserts: List[Assert[Employee]]) extends Test[Employee]
+
+  val tester = new TestEmployee(List(personAssert, employeeAssert))
+  tester.execute(bob)
+/*
   sealed trait Assert
   class GenericAssert extends Assert
   class NumericAssert extends GenericAssert
@@ -68,4 +104,5 @@ object Variance {
   executeTestWithJUnit(testWithJUnit4, junit4)
   executeTestWithJUnit(testWithJUnit, junit4)
   // executeTestWithJUnit(testWithJUnitAndMockito, junit4)
+  */
 }
