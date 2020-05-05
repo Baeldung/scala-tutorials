@@ -15,3 +15,4 @@ This module contains articles about Scala's core features
 - [For Loops in Scala](https://www.baeldung.com/scala/for-loops)
 - [A Guide to Sorting in Scala](https://www.baeldung.com/scala/sorting)
 - [An Introduction to Scala Extractor Objects](https://www.baeldung.com/scala/extractor-objects)
+- [A Comprehensive Guide to For-Comprehension in Scala](https://www.baeldung.com/scala/for-comprehension)
