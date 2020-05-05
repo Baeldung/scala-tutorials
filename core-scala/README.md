@@ -14,3 +14,4 @@ This module contains articles about Scala's core features
 - [Introduction to Testing With ScalaTest](https://www.baeldung.com/scala/scalatest)
 - [For Loops in Scala](https://www.baeldung.com/scala/for-loops)
 - [A Guide to Sorting in Scala](https://www.baeldung.com/scala/sorting)
+- [An Introduction to Scala Extractor Objects](https://www.baeldung.com/scala/extractor-objects)
