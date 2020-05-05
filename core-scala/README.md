@@ -17,3 +17,4 @@ This module contains articles about Scala's core features
 - [An Introduction to Scala Extractor Objects](https://www.baeldung.com/scala/extractor-objects)
 - [A Comprehensive Guide to For-Comprehension in Scala](https://www.baeldung.com/scala/for-comprehension)
 - [Introduction to Traits in Scala](https://www.baeldung.com/scala/traits)
+- [Currying in Scala](https://www.baeldung.com/scala/currying)
