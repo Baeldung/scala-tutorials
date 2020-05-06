@@ -9,14 +9,23 @@ object GenericsIntro {
     GenericWay.run()
   }
 
+  object LongHandWay {
+    case class AppleMagicHat(magic: Apple)
+    def run(): Unit = {
+      val someHat = AppleMagicHat(Apple("gala"))
+      val apple: Apple = someHat.magic
+      println(apple.name)
+    }
+  }
+
   object NonGenericWay {
 
     case class MagicHat(magic: AnyRef)
 
     def run(): Unit = {
-      val rabbitHat = MagicHat(Rabbit(2))
-      val rabbit: Rabbit = rabbitHat.magic.asInstanceOf[Rabbit]
-      println(rabbit.cuteness)
+      val someHat = MagicHat(Rabbit(2))
+      val apple: Apple = someHat.magic.asInstanceOf[Apple]
+      println(apple.name)
     }
   }
 
