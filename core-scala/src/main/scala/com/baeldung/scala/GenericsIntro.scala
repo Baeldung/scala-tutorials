@@ -10,6 +10,7 @@ object GenericsIntro {
 
   object LongHandWay {
     case class AppleMagicHat(magic: Apple)
+    case class RabbitMagicHat(magic: Rabbit)
     def run(): Unit = {
       val someHat = AppleMagicHat(Apple("gala"))
       val apple: Apple = someHat.magic
