@@ -37,3 +37,15 @@ lazy val scala_test = (project in file("scala-test"))
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
+
+val monocleVersion = "2.0.4"
+lazy val scala_libraries = (project in file("scala-libraries"))
+    .settings(
+      name := "scala-libraries",
+      libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+      libraryDependencies ++= Seq(
+        "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
+        "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
+        "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test"
+      )
+   )
