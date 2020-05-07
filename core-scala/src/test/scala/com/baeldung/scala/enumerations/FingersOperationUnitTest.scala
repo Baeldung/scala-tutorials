@@ -6,7 +6,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class FingersOperationTest {
+class FingersOperationUnitTest {
 
   @Test
   def givenAFinger_whenIsShortestCalled_thenCorrectValueReturned() = {
