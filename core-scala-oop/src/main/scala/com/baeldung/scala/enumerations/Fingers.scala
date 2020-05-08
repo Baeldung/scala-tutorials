@@ -8,8 +8,6 @@ object Fingers extends Enumeration {
     def heightInCms(): Double = height * 2.54
   }
 
-  import scala.language.implicitConversions
-
   implicit def valueToFingerDetails(x: Value): FingerDetails =
     x.asInstanceOf[FingerDetails]
 
