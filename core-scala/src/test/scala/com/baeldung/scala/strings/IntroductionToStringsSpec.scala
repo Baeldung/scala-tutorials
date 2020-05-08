@@ -2,10 +2,10 @@ package com.baeldung.scala.strings
 
 import org.junit.Test
 import org.scalatest.Matchers
-import com.baeldung.scala.strings.AnIntroductionToStrings.Overview
-import com.baeldung.scala.strings.AnIntroductionToStrings.StringInitialization
-import com.baeldung.scala.strings.AnIntroductionToStrings.StringInterpolation
-import com.baeldung.scala.strings.AnIntroductionToStrings.StringFunctions
+import com.baeldung.scala.strings.IntroductionToStrings.Overview
+import com.baeldung.scala.strings.IntroductionToStrings.StringInitialization
+import com.baeldung.scala.strings.IntroductionToStrings.StringInterpolation
+import com.baeldung.scala.strings.IntroductionToStrings.StringFunctions
 
 class IntroductionToStringsSpec extends Matchers {
 
