@@ -45,9 +45,9 @@ object bmwB38 extends Motor {
 /* This is NOT possible
 object audiA6 extends Vehicle {
   def run: Unit = {
-    val noDiesel = noDieselMessage
+    val noDiesel = "no Diesel"
     println(
-      s"I am a bmwB38 ! $noDiesel"
+      s"I am a audiA6 ! $noDiesel"
     )
   }
 }
