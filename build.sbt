@@ -10,6 +10,13 @@ lazy val core_scala = (project in file("core-scala"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
 
+lazy val core_scala_oop = (project in file("core-scala-oop"))
+  .settings(
+    name := "core-scala-oop",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+  )
+
 lazy val lang_scala = (project in file("lang-scala"))
   .settings(
     name := "lang-scala",
