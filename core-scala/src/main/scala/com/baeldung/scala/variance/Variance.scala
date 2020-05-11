@@ -10,21 +10,12 @@ object Variance {
   class UnitTest extends Test
   class IntegrationTest extends UnitTest
   class FunctionalTest extends IntegrationTest
-  class End2EndTest extends FunctionalTest
 
-  class TestsSuite[+T](tests: List[T])
-
-  val suite: TestsSuite[Test] = new TestsSuite[UnitTest](List(new UnitTest))
+  class TestsSuite[+T](val tests: List[T])
 
   class Assert[-T](expr: T => Boolean) {
     def assert(target: T): Boolean = expr(target)
   }
-
-  val bob = new Employee("Bob", 50000)
-
-  val personAssert = new Assert[Person](p => p.name == "Alice")
-  val employeeAssert = new Assert[Employee](e => e.name == "Bob" && e.salary < 70000)
-  val managerAssert = new Assert[Manager](m => m.manages.nonEmpty)
 
   trait Asserts[T] {
     def asserts: List[Assert[T]]
@@ -35,7 +26,4 @@ object Variance {
   }
 
   class AssertsEmployee(val asserts: List[Assert[Employee]]) extends Asserts[Employee]
-
-  val tester = new AssertsEmployee(List(personAssert, employeeAssert))
-  tester.execute(bob)
 }
