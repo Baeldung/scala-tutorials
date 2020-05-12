@@ -18,3 +18,4 @@ This module contains articles about Scala's core features
 - [A Comprehensive Guide to For-Comprehension in Scala](https://www.baeldung.com/scala/for-comprehension)
 - [Introduction to Traits in Scala](https://www.baeldung.com/scala/traits)
 - [Currying in Scala](https://www.baeldung.com/scala/currying)
+- [Exception Handling in Scala](https://www.baeldung.com/scala/exception-handling)
