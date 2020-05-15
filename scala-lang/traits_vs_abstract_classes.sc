@@ -1,52 +1,53 @@
 // example 1 - stackable traits
 
-trait FirstTrait {
-    def functionOne()
+trait CanWalk {
+    def walk()
 }
 
-trait SecondTrait {
-    def functionTwo()
+trait CanTalk {
+    def talk()
 }
 
-trait ThirdTrait {
-    def functionThree()
+trait CanEat {
+    def eat()
 }
 
-case class SomeClass() extends FirstTrait with SecondTrait {
-    override def functionOne(): Unit = ???
-    
-    override def functionTwo(): Unit = ???
+case class FastingHuman() extends CanWalk with CanTalk {
+    override def walk(): Unit = ???
+
+    override def talk(): Unit = ???
 }
 
 // example 2 - abstract classes are not stackable
 // note that the code does not compile, so it is commented out
 
-abstract class FirstAbstractClass {
-    def functionOne()
+abstract class Walker {
+    def walk()
 }
 
-abstract class SecondAbstractClass {
-    def functionTwo()
+abstract class Eater {
+    def eat()
 }
 
-/* class SomeOtherClass() extends FirstAbstractClass with SecondAbstractClass {
-    override def functionOne(): Unit = ???
-    
-    override def functionTwo(): Unit = ???
+/* this code does not compile
+class Human() extends Walker with Eater {
+    override def walk(): Unit = ???
+
+    override def eat(): Unit = ???
 }
 */
 
 // example 3 - composable function parameters
 
-def functionWithMultiTraitParameter(parameter: FirstTrait with ThirdTrait): Unit = ???
+def eatingAndWalking(person: CanWalk with CanEat): Unit = ???
 
-// this code does not compile:
-// functionWithMultiTraitParameter(SomeClass())
+// this code does not compile
+// eatingAndWalking(FastingHuman())
 
-val firstWithThird = new FirstTrait with ThirdTrait {
-    override def functionOne(): Unit = ???
-    
-    override def functionThree(): Unit = ???
+val eatingHuman = new CanWalk with CanEat {
+    override def walk(): Unit = ???
+
+    override def eat(): Unit = ???
 }
 
-functionWithMultiTraitParameter(firstWithThird)
+eatingAndWalking(eatingHuman)
