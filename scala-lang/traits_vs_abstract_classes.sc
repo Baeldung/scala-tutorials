@@ -14,6 +14,7 @@ trait ThirdTrait {
 
 case class SomeClass() extends FirstTrait with SecondTrait {
     override def functionOne(): Unit = ???
+    
     override def functionTwo(): Unit = ???
 }
 
@@ -30,6 +31,7 @@ abstract class SecondAbstractClass {
 
 /* class SomeOtherClass() extends FirstAbstractClass with SecondAbstractClass {
     override def functionOne(): Unit = ???
+    
     override def functionTwo(): Unit = ???
 }
 */
@@ -43,6 +45,7 @@ def functionWithMultiTraitParameter(parameter: FirstTrait with ThirdTrait): Unit
 
 val firstWithThird = new FirstTrait with ThirdTrait {
     override def functionOne(): Unit = ???
+    
     override def functionThree(): Unit = ???
 }
 
