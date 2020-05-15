@@ -25,15 +25,15 @@ abstract class Walker {
     def walk()
 }
 
-abstract class Eater {
-    def eat()
+abstract class Talker {
+    def talk()
 }
 
 /* this code does not compile
-class Human() extends Walker with Eater {
+class Human() extends Walker with Talker {
     override def walk(): Unit = ???
 
-    override def eat(): Unit = ???
+    override def talk(): Unit = ???
 }
 */
 
