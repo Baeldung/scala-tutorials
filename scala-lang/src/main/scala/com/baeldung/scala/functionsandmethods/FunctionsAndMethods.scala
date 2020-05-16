@@ -1,4 +1,6 @@
-package com.baeldung.scala
+package com.baeldung.scala.functionsandmethods
+
+import scala.annotation.tailrec
 
 object FunctionsAndMethods {
   // Anonymous function execution
@@ -23,6 +25,27 @@ object FunctionsAndMethods {
 
   // Here we defined a Value Class with extension method
   implicit class IntExtension(val value: Int) extends AnyVal { def isOdd: Boolean = value % 2 == 0 }
+
+
+  def plot(f: Double => Double): List[Double] = {
+    val xs: Range = -10 to 10
+    xs.map(x =>  f(x)).toList
+  }
+
+  val lines: (Double, Double, Double) => Double = (a,b,x) => a * x + b
+
+  val line: (Double, Double) => Double => Double = (a,b) => x => lines(a,b,x)
+
+  def factorial(num: Int): Int = {
+    @tailrec
+    def fact(num: Int, acc: Int): Int = {
+      if (num == 0) acc else fact(num - 1, acc * num)
+    }
+
+    fact(num, 1)
+  }
+
+  def pop[T](seq: Seq[T]): T = seq.head
 }
 
 

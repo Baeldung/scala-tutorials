@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.functionsandmethods
 
 import org.junit.Assert.assertEquals
 import org.junit.{Before, Test}
@@ -42,5 +42,34 @@ class FunctionsAndMethodsUnitTest {
     import FunctionsAndMethods._
     assertEquals(true, 10.isOdd)
     assertEquals(false, 11.isOdd)
+  }
+
+  @Test
+  def givenLine45_whenUseItInAPlot_thenCorrectResults(): Unit = {
+    val a45DegreeLine = FunctionsAndMethods.line(1,0)
+    val results = FunctionsAndMethods.plot(a45DegreeLine)
+    val expected = List(-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0,
+                        0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0)
+    assertEquals(expected, results)
+  }
+
+  @Test
+  def givenNestedMethod_whenUseIt_thenCorrectResults(): Unit = {
+    val factorialResult = FunctionsAndMethods.factorial(10)
+    val expected = 3628800;
+    assertEquals(expected, factorialResult)
+  }
+
+  @Test
+  def givenParameterizedMethod_whenUseIt_thenCorrectResults(): Unit = {
+    val strings = Seq("a", "b", "c")
+    val first = FunctionsAndMethods.pop(strings)
+    assertEquals("a", first)
+
+    val ints = Seq(10, 3, 11, 22, 10)
+    val second = FunctionsAndMethods.pop(ints)
+    assertEquals(10, second)
+
+
   }
 }
