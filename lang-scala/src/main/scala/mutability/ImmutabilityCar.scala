@@ -1,4 +1,4 @@
-package mutability
+package com.baeldung.scala.mutability
 
 class ImmutabilityCar(color: String, val wheels: Int, var engine: String) {
   def call(): Unit = {

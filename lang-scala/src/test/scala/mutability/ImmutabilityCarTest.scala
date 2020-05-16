@@ -1,4 +1,4 @@
-package mutability
+package com.baeldung.scala.mutability
 
 import org.scalatest.FunSuite
 

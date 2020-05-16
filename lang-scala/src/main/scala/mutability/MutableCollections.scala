@@ -1,4 +1,4 @@
-package mutability
+package com.baeldung.scala.mutability
 
 object MutableCollections {
   def main(args: Array[String]): Unit = {

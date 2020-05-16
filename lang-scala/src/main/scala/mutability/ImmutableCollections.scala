@@ -1,4 +1,4 @@
-package mutability
+package com.baeldung.scala.mutability
 
 object ImmutableCollections {
   def main(args: Array[String]): Unit = {
@@ -6,7 +6,7 @@ object ImmutableCollections {
     println(pets)
 
     val myPets = pets :+ "Hamster"
-    val notPets = pets ++ List("Girrafe", "Elephant")
+    val notPets = pets ++ List("Giraffe", "Elephant")
     val yourPets = pets.updated(0, "Mice")
     println(pets)
     println(myPets)
