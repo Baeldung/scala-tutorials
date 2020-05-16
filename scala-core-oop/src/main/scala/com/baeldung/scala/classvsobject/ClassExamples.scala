@@ -56,8 +56,6 @@ object ClassExamples {
     }
   }
 
-  case class Artist(name: String, age: Int, country: String, role: String)
-
   class PlayList {
     var songs: List[Song] = Nil
 
@@ -65,6 +63,6 @@ object ClassExamples {
       songs = song :: songs
     }
 
-    class Song(title: String, artist: Artist)
+    class Song(title: String, artist: String)
   }
 }

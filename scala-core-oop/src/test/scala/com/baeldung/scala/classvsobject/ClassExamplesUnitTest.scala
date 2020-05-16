@@ -47,10 +47,10 @@ class ClassExamplesUnitTest {
   def givenPlayList_whenSongsAreCreatedFromOnePlayListInstance_thenSongsCanBeAddedUsingAddSongMethod(): Unit = {
     val funk = new PlayList
     val jazz = new PlayList
-    val song1 = new funk.Song("We celebrate", Artist("Laboriel", 56, "Nigeria", "Bassist"))
-    val song2 = new funk.Song("We celebrate 2", Artist("Laboriel A", 54, "Nigeria", "Bassist"))
-    val song3 = new jazz.Song("Amazing grace", Artist("Victor Wooten", 47, "USA", "Lead vocalist"))
-    val song4 = new jazz.Song("Amazing grace", Artist("Victor Wooten A", 34, "USA", "Lead vocalist"))
+    val song1 = new funk.Song("We celebrate", "Laboriel")
+    val song2 = new funk.Song("We celebrate 2", "Laboriel A")
+    val song3 = new jazz.Song("Amazing grace", "Victor Wooten")
+    val song4 = new jazz.Song("Amazing grace", "Victor Wooten A")
     funk.addSong(song1)
     funk.addSong(song2)
     jazz.addSong(song3)
