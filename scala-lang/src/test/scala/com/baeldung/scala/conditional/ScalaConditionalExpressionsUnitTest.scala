@@ -1,7 +1,7 @@
 package com.baeldung.scala.conditional
 
 import com.baeldung.scala.conditional.ScalaConditionalExpressions.max
-import org.scalatest._
+import org.scalatest.{FlatSpec, Matchers}
 
 class ScalaConditionalExpressionsUnitTest extends FlatSpec with Matchers {
 
