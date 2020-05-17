@@ -9,8 +9,11 @@ object GenericsIntro {
   }
 
   object LongHandWay {
+
     case class AppleMagicHat(magic: Apple)
+
     case class RabbitMagicHat(magic: Rabbit)
+
     def run(): Unit = {
       val someHat = AppleMagicHat(Apple("gala"))
       val apple: Apple = someHat.magic
@@ -42,8 +45,30 @@ object GenericsIntro {
 
   case class Rabbit(cuteness: Int)
 
-  def middle[A](input: Seq[A]): A = input(input.size / 2)
+  object GenericMethods {
+    def middle[A](input: Seq[A]): A = input(input.size / 2)
 
-  def itemsAt[A, B](index: Int, seq1: Seq[A], seq2: Seq[B]): (A, B) = (seq1(index), seq2(index))
+    def itemsAt[A, B](index: Int, seq1: Seq[A], seq2: Seq[B]): (A, B) = (seq1(index), seq2(index))
+
+    def run() = {
+
+      val rabbits = List[Rabbit](Rabbit(2), Rabbit(3), Rabbit(7))
+      val middleRabbit: Rabbit = middle[Rabbit](rabbits)
+
+      val apples = List[Apple](Apple("gala"), Apple("pink lady"))
+      val items: (Rabbit, Apple) = itemsAt[Rabbit, Apple](1, rabbits, apples)
+    }
+
+  }
+
+  object NonGenericMethods {
+    def totalSize(list1: List[_], list2: List[_]): Int = list1.length + list2.length
+    def run() = {
+      val rabbits = List[Rabbit](Rabbit(2), Rabbit(3), Rabbit(7))
+      val strings = List("a", "b")
+      val size: Int = totalSize(rabbits, strings)
+    }
+
+  }
 
 }
