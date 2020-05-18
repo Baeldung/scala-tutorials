@@ -5,9 +5,7 @@ import org.scalatest.FlatSpec
 class EqualityTest extends FlatSpec {
   "Equality operator for AnyVal" should "work as in Java" in {
     val intAnyVal = 4
-    val booleanAnyVal = false
     assert(intAnyVal == 2 * 2)
-    assert((intAnyVal > 10) == booleanAnyVal)
   }
 
   "Equality operator for referential types" should "work like null-safe equals()" in {
@@ -24,9 +22,7 @@ class EqualityTest extends FlatSpec {
   "Equals()" should "work as in Java" in {
     val str1 = new String("AnyRef")
     val str2 = new String("AnyRef")
-    val str3 = null
     assert(str1.equals(str2))
-    assertThrows[NullPointerException](str3.equals(str2))
   }
 
   "Eq and ne" should "check referential equality" in {
