@@ -11,7 +11,7 @@ class CaseClassesUnitTest {
   def givenCaseClass_whenPatternMatched_thenReturnsProperValue() = {
     val covidPL = CovidCountryStats("PL", 776, 15366)
 
-    val text = covidPL matches {
+    val text = covidPL match {
       case CovidCountryStats("PL", x, y) => "Death rate for Poland is " + x.toFloat / y.toFloat
       case _ => "Unknown country"
     }
@@ -29,8 +29,8 @@ class CaseClassesUnitTest {
     val covidPL = CovidCountryStats("PL", 776, 15366)
     val covidUA = covidPL.copy(countryCode = "UA")
 
-    assertEquals("UA", covidUA.countryCodeo)
-    assertEquals(766, covidUA.deaths)
+    assertEquals("UA", covidUA.countryCode)
+    assertEquals(776, covidUA.deaths)
     assertEquals(15366, covidUA.confirmedCases)
   }
 
