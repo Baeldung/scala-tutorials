@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.commoncollections
 
 import org.scalatest.{Matchers, _}
 
