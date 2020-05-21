@@ -1,65 +1,106 @@
 package com.baeldung.scala.futures
 
-import java.util.concurrent.TimeUnit
+import java.util.concurrent._
 
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
-import scala.concurrent.{Await, Future}
-import scala.util.{Failure, Success}
+import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.util.{Failure, Success, Try}
 
 object Futures extends App {
-  def getToken(): String = "secretToken"
-  val tokenF: Future[String] = Future(getToken())
 
-  val numberF: Future[Int] = Future.successful(5)
-  val failedF: Future[Int] = Future.failed(new IllegalArgumentException("Boom!"))
+  trait ExecutionContexts {
+    val forkJoinPool: ExecutorService = new ForkJoinPool(4)
+    implicit val forkJoinExecutionContext: ExecutionContext =
+      ExecutionContext.fromExecutorService(forkJoinPool)
 
-  val token: String = Await.result(tokenF, Duration(10, TimeUnit.SECONDS))
+    val singleThread: Executor = Executors.newSingleThreadExecutor()
+    implicit val singleThreadExecutionContext: ExecutionContext =
+      ExecutionContext.fromExecutor(singleThread)
 
-  numberF.onComplete {
-    case Failure(exception) => println("Failed with: " + exception.getMessage)
-    case Success(number)    => println("Succeed with: " + number)
-  }
-  numberF.foreach(number => println("Succeed with: " + number))
-
-  val failureF: Future[Throwable] = failedF.failed
-  val withFallback: Future[Int] = failedF.fallbackTo(numberF)
-  val recovered: Future[Int] = failedF.recover {
-    case _: IllegalArgumentException => 0
-  }
-  val recoveredWith: Future[Int] = failedF.recoverWith {
-    case _: IllegalAccessException => numberF
+    implicit val globalExecutionContext: ExecutionContext =
+      ExecutionContext.global
   }
 
-  case class User(id: Int, name: String)
+  trait DatabaseRepository {
+    def readMagicNumber(): Future[Int]
 
-  def decodeToken(token: String): User = User(1, "John")
-  val userF: Future[User] = tokenF.map(decodeToken)
+    def updateMagicNumber(number: Int): Future[Boolean]
+  }
 
-  case class Coffee(id: Int, name: String, price: Double)
+  trait FileBackup {
+    def readMagicNumberFromLatestBackup(): Future[Int]
+  }
 
-  def getFavouriteCoffees(userId: Int): Future[List[Coffee]] =
-    Future.successful(
-      List(
-        Coffee(1, "Rwanda Kageyo Lot", 55.0),
-        Coffee(2, "Kenya Rungeto Kii", 65.0),
-      )
-    )
+  trait Publisher {
+    def publishMagicNumber(number: Int): Future[Boolean]
+  }
 
-  val userFavouriteCoffeesF: Future[List[Coffee]] = userF.flatMap(user => getFavouriteCoffees(user.id))
+  trait MagicNumberService {
+    val repository: DatabaseRepository
+    val backup: FileBackup
+    val publisher: Publisher
 
-  def bestCoffeeFor(brewingMethod: String): Future[Coffee] =
-    Future.successful(
-      Coffee(3, "Ethiopia Dimtu Tero", 56.0)
-    )
+    import scala.concurrent.ExecutionContext.Implicits.global
 
-  val pairOfCoffees: Future[(Coffee, List[Coffee])] = bestCoffeeFor("drip").zip(userFavouriteCoffeesF)
-  val listOfCoffees: Future[List[Coffee]] = bestCoffeeFor("aeropress").zipWith(userFavouriteCoffeesF)(_ :: _)
+    def generateMagicNumber(): Int = {
+      Thread.sleep(3000L)
+      23
+    }
 
-  val favouriteBrewingMethods: List[String] = List("drip", "aeropress", "chemex")
+    val generatedMagicNumberF: Future[Int] = Future {
+      generateMagicNumber()
+    }
 
-  val traversedCoffees: Future[List[Coffee]] = Future.traverse(favouriteBrewingMethods)(bestCoffeeFor)
+    val numberF: Future[Int] = Future.successful(5)
+    val failedF: Future[Int] =
+      Future.failed(new IllegalArgumentException("Boom!"))
 
-  val coffees: List[Future[Coffee]] = favouriteBrewingMethods.map(bestCoffeeFor)
-  val sequencedCoffees: Future[List[Coffee]] = Future.sequence(coffees)
+    val magicNumber: Int =
+      Await.result(generatedMagicNumberF, Duration(5, TimeUnit.SECONDS))
+
+    def printResult[A](result: Try[A]): Unit = result match {
+      case Failure(exception) => println("Failed with: " + exception.getMessage)
+      case Success(number)    => println("Succeed with: " + number)
+    }
+
+    numberF.onComplete(printResult)
+
+    def printSucceedResult[A](result: A): Unit =
+      println("Succeed with: " + result)
+
+    numberF.foreach(printSucceedResult)
+
+    val failureF: Future[Throwable] = failedF.failed
+    val recovered: Future[Int] = failedF.recover {
+      case _: IllegalArgumentException => 0
+    }
+    val recoveredWith: Future[Int] = failedF.recoverWith {
+      case _: IllegalArgumentException => numberF
+    }
+
+    val magicNumberF: Future[Int] = repository
+      .readMagicNumber()
+      .fallbackTo(backup.readMagicNumberFromLatestBackup())
+
+    def increment(number: Int): Int = number + 1
+
+    val nextMagicNumber: Future[Int] = magicNumberF.map(increment)
+    val updatedMagicNumber: Future[Boolean] =
+      nextMagicNumber.flatMap(repository.updateMagicNumber)
+
+    val pairOfMagicNumbers: Future[(Int, Int)] =
+      repository.readMagicNumber().zip(backup.readMagicNumberFromLatestBackup())
+
+    def areEqual(x: Int, y: Int): Boolean = x == y
+
+    val areMagicNumbersEqual: Future[Boolean] =
+      repository
+        .readMagicNumber()
+        .zipWith(backup.readMagicNumberFromLatestBackup())(areEqual)
+
+    val magicNumbers: List[Int] = List(1, 2, 3, 4)
+    val published: Future[List[Boolean]] =
+      Future.traverse(magicNumbers)(publisher.publishMagicNumber)
+  }
+
 }
