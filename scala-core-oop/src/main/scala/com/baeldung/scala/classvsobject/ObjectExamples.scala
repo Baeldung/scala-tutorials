@@ -39,25 +39,35 @@ object ObjectExamples {
     def delete(): Response = deleteAction(path)
   }
 
-  sealed class BaeldungEnvironment extends Serializable {val name: String = "int"}
+  sealed class BaeldungEnvironment extends Serializable {
+    val name: String = "int"
+  }
 
   object BaeldungEnvironment {
 
-    case class ProductionEnvironment() extends BaeldungEnvironment {override val name: String = "production"}
+    case class ProductionEnvironment() extends BaeldungEnvironment {
+      override val name: String = "production"
+    }
 
-    case class StagingEnvironment() extends BaeldungEnvironment {override val name: String = "staging"}
+    case class StagingEnvironment() extends BaeldungEnvironment {
+      override val name: String = "staging"
+    }
 
-    case class IntEnvironment() extends BaeldungEnvironment {override val name: String = "int"}
+    case class IntEnvironment() extends BaeldungEnvironment {
+      override val name: String = "int"
+    }
 
-    case class TestEnvironment() extends BaeldungEnvironment {override val name: String = "test"}
+    case class TestEnvironment() extends BaeldungEnvironment {
+      override val name: String = "test"
+    }
 
     def fromEnvString(env: String): Option[BaeldungEnvironment] = {
       env.toLowerCase match {
-        case "int" => Some(IntEnvironment())
-        case "staging" => Some(StagingEnvironment())
+        case "int"        => Some(IntEnvironment())
+        case "staging"    => Some(StagingEnvironment())
         case "production" => Some(ProductionEnvironment())
-        case "test" => Some(TestEnvironment())
-        case _ => None
+        case "test"       => Some(TestEnvironment())
+        case _            => None
       }
     }
   }

@@ -18,7 +18,7 @@ object ClassExamples {
     }
   }
 
-  class Car (val manufacturer: String, var brand: String, var model: String) {
+  class Car(val manufacturer: String, var brand: String, var model: String) {
     var speed: Double = 0;
     var gear: Any = 0;
     var isOn: Boolean = false;
@@ -50,7 +50,8 @@ object ClassExamples {
     }
   }
 
-  class Toyota(transmission: String,brand: String, model: String) extends Car("Toyota", brand, model) {
+  class Toyota(transmission: String, brand: String, model: String)
+      extends Car("Toyota", brand, model) {
     override def start(keyType: String): String = {
       if (isOn) {
         return "Car is already on."
@@ -68,7 +69,7 @@ object ClassExamples {
   object Prediction {
     implicit class AgeFromName(name: String) {
       val r = new scala.util.Random
-      def predictAge(): Int = 10 + r. nextInt(90)
+      def predictAge(): Int = 10 + r.nextInt(90)
     }
   }
 

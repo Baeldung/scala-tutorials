@@ -7,7 +7,8 @@ import org.junit.Test
 class ClassExamplesUnitTest {
 
   @Test
-  def givenClassAbc_whenInstantiatedWithNoArgument_thenDefaultParametersAreUsed(): Unit = {
+  def givenClassAbc_whenInstantiatedWithNoArgument_thenDefaultParametersAreUsed()
+    : Unit = {
     var abc = new Abc()
 
     assertEquals(abc.a, "A")
@@ -15,38 +16,48 @@ class ClassExamplesUnitTest {
   }
 
   @Test
-  def givenClassAbc_whenInstantiatedWithOnlyA_thenDefaultParametersAreUsedForB(): Unit = {
-    var abc = new Abc(a="New A")
+  def givenClassAbc_whenInstantiatedWithOnlyA_thenDefaultParametersAreUsedForB()
+    : Unit = {
+    var abc = new Abc(a = "New A")
 
     assertEquals(abc.a, "New A")
     assertEquals(abc.b, 4)
   }
 
   @Test
-  def givenClassAbc_whenInstantiatedWithOnlyB_thenDefaultParametersAreUsedForA(): Unit = {
-    var abc = new Abc(b=10)
+  def givenClassAbc_whenInstantiatedWithOnlyB_thenDefaultParametersAreUsedForA()
+    : Unit = {
+    var abc = new Abc(b = 10)
 
     assertEquals(abc.a, "A")
     assertEquals(abc.b, 10)
   }
 
   @Test
-  def givenClassAbc_whenInstantiatedWithTwoArguments_thenSuppliedParametersAreUsed(): Unit = {
-    var abc = new Abc(a="Another A", b=8)
+  def givenClassAbc_whenInstantiatedWithTwoArguments_thenSuppliedParametersAreUsed()
+    : Unit = {
+    var abc = new Abc(a = "Another A", b = 8)
 
     assertEquals(abc.a, "Another A")
     assertEquals(abc.b, 8)
   }
 
   @Test
-  def givenClassCar_whenInstantiated_thenTheInstanceHasAllAttributesOfCar(): Unit = {
+  def givenClassCar_whenInstantiated_thenTheInstanceHasAllAttributesOfCar()
+    : Unit = {
     var car1 = new Car("Toyota", "SUV", "RAV4")
 
     assertEquals(car1.start("remote"), "Car started using the remote")
     assertEquals(car1.speed, 0.0, 0)
-    assertEquals(car1.accelerate(2, 5), "Car accelerates at 2.0 per second for 5.0 seconds.")
+    assertEquals(
+      car1.accelerate(2, 5),
+      "Car accelerates at 2.0 per second for 5.0 seconds."
+    )
     assertEquals(car1.selectGear("D"), "Gear has been changed to D")
-    assertEquals(car1.brake(1, 3), "Car slows down at 1.0 per second for 3.0 seconds.")
+    assertEquals(
+      car1.brake(1, 3),
+      "Car slows down at 1.0 per second for 3.0 seconds."
+    )
     assertEquals(car1.speed, 7.0, 0)
     assertEquals(car1.stop(), "Car has stopped.")
     assertEquals(car1.speed, 0.0, 0)
@@ -54,14 +65,24 @@ class ClassExamplesUnitTest {
   }
 
   @Test
-  def givenToyotaExtendsCar_whenInstantiated_thenToyotaHasAllAttributesOfCarWithModifiedStartMethod(): Unit = {
+  def givenToyotaExtendsCar_whenInstantiated_thenToyotaHasAllAttributesOfCarWithModifiedStartMethod()
+    : Unit = {
     var prado = new Toyota("Manual", "SUV", "Prado")
 
-    assertEquals(prado.start("remote"), "Please ensure you're holding down the clutch. Car started using the remote")
+    assertEquals(
+      prado.start("remote"),
+      "Please ensure you're holding down the clutch. Car started using the remote"
+    )
     assertEquals(prado.speed, 0.0, 0)
-    assertEquals(prado.accelerate(2, 5), "Car accelerates at 2.0 per second for 5.0 seconds.")
+    assertEquals(
+      prado.accelerate(2, 5),
+      "Car accelerates at 2.0 per second for 5.0 seconds."
+    )
     assertEquals(prado.selectGear("D"), "Gear has been changed to D")
-    assertEquals(prado.brake(1, 3), "Car slows down at 1.0 per second for 3.0 seconds.")
+    assertEquals(
+      prado.brake(1, 3),
+      "Car slows down at 1.0 per second for 3.0 seconds."
+    )
     assertEquals(prado.speed, 7.0, 0)
     assertEquals(prado.stop(), "Car has stopped.")
     assertEquals(prado.speed, 0.0, 0)
@@ -69,14 +90,16 @@ class ClassExamplesUnitTest {
   }
 
   @Test
-  def givenPrediction_whenPredictAgeIsCalledOnString_thenAnIntegerIsReturned(): Unit = {
+  def givenPrediction_whenPredictAgeIsCalledOnString_thenAnIntegerIsReturned()
+    : Unit = {
     import ClassExamples.Prediction._
 
     assertTrue("Edith".predictAge() < 101 & "Edith".predictAge() > 9)
   }
 
   @Test
-  def givenPlayList_whenSongsAreCreatedFromOnePlayListInstance_thenSongsCanBeAddedUsingAddSongMethod(): Unit = {
+  def givenPlayList_whenSongsAreCreatedFromOnePlayListInstance_thenSongsCanBeAddedUsingAddSongMethod()
+    : Unit = {
     val funk = new PlayList
     val jazz = new PlayList
     val song1 = new funk.Song("We celebrate", "Laboriel")
