@@ -2,18 +2,34 @@ package com.baeldung.scala.classvsobject
 
 object ClassExamples {
 
-  class Car (val manufacturer: String, var brand: String = "ty", var model: String) {
+  val constA = "A"
+  val constB = 4
+  class Abc(var a: String, var b: Int) {
+    def this(a: String) {
+      this(a, constB)
+      this.a = a
+    }
+    def this(b: Int) {
+      this(constA, b)
+      this.b = b
+    }
+    def this() {
+      this(constA, constB)
+    }
+  }
+
+  class Car (val manufacturer: String, var brand: String, var model: String) {
     var speed: Double = 0;
     var gear: Any = 0;
     var isOn: Boolean = false;
 
-    def start(key_type: String): String = {
-      s"Car started using the $key_type"
+    def start(keyType: String): String = {
+      s"Car started using the $keyType"
     }
 
-    def selectGear(gear_number: Any): String = {
-      gear = gear_number
-      s"Gear has been changed to $gear_number"
+    def selectGear(gearNumber: Any): String = {
+      gear = gearNumber
+      s"Gear has been changed to $gearNumber"
     }
 
     def accelerate(rate: Double, seconds: Double): String = {
@@ -35,16 +51,16 @@ object ClassExamples {
   }
 
   class Toyota(transmission: String,brand: String, model: String) extends Car("Toyota", brand, model) {
-    override def start(key_type: String): String = {
+    override def start(keyType: String): String = {
       if (isOn) {
         return "Car is already on."
       }
       if (transmission == "automatic") {
         isOn = true
-        s"Car started using the $key_type"
+        s"Car started using the $keyType"
       } else {
         isOn = true
-        s"Please ensure you're holding down the clutch. Car started using the $key_type"
+        s"Please ensure you're holding down the clutch. Car started using the $keyType"
       }
     }
   }

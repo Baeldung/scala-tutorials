@@ -7,6 +7,38 @@ import org.junit.Test
 class ClassExamplesUnitTest {
 
   @Test
+  def givenClassAbc_whenInstantiatedWithNoArgument_thenDefaultParametersAreUsed(): Unit = {
+    var abc = new Abc()
+
+    assertEquals(abc.a, "A")
+    assertEquals(abc.b, 4)
+  }
+
+  @Test
+  def givenClassAbc_whenInstantiatedWithOnlyA_thenDefaultParametersAreUsedForB(): Unit = {
+    var abc = new Abc(a="New A")
+
+    assertEquals(abc.a, "New A")
+    assertEquals(abc.b, 4)
+  }
+
+  @Test
+  def givenClassAbc_whenInstantiatedWithOnlyB_thenDefaultParametersAreUsedForA(): Unit = {
+    var abc = new Abc(b=10)
+
+    assertEquals(abc.a, "A")
+    assertEquals(abc.b, 10)
+  }
+
+  @Test
+  def givenClassAbc_whenInstantiatedWithTwoArguments_thenSuppliedParametersAreUsed(): Unit = {
+    var abc = new Abc(a="Another A", b=8)
+
+    assertEquals(abc.a, "Another A")
+    assertEquals(abc.b, 8)
+  }
+
+  @Test
   def givenClassCar_whenInstantiated_thenTheInstanceHasAllAttributesOfCar(): Unit = {
     var car1 = new Car("Toyota", "SUV", "RAV4")
 

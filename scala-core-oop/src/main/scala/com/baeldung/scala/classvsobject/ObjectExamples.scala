@@ -5,38 +5,38 @@ import java.io.Serializable
 object ObjectExamples {
 
   object Router {
-    val base_url: String = "https://www.baeldung.com"
+    val baseUrl: String = "https://www.baeldung.com"
 
-    case class Response(base_url: String, path: String, action: String)
+    case class Response(baseUrl: String, path: String, action: String)
 
-    private def get_action(path: String): Response = {
-      Response(base_url, path, "GET")
+    private def getAction(path: String): Response = {
+      Response(baseUrl, path, "GET")
     }
 
-    private def post_action(path: String): Response = {
-      Response(base_url, path, "POST")
+    private def postAction(path: String): Response = {
+      Response(baseUrl, path, "POST")
     }
 
-    private def patch_action(path: String): Response = {
-      Response(base_url, path, "PATCH")
+    private def patchAction(path: String): Response = {
+      Response(baseUrl, path, "PATCH")
     }
 
-    private def put_action(path: String): Response = {
-      Response(base_url, path, "PUT")
+    private def putAction(path: String): Response = {
+      Response(baseUrl, path, "PUT")
     }
 
-    private def delete_action(path: String): Response = {
-      Response(base_url, path, "DELETE")
+    private def deleteAction(path: String): Response = {
+      Response(baseUrl, path, "DELETE")
     }
   }
 
   class Router(path: String) {
     import Router._
-    def get(): Response = get_action(path)
-    def post(): Response = post_action(path)
-    def patch(): Response = patch_action(path)
-    def put(): Response = put_action(path)
-    def delete(): Response = delete_action(path)
+    def get(): Response = getAction(path)
+    def post(): Response = postAction(path)
+    def patch(): Response = patchAction(path)
+    def put(): Response = putAction(path)
+    def delete(): Response = deleteAction(path)
   }
 
   sealed class BaeldungEnvironment extends Serializable {val name: String = "int"}
@@ -57,9 +57,8 @@ object ObjectExamples {
         case "staging" => Some(StagingEnvironment())
         case "production" => Some(ProductionEnvironment())
         case "test" => Some(TestEnvironment())
-        case e => None
+        case _ => None
       }
     }
   }
-
 }

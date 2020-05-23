@@ -8,31 +8,31 @@ import org.junit.Test
 
 class ObjectExamplesUnitTest {
 
-  val index_router = new Router("/index")
+  val indexRouter = new Router("/index")
 
   @Test
   def givenRouterCompanionObjectAndClass_whenGetIsCalled_thenAGetResponseIsReturned(): Unit = {
-    assertEquals(index_router.get(), Response("https://www.baeldung.com","/index","GET"))
+    assertEquals(indexRouter.get(), Response("https://www.baeldung.com","/index","GET"))
   }
 
   @Test
   def givenRouterCompanionObjectAndClass_whenPostIsCalled_thenAPostResponseIsReturned(): Unit = {
-    assertEquals(index_router.post(), Response("https://www.baeldung.com","/index","POST"))
+    assertEquals(indexRouter.post(), Response("https://www.baeldung.com","/index","POST"))
   }
 
   @Test
   def givenRouterCompanionObjectAndClass_whenPutIsCalled_thenAPutResponseIsReturned(): Unit = {
-    assertEquals(index_router.put(), Response("https://www.baeldung.com","/index","PUT"))
+    assertEquals(indexRouter.put(), Response("https://www.baeldung.com","/index","PUT"))
   }
 
   @Test
   def givenRouterCompanionObjectAndClass_whenPatchIsCalled_thenAPatchResponseIsReturned(): Unit = {
-    assertEquals(index_router.patch(), Response("https://www.baeldung.com","/index","PATCH"))
+    assertEquals(indexRouter.patch(), Response("https://www.baeldung.com","/index","PATCH"))
   }
 
   @Test
   def givenRouterCompanionObjectAndClass_whenDeleteIsCalled_thenADeleteResponseIsReturned(): Unit = {
-    assertEquals(index_router.delete(), Response("https://www.baeldung.com","/index","DELETE"))
+    assertEquals(indexRouter.delete(), Response("https://www.baeldung.com","/index","DELETE"))
   }
 
   @Test
