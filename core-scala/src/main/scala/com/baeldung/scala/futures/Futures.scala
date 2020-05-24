@@ -2,7 +2,7 @@ package com.baeldung.scala.futures
 
 import java.util.concurrent._
 
-import scala.concurrent.duration.Duration
+import scala.concurrent.duration.{Duration, FiniteDuration}
 import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
 
@@ -51,12 +51,24 @@ object Futures extends App {
       generateMagicNumber()
     }
 
-    val numberF: Future[Int] = Future.successful(5)
-    val failedF: Future[Int] =
-      Future.failed(new IllegalArgumentException("Boom!"))
+    def multiply(multiplier: Int): Future[Int] =
+      if (multiplier == 0) {
+        Future.successful(0)
+      } else {
+        Future(multiplier * generateMagicNumber())
+      }
 
-    val magicNumber: Int =
-      Await.result(generatedMagicNumberF, Duration(5, TimeUnit.SECONDS))
+    def divide(divider: Int): Future[Int] =
+      if (divider == 0) {
+        Future.failed(new IllegalArgumentException("Don't divide by zero"))
+      } else {
+        Future(generateMagicNumber() / divider)
+      }
+
+    val numberF: Future[Int] = Future.successful(5)
+
+    val maxWaitTime: FiniteDuration = Duration(5, TimeUnit.SECONDS)
+    val magicNumber: Int = Await.result(generatedMagicNumberF, maxWaitTime)
 
     def printResult[A](result: Try[A]): Unit = result match {
       case Failure(exception) => println("Failed with: " + exception.getMessage)
@@ -70,12 +82,14 @@ object Futures extends App {
 
     numberF.foreach(printSucceedResult)
 
+    val failedF: Future[Int] =
+      Future.failed(new IllegalArgumentException("Boom!"))
     val failureF: Future[Throwable] = failedF.failed
-    val recovered: Future[Int] = failedF.recover {
-      case _: IllegalArgumentException => 0
+    val recoveredF: Future[Int] = Future(3 / 0).recover {
+      case _: ArithmeticException => 0
     }
-    val recoveredWith: Future[Int] = failedF.recoverWith {
-      case _: IllegalArgumentException => numberF
+    val recoveredWithF: Future[Int] = Future(3 / 0).recoverWith {
+      case _: ArithmeticException => magicNumberF
     }
 
     val magicNumberF: Future[Int] = repository
@@ -84,16 +98,16 @@ object Futures extends App {
 
     def increment(number: Int): Int = number + 1
 
-    val nextMagicNumber: Future[Int] = magicNumberF.map(increment)
-    val updatedMagicNumber: Future[Boolean] =
-      nextMagicNumber.flatMap(repository.updateMagicNumber)
+    val nextMagicNumberF: Future[Int] = magicNumberF.map(increment)
+    val updatedMagicNumberF: Future[Boolean] =
+      nextMagicNumberF.flatMap(repository.updateMagicNumber)
 
-    val pairOfMagicNumbers: Future[(Int, Int)] =
+    val pairOfMagicNumbersF: Future[(Int, Int)] =
       repository.readMagicNumber().zip(backup.readMagicNumberFromLatestBackup())
 
     def areEqual(x: Int, y: Int): Boolean = x == y
 
-    val areMagicNumbersEqual: Future[Boolean] =
+    val areMagicNumbersEqualF: Future[Boolean] =
       repository
         .readMagicNumber()
         .zipWith(backup.readMagicNumberFromLatestBackup())(areEqual)
