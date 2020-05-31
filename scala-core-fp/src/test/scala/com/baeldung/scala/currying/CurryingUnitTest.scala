@@ -80,7 +80,6 @@ class CurryingUnitTest extends Matchers {
   @Test
   def givenGenericMultipleArgumentListSumMethod_whenPartialApplied_thenReturnSimpleMethods() {
     def sumF(f: Int => Int)(x: Int, y: Int): Int = f(x) + f(y)
-
     val sum: (Int, Int) => Int = sumF(identity)
     val sumSquare: (Int, Int) => Int = sumF(x => x * x)
     val increment: Int => Int = sum.curried(1)
