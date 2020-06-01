@@ -44,3 +44,12 @@ lazy val scala_test = (project in file("scala-test"))
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
+
+lazy val scala_akka = (project in file("scala-akka"))
+  .settings(
+    name := "scala-akka",
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor-typed" % "2.6.5",
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.5" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+  )
