@@ -1,14 +1,13 @@
 package com.baeldung.scala.classcompositionwithtraits
 
+import com.baeldung.scala.classcompositionwithtraits.CarTraits._
 import org.scalatest.{Matchers, WordSpec}
 
 /**
  * @author Sergey Ionin
  */
 
-class TraitsTest extends WordSpec with Matchers {
-
-  import com.baeldung.scala.classcompositionwithtraits.CarTraits._
+class CarTraitsTest extends WordSpec with Matchers {
 
   "Class that extends Car" should {
     "inherit abstract class fields" in {
@@ -25,6 +24,14 @@ class TraitsTest extends WordSpec with Matchers {
       bmwX7.horsePower shouldBe 335
       bmwX7.model shouldBe "X7"
       bmwX7.print() shouldBe s"the model ${bmwX7.model} has ${bmwX7.horsePower} HP under the hood. "
+    }
+  }
+
+  "Classes that extends Car with SimpleMarshaller" should {
+    "inherit abstract class fields and methods" +
+      "and be marshallable" in {
+      val bmw0 = new BMW0("F15", 309) with SimpleMarshaller
+      bmw0.toJson shouldBe "{\"model\":F15,\n\"horsePower\":309}"
     }
   }
 
