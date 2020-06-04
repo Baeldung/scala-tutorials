@@ -1,20 +1,22 @@
 package com.baeldung.scala.scalatest
 
 import org.scalatest.GivenWhenThen
-import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class BDDBankTest extends AnyFeatureSpec with GivenWhenThen {
+class BDDBankTest extends AnyFunSpec with GivenWhenThen {
 
-  Scenario("Cash is deposited into the account") {
+  describe("A bank account") {
 
-    Given("the bank account has a balance of $30")
-    val bankAccount = new BankAccount(30)
+    it("should have money deposited into it") {
 
-    When("$40 is added to the account balance")
-    bankAccount.addToBalance(40)
+      Given("the bank account has a balance of $30")
+      val bankAccount = new BankAccount(30)
 
-    Then("there should be $70 in the account")
-    assert(bankAccount.balance == 70)
+      When("$40 is added to the account balance")
+      bankAccount.addToBalance(40)
 
+      Then("there should be $70 in the account")
+      assert(bankAccount.balance == 70)
+    }
   }
 }
