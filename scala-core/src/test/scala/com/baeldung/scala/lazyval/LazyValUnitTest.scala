@@ -27,10 +27,10 @@ class LazyValUnitTest extends FunSuite {
     //given
     val futures = Future.sequence(Seq(
       Future {
-        scala.LazyValStore.squareOf5
+        LazyValStore.squareOf5
       },
       Future {
-        scala.LazyValStore.squareOf6
+        LazyValStore.squareOf6
       }))
 
     //when
