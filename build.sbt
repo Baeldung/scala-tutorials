@@ -40,7 +40,7 @@ lazy val scala_core_collections = (project in file("scala-core-collections"))
 lazy val scala_test = (project in file("scala-test"))
   .settings(
     name := "scala-test",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.1" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
