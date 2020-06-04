@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.lazyval
 
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
@@ -6,7 +6,7 @@ import org.scalatest.Matchers._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Future, _}
-import com.baeldung.scala
+import com.baeldung.scala.lazyval
 
 class LazyValUnitTest extends FunSuite {
 
