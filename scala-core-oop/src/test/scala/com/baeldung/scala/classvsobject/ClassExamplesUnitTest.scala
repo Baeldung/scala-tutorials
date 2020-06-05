@@ -45,23 +45,23 @@ class ClassExamplesUnitTest {
   @Test
   def givenClassCar_whenInstantiated_thenTheInstanceHasAllAttributesOfCar()
     : Unit = {
-    var car1 = new Car("Toyota", "SUV", "RAV4")
+    var familyCar = new Car("Toyota", "SUV", "RAV4")
 
-    assertEquals(car1.start("remote"), "Car started using the remote")
-    assertEquals(car1.speed, 0.0, 0)
+    assertEquals(familyCar.start("remote"), "Car started using the remote")
+    assertEquals(familyCar.speed, 0.0, 0)
     assertEquals(
-      car1.accelerate(2, 5),
+      familyCar.accelerate(2, 5),
       "Car accelerates at 2.0 per second for 5.0 seconds."
     )
-    assertEquals(car1.selectGear("D"), "Gear has been changed to D")
+    assertEquals(familyCar.selectGear("D"), "Gear has been changed to D")
     assertEquals(
-      car1.brake(1, 3),
+      familyCar.brake(1, 3),
       "Car slows down at 1.0 per second for 3.0 seconds."
     )
-    assertEquals(car1.speed, 7.0, 0)
-    assertEquals(car1.stop(), "Car has stopped.")
-    assertEquals(car1.speed, 0.0, 0)
-    assertEquals(car1.speed, 0.0, 0)
+    assertEquals(familyCar.speed, 7.0, 0)
+    assertEquals(familyCar.stop(), "Car has stopped.")
+    assertEquals(familyCar.speed, 0.0, 0)
+    assertEquals(familyCar.speed, 0.0, 0)
   }
 
   @Test
