@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.lazyval
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._

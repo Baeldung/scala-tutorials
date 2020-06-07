@@ -1,7 +1,5 @@
 package com.baeldung.scala.classcompositionwithtraits
 
-import com.baeldung.scala.classcompositionwithtraits.CarTraits.{Car, Printable}
-
 object CarTraits {
 
   /**
@@ -21,6 +19,14 @@ object CarTraits {
 
   /**
    * Another trait to be mixed into the class
+   */
+  trait SimpleMarshaller extends Car {
+    def toJson: String = s"{${"\"model\""}:$model," +
+      s"\n${"\"horsePower\""}:$horsePower}"
+  }
+
+  /**
+   * Another trait with self-type to be mixed into the class
    */
   trait Marshaller {
     self: Car =>
