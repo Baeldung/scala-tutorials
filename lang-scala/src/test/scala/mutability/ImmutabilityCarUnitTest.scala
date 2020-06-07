@@ -2,7 +2,7 @@ package com.baeldung.scala.mutability
 
 import org.scalatest.FunSuite
 
-class ImmutabilityCarTest extends FunSuite {
+class ImmutabilityCarUnitTest extends FunSuite {
   test("Mutable vs Immutable variables") {
     val pi = 3.14
     // pi = 4 // Compile error: Reassignment to val

@@ -3,7 +3,7 @@ package mutability
 import org.scalatest.FunSuite
 import scala.collection.mutable.ArrayBuffer
 
-class MutableCollectionsTest extends FunSuite {
+class MutableCollectionsUnitTest extends FunSuite {
   test("Mutable collection can be added with new elements") {
     val breakfasts = ArrayBuffer("Sandwich", "Salad")
 
