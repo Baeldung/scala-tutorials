@@ -19,5 +19,5 @@ class CustomInterpolatorObjTest extends FeatureSpec with GivenWhenThen {
     Then("the result will be as expected")
     val expectedResult = new StringContext("the", "custom", "interpolator", "works").custom(testString)
     assert(result == expectedResult)
-  } 
+  }
 }
