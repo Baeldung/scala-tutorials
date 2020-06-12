@@ -3,10 +3,10 @@ package com.baeldung.scala.conditional
 object ScalaConditionalExpressions {
 
   /**
-   * Max return the maximum of two integers.
-   *
-   * Example of if expression. See how if expression returns a value.
-   */
+    * Max return the maximum of two integers.
+    *
+    * Example of if expression. See how if expression returns a value.
+    */
   def max(a: Int, b: Int): Int = {
     if (a > b) {
       a
@@ -16,10 +16,10 @@ object ScalaConditionalExpressions {
   }
 
   /**
-   * Get maximum of three integers.
-   *
-   * Example of nested if/else blocks
-   */
+    * Get maximum of three integers.
+    *
+    * Example of nested if/else blocks
+    */
   def max(a: Int, b: Int, c: Int): Int = {
     if (a > b) {
       if (a > c) {

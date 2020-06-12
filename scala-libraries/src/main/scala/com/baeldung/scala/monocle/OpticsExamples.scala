@@ -15,10 +15,10 @@ object OpticsExamples {
   case class Cart(id: String, item: Item, quantity: Int)
 
   case class Item(
-    sku: String,
-    price: Double,
-    leftInStock: Int,
-    discount: Discount
+      sku: String,
+      price: Double,
+      leftInStock: Int,
+      discount: Discount
   )
 
   def updateStockWithoutLenses(user: User): User = {
@@ -72,8 +72,6 @@ object OpticsExamples {
 
   val tranformCurrency = Iso[PriceEUR, PriceGBP] { eur =>
     PriceGBP(eur.value * 0.9)
-  } { gbp =>
-    PriceEUR(gbp.value / 0.9)
-  }
+  } { gbp => PriceEUR(gbp.value / 0.9) }
 
 }

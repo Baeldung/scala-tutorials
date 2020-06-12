@@ -4,7 +4,7 @@ object Fingers extends Enumeration {
   type Finger = Value
 
   protected case class FingerDetails(i: Int, name: String, height: Double)
-    extends super.Val(i, name) {
+      extends super.Val(i, name) {
     def heightInCms(): Double = height * 2.54
   }
 

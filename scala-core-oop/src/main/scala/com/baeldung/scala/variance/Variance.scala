@@ -4,7 +4,8 @@ object Variance {
 
   class Person(val name: String)
   class Employee(name: String, val salary: Int) extends Person(name)
-  class Manager(name: String, salary: Int, val manages: List[Employee]) extends Employee(name, salary)
+  class Manager(name: String, salary: Int, val manages: List[Employee])
+      extends Employee(name, salary)
 
   sealed trait Test
   class UnitTest extends Test
@@ -25,5 +26,6 @@ object Variance {
         .reduce(_ && _)
   }
 
-  class AssertsEmployee(val asserts: List[Assert[Employee]]) extends Asserts[Employee]
+  class AssertsEmployee(val asserts: List[Assert[Employee]])
+      extends Asserts[Employee]
 }
