@@ -4,3 +4,4 @@ This module contains articles about Scala's Lang features
 
 - [Def, Var & Val in Scala](https://www.baeldung.com/scala/def-var-val)
 - [Difference Between Class and Case Class in Scala](https://www.baeldung.com/scala/case-class)
+- [Scala Conditional Expressions](https://www.baeldung.com/scala/conditional-expressions)
