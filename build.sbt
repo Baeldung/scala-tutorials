@@ -52,6 +52,15 @@ lazy val scala_test = (project in file("scala-test"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
 
+lazy val scala_akka = (project in file("scala-akka"))
+  .settings(
+    name := "scala-akka",
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.6",
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.6" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+  )
+
 val monocleVersion = "2.0.4"
 lazy val scala_libraries = (project in file("scala-libraries"))
     .settings(
