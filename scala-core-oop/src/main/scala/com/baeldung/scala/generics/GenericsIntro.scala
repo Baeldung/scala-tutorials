@@ -6,7 +6,12 @@ object GenericsIntro {
 
   def main(args: Array[String]): Unit = {
     NonGenericWay.run()
+    val empty = new Queue[String](Nil, Nil)
+    val stringQ: Queue[String] = empty.enqueue("The answer")
+    val intQ: Queue[Any] = stringQ.enqueue(42)
   }
+
+  def findMax[T <: Ordered[T], B](xs: List[T]): Option[T] = xs.reduceOption((x1, x2) => if (x1 >= x2) x1 else x2)
 
   object LongHandWay {
 
