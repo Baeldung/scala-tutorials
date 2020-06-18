@@ -6,3 +6,4 @@ This module contains articles about Scala's Object Oriented Programming features
 
 - [Guide to Scala Enumerations](https://baeldung.com/scala/enumerations)
 - [Variances in Scala](https://www.baeldung.com/scala/variances)
+- [Basics of Generics in Scala](https://www.baeldung.com/scala/generics-basics)
