@@ -1,4 +1,4 @@
-package com.baeldung.scala.strings
+package com.baeldung.scala.strings.interpolation
 
 object CustomInterpolatorObj {
   implicit class CustomInterpolator(val sc: StringContext) extends AnyVal {
