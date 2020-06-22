@@ -1,7 +1,7 @@
-package com.baeldung.scala.strings
+package com.baeldung.scala.strings.interpolation
 
-import org.scalatest.{FeatureSpec, GivenWhenThen}
 import com.baeldung.scala.strings.CustomInterpolatorObj._
+import org.scalatest.{FeatureSpec, GivenWhenThen}
 
 class CustomInterpolatorObjTest extends FeatureSpec with GivenWhenThen {
 
@@ -14,10 +14,10 @@ class CustomInterpolatorObjTest extends FeatureSpec with GivenWhenThen {
     val testString = "well"
 
     When("when we interpolate a string with our custom interpolator")
-    val result = custom"the custom interpolator works $testString"
+    val result = custom"the custom interpolator works $testString as expected"
 
     Then("the result will be as expected")
-    val expectedResult = new StringContext("the", "custom", "interpolator", "works").custom(testString)
+    val expectedResult = new StringContext("the custom interpolator works ", " as expected").custom(testString)
     assert(result == expectedResult)
   }
 }
