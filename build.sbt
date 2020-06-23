@@ -72,3 +72,10 @@ lazy val scala_libraries = (project in file("scala-libraries"))
         "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test"
       )
    )
+
+lazy val scala_strings = (project in file("scala-strings"))
+  .settings(
+    name := "scala-strings",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+  )
