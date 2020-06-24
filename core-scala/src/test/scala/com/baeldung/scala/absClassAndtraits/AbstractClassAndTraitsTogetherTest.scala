@@ -25,19 +25,19 @@ class AbstractClassAndTraitsTogetherTest extends WordSpec with Matchers {
 
 
   "An employee aged over 60 and working for more than 10 years " should {
-    "be eligible for special allowance " in {
+    "be eligible for special allowance" in {
       employeeFromBucharest.isEligibleForSpecialAllowance shouldBe  true
     }
   }
 
   "An employee aged over 60 and working for less than 10 years " should {
-    "not be eligible for special allowance " in {
+    "not be eligible for special allowance" in {
       employeeFromCalcutta.isEligibleForSpecialAllowance shouldBe false
     }
   }
 
   "A flyer employee from Dublin " should {
-    "have only 2 wings and fly normally " in {
+    "have only 2 wings and fly normally" in {
         flierEmployeeFromDublin.minWings  shouldBe 2
         flierEmployeeFromDublin.extraWings  shouldBe 0
         flierEmployeeFromDublin.flyFor(10)  shouldBe 14
@@ -45,7 +45,7 @@ class AbstractClassAndTraitsTogetherTest extends WordSpec with Matchers {
     }
 
     "A superwoman employee from Calcutta " should {
-      "have 2 regular wings, 2 extra wings and fly for longer " in {
+      "have 2 regular wings, 2 extra wings and fly for longer" in {
         superWomandFromCalcutta.minWings  shouldBe 2
         superWomandFromCalcutta.extraWings  shouldBe 2
         superWomandFromCalcutta.flyFor(10)  shouldBe 400
@@ -53,7 +53,7 @@ class AbstractClassAndTraitsTogetherTest extends WordSpec with Matchers {
     }
 
     "A highly skilled employee from Munich " should {
-      "have 2 regular wings, 2 extra wings and fly for longer " in {
+      "have 2 regular wings, 2 extra wings and fly for longer" in {
         manySkilledEmployeeFromMunich.name  shouldBe "Lothar Matheius"
         manySkilledEmployeeFromMunich.isEligibleForSpecialAllowance shouldBe false
         manySkilledEmployeeFromMunich.minWings  shouldBe 4
