@@ -8,12 +8,16 @@ object ObjectExample extends App {
 
   messageVehicle(Car)
 
+  println(Car)
+  println(Bicycle)
+
   def messageVehicle(vehicle: Vehicle): Unit = {
     vehicle match {
       case Car => println("send message to Car")
       case Bicycle => println("send message to Bicycle")
     }
   }
+
 }
 
 object Car extends Vehicle {
@@ -35,3 +39,15 @@ case object Bicycle extends Vehicle {
 }
 
 abstract class Vehicle
+
+sealed abstract class FlyingObject
+
+case object Airplane extends FlyingObject
+
+case object Bird extends FlyingObject
+
+object FlyingObject extends Enumeration {
+  val AIRPLANE, BIRD = Value
+}
+
+
