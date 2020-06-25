@@ -3,7 +3,8 @@ package com.baeldung.scala.caseobject
 import java.sql.Date
 
 object ObjectExample extends App {
-  println(Car.isInstanceOf[Serializable])
+
+  //println(Car.isInstanceOf[Serializable])
   println(Bicycle.isInstanceOf[Serializable])
 
   //Pattern Matching
@@ -80,18 +81,18 @@ case object Bird extends FlyingObject
 object FlyingObject extends Enumeration {
 
   //Assigning values
-  val airplane = Value("AP")
-  val bird = Value("BD")
-  val drone = Value("DE")
+  val airplane: Value = Value("AP")
+  val bird: Value = Value("BD")
+  val drone: Value = Value("DE")
 }
 
 // Enumeration changing default ID of an value
 object FlyingObjectChangingID extends Enumeration {
 
   //Assigning values
-  val airplane = Value(2, "AP")
-  val bird = Value(3, "BD")
-  val drone = Value(1, "DE")
+  val airplane: Value = Value(2, "AP")
+  val bird: Value = Value(3, "BD")
+  val drone: Value = Value(1, "DE")
 }
 
 sealed trait FlyingCaseObjects
