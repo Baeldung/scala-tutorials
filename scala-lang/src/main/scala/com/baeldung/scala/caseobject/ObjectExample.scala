@@ -71,12 +71,6 @@ case object Bicycle extends Vehicle {
 
 abstract class Vehicle
 
-sealed abstract class FlyingObject
-
-case object Airplane extends FlyingObject
-
-case object Bird extends FlyingObject
-
 //Create enumeration
 object FlyingObject extends Enumeration {
 
