@@ -1,0 +1,2 @@
+type Id[A] = A
+
