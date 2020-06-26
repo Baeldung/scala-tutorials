@@ -34,7 +34,10 @@ class UsingRegexTest extends FeatureSpec with GivenWhenThen {
       """property1: value1
         |property2: value2
         |property3: value3
+<<<<<<< HEAD
         |property
+=======
+>>>>>>> 3c38b0210ee22360c32d11997e5f3e5067cf4978
         |"""
 
     Given("regular expression for matching if a string contains letters and numbers")
