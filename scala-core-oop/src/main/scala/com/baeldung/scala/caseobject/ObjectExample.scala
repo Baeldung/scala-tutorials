@@ -4,24 +4,9 @@ import java.sql.Date
 
 object ObjectExample extends App {
 
-  //println(Car.isInstanceOf[Serializable])
-  println(Bicycle.isInstanceOf[Serializable])
-
   //Pattern Matching
   messageVehicle(Car)
 
-  //Call toString method
-  println(Car)
-  println(Bicycle)
-
-  //Enumeration: printing the list of all values
-  println(s"These are the possible flying objects = ${FlyingObject.values}")
-  //Enumeration: printing one element by accessing it's value
-  println(s"The value of bird = ${FlyingObject.bird}")
-  //Enumeration: printing one element by accessing it's ID
-  println(s"The ID of bird = ${FlyingObject.bird.id}")
-  //Enumeration: printing the list of all values after changing their IDs
-  println(s"These are the possible flying objects = ${FlyingObjectChangingID.values}")
   //Throws exception
   //nonExhaustive(FlyingObject.drone)
 
