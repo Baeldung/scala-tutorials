@@ -14,11 +14,15 @@ object DefiningStringsExamples {
 
     println("Hello world" == singleLineString)
     println(null == singleLineString)
-    println("Hello, I am a single line string" == singleLineString)
+    assert("Hello, I am a single line string" == singleLineString)
 
     val askTheTimeString = "...What time is it?"
-    println(singleLineString.concat(askTheTimeString))
-    println(singleLineString + askTheTimeString)
+
+    val concatenatedStringWithConcat = singleLineString.concat(askTheTimeString)
+    assert(concatenatedStringWithConcat == "Hello, I am a single line string...What time is it?")
+
+    val concatenatedString = singleLineString + askTheTimeString
+    assert( concatenatedString == "Hello, I am a single line string...What time is it?")
 
     val age = 30
     val agePresentation = s"I am $age"
