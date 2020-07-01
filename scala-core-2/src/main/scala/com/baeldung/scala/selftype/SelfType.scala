@@ -1,5 +1,7 @@
 package com.baeldung.scala.selftype
 
+import scala.collection.JavaConverters._
+
 object SelfType {
 
   trait TestEnvironment {
@@ -20,4 +22,12 @@ object SelfType {
       assertion.apply(env)
     }
   }
+
+  trait WindowsTestEnvironment extends TestEnvironment {
+    override val envName: String = "Windows"
+    override def readEnvironmentProperties: Map[String, String] =
+      System.getenv().asScala.toMap
+  }
+
+  class JUnit5TestExecutor extends TestExecutor with WindowsTestEnvironment {}
 }
