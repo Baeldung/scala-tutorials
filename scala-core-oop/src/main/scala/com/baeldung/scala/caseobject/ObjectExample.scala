@@ -37,20 +37,20 @@ object ObjectExample extends App {
 }
 
 object Car extends Vehicle {
-  val numberOfWheel = 4
+  val numberOfWheels = 4
 
   def run(): Unit = {
-    val dtSql: Date = new Date(System.currentTimeMillis())
-    println(s"I am a new car running on $dtSql !")
+    val currentDateAndTime: Date = new Date(System.currentTimeMillis())
+    println(s"I am a new car running on $currentDateAndTime !")
   }
 }
 
 case object Bicycle extends Vehicle {
-  val numberOfWheel = 2
+  val numberOfWheels = 2
 
   def run(): Unit = {
-    val dtSql: Date = new Date(System.currentTimeMillis())
-    println(s"I am a new bicycle running on $dtSql !")
+    val currentDateAndTime: Date = new Date(System.currentTimeMillis())
+    println(s"I am a new bicycle running on $currentDateAndTime !")
   }
 }
 
