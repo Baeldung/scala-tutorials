@@ -8,6 +8,8 @@ object CallByNameCallByValue {
 
   def getTimeByName(time: => Long) = time
 
-  def add(x: Int, y: => Int) = x + x
+  def infinite(): Int = 1 + infinite()
+
+  def addFirst(x: Int, y: => Int) = x + x
 
 }

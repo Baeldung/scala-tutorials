@@ -8,7 +8,7 @@ import org.scalatest.{FlatSpec, Matchers}
  */
 class CallByNameCallByValueTest extends FlatSpec with Matchers {
 
-  "A call by value" should "have evaluated at argument passing time" in {
+  "A call by value" should "have evaluated before passing an argument" in {
     getTimeByVal(System.currentTimeMillis()) should be(System.currentTimeMillis())
   }
 
@@ -17,7 +17,18 @@ class CallByNameCallByValueTest extends FlatSpec with Matchers {
   }
 
   "A call by name and call by value" should "have reduced to final value" in {
-    add(2 + 5, 7) should be(add(7, 2 + 5))
+    addFirst(2 + 5, 7) should be(addFirst(7, 2 + 5))
   }
 
+  "A call by value" should "have produce StackOverflowError when addFirst is invoked with an argument " +
+    "infinite() as a call by value" in {
+    assertThrows[StackOverflowError] {
+      addFirst(infinite(), 4)
+    }
+  }
+
+  "A call by name" should "have reduced to final value when addFirst is invoked with an argument infinite() " +
+    "as a call by name" in {
+    assert(addFirst(4, infinite()) == 8)
+  }
 }
