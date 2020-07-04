@@ -18,7 +18,7 @@ project/plugins/project/
 .idea
 /project/
 
-# Ignore files used by Metals and Visual Studio Code)
+# Ignore files used by Metals and Visual Studio Code
 .bloop
 .metals
 
