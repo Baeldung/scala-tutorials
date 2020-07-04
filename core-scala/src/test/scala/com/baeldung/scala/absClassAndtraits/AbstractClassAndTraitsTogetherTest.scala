@@ -6,27 +6,27 @@ import org.scalatest.{Matchers, WordSpec}
 class AbstractClassAndTraitsTogetherTest extends WordSpec with Matchers {
 
   val employeeFromDublin =
-    new Employee(1001,"Robert McCullam",50,"Dublin","Cork",12)
+    new Employee(1001, "Robert McCullam", 50, "Dublin", "Cork", 12)
 
   val employeeFromBucharest =
-    new Employee(1002,"Giorghe Hagi",60,"Bucharest","HQ",15)
+    new Employee(1002, "Giorghe Hagi", 60, "Bucharest", "HQ", 15)
 
   val employeeFromCalcutta =
-    new Employee(1003,"Amartya Sen",60,"Calcutta","London",9)
+    new Employee(1003, "Amartya Sen", 60, "Calcutta", "London", 9)
 
   val flierEmployeeFromDublin =
-    new BirdLikeEmployee(1004,"Paul Crowley",50,"Dublin","Cork",12)
+    new BirdLikeEmployee(1004, "Paul Crowley", 50, "Dublin", "Cork", 12)
 
   val superWomandFromCalcutta =
-    new SuperWomanLikeEmployee(1005,"Tamanna Sengupta",60,"Calcutta","London",9)
+    new SuperWomanLikeEmployee(1005, "Tamanna Sengupta", 60, "Calcutta", "London", 9)
 
   val manySkilledEmployeeFromMunich =
-    new SingerAndFlierEmployee(1006,"Lothar Matheius",55,"Munich","Berlin",9)
+    new SingerAndFlierEmployee(1006, "Lothar Matheius", 55, "Munich", "Berlin", 9)
 
 
   "An employee aged over 60 and working for more than 10 years " should {
     "be eligible for special allowance " in {
-      employeeFromBucharest.isEligibleForSpecialAllowance shouldBe  true
+      employeeFromBucharest.isEligibleForSpecialAllowance shouldBe true
     }
   }
 
@@ -64,4 +64,4 @@ class AbstractClassAndTraitsTogetherTest extends WordSpec with Matchers {
   }
 
 
-  }
+}
