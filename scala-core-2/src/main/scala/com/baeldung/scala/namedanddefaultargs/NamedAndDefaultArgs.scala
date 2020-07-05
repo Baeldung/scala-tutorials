@@ -4,8 +4,10 @@ import java.time.LocalDateTime
 
 object NamedAndDefaultArgs {
 
-  def prettyPrint[A](input: Array[A], start: String = "(", separator: String = ",", end: String = ")"): String =
-    input.mkString(start, separator, end)
+  def prettyPrint[A](input: Array[A],
+                     start: String = "(",
+                     separator: String = ",",
+                     end: String = ")"): String = input.mkString(start, separator, end)
 
   case class DeliveryOrder(product: String,
                            addressToDeliver: String,
