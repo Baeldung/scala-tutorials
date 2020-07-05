@@ -9,7 +9,7 @@ object SelfType {
     def readEnvironmentProperties: Map[String, String]
   }
 
-  trait TestExecutor { env: TestEnvironment =>
+  class TestExecutor { env: TestEnvironment =>
     def execute(tests: List[Test]): Boolean = {
       println(s"Executing test with $envName environment")
       tests.forall(_.execute(readEnvironmentProperties))
@@ -29,5 +29,17 @@ object SelfType {
       System.getenv().asScala.toMap
   }
 
+  class TestWithLogging(name: String, assertion: Map[String, String] => Boolean) extends Test(name, assertion) {
+    inner: Test =>
+    override def execute(env: Map[String, String]): Boolean = {
+      println("Before the test")
+      val result = inner.execute(env)
+      println("After the test")
+      result
+    }
+  }
+
   class JUnit5TestExecutor extends TestExecutor with WindowsTestEnvironment {}
+
+  val windowsGeneralExecutor: TestExecutor = new TestExecutor with WindowsTestEnvironment
 }
