@@ -41,7 +41,6 @@ object Car extends Vehicle {
 
   def run(): Unit = {
     val currentDateAndTime: Date = new Date(System.currentTimeMillis())
-    println(s"I am a new car running on $currentDateAndTime !")
   }
 }
 
@@ -50,7 +49,6 @@ case object Bicycle extends Vehicle {
 
   def run(): Unit = {
     val currentDateAndTime: Date = new Date(System.currentTimeMillis())
-    println(s"I am a new bicycle running on $currentDateAndTime !")
   }
 }
 
