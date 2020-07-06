@@ -38,8 +38,4 @@ object SelfType {
       result
     }
   }
-
-  class JUnit5TestExecutor extends TestExecutor with WindowsTestEnvironment {}
-
-  val windowsGeneralExecutor: TestExecutor = new TestExecutor with WindowsTestEnvironment
 }

@@ -29,6 +29,25 @@ object CakePattern {
     }
   }
 
+  trait LoggingComponent {
+    val logger: Logger
+    class Logger {
+      def log(level: String, message: String): Unit =
+        println(s"$level   - $message")
+    }
+  }
+
+  trait TestExecutorComponentWithLogging {
+    this: TestEnvironmentComponent with LoggingComponent =>
+    val testExecutor: TestExecutor
+    class TestExecutor {
+      def execute(tests: List[Test]): Boolean = {
+        logger.log("INFO", s"Executing test with ${env.envName} environment")
+        tests.forall(_.execute(env.readEnvironmentProperties))
+      }
+    }
+  }
+
   object Registry extends TestExecutorComponent with TestEnvironmentComponent {
     override val env: Registry.TestEnvironment = new WindowsTestEnvironment
     override val testExecutor: Registry.TestExecutor = new TestExecutor

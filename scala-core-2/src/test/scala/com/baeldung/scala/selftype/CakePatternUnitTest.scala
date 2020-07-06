@@ -1,5 +1,6 @@
 package com.baeldung.scala.selftype
 
+import com.baeldung.scala.selftype.SelfType.Test
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.FlatSpec
 
@@ -12,9 +13,12 @@ trait TestRegistry
 }
 
 class CakePatternUnitTest extends FlatSpec with TestRegistry {
-  
-  (env.readEnvironmentProperties _).expects(_).returning(Map("ENV" -> "true"))
+
   "A TestExecutor" should "execute tests using a given environment" in {
-    // assertResult(expected) { suite.tests }
+    (env.readEnvironmentProperties _).expects().returning(Map("ENV" -> "true"))
+    val test = Test("test-1", { environment =>
+      environment.getOrElse("ENV", "false").toBoolean
+    })
+    assertResult(testExecutor.execute(List(test)))(true)
   }
 }
