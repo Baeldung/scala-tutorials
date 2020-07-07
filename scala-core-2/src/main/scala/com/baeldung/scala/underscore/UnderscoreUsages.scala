@@ -2,7 +2,7 @@ package com.baeldung.scala.underscore
 
 object UnderscoreUsages {
 
-  def getLength(x : List[List[_]]): Int = x.length
+  def getLength(x: List[List[_]]): Int = x.length
 
   def itemTransaction(price: Double): String = {
     price match {
@@ -12,19 +12,21 @@ object UnderscoreUsages {
     }
   }
 
-  def multiplier(a: Int, b: Int): Int = a*b
+  def multiplier(a: Int, b: Int): Int = a * b
 
   def sum(args: Int*): Int = {
     args.reduce(_ + _)
   }
 
-  def sum(x:Int,y:Int): Int = x+y
+  def sum(x: Int, y: Int): Int = x + y
 
-  def bar(x:Int,y:Int)(z:String,a:String)(b:Float,c:Float): Int = x
+  def bar(x: Int, y: Int)(z: String, a: String)(b: Float, c: Float): Int = x
 
   class Product {
     private var a = 0
+
     def price = a
+
     def price_=(i: Int): Unit = {
       require(i > 10)
       a = i
