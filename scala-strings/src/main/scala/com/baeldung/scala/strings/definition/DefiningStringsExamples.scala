@@ -20,7 +20,7 @@ object DefiningStringsExamples {
 
     val concatStrWithConcat = singleLineString.concat(askTheTimeString)
     assert(concatStrWithConcat == "Hello, I am a single line string...What time is it?")
- 
+  
     val concatStr = singleLineString + askTheTimeString
     assert( concatStr == "Hello, I am a single line string...What time is it?")
 
