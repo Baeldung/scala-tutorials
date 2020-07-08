@@ -15,10 +15,10 @@ class UsingRegexTest extends FeatureSpec with GivenWhenThen {
     val testString = "this is a string with numbers 123456"
 
     Given("regular expression for matching if a string contains letters and numbers")
-    val regularExpression: Regex = "^(?=.*[a-zA-Z])(?=.*[0-9])".r
+    val regEx: Regex = "^(?=.*[a-zA-Z])(?=.*[0-9])".r
 
     When("when we apply the regex")
-    val result = regularExpression.findFirstMatchIn(testString).isDefined
+    val result = regEx.findFirstMatchIn(testString).isDefined
 
     Then("the result will be true because testString contains both letters and numbers")
     assert(result == true)
@@ -39,22 +39,24 @@ class UsingRegexTest extends FeatureSpec with GivenWhenThen {
         |"""
 
     Given("regular expression for matching if a string contains letters and numbers")
-    val groupOfRegularExpressions: Regex = "([0-9a-zA-Z- ]+): ([0-9a-zA-Z-#()/. ]+)".r
+    val regExGroup: Regex =
+      "([0-9a-zA-Z- ]+): ([0-9a-zA-Z-#()/. ]+)".r
 
     When("when we apply the regex")
-    val result: Iterator[Regex.Match] = groupOfRegularExpressions.findAllMatchIn(testString)
+    val result: Iterator[Regex.Match] =
+      regExGroup
+        .findAllMatchIn(testString)
 
-    val matchResult = groupOfRegularExpressions
+    val matchResult = regExGroup
       .findAllMatchIn(testString)
 
     Then("the result will be true because testString contains both letters and numbers")
     val expected = """key: property1 value: value1
-                     |key: property2 value: value2
-                     |key: property3 value: value3"""
-      .stripMargin
+         |key: property2 value: value2
+         |key: property3 value: value3""".stripMargin
 
     val matchedStrings = matchResult
-      .map(regularExpressionMatch => s"key: ${regularExpressionMatch.group(1)} value: ${regularExpressionMatch.group(2)}")
+      .map(regExMatch => s"key: ${regExMatch.group(1)} value: ${regExMatch.group(2)}")
       .mkString(System.lineSeparator)
 
     assert(matchedStrings.equals(expected))
