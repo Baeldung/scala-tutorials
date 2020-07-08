@@ -18,11 +18,11 @@ object DefiningStringsExamples {
 
     val askTheTimeString = "...What time is it?"
 
-    val concatenatedStringWithConcat = singleLineString.concat(askTheTimeString)
-    assert(concatenatedStringWithConcat == "Hello, I am a single line string...What time is it?")
+    val concatStrWithConcat = singleLineString.concat(askTheTimeString)
+    assert(concatStrWithConcat == "Hello, I am a single line string...What time is it?")
 
-    val concatenatedString = singleLineString + askTheTimeString
-    assert( concatenatedString == "Hello, I am a single line string...What time is it?")
+    val concatStr = singleLineString + askTheTimeString
+    assert( concatStr == "Hello, I am a single line string...What time is it?")
 
     val age = 30
     val agePresentation = s"I am $age"
