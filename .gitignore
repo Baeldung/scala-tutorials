@@ -17,3 +17,10 @@ project/plugins/project/
 .worksheet
 .idea
 /project/
+
+# Ignore files used by Metals and Visual Studio Code
+.bloop
+.metals
+
+# Ignore OSX files
+.DS_Store
