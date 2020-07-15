@@ -9,7 +9,8 @@ import org.scalatest.{FlatSpec, Matchers}
 class CallByNameCallByValueTest extends FlatSpec with Matchers {
 
   "A call by-value" should "have evaluated before passing an argument" in {
-    getTimeByVal(System.currentTimeMillis()) should be(System.currentTimeMillis())
+    val currentTime = System.currentTimeMillis()
+    getTimeByVal(currentTime) should be(currentTime)
   }
 
   "A call by-name" should "have evaluated when an argument used inside the function's body" in {
