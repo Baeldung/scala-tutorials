@@ -1,4 +1,4 @@
-package com.baeldung.scala.scalatest
+package com.baeldung.scala.bddtesting
 
 class BankAccount(initialBalance: Double) {
 

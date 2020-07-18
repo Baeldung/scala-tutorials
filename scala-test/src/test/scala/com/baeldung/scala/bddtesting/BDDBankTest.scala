@@ -1,4 +1,4 @@
-package com.baeldung.scala.scalatest
+package com.baeldung.scala.bddtesting
 
 import org.scalatest.GivenWhenThen
 import org.scalatest.funspec.AnyFunSpec
