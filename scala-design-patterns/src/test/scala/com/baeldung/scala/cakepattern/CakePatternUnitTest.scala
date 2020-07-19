@@ -1,6 +1,6 @@
-package com.baeldung.scala.selftype
+package com.baeldung.scala.cakepattern
 
-import com.baeldung.scala.selftype.SelfType.Test
+import com.baeldung.scala.cakepattern.CakePattern.Test
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.FlatSpec
 

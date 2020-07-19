@@ -1,6 +1,4 @@
-package com.baeldung.scala.selftype
-
-import com.baeldung.scala.selftype.SelfType.Test
+package com.baeldung.scala.cakepattern
 
 import scala.collection.JavaConverters._
 
@@ -45,6 +43,13 @@ object CakePattern {
         logger.log("INFO", s"Executing test with ${env.envName} environment")
         tests.forall(_.execute(env.readEnvironmentProperties))
       }
+    }
+  }
+
+  case class Test(name: String, assertion: Map[String, String] => Boolean) {
+    def execute(env: Map[String, String]): Boolean = {
+      println(s"Execute test $name with environment $env")
+      assertion.apply(env)
     }
   }
 

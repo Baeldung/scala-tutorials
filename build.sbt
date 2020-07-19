@@ -80,3 +80,11 @@ lazy val scala_strings = (project in file("scala-strings"))
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
+
+lazy val scala_design_patterns = (project in file("scala-design-patterns"))
+  .settings(
+    name := "scala-design-patterns",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+  )
