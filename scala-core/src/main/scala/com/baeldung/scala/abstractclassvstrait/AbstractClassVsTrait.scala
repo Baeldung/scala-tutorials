@@ -26,7 +26,9 @@ object AbstractClassVsTrait extends App {
         def getValue(): Int = value
     }
 
-    class Maths(v: Int) extends ValueHolder(v) with AdditionTrait with SubtractionTrait {
+    class Maths(v: Int) extends ValueHolder(v)
+                                with AdditionTrait
+                                with SubtractionTrait {
         override def subtract(n: Int) = {
             setValue(value - n)
         }
