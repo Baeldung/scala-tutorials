@@ -9,3 +9,4 @@ This module contains articles about Scala's Lang features
 - [Equality in Scala](https://www.baeldung.com/scala/equality-in-scala)
 - [Mutability in Scala](https://www.baeldung.com/scala/mutability)
 - [Introduction to Scala Operators](https://www.baeldung.com/scala/operators-intro)
+- [Packaging, importing and package objects in Scala](https://www.baeldung.com/scala/package-import)
