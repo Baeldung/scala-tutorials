@@ -42,5 +42,4 @@ class HigherKindedTypesUnitTest extends  WordSpec with Matchers {
     }
   }
 
-
 }
