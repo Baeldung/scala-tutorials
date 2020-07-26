@@ -1,7 +1,6 @@
 package com.baeldung.scala.ranges
 
-import org.scalatest.WordSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.{Matchers, WordSpec}
 
 /**
  * Created by yadu on 26/07/20
