@@ -48,6 +48,16 @@ class RangeUnitTest extends WordSpec with Matchers {
   }
 
   it should {
+    "create a range with step value 2" in {
+      val rangeStepOpt1 = 1 to 10 by 3
+      rangeStepOpt1.toList should contain allElementsOf(List(1,4,7,10))
+
+      val rangeStepOpt2 = Range.inclusive(1,10,3)
+      rangeStepOpt2.toList should contain allElementsOf(List(1,4,7,10))
+    }
+  }
+
+  it should {
     "create a range with odd numbers" in {
       val rangeOdd = 1 to 10 by 2
       rangeOdd.toList should contain allElementsOf(List(1,3,5,7,9))
