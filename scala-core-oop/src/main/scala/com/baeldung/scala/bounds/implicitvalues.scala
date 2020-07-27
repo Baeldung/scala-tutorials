@@ -7,5 +7,6 @@ object implicitvalues {
 
   implicit val debugging: Boolean = true
 
+  // Second parameter passed implicitly
   printDebugMsg("I am debugging this method")
 }
