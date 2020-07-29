@@ -23,8 +23,8 @@ class MapMonoidTest extends WordSpec {
         * computed.keys.foreach(k => println(s"key: $k, value: ${computed(k)}"))
         */
       val actual =
-        Map("one-or-zero" -> 10, "two" -> 2, "three" -> 3, "four" -> 4)
-      computed === actual
+        Map("one-or-ten" -> 10, "two" -> 2, "three" -> 3, "four" -> 4)
+      assert(computed === actual)
     }
   }
 }
