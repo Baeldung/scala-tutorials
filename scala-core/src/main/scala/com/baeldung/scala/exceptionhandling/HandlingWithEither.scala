@@ -1,13 +1,10 @@
 package com.baeldung.scala.exceptionhandling
 
+import com.baeldung.scala.exceptionhandling.LegacyErrors.{ResourceNotFound, ServerError, UserNotFound}
+
 import scala.util.{Failure, Success, Try}
 
 object HandlingWithEither {
-  sealed trait LegacyErrors extends Product with Serializable
-  final case class ServerError(ex: Throwable) extends LegacyErrors
-  final case class UserNotFound(user: User) extends LegacyErrors
-  final case class ResourceNotFound(resourceId: String) extends LegacyErrors
-
   def eitherAuthenticate (user: User): Either[LegacyErrors, Session] = {
     Try(LegacyService.authenticate(user)) match {
       case Failure(exception) => Left(ServerError(exception))

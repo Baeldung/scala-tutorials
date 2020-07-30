@@ -48,6 +48,7 @@ lazy val scala_core_fp = (project in file("scala-core-fp"))
 lazy val scala_lang = (project in file("scala-lang"))
   .settings(
     name := "scala-lang",
+    scalacOptions += "-Ypartial-unification",
     libraryDependencies ++=
       Seq(
         scalaTest,

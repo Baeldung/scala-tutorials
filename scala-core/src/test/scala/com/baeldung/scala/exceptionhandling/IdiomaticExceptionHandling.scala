@@ -2,7 +2,10 @@ package com.baeldung.scala.exceptionhandling
 
 import java.io.IOException
 
-import com.baeldung.scala.exceptionhandling.HandlingWithMonadError.{LegacyErrors, ResourceNotFound, ServerError, UserNotFound}
+import cats.data.NonEmptyList
+import cats.data.Validated.{Invalid, Valid}
+import com.baeldung.scala.exceptionhandling.LegacyErrors.{ResourceNotFound, ServerError, UserNotFound}
+import com.baeldung.scala.exceptionhandling.ValidationErrors.{IllegalLogin, IllegalPassword}
 import org.scalatest.{FeatureSpec, FlatSpec, GivenWhenThen, Matchers}
 
 import scala.util.{Failure, Success, Try}
@@ -112,7 +115,7 @@ class IdiomaticExceptionHandling extends FeatureSpec with GivenWhenThen  with Ma
       resourceOptional should be(Some("(:"))
     }
 
-    Scenario("For-comprehension shoud fail-fast whenever it reaches a None value in a chain of computations") {
+    Scenario("For-comprehension should fail-fast whenever it reaches a None value in a chain of computations") {
       Given("Composed for-comprehension with failed call to authenticate")
       val resourceOptional = for {
         session <- HandlingWithOption.authenticateOptional(null)
@@ -223,7 +226,7 @@ class IdiomaticExceptionHandling extends FeatureSpec with GivenWhenThen  with Ma
       val eitherLeftResource = HandlingWithEither.eitherGetResourceValue(null, "/")
 
       Then("We translate null into Left with custom error type")
-      eitherLeftResource should be(Left(HandlingWithEither.UserNotFound(null)))
+      eitherLeftResource should be(Left(UserNotFound(null)))
     }
 
     Scenario("Server Error") {
@@ -233,7 +236,7 @@ class IdiomaticExceptionHandling extends FeatureSpec with GivenWhenThen  with Ma
 
       Then("We translate exception into Left with custom error type")
       eitherLeftResource shouldBe a [Left[_, _]]
-      eitherLeftResource.left.get shouldBe a [HandlingWithEither.ServerError]
+      eitherLeftResource.left.get shouldBe a [ServerError]
     }
 
     Scenario("Resource not Found") {
@@ -243,7 +246,7 @@ class IdiomaticExceptionHandling extends FeatureSpec with GivenWhenThen  with Ma
 
       Then("We translate exception into Left with custom error type")
       eitherLeftResource shouldBe a[Left[_, _]]
-      eitherLeftResource.left.get shouldBe a[HandlingWithEither.ResourceNotFound]
+      eitherLeftResource.left.get shouldBe a[ResourceNotFound]
     }
   }
 
@@ -255,28 +258,28 @@ class IdiomaticExceptionHandling extends FeatureSpec with GivenWhenThen  with Ma
 
     Scenario("User not found exception handled by Option") {
       When("We call legacy functionality backed by MonadError")
-      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue[Option, Unit](null, "/smile")
+      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue(null, "/smile")
 
       Then("Thrown exception converted into None for Option")
       optionMonadErrorResult should be(None)
     }
     Scenario("Server Error exception handled by Option") {
       When("We call legacy functionality backed by MonadError")
-      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue[Option, Unit](rootUser, "/smile")
+      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue(rootUser, "/smile")
 
       Then("Thrown exception converted into None for Option")
       optionMonadErrorResult should be(None)
     }
     Scenario("Resource not found exception handled by Option") {
       When("We call legacy functionality backed by MonadError")
-      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue[Option, Unit](user, "/")
+      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue(user, "/")
 
       Then("Thrown exception converted into None for Option")
       optionMonadErrorResult should be(None)
     }
     Scenario("Successful call handled by Option") {
       When("We call legacy functionality backed by MonadError")
-      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue[Option, Unit](user, "/smile")
+      val optionMonadErrorResult = HandlingWithMonadError.getResourceValue(user, "/smile")
 
       Then("We got result boxed in Some")
       optionMonadErrorResult should be(Some("(:"))
@@ -334,6 +337,32 @@ class IdiomaticExceptionHandling extends FeatureSpec with GivenWhenThen  with Ma
 
       Then("Result is boxed in Right")
       eitherMonadErrorResult should be(Right("(:"))
+    }
+  }
+
+  Feature("Validated provides parallel error handling") {
+    Scenario("Validating User with failed fields") {
+      Given("User with invalid login and password")
+      val invalidUser = User("invalidLogin_", null)
+
+      When("User validation is called")
+      val validationResult = HandlingWithValidated.validateUser(invalidUser)
+
+      Then("Result should contains non empty list with 2 values")
+      validationResult.isInvalid should be(true)
+      validationResult should be(Invalid(NonEmptyList(IllegalLogin("invalidLogin_"), List(IllegalPassword(null)))))
+    }
+
+    Scenario("Validating User with success fields") {
+      Given("User with valid login and password")
+      val validUser = User("validUser", "validPassword1_")
+
+      When("User validation is called")
+      val validationResult = HandlingWithValidated.validateUser(validUser)
+
+      Then("Result should contains a valid User object")
+      validationResult.isValid should be(true)
+      validationResult should be(Valid(User("validUser", "validPassword1_")))
     }
   }
 }

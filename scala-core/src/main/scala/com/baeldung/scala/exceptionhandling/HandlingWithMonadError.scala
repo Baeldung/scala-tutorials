@@ -5,13 +5,9 @@ import cats.syntax.flatMap._
 import cats.syntax.functor._
 
 import scala.util.{Failure, Success, Try}
+import com.baeldung.scala.exceptionhandling.LegacyErrors.{ResourceNotFound, ServerError, UserNotFound}
 
 object HandlingWithMonadError {
-  sealed trait LegacyErrors extends Product with Serializable
-  final case class ServerError(ex: Throwable) extends LegacyErrors
-  final case class UserNotFound(user: User) extends LegacyErrors
-  final case class ResourceNotFound(resourceId: String) extends LegacyErrors
-
   def monadErrorAuthenticate[F[_], E] (user: User)(implicit me: MonadError[F, E], adoptError: LegacyErrors => E): F[Session] = {
     Try(LegacyService.authenticate(user)) match {
       case Failure(exception) => me.raiseError(ServerError(exception))
