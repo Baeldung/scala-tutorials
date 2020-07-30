@@ -1,11 +1,6 @@
-package com.baeldung.scala.absClassAndtraits
+package com.baeldung.scala.absClassAndTraits
 
-import com.baeldung.scala.absClassAndtraits.TutorialHelper.{
-  BirdLikeEmployee,
-  Employee,
-  SingerAndFlierEmployee,
-  SuperWomanLikeEmployee
-}
+import com.baeldung.scala.absClassAndTraits.TutorialHelper.{BirdLikeEmployee, Employee, SingerAndFlierEmployee, SuperWomanLikeEmployee}
 import org.scalatest.{Matchers, WordSpec}
 
 class AbstractClassAndTraitsTogetherTest extends WordSpec with Matchers {

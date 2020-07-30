@@ -1,4 +1,4 @@
-package com.baeldung.scala.absClassAndtraits
+package com.baeldung.scala.absClassAndTraits
 
 object TutorialHelper {
 

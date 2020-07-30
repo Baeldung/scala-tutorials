@@ -1,4 +1,4 @@
-package com.baeldung.scala.dataTypesAnsOps
+package com.baeldung.scala.dataTypesAndOps
 
 import org.scalatest.{Matchers, WordSpec}
 
@@ -109,9 +109,8 @@ class DatatypesAndOpsTest extends WordSpec with Matchers  {
 
       val i10 = 127 // Integer 127
       val i11 = 128 // Integer 128
-      i10.isValidByte should be(true)
       i11.isValidByte should be(false)
-
+      i10.isValidByte should be(true)
 
       val i31 = 65536
       i31.isValidShort should be(false)
