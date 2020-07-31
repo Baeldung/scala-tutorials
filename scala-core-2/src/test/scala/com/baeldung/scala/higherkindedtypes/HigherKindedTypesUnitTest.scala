@@ -8,18 +8,18 @@ class HigherKindedTypesUnitTest extends  WordSpec with Matchers {
   "Collections" should {
     "accept any type creator" in {
       val listCollection = new Collection[List] {
-        override def append[A](a: A): List[A] = List(a)
-        override def pop[B](b: List[B]): B = b.head
+        override def wrap[A](a: A): List[A] = List(a)
+        override def first[B](b: List[B]): B = b.head
       }
-      listCollection.append("Some values") shouldBe(List("Some values"))
-      listCollection.pop(List("Some values")) shouldBe("Some values")
+      listCollection.wrap("Some values") shouldBe(List("Some values"))
+      listCollection.first(List("Some values")) shouldBe("Some values")
 
       val seqCollection = new Collection[Seq] {
-        override def append[A](a: A): Seq[A] = Seq(a)
-        override def pop[B](b: Seq[B]): B = b.head
+        override def wrap[A](a: A): Seq[A] = Seq(a)
+        override def first[B](b: Seq[B]): B = b.head
       }
-      seqCollection.append("Some values") shouldBe(Seq("Some values"))
-      seqCollection.pop(Seq("Some values")) shouldBe("Some values")
+      seqCollection.wrap("Some values") shouldBe(Seq("Some values"))
+      seqCollection.first(Seq("Some values")) shouldBe("Some values")
     }
   }
 

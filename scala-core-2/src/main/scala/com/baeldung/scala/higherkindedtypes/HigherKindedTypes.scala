@@ -3,8 +3,8 @@ package com.baeldung.scala.higherkindedtypes
 object HigherKindedTypes {
 
   trait Collection[T[_]] {
-    def append[A](a: A): T[A]
-    def pop[B](b: T[B]): B
+    def wrap[A](a: A): T[A]
+    def first[B](b: T[B]): B
   }
 
   trait BatchRun[M[_]] {
