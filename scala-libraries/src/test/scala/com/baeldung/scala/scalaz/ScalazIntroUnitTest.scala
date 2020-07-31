@@ -120,7 +120,7 @@ class ScalazIntroUnitTest extends FlatSpec {
 
   "Pimped Bot" should "detect new member details" in {
     val intro =
-      "My name is Bengi my primary programming language is Java I have 2 years of industry experience"
+      "My name is Beng my primary programming language is Java I have 2 years of industry experience"
 
     assertResult(expected = "Junior")(actual = intro.level)
     assertResult(expected = "Java")(actual = intro.language)
