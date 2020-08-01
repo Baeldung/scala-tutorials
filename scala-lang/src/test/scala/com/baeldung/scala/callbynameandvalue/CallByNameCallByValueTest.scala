@@ -13,10 +13,6 @@ class CallByNameCallByValueTest extends FlatSpec with Matchers {
     getTimeByVal(currentTime) should be(currentTime)
   }
 
-  "A call by-name" should "have evaluated when an argument used inside the function's body" in {
-    getTimeByName(System.currentTimeMillis()) should not be (System.currentTimeMillis())
-  }
-
   "A call by-name and call by-value" should "have reduced to final value" in {
     addFirst(2 + 5, 7) should be(addFirst(7, 2 + 5))
   }
