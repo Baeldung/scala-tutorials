@@ -1,6 +1,6 @@
 package com.baeldung.scala.bounds
 
-object implicitparameters {
+object multipleparameterlists {
   val amIcool: Boolean = true
 
   def cond(pred: => Boolean)(proc: => Unit): Unit = {

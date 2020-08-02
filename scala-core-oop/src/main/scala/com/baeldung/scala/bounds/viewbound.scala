@@ -1,6 +1,7 @@
 package com.baeldung.scala.bounds
 
 object viewbound {
+
   abstract class Order[T](val me: T) {
     def less(other: T): Boolean
   }
@@ -11,7 +12,7 @@ object viewbound {
 
   def maximum[A <% Order[A]](a: A, b: A): A = {
     val toOrder = implicitly[A => Order[A]]
-    if(toOrder(a).less(b)) b else a
+    if (toOrder(a).less(b)) b else a
   }
 
   val a = 5

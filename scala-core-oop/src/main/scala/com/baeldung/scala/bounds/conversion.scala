@@ -1,6 +1,7 @@
 package com.baeldung.scala.bounds
 
 object conversion {
+
   abstract class Order[T](val me: T) {
     def less(other: T): Boolean
   }
@@ -10,7 +11,7 @@ object conversion {
   }
 
   def maximum[A](a: A, b: A)(toOrder: A => Order[A]): A = {
-    if(toOrder(a).less(b)) b else a
+    if (toOrder(a).less(b)) b else a
   }
 
   val a = 5

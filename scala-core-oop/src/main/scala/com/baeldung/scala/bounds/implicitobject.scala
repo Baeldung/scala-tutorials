@@ -1,6 +1,7 @@
 package com.baeldung.scala.bounds
 
 object implicitobject {
+
   abstract class Order[T] {
     def less(me: T, other: T): Boolean
   }
@@ -10,7 +11,7 @@ object implicitobject {
   }
 
   def maximum[A](a: A, b: A)(implicit ord: Order[A]): A = {
-    if(ord.less(a, b)) b else a
+    if (ord.less(a, b)) b else a
   }
 
   val a = 5
