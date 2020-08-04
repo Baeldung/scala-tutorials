@@ -1,5 +1,6 @@
 package com.baeldung.scala.io
 
+
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 
 import scala.io.Source
@@ -21,11 +22,10 @@ class SourceTest extends WordSpec with Matchers with BeforeAndAfterAll {
     }
 
     "process data line by line" in {
+      // Every line in the test file starts with the 'String' prefix
       val fourLinesSource = Source.fromResource("com.baeldung.scala.io/four_lines_string.txt")
       try {
-        fourLinesSource.getLines().zipWithIndex.foreach {
-          case (line, num) => line shouldEqual s"String-$num"
-        }
+        fourLinesSource.getLines().foreach(line => assert(line.startsWith("String")))
       } finally {
         fourLinesSource.close()
       }
