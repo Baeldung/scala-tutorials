@@ -99,18 +99,12 @@ object Main extends IOApp {
   }
 
   def startServer: IO[ListeningServer] = 
-  createDb.transact(xa).flatMap { _ =>
-    IO(
-      Http.server
-        .serve(":8081", (
-          createTodo 
-          :+: getTodo 
-          :+: updateTodo 
-          :+: deleteTodo 
-          :+: getTodos
-        ).toServiceAs[Application.Json])
-    )
-  }
+    createDb.transact(xa).flatMap { _ =>
+      IO(Http.server.serve(":8081", 
+        (createTodo :+: getTodo :+: updateTodo :+: deleteTodo :+: getTodos)
+          .toServiceAs[Application.Json])
+      )
+    }
 
   def run(args: List[String]): IO[ExitCode] = {
     val server = Resource.make(startServer)(s =>
