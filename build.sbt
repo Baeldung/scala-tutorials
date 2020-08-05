@@ -1,10 +1,10 @@
-ThisBuild / scalaVersion     := "2.12.7"
-ThisBuild / version          := "1.0-SNAPSHOT"
-ThisBuild / organization     := "com.baeldung"
+ThisBuild / scalaVersion := "2.12.7"
+ThisBuild / version := "1.0-SNAPSHOT"
+ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val scalaTest = "org.scalatest" %% "scalatest" % "3.1.2" % Test
-val junit = "com.novocode" % "junit-interface" % "0.11" % "test"
+val junit     = "com.novocode" % "junit-interface" % "0.11" % "test"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -78,16 +78,19 @@ lazy val scala_akka = (project in file("scala-akka"))
   )
 
 val monocleVersion = "2.0.4"
+val slickVersion   = "3.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
-    .settings(
-      name := "scala-libraries",
-      libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-      libraryDependencies ++= Seq(
-        "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
-        "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
-        "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test"
-      )
-   )
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies ++= Seq(
+      "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
+      "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
+      "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
+      "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.h2database" % "h2" % "1.4.200"
+    )
+  )
 
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
