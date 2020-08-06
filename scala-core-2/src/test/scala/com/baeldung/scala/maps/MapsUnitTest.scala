@@ -11,35 +11,76 @@ class MapsUnitTest extends WordSpec with Matchers {
 
   "immutable.Map" should {
     val map: Map[Int, String] = immutable.Map((1, "first"), 2 -> "second")
-    "put key -> value" in {
-      val newMap = map + (3 -> "third")
 
-      newMap.get(3) shouldBe Some("third")
+    "create empty map with empty method" in {
+      val map: Map[Int, String] = immutable.Map.empty[Int, String]
+      map shouldBe empty
+    }
+    "create non-empty map" in {
+      val map: Map[Int, String] = immutable.Map((1, "first"), 2 -> "second")
+      map should not be empty
+    }
+    "create empty map with ()" in {
+      val map: Map[Int, String] = immutable.Map[Int, String]()
+      map shouldBe empty
+
+    }
+    "fold list into map" in {
+      val map: Map[Int, String] = List(1 -> "first", 2 -> "second")
+        .foldLeft(Map.empty[Int, String]) {
+          case (map, (key, value)) =>
+            map + (key -> value)
+        }
+
+      map shouldBe Map(1 -> "first", 2 -> "second")
+    }
+    "create map from List" in {
+      val map: Map[Int, String] = List(1 -> "first", 2 -> "second").toMap
+      map shouldBe Map(1 -> "first", 2 -> "second")
+    }
+    "put key -> value" in {
+      val initialMap: Map[Int, String] = Map(1 -> "first")
+
+      val newMap: Map[Int, String] = initialMap + (2 -> "second")
+
+      initialMap shouldBe Map(1 -> "first")
+      newMap shouldBe Map(1 -> "first", 2 -> "second")
     }
     "put multiple key -> value" in {
-      val newMap = map + (3 -> "third", 4 -> "4th")
+      val initialMap: Map[Int, String] = Map(1 -> "first")
 
-      newMap.get(3) shouldBe Some("third")
-      newMap.get(4) shouldBe Some("4th")
+      val newMap: Map[Int, String] = initialMap + (2 -> "second", 3 -> "third")
+
+      initialMap shouldBe Map(1 -> "first")
+      newMap shouldBe Map(1 -> "first", 2 -> "second", 3 -> "third")
     }
     "combine with Map" in {
-      val newMap = map ++ Map(3 -> "third", 4 -> "4th")
+      val leftMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+      val rightMap: Map[Int, String] = Map(2 -> "2nd", 3 -> "third")
 
-      newMap.get(3) shouldBe Some("third")
-      newMap.get(4) shouldBe Some("4th")
+      val map = leftMap ++ rightMap
+
+      map shouldBe Map(1 -> "first", 2 -> "2nd", 3 -> "third")
     }
     "combine with List of tuples" in {
-      val newMap = map ++ List(3 -> "third", 4 -> "4th")
+      val leftMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+      val list: List[(Int, String)] = List(2 -> "2nd", 3 -> "third")
 
-      newMap.get(3) shouldBe Some("third")
-      newMap.get(4) shouldBe Some("4th")
+      val map = leftMap ++ list
+
+      map shouldBe Map(1 -> "first", 2 -> "2nd", 3 -> "third")
     }
     "override value for existing key" in {
-      val newMap = map + (1 -> "1st")
+      val initialMap: Map[Int, String] = Map(1 -> "first")
 
-      newMap.get(1) shouldBe Some("1st")
+      val newMap = initialMap + (1 -> "1st")
+
+      initialMap shouldBe Map(1 -> "first")
+      newMap shouldBe Map(1 -> "1st")
     }
     "get element by key in safe way" in {
+      val map: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
       map.get(1) shouldBe Some("first")
       map.get(3) shouldBe None
     }
@@ -48,16 +89,26 @@ class MapsUnitTest extends WordSpec with Matchers {
       map.getOrElse(3, "zero") shouldBe "zero"
     }
     "get element by key in unsafe way" in {
-      map.apply(1) shouldBe "first"
-      map(2) shouldBe "second"
+      val map: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      map(1) shouldBe "first"
       the[NoSuchElementException] thrownBy map(3)
     }
     "get default value for missing key" in {
-      val mapWithDefault = map.withDefaultValue("none")
-      mapWithDefault(3) shouldBe "none"
+      val map: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val mapWithDefault: Map[Int, String] = map.withDefaultValue("unknown")
+
+      mapWithDefault(1) shouldBe "first"
+      mapWithDefault(3) shouldBe "unknown"
+
     }
     "get default value computed from missing key" in {
-      val mapWithDefault = map.withDefault(i => i + "th")
+      val map: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val mapWithDefault: Map[Int, String] = map.withDefault(i => i + "th")
+
+      mapWithDefault(1) shouldBe "first"
       mapWithDefault(5) shouldBe "5th"
     }
     "get keys" in {
@@ -67,54 +118,167 @@ class MapsUnitTest extends WordSpec with Matchers {
     "get values" in {
       map.values should contain allOf ("first", "second")
     }
-    "map values" in {
-      val count = new AtomicInteger(0)
-      val reversed = map.mapValues { s =>
-        count.incrementAndGet()
-        s.reverse
+    "map" in {
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val calculateNext: ((Int, String)) => (Int, String) = {
+        case (key, value) =>
+          val newKey = key + 1
+          val newValue = initialMap.getOrElse(newKey, "another after " + value)
+          newKey -> newValue
       }
 
-      reversed.get(1) shouldBe Some("tsrif")
-      reversed.get(1) shouldBe Some("tsrif")
-      reversed.get(3) shouldBe None
-      count.get() shouldBe 2
+      val mappedMap = initialMap.map(calculateNext)
+
+      initialMap shouldBe Map(1 -> "first", 2 -> "second")
+      mappedMap shouldBe Map(2 -> "second", 3 -> "another after second")
     }
-    "filter keys" in {
-      val count = new AtomicInteger(0)
-      val reversed = map.filterKeys { s =>
-        count.incrementAndGet()
-        s > 1
+    "map values with counter" in {
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val counter = new AtomicInteger(0)
+      val reverse: String => String = { value =>
+        counter.incrementAndGet()
+        value.reverse
       }
 
-      reversed.get(1) shouldBe None
-      reversed.get(2) shouldBe Some("second")
-      reversed.get(3) shouldBe None
-      count.get() shouldBe 3
+      val reversed: Map[Int, String] = initialMap.mapValues(reverse)
+
+      counter.get() shouldBe 0
+
+      reversed.get(1) shouldBe Some("tsrif")
+      counter.get() shouldBe 1
+
+      reversed.get(2) shouldBe Some("dnoces")
+      counter.get() shouldBe 2
+
+      reversed.get(1) shouldBe Some("tsrif")
+      counter.get() shouldBe 3
+    }
+    "map values" in {
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val reverse: String => String = value => value.reverse
+
+      val reversed: Map[Int, String] = initialMap.mapValues(reverse)
+
+      reversed.get(1) shouldBe Some("tsrif")
+      reversed.get(2) shouldBe Some("dnoces")
+    }
+    "map values force" in {
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val counter = new AtomicInteger(0)
+      val reverse: String => String = { value =>
+        counter.incrementAndGet()
+        value.reverse
+      }
+
+      val reversed: Map[Int, String] = initialMap
+        .mapValues(reverse)
+        .view
+        .force
+
+      counter.get() shouldBe map.size
+
+      reversed.get(1) shouldBe Some("tsrif")
+      counter.get() shouldBe map.size
+
+      reversed.get(2) shouldBe Some("dnoces")
+      counter.get() shouldBe map.size
+    }
+
+    "filter keys with counter" in {
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val counter = new AtomicInteger(0)
+      val predicate: Int => Boolean = { key =>
+        counter.incrementAndGet()
+        key > 1
+      }
+
+      val filtered: Map[Int, String] = initialMap.filterKeys(predicate)
+
+      counter.get() shouldBe 0
+
+      filtered.get(1) shouldBe None
+      counter.get() shouldBe 1
+      filtered.get(2) shouldBe Some("second")
+      counter.get() shouldBe 2
+    }
+    "filter keys strict with counter" in {
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val counter = new AtomicInteger(0)
+      val predicate: Int => Boolean = { key =>
+        counter.incrementAndGet()
+        key > 1
+      }
+
+      val filtered: Map[Int, String] =
+        initialMap.filterKeys(predicate).view.force
+
+      counter.get() shouldBe initialMap.size
+
+      filtered.get(1) shouldBe None
+      counter.get() shouldBe initialMap.size
+      filtered.get(2) shouldBe Some("second")
+      counter.get() shouldBe initialMap.size
+    }
+
+    "filter" in {
+      val predicate: ((Int, String)) => Boolean = {
+        case (key, value) => key < 10 && value.length > 5
+      }
+
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val filtered: Map[Int, String] = initialMap.filter(predicate)
+
+      filtered shouldBe Map(2 -> "second")
+    }
+
+    "filter keys" in {
+      val predicate: Int => Boolean = key => key > 1
+
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
+
+      val filtered: Map[Int, String] = initialMap.filterKeys(predicate)
+
+      filtered.get(1) shouldBe None
+      filtered.get(2) shouldBe Some("second")
     }
     "remove key" in {
-      val newMap = map - 1
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
 
-      newMap.get(1) shouldBe None
-      newMap.get(2) shouldBe Some("second")
+      val newMap: Map[Int, String] = initialMap - 1
+
+      initialMap shouldBe Map(1 -> "first", 2 -> "second")
+      newMap shouldBe Map(2 -> "second")
     }
     "remove multiple keys" in {
-      val newMap = map - (1, 2)
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
 
-      newMap.get(1) shouldBe None
-      newMap.get(2) shouldBe None
+      val newMap: Map[Int, String] = initialMap - (1, 2, 3)
+
+      initialMap shouldBe Map(1 -> "first", 2 -> "second")
+      newMap shouldBe empty
     }
     "remove list of  keys" in {
-      val newMap = map -- List(1, 2)
+      val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
 
-      newMap.get(1) shouldBe None
-      newMap.get(2) shouldBe None
+      val newMap: Map[Int, String] = map -- List(1, 2)
+
+      initialMap shouldBe Map(1 -> "first", 2 -> "second")
+      newMap shouldBe empty
     }
     "sort by values" in {
       implicit val ordering: Ordering[String] = Ordering.by(_.length)
 
-      val sortedMap = map.toList.sortBy { case (_, value) => value }.toMap
+      val sortedMap =
+        ListMap(map.toList.sortBy { case (_, value) => value }: _*)
 
-      sortedMap.toList shouldBe List(1 -> "first", 2 -> "second")
+      sortedMap shouldBe ListMap(1 -> "first", 2 -> "second")
     }
   }
 
