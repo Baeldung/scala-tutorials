@@ -24,3 +24,7 @@ project/plugins/project/
 
 # Ignore OSX files
 .DS_Store
+
+# Ignore IntelliJ files
+.idea/
+*.iml
