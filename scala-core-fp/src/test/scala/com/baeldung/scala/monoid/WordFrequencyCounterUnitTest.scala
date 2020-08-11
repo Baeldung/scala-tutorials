@@ -2,7 +2,7 @@ package com.baeldung.scala.monoid
 
 import org.scalatest.WordSpec
 
-class WordFrequencyCounterTest extends WordSpec {
+class WordFrequencyCounterUnitTest extends WordSpec {
 
   object WordFrequencyCounter {
 

@@ -2,7 +2,7 @@ package com.baeldung.scala.monoid
 
 import org.scalatest._
 
-class MapMonoidTest extends WordSpec {
+class MapMonoidUnitTest extends WordSpec {
 
   "A Monoid type class" should {
     "combine two Lists using ListMonoidInstance" in {
