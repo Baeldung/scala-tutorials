@@ -1,9 +1,9 @@
-package com.baeldung.scala.akka.fireandforget
+package com.baeldung.scala.akka.tell
 
 import akka.actor.testkit.typed.CapturedLogEvent
 import akka.actor.testkit.typed.scaladsl.{BehaviorTestKit, TestInbox}
-import com.baeldung.scala.akka.fireandforget.LoggingApplication.MicroserviceActor.DoSomeStuff
-import com.baeldung.scala.akka.fireandforget.LoggingApplication.{LogKeeperActor, MicroserviceActor}
+import com.baeldung.scala.akka.tell.LoggingApplication.MicroserviceActor.DoSomeStuff
+import com.baeldung.scala.akka.tell.LoggingApplication.{LogKeeperActor, MicroserviceActor}
 import org.scalatest.FlatSpec
 import org.slf4j.event.Level
 

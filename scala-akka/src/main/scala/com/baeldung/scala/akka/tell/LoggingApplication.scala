@@ -1,4 +1,4 @@
-package com.baeldung.scala.akka.fireandforget
+package com.baeldung.scala.akka.tell
 
 import akka.actor.typed.{ActorRef, Behavior}
 import akka.actor.typed.scaladsl.Behaviors
