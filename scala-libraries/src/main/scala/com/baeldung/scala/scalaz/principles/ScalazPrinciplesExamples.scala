@@ -1,4 +1,4 @@
-package com.baeldung.scala.monocle.scalaz.principles
+package com.baeldung.scala.scalaz.principles
 
 object ScalazPrinciplesExamples {
   trait Doubler[F[_], A] {

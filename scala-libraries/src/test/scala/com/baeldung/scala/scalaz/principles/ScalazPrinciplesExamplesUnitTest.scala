@@ -1,6 +1,6 @@
-package com.baeldung.scala.monocle.scalaz.principles
+package com.baeldung.scala.scalaz.principles
 
-import com.baeldung.scala.monocle.scalaz.principles.ScalazPrinciplesExamples._
+import com.baeldung.scala.scalaz.principles.ScalazPrinciplesExamples._
 import org.scalatest._
 
 class ScalazPrinciplesExamplesUnitTest extends FlatSpec{
