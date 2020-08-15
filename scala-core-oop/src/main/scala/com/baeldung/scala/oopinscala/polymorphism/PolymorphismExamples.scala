@@ -1,4 +1,4 @@
-package com.baeldung.scala.polymorphism
+package com.baeldung.scala.oopinscala.polymorphism
 
 object PolymorphismExamples{
   case class Complex(re: Double, im: Double) {

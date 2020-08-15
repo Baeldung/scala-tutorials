@@ -1,4 +1,4 @@
-package com.baeldung.scala.polymorphism
+package com.baeldung.scala.oopinscala.polymorphism
 
 import org.scalatest._
 import PolymorphismExamples._
