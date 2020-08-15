@@ -1,12 +1,15 @@
 package com.baeldung.scala.callbynameandvalue
 
+import java.lang.Thread.sleep
+
 import com.baeldung.scala.callbynameandvalue.CallByNameCallByValue._
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 /**
  * @author vid2010
  */
-class CallByNameCallByValueTest extends FlatSpec with Matchers {
+class CallByNameCallByValueTest extends AnyFlatSpec with Matchers {
 
   "A call by-value" should "have evaluated before passing an argument" in {
     val currentTime = System.currentTimeMillis()
