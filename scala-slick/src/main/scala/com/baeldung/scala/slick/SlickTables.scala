@@ -2,9 +2,6 @@ package com.baeldung.scala.slick
 
 import java.time.LocalDate
 
-/**
- * Created by yadu on 04/08/20
- */
 import slick.jdbc.H2Profile.api._
 
 object SlickTables {

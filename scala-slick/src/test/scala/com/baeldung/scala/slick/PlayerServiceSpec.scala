@@ -10,10 +10,6 @@ import slick.jdbc.H2Profile.api._
 
 import scala.concurrent.duration._
 
-/**
- * Created by yadu on 05/08/20
- */
-
 class PlayerServiceSpec extends WordSpec with Matchers with ScalaFutures with BeforeAndAfterAll {
 
   val playerService = new PlayerService

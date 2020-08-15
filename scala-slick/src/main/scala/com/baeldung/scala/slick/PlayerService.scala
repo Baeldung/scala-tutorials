@@ -1,9 +1,5 @@
 package com.baeldung.scala.slick
 
-/**
- * Created by yadu on 05/08/20
- */
-
 import java.time.LocalDate
 
 import com.baeldung.scala.slick.SlickTables.PlayerTable
