@@ -5,6 +5,8 @@ ThisBuild / organizationName := "core-scala"
 
 val scalaTest = "org.scalatest" %% "scalatest" % "3.1.2" % Test
 val junit = "com.novocode" % "junit-interface" % "0.11" % "test"
+val catsEffect = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
+val catsCore= "org.typelevel" % "cats-effect_2.12" % "2.1.4"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -12,8 +14,10 @@ lazy val scala_core = (project in file("scala-core"))
     libraryDependencies ++=
       Seq(
         scalaTest,
-        junit)
-  )
+        junit,
+        catsCore,
+        catsEffect)
+    )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
@@ -21,6 +25,14 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
+)
+
+lazy val scala_core_3 = (project in file("scala-core-3"))
+  .settings(
+    name := "scala-core-3",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
 
 lazy val scala_core_io = (project in file("scala-core-io"))
@@ -51,6 +63,7 @@ lazy val scala_core_fp = (project in file("scala-core-fp"))
 lazy val scala_lang = (project in file("scala-lang"))
   .settings(
     name := "scala-lang",
+    scalacOptions += "-Ypartial-unification",
     libraryDependencies ++=
       Seq(
         scalaTest,
@@ -78,8 +91,8 @@ lazy val scala_test = (project in file("scala-test"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.6",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.6" % Test,
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.8",
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.8" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
