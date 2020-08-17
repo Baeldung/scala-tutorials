@@ -25,6 +25,11 @@ class MapsUnitTest extends WordSpec with Matchers {
       map shouldBe empty
 
     }
+    "create empty map with apply" in {
+      val map: Map[Int, String] = immutable.Map[Int, String].apply()
+      map shouldBe empty
+
+    }
     "fold list into map" in {
       val map: Map[Int, String] = List(1 -> "first", 2 -> "second")
         .foldLeft(Map.empty[Int, String]) {
@@ -121,17 +126,16 @@ class MapsUnitTest extends WordSpec with Matchers {
     "map" in {
       val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
 
-      val calculateNext: ((Int, String)) => (Int, String) = {
+      val abbreviate: ((Int, String)) => (Int, String) = {
         case (key, value) =>
-          val newKey = key + 1
-          val newValue = initialMap.getOrElse(newKey, "another after " + value)
-          newKey -> newValue
+          val newValue = key + value.takeRight(2)
+          key -> newValue
       }
 
-      val mappedMap = initialMap.map(calculateNext)
+      val abbreviatedMap = initialMap.map(abbreviate)
 
       initialMap shouldBe Map(1 -> "first", 2 -> "second")
-      mappedMap shouldBe Map(2 -> "second", 3 -> "another after second")
+      abbreviatedMap shouldBe Map(1 -> "1st", 2 -> "2nd")
     }
     "map values with counter" in {
       val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
@@ -228,7 +232,7 @@ class MapsUnitTest extends WordSpec with Matchers {
 
     "filter" in {
       val predicate: ((Int, String)) => Boolean = {
-        case (key, value) => key < 10 && value.length > 5
+        case (key, value) => key > 1 && value.length > 5
       }
 
       val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
