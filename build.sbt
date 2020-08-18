@@ -31,7 +31,8 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
 lazy val scala_core_3 = (project in file("scala-core-3"))
   .settings(
     name := "scala-core-3",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
 )
 
 lazy val scala_core_oop = (project in file("scala-core-oop"))
