@@ -25,7 +25,8 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-  )
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
+)
 
 lazy val scala_core_3 = (project in file("scala-core-3"))
   .settings(
@@ -82,8 +83,8 @@ lazy val scala_test = (project in file("scala-test"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.6",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.6" % Test,
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.8",
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.8" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )

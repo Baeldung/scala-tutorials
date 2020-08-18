@@ -13,3 +13,7 @@ This module contains articles about Scala's core features
 - [Tail Recursion in Scala](https://www.baeldung.com/scala/tail-recursion)
 - [Regular Expressions in Scala](https://www.baeldung.com/scala/regular-expressions)
 - [A Guide to Sorting in Scala](https://www.baeldung.com/scala/sorting)
+- [Named and Default Arguments in Scala](https://www.baeldung.com/scala/named-default-arguments)
+- [Self-Type Annotation in Scala](https://www.baeldung.com/scala/self-type-annotation)
+- [Usages of Underscore (_) in Scala](https://www.baeldung.com/scala/underscore)
+- [A DSL for Writing “20 seconds” in Scala](https://www.baeldung.com/scala/dsl-writing-20-seconds)
