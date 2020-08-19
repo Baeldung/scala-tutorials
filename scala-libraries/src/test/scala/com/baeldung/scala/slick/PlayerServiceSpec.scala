@@ -62,13 +62,15 @@ class PlayerServiceSpec extends WordSpec with Matchers with ScalaFutures with Be
     }
 
     "combine multiple actions together and execute" in {
-      val player         = Player(0L, "Murray", "Britain", None)
-      val insertAction   = playerService.playerTable += player
-      val updateAction   = playerService.playerTable.filter(_.name === "Federer").map(_.country).update("Swiss")
-      val combinedAction = DBIO.seq(insertAction, updateAction)
+      val player              = Player(0L, "Murray", "Britain", None)
+      val insertAction        = playerService.playerTable += player
+      val anotherPlayer       = Player(0L, "Hingis", "Swiss", None)
+      val insertAnotherAction = playerService.playerTable += anotherPlayer
+      val updateAction        = playerService.playerTable.filter(_.name === "Federer").map(_.country).update("Swiss")
+      val combinedAction      = DBIO.seq(insertAction, updateAction, insertAnotherAction)
       playerService.db.run[Unit](combinedAction.transactionally).futureValue(timeout)
       val allPlayers = playerService.getAllPlayers.futureValue(timeout)
-      allPlayers.map(_.name) should contain allElementsOf (Seq("Federer", "Serena", "Murray"))
+      allPlayers.map(_.name) should contain allElementsOf (Seq("Federer", "Serena", "Murray", "Hingis"))
       allPlayers.find(_.name == "Federer").map(_.country) should contain("Swiss")
     }
 
@@ -88,6 +90,15 @@ class PlayerServiceSpec extends WordSpec with Matchers with ScalaFutures with Be
       }
 
     }
+
+    "update multiple records in a single query" in {
+      val updatedRows = playerService.updateCountry("Swiss", "Switzerland").futureValue(timeout)
+      updatedRows shouldBe 2
+      val swissPlayers = playerService.filterByCountry("Switzerland").futureValue(timeout)
+      swissPlayers.size shouldBe 2
+      swissPlayers.map(_.name) should contain allElementsOf (Seq("Federer", "Hingis"))
+    }
+
   }
 
 }

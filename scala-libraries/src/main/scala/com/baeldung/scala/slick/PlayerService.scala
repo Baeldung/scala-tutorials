@@ -58,4 +58,9 @@ class PlayerService {
     db.run(deleteAction)
   }
 
+  def updateCountry(oldCountryName:String, newCountryName: String): Future[Int] = {
+    val updateMultipleAction = playerTable.filter(_.country === oldCountryName).map(_.country).update(newCountryName)
+    db.run(updateMultipleAction)
+  }
+
 }

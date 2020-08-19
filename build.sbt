@@ -90,6 +90,7 @@ lazy val scala_akka = (project in file("scala-akka"))
   )
 
 val monocleVersion = "2.0.4"
+val slickVersion   = "3.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
@@ -97,7 +98,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     libraryDependencies ++= Seq(
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
-      "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test"
+      "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
+      "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.h2database" % "h2" % "1.4.200"
     )
   )
 
@@ -116,13 +119,3 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
   )
 
-val slickVersion   = "3.3.2"
-lazy val scala_slick = (project in file("scala-slick"))
-  .settings(
-    name := "scala-slick",
-    libraryDependencies ++= Seq(
-      "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "1.4.200",
-      "org.scalatest" %% "scalatest" % "3.0.5" % Test
-    )
-  )
