@@ -18,3 +18,4 @@ This module contains articles about Scala's core features
 - [Usages of Underscore (_) in Scala](https://www.baeldung.com/scala/underscore)
 - [A DSL for Writing “20 seconds” in Scala](https://www.baeldung.com/scala/dsl-writing-20-seconds)
 - [Error Handling in Scala](https://www.baeldung.com/scala/error-handling)
+- [Functions in Scala](https://www.baeldung.com/scala/functions)
