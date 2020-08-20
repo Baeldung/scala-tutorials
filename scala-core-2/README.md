@@ -21,3 +21,4 @@ This module contains articles about Scala's core features
 - [Functions in Scala](https://www.baeldung.com/scala/functions)
 - [Range in Scala](https://www.baeldung.com/scala/range)
 - [Higher-Kinded Types](https://www.baeldung.com/scala/higher-kinded-types)
+- [Loops in Functional Scala](https://www.baeldung.com/scala/loops-functional-scala)
