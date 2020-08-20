@@ -20,3 +20,4 @@ This module contains articles about Scala's core features
 - [Error Handling in Scala](https://www.baeldung.com/scala/error-handling)
 - [Functions in Scala](https://www.baeldung.com/scala/functions)
 - [Range in Scala](https://www.baeldung.com/scala/range)
+- [Higher-Kinded Types](https://www.baeldung.com/scala/higher-kinded-types)
