@@ -19,3 +19,4 @@ This module contains articles about Scala's core features
 - [A DSL for Writing “20 seconds” in Scala](https://www.baeldung.com/scala/dsl-writing-20-seconds)
 - [Error Handling in Scala](https://www.baeldung.com/scala/error-handling)
 - [Functions in Scala](https://www.baeldung.com/scala/functions)
+- [Range in Scala](https://www.baeldung.com/scala/range)
