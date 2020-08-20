@@ -23,3 +23,4 @@ This module contains articles about Scala's core features
 - [Higher-Kinded Types](https://www.baeldung.com/scala/higher-kinded-types)
 - [Loops in Functional Scala](https://www.baeldung.com/scala/loops-functional-scala)
 - [Type Casts in Scala](https://www.baeldung.com/scala/type-casting)
+- [Pimp My Library Pattern in Scala](https://www.baeldung.com/scala/pimp-my-library-pattern)
