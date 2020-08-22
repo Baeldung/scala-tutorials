@@ -65,6 +65,10 @@ object Futures extends App {
         Future(generateMagicNumber() / divider)
       }
 
+    def tryDivide(divider: Int): Future[Int] = Future.fromTry(Try {
+      generateMagicNumber() / divider
+    })
+
     val numberF: Future[Int] = Future.successful(5)
 
     val maxWaitTime: FiniteDuration = Duration(5, TimeUnit.SECONDS)
@@ -72,7 +76,7 @@ object Futures extends App {
 
     def printResult[A](result: Try[A]): Unit = result match {
       case Failure(exception) => println("Failed with: " + exception.getMessage)
-      case Success(number)    => println("Succeed with: " + number)
+      case Success(number) => println("Succeed with: " + number)
     }
 
     numberF.onComplete(printResult)
@@ -115,6 +119,26 @@ object Futures extends App {
     val magicNumbers: List[Int] = List(1, 2, 3, 4)
     val published: Future[List[Boolean]] =
       Future.traverse(magicNumbers)(publisher.publishMagicNumber)
-  }
 
+    val value = Future.successful(42)
+    val transformed = value.transform {
+      case Success(value) => Success(s"Successfully computed the $value")
+      case Failure(cause) => Failure(new IllegalStateException(cause))
+    }
+    val overloaded = value.transform(
+      value => s"Successfully computed $value",
+      cause => new IllegalStateException(cause)
+    )
+
+    val f = value.transformWith {
+      case Success(value) => Future.successful(s"Successfully computed the $value")
+      case Failure(cause) => Future.failed(new IllegalStateException(cause))
+    }
+
+    val g = Future.successful(0).andThen {
+      case Success(v) => 42 / v
+    } andThen {
+      case Failure(_) => 0 // default value
+    }
+  }
 }
