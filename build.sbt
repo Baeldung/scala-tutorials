@@ -1,12 +1,12 @@
-ThisBuild / scalaVersion     := "2.12.7"
-ThisBuild / version          := "1.0-SNAPSHOT"
-ThisBuild / organization     := "com.baeldung"
+ThisBuild / scalaVersion := "2.12.7"
+ThisBuild / version := "1.0-SNAPSHOT"
+ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
-val scalaTest = "org.scalatest" %% "scalatest" % "3.1.2" % Test
-val junit = "com.novocode" % "junit-interface" % "0.11" % "test"
+val scalaTest  = "org.scalatest" %% "scalatest" % "3.1.2" % Test
+val junit      = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
-val catsCore= "org.typelevel" % "cats-effect_2.12" % "2.1.4"
+val catsCore   = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -17,7 +17,7 @@ lazy val scala_core = (project in file("scala-core"))
         junit,
         catsCore,
         catsEffect)
-    )
+  )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
@@ -98,16 +98,19 @@ lazy val scala_akka = (project in file("scala-akka"))
   )
 
 val monocleVersion = "2.0.4"
+val slickVersion   = "3.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
-    .settings(
-      name := "scala-libraries",
-      libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-      libraryDependencies ++= Seq(
-        "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
-        "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
-        "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test"
-      )
-   )
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies ++= Seq(
+      "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
+      "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
+      "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
+      "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.h2database" % "h2" % "1.4.200"
+    )
+  )
 
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
@@ -123,3 +126,4 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
   )
+
