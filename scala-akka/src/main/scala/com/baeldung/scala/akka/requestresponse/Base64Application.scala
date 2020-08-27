@@ -11,9 +11,9 @@ object Base64Application {
 
   object Base64Encoder {
     sealed trait Request
-    case class Encode(payload: String, replyTo: ActorRef[Encoded]) extends Request
+    final case class Encode(payload: String, replyTo: ActorRef[Encoded]) extends Request
     sealed trait Response
-    case class Encoded(payload: String) extends Response
+    final case class Encoded(payload: String) extends Response
 
     def apply(): Behavior[Encode] =
       Behaviors.receiveMessage {
@@ -31,6 +31,26 @@ object Base64Application {
         Behaviors.receiveMessage {
           case Encoded(payload) => context.log.info(s"The encoded payload is $payload")
             Behaviors.empty
+        }
+      }
+  }
+
+  object EncoderClient {
+    sealed trait Command
+    final case class KeepASecret(secret: String) extends Command
+    private final case class WrappedEncoderResponse(response: Encoded) extends Command
+
+    def apply(encoder: ActorRef[Request]): Behavior[Command] =
+      Behaviors.setup { context =>
+        val encoderResponseMapper: ActorRef[Encoded] =
+          context.messageAdapter(response => WrappedEncoderResponse(response))
+        Behaviors.receiveMessage {
+          case KeepASecret(secret) =>
+            encoder ! Encode(secret, encoderResponseMapper)
+            Behaviors.same
+          case WrappedEncoderResponse(response) =>
+            context.log.info(s"I will keep a secret for you: ${response.payload}")
+            Behaviors.same
         }
       }
   }
