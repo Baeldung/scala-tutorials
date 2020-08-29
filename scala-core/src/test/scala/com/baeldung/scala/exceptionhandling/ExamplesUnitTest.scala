@@ -119,4 +119,8 @@ class ExamplesUnitTest extends FlatSpec with Matchers {
       case Success(result) => fail("Should fail!")
     }
   }
+
+  it should "ignore specified exceptions" in {
+    Examples.ignoringAndSum(-1, -2)
+  }
 }
