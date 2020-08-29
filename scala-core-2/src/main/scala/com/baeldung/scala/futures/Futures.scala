@@ -138,5 +138,16 @@ object Futures extends App {
     Future.successful(42).andThen {
       case Success(v) => println(s"The answer is $v")
     }
+
+    val g = Future.successful(42).andThen {
+      case Success(v) => println(s"The answer is $v")
+    } andThen {
+      case Success(_) => // send HTTP request to signal success
+      case Failure(_) =>  // send HTTP request to signal failure
+    }
+
+    g.onComplete { v =>
+      println(s"The original future has returned: $v")
+    }
   }
 }
