@@ -5,7 +5,11 @@ import java.util.Base64
 
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.{ActorRef, Behavior}
+import akka.util.Timeout
 import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{Encode, Encoded, Request}
+
+import scala.concurrent.duration.DurationInt
+import scala.util.{Failure, Success}
 
 object Base64Application {
 
@@ -50,6 +54,33 @@ object Base64Application {
             Behaviors.same
           case WrappedEncoderResponse(response) =>
             context.log.info(s"I will keep a secret for you: ${response.payload}")
+            Behaviors.same
+        }
+      }
+  }
+
+  object APIGateway {
+    sealed trait Command
+    final case class PleaseEncode(payload: String, replyTo: ActorRef[GentlyEncoded]) extends Command
+    final case class GentlyEncoded(encodedPayload: String)
+    private case class AdaptedResponse(payload: String, replyTo: ActorRef[GentlyEncoded]) extends Command
+    private case class AdaptedErrorResponse(error: String) extends Command
+
+    def apply(encoder: ActorRef[Request]): Behavior[Command] =
+      Behaviors.setup { context =>
+        implicit val timeout: Timeout = 5.seconds
+        Behaviors.receiveMessage {
+          case PleaseEncode(payload, replyTo) =>
+            context.ask(encoder, ref => Encode(payload, ref)) {
+              case Success(Encoded(encodedPayload)) => AdaptedResponse(encodedPayload, replyTo)
+              case Failure(exception) => AdaptedErrorResponse(exception.getMessage)
+            }
+            Behaviors.same
+          case AdaptedResponse(encoded, ref) =>
+            ref ! GentlyEncoded(encoded)
+            Behaviors.same
+          case AdaptedErrorResponse(error) =>
+            context.log.error(s"There was an error during encoding: $error")
             Behaviors.same
         }
       }
