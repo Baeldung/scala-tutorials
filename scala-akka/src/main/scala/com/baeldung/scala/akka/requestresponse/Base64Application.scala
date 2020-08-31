@@ -23,13 +23,13 @@ object Base64Application {
       Behaviors.receiveMessage {
         case Encode(payload, replyTo) =>
           val encodedPayload = Base64.getEncoder.encode(payload.getBytes(StandardCharsets.UTF_8))
-          replyTo ! Encoded(encodedPayload.toString)
+          replyTo ! Encoded(encodedPayload.map(_.toChar).mkString)
           Behaviors.same
     }
   }
 
   object NaiveEncoderClient {
-    def apply(encoder: ActorRef[Request]): Behavior[Encoded] =
+    def apply(encoder: ActorRef[Encode]): Behavior[Encoded] =
       Behaviors.setup { context =>
         encoder ! Encode("The answer is 42", context.self)
         Behaviors.receiveMessage {
@@ -71,7 +71,7 @@ object Base64Application {
         implicit val timeout: Timeout = 5.seconds
         Behaviors.receiveMessage {
           case PleaseEncode(payload, replyTo) =>
-            context.ask(encoder, ref => Encode(payload, ref)) {
+            context.ask(encoder, (ref: ActorRef[Encoded]) => Encode(payload, ref)) {
               case Success(Encoded(encodedPayload)) => AdaptedResponse(encodedPayload, replyTo)
               case Failure(exception) => AdaptedErrorResponse(exception.getMessage)
             }
