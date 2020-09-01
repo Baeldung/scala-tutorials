@@ -42,9 +42,9 @@ object Base64Application {
   object EncoderClient {
     sealed trait Command
     final case class KeepASecret(secret: String) extends Command
-    private final case class WrappedEncoderResponse(response: Encoded) extends Command
+    private[requestresponse] final case class WrappedEncoderResponse(response: Encoded) extends Command
 
-    def apply(encoder: ActorRef[Request]): Behavior[Command] =
+    def apply(encoder: ActorRef[Encode]): Behavior[Command] =
       Behaviors.setup { context =>
         val encoderResponseMapper: ActorRef[Encoded] =
           context.messageAdapter(response => WrappedEncoderResponse(response))
@@ -66,7 +66,7 @@ object Base64Application {
     private case class AdaptedResponse(payload: String, replyTo: ActorRef[GentlyEncoded]) extends Command
     private case class AdaptedErrorResponse(error: String) extends Command
 
-    def apply(encoder: ActorRef[Request]): Behavior[Command] =
+    def apply(encoder: ActorRef[Encode]): Behavior[Command] =
       Behaviors.setup { context =>
         implicit val timeout: Timeout = 5.seconds
         Behaviors.receiveMessage {
