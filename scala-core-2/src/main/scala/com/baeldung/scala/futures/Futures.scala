@@ -135,7 +135,7 @@ object Futures extends App {
       case Failure(cause) => Future.failed(new IllegalStateException(cause))
     }
 
-    Future.successful(42).andThen {
+    val v = Future.successful(42).andThen {
       case Success(v) => println(s"The answer is $v")
     }
 
