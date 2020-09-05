@@ -2,7 +2,7 @@ package scala.com.baeldung.scala.typetag
 import com.baeldung.scala.typtag.TypeTagExample.checkType
 import org.scalatest.WordSpec
 
-class TypeTagExampleTest extends WordSpec {
+class TypeTagExampleUnitTest extends WordSpec {
   val intList: List[Int] = List(1, 2, 3)
   val strList: List[String] = List("foo", "bar")
 
