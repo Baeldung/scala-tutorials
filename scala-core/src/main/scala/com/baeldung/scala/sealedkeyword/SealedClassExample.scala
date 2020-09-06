@@ -1,3 +1,5 @@
-package com.baeldung.scala.sealedkeyword class SealedClassExample {
+package com.baeldung.scala.sealedkeyword
+
+class SealedClassExample {
 
 }
