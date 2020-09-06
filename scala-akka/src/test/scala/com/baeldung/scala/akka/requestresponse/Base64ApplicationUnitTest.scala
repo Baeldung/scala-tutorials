@@ -4,7 +4,7 @@ import akka.actor.testkit.typed.CapturedLogEvent
 import akka.actor.testkit.typed.Effect.MessageAdapter
 import akka.actor.testkit.typed.scaladsl.{ActorTestKit, BehaviorTestKit, TestInbox}
 import com.baeldung.scala.akka.requestresponse.Base64Application.APIGateway.{GentlyEncoded, PleaseEncode}
-import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{Encode, Encoded}
+import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{ToEncode, Encoded}
 import com.baeldung.scala.akka.requestresponse.Base64Application.EncoderClient.{KeepASecret, WrappedEncoderResponse}
 import com.baeldung.scala.akka.requestresponse.Base64Application.{APIGateway, Base64Encoder, EncoderClient, NaiveEncoderClient}
 import org.scalatest.{BeforeAndAfterAll, FlatSpec}
@@ -17,18 +17,18 @@ class Base64ApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
   "The Base64Encoder" should "encode a given payload" in {
     val clientInbox = TestInbox[Encoded]()
     val encoder = BehaviorTestKit(Base64Encoder())
-    encoder.run(Encode("The answer is 42", clientInbox.ref))
+    encoder.run(ToEncode("The answer is 42", clientInbox.ref))
     clientInbox.expectMessage(Encoded("VGhlIGFuc3dlciBpcyA0Mg=="))
   }
 
   "NaiveEncoderClient" should "send an encoding request to the encode" in {
-    val encoder = TestInbox[Encode]()
+    val encoder = TestInbox[ToEncode]()
     val naiveClient = BehaviorTestKit(NaiveEncoderClient(encoder.ref))
-    encoder.expectMessage(Encode("The answer is 42", naiveClient.ref))
+    encoder.expectMessage(ToEncode("The answer is 42", naiveClient.ref))
   }
 
   it should "receive the encoded message and log it" in {
-    val encoder = TestInbox[Encode]()
+    val encoder = TestInbox[ToEncode]()
     val naiveClient = BehaviorTestKit(NaiveEncoderClient(encoder.ref))
     naiveClient.run(Encoded("VGhlIGFuc3dlciBpcyA0Mg=="))
     assertResult(naiveClient.logEntries()) {
@@ -37,7 +37,7 @@ class Base64ApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
   }
 
   "EncoderClient" should "send an encoding request to the encode" in {
-    val encoder = TestInbox[Encode]()
+    val encoder = TestInbox[ToEncode]()
     val client = BehaviorTestKit(EncoderClient(encoder.ref))
     client.run(KeepASecret("My secret"))
     client.expectEffectPF {
@@ -49,7 +49,7 @@ class Base64ApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
   }
 
   it should "receive the encoded message and log it" in {
-    val encoder = TestInbox[Encode]()
+    val encoder = TestInbox[ToEncode]()
     val client = BehaviorTestKit(EncoderClient(encoder.ref))
     client.run(WrappedEncoderResponse(Encoded("VGhlIGFuc3dlciBpcyA0Mg==")))
     assertResult(client.logEntries()) {
@@ -60,7 +60,7 @@ class Base64ApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
   "APIGateway" should "send an encoding request to the encode" in {
     // We need to use the asynchronous test kit, because we need a scheduler
     // to use the ask pattern
-    val encoder = testKit.createTestProbe[Encode]()
+    val encoder = testKit.createTestProbe[ToEncode]()
     val client = testKit.createTestProbe[GentlyEncoded]()
     val apiGateway = testKit.spawn(APIGateway(encoder.ref))
     apiGateway ! PleaseEncode("My secret", client.ref)
