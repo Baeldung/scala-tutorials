@@ -93,6 +93,7 @@ lazy val scala_akka = (project in file("scala-akka"))
     name := "scala-akka",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.8",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.8" % Test,
+    //libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.8" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
