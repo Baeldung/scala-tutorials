@@ -12,11 +12,13 @@ object FoldLeftVsReduceLeft {
 
   def getYoungestPerson(people: List[Person]): Person = {
     people.reduceLeft((youngestPerson, currentPerson) => {
-      if (youngestPerson.age > currentPerson.age) currentPerson
-      else youngestPerson
+      if (youngestPerson.age > currentPerson.age) {
+        currentPerson
+      } else {
+        youngestPerson
+      }
     })
   }
-
 }
 
 
