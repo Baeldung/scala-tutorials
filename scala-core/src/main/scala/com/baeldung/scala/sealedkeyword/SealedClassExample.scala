@@ -6,6 +6,8 @@ case class OptionA() extends MultipleChoice
 case class OptionB() extends MultipleChoice
 case class OptionC() extends MultipleChoice
 
+class OptionX() extends MultipleChoice
+
 object MultipleChoiceExam extends App {
 
   def selectOption(option: MultipleChoice): String = option match {
@@ -20,5 +22,6 @@ object MultipleChoiceExam extends App {
 
   println(selectOption(OptionA()))
   println(selectOption(OptionB()))
+//  println(selectOption(new OptionX()))
 
 }
