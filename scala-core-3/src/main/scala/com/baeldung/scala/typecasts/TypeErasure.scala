@@ -14,5 +14,4 @@ object TypeErasure {
   def convertValuesToList[T](values: T*): List[T] = {
     List[T](values:_*)
   }
-
 }
