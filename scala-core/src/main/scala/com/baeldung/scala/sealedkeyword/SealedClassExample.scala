@@ -22,6 +22,5 @@ object MultipleChoiceExam extends App {
 
   println(selectOption(OptionA()))
   println(selectOption(OptionB()))
-//  println(selectOption(new OptionX()))
 
 }
