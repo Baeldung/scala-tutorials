@@ -7,5 +7,4 @@ class AlgebraicDataType {
   case object Cappuccino extends Coffee
   case object Americano extends Coffee
   case object Espresso extends Coffee
-
 }
