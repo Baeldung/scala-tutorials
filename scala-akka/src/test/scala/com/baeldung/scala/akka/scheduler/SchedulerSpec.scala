@@ -12,7 +12,7 @@ class SchedulerSpec
     with WordSpecLike
     with Matchers {
 
-  "A single execution schedule" must {
+  "Akka scheduler" must {
 
     "execute the task exactly once after the provided time" in {
       val greeter = system.actorOf(Props(classOf[Greetings]))
