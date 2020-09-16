@@ -6,3 +6,4 @@ This module contains articles about Scala's Functional Programming features
 
 - [Currying in Scala](https://www.baeldung.com/scala/currying)
 - [Monoids and Semigroups in Scala](https://www.baeldung.com/scala/monoids-semigroups)
+- [Type Classes in Scala](https://www.baeldung.com/scala/type-classes)
