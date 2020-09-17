@@ -3,17 +3,10 @@ package com.baeldung.scala.scaladoc
 /** A class to represent a timer with interval.
   *
   * Specify how many `reps` desired for the timer and the `interval` between reps
-  * then you can start the timer like this:
-  *
-  * {{{
-  * val timer = IntervalTimer (10, 30)
-  * timer.start()
-  * }}}
   *
   * @constructor Create a timer with a specified `reps` and `interval`
   * @param reps How many repetitions the timer will run
   * @param interval Time run between repetitions, in seconds. The default is 30 seconds.
-  * @todo Add more functionality
   */
 class IntervalTimer(val reps: Int, val interval: Int = 30) {
 
@@ -40,7 +33,7 @@ class IntervalTimer(val reps: Int, val interval: Int = 30) {
     interval * reps
   }
 
-  /** Markup examples for scaladoc:
+  /** Markup examples for scaladoc
     *
     * =Heading=
     * ==Sub-Heading==
@@ -56,6 +49,7 @@ class IntervalTimer(val reps: Int, val interval: Int = 30) {
     *
     * {{{
     * Code block
+    * val example = 1
     * }}}
     *
     * Here is an unordered list:
