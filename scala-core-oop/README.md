@@ -12,3 +12,4 @@ This module contains articles about Scala's Object Oriented Programming features
 - [Difference Between Case Object and Object](https://www.baeldung.com/scala/case-object-vs-object)
 - [Object Oriented Programming in Scala](https://www.baeldung.com/scala/oop-intro)
 - [Demystifying View and Context Bounds](https://www.baeldung.com/scala/view-context-bounds)
+- [Polymorphism in Scala](https://www.baeldung.com/scala/polymorphism)
