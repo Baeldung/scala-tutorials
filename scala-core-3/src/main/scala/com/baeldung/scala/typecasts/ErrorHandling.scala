@@ -37,5 +37,4 @@ object ErrorHandling extends App {
     case Failure(t) =>
       t.printStackTrace()
   }
-
 }
