@@ -1,18 +1,18 @@
 package com.baeldung.scala.scaladoc
 
-/** A class to represent a timer with interval.
+/** Represents a timer with interval.
   *
   * Specify how many `reps` desired for the timer and the `interval` between reps
   *
   * @constructor Create a timer with a specified `reps` and `interval`
-  * @param reps How many repetitions the timer will run
-  * @param interval Time run between repetitions, in seconds. The default is 30 seconds.
+  * @param reps Number of repetitions the timer will run.
+  * @param interval Time between repetitions, in seconds. The default is 30 seconds.
   */
 class IntervalTimer(val reps: Int, val interval: Int = 30) {
 
   /** Start this timer based on defined `reps` and `interval`.
     *
-    * It will print for every second and when repetition is completed.
+    * Print one message every second and another when each repetition is completed.
     * It cannot be stopped.
     */
   def start(): Unit = {
@@ -25,9 +25,9 @@ class IntervalTimer(val reps: Int, val interval: Int = 30) {
     }
   }
 
-  /** Get total seconds that will be counted for this timer.
+  /** Get total time, in seconds, that will be counted for this timer.
     *
-    * @return The total seconds elapsed for this timer.
+    * @return The total number of seconds elapsed for this timer.
     */
   def getTotalSeconds: Int = {
     interval * reps
