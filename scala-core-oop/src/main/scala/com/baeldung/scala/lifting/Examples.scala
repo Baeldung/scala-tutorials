@@ -15,13 +15,13 @@ object Examples {
     if (squareRoot.isDefinedAt(x)) {
       s"Square root of $x is ${squareRoot(x)}"
     } else {
-      s"Cannot calculate suqare root for $x"
+      s"Cannot calculate square root for $x"
     }
   }
 
   def getSqrtRootMessageTotalFunction(x: Double) = {
    squareRoot.lift(x).map(result => s"Square root of ${x} is ${result}")
-     .getOrElse(s"Cannot calculate suqare root for $x")
+     .getOrElse(s"Cannot calculate square root for $x")
   }
 
   def add5(x: Int) = x + 5
