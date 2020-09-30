@@ -16,11 +16,13 @@ object SupervisionApplication {
   implicit val timeout: Timeout = 5.seconds
 
   trait Resource
+
   case class File(id: String, content: Array[Byte], mimeType: String) extends Resource
 
   object WebServer {
 
     trait Request
+
     case class Get(path: String, replyTo: ActorRef[Response]) extends Request
 
     trait Response {
@@ -28,12 +30,17 @@ object SupervisionApplication {
     }
 
     case class Ok(path: String, resource: Resource) extends Response
+
     case class NotFound(path: String) extends Response
+
     case class BadRequest(path: String) extends Response
+
     case class InternalServerError(path: String, error: String) extends Response
 
     case class AdaptedHitResponse(path: String, resource: Resource, replyTo: ActorRef[Response]) extends Request
+
     case class AdaptedMissResponse(path: String, replyTo: ActorRef[Response]) extends Request
+
     case class AdaptedErrorResponse(path: String, replyTo: ActorRef[Response], error: String) extends Request
 
     def apply(): Behavior[Request] = {
@@ -71,7 +78,7 @@ object SupervisionApplication {
                             context: ActorContext[Request],
                             replyTo: ActorRef[Response],
                             path: String): Unit = {
-      context.ask(cache, ref => Cache.Find(path, ref)) {
+      context.ask(cache, (ref: ActorRef[Cache.Response]) => Cache.Find(path, ref)) {
         case Success(Cache.Hit(resource)) => AdaptedHitResponse(path, resource, replyTo)
         case Success(Cache.Miss) => AdaptedMissResponse(path, replyTo)
         case Failure(ex) => AdaptedErrorResponse(path, replyTo, ex.getMessage)
@@ -84,7 +91,9 @@ object SupervisionApplication {
     case class FsFind(path: String, replyTo: ActorRef[FilesystemResponse])
 
     trait FilesystemResponse
+
     case class FsFound(resource: Resource) extends FilesystemResponse
+
     case object FsMiss extends FilesystemResponse
 
     def apply(): Behavior[FsFind] = {
@@ -100,11 +109,11 @@ object SupervisionApplication {
     private def search: Behavior[FsFind] =
       Behaviors.receive[FsFind] { (context, message) =>
         context.log.info(s"Received a request for path ${message.path}")
-        message.replyTo !
-        if (Random.nextBoolean)
+        val response = if (Random.nextBoolean)
           FsFound(File("id", "{'result': 'ok'}".getBytes(), "application/json"))
         else
           FsMiss
+        message.replyTo ! response
         Behaviors.same
       }.receiveSignal {
         case (ctx, signal) if signal == PreRestart || signal == PostStop =>
@@ -118,8 +127,11 @@ object SupervisionApplication {
     trait Response
 
     trait Request
+
     case class Find(path: String, replyTo: ActorRef[Response]) extends Request
+
     case class AdaptedFsFound(path: String, resource: Resource, replyTo: ActorRef[Response]) extends Request
+
     case class AdaptedFsMiss(path: String, replyTo: ActorRef[Response]) extends Request
 
     case class Hit(resource: Resource) extends Response
@@ -140,7 +152,7 @@ object SupervisionApplication {
             maybeAnHit match {
               case Some(r) => replyTo ! Hit(r)
               case None =>
-                ctx.ask(filesystem, ref => FsFind(path, ref)) {
+                ctx.ask(filesystem, (ref: ActorRef[Filesystem.FilesystemResponse]) => FsFind(path, ref)) {
                   case Success(FsFound(resource)) => AdaptedFsFound(path, resource, replyTo)
                   case _ => AdaptedFsMiss(path, replyTo)
                 }
