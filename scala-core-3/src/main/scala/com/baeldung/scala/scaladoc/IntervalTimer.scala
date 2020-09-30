@@ -2,7 +2,7 @@ package com.baeldung.scala.scaladoc
 
 /** Represents a timer with interval.
   *
-  * Specify how many `reps` desired for the timer and the `interval` between reps
+  * Specify how many `reps` desired for the timer and the `interval` between `reps`
   *
   * @constructor Create a timer with a specified `reps` and `interval`
   * @param reps Number of repetitions the timer will run.
