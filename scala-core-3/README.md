@@ -7,3 +7,4 @@
 - [Preserving Type Information at Runtime in Scala](https://www.baeldung.com/scala/type-information-at-runtime)
 - [Synchronous Handling of Futures](https://www.baeldung.com/scala/synchronous-handling-of-futures)
 - [The Option Type in Scala](https://www.baeldung.com/scala/option-type)
+- [Implicit Parameters in Scala](https://www.baeldung.com/scala/implicit-parameters)
