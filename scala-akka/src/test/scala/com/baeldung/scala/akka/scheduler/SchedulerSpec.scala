@@ -123,7 +123,7 @@ class SchedulerSpec
       })
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
-      expectMsg(10.millis, expectedMessage)
+      expectMsg(500.millis, expectedMessage)
       //get the next message in 300 millis
       expectMsg(310.millis, expectedMessage)
       system.stop(greeter)
