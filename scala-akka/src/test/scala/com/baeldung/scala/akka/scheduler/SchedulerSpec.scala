@@ -113,7 +113,7 @@ class SchedulerSpec
         system.actorOf(Props(classOf[Greetings]), "Fixed-Rate-Scheduling")
       val greet = Greet("Detective", "Lucifer")
       var flag = true
-      system.scheduler.scheduleAtFixedRate(10.millis, 250.millis)(new Runnable {
+      system.scheduler.scheduleAtFixedRate(10.millis, 500.millis)(new Runnable {
         override def run(): Unit = {
           if (flag)
             Thread.sleep(200)
@@ -123,9 +123,9 @@ class SchedulerSpec
       })
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
-      expectMsg(250.millis, expectedMessage)
-      //get the next message in 50 millis
-      expectMsg(50.millis, expectedMessage)
+      expectMsg(10.millis, expectedMessage)
+      //get the next message in 300 millis
+      expectMsg(310.millis, expectedMessage)
       system.stop(greeter)
     }
 
