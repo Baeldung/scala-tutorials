@@ -13,7 +13,7 @@ import scala.concurrent.duration._
 class PlayerServiceSpec extends WordSpec with Matchers with ScalaFutures with BeforeAndAfterAll {
 
   val playerService = new PlayerService
-  val timeout       = Timeout(2.second)
+  val timeout       = Timeout(10.second)
 
   "PlayerService" should {
     "create table for Player" in {
