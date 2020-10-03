@@ -13,28 +13,37 @@ import scala.util.{Failure, Random, Success, Try}
 
 object SupervisionApplication {
 
+  object Main {
+    case class Start(id: String)
+    def apply: Behavior[Start] = {
+      Behaviors.receive[Start] { (context, message) =>
+        val webServer = context.spawn(WebServer(), message.id)
+        context.watch(webServer)
+        Behaviors.same
+      }.receiveSignal {
+        case (ctx, ChildFailed(ref, cause)) =>
+          ctx.log.error(s"Child actor ${ref.path} failed with error ${cause.getMessage}")
+          Behaviors.same
+      }
+    }
+  }
+
   implicit val timeout: Timeout = 5.seconds
 
   trait Resource
-
   case class File(id: String, content: Array[Byte], mimeType: String) extends Resource
 
   object WebServer {
 
     trait Request
-
     case class Get(path: String, replyTo: ActorRef[Response]) extends Request
 
     trait Response {
       val path: String
     }
-
     case class Ok(path: String, resource: Resource) extends Response
-
     case class NotFound(path: String) extends Response
-
     case class BadRequest(path: String) extends Response
-
     case class InternalServerError(path: String, error: String) extends Response
 
     case class AdaptedHitResponse(path: String, resource: Resource, replyTo: ActorRef[Response]) extends Request
@@ -91,9 +100,7 @@ object SupervisionApplication {
     case class FsFind(path: String, replyTo: ActorRef[FilesystemResponse])
 
     trait FilesystemResponse
-
     case class FsFound(resource: Resource) extends FilesystemResponse
-
     case object FsMiss extends FilesystemResponse
 
     def apply(): Behavior[FsFind] = {
@@ -151,11 +158,7 @@ object SupervisionApplication {
             val maybeAnHit = cacheMap.get(path)
             maybeAnHit match {
               case Some(r) => replyTo ! Hit(r)
-              case None =>
-                ctx.ask(filesystem, (ref: ActorRef[Filesystem.FilesystemResponse]) => FsFind(path, ref)) {
-                  case Success(FsFound(resource)) => AdaptedFsFound(path, resource, replyTo)
-                  case _ => AdaptedFsMiss(path, replyTo)
-                }
+              case None => askFilesystemForResource(filesystem, ctx, path, replyTo)
             }
             Behaviors.same
           case AdaptedFsFound(path, res, replyTo) =>
@@ -166,6 +169,16 @@ object SupervisionApplication {
             Behaviors.same
         }
       }
+
+    private def askFilesystemForResource(filesystem: ActorRef[FsFind],
+                                         ctx: ActorContext[Request],
+                                         path: String,
+                                         replyTo: ActorRef[Response]): Unit = {
+      ctx.ask(filesystem, (ref: ActorRef[Filesystem.FilesystemResponse]) => FsFind(path, ref)) {
+        case Success(FsFound(resource)) => AdaptedFsFound(path, resource, replyTo)
+        case _ => AdaptedFsMiss(path, replyTo)
+      }
+    }
   }
 
 }
