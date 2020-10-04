@@ -7,6 +7,7 @@ import akka.actor.typed._
 import akka.actor.typed.scaladsl.{ActorContext, Behaviors}
 import akka.util.Timeout
 import com.baeldung.scala.akka.supervision.SupervisionApplication.Filesystem.{FsFind, FsFound}
+import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.Request
 
 import scala.concurrent.duration.DurationInt
 import scala.util.{Failure, Random, Success, Try}
@@ -14,11 +15,13 @@ import scala.util.{Failure, Random, Success, Try}
 object SupervisionApplication {
 
   object Main {
-    case class Start(id: String)
-    def apply: Behavior[Start] = {
+    case class Start(id: String, replyTo: ActorRef[Created])
+    case class Created(webServer: ActorRef[Request])
+    def apply(): Behavior[Start] = {
       Behaviors.receive[Start] { (context, message) =>
         val webServer = context.spawn(WebServer(), message.id)
         context.watch(webServer)
+        message.replyTo ! Created(webServer)
         Behaviors.same
       }.receiveSignal {
         case (ctx, ChildFailed(ref, cause)) =>
@@ -58,7 +61,7 @@ object SupervisionApplication {
         val cache = context.spawn(Cache(filesystem), "cache")
         Behaviors.supervise {
           serve(context, cache)
-        }.onFailure[Exception](SupervisorStrategy.restart.withStopChildren(false))
+        }.onFailure[IllegalArgumentException](SupervisorStrategy.restart.withStopChildren(false))
       }
     }
 
@@ -69,6 +72,8 @@ object SupervisionApplication {
             if (isNotValid(path)) {
               replyTo ! BadRequest(path)
             }
+            tryToMakeTheServerRestart(path)
+            tryToMakeTheServerStop(path)
             findInCache(cache, context, replyTo, path)
           case AdaptedHitResponse(path, resource, replyTo) =>
             replyTo ! Ok(path, resource)
@@ -82,6 +87,14 @@ object SupervisionApplication {
 
     private def isNotValid(path: String): Boolean =
       Try(new URL(path)).map(_ => true).getOrElse(false)
+
+    def tryToMakeTheServerRestart(path: String): Unit =
+      if (path.contains("restart"))
+        throw new IllegalArgumentException
+
+    def tryToMakeTheServerStop(path: String): Unit =
+      if (path.contains("stop"))
+        throw new IllegalStateException
 
     private def findInCache(cache: ActorRef[Cache.Find],
                             context: ActorContext[Request],
