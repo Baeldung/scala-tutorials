@@ -86,7 +86,7 @@ object SupervisionApplication {
       }
 
     private def isNotValid(path: String): Boolean =
-      Try(new URL(path)).map(_ => true).getOrElse(false)
+      Try(new URL(path)).map(_ => false).getOrElse(true)
 
     def tryToMakeTheServerRestart(path: String): Unit =
       if (path.contains("restart"))

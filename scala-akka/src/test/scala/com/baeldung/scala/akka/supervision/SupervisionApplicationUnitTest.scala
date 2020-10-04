@@ -3,7 +3,8 @@ package com.baeldung.scala.akka.supervision
 import akka.actor.testkit.typed.scaladsl.{ActorTestKit, LoggingTestKit}
 import akka.actor.typed.ActorSystem
 import com.baeldung.scala.akka.supervision.SupervisionApplication.Main.{Created, Start}
-import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.{Get, Response}
+import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer
+import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.{BadRequest, Get, Response}
 import org.scalatest.{BeforeAndAfterAll, FlatSpec}
 
 class SupervisionApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
@@ -20,6 +21,13 @@ class SupervisionApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
         val createdMsg = mainClient.receiveMessage()
         createdMsg.webServer ! Get("http://stop", testKit.createTestProbe[Response]().ref)
       }
+  }
+
+  "The WebServer actor" should "handle validation errors" in {
+    val webServer = testKit.spawn(WebServer(), "ws1")
+    val webServerClient = testKit.createTestProbe[Response]()
+    webServer ! Get("Not a valid URI", webServerClient.ref)
+    webServerClient.expectMessage(BadRequest("Not a valid URI"))
   }
 
   override protected def afterAll(): Unit = testKit.shutdownTestKit()
