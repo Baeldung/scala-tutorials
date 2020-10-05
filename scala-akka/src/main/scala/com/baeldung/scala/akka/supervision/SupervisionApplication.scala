@@ -129,7 +129,7 @@ object SupervisionApplication {
     private def search: Behavior[FsFind] =
       Behaviors.receive[FsFind] { (context, message) =>
         context.log.info(s"Received a request for path ${message.path}")
-        val response = if (Random.nextBoolean)
+        val response = if (message.path.contains("valid"))
           FsFound(File("id", "{'result': 'ok'}".getBytes(), "application/json"))
         else
           FsMiss
@@ -168,6 +168,8 @@ object SupervisionApplication {
       Behaviors.receive { (ctx, message) =>
         message match {
           case Find(path, replyTo) =>
+            if (path.contains("resume"))
+              throw new RuntimeException
             val maybeAnHit = cacheMap.get(path)
             maybeAnHit match {
               case Some(r) => replyTo ! Hit(r)

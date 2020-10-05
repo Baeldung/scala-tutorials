@@ -94,10 +94,10 @@ lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.9",
+    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.9" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
 
 val monocleVersion = "2.0.4"
