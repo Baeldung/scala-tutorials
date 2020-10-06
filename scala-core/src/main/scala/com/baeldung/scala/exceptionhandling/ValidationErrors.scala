@@ -6,5 +6,3 @@ object ValidationErrors {
   final case class IllegalLogin (login: String) extends ValidationErrors
   final case class IllegalPassword(password: String) extends ValidationErrors
 }
-
-

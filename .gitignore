@@ -17,6 +17,8 @@ project/plugins/project/
 .worksheet
 .idea
 /project/
+out
+*.iml
 
 # Ignore files used by Metals and Visual Studio Code
 .bloop

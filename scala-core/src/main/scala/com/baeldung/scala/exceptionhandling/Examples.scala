@@ -1,16 +1,18 @@
 package com.baeldung.scala.exceptionhandling
 
-import scala.util.{Try, Success, Failure}
+import scala.util.{Failure, Success, Try, control}
 import scala.util.control.Exception._
 
 object Examples {
+
   import CalculatorExceptions._
+
   def tryCatch(a: Int, b: Int): Int = {
     try {
       return Calculator.sum(a, b)
       // println(s"${a} + ${b} = ${result}")
     } catch {
-      case e: IntOverflowException    => -1
+      case e: IntOverflowException => -1
       case e: NegativeNumberException => -2
     } finally {
       // This block will always be invoked
@@ -25,6 +27,11 @@ object Examples {
   def catchObjects(a: Int, b: Int): Try[Int] = allCatch.withTry {
     Calculator.sum(a, b)
   }
+
+  def ignoringAndSum(a: Int, b: Int) =
+    ignoring(classOf[NegativeNumberException], classOf[IntOverflowException]) {
+      println(s"Sum of $a and $b is equal to ${Calculator.sum(a, b)}")
+    }
 
   val myCustomCatcher = catching(classOf[NegativeNumberException])
 

@@ -14,3 +14,4 @@ This module contains articles about Scala's core features
 - [A Comprehensive Guide to For-Comprehension in Scala](https://www.baeldung.com/scala/for-comprehension)
 - [Introduction to Traits in Scala](https://www.baeldung.com/scala/traits)
 - [Exception Handling in Scala](https://www.baeldung.com/scala/exception-handling)
+- [Algebraic Data Types in Scala](https://www.baeldung.com/scala/algebraic-data-types)
