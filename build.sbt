@@ -49,6 +49,7 @@ lazy val scala_core_oop = (project in file("scala-core-oop"))
     name := "scala-core-oop",
     libraryDependencies ++=
       Seq(
+        catsCore,
         scalaTest,
         junit)
   )

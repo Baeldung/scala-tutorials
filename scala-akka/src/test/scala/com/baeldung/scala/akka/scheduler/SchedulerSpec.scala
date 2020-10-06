@@ -12,7 +12,7 @@ class SchedulerSpec
     with WordSpecLike
     with Matchers {
 
-  "A single execution schedule" must {
+  "Akka scheduler" must {
 
     "execute the task exactly once after the provided time" in {
       val greeter = system.actorOf(Props(classOf[Greetings]))
@@ -56,9 +56,17 @@ class SchedulerSpec
 
     "execute a task periodically using scheduleWithFixedDelay" in {
       val greeter =
-        system.actorOf(Props(classOf[Greetings]), "Periodic-Greeter-Fixed-Delay")
+        system.actorOf(
+          Props(classOf[Greetings]),
+          "Periodic-Greeter-Fixed-Delay"
+        )
       val greet = Greet("Detective", "Lucifer")
-      system.scheduler.scheduleWithFixedDelay(10.millis, 250.millis, greeter, greet)
+      system.scheduler.scheduleWithFixedDelay(
+        10.millis,
+        250.millis,
+        greeter,
+        greet
+      )
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
       expectMsg(300.millis, expectedMessage)
@@ -100,6 +108,26 @@ class SchedulerSpec
 
     }
 
+    "scheduleAtFixedRate should run the next execution at fixed rate even if the previous task took more time" in {
+      val greeter =
+        system.actorOf(Props(classOf[Greetings]), "Fixed-Rate-Scheduling")
+      val greet = Greet("Detective", "Lucifer")
+      var flag = true
+      system.scheduler.scheduleAtFixedRate(10.millis, 500.millis)(new Runnable {
+        override def run(): Unit = {
+          if (flag)
+            Thread.sleep(200)
+          flag = false
+          greeter ! greet
+        }
+      })
+
+      val expectedMessage = Greeted("Lucifer: Hello, Detective")
+      expectMsg(500.millis, expectedMessage)
+      //get the next message in 300 millis
+      expectMsg(310.millis, expectedMessage)
+      system.stop(greeter)
+    }
 
   }
 
