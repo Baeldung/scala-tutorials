@@ -8,3 +8,4 @@
 - [Synchronous Handling of Futures](https://www.baeldung.com/scala/synchronous-handling-of-futures)
 - [The Option Type in Scala](https://www.baeldung.com/scala/option-type)
 - [Implicit Parameters in Scala](https://www.baeldung.com/scala/implicit-parameters)
+- [Guide to Scaladoc](https://www.baeldung.com/scala/scaladoc)
