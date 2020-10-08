@@ -16,9 +16,9 @@ class TwitterSearchService @Inject()(twitterWebApi: TwitterWebApi,
 
   val cacheExpiry: Duration = configuration.get[Duration]("twitterCache.expiry")
 
-  def searchRecent(twitterUser: String): Future[Map[String, JsValue]] = {
-    cache.getOrElseUpdate[Map[String, JsValue]](twitterUser, cacheExpiry) {
-      twitterWebApi.searchRecent(twitterUser).map(_.as[Map[String, JsValue]])
-    }
+  def recentSearch(twitterUser: String): Future[Map[String, JsValue]] = {
+    cache.getOrElseUpdate[JsValue](twitterUser, cacheExpiry) {
+      twitterWebApi.recentSearch(twitterUser)
+    }.map(_.as[Map[String, JsValue]])
   }
 }

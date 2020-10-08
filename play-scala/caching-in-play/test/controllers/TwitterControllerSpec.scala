@@ -1,5 +1,6 @@
 package controllers
 
+import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.when
 import org.scalatestplus.mockito.MockitoSugar
 import org.scalatestplus.play._
@@ -61,7 +62,7 @@ class TwitterControllerSpec extends PlaySpec with GuiceOneAppPerTest with Inject
   "TwitterController" should {
     "return the expected search result from Twitter" in {
       val twitterSearchService = mock[TwitterSearchService]
-      when(twitterSearchService.searchRecent("TwitterDev")).thenReturn(
+      when(twitterSearchService.recentSearch(any[String])).thenReturn(
         Future(twitterDevJsonResponse.as[Map[String, JsValue]])
       )
       val controller = new TwitterController(

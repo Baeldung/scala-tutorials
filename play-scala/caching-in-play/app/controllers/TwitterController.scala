@@ -26,7 +26,7 @@ class TwitterController @Inject()(
     * a path of `/`.
     */
   def recentSearch(twitterAccount: String): Action[AnyContent] = Action.async {
-    twitterSearchService.searchRecent(twitterAccount).map { response =>
+    twitterSearchService.recentSearch(twitterAccount).map { response =>
       Ok(Json.toJson(response))
     }
   }
