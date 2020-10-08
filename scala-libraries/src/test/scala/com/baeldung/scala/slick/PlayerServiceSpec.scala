@@ -3,61 +3,50 @@ package com.baeldung.scala.slick
 import java.sql.SQLException
 import java.time.LocalDate
 
+import org.scalactic.Equality
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{AsyncWordSpec, BeforeAndAfterAll, Matchers}
+import org.scalatest.{AsyncWordSpec, BeforeAndAfterAll, BeforeAndAfterEach, Matchers}
 import slick.jdbc.H2Profile.api._
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
-class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures with BeforeAndAfterAll {
+class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures with BeforeAndAfterAll with BeforeAndAfterEach {
+  private val playerService = new PlayerService
 
-  val playerService = new PlayerService
-
-  override def beforeAll(): Unit = {
-    // This call should be sync, because it is a setup phase
-    // and tests could start only after the table creation
-    Await.result(playerService.createTable, 10.seconds)
-  }
-
-"PlayerService" should {
+  "PlayerService" should {
     "insert a player to the table" in {
-      val federer      = Player(0L, "Federer", "Switzerland", Some(LocalDate.parse("1981-08-08")))
-
-      playerService.insertPlayer(federer) map { insertStatus =>
+      val steffi = Player(100L, "Steffi", "Germany1", None)
+      playerService.insertPlayer(steffi) flatMap { insertStatus =>
         insertStatus shouldBe 1
-      }
-    }
 
-    "get inserted record from database" in {
-      playerService.getAllPlayers map { allPlayers =>
-        allPlayers.size shouldBe 1
-        allPlayers.head.name shouldBe "Federer"
-        allPlayers.head.id should not be 0 //to verify auto-increment for primary key
+        // get inserted record from database and check
+        playerService.getAllPlayers map { allPlayers =>
+          allPlayers.find(_.name == "Steffi").get shouldEqual steffi
+        }
       }
     }
 
     "insert multiple players together" in {
-      val player1              = Player(0L, "Nadal", "Spain", Some(LocalDate.parse("1986-06-03")))
-      val player2              = Player(0L, "Serena", "USA", None)
-
-      playerService.insertPlayers(Seq(player1, player2)) flatMap { insertMultipleResult =>
+      val steffi = Player(100L, "Steffi", "Germany1", None)
+      val sharapova = Player(100L, "Sharapova", "Russia", None)
+      
+      playerService.insertPlayers(Seq(steffi, sharapova)) flatMap { insertMultipleResult =>
         insertMultipleResult should contain(2)
 
-        // Sequential call, should be made after insertion
         playerService.getAllPlayers map { playersFromDB =>
-          playersFromDB.map(_.name) should contain allElementsOf(Seq("Nadal", "Federer", "Serena"))
+          playersFromDB should contain allElementsOf(Seq(steffi, sharapova))
           playersFromDB.map(_.id).forall(_ > 0) shouldBe true //verify auto-increment field
         }
       }
     }
 
     "update DoB field of a player" in {
-      playerService.filterByName("Serena") flatMap { serenas =>
-        serenas should not be empty
+      playerService.filterByName("Serena") flatMap { foundSerena =>
+        foundSerena should not be empty
 
         val newDoB = LocalDate.parse("1981-09-26")
-        playerService.updateDob(serenas.head.id, newDoB) flatMap { updateResult =>
+        playerService.updateDob(foundSerena.head.id, newDoB) flatMap { updateResult =>
           updateResult shouldBe 1
 
           playerService.getAllPlayers map { serenasAgain =>
@@ -79,28 +68,29 @@ class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures wi
     }
 
     "combine multiple actions together and execute" in {
-      val player              = Player(0L, "Murray", "Britain", None)
-      val insertAction        = playerService.playerTable += player
-      val anotherPlayer       = Player(0L, "Hingis", "Swiss", None)
-      val insertAnotherAction = playerService.playerTable += anotherPlayer
+      val steffi = Player(100L, "Steffi", "Germany1", None)
+      val sharapova = Player(100L, "Sharapova", "Russia", None)
+
+      val insertAction        = playerService.playerTable += steffi
+      val insertAnotherAction = playerService.playerTable += sharapova
       val updateAction        = playerService.playerTable.filter(_.name === "Federer").map(_.country).update("Swiss")
       val combinedAction      = DBIO.seq(insertAction, updateAction, insertAnotherAction)
       playerService.db.run[Unit] {
         combinedAction.transactionally
       } flatMap { _ =>
         playerService.getAllPlayers map { allPlayers =>
-          allPlayers.map(_.name) should contain allElementsOf(Seq("Federer", "Serena", "Murray", "Hingis"))
+          allPlayers should contain allOf (steffi, sharapova)
           allPlayers.find(_.name == "Federer").map(_.country) should contain("Swiss")
         }
       }
     }
 
     "rollback the entire transaction if a failure occur" in {
-      val player1           = Player(100L, "Steffi", "Germany", None)
-      val player2           = Player(100L, "Sharapova", "Russia", None)
+      val steffi = Player(100L, "Steffi", "Germany1", None)
+      val sharapova = Player(100L, "Sharapova", "Russia", None)
       //doing force insert to make the second insertion fail
-      val insertAction1     = playerService.playerTable.forceInsert(player1)
-      val insertAction2     = playerService.playerTable.forceInsert(player2)
+      val insertAction1     = playerService.playerTable.forceInsert(steffi)
+      val insertAction2     = playerService.playerTable.forceInsert(sharapova)
       val transactionAction = insertAction1.andThen(insertAction2)
 
       recoverToExceptionIf[SQLException] {
@@ -109,7 +99,7 @@ class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures wi
         ex.getMessage should include("primary key violation")
 
         playerService.getAllPlayers map { allPlayers =>
-          allPlayers.map(_.name) should contain noneOf("Steffi", "Sharapova")
+          allPlayers should contain noneOf (steffi, sharapova)
         }
       }
     }
@@ -125,5 +115,29 @@ class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures wi
         }
       }
     }
+  }
+
+  private val federer = Player(0L, "Federer", "Swiss", Some(LocalDate.parse("1981-08-08")))
+  private val nadal = Player(0L, "Nadal", "Spain", Some(LocalDate.parse("1986-06-03")))
+  private val serena = Player(0L, "Serena", "USA", None)
+  private val murray = Player(0L, "Murray", "Britain", None)
+  private val higis = Player(0L, "Hingis", "Swiss", None)
+  private val players = Seq(federer, nadal, serena, murray, higis)
+
+  // Implicit comparator to skip ID field comparison
+  implicit private val aEq: Equality[Player] = (a: Player, b: Any) => b match {
+      case Player(_, name, country, dob) => a.name == name && a.country == country && a.dob == dob
+      case _ => false
+    }
+
+  override def beforeAll (): Unit = {
+    // This call should be sync, because it is a setup phase
+    // and tests could start only after the table creation
+    Await.result(playerService.createTable, 10.seconds)
+  }
+
+  override def beforeEach (): Unit = {
+    Await.result(playerService.clearAll, 10.seconds)
+    Await.result(playerService.insertPlayers(players), 10.seconds)
   }
 }

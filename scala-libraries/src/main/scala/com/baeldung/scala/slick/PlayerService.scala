@@ -63,4 +63,7 @@ class PlayerService {
     db.run(updateMultipleAction)
   }
 
+  def clearAll: Future[Int] = {
+    db.run(playerTable.delete)
+  }
 }
