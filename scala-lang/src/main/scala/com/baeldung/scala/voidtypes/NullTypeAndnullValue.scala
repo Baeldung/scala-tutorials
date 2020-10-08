@@ -5,8 +5,8 @@ object NullTypeAndnullValue {
   val nullValue:Null = null
 
   case class Car(make:String)
-  val int:Int = null
-  val car:Car = null
+
+  val nullCar:Car = null
 
 
 
