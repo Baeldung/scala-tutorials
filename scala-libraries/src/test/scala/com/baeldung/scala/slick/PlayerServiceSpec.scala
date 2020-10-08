@@ -5,11 +5,10 @@ import java.time.LocalDate
 
 import org.scalactic.Equality
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{AsyncWordSpec, BeforeAndAfterAll, BeforeAndAfterEach, Matchers}
+import org.scalatest.{AsyncWordSpec, BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome, Matchers}
 import slick.jdbc.H2Profile.api._
 
-import scala.concurrent.Await
-import scala.concurrent.duration._
+import scala.concurrent.Future
 
 class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures with BeforeAndAfterAll with BeforeAndAfterEach {
   private val playerService = new PlayerService
@@ -117,6 +116,8 @@ class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures wi
     }
   }
 
+  // This val will be initialized once for test suite with the result of a Future call to create a Table
+  private val createTableFut = playerService.createTable
   private val federer = Player(0L, "Federer", "Swiss", Some(LocalDate.parse("1981-08-08")))
   private val nadal = Player(0L, "Nadal", "Spain", Some(LocalDate.parse("1986-06-03")))
   private val serena = Player(0L, "Serena", "USA", None)
@@ -129,15 +130,12 @@ class PlayerServiceSpec extends AsyncWordSpec with Matchers with ScalaFutures wi
       case Player(_, name, country, dob) => a.name == name && a.country == country && a.dob == dob
       case _ => false
     }
-
-  override def beforeAll (): Unit = {
-    // This call should be sync, because it is a setup phase
-    // and tests could start only after the table creation
-    Await.result(playerService.createTable, 10.seconds)
-  }
-
-  override def beforeEach (): Unit = {
-    Await.result(playerService.clearAll, 10.seconds)
-    Await.result(playerService.insertPlayers(players), 10.seconds)
-  }
+  
+  override def withFixture(test: NoArgAsyncTest) = new FutureOutcome (
+    for {
+      _ <- createTableFut
+      _ <- playerService.clearAll
+      _ <- playerService.insertPlayers(players)
+      testResult <- super.withFixture(test).toFuture
+    } yield { testResult })
 }
