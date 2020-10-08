@@ -9,3 +9,4 @@
 - [The Option Type in Scala](https://www.baeldung.com/scala/option-type)
 - [Implicit Parameters in Scala](https://www.baeldung.com/scala/implicit-parameters)
 - [Guide to Scaladoc](https://www.baeldung.com/scala/scaladoc)
+- [Type Casts in Scala](https://www.baeldung.com/scala/type-casting)
