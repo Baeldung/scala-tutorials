@@ -16,8 +16,9 @@ lazy val scala_core = (project in file("scala-core"))
         scalaTest,
         junit,
         catsCore,
-        catsEffect)
-  )
+        catsEffect
+        )
+    )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
