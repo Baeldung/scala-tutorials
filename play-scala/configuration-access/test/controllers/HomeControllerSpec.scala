@@ -14,10 +14,10 @@ import services.MyService
   * For more information, see https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
   */
 class HomeControllerSpec
-    extends PlaySpec
-    with GuiceOneAppPerTest
-    with Injecting
-    with MockitoSugar {
+  extends PlaySpec
+  with GuiceOneAppPerTest
+  with Injecting
+  with MockitoSugar {
 
   "HomeController GET" should {
 
