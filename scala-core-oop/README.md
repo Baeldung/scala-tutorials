@@ -13,3 +13,4 @@ This module contains articles about Scala's Object Oriented Programming features
 - [Object Oriented Programming in Scala](https://www.baeldung.com/scala/oop-intro)
 - [Demystifying View and Context Bounds](https://www.baeldung.com/scala/view-context-bounds)
 - [Polymorphism in Scala](https://www.baeldung.com/scala/polymorphism)
+- [Lifting In Scala](https://www.baeldung.com/scala/lifting)

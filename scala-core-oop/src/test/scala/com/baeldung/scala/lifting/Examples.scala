@@ -10,7 +10,7 @@ class ExamplesUnitTest extends FlatSpec {
   }
 
   it should "not calculate square root" in {
-    assert(Examples.getSqrtRootMessagePartialFunction(-3.0) == "Cannot calculate suqare root for -3.0")
+    assert(Examples.getSqrtRootMessagePartialFunction(-3.0) == "Cannot calculate square root for -3.0")
   }
 
   "getSqrtRootMessageTotalFunction" should "calculate square root" in {
@@ -18,7 +18,7 @@ class ExamplesUnitTest extends FlatSpec {
   }
 
   it should "not calculate square root" in {
-    assert(Examples.getSqrtRootMessageTotalFunction(-3.0) == "Cannot calculate suqare root for -3.0")
+    assert(Examples.getSqrtRootMessageTotalFunction(-3.0) == "Cannot calculate square root for -3.0")
   }
 
   "Methods" should "combine correctly" in {
