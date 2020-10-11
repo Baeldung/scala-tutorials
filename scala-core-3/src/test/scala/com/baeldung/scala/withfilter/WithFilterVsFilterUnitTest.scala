@@ -37,7 +37,7 @@ class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
       List(Level.Mid, Level.Senior).contains(programmer.level)
     }
 
-  def knowMoreThan1Language(
+  def knowsMoreThan1Language(
       implicit counter: AtomicInteger): Programmer => Boolean =
     programmer => {
       counter.incrementAndGet()
@@ -57,7 +57,7 @@ class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
 
       val desiredProgrammers: List[Programmer] = programmers
         .filter(isMidOrSenior)
-        .filter(knowMoreThan1Language)
+        .filter(knowsMoreThan1Language)
 
       counter.get() shouldBe 5
 
@@ -74,7 +74,7 @@ class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
       val desiredProgrammers: FilterMonadic[Programmer, List[Programmer]] =
         programmers
           .withFilter(isMidOrSenior)
-          .withFilter(knowMoreThan1Language)
+          .withFilter(knowsMoreThan1Language)
 
       counter.get() shouldBe 0
 
