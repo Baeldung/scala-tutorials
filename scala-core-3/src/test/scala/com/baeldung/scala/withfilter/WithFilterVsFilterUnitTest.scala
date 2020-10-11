@@ -62,6 +62,7 @@ class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
       counter.get() shouldBe 5
 
       desiredProgrammers.map(getName) shouldBe List("John")
+      counter.get() shouldBe 5
     }
   }
 
