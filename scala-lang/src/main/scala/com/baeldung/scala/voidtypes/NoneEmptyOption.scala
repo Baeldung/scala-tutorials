@@ -3,7 +3,8 @@ package com.baeldung.scala.voidtypes
 object NoneEmptyOption extends App{
 
   val studentRegister:Map[Int,String] = Map(1 -> "John", 2 -> "Mary")
-  def getStudentName(roll:Int):Option[String] = {
+
+  def getStudentName(studentRegister:Map[Int,String], roll:Int):Option[String] = {
     studentRegister.get(roll)
   }
 
@@ -14,10 +15,10 @@ object NoneEmptyOption extends App{
     }
   }
 
-  val student1 = getStudentName(1)
+  val student1 = getStudentName(studentRegister, 1)
   printStudent(student1)
 
-  val noStudent = getStudentName(0)
+  val noStudent = getStudentName(studentRegister, 0)
   printStudent(noStudent)
 
 }

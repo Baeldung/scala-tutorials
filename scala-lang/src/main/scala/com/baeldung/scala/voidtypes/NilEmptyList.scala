@@ -2,12 +2,12 @@ package com.baeldung.scala.voidtypes
 
 object NilEmptyList extends App{
 
-  println(Nil.length)
+  val myList:List[String] = Nil
+  println("a list is initialized with length %s".format(myList.length))
 
-  val list = List("A","B","C")
+  val mySecondList:List[String] = List()
 
-  println("A" :: 1 :: Nil)
-
-
+  val consList = "A" :: "B" :: Nil
+  println(consList)
 
 }
