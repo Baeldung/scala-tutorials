@@ -8,10 +8,10 @@ import org.scalatestplus.play.guice._
 import play.api.test._
 
 class MyServiceSpec
-    extends PlaySpec
-    with GuiceOneAppPerTest
-    with Injecting
-    with MockitoSugar {
+  extends PlaySpec
+  with GuiceOneAppPerTest
+  with Injecting
+  with MockitoSugar {
 
   val signUpDate: Date = {
     val c: Calendar = Calendar.getInstance()

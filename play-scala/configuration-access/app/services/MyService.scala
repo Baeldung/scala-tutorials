@@ -16,11 +16,11 @@ object ISO8601DateConfigLoader {
 }
 
 case class PlayerInfo(
-    name: String,
-    email: String,
-    age: Int,
-    signUpDate: Date,
-    twitterHandle: Option[String] = None
+  name: String,
+  email: String,
+  age: Int,
+  signUpDate: Date,
+  twitterHandle: Option[String] = None
 )
 
 object PlayerInfo {
