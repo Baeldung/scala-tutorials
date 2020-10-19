@@ -15,3 +15,4 @@ This module contains articles about Scala's core features
 - [Introduction to Traits in Scala](https://www.baeldung.com/scala/traits)
 - [Exception Handling in Scala](https://www.baeldung.com/scala/exception-handling)
 - [Algebraic Data Types in Scala](https://www.baeldung.com/scala/algebraic-data-types)
+- [Sealed Keyword in Scala](https://www.baeldung.com/scala/sealed-keyword)

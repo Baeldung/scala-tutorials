@@ -16,23 +16,25 @@ lazy val scala_core = (project in file("scala-core"))
         scalaTest,
         junit,
         catsCore,
-        catsEffect)
-  )
+        catsEffect
+        )
+    )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
     name := "scala-core-2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
 )
 
 lazy val scala_core_3 = (project in file("scala-core-3"))
   .settings(
     name := "scala-core-3",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
 )
 
 lazy val scala_core_io = (project in file("scala-core-io"))
@@ -47,6 +49,7 @@ lazy val scala_core_oop = (project in file("scala-core-oop"))
     name := "scala-core-oop",
     libraryDependencies ++=
       Seq(
+        catsCore,
         scalaTest,
         junit)
   )
