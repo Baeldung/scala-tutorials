@@ -3,10 +3,10 @@ ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
-val scalaTest  = "org.scalatest" %% "scalatest" % "3.1.2" % Test
-val junit      = "com.novocode" % "junit-interface" % "0.11" % "test"
+val scalaTest = "org.scalatest" %% "scalatest" % "3.1.2" % Test
+val junit = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
-val catsCore   = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
+val catsCore = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -17,8 +17,8 @@ lazy val scala_core = (project in file("scala-core"))
         junit,
         catsCore,
         catsEffect
-        )
-    )
+      )
+  )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
@@ -26,7 +26,7 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
-)
+  )
 
 lazy val scala_core_3 = (project in file("scala-core-3"))
   .settings(
@@ -35,7 +35,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
-)
+  )
 
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
@@ -48,19 +48,14 @@ lazy val scala_core_oop = (project in file("scala-core-oop"))
   .settings(
     name := "scala-core-oop",
     libraryDependencies ++=
-      Seq(
-        catsCore,
-        scalaTest,
-        junit)
+      Seq(catsCore, scalaTest, junit)
   )
 
 lazy val scala_core_fp = (project in file("scala-core-fp"))
   .settings(
     name := "scala-core-fp",
     libraryDependencies ++=
-      Seq(
-        scalaTest,
-        junit)
+      Seq(scalaTest, junit)
   )
 
 lazy val scala_lang = (project in file("scala-lang"))
@@ -68,9 +63,7 @@ lazy val scala_lang = (project in file("scala-lang"))
     name := "scala-lang",
     scalacOptions += "-Ypartial-unification",
     libraryDependencies ++=
-      Seq(
-        scalaTest,
-        junit)
+      Seq(scalaTest, junit)
   )
 
 lazy val scala_core_collections = (project in file("scala-core-collections"))
@@ -95,13 +88,17 @@ lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.8",
+    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
+    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.8",
+    libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.8" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test
   )
 
 val monocleVersion = "2.0.4"
-val slickVersion   = "3.3.2"
+val slickVersion = "3.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
@@ -127,6 +124,5 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     name := "scala-design-patterns",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
-
