@@ -11,8 +11,6 @@ class AlpakkaMongoIntegration(vehicleCollection: MongoCollection[VehicleData]) {
 
   import Configs._
 
-  val fs = FileSystems.getDefault
-
   def process(source: Source[String, NotUsed]) = {
     source
       .map { data =>

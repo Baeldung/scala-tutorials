@@ -1,5 +1,8 @@
 package com.baeldung.scala.akka.alpakka
 
+import java.nio.file.{FileSystems, Path, Paths}
+
+import akka.stream.alpakka.file.scaladsl.FileTailSource
 import akka.stream.alpakka.mongodb.scaladsl.MongoSource
 import akka.stream.scaladsl.{Sink, Source}
 import com.typesafe.config.ConfigFactory
@@ -18,9 +21,9 @@ import scala.concurrent.duration._
 
 class AlpakkaIntegrationSpec
   extends WordSpec
-  with Matchers
-  with ScalaFutures
-  with BeforeAndAfterAll {
+    with Matchers
+    with ScalaFutures
+    with BeforeAndAfterAll {
 
   val starter = MongodStarter.getDefaultInstance
   val ip = ConfigFactory.load.getString("alpakka.mongo.connection.ip")
@@ -41,8 +44,9 @@ class AlpakkaIntegrationSpec
 
   "Alpakka MongoDB integration service" must {
 
+    implicit val timeout = Timeout(3.seconds)
+
     "read the data from the source and insert into the mongoDB collection successfully" in {
-      implicit val timeout = Timeout(3.seconds)
 
       val gpsData = List(
         "1, 70.23857, 16.239987",
@@ -66,6 +70,37 @@ class AlpakkaIntegrationSpec
 
       documents.map(_.get("vehicleId")).size shouldBe 4
 
+    }
+
+    "read data from the flat file source and insert into mongoDB collection successfully" in {
+      val integration = new AlpakkaMongoIntegration(
+        Collections.vehicleDataCollection
+      )
+
+      val fs = FileSystems.getDefault
+      val filePath = "vehicle_data.csv"
+      val path: Path = Paths.get(Thread.currentThread().getContextClassLoader().getResource(filePath).toURI())
+      val flatFileSource =
+        FileTailSource.lines(
+          path = path,
+          maxLineSize = 200,
+          pollingInterval = 10.millis
+        )
+
+      integration.process(flatFileSource)
+      import Configs._
+
+      Thread.sleep(2000)
+      val documents: immutable.Seq[Document] = MongoSource(
+        Collections.db.getCollection(classOf[VehicleData].getSimpleName).find()
+      ).runWith(Sink.seq).futureValue(timeout)
+
+      //4 from the previous source and 2 from the file source
+      documents.size shouldBe 6
+      documents
+        .map(_.get("vehicleId")) should contain allElementsOf (Seq(1, 2, 3, 23, 24))
+
+      documents.map(_.get("vehicleId")).size shouldBe 6
     }
   }
 

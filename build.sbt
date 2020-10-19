@@ -91,6 +91,7 @@ lazy val scala_akka = (project in file("scala-akka"))
     libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
     libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.8",
     libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
+    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.8" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
