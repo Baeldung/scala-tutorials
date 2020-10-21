@@ -37,6 +37,15 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
 )
 
+lazy val scala_core_4 = (project in file("scala-core-4"))
+  .settings(
+    name := "scala-core-4",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
+)
+
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
     name := "scala-core-io",
