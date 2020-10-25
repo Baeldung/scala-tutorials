@@ -35,7 +35,6 @@ object FutureRecovery {
             lastWeatherValue = retrieved
             Try(retrieved)
           case Failure(exception) =>
-            println(s"Something went wrong, ${exception.getMessage}")
             Try(lastWeatherValue)
         }
 
@@ -48,7 +47,6 @@ object FutureRecovery {
         }
         .recover {
           case e: Exception =>
-            println(s"Something went wrong, ${e.getMessage}")
             lastWeatherValue
         }
 
@@ -60,7 +58,6 @@ object FutureRecovery {
             lastWeatherValue = retrieved
             Future(retrieved)
           case Failure(exception) =>
-            println(s"Something went wrong, ${exception.getMessage}")
             http.get(fallbackUrl).map(Weather(_))
         }
 
@@ -73,7 +70,6 @@ object FutureRecovery {
         }
         .recoverWith {
           case e: Exception =>
-            println(s"Something went wrong, ${e.getMessage}")
             http.get(fallbackUrl).map(Weather(_))
         }
   }
