@@ -16,8 +16,9 @@ lazy val scala_core = (project in file("scala-core"))
         scalaTest,
         junit,
         catsCore,
-        catsEffect)
-  )
+        catsEffect
+        )
+    )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
@@ -30,6 +31,15 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
 lazy val scala_core_3 = (project in file("scala-core-3"))
   .settings(
     name := "scala-core-3",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
+)
+
+lazy val scala_core_4 = (project in file("scala-core-4"))
+  .settings(
+    name := "scala-core-4",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
@@ -93,8 +103,9 @@ lazy val scala_test = (project in file("scala-test"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.8",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.8" % Test,
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.9",
+    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.9" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
