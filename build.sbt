@@ -90,6 +90,7 @@ lazy val scala_akka = (project in file("scala-akka"))
   )
 
 val monocleVersion = "2.0.4"
+val scalazVersion = "7.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
     .settings(
       name := "scala-libraries",
@@ -97,7 +98,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       libraryDependencies ++= Seq(
         "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
         "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
-        "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test"
+        "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
+        "org.scalaz" %% "scalaz-core" % scalazVersion,
+        "junit" % "junit" % "4.13" % Test
       )
    )
 
