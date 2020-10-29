@@ -1,7 +1,8 @@
 import AreaInstances._
-import org.scalatest.flatspec.AnyFlatSpecLike
+import org.scalatest._
+import org.scalatest.matchers.should.Matchers
 
-class ShapeAreaSpec extends AnyFlatSpecLike {
+class ShapeAreaSpec extends FlatSpec with Matchers{
   val rectangle: Rectangle = Rectangle(2, 3)
   val circle: Circle = Circle(2)
 

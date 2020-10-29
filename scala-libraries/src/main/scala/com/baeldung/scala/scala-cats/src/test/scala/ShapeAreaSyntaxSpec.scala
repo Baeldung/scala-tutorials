@@ -1,8 +1,9 @@
 import AreaInstances._
 import ShapeAreaSyntax._
-import org.scalatest.flatspec.AnyFlatSpecLike
+import org.scalatest._
+import org.scalatest.matchers.should.Matchers
 
-class ShapeAreaSyntaxSpec extends AnyFlatSpecLike {
+class ShapeAreaSyntaxSpec extends FlatSpec with Matchers {
   "ShapeAreaSyntaxSpec" should "check for candidate type class instance for type Rectangle" in {
     val areaOfRectangle = Rectangle(2, 3).areaOf
     val expectedAreaOfRectangle = 6.0
