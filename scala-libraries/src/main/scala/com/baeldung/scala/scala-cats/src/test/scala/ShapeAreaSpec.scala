@@ -5,7 +5,7 @@ class ShapeAreaSpec extends AnyFlatSpecLike {
   val rectangle: Rectangle = Rectangle(2, 3)
   val circle: Circle = Circle(2)
 
-  "TypeClassUseSpec" should "check for candidate type class instance for type Rectangle" in {
+  "ShapeAreaSpec" should "check for candidate type class instance for type Rectangle" in {
     val areaOfRectangle = ShapeArea.areaOf(rectangle)
     val expectedAreaOfRectangle = 6.0
     assert(areaOfRectangle == expectedAreaOfRectangle)

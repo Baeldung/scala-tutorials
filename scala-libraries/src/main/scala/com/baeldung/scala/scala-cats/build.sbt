@@ -6,5 +6,5 @@ scalaVersion := "2.12.8"
 
 libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core" % "2.2.0",
-  "org.scalatest" %% "scalatest" % "3.2.2" % Test
+  "org.scalatest" %% "scalatest" % "3.1.2" % Test
 )
