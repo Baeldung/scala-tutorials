@@ -10,13 +10,10 @@ import de.flapdoodle.embed.mongo.MongodStarter
 import de.flapdoodle.embed.mongo.config.{MongodConfigBuilder, Net}
 import de.flapdoodle.embed.mongo.distribution.Version
 import de.flapdoodle.embed.process.runtime.Network
-import org.bson.Document
-import org.scalatest.concurrent.PatienceConfiguration.Timeout
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 
-import scala.collection.immutable
-import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 
 class AlpakkaIntegrationSpec
@@ -44,8 +41,6 @@ class AlpakkaIntegrationSpec
 
   "Alpakka MongoDB integration service" must {
 
-    implicit val timeout = Timeout(3.seconds)
-
     "read the data from the source and insert into the mongoDB collection successfully" in {
 
       val gpsData = List(
@@ -57,18 +52,22 @@ class AlpakkaIntegrationSpec
       val integration = new AlpakkaMongoIntegration(
         Collections.vehicleDataCollection
       )
-      integration.process(Source(gpsData)).futureValue(timeout)
       import Configs._
 
-      val documents: immutable.Seq[Document] = MongoSource(
-        Collections.db.getCollection(classOf[VehicleData].getSimpleName).find()
-      ).runWith(Sink.seq).futureValue(timeout)
+      integration.process(Source(gpsData)).flatMap { _ =>
+        val documentsFuture = MongoSource(
+          Collections.db.getCollection(classOf[VehicleData].getSimpleName).find()
+        ).runWith(Sink.seq)
 
-      documents.size shouldBe 4
-      documents
-        .map(_.get("vehicleId")) should contain allElementsOf (Seq(1, 2, 3))
+        documentsFuture map { documents =>
+          documents.size shouldBe 4
+          documents
+            .map(_.get("vehicleId")) should contain allElementsOf (Seq(1, 2, 3))
 
-      documents.map(_.get("vehicleId")).size shouldBe 4
+          documents.map(_.get("vehicleId")).size shouldBe 4
+        }
+
+      }
 
     }
 
@@ -91,16 +90,19 @@ class AlpakkaIntegrationSpec
       import Configs._
 
       Thread.sleep(2000)
-      val documents: immutable.Seq[Document] = MongoSource(
+      val documentsFuture = MongoSource(
         Collections.db.getCollection(classOf[VehicleData].getSimpleName).find()
-      ).runWith(Sink.seq).futureValue(timeout)
+      ).runWith(Sink.seq)
 
-      //4 from the previous source and 2 from the file source
-      documents.size shouldBe 6
-      documents
-        .map(_.get("vehicleId")) should contain allElementsOf (Seq(1, 2, 3, 23, 24))
+      documentsFuture.map { documents =>
+        //4 from the previous source and 2 from the file source
+        documents.size shouldBe 6
+        documents
+          .map(_.get("vehicleId")) should contain allElementsOf (Seq(1, 2, 3, 23, 24))
 
-      documents.map(_.get("vehicleId")).size shouldBe 6
+        documents.map(_.get("vehicleId")).size shouldBe 6
+      }
+
     }
   }
 
