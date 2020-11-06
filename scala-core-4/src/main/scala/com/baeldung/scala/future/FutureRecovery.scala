@@ -1,12 +1,14 @@
 package com.baeldung.scala.future
 
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
 
 object FutureRecovery {
 
+  implicit val ec: ExecutionContext = ExecutionContext.global
+
   sealed trait Weather
+
   object Weather {
     def apply(s: String): Weather = s match {
       case "Sunny" => Sunny
@@ -17,16 +19,23 @@ object FutureRecovery {
       case "Foggy" => Foggy
     }
   }
+
   case object Sunny extends Weather
+
   case object Cloudy extends Weather
+
   case object Rainy extends Weather
+
   case object Windy extends Weather
+
   case object Snowy extends Weather
+
   case object Foggy extends Weather
 
   class WeatherForecastService(val http: HttpClient) {
 
     var lastWeatherValue: Weather = Sunny
+
     def forecast(date: String): Future[Weather] =
       http.get(s"http://weather.now/rome?when=$date")
         .transform {
@@ -34,7 +43,7 @@ object FutureRecovery {
             val retrieved = Weather(result)
             lastWeatherValue = retrieved
             Try(retrieved)
-          case Failure(exception) =>
+          case Failure(_) =>
             Try(lastWeatherValue)
         }
 
@@ -46,7 +55,7 @@ object FutureRecovery {
           retrieved
         }
         .recover {
-          case e: Exception =>
+          case _ =>
             lastWeatherValue
         }
 
@@ -57,7 +66,7 @@ object FutureRecovery {
             val retrieved = Weather(result)
             lastWeatherValue = retrieved
             Future(retrieved)
-          case Failure(exception) =>
+          case Failure(_) =>
             http.get(fallbackUrl).map(Weather(_))
         }
 
@@ -69,7 +78,7 @@ object FutureRecovery {
           Future(retrieved)
         }
         .recoverWith {
-          case e: Exception =>
+          case _ =>
             http.get(fallbackUrl).map(Weather(_))
         }
   }
@@ -86,4 +95,5 @@ object FutureRecovery {
         }
       }
   }
+
 }
