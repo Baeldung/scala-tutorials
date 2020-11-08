@@ -8,8 +8,8 @@ class ListIntFunctionsUnitTest extends FunSuite {
   }
 
   test("Get mean from other type alias") {
-    type ints = List[Int]
-    val intList: ints = List(3, 6, 2, 2)
+    type SomeInts = List[Int]
+    val intList: SomeInts = List(3, 6, 2, 2)
     assert(ListIntFunctions.mean(intList) === 3.25)
   }
 
