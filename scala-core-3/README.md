@@ -10,3 +10,4 @@
 - [Implicit Parameters in Scala](https://www.baeldung.com/scala/implicit-parameters)
 - [Guide to Scaladoc](https://www.baeldung.com/scala/scaladoc)
 - [Type Casts in Scala](https://www.baeldung.com/scala/type-casting)
+- [Stream vs Views vs Iterators in Scala](https://www.baeldung.com/scala/stream-vs-views-vs-iterators)
