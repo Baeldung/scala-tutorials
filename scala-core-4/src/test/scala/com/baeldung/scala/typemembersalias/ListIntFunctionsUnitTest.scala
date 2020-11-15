@@ -1,25 +1,25 @@
 package com.baeldung.scala.typemembersalias
-import org.scalatest.FunSuite
+import org.scalatest.{Matchers, FlatSpec}
 
-class ListIntFunctionsUnitTest extends FunSuite {
-  test("Get mean from list of int") {
+class ListIntFunctionsUnitTest extends FlatSpec with Matchers {
+  "Mean function" should "be able to get mean from list of int" in {
     val intList = List(3, 6, 2, 2)
-    assert(ListIntFunctions.mean(intList) === 3.25)
+    ListIntFunctions.mean(intList) shouldEqual 3.25
   }
 
-  test("Get mean from other type alias") {
+  it should "be able to get mean from another type alias" in {
     type SomeInts = List[Int]
     val intList: SomeInts = List(3, 6, 2, 2)
-    assert(ListIntFunctions.mean(intList) === 3.25)
+    ListIntFunctions.mean(intList) shouldEqual 3.25
   }
 
-  test("Apply IntToString to a list of int") {
+  "IntItemsToString" should "apply IntToString function to a list of int" in {
     val intList = (1 to 3).toList
     def getChicken(item: Int): String = {
       s"$item chicken"
     }
 
     val stringList = ListIntFunctions.IntItemsToString(intList, getChicken)
-    assert(stringList === List("1 chicken", "2 chicken", "3 chicken"))
+    stringList shouldEqual List("1 chicken", "2 chicken", "3 chicken")
   }
 }
