@@ -1,4 +1,4 @@
-package cats-impl
+package demo
 
 import cats.implicits._
 
