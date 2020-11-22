@@ -1,7 +1,8 @@
-package demo
+package com.baeldung.scala.cats.demo
 
 import java.util.Date
 
+import cats.Show
 import cats.implicits.toShow
 
 object CustomInstance extends App {

@@ -1,4 +1,4 @@
-package demo
+package com.baeldung.scala.cats.demo
 
 import cats.implicits._
 

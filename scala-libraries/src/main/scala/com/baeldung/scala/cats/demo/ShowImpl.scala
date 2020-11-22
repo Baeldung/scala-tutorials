@@ -1,5 +1,6 @@
-package demo
+package com.baeldung.scala.cats.demo
 
+import cats.Show
 import cats.implicits._
 
 object ShowImpl extends App {
