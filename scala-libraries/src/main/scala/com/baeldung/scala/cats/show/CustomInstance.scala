@@ -1,4 +1,4 @@
-package com.baeldung.scala.cats.demo
+package com.baeldung.scala.cats.show
 
 import java.util.Date
 
