@@ -16,3 +16,5 @@ This module contains articles about Scala's core features
 - [Exception Handling in Scala](https://www.baeldung.com/scala/exception-handling)
 - [Algebraic Data Types in Scala](https://www.baeldung.com/scala/algebraic-data-types)
 - [Sealed Keyword in Scala](https://www.baeldung.com/scala/sealed-keyword)
+- [Pattern Matching in Scala](https://www.baeldung.com/scala/pattern-matching)
+
