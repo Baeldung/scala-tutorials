@@ -1,6 +1,6 @@
 package com.baeldung.scala.pathdependenttypes
 
-import com.baeldung.scala.pathdependenttypes.Database.key
+import java.nio.ByteBuffer
 
 import scala.collection.mutable
 
@@ -24,8 +24,8 @@ case class Database() {
     db.update(k.name, enc.encode(v))
 
   def get(
-           k: Key
-         )(implicit decoder: Decoder[k.ValueType]): Option[k.ValueType] = {
+    k: Key
+  )(implicit decoder: Decoder[k.ValueType]): Option[k.ValueType] = {
     db.get(k.name).map(x => decoder.encode(x))
   }
 
@@ -43,7 +43,16 @@ trait Encoder[T] {
 }
 
 object Encoder {
-  implicit val stringEncoder: Encoder[String] = (t: String) => t.getBytes
+  implicit val stringEncoder: Encoder[String] = new Encoder[String] {
+    override def encode(t: String): Array[Byte] = t.getBytes
+  }
+  implicit val doubleEncoder: Encoder[Double] = new Encoder[Double] {
+    override def encode(t: Double): Array[Byte] = {
+      val bytes = new Array[Byte](8)
+      ByteBuffer.wrap(bytes).putDouble(t)
+      bytes
+    }
+  }
 }
 
 trait Decoder[T] {
@@ -53,5 +62,6 @@ trait Decoder[T] {
 object Decoder {
   implicit val stringDecoder: Decoder[String] = (d: Array[Byte]) =>
     new String(d)
+  implicit val intDecoder: Decoder[Double] = (d: Array[Byte]) =>
+    ByteBuffer.wrap(d).getDouble
 }
-
