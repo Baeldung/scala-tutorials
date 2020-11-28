@@ -4,15 +4,6 @@ import java.nio.ByteBuffer
 
 import scala.collection.mutable
 
-object KeyValueStore extends App {
-  private val db = Database()
-  private val k = key[String]("key")
-  
-  db.set(k)("Hello")
-  assert(db.get(key[String]("key")).exists(_.isInstanceOf[String]))
-}
-
-
 abstract class Key(val name: String) {
   type ValueType
 }
