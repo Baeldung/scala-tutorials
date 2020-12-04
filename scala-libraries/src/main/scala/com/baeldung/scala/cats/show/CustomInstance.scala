@@ -9,7 +9,7 @@ object CustomInstance extends App {
   implicit val customShow: Show[Date] =
     new Show[Date] {
       def show(date: Date): String =
-        s"${date.getTime}ms since the epoch."
+        s"This year is: ${date.getYear}"
     }
 
   val shownDate: String = new Date().show
