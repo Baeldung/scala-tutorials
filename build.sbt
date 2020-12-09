@@ -120,7 +120,7 @@ val slickVersion   = "3.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
     libraryDependencies ++= Seq(
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
