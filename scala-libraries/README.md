@@ -4,3 +4,4 @@
 - [Building REST APIs in Scala with Finch](https://www.baeldung.com/scala/finch-rest-apis)
 - [Introduction to Slick](https://www.baeldung.com/scala/slick-intro)
 - [The Principles Behind Scalaz](https://www.baeldung.com/scala/scalaz-principles)
+- [Scala – Introduction to Cats](https://www.baeldung.com/scala/cats-intro)
