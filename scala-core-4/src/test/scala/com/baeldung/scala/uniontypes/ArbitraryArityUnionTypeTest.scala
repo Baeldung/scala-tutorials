@@ -1,4 +1,6 @@
 package com.baeldung.scala.uniontypes
+import org.scalatest.{Matchers, FlatSpec}
+import com.baeldung.scala.uniontypes.ArbitraryArityUnionType._
 
 class ArbitraryArityUnionTypeTest extends FlatSpec with Matchers {
 

@@ -1,4 +1,6 @@
 package com.baeldung.scala.uniontypes
+import org.scalatest.{Matchers, FlatSpec}
+import com.baeldung.scala.uniontypes.EitherDisjointUnion._
 
 class EitherDisjointUnionTest extends FlatSpec with Matchers {
   "isIntOrString" should "be able to take an integer parameter" in {
