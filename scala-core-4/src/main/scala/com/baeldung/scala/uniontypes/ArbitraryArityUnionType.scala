@@ -31,5 +31,4 @@ object ArbitraryArityUnionType extends App {
 
   println(isIntOrString(10))  //prints "10 is an Integer"
   println(isIntOrString("hello")) // prints "hello is a String"
-
 }
