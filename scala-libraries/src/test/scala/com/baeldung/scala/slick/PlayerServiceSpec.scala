@@ -2,45 +2,35 @@ package com.baeldung.scala.slick
 
 import java.sql.SQLException
 import java.time.LocalDate
+
+import com.baeldung.scala.slick.SlickTables.PlayerTable
 import org.scalactic.Equality
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{
-  AsyncWordSpec,
-  BeforeAndAfterAll,
-  BeforeAndAfterEach,
-  FutureOutcome,
-  Matchers
-}
+import org.scalatest.{AsyncWordSpec, BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome, Matchers}
 import slick.jdbc.H2Profile.api._
 
 import scala.concurrent.Future
 
 class PlayerServiceSpec
   extends AsyncWordSpec
-  with Matchers
-  with ScalaFutures
-  with BeforeAndAfterAll
-  with BeforeAndAfterEach {
-  private val playerService = new PlayerService
+    with Matchers
+    with ScalaFutures
+    with BeforeAndAfterAll
+    with BeforeAndAfterEach {
+
+  private val playerTable = TableQuery[PlayerTable]
+  lazy val db = Connection.db
 
   "PlayerService" should {
     "insert a player to the table and filter by country" in {
       val steffi = Player(100L, "Steffi", "Germany", None)
-      playerService.insertPlayer(steffi) flatMap { insertStatus =>
+      val insertPlayerQuery = playerTable += steffi
+      db.run(insertPlayerQuery) flatMap { insertStatus =>
         insertStatus shouldBe 1
 
         // get inserted record from database and check
-        playerService.getAllPlayers map { allPlayers =>
+        db.run(playerTable.filter(_.country === "Germany").result) map { allPlayers =>
           allPlayers.find(_.name == "Steffi").get shouldEqual steffi
-        }
-        // filter for player by country
-        val germanPlayersQuery =
-          playerService.playerTable.filter(_.country === "Germany")
-        val germanPlayers: Future[Seq[Player]] =
-          playerService.db.run[Seq[Player]](germanPlayersQuery.result)
-        germanPlayers.map { player =>
-          player.size shouldBe 1
-          player.head.name shouldBe "Steffi"
         }
       }
     }
@@ -49,11 +39,11 @@ class PlayerServiceSpec
       val steffi = Player(100L, "Steffi", "Germany", None)
       val sharapova = Player(100L, "Sharapova", "Russia", None)
 
-      playerService.insertPlayers(Seq(steffi, sharapova)) flatMap {
+      db.run(playerTable ++= (Seq(steffi, sharapova))) flatMap {
         insertMultipleResult =>
           insertMultipleResult should contain(2)
 
-          playerService.getAllPlayers map { playersFromDB =>
+          db.run(playerTable.result) map { playersFromDB =>
             playersFromDB should contain allElementsOf (Seq(steffi, sharapova))
             playersFromDB
               .map(_.id)
@@ -65,16 +55,15 @@ class PlayerServiceSpec
     "insert and then update the country field of a player" in {
       //force insert a record
       val boris = Player(500L, "Boris", "Deutschland", None)
-      val playerTable = playerService.playerTable
       val borisQuery = playerTable.forceInsert(boris)
-      playerService.db.run(borisQuery).flatMap { insertedResult =>
+      db.run(borisQuery).flatMap { insertedResult =>
         val updateCountryAction =
           playerTable
             .filter(_.id === 500L)
             .map(_.country)
             .update("Germany")
-        playerService.db.run(updateCountryAction).flatMap { updateResult =>
-          playerService.db.run(playerTable.filter(_.id === 500L).result).map {
+        db.run(updateCountryAction).flatMap { updateResult =>
+          db.run(playerTable.filter(_.id === 500L).result).map {
             filterResult =>
               filterResult.size shouldBe 1
               filterResult.head.country shouldBe "Germany"
@@ -84,27 +73,27 @@ class PlayerServiceSpec
     }
 
     "update DoB field of a player" in {
-      playerService.filterByName("Serena") flatMap { foundSerena =>
+      db.run(playerTable.filter(_.name === "Serena").result) flatMap { foundSerena =>
         foundSerena should not be empty
 
-        val newDoB = LocalDate.parse("1981-09-26")
-        playerService.updateDob(foundSerena.head.id, newDoB) flatMap {
+        val newDoB = Option(LocalDate.parse("1981-09-26"))
+        db.run(playerTable.filter(_.id === foundSerena.head.id).map(_.dob).update(newDoB)) flatMap {
           updateResult =>
             updateResult shouldBe 1
 
-            playerService.getAllPlayers map { serenasAgain =>
+            db.run(playerTable.result) map { serenasAgain =>
               val serena = serenasAgain.find(_.name == "Serena")
-              serena.flatMap(_.dob) should contain(newDoB)
+              serena.flatMap(_.dob).get shouldBe newDoB.get
             }
         }
       }
     }
 
     "delete a player from the table by name" in {
-      playerService.deleteByName("Nadal") flatMap { deleteStatus =>
+      db.run(playerTable.filter(_.name === "Nadal").delete) flatMap { deleteStatus =>
         deleteStatus shouldBe 1
 
-        playerService.filterByName("Nadal") map { nadal =>
+        db.run(playerTable.filter(_.name === "Nadal").result) map { nadal =>
           nadal shouldBe empty
         }
       }
@@ -114,19 +103,19 @@ class PlayerServiceSpec
       val steffi = Player(100L, "Steffi", "Germany", None)
       val sharapova = Player(100L, "Sharapova", "Russia", None)
 
-      val insertAction = playerService.playerTable += steffi
-      val insertAnotherAction = playerService.playerTable += sharapova
-      val updateAction = playerService.playerTable
+      val insertAction = playerTable += steffi
+      val insertAnotherAction = playerTable += sharapova
+      val updateAction = playerTable
         .filter(_.name === "Federer")
         .map(_.country)
         .update("Swiss")
       val combinedAction =
         DBIO.seq(insertAction, updateAction, insertAnotherAction)
-      playerService.db.run[Unit] {
+      db.run[Unit] {
         combinedAction.transactionally
       } flatMap { _ =>
-        playerService.getAllPlayers map { allPlayers =>
-          allPlayers should contain allOf (steffi, sharapova)
+        db.run(playerTable.result) map { allPlayers =>
+          allPlayers should contain allOf(steffi, sharapova)
           allPlayers.find(_.name == "Federer").map(_.country) should contain(
             "Swiss"
           )
@@ -138,27 +127,27 @@ class PlayerServiceSpec
       val steffi = Player(100L, "Steffi", "Germany", None)
       val sharapova = Player(100L, "Sharapova", "Russia", None)
       //doing force insert to make the second insertion fail
-      val insertAction1 = playerService.playerTable.forceInsert(steffi)
-      val insertAction2 = playerService.playerTable.forceInsert(sharapova)
+      val insertAction1 = playerTable.forceInsert(steffi)
+      val insertAction2 = playerTable.forceInsert(sharapova)
       val transactionAction = insertAction1.andThen(insertAction2)
 
       recoverToExceptionIf[SQLException] {
-        playerService.db.run(transactionAction.transactionally)
+        db.run(transactionAction.transactionally)
       } flatMap { ex =>
         ex.getMessage should include("primary key violation")
 
-        playerService.getAllPlayers map { allPlayers =>
-          allPlayers should contain noneOf (steffi, sharapova)
+        db.run(playerTable.result) map { allPlayers =>
+          allPlayers should contain noneOf(steffi, sharapova)
         }
       }
     }
 
     "update multiple records in a single query" in {
-      val updatedRowsFut = playerService.updateCountry("Swiss", "Switzerland")
+      val updatedRowsFut = db.run(playerTable.filter(_.country === "Swiss").map(_.country).update("Switzerland"))
       updatedRowsFut flatMap { updatedRows =>
         updatedRows shouldBe 2
 
-        playerService.filterByCountry("Switzerland") map { swissPlayers =>
+        db.run(playerTable.filter(_.country === "Switzerland").result) map { swissPlayers =>
           swissPlayers.size shouldBe 2
           swissPlayers
             .map(_.name) should contain allElementsOf (Seq("Federer", "Hingis"))
@@ -168,7 +157,7 @@ class PlayerServiceSpec
   }
 
   // This val will be initialized once for test suite with the result of a Future call to create a Table
-  private val createTableFut = playerService.createTable
+  private val createTableFut = createTable
   private val federer =
     Player(0L, "Federer", "Swiss", Some(LocalDate.parse("1981-08-08")))
   private val nadal =
@@ -189,8 +178,26 @@ class PlayerServiceSpec
   override def withFixture(test: NoArgAsyncTest) =
     new FutureOutcome(for {
       _ <- createTableFut
-      _ <- playerService.clearAll
-      _ <- playerService.insertPlayers(players)
+      _ <- clearAll
+      _ <- db.run(playerTable ++= players)
       testResult <- super.withFixture(test).toFuture
-    } yield { testResult })
+    } yield {
+      testResult
+    })
+
+  def createTable: Future[Int] = {
+    val createQuery =
+      sqlu"""create table "Player"(
+           "player_id" bigserial primary key,
+           "name" varchar not null,
+           "country" varchar not null,
+           "dob" date
+          ) """
+
+    db.run(createQuery)
+  }
+
+  def clearAll: Future[Int] = {
+    db.run(playerTable.delete)
+  }
 }
