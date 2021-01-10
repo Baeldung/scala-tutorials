@@ -156,6 +156,14 @@ class PlayerServiceSpec
     }
   }
 
+  "retrieve the records from the database using sql interpolator" in {
+    val selectCountryAction:DBIO[Seq[String]] = sql"""select "name" from "Player" where "country" = 'Spain' """.as[String]
+    db.run(selectCountryAction) map { spainPlayers =>
+      spainPlayers.size shouldBe 1
+      spainPlayers.head shouldBe "Nadal"
+    }
+  }
+
   // This val will be initialized once for test suite with the result of a Future call to create a Table
   private val createTableFut = createTable
   private val federer =
