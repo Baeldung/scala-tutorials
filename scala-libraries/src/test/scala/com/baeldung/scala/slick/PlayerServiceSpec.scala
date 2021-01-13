@@ -29,7 +29,9 @@ class PlayerServiceSpec
         insertStatus shouldBe 1
 
         // get inserted record from database and check
-        db.run(playerTable.filter(_.country === "Germany").result) map { allPlayers =>
+        val germanPlayersQuery = playerTable.filter(_.country === "Germany")
+        val germanPlayers: Future[Seq[Player]] = db.run(germanPlayersQuery.result)
+        germanPlayers map { allPlayers =>
           allPlayers.find(_.name == "Steffi").get shouldEqual steffi
         }
       }
@@ -54,9 +56,9 @@ class PlayerServiceSpec
 
     "insert and then update the country field of a player" in {
       //force insert a record
-      val boris = Player(500L, "Boris", "Deutschland", None)
-      val borisQuery = playerTable.forceInsert(boris)
-      db.run(borisQuery).flatMap { insertedResult =>
+      val player = Player(500L, "Boris", "Deutschland", None)
+      val forceInsertAction = playerTable.forceInsert(player)
+      db.run(forceInsertAction).flatMap { insertedResult =>
         val updateCountryAction =
           playerTable
             .filter(_.id === 500L)
@@ -90,7 +92,8 @@ class PlayerServiceSpec
     }
 
     "delete a player from the table by name" in {
-      db.run(playerTable.filter(_.name === "Nadal").delete) flatMap { deleteStatus =>
+      val deleteAction = playerTable.filter(_.name === "Nadal").delete
+      db.run(deleteAction) flatMap { deleteStatus =>
         deleteStatus shouldBe 1
 
         db.run(playerTable.filter(_.name === "Nadal").result) map { nadal =>
@@ -143,7 +146,8 @@ class PlayerServiceSpec
     }
 
     "update multiple records in a single query" in {
-      val updatedRowsFut = db.run(playerTable.filter(_.country === "Swiss").map(_.country).update("Switzerland"))
+      val updateMultipleAction = playerTable.filter(_.country === "Swiss").map(_.country).update("Switzerland")
+      val updatedRowsFut = db.run(updateMultipleAction)
       updatedRowsFut flatMap { updatedRows =>
         updatedRows shouldBe 2
 
@@ -187,6 +191,7 @@ class PlayerServiceSpec
     new FutureOutcome(for {
       _ <- createTableFut
       _ <- clearAll
+      //Insert multiple players together using ++=
       _ <- db.run(playerTable ++= players)
       testResult <- super.withFixture(test).toFuture
     } yield {
@@ -194,7 +199,7 @@ class PlayerServiceSpec
     })
 
   def createTable: Future[Int] = {
-    val createQuery =
+    val createQuery: DBIO[Int] =
       sqlu"""create table "Player"(
            "player_id" bigserial primary key,
            "name" varchar not null,
