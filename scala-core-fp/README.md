@@ -8,3 +8,4 @@ This module contains articles about Scala's Functional Programming features
 - [Monoids and Semigroups in Scala](https://www.baeldung.com/scala/monoids-semigroups)
 - [Type Classes in Scala](https://www.baeldung.com/scala/type-classes)
 - [The Difference Between foldLeft and reduceLeft in Scala](https://www.baeldung.com/scala/foldleft-vs-reduceleft)
+- [Monads in Scala](https://www.baeldung.com/scala/monads)
