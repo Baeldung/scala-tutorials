@@ -5,3 +5,4 @@
 - [Introduction to Slick](https://www.baeldung.com/scala/slick-intro)
 - [The Principles Behind Scalaz](https://www.baeldung.com/scala/scalaz-principles)
 - [Scala – Introduction to Cats](https://www.baeldung.com/scala/cats-intro)
+- [Introduction to Scalaz](https://www.baeldung.com/scala/scalaz-intro)
