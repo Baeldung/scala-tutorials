@@ -162,7 +162,7 @@ class PlayerServiceSpec
   }
 
   "retrieve the records from the database using sql interpolator" in {
-    val selectCountryAction:DBIO[Seq[String]] = sql"""select "name" from "Player" where "country" = 'Spain' """.as[String]
+    val selectCountryAction: DBIO[Seq[String]] = sql"""select "name" from "Player" where "country" = 'Spain' """.as[String]
     db.run(selectCountryAction) map { spainPlayers =>
       spainPlayers.size shouldBe 1
       spainPlayers.head shouldBe "Nadal"
