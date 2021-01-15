@@ -23,16 +23,17 @@ class PlayerServiceSpec
 
   "PlayerService" should {
     "insert a player to the table and filter by country" in {
-      val steffi = Player(100L, "Steffi", "Germany", None)
-      val insertPlayerQuery = playerTable += steffi
-      db.run(insertPlayerQuery) flatMap { insertStatus =>
+      val player = Player(100L, "Steffi", "Germany", None)
+      val insertPlayerQuery = playerTable += player
+      val insertResult: Future[Int] = db.run(insertPlayerQuery)
+      insertResult flatMap { insertStatus =>
         insertStatus shouldBe 1
 
         // get inserted record from database and check
         val germanPlayersQuery = playerTable.filter(_.country === "Germany")
         val germanPlayers: Future[Seq[Player]] = db.run(germanPlayersQuery.result)
         germanPlayers map { allPlayers =>
-          allPlayers.find(_.name == "Steffi").get shouldEqual steffi
+          allPlayers.find(_.name == "Steffi").get shouldEqual player
         }
       }
     }
@@ -103,11 +104,11 @@ class PlayerServiceSpec
     }
 
     "combine multiple actions together and execute" in {
-      val steffi = Player(100L, "Steffi", "Germany", None)
-      val sharapova = Player(100L, "Sharapova", "Russia", None)
+      val player1 = Player(100L, "Steffi", "Germany", None)
+      val player2 = Player(100L, "Sharapova", "Russia", None)
 
-      val insertAction = playerTable += steffi
-      val insertAnotherAction = playerTable += sharapova
+      val insertAction = playerTable += player1
+      val insertAnotherAction = playerTable += player2
       val updateAction = playerTable
         .filter(_.name === "Federer")
         .map(_.country)
@@ -118,7 +119,7 @@ class PlayerServiceSpec
         combinedAction.transactionally
       } flatMap { _ =>
         db.run(playerTable.result) map { allPlayers =>
-          allPlayers should contain allOf(steffi, sharapova)
+          allPlayers should contain allOf(player1, player2)
           allPlayers.find(_.name == "Federer").map(_.country) should contain(
             "Swiss"
           )
