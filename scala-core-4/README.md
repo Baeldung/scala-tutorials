@@ -5,3 +5,4 @@
 - [Type Declaration in Scala](https://www.baeldung.com/scala/type-declaration)
 - [Implicitly in Scala](https://www.baeldung.com/scala/implicitly)
 - [Path-Dependent Types in Scala](https://www.baeldung.com/scala/path-dependent-types)
+- [Type Disjunction (Union Types) in Scala](https://www.baeldung.com/scala/type-disjunction)
