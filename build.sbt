@@ -129,7 +129,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.slick" %% "slick" % slickVersion,
       "com.h2database" % "h2" % "1.4.200",
       "org.scalaz" %% "scalaz-core" % scalazVersion,
-      "junit" % "junit" % "4.13" % Test
+      "junit" % "junit" % "4.13" % Test,
+      "org.reactivemongo" %% "reactivemongo" % "1.0.2",
+      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "3.0.0" % Test
     )
   )
 
