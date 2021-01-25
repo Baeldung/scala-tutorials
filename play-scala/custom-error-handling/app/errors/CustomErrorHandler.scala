@@ -10,19 +10,19 @@ import javax.inject.Singleton
 
 @Singleton
 class CustomErrorHandler extends HttpErrorHandler {
-    def onClientError(request: RequestHeader, statusCode: Int, message: String): Future[Result] = {
-        if (statusCode == NOT_FOUND) { // works only when we access a not existing page, not when we return NotFound on purpose
-            Future.successful(Redirect(routes.ErrorDemoController.noError()))
-        } else {
-            Future.successful(
-                Status(statusCode)("A client error occurred.")
-            )
-        }
+  def onClientError(request: RequestHeader, statusCode: Int, message: String): Future[Result] = {
+    if (statusCode == NOT_FOUND) { // works only when we access a not existing page, not when we return NotFound on purpose
+      Future.successful(Redirect(routes.ErrorDemoController.noError()))
+    } else {
+      Future.successful(
+        Status(statusCode)("A client error occurred.")
+      )
     }
+  }
 
-    def onServerError(request: RequestHeader, exception: Throwable): Future[Result] = {
-        Future.successful(
-            InternalServerError("A server error occurred: " + exception.getMessage)
-        )
-    }
+  def onServerError(request: RequestHeader, exception: Throwable): Future[Result] = {
+    Future.successful(
+      InternalServerError("A server error occurred: " + exception.getMessage)
+    )
+  }
 }
