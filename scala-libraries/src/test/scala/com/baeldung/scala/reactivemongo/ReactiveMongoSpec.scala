@@ -7,6 +7,9 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome}
 import MongoEntityImplicits._
+import akka.actor.ActorSystem
+import akka.stream.ActorMaterializer
+import akka.stream.scaladsl.Sink
 import reactivemongo.api.Cursor
 import reactivemongo.api.bson.BSONDocument
 
@@ -149,6 +152,35 @@ class ReactiveMongoSpec extends AsyncWordSpec with Matchers
         dramasLimited.map { dramas =>
           dramas.size shouldBe 3
         }
+      }
+    }
+
+    "filter and sort by movie duration" in {
+      connection.getCollection("Movie").flatMap { col =>
+        //use -1 for descending order and 1 for ascending order of sorting
+        val longestTwoDramas = col.find(BSONDocument("genre" -> "Drama")).sort(BSONDocument("durationInMin" -> -1))
+          .cursor[Movie]().collect(2, Cursor.FailOnError[List[Movie]]())
+        longestTwoDramas.map{ dramas =>
+          dramas.size shouldBe 2
+          //first result should be movie with longest duration
+          dramas.head.name shouldBe "Troy"
+          dramas.head.durationInMin shouldBe 163
+          //second result should be the movie with 2nd longest duration
+          dramas.last.name shouldBe "Fight Club"
+          dramas.last.durationInMin shouldBe 140
+        }
+      }
+    }
+
+    "stream the movies and calculate total duration using akka stream api" in {
+      //Note: This import(cursorProducer) is required for reactive mongo and akka stream integration
+      import reactivemongo.akkastream.{ State, cursorProducer }
+      implicit val system = ActorSystem("reactive-mongo-stream")
+      implicit val materializer = ActorMaterializer()
+      connection.getCollection("Movie").flatMap { col =>
+        val source = col.find(BSONDocument()).cursor[Movie]().documentSource(100, Cursor.FailOnError())
+        val totalDurationFuture = source.map(_.durationInMin).runWith(Sink.fold(0)(_ + _))
+        totalDurationFuture.map(_ shouldBe getMoviesList.map(_.durationInMin).sum)
       }
     }
 
