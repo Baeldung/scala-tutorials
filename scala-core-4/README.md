@@ -6,3 +6,4 @@
 - [Implicitly in Scala](https://www.baeldung.com/scala/implicitly)
 - [Path-Dependent Types in Scala](https://www.baeldung.com/scala/path-dependent-types)
 - [Type Disjunction (Union Types) in Scala](https://www.baeldung.com/scala/type-disjunction)
+- [Private and Protected Constructors in Scala](https://www.baeldung.com/scala/private-protected-constructors)
