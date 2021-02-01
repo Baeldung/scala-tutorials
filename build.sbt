@@ -117,6 +117,7 @@ lazy val scala_akka = (project in file("scala-akka"))
 
 val monocleVersion = "2.0.4"
 val slickVersion   = "3.3.2"
+val shapelessVersion = "2.3.3"
 val scalazVersion = "7.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -127,6 +128,8 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.h2database" % "h2" % "1.4.200",
+      "com.chuusai" %% "shapeless" % shapelessVersion,
       "com.h2database" % "h2" % "1.4.200",
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "junit" % "junit" % "4.13" % Test
