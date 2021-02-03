@@ -106,22 +106,30 @@ lazy val scala_akka = (project in file("scala-akka"))
     libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.9",
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
     libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.9" % Test,
+    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
+    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.9",
+    libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
+    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test
   )
 
 val monocleVersion = "2.0.4"
 val slickVersion   = "3.3.2"
+val shapelessVersion = "2.3.3"
 val scalazVersion = "7.3.2"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
     libraryDependencies ++= Seq(
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.h2database" % "h2" % "1.4.200",
+      "com.chuusai" %% "shapeless" % shapelessVersion,
       "com.h2database" % "h2" % "1.4.200",
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "junit" % "junit" % "4.13" % Test

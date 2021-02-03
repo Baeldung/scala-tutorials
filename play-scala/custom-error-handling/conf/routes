@@ -1,0 +1,5 @@
+GET     /errors/noerror             controllers.ErrorDemoController.noError()
+GET     /errors/exception           controllers.ErrorDemoController.exception()
+GET     /errors/internalerror       controllers.ErrorDemoController.internalError()
+GET     /errors/notfound            controllers.ErrorDemoController.notFound()
+GET     /errors/badrequest          controllers.ErrorDemoController.badRequest()
