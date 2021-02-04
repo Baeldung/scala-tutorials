@@ -6,11 +6,10 @@ object RequireUsage extends App {
     require(age >= 18)
     println("Issued Driving License to %s ".format(name))
   }
-
-  issueDrivingLicense("Drawin", 38)
+  issueDrivingLicense("Darwin", 38) // prints "Issued Driving License to Darwin"
 
   try {
-    issueDrivingLicense("Drawin Jr", 5)
+    issueDrivingLicense("Jr. Darwin", 5) // prints "Failed in require precondition"
   } catch {
     case e: IllegalArgumentException =>
       println("Failed in require precondition")
