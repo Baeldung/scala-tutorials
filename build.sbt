@@ -118,6 +118,7 @@ lazy val scala_akka = (project in file("scala-akka"))
 val monocleVersion = "2.0.4"
 val slickVersion = "3.3.2"
 val scalazVersion = "7.3.2"
+val reactiveMongo = "1.0.3"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
@@ -130,8 +131,8 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.h2database" % "h2" % "1.4.200",
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "junit" % "junit" % "4.13" % Test,
-      "org.reactivemongo" %% "reactivemongo" % "1.0.2",
-      "org.reactivemongo" %% "reactivemongo-akkastream" % "1.0.2",
+      "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
+      "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "3.0.0" % Test
     )
   )
