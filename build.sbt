@@ -3,10 +3,10 @@ ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
-val scalaTest = "org.scalatest" %% "scalatest" % "3.1.2" % Test
-val junit = "com.novocode" % "junit-interface" % "0.11" % "test"
+val scalaTest  = "org.scalatest" %% "scalatest" % "3.1.2" % Test
+val junit      = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
-val catsCore = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
+val catsCore   = "org.typelevel" % "cats-effect_2.12" % "2.1.4"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -17,8 +17,8 @@ lazy val scala_core = (project in file("scala-core"))
         junit,
         catsCore,
         catsEffect
-      )
-  )
+        )
+    )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
@@ -26,7 +26,7 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
-  )
+)
 
 lazy val scala_core_3 = (project in file("scala-core-3"))
   .settings(
@@ -35,7 +35,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
-  )
+)
 
 lazy val scala_core_4 = (project in file("scala-core-4"))
   .settings(
@@ -44,7 +44,7 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
-  )
+)
 
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
@@ -116,8 +116,10 @@ lazy val scala_akka = (project in file("scala-akka"))
   )
 
 val monocleVersion = "2.0.4"
-val slickVersion = "3.3.2"
+val slickVersion   = "3.3.2"
+val shapelessVersion = "2.3.3"
 val scalazVersion = "7.3.2"
+val fs2Version = "2.5-15-e328d68"
 val reactiveMongo = "1.0.3"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -128,8 +130,11 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.chuusai" %% "shapeless" % shapelessVersion,
       "com.h2database" % "h2" % "1.4.200",
       "org.scalaz" %% "scalaz-core" % scalazVersion,
+      "co.fs2" %% "fs2-core" % fs2Version,
+      "co.fs2" %% "fs2-io" % fs2Version,
       "junit" % "junit" % "4.13" % Test,
       "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
       "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
