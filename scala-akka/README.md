@@ -10,3 +10,4 @@ This module contains articles about the Akka library in Scala.
 - [Akka Interaction Patterns: Request-Response](https://www.baeldung.com/scala/akka-request-response)
 - [Supervision and Monitoring in Akka](https://www.baeldung.com/scala/akka-supervision)
 - [Introduction to Alpakka](https://www.baeldung.com/scala/alpakka-intro)
+- [Typed Mailboxes in Scala](https://www.baeldung.com/scala/typed-mailboxes)
