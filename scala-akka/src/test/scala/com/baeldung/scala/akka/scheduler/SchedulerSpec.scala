@@ -100,7 +100,7 @@ class SchedulerSpec
         system.scheduler.schedule(10.millis, 1.seconds, greeter, greet)
 
       val expectedMessage = Greeted("Lucifer MorningStar: Hello, Detective")
-      expectMsg(350.millis, expectedMessage)
+      expectMsg(600.millis, expectedMessage)
       //Cancel the schedule, should not get any more messages after that
       schedulerInstance.cancel()
       schedulerInstance.isCancelled shouldBe true
