@@ -160,7 +160,7 @@ class ReactiveMongoSpec extends AsyncWordSpec with Matchers
         //use -1 for descending order and 1 for ascending order of sorting
         val longestTwoDramas = col.find(BSONDocument("genre" -> "Drama")).sort(BSONDocument("durationInMin" -> -1))
           .cursor[Movie]().collect(2, Cursor.FailOnError[List[Movie]]())
-        longestTwoDramas.map{ dramas =>
+        longestTwoDramas.map { dramas =>
           dramas.size shouldBe 2
           //first result should be movie with longest duration
           dramas.head.name shouldBe "Troy"
@@ -174,7 +174,7 @@ class ReactiveMongoSpec extends AsyncWordSpec with Matchers
 
     "stream the movies and calculate total duration using akka stream api" in {
       //Note: This import(cursorProducer) is required for reactive mongo and akka stream integration
-      import reactivemongo.akkastream.{ State, cursorProducer }
+      import reactivemongo.akkastream.{State, cursorProducer}
       implicit val system = ActorSystem("reactive-mongo-stream")
       implicit val materializer = ActorMaterializer()
       connection.getCollection("Movie").flatMap { col =>
