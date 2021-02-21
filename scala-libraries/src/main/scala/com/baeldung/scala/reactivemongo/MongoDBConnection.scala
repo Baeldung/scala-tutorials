@@ -7,8 +7,7 @@ import reactivemongo.api.{AsyncDriver, DB, MongoConnection}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-// val mongoURL = "mongodb://localhost:27017/movies"
-
+//Note: example MongoDB URL: "mongodb://localhost:27017/movies"
 class MongoDBConnection(mongoURL:String, dbName:String) {
 
   lazy val mongoDriver = AsyncDriver()
@@ -22,6 +21,4 @@ class MongoDBConnection(mongoURL:String, dbName:String) {
     val moviesCollection: Future[BSONCollection] = db.map(_.collection(collectionName))
     moviesCollection
   }
-
-
 }
