@@ -1,6 +1,7 @@
 package com.baeldung.scala.tagless
 
 import cats.Monad
+import cats.data.State
 import cats.syntax.flatMap._
 import cats.syntax.functor._
 
@@ -8,24 +9,50 @@ object TaglessFinal {
 
   case class Product(id: String, description: String)
 
-  trait Products[F[_]] {
-    def findById(id: String): F[Product]
-  }
-
   case class ShoppingCart(id: String, products: List[Product])
 
   trait ShoppingCarts[F[_]] {
-    def findById(id: String): F[ShoppingCart]
+    def create(id: String): F[Unit]
+    def find(id: String): F[Option[ShoppingCart]]
+    def add(sc: ShoppingCart, product: Product): F[ShoppingCart]
+  }
+
+  object ShoppingCarts {
+    type ShoppingCartRepository = Map[String, ShoppingCart]
+    type ScRepoState[A] = State[ShoppingCartRepository, A]
+
+    implicit object TestShoppingCartInterpreter extends ShoppingCarts[ScRepoState] {
+      override def create(id: String): ScRepoState[Unit] =
+        State.modify { carts =>
+          val shoppingCart = ShoppingCart(id, List())
+          carts + (id -> shoppingCart)
+        }
+
+      override def find(id: String): ScRepoState[Option[ShoppingCart]] =
+        State.inspect { carts =>
+          carts.get(id)
+        }
+
+      override def add(sc: ShoppingCart, product: Product): ScRepoState[ShoppingCart] =
+        State { carts =>
+          val products = sc.products
+          val updatedCart = sc.copy(products = product :: products)
+          (carts + (sc.id -> updatedCart), updatedCart)
+        }
+    }
   }
 
   object Program {
-    def addToCart[F[_]: Monad](productId: String, cartId: String)
-                              (implicit products: Products[F],
-                               shoppingCarts: ShoppingCarts[F]): F[Option[ShoppingCart]] =
+    def createAndAddToCart[F[_]: Monad](product: Product, cartId: String)
+                              (implicit shoppingCarts: ShoppingCarts[F]): F[ShoppingCart] =
       for {
-        pr <- products.findById(productId)
-        sc <- shoppingCarts.findById(cartId)
-        prs = sc.products
-      } yield sc.copy(products = pr :: prs)
+        _ <- shoppingCarts.create(cartId)
+        maybeSc <- shoppingCarts.find(cartId)
+      } yield {
+        maybeSc match {
+          case Some(sc) => shoppingCarts.add(sc, product)
+          case _ => maybeSc
+        }
+      }
   }
 }
