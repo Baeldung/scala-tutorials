@@ -7,3 +7,4 @@
 - [Path-Dependent Types in Scala](https://www.baeldung.com/scala/path-dependent-types)
 - [Type Disjunction (Union Types) in Scala](https://www.baeldung.com/scala/type-disjunction)
 - [Private and Protected Constructors in Scala](https://www.baeldung.com/scala/private-protected-constructors)
+- [Difference Between assert and require in Scala](https://www.baeldung.com/scala/assert-vs-require)
