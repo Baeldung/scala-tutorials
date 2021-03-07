@@ -2,8 +2,7 @@ package com.baeldung.scala.tagless
 
 import cats.Monad
 import cats.data.State
-import cats.syntax.flatMap._
-import cats.syntax.functor._
+import cats.implicits._
 
 object TaglessFinal {
 
@@ -82,11 +81,7 @@ object TaglessFinal {
       for {
         _ <- shoppingCarts.create(cartId)
         maybeSc <- shoppingCarts.find(cartId)
-        maybeNewScF = maybeSc.map(sc => shoppingCarts.add(sc, product))
-        maybeNewSc <- maybeNewScF match {
-          case Some(d) => d.map(s1 => Option.apply(s1))
-          case _ => Monad[F].pure(Option.empty[ShoppingCart])
-        }
+        maybeNewSc <- maybeSc.traverse(sc => shoppingCarts.add(sc, product))
       } yield maybeNewSc
 
     // Using the summoned values pattern
@@ -94,11 +89,7 @@ object TaglessFinal {
       for {
         _ <- ShoppingCarts[F].create(cartId)
         maybeSc <- ShoppingCarts[F].find(cartId)
-        maybeNewScF = maybeSc.map(sc => ShoppingCarts[F].add(sc, product))
-        maybeNewSc <- maybeNewScF match {
-          case Some(d) => d.map(s1 => Option.apply(s1))
-          case _ => Monad[F].pure(Option.empty[ShoppingCart])
-        }
+        maybeNewSc <- maybeSc.traverse(sc => ShoppingCarts[F].add(sc, product))
       } yield maybeNewSc
   }
 
@@ -107,11 +98,7 @@ object TaglessFinal {
       for {
         _ <- carts.create(cartId)
         maybeSc <- carts.find(cartId)
-        maybeNewScF = maybeSc.map(sc => carts.add(sc, product))
-        maybeNewSc <- maybeNewScF match {
-          case Some(d) => d.map(s1 => Option.apply(s1))
-          case _ => Monad[F].pure(Option.empty[ShoppingCart])
-        }
+        maybeNewSc <- maybeSc.traverse(sc => carts.add(sc, product))
       } yield maybeNewSc
     }
   }
