@@ -94,7 +94,7 @@ object TaglessFinal {
   }
 
   case class ProgramWithDep[F[_] : Monad](carts: ShoppingCarts[F]) {
-    def createAndToCart(product: Product, cartId: String): Unit = {
+    def createAndToCart(product: Product, cartId: String): F[Option[ShoppingCart]] = {
       for {
         _ <- carts.create(cartId)
         maybeSc <- carts.find(cartId)
