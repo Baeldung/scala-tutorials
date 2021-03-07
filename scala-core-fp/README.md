@@ -9,3 +9,4 @@ This module contains articles about Scala's Functional Programming features
 - [Type Classes in Scala](https://www.baeldung.com/scala/type-classes)
 - [The Difference Between foldLeft and reduceLeft in Scala](https://www.baeldung.com/scala/foldleft-vs-reduceleft)
 - [Monads in Scala](https://www.baeldung.com/scala/monads)
+- [Introduction to Functional Programming in Scala](https://www.baeldung.com/scala/functional-programming)
