@@ -13,9 +13,7 @@ object TaglessFinal {
 
   trait ShoppingCarts[F[_]] {
     def create(id: String): F[Unit]
-
     def find(id: String): F[Option[ShoppingCart]]
-
     def add(sc: ShoppingCart, product: Product): F[ShoppingCart]
   }
 
@@ -47,11 +45,23 @@ object TaglessFinal {
 
     class ShoppingCartWithDependencyInterpreter private(repo: ShoppingCartRepository)
       extends ShoppingCarts[ScRepoState] {
-      override def create(id: String): ScRepoState[Unit] = ???
+      override def create(id: String): ScRepoState[Unit] =
+        State.modify { carts =>
+          val shoppingCart = ShoppingCart(id, List())
+          carts + (id -> shoppingCart)
+        }
 
-      override def find(id: String): ScRepoState[Option[ShoppingCart]] = ???
+      override def find(id: String): ScRepoState[Option[ShoppingCart]] =
+        State.inspect { carts =>
+          carts.get(id)
+        }
 
-      override def add(sc: ShoppingCart, product: Product): ScRepoState[ShoppingCart] = ???
+      override def add(sc: ShoppingCart, product: Product): ScRepoState[ShoppingCart] =
+        State { carts =>
+          val products = sc.products
+          val updatedCart = sc.copy(products = product :: products)
+          (carts + (sc.id -> updatedCart), updatedCart)
+        }
     }
 
     object ShoppingCartWithDependencyInterpreter {
@@ -68,43 +78,41 @@ object TaglessFinal {
 
     // Using implicit objects (explicit)
     def createAndAddToCart[F[_] : Monad](product: Product, cartId: String)
-                                        (implicit shoppingCarts: ShoppingCarts[F]): F[ShoppingCart] =
+                                        (implicit shoppingCarts: ShoppingCarts[F]): F[Option[ShoppingCart]] =
       for {
         _ <- shoppingCarts.create(cartId)
         maybeSc <- shoppingCarts.find(cartId)
-      } yield {
-        maybeSc match {
-          case Some(sc) => shoppingCarts.add(sc, product)
-          case _ => maybeSc
+        maybeNewScF = maybeSc.map(sc => shoppingCarts.add(sc, product))
+        maybeNewSc <- maybeNewScF match {
+          case Some(d) => d.map(s1 => Option.apply(s1))
+          case _ => Monad[F].pure(Option.empty[ShoppingCart])
         }
-      }
+      } yield maybeNewSc
 
     // Using the summoned values pattern
-    def createAndToCart[F[_] : Monad : ShoppingCarts](product: Product, cartId: String): Unit = {
+    def createAndToCart[F[_] : Monad : ShoppingCarts](product: Product, cartId: String): F[Option[ShoppingCart]] =
       for {
         _ <- ShoppingCarts[F].create(cartId)
         maybeSc <- ShoppingCarts[F].find(cartId)
-      } yield {
-        maybeSc match {
-          case Some(sc) => ShoppingCarts[F].add(sc, product)
-          case _ => maybeSc
+        maybeNewScF = maybeSc.map(sc => ShoppingCarts[F].add(sc, product))
+        maybeNewSc <- maybeNewScF match {
+          case Some(d) => d.map(s1 => Option.apply(s1))
+          case _ => Monad[F].pure(Option.empty[ShoppingCart])
         }
-      }
-    }
+      } yield maybeNewSc
   }
 
-  class ProgramWithDep[F[_] : Monad](carts: ShoppingCarts[F]) {
+  case class ProgramWithDep[F[_] : Monad](carts: ShoppingCarts[F]) {
     def createAndToCart(product: Product, cartId: String): Unit = {
       for {
         _ <- carts.create(cartId)
         maybeSc <- carts.find(cartId)
-      } yield {
-        maybeSc match {
-          case Some(sc) => carts.add(sc, product)
-          case _ => maybeSc
+        maybeNewScF = maybeSc.map(sc => carts.add(sc, product))
+        maybeNewSc <- maybeNewScF match {
+          case Some(d) => d.map(s1 => Option.apply(s1))
+          case _ => Monad[F].pure(Option.empty[ShoppingCart])
         }
-      }
+      } yield maybeNewSc
     }
   }
-
 }
