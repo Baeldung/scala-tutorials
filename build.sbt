@@ -68,6 +68,7 @@ lazy val scala_core_fp = (project in file("scala-core-fp"))
     name := "scala-core-fp",
     libraryDependencies ++=
       Seq(
+        catsCore,
         scalaTest,
         junit)
   )
