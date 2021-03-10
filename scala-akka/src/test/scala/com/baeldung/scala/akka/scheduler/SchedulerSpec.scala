@@ -5,7 +5,10 @@ import akka.testkit.{ImplicitSender, TestKit}
 import org.scalatest.{Matchers, WordSpecLike}
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
+import org.scalatest._
 
+@Ignore
+// fixing in JAVA-4839
 class SchedulerSpec
     extends TestKit(ActorSystem("test-system"))
     with ImplicitSender
