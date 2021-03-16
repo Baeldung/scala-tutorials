@@ -15,9 +15,9 @@ class TimerSpec
   "Timer Actor" must {
     "reply with a msg after timer ticks periodically" in {
       val timerActor = system.actorOf(Props(classOf[TimerActor], self))
-      expectMsg(350.millis, "Periodic-Tick")
-      expectMsg(350.millis, "Periodic-Tick")
-      expectMsg(350.millis, "Periodic-Tick")
+      expectMsg(500.millis, "Periodic-Tick")
+      expectMsg(500.millis, "Periodic-Tick")
+      expectMsg(500.millis, "Periodic-Tick")
       system.stop(timerActor)
     }
   }
