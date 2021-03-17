@@ -10,7 +10,8 @@ import scala.concurrent.Future
 //Note: example MongoDB URL: "mongodb://localhost:27017/movies"
 class MongoDBConnection(mongoURL:String, dbName:String) {
 
-  lazy val mongoDriver = AsyncDriver()
+  //Note: Do not use lazy val while creating driver.
+  val mongoDriver = AsyncDriver()
 
   lazy val parsedURIFuture: Future[ParsedURI] = MongoConnection.fromString(mongoURL)
 
