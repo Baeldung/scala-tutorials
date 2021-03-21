@@ -123,6 +123,7 @@ val scalazVersion = "7.3.2"
 val fs2Version = "2.5-15-e328d68"
 val AkkaVersion = "2.6.12"
 
+
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
