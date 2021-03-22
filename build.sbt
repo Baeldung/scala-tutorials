@@ -121,6 +121,9 @@ val slickVersion   = "3.3.2"
 val shapelessVersion = "2.3.3"
 val scalazVersion = "7.3.2"
 val fs2Version = "2.5-15-e328d68"
+val AkkaVersion = "2.6.12"
+
+
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
@@ -136,6 +139,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
       "co.fs2" %% "fs2-io" % fs2Version,
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "junit" % "junit" % "4.13" % Test
     )
   )
