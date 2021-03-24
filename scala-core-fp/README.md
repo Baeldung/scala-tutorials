@@ -10,3 +10,4 @@ This module contains articles about Scala's Functional Programming features
 - [The Difference Between foldLeft and reduceLeft in Scala](https://www.baeldung.com/scala/foldleft-vs-reduceleft)
 - [Monads in Scala](https://www.baeldung.com/scala/monads)
 - [Introduction to Functional Programming in Scala](https://www.baeldung.com/scala/functional-programming)
+- [The Tagless Final Pattern in Scala](https://www.baeldung.com/scala/tagless-final-pattern)
