@@ -9,3 +9,4 @@
 - [Private and Protected Constructors in Scala](https://www.baeldung.com/scala/private-protected-constructors)
 - [Difference Between assert and require in Scala](https://www.baeldung.com/scala/assert-vs-require)
 - [How To Use Structural Types in Scala](https://www.baeldung.com/scala/structural-types)
+- [Implicit Imports in Scala](https://www.baeldung.com/scala/implicit-imports)
