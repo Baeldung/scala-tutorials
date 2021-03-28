@@ -6,3 +6,5 @@
 - [The Principles Behind Scalaz](https://www.baeldung.com/scala/scalaz-principles)
 - [Scala – Introduction to Cats](https://www.baeldung.com/scala/cats-intro)
 - [Introduction to Scalaz](https://www.baeldung.com/scala/scalaz-intro)
+- [Introduction to FS2: Functional Streams for Scala](https://www.baeldung.com/scala/fs2-functional-streams)
+- [Introduction to Generic Programming in Scala with shapeless](https://www.baeldung.com/scala/generic-programming)
