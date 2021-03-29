@@ -122,7 +122,7 @@ val shapelessVersion = "2.3.3"
 val scalazVersion = "7.3.2"
 val fs2Version = "2.5-15-e328d68"
 val AkkaVersion = "2.6.12"
-
+val reactiveMongo = "1.0.3"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -139,8 +139,14 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
       "co.fs2" %% "fs2-io" % fs2Version,
+      "junit" % "junit" % "4.13" % Test,
+      "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
+      "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
+      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "3.0.0" % Test,
+      "ch.qos.logback" % "logback-classic" % "1.2.3" % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
-      "junit" % "junit" % "4.13" % Test
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion
     )
   )
 
