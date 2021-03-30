@@ -83,6 +83,16 @@ lazy val scala_lang = (project in file("scala-lang"))
         junit)
   )
 
+lazy val scala_lang_2 = (project in file("scala-lang-2"))
+  .settings(
+    name := "scala-lang",
+    scalacOptions += "-Ypartial-unification",
+    libraryDependencies ++=
+      Seq(
+        scalaTest,
+        junit)
+  )
+
 lazy val scala_core_collections = (project in file("scala-core-collections"))
   .settings(
     name := "scala-core-collections",
