@@ -203,6 +203,35 @@ class PatternMatchingUnitTest {
     assertEquals("It's a RuntimeException", pm.catchBlocksPatternMatching(re))
     assertEquals("It's an unknown kind of exception", pm.catchBlocksPatternMatching(fnfe))
   }
+
+  @Test
+  def whenBinderPatternMatchedWithSeaMammal_ThenReturnMessage():Unit = {
+    val seal = Mammal("seal", true)
+    val result = new PatternMatching().binderPatternMatching(seal)
+    assertEquals(result, "seal is a mammal from sea")
+  }
+
+  @Test
+  def whenBinderPatternMatchedWithLandMammal_ThenReturnMessage():Unit = {
+    val elephant = Mammal("elephant", false)
+    val result = new PatternMatching().binderPatternMatching(elephant)
+    assertEquals(result, "elephant is a mammal, fromSea:false")
+  }
+
+  @Test
+  def whenBinderPatternWithPartMatchCase_ThenReturnMessage():Unit = {
+    val lion = Mammal("Lion", false)
+    val result = new PatternMatching().binderPatternWithPartMatch(lion)
+    assertEquals(result, "Lion is a mammal")
+  }
+
+  @Test
+  def whenBinderPatternWithPartMatchCaseWithoutMatch_ThenReturnMessage():Unit = {
+    val lion = Mammal("Tiger", false)
+    val result = new PatternMatching().binderPatternWithPartMatch(lion)
+    assertEquals(result, "unknown")
+  }
+
 }
 
 
