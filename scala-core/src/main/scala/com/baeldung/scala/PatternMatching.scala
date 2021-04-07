@@ -134,4 +134,19 @@ class PatternMatching {
       case _ => "It's an unknown kind of exception"
     }
   }
+
+  def binderPatternMatching(animal: Any): String = {
+    animal match {
+      case m@Mammal(_, true) => s"${m.name} is a mammal from sea"
+      case Mammal(name, fromSea) => s"${name} is a mammal, fromSea:${fromSea}"
+      case _ => "unknown animal"
+    }
+  }
+
+  def binderPatternWithPartMatch(animal: Any): String = {
+    animal match {
+      case Mammal(name @ "Lion", _) => s"$name is a mammal"
+      case _ => "unknown"
+    }
+  }
 }
