@@ -26,3 +26,6 @@ out
 
 # Ignore OSX files
 .DS_Store
+
+# Ignore Scala 3 intermediate files
+*.tasty
