@@ -165,3 +165,4 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
   )
 
+lazy val scala_3 = (project in file("scala-3"))
