@@ -12,3 +12,4 @@ This module contains articles about Scala's Functional Programming features
 - [Introduction to Functional Programming in Scala](https://www.baeldung.com/scala/functional-programming)
 - [The Tagless Final Pattern in Scala](https://www.baeldung.com/scala/tagless-final-pattern)
 - [Functors in Functional Programming](https://www.baeldung.com/scala/functors-functional-programming)
+- [Case Objects vs Enumerations in Scala](https://www.baeldung.com/scala/case-objects-vs-enumerations)
