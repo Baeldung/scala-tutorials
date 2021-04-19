@@ -1,12 +1,10 @@
 package com.baeldung.scala3.opaque
 
 import com.baeldung.scala3.opaque.types._
+import scala.util.Try
 
-final case class Movie(name: String, year: Year, runningTime: RunningTimeInMin, noOfOscarsWon: NoOfOscarsWon)
+import java.time.LocalDate
 
-case class Year(year:Int) extends AnyVal
-case class RunningTimeInMin(runningTime:Int) extends AnyVal
-case class NoOfOscarsWon(noOfOscarsWon:Int) extends AnyVal
 final case class Movie(name: String, year: Year, runningTime: RunningTimeInMin, noOfOscarsWon: NoOfOscarsWon)
 
 object types {
@@ -46,4 +44,19 @@ object types {
       def value: Int = oscars
     }
   }
+
+  opaque type ReleaseDate <: LocalDate = LocalDate
+  object ReleaseDate {
+    def apply(date: LocalDate): ReleaseDate = date
+    def safeParse(date: String): Option[ReleaseDate] = Try(LocalDate.parse(date)).toOption
+    extension (releaseDate: ReleaseDate) {
+      def toStr = releaseDate.toString()
+    }
+  }
+
+  opaque type NetflixReleaseDate <: ReleaseDate = ReleaseDate
+  object NetflixReleaseDate {
+    def apply(date: LocalDate): NetflixReleaseDate = date
+  }
+
 }
