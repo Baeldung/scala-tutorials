@@ -1,0 +1,9 @@
+@(articles: List[(String, String)])
+<h1>Baeldung Play tutorials</h1>
+
+<ul>
+    @for(article <- articles) {
+    <li><a href="@article._2">@article._1</a></li>
+    }
+</ul>
+

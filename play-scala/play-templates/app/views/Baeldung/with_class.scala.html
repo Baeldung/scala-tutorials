@@ -1,0 +1,9 @@
+@(articles: List[Article])
+<h1>Baeldung Play tutorials</h1>
+
+<ul>
+    @for(article <- articles) {
+    <li><a href="@article.url">@article.title</a></li>
+    }
+</ul>
+

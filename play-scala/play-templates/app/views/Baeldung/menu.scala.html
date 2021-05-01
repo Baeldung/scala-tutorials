@@ -1,0 +1,17 @@
+@this(priceFormatter: PriceFormatter)
+@(products: List[Product])
+
+@display(product: Product) = {
+    @if(product.isAvailable) {
+        <li>@product.productName @priceFormatter(product.price)</li>
+    } else {
+        <li><strike>@product.productName @priceFormatter(product.price)</strike></li>
+    }
+}
+
+<ul>
+    @for(product <- products) {
+        @display(product)
+    }
+</ul>
+
