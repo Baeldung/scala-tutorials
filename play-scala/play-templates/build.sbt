@@ -1,4 +1,4 @@
-name := """rest-api"""
+name := """play-templates"""
 organization := "com.baeldung"
 
 version := "1.0-SNAPSHOT"
