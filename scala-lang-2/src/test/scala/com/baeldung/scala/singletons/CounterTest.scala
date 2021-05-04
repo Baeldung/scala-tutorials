@@ -7,18 +7,18 @@ class CounterTest extends AnyWordSpec with Matchers {
 
   "Counter" should {
     "be zero at the beginning" in {
-      Counter.get shouldBe 0
+      assert(Counter.get == 0)
     }
 
     "be 1 after one increment" in {
       Counter.increment()
-      Counter.get shouldBe 1
+      assert(Counter.get == 1)
     }
 
     "keep the same label after an increment" in {
-      Counter.label shouldBe "Counter"
+      assert(Counter.label == "CounterLabel")
       Counter.increment()
-      Counter.label shouldBe "Counter"
+      assert(Counter.label == "CounterLabel")
     }
   }
 }
