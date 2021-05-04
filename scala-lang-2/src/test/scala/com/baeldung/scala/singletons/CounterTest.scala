@@ -15,7 +15,7 @@ class CounterTest extends AnyWordSpec with Matchers {
       assert(Counter.get == 1)
     }
 
-    "keep the same label after an increment" in {
+    "keep the same label after a call to increment" in {
       assert(Counter.label == "CounterLabel")
       Counter.increment()
       assert(Counter.label == "CounterLabel")
