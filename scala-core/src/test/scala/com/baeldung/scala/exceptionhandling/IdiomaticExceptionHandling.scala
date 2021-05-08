@@ -3,7 +3,7 @@ package com.baeldung.scala.exceptionhandling
 import java.io.IOException
 
 import cats.data.NonEmptyList
-import cats.data.Validated.{Invalid, Valid}
+import cats.data.Validated.Valid
 import com.baeldung.scala.exceptionhandling.LegacyErrors.{ResourceNotFound, ServerError, UserNotFound}
 import com.baeldung.scala.exceptionhandling.ValidationErrors.{IllegalLogin, IllegalPassword}
 import org.scalatest.{FeatureSpec, FlatSpec, GivenWhenThen, Matchers}
