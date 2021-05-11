@@ -17,6 +17,7 @@ project/plugins/project/
 .worksheet
 .idea
 /project/
+!project/build.properties
 out
 *.iml
 
