@@ -18,5 +18,4 @@ object VectorIteration extends App{
 
   println(" Vector iteration of %s elements took %s milliseconds".format(numElements, calculateSumSeq(vec)._2))
   println(" List iteration of %s elements took %s milliseconds".format(numElements, calculateSumSeq(lst)._2))
-
 }
