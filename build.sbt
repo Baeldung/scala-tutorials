@@ -46,18 +46,6 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
 )
 
-lazy val scala_core_5 = (project in file("scala-core-5"))
-  .settings(
-    name := "scala-core-5",
-    libraryDependencies ++=
-      Seq(
-        scalaTest,
-        junit,
-        catsCore,
-        catsEffect
-        )
-    )
-
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
     name := "scala-core-io",
