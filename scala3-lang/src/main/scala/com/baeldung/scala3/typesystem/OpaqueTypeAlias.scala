@@ -1,6 +1,6 @@
-package com.baeldung.scala3.opaque
+package com.baeldung.scala3.typesystem
 
-import com.baeldung.scala3.opaque.types._
+import com.baeldung.scala3.typesystem.types._
 import scala.util.Try
 
 import java.time.LocalDate
