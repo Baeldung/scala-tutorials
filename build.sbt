@@ -52,8 +52,11 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
-    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
-)
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1",
+    libraryDependencies += "joda-time" % "joda-time" % "2.9.9",
+    libraryDependencies += "org.joda" % "joda-convert" % "2.2.1",
+    libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.28.0"
+  )
 
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
