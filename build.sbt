@@ -181,7 +181,14 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     name := "scala-design-patterns",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test,
   )
 
-lazy val scala_3 = (project in file("scala3-lang"))
+lazy val scala_3 = project in file("scala3-lang")
+
+lazy val cats_effects = (project in file("cats-effects"))
+  .settings(
+    name := "cats-effects",
+    libraryDependencies += "org.typelevel" %% "cats-effect" % "3.1.1",
+    libraryDependencies += "junit" % "junit" % "4.13" % Test,
+  )
