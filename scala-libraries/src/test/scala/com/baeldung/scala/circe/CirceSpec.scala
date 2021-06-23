@@ -1,3 +1,5 @@
+package com.baeldung.scala.circe
+
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 
