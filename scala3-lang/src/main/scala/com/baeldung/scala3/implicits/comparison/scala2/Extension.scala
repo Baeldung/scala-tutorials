@@ -4,13 +4,12 @@ object Extension {
   implicit class IntExtension(value: Int) {
     def toSecond() = Second(value)
   }
-
 }
 
 object ExtensionExample {
 
   import Extension._
-
-  TimeUtil.doSomethingWithSeconds(100.toSecond())
+  val second: Second = 100.toSecond()
+  TimeUtil.doSomethingWithProcessingTime(second)
 
 }
