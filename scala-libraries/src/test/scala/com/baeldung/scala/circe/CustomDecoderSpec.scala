@@ -42,11 +42,11 @@ class CustomDecoderSpec extends AnyFlatSpec with should.Matchers {
   case class Nested(arrayField: List[Int])
 
   case class OurJson(
-                      textField: String,
-                      numericField: Option[Int],
-                      booleanField: Option[Boolean],
-                      nestedObject: Nested
-                    )
+    textField: String,
+    numericField: Option[Int],
+    booleanField: Option[Boolean],
+    nestedObject: Nested
+  )
 
   implicit val decodeNested: Decoder[Nested] = (c: HCursor) => for {
     arrayField <- c.downField("arrayField").as[Option[List[Int]]]
