@@ -7,9 +7,7 @@ object TimeUtil {
 }
 
 object ImplicitConversion {
-  
   given Conversion[Int, Second] = Second(_)
-
 }
 
 object Usage {
