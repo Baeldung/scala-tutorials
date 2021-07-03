@@ -52,11 +52,11 @@ class CirceSpec extends AnyFlatSpec with should.Matchers {
     case class Nested(arrayField: List[Int])
 
     case class OurJson(
-                        textField: String,
-                        numericField: Int,
-                        booleanField: Boolean,
-                        nestedObject: Nested
-                      )
+      textField: String,
+      numericField: Int,
+      booleanField: Boolean,
+      nestedObject: Nested
+    )
 
     implicit val nestedDecoder: Decoder[Nested] = deriveDecoder[Nested]
     implicit val jsonDecoder: Decoder[OurJson] = deriveDecoder[OurJson]
@@ -89,11 +89,11 @@ class CirceSpec extends AnyFlatSpec with should.Matchers {
     case class Nested(arrayField: Option[List[Int]])
 
     case class OurJson(
-                        textField: String,
-                        numericField: Option[Int],
-                        booleanField: Option[Boolean],
-                        nestedObject: Nested
-                      )
+      textField: String,
+      numericField: Option[Int],
+      booleanField: Option[Boolean],
+      nestedObject: Nested
+    )
 
     implicit val nestedDecoder: Decoder[Nested] = deriveDecoder[Nested]
     implicit val jsonDecoder: Decoder[OurJson] = deriveDecoder[OurJson]
@@ -107,11 +107,11 @@ class CirceSpec extends AnyFlatSpec with should.Matchers {
     case class Nested(arrayField: List[Int])
 
     case class OurJson(
-                        textField: String,
-                        numericField: Option[Int],
-                        booleanField: Option[Boolean],
-                        nestedObject: Nested
-                      )
+      textField: String,
+      numericField: Option[Int],
+      booleanField: Option[Boolean],
+      nestedObject: Nested
+    )
 
     implicit val decodeNested: Decoder[Nested] = (c: HCursor) => for {
       arrayField <- c.downField("arrayField").as[Option[List[Int]]]
@@ -141,11 +141,11 @@ class CirceSpec extends AnyFlatSpec with should.Matchers {
     case class Nested(arrayField: List[Int])
 
     case class OurJson(
-                        textField: String,
-                        numericField: Int,
-                        booleanField: Boolean,
-                        nestedObject: Nested
-                      )
+      textField: String,
+      numericField: Int,
+      booleanField: Boolean,
+      nestedObject: Nested
+    )
 
     parser.decode[OurJson](jsonString) shouldEqual Right(OurJson("textContent", 123, true, Nested(List(1, 2, 3))))
   }
