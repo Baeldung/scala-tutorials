@@ -169,7 +169,14 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "ch.qos.logback" % "logback-classic" % "1.2.3" % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion
+  )
+
+lazy val scala_libraries = (project in file("scala-libraries-2"))
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       "io.circe" %% "circe-generic" % circeVersion,
       "io.circe" %% "circe-parser" % circeVersion
