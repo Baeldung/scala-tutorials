@@ -170,6 +170,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion
+    )
   )
 
 lazy val scala_libraries = (project in file("scala-libraries-2"))
