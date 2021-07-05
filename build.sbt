@@ -172,6 +172,19 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     )
   )
 
+val circeVersion = "0.14.1"
+
+lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
+      "io.circe" %% "circe-core" % circeVersion,
+      "io.circe" %% "circe-generic" % circeVersion,
+      "io.circe" %% "circe-parser" % circeVersion
+    )
+  )
+
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
