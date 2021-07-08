@@ -9,10 +9,3 @@ object TimeUtil {
 object ImplicitConversion {
   given Conversion[Int, Second] = Second(_)
 }
-
-object Usage {
-  import ImplicitConversion.given
-  val processingTime = 100
-  //auto conversion from Int to Second using given
-  TimeUtil.doSomethingWithProcessingTime(processingTime)
-}

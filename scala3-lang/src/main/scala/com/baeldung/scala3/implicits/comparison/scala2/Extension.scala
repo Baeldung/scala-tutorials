@@ -5,11 +5,3 @@ object Extension {
     def toSecond() = Second(value)
   }
 }
-
-object ExtensionExample {
-
-  import Extension._
-  val second: Second = 100.toSecond()
-  TimeUtil.doSomethingWithProcessingTime(second)
-
-}

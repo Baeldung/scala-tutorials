@@ -10,17 +10,3 @@ object NumericExtensions {
   extension [T:Numeric](v1: T)
     def add(v2: T): T = summon[Numeric[T]].plus(v1,v2)
 }
-
-object ExtensionExample extends App {
-
-  import Extension._
-
-  val sec:Second = 100.toSecond()
-  TimeUtil.doSomethingWithProcessingTime(sec)
-
-  import NumericExtensions._
-  val addInts = 10.add(9)
-  val addDoubles = 10.2d.add(0.2d)
-
-
-}
