@@ -1,8 +1,10 @@
 package com.baeldung.cache
 
 import com.baeldung.cache.service.{
+  CacheFlagService,
   GuavaCacheConfig,
   GuavaCacheCustomMemoizationKeyConfig,
+  GuavaCacheFlagConfig,
   GuavaCacheMemoizationConfig,
   SyncQueryCustomMemoizeKeyService,
   SyncQueryMemoizeService,
@@ -12,14 +14,21 @@ import com.baeldung.cache.service.{
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
+import scalacache.Flags
 
 import scala.collection.JavaConverters._
 
-class ScalaCacheSpec extends AnyWordSpec with Matchers with BeforeAndAfterEach {
+class ScalaCacheSyncSpec
+  extends AnyWordSpec
+  with Matchers
+  with BeforeAndAfterEach {
 
   override def beforeEach() = {
     GuavaCacheConfig.underlyingGuavaCache.invalidateAll()
     GuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache.invalidateAll()
+    GuavaCacheCustomMemoizationKeyConfig.memoizedUnderlyingCustomKeyGuavaCache
+      .invalidateAll()
+    GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.invalidateAll()
   }
 
   "Sync cache operations caching" should {
@@ -112,6 +121,41 @@ class ScalaCacheSpec extends AnyWordSpec with Matchers with BeforeAndAfterEach {
         .toSet shouldBe Set(
         "getUserWithCustomKey#44_F1-10"
       )
+    }
+
+    "NOT get from the cache and NOT set to cache if both the flags readsEnabled and writesEnabled" in {
+      val service = new CacheFlagService()
+      implicit val cacheDisableFlag = Flags(false, false)
+      service.getWithFlag(10)
+      GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 0
+      service.getWithFlag(10)
+      GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 0
+      service.count shouldBe 2
+    }
+
+    "NOT get from the cache for first time, but set to cache if readsEnabled is false" in {
+      val service = new CacheFlagService()
+      implicit val cacheReadNormalFlag = Flags(true, true)
+      service.getWithFlag(10)
+      GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 1
+      service.count shouldBe 1
+      // make the read flag as false, so that next call will act as cache miss
+      val cacheReadDisableFlag = Flags(false, true)
+      service.getWithFlag(10)(cacheReadDisableFlag)
+      GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 1
+      // count should be 2 since the method will be invoked again
+      service.count shouldBe 2
+    }
+
+    "always get from the actual method when writesEnabled is set to false" in {
+      val service = new CacheFlagService()
+      implicit val cacheMissFlag = Flags(true, false)
+      service.getWithFlag(1)
+      GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 0
+      service.getWithFlag(1)
+      GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 0
+      service.getWithFlag(2)
+      GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 0
     }
   }
 }
