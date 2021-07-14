@@ -8,7 +8,7 @@ import org.scalatest.BeforeAndAfterEach
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-class ScalaCacheAsyncSpec
+class ScalaCacheAsyncUnitTest
   extends AnyWordSpec
   with Matchers
   with BeforeAndAfterEach {

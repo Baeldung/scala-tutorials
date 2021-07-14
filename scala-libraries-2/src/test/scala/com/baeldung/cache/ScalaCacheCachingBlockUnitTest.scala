@@ -11,7 +11,7 @@ import org.scalatest.wordspec.AnyWordSpec
 
 import scala.collection.JavaConverters.collectionAsScalaIterableConverter
 
-class ScalaCacheCachingBlockSpec
+class ScalaCacheCachingBlockUnitTest
   extends AnyWordSpec
   with Matchers
   with BeforeAndAfterEach {

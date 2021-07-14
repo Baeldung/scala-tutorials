@@ -18,7 +18,7 @@ import scalacache.Flags
 
 import scala.collection.JavaConverters._
 
-class ScalaCacheSyncSpec
+class ScalaCacheSyncUnitTest
   extends AnyWordSpec
   with Matchers
   with BeforeAndAfterEach {
