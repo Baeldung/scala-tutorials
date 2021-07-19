@@ -29,13 +29,17 @@ class ScalaCacheAsyncUnitTest
     "NOT save the result to cache if future is failed" in {
       import AsyncGuavaCacheMemoizationConfig._
       val asyncService = new AsyncQueryMemoizeService()
-      asyncService.getUser(100)
+      asyncService.getUserFail(100)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 0
       //wait for the prev operation to complete and set to cache
-      Thread.sleep(300)
+      Thread.sleep(200)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 0
+      asyncService.getUserFail(100)
+      Thread.sleep(50)
+      // increment twice since caching is not done due to failure
+      asyncService.queryCount shouldBe 2
     }
   }
 

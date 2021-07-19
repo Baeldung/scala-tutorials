@@ -31,6 +31,7 @@ class AsyncQueryMemoizeService {
 
   def getUserFail(userId: Long): Future[User] =
     memoizeF[Future, User](Some(10.seconds)) {
+      queryCount = queryCount + 1
       Future.failed[User](new Exception("query failed"))
     }
 

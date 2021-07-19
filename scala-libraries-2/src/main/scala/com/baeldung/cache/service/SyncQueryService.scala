@@ -3,7 +3,6 @@ import scalacache._
 import scalacache.guava._
 import com.google.common.cache.CacheBuilder
 import scalacache.modes.sync._
-import scalacache.serialization.binary._
 
 object GuavaCacheConfig {
   val underlyingGuavaCache =
