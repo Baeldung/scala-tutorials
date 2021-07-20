@@ -26,6 +26,12 @@ class ScalaCacheCachingBlockSyncService {
     }
   }
 
+  def getUserWithMoreKeys(id: Long) = {
+    caching("id", id, "cache", "key")(None) {
+      queryResult(id)
+    }
+  }
+
   private def queryResult(id: Long): User = {
     User(id, "caching block")
   }

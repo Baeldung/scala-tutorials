@@ -2,7 +2,8 @@ package com.baeldung.cache
 
 import com.baeldung.cache.service.{
   AsyncGuavaCacheMemoizationConfig,
-  AsyncQueryMemoizeService
+  AsyncQueryMemoizeService,
+  GuavaCacheCatsConfig
 }
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.matchers.should.Matchers
@@ -12,6 +13,11 @@ class ScalaCacheAsyncUnitTest
   extends AnyWordSpec
   with Matchers
   with BeforeAndAfterEach {
+
+  override def beforeEach(): Unit = {
+    AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
+      .invalidateAll()
+  }
 
   "Asynchronous memoization" should {
     "save the result to cache once the future is successful" in {
