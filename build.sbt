@@ -182,6 +182,10 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "io.circe" %% "circe-core" % circeVersion,
       "io.circe" %% "circe-generic" % circeVersion,
       "io.circe" %% "circe-parser" % circeVersion
+    ), 
+    libraryDependencies ++= Seq( 
+      "com.typesafe.play" %% "play-slick" % "5.0.0",
+      "org.postgresql" % "postgresql" % "42.2.12"
     )
   )
 
