@@ -174,7 +174,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "io.circe" %% "circe-parser" % circeVersion,
       "com.github.cb372" %% "scalacache-core" % "0.28.0",
       "com.github.cb372" %% "scalacache-guava" % "0.28.0",
-      "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0"
+      "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
+      "com.github.cb372" %% "scalacache-caffeine" % "0.28.0"
     )
   )
 
