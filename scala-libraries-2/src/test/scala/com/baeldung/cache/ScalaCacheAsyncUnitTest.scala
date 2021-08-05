@@ -32,6 +32,21 @@ class ScalaCacheAsyncUnitTest
         .size() shouldBe 1
     }
 
+    "get result from cache for future operation" in {
+      import AsyncGuavaCacheMemoizationConfig._
+      import scala.concurrent.ExecutionContext.Implicits.global
+      val asyncService = new AsyncQueryMemoizeService()
+      val future = asyncService.checkFutureThread(88)
+      future.foreach {
+        case (main, memThread) =>
+          main should not be (memThread)
+      }
+      //wait for the prev operation to complete and set to cache
+      Thread.sleep(300)
+      AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
+        .size() shouldBe 1
+    }
+
     "NOT save the result to cache if future is failed" in {
       import AsyncGuavaCacheMemoizationConfig._
       val asyncService = new AsyncQueryMemoizeService()

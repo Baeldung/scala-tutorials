@@ -9,6 +9,7 @@ import com.baeldung.cache.service.{
   SyncQueryCustomMemoizeKeyService,
   SyncQueryMemoizeService,
   SyncQueryService,
+  TryMemoizeService,
   User
 }
 import org.scalatest.BeforeAndAfterEach
@@ -156,6 +157,28 @@ class ScalaCacheSyncUnitTest
       GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 0
       service.getWithFlag(2)
       GuavaCacheFlagConfig.underlyingGuavaCacheForFlag.size() shouldBe 0
+    }
+  }
+
+  "Try Service operations" should {
+    "cache the result if try is success" in {
+      val service = new TryMemoizeService()
+      val res = service.getUserTry(1)
+      res.isSuccess shouldBe true
+      service.queryCount shouldBe 1
+      service.getUserTry(1)
+      res.isSuccess shouldBe true
+      service.queryCount shouldBe 1 // get from cache
+    }
+
+    "NOT cache the result if try is failure" in {
+      val service = new TryMemoizeService()
+      val res = service.getUserTryFailure(3)
+      res.isSuccess shouldBe false
+      service.failQueryCount shouldBe 1
+      service.getUserTryFailure(3)
+      res.isSuccess shouldBe false
+      service.failQueryCount shouldBe 2
     }
   }
 }

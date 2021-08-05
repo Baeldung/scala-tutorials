@@ -27,6 +27,11 @@ class CatsService {
       IO.pure(User(id, "cats-pure"))
     }
 
+  def getUserCatsIO(id: Long): IO[User] =
+    memoize[IO, User](None) {
+      User(id, "io-user")
+    }
+
   def getUserIO(id: Long): IO[User] =
     memoizeF(None) {
       count = count + 1

@@ -35,6 +35,14 @@ class ScalaCacheCatsServiceTest
 
     }
 
+    "defer caching operation till the execution" in {
+      val service = new CatsService()
+      val result = service.getUserCatsIO(500)
+      GuavaCacheCatsConfig.underlyingGuavaCacheCats.size() shouldBe 0
+      result.unsafeRunSync()
+      GuavaCacheCatsConfig.underlyingGuavaCacheCats.size() shouldBe 1
+    }
+
     "use the cats mode and cache the result successfully for an IO " in {
       import GuavaCacheCatsConfig._
       val service = new CatsService()

@@ -29,6 +29,18 @@ class AsyncQueryMemoizeService {
       queryUserFromDB(userId)
     }
 
+  def checkFutureThread(userId: Long): Future[(String, String)] = {
+    val threadName = Thread.currentThread().getName
+    getUserFuture(userId).map(r => (threadName, r.name))
+  }
+
+  private def getUserFuture(userId: Long): Future[User] = {
+    memoize[Future, User](Some(10.seconds)) {
+      val threadName = Thread.currentThread().getName
+      User(userId, threadName)
+    }
+  }
+
   def getUserFail(userId: Long): Future[User] =
     memoizeF[Future, User](Some(10.seconds)) {
       queryCount = queryCount + 1
