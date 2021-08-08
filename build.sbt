@@ -145,7 +145,6 @@ val scalazVersion = "7.3.2"
 val fs2Version = "2.5-15-e328d68"
 val AkkaVersion = "2.6.12"
 val reactiveMongo = "1.0.3"
-val monixVersion = "3.4.0"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -169,12 +168,12 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "ch.qos.logback" % "logback-classic" % "1.2.3" % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
-      "io.monix" %% "monix" % monixVersion
+      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion
     )
   )
 
 val circeVersion = "0.14.1"
+val monixVersion = "3.4.0"
 
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
@@ -183,7 +182,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       "io.circe" %% "circe-generic" % circeVersion,
-      "io.circe" %% "circe-parser" % circeVersion
+      "io.circe" %% "circe-parser" % circeVersion,
+      "io.monix" %% "monix" % monixVersion
     )
   )
 
