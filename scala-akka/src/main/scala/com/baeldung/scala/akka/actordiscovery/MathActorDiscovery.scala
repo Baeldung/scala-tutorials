@@ -87,25 +87,28 @@ object Calculator {
       implicit val timeout: Timeout = Timeout.apply(100, TimeUnit.MILLISECONDS)
 
       Behaviors.receiveMessagePartial[Command] {
-        case Calculate(operation, a, b) =>
+        case Calculate(operation, a, b) => {
           context.log.info(s"Looking for implementation of ${operation}")
           val operationKey = getKey(operation)
           context.ask(
             context.system.receptionist,
             Receptionist.Find(operationKey)
           ) {
-            case Success(listing) =>
+            case Success(listing) => {
               val instances = listing.serviceInstances(operationKey)
               val firstImplementation = instances.iterator.next()
               CalculateUsingOperation(firstImplementation, a, b)
+            }
           }
 
           Behaviors.same
+        }
 
-        case CalculateUsingOperation(operation, a, b) =>
+        case CalculateUsingOperation(operation, a, b) => {
           context.log.info("Calculating...")
           operation ! Operations.Calculate(a, b)
           Behaviors.same
+        }
       }
     }
 }
