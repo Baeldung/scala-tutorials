@@ -11,3 +11,4 @@ This module contains articles about the Akka library in Scala.
 - [Supervision and Monitoring in Akka](https://www.baeldung.com/scala/akka-supervision)
 - [Introduction to Alpakka](https://www.baeldung.com/scala/alpakka-intro)
 - [Typed Mailboxes in Scala](https://www.baeldung.com/scala/typed-mailboxes)
+- [Discovering Actors in Akka](https://www.baeldung.com/scala/discovering-actors-in-akka)
