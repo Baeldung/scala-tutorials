@@ -1,3 +1,4 @@
 package com.baeldung.scala3.mainmethods
 
-@main def helloWorld() = println("Hello, world")
+@main
+def helloWorld() = println("Hello, world")
