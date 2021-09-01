@@ -1,9 +1,9 @@
-package com.baeldung.controllers
+package controllers
 
 import javax.inject._
 import play.api.libs.json.Json
 import play.api.mvc._
-import com.baeldung.services.UserService
+import services.UserService
 
 //@Singleton
 class UserController @Inject() (

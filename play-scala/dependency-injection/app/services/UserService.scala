@@ -1,6 +1,6 @@
-package com.baeldung.services
+package services
 
-import com.baeldung.models.User
+import models.User
 
 class UserService {
 

@@ -1,10 +1,10 @@
-package com.baeldung.modules
+package modules
 
-import com.baeldung.models.Order
+import models.Order
 import com.google.inject.name.Names
 import com.google.inject.{AbstractModule, Provides}
 import play.api.{Configuration, Environment}
-import com.baeldung.services.{
+import services.{
   BusinessOrderValidationService,
   EnterpriseOrderValidationService,
   OrderPipelineProcessor,

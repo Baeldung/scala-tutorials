@@ -1,9 +1,9 @@
-package com.baeldung.modules
+package modules
 
-import com.baeldung.controllers.UserController
+import controllers.UserController
 import com.google.inject.AbstractModule
 import play.api.{Configuration, Environment}
-import com.baeldung.services.UserService
+import services.UserService
 
 import javax.inject.Singleton
 

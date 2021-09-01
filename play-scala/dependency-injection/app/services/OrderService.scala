@@ -1,6 +1,6 @@
-package com.baeldung.services
+package services
 
-import com.baeldung.models.Order
+import models.Order
 import com.google.inject.name.Named
 import play.api.Logger
 
