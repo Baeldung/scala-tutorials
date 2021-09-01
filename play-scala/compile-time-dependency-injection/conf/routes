@@ -4,5 +4,5 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /users                           com.baeldung.controllers.UserController.index()
+GET     /users                           controllers.UserController.index()
 

@@ -1,4 +1,4 @@
-package com.baeldung.models
+package models
 
 import play.api.libs.json.Json
 

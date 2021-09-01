@@ -1,17 +1,9 @@
-package com.baeldung.components
+package components
 
 import com.softwaremill.macwire.{wire, wireSet}
 import com.softwaremill.tagging._
-import com.baeldung.models.Order
-import com.baeldung.services.{
-  Business,
-  BusinessOrderValidationService,
-  Enterprise,
-  EnterpriseOrderValidationService,
-  OrderPipelineProcessor,
-  OrderService,
-  OrderValidationService
-}
+import models.Order
+import services._
 
 trait OrderComponents extends {
 

@@ -1,10 +1,10 @@
-package com.baeldung.components
+package components
 
 import com.softwaremill.macwire.wire
-import com.baeldung.controllers.UserController
+import controllers.UserController
 import play.api.BuiltInComponentsFromContext
 import play.api.mvc.ControllerComponents
-import com.baeldung.services.UserService
+import services.UserService
 
 trait UserComponents {
 

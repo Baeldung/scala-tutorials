@@ -1,7 +1,7 @@
-package com.baeldung.services
+package services
 
-import com.baeldung.models.Order
 import com.softwaremill.tagging._
+import models.Order
 import play.api.Logger
 
 class OrderService(

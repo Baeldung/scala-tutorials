@@ -1,7 +1,7 @@
-package com.baeldung.loader
+package loader
 
-import com.baeldung.components.{OrderComponents, UserComponents}
 import com.softwaremill.macwire._
+import components.{OrderComponents, UserComponents}
 import play.api.ApplicationLoader.Context
 import play.api.routing.Router
 import play.api.{ApplicationLoader, BuiltInComponents, BuiltInComponentsFromContext}
