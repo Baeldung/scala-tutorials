@@ -3,6 +3,8 @@
 # https://www.playframework.com/documentation/latest/ScalaRouting
 # ~~~~
 
-# An example controller showing a sample home page
-GET     /users                           controllers.UserController.index()
+# Guice
+# GET     /users                           guice.controllers.UserController.index()
 
+# MacWire
+GET     /users                           macwire.controllers.UserController.index()
