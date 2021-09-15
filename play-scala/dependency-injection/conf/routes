@@ -1,0 +1,10 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# Guice
+# GET     /users                           guice.controllers.UserController.index()
+
+# MacWire
+GET     /users                           macwire.controllers.UserController.index()
