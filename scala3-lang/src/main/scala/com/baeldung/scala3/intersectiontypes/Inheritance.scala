@@ -5,10 +5,10 @@ object Inheritance {
   trait Scissors:
     def cut: Unit
 
-  trait Niddle:
+  trait Needle:
     def sew: Unit
 
-  trait Tools extends Scissors, Niddle
+  trait Tools extends Scissors, Needle
 
   object DressFixer extends Tools {
     override def cut = print("Cutting dress ")

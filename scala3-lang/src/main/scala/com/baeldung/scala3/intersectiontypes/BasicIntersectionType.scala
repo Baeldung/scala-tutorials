@@ -5,18 +5,18 @@ object BasicIntersectionType {
   trait Scissors:
     def cut: Unit
 
-  trait Niddle:
+  trait Needle:
     def sew: Unit
 
-  def fixDressOne(dressFixer: Scissors & Niddle) =
+  def fixDressOne(dressFixer: Scissors & Needle) =
     dressFixer.cut
     dressFixer.sew
 
-  def fixDressTwo(dressFixer: Niddle & Scissors) =
+  def fixDressTwo(dressFixer: Needle & Scissors) =
     dressFixer.cut
     dressFixer.sew
 
-  object DressFixer extends Scissors, Niddle {
+  object DressFixer extends Scissors, Needle {
     override def cut = print("Cutting dress ")
 
     override def sew = print("Sewing dress ")
