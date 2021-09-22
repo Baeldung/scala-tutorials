@@ -5,3 +5,4 @@
 - [Access Play Configuration in Scala](https://www.baeldung.com/scala/access-play-configuration)
 - [Caching in Play Framework for Scala](https://www.baeldung.com/scala/play-caching)
 - [Error Handling in the Play Framework Using Scala](https://www.baeldung.com/scala/play-error-handling)
+- [Dependency Injection with Play](https://www.baeldung.com/scala/play-di)
