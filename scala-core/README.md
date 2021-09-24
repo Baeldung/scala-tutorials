@@ -4,7 +4,7 @@ This module contains articles about Scala's core features
 
 ### Relevant Articles: 
 
-- [Introduction to Scala](https://www.baeldung.com/scala-intro)
+- [Introduction to Scala](https://www.baeldung.com/scala/scala-intro)
 - [Higher-Order Functions in Scala](https://www.baeldung.com/scala/higher-order-functions)
 - [A Guide to Scala Tuples](https://www.baeldung.com/scala/tuples)
 - [Guide to lazy val in Scala](https://www.baeldung.com/scala/lazy-val)
