@@ -1,6 +1,6 @@
 package com.baeldung.scala.implicitly
 
-import com.baeldung.scala.implicitly.ImplicitlyUsage.{Customer, Policy, searchWithContextBound, searchWithImplicit, weight, weightUsingImplicit}
+import com.baeldung.scala.implicitly.ImplicitlyUsage.{Customer, Policy, searchWithContextBound, searchWithImplicit, weight, weightUsingImplicit, weightUsingImplicitly}
 import org.scalatest.FlatSpec
 
 class ImplicitlyUsageUnitTest extends FlatSpec {
@@ -17,8 +17,7 @@ class ImplicitlyUsageUnitTest extends FlatSpec {
   }
 
   "The weightUsingImplicitly method" should "return the weight of a mass" in {
-    import ImplicitlyUsage.G
-    val actualWeight: Double = weightUsingImplicit(50.0)
+    val actualWeight: Double = weightUsingImplicitly(50.0)
     assert(actualWeight == 490.5)
   }
 
