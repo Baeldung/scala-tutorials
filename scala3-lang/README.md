@@ -7,3 +7,4 @@
 - [Multiversal Equality in Scala 3](https://www.baeldung.com/scala/multiversal-equality)
 - [Intersection Types in Scala 3](https://www.baeldung.com/scala/intersection-types-scala-3)
 - [Open Classes in Scala 3](https://www.baeldung.com/scala/open-classes)
+- [Extension Methods in Scala 3](https://www.baeldung.com/scala/extension-methods)
