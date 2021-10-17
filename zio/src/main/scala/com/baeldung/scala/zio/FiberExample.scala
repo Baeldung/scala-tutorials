@@ -22,6 +22,5 @@ object FiberExample extends zio.ZIOAppDefault {
       result <- (fiber1 <*> fiber2).join
     } yield result
 
-
   def run = myApp
 }
