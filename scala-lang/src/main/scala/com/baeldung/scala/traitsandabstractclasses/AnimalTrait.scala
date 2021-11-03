@@ -1,19 +1,5 @@
-package com.baeldung.scala.operators
+package com.baeldung.scala.traitsandabstractclasses
 
-abstract class AbsClsAnimal(name: String) {
-  def selftPresentation(): Unit
-}
-
-trait TraitAnimal {
+trait AnimalTrait {
   def selfPresentation(): Unit
 }
-
-trait Fly {
-  def location: Unit = println("I'm at the Sky!")
-}
-
-class Bird extends Animal {
-  def selfPresentation: Unit = println("Chirp, I'm a bird!")
-}
-
-class FlyingBird extends Animal with Fly
