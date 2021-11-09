@@ -31,7 +31,7 @@ class ListCreationMethodsTest extends FlatSpec with Matchers{
 
   "createListUsingTabulate" should "be able to create a new list using the .tabulate() method" in {
     val listUsingTabulate = createListUsingTabulate()
-    val expectedList:List[Int] = List(0, 1, 10)
+    val expectedList:List[String] = List("0", "1", "10")
     listUsingTabulate shouldEqual expectedList
   }
 
