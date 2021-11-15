@@ -231,5 +231,7 @@ lazy val zio = (project in file("zio"))
 
 lazy val doobie = (project in file("doobie"))
   .settings(
-    name := "doobie"
+    name := "doobie",
+    libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
+    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1",
   )

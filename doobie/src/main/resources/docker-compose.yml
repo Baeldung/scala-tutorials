@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  postgres-world:
+    image: ghusta/postgres-world-db:2.5
+    ports:
+      - "5432:5432"
+
+# database : world-db
+# user : world
+# password : world123
