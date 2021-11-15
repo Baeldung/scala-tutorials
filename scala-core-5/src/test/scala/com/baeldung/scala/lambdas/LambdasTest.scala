@@ -5,7 +5,7 @@ import org.scalatest.{Matchers, WordSpec}
 class LambdasTest extends WordSpec with Matchers {
 
   "A lambda" should {
-    "compute the double of a number" in {
+    "multiply a number by two" in {
       val double = (n: Int) => 2 * n
       assert(double(10) == 20)
     }
