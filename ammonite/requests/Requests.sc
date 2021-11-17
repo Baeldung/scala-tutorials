@@ -1,4 +1,4 @@
-#!/usr/bin/env amm
+#!/ usr / bin / env amm
 import $ivy.`com.lihaoyi::requests:0.6.5`
 
 import requests.RequestAuth
