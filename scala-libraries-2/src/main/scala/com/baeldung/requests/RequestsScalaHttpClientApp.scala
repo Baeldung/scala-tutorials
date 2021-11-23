@@ -50,7 +50,8 @@ object RequestsScalaHttpClientApp extends App {
   }
 
   def simplePostString = {
-    val r = requests.post("http://httpbin.org/post", data = "String post body")
+    val jsonString = """{"key":"value"}"""
+    val r = requests.post("http://httpbin.org/post", data = jsonString)
     assert(r.statusCode == 200)
   }
 
