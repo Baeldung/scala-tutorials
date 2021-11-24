@@ -30,16 +30,16 @@ object CommandsUnitTest extends Commands {
 
   override def genInitialState: Gen[TrafficLight] = {
     for (
-      trafficLightColor <- Gen.oneOf(model.Red, model.Orange, model.Green)
+      trafficLightColor <- Gen.oneOf(model.Red, model.Yellow, model.Green)
     ) yield TrafficLight(UUID.randomUUID(), trafficLightColor)
   }
 
   override def genCommand(state: TrafficLight): Gen[Command] = {
     state.color match {
-      case model.Green => TransitionToOrange(state)
-      case model.Orange => TransitionToRed(state)
+      case model.Green => TransitionToYellow(state)
+      case model.Yellow => TransitionToRed(state)
       case model.Red => TransitionToGreen(state)
-      case _ => throw new RuntimeException("Traffic lights have only green, orange and red color.")
+      case _ => throw new RuntimeException("Traffic lights have only green, yellow and red color.")
     }
   }
 
@@ -68,20 +68,20 @@ object CommandsUnitTest extends Commands {
 
     override def nextState(state: TrafficLight): TrafficLight = state.copy(color = model.Red)
 
-    override def preCondition(state: TrafficLight): Boolean = state.color == model.Orange
+    override def preCondition(state: TrafficLight): Boolean = state.color == model.Yellow
 
     override def postCondition(state: TrafficLight, result: Try[Boolean]): Prop = result == Success(true)
   }
 
-  case class TransitionToOrange(trafficLight: TrafficLight) extends Command {
+  case class TransitionToYellow(trafficLight: TrafficLight) extends Command {
     override type Result = Boolean
 
     override def run(sut: SystemUnderTest): Boolean = {
-      println("going orange")
+      println("going yellow")
       true
     }
 
-    override def nextState(state: TrafficLight): TrafficLight = state.copy(color = model.Orange)
+    override def nextState(state: TrafficLight): TrafficLight = state.copy(color = model.Yellow)
 
     override def preCondition(state: TrafficLight): Boolean = state.color == model.Green
 

@@ -8,7 +8,7 @@ sealed trait TrafficLightColorT {
 
 object TrafficLightColors {
   val RED = "red"
-  val ORANGE = "orange"
+  val YELLOW = "yellow"
   val GREEN = "green"
 }
 
@@ -16,7 +16,7 @@ class TrafficLightColor(override val color: String) extends TrafficLightColorT
 
 case object Red extends TrafficLightColor(TrafficLightColors.RED)
 
-case object Orange extends TrafficLightColor(TrafficLightColors.ORANGE)
+case object Yellow extends TrafficLightColor(TrafficLightColors.YELLOW)
 
 case object Green extends TrafficLightColor(TrafficLightColors.GREEN)
 
