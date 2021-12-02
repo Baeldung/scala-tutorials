@@ -5,3 +5,4 @@
 - [Database Access with Play](https://www.baeldung.com/scala/play-database-access)
 - [ScalaCache: A Caching Library To Rule Them All](https://www.baeldung.com/scala/scalacache)
 - [Testing Akka Actors](https://www.baeldung.com/scala/testing-akka-actors)
+- [Introduction to ScalaCheck](https://www.baeldung.com/scala/scalacheck)

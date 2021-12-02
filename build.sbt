@@ -192,7 +192,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.16" % Test,
-      "org.scalatest" %% "scalatest" % "3.1.4" % Test
+      "org.scalatest" %% "scalatest" % "3.1.4" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.14.1" % Test
     )
   )
 
@@ -218,4 +219,13 @@ lazy val cats_effects = (project in file("cats-effects"))
     name := "cats-effects",
     libraryDependencies += "org.typelevel" %% "cats-effect" % "3.1.1",
     libraryDependencies += "junit" % "junit" % "4.13" % Test
+  )
+
+lazy val zio = (project in file("zio"))
+  .settings(
+    name := "zio",
+    libraryDependencies += "dev.zio" %% "zio" % "2.0.0-M4",
+    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.0-M4",
+    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.0-M4" % "test",
+    testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
