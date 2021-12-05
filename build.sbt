@@ -229,3 +229,10 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.0-M4" % "test",
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
+
+lazy val doobie = (project in file("doobie"))
+  .settings(
+    name := "doobie",
+    libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
+    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1",
+  )

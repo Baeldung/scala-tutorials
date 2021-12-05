@@ -30,3 +30,6 @@ out
 
 # Ignore Scala 3 intermediate files
 *.tasty
+
+
+.bsp
