@@ -194,6 +194,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.16" % Test,
       "org.scalatest" %% "scalatest" % "3.1.4" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.14.1" % Test,
+      "com.lihaoyi" %% "requests" % "0.6.9",
       "org.scalacheck" %% "scalacheck" % "1.14.1" % Test
     )
   )
