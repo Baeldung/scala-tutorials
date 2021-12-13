@@ -1,4 +1,5 @@
-ThisBuild / scalaVersion := "2.12.7"
+val scalaV = "2.12.15"
+ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
@@ -33,7 +34,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     name := "scala-core-3",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
   )
 
@@ -42,7 +43,7 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
     name := "scala-core-4",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
   )
 
@@ -51,7 +52,7 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     name := "scala-core-5",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1",
     libraryDependencies += "joda-time" % "joda-time" % "2.9.9",
     libraryDependencies += "org.joda" % "joda-convert" % "2.2.1",
@@ -193,8 +194,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.16" % Test,
       "org.scalatest" %% "scalatest" % "3.1.4" % Test,
-      "org.scalacheck" %% "scalacheck" % "1.14.1" % Test,
-      "com.lihaoyi" %% "requests" % "0.6.9"
+      "org.scalacheck" %% "scalacheck" % "1.14.1" % Test
     )
   )
 
