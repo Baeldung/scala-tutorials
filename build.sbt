@@ -164,6 +164,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.1"
 val monixVersion = "3.4.0"
+val elastic4sVersion = "7.15.3"
 
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
@@ -195,6 +196,11 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "org.scalatest" %% "scalatest" % "3.1.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.14.1" % Test,
       "com.lihaoyi" %% "requests" % "0.6.9"
+    ),
+    libraryDependencies ++= Seq(
+      "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
+      "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
+      "ch.qos.logback" % "logback-classic" % "1.2.3"
     )
   )
 
