@@ -2,7 +2,6 @@ lazy val root = (project in file(".")).
   settings(
     name := "scala-sbt",
     version := "1.0",
-    scalaVersion := "2.12.7",
     mainClass in Compile := Some("com.baeldung.scala.sbt.SbtAssemblyExample"),
     mainClass in assembly := Some("com.baeldung.scala.sbt.SbtAssemblyExample")
   )
