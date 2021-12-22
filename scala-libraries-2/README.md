@@ -6,3 +6,4 @@
 - [ScalaCache: A Caching Library To Rule Them All](https://www.baeldung.com/scala/scalacache)
 - [Testing Akka Actors](https://www.baeldung.com/scala/testing-akka-actors)
 - [Introduction to ScalaCheck](https://www.baeldung.com/scala/scalacheck)
+- [Simple REST Requests Using Requests-Scala](https://www.baeldung.com/scala/rest-with-requests-scala)
