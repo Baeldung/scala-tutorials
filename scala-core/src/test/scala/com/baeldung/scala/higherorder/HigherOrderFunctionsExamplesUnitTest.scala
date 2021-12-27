@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.higherorder
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

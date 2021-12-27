@@ -1,6 +1,6 @@
-package com.baeldung.scala
+package com.baeldung.scala.higherorder
 
-import com.baeldung.scala.HigherOrderFunctions.mapReduce
+import com.baeldung.scala.higherorder.HigherOrderFunctions.mapReduce
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

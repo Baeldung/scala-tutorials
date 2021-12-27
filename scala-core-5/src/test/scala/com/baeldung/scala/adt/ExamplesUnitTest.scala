@@ -1,7 +1,7 @@
 package com.baeldung.scala.adt
 
+import com.baeldung.scala.adt.Examples._
 import org.scalatest.FlatSpec
-import Examples._
 
 class ExamplesUnitTest extends FlatSpec {
 

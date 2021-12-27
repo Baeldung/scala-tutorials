@@ -1,6 +1,6 @@
-package com.baeldung.scala
+package com.baeldung.scala.introduction
 
-import com.baeldung.scala.ControlStructuresDemo._
+import com.baeldung.scala.introduction.ControlStructuresDemo._
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
