@@ -20,11 +20,14 @@ trait Sad extends Personality {
   def weep: String
 }
 
+// Poet extends two conflicting traits
+// bot the last one wins
 class Poet extends Kind with Sad {
   override def cheer: String = "Hi, it's good to see you"
   override def weep: String = "Life is sad"
 }
 
+// Again, the conflict is resolved with the last declaration
 class Grinch extends Sad with Grumpy {
   override def weep: String = "Life is sad"
   override def scold: String = "What are you doing in my garden?"
