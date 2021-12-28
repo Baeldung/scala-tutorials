@@ -1,4 +1,4 @@
-package com.baeldung.scala.currency
+package com.baeldung.scala.concurrency
 
 import com.baeldung.scala.concurrency.ScalaAndPromise
 import org.scalatest.concurrent.ScalaFutures
