@@ -1,6 +1,6 @@
 package com.baeldung.scala.traitsvsabstractclasses
 
-trait Personality {
+sealed trait Personality {
   val description: String
   def express: String = s"I'm a $description person"
 }
