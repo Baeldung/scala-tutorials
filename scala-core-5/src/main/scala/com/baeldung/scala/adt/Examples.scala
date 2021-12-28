@@ -29,7 +29,7 @@ object Examples {
   final case object Amber extends SemaphoreColor
   final case object Red extends SemaphoreColor
 
-  trait Felin
+  trait Feline
   trait Animal
-  trait Cat extends Animal with Felin
+  trait Cat extends Animal with Feline
 }

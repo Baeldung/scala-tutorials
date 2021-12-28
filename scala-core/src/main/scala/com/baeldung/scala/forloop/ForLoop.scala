@@ -1,4 +1,4 @@
-package com.baeldung.scala.forcomprehension
+package com.baeldung.scala.forloop
 
 trait ForLoop {
   // We are defining a println in a separate function in order to be able to test our iterations

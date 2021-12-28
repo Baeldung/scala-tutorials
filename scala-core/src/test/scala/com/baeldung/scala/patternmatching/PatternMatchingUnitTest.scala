@@ -1,9 +1,9 @@
-package com.baeldung.scala
-
-import java.io.FileNotFoundException
+package com.baeldung.scala.patternmatching
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+
+import java.io.FileNotFoundException
 
 class PatternMatchingUnitTest {
   @Test

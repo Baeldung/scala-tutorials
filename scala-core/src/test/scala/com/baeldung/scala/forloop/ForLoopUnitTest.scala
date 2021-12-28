@@ -1,5 +1,6 @@
-package com.baeldung.scala.forcomprehension
+package com.baeldung.scala.forloop
 
+import com.baeldung.scala.forloop.ForLoop
 import org.junit.Assert.assertEquals
 import org.junit.{Before, Test}
 
@@ -27,7 +28,7 @@ class ForLoopUnitTest {
   val numbers = List(1, 2, 3)
   val someIntValue: Option[Int] = Some(10)
   val someStringValue: Option[String] = Some("Ten")
-  
+
   @Before
   def init(): Unit = {
     forLoopTest.clean()

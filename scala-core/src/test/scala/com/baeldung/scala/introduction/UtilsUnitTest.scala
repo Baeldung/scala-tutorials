@@ -1,6 +1,6 @@
-package com.baeldung.scala
+package com.baeldung.scala.introduction
 
-import com.baeldung.scala.Utils.{average, fibonacci, power, randomLessThan}
+import com.baeldung.scala.introduction.Utils.{average, fibonacci, power, randomLessThan}
 import org.junit.Assert.{assertEquals, assertTrue}
 import org.junit.Test
 
