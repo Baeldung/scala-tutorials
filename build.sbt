@@ -59,6 +59,14 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.28.0"
   )
 
+lazy val scala_core_6 = (project in file("scala-core-6"))
+  .settings(
+    name := "scala-core-6",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+  )
+
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
     name := "scala-core-io",
