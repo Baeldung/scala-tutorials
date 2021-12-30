@@ -25,11 +25,6 @@ class MapsUnitTest extends WordSpec with Matchers {
       map shouldBe empty
 
     }
-    "create empty map with apply" in {
-      val map: Map[Int, String] = immutable.Map[Int, String].apply()
-      map shouldBe empty
-
-    }
     "fold list into map" in {
       val map: Map[Int, String] = List(1 -> "first", 2 -> "second")
         .foldLeft(Map.empty[Int, String]) {
