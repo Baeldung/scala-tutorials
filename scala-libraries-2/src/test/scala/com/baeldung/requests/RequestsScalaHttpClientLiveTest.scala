@@ -1,9 +1,7 @@
 package com.baeldung.requests
 
-import requests.RequestAuth
 import requests.Response
 import java.io.FileOutputStream
-import scala.io.StdIn
 import java.io.PrintWriter
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.BeforeAndAfterAll
