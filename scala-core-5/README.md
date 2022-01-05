@@ -14,3 +14,4 @@ This module contains articles about Scala's core features.
 - [Regular Expressions in Scala](https://www.baeldung.com/scala/regular-expressions)
 - [A Guide to Sorting in Scala](https://www.baeldung.com/scala/sorting)
 - [Range in Scala](https://www.baeldung.com/scala/range)
+- [Creating a List in Scala](https://www.baeldung.com/scala/create-list)
