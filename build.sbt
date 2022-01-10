@@ -134,11 +134,11 @@ lazy val scala_test = (project in file("scala-test"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.9",
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.18",
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.9" % Test,
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.18" % Test,
     libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
-    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.9",
+    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.18",
     libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
     libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
