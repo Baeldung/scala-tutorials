@@ -17,7 +17,7 @@ class ParallelCollectionTest extends FlatSpec {
   }
 
   "Parallel list of 100 multiplied by 2" should "sum" in {
-    assert(parallelMap.sum == 10100)
+    assert(parallelMap.sum == ZERO_TO_HUNDRED_SUM_TIMES2)
   }
 
   "Parallel list of 100 map" should "return same size" in {
