@@ -1,4 +1,5 @@
-ThisBuild / scalaVersion := "2.12.7"
+val scalaV = "2.12.15"
+ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
@@ -33,7 +34,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     name := "scala-core-3",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
   )
 
@@ -42,7 +43,7 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
     name := "scala-core-4",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
   )
 
@@ -51,12 +52,29 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     name := "scala-core-5",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1",
     libraryDependencies += "joda-time" % "joda-time" % "2.9.9",
     libraryDependencies += "org.joda" % "joda-convert" % "2.2.1",
     libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.28.0"
   )
+
+lazy val scala_core_6 = (project in file("scala-core-6"))
+  .settings(
+    name := "scala-core-6",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+  )
+
+lazy val scala_core_7 = (project in file("scala-core-7"))
+  .settings(
+    name := "scala-core-7",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+  )
+
 
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
@@ -116,11 +134,11 @@ lazy val scala_test = (project in file("scala-test"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.9",
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.18",
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.9" % Test,
+    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.18" % Test,
     libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
-    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.9",
+    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.18",
     libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
     libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
@@ -164,6 +182,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.1"
 val monixVersion = "3.4.0"
+val elastic4sVersion = "7.16.0"
 
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
@@ -176,7 +195,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.github.cb372" %% "scalacache-core" % "0.28.0",
       "com.github.cb372" %% "scalacache-guava" % "0.28.0",
       "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
-      "com.github.cb372" %% "scalacache-caffeine" % "0.28.0"
+      "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
+      "com.beachape" %% "enumeratum" % "1.7.0"
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.0.0",
@@ -192,7 +212,14 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.16" % Test,
-      "org.scalatest" %% "scalatest" % "3.1.4" % Test
+      "org.scalatest" %% "scalatest" % "3.1.4" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.14.1" % Test,
+      "com.lihaoyi" %% "requests" % "0.6.9"
+    ),
+    libraryDependencies ++= Seq(
+      "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
+      "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
+      "ch.qos.logback" % "logback-classic" % "1.2.3"
     )
   )
 
@@ -218,4 +245,20 @@ lazy val cats_effects = (project in file("cats-effects"))
     name := "cats-effects",
     libraryDependencies += "org.typelevel" %% "cats-effect" % "3.1.1",
     libraryDependencies += "junit" % "junit" % "4.13" % Test
+  )
+
+lazy val zio = (project in file("zio"))
+  .settings(
+    name := "zio",
+    libraryDependencies += "dev.zio" %% "zio" % "2.0.0-M4",
+    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.0-M4",
+    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.0-M4" % "test",
+    testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
+  )
+
+lazy val doobie = (project in file("doobie"))
+  .settings(
+    name := "doobie",
+    libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
+    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1",
   )

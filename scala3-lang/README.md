@@ -8,3 +8,6 @@
 - [Intersection Types in Scala 3](https://www.baeldung.com/scala/intersection-types-scala-3)
 - [Open Classes in Scala 3](https://www.baeldung.com/scala/open-classes)
 - [Extension Methods in Scala 3](https://www.baeldung.com/scala/extension-methods)
+- [Contextual Abstractions: Given Instances and Using Clauses](https://www.baeldung.com/scala/contextual-abstractions)
+- [The inline Modifier in Scala 3](https://www.baeldung.com/scala/inline-modifier)
+- [New Control and Quiet Syntax in Scala 3](https://www.baeldung.com/scala/control-quiet-syntax)

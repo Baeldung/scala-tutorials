@@ -1,4 +1,4 @@
-val scala3Version = "3.0.0"
+val scala3Version = "3.1.0"
 
 scalaVersion := scala3Version
 
