@@ -12,3 +12,4 @@ This module contains articles about the Akka library in Scala.
 - [Introduction to Alpakka](https://www.baeldung.com/scala/alpakka-intro)
 - [Typed Mailboxes in Scala](https://www.baeldung.com/scala/typed-mailboxes)
 - [Discovering Actors in Akka](https://www.baeldung.com/scala/discovering-actors-in-akka)
+- [Different Ways to Stop Akka Actors](https://www.baeldung.com/scala/stop-akka-actors)
