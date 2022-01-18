@@ -18,18 +18,22 @@ object App {
 
     val binding = Http().newServerAt("localhost", 8080).bind(SimpleRouter.route)
 
-    val responseFuture = Http().singleRequest(HttpRequest(uri = "http://localhost:8080/hello"))
+    val responseFuture =
+      Http().singleRequest(HttpRequest(uri = "http://localhost:8080/hello"))
     val timeout = 300.millis
     val responseAsString = Await.result(
       responseFuture
-        .flatMap { resp => resp.entity.toStrict(timeout)}
+        .flatMap { resp => resp.entity.toStrict(timeout) }
         .map { strictEntity => strictEntity.data.utf8String },
       timeout
     )
 
     assert(responseAsString == "Hello, world!")
 
-    val responseAsString2 = Await.result(responseFuture.flatMap(resp => Unmarshal(resp.entity).to[String]), timeout)
+    val responseAsString2 = Await.result(
+      responseFuture.flatMap(resp => Unmarshal(resp.entity).to[String]),
+      timeout
+    )
 
     assert(responseAsString2 == "Hello, world!")
 
