@@ -143,7 +143,8 @@ lazy val scala_akka = (project in file("scala-akka"))
     libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test
+    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
+    libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.2.7"
   )
 
 val monocleVersion = "2.0.4"
