@@ -2,10 +2,11 @@ package com.baeldung.scala.akka.scheduler
 
 import akka.actor.{ActorSystem, Props}
 import akka.testkit.{ImplicitSender, TestKit}
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{Matchers, WordSpecLike, Ignore}
 
 import scala.concurrent.duration._
 
+@Ignore //fixing in JAVA-9843
 class TimerUnitTest
     extends TestKit(ActorSystem("test-system"))
     with ImplicitSender
