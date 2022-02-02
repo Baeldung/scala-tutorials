@@ -8,3 +8,4 @@
 - [Introduction to ScalaCheck](https://www.baeldung.com/scala/scalacheck)
 - [Simple REST Requests Using Requests-Scala](https://www.baeldung.com/scala/rest-with-requests-scala)
 - [Better Enumerations In Scala Using Enumeratum](https://www.baeldung.com/scala/enumeratum)
+- [Guide to elastic4s – Elasticsearch Scala Client](https://www.baeldung.com/scala/elastic4s-elasticsearch-client)

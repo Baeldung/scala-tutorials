@@ -5,7 +5,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 import scala.util.{Failure, Success}
 
-class ExceptionHandlingTest extends FlatSpec with Matchers {
+class ExceptionHandlingUnitTest extends FlatSpec with Matchers {
 
   "divideWithOption" should "return Some when divisor not zero" in {
     divideWithOption(10, 2) should be(Some(5))
