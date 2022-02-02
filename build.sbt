@@ -72,7 +72,12 @@ lazy val scala_core_7 = (project in file("scala-core-7"))
     name := "scala-core-7",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "com.github.scopt" %% "scopt" % "4.0.1",
+    libraryDependencies += "org.rogach" %% "scallop" % "4.1.0",
+    libraryDependencies += "org.backuity.clist" %% "clist-core"   % "3.5.1",
+    libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
+    libraryDependencies += "args4j" % "args4j" % "2.33"
   )
 
 
