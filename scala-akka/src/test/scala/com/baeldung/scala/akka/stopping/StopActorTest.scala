@@ -6,6 +6,7 @@ import org.scalatest.WordSpec
 import org.scalatest.Matchers
 import akka.testkit.ImplicitSender
 import org.scalatest.WordSpecLike
+import org.scalatest.Ignore
 import akka.actor.Props
 import MessageProcessorActor._
 import akka.actor.PoisonPill
@@ -14,6 +15,7 @@ import akka.testkit
 import akka.actor.DeadLetter
 import scala.concurrent.duration._
 
+@Ignore // fixing in JAVA-9841
 class StoppingActorTest
   extends TestKit(ActorSystem("test_system"))
   with WordSpecLike
