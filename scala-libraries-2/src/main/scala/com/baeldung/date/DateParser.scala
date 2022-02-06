@@ -1,6 +1,7 @@
 package com.baeldung.date
 
 import scala.util.Try
+import scala.util.matching.Regex
 
 /**
   * Simple case class to represent the elements from a date.
@@ -19,4 +20,7 @@ class DateParser {
       case _ => None
     }
   }
+
+  def regexParse(naiveDateRegExp: Regex, str: String): Option[DateElements] =
+    ???
 }
