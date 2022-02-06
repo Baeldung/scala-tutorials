@@ -23,8 +23,26 @@ class DateParserSpec extends AnyWordSpec with Matchers {
   }
 
   "a regular expression parser" should {
-    "retrieve date elements when it matches the regular expression" in {}
-    "retrieve date elements even if it includes unexpected elements (time)" in {}
+    // Note that this is a very naive regular expression,
+    // just to show a point. Don't use it for real.
+    val naiveDateRegExp = "^[0-9]{4}/1?[0-9]/[1-3]?[0-9].*".r
+
+    "retrieve date elements when it matches the regular expression" in {
+      val maybeDate = parser.regexParse(naiveDateRegExp, "2022/02/14")
+      assert(maybeDate.isDefined)
+      assert(maybeDate.get.year == 2022)
+      // in the case class, elements are 0-based:
+      assert(maybeDate.get.month == 2 - 1)
+      assert(maybeDate.get.day == 14 - 1)
+    }
+    "retrieve date elements even if it includes unexpected elements (time)" in {
+      val maybeDate = parser.regexParse(naiveDateRegExp, "2022/02/14T20:30:00")
+      assert(maybeDate.isDefined)
+      assert(maybeDate.get.year == 2022)
+      // in the case class, elements are 0-based:
+      assert(maybeDate.get.month == 2 - 1)
+      assert(maybeDate.get.day == 14 - 1)
+    }
   }
 
   "a library-based parser" should {
