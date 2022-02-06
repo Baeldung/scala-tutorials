@@ -13,13 +13,12 @@ import scala.util.matching.Regex
 case class DateElements(year: Int, month: Int, day: Int)
 
 class DateParser {
-  def simpleParse(dateString: String): Option[DateElements] = {
+  def simpleParse(dateString: String): Option[DateElements] =
     dateString.split("/").toList match {
       case yyyy :: mm :: dd :: Nil =>
         Try(DateElements(yyyy.toInt, mm.toInt - 1, dd.toInt - 1)).toOption
       case _ => None
     }
-  }
 
   def regexParse(naiveDateRegExp: Regex, str: String): Option[DateElements] =
     ???
