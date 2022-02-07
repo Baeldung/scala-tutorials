@@ -20,6 +20,22 @@ class DateParser {
       case _ => None
     }
 
-  def regexParse(naiveDateRegExp: Regex, str: String): Option[DateElements] =
-    ???
+  def regexParse(regex: Regex, dateString: String): Option[DateElements] = {
+    val groupsIteratorOption = Try(
+      regex.findAllIn(dateString).matchData
+    ).toOption
+    groupsIteratorOption
+      .map(_.next())
+      .flatMap(iterator =>
+        if (iterator.groupCount < 3) None
+        else
+          Some(
+            DateElements(
+              year = iterator.group(1).toInt,
+              month = iterator.group(2).toInt - 1,
+              day = iterator.group(3).toInt - 1
+            )
+          )
+      )
+  }
 }
