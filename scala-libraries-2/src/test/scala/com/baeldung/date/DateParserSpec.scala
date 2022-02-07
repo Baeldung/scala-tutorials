@@ -25,7 +25,7 @@ class DateParserSpec extends AnyWordSpec with Matchers {
   "a regular expression parser" should {
     // Note that this is a very naive regular expression,
     // just to show a point. Don't use it for real.
-    val naiveDateRegExp = "^[0-9]{4}/1?[0-9]/[1-3]?[0-9].*".r
+    val naiveDateRegExp = "^([0-9]{4})/([0-1]?[0-9])/([1-3]?[0-9]).*".r
 
     "retrieve date elements when it matches the regular expression" in {
       val maybeDate = parser.regexParse(naiveDateRegExp, "2022/02/14")
