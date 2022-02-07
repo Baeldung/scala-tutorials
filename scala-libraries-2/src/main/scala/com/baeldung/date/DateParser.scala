@@ -16,7 +16,13 @@ class DateParser {
   def simpleParse(dateString: String): Option[DateElements] =
     dateString.split("/").toList match {
       case yyyy :: mm :: dd :: Nil =>
-        Try(DateElements(yyyy.toInt, mm.toInt - 1, dd.toInt - 1)).toOption
+        Try(
+          DateElements(
+            year = yyyy.toInt,
+            month = mm.toInt - 1,
+            day = dd.toInt - 1
+          )
+        ).toOption
       case _ => None
     }
 
