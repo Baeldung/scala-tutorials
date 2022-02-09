@@ -16,9 +16,8 @@ assembly / mainClass := Some(mainClassPath) //since @main method name will be th
 // sbt native packager settings
 enablePlugins(JavaAppPackaging)
 enablePlugins(JDKPackagerPlugin)
-maintainer := "Yadukrishnan <yadavan88@gmail.com>"
+maintainer := "Baeldung"
 Compile / mainClass := Some(mainClassPath)
-maintainer := "yadavan88@gmail.com"
 
 enablePlugins(JlinkPlugin)
 
@@ -30,6 +29,6 @@ jlinkIgnoreMissingDependency := JlinkIgnore.only(
 //SBT Proguard plugin
 enablePlugins(SbtProguard)
 Proguard / proguardOptions ++= Seq("-dontoptimize","-dontnote", "-dontwarn", "-ignorewarnings")
-Proguard / proguardOptions += ProguardOptions.keepMain("com.yadavan88.app.mainMethod")
+Proguard / proguardOptions += ProguardOptions.keepMain("com.baeldung.packaging.mainMethod")
 Proguard / proguardInputs := (Compile / dependencyClasspath).value.files
 Proguard / proguardFilteredInputs ++= ProguardOptions.noFilter((Compile / packageBin).value)
