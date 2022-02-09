@@ -27,7 +27,7 @@ jlinkIgnoreMissingDependency := JlinkIgnore.only(
   "scala.quoted.runtime" -> "scala"
 )
 
-SBT Proguard plugin
+//SBT Proguard plugin
 enablePlugins(SbtProguard)
 Proguard / proguardOptions ++= Seq("-dontoptimize","-dontnote", "-dontwarn", "-ignorewarnings")
 Proguard / proguardOptions += ProguardOptions.keepMain("com.yadavan88.app.mainMethod")
