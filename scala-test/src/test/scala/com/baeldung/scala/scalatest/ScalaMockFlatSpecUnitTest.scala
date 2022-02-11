@@ -1,10 +1,11 @@
 package com.baeldung.scala.scalatest
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
 import org.scalamock.scalatest.MockFactory
+import org.scalatest.matchers.should.Matchers
 
 
-class ScalaMockFlatSpec extends FlatSpec with MockFactory with Matchers {
+class ScalaMockFlatSpec extends AnyFlatSpec with MockFactory with Matchers {
 
   "A mocked Foo" should "return a mocked bar value" in {
     val mockFoo = mock[Foo]
