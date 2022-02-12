@@ -3,6 +3,11 @@ package com.baeldung.date
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
+import java.time.temporal.ChronoField
+import java.time.{ZoneId, ZonedDateTime}
+import java.util.Calendar
+import scala.util.Try
+
 class DateParserSpec extends AnyWordSpec with Matchers {
   val parser = new DateParser
 
@@ -11,10 +16,10 @@ class DateParserSpec extends AnyWordSpec with Matchers {
       val maybeDate = parser.simpleParse("2022/02/14")
       // the format is "yyyy/mm/dd"
       assert(maybeDate.isDefined)
-      assert(maybeDate.get.year == 2022)
+      assert(maybeDate.get.get(Calendar.YEAR) == 2022)
       // in the case class, elements are 0-based:
-      assert(maybeDate.get.month == 2 - 1)
-      assert(maybeDate.get.day == 14 - 1)
+      assert(maybeDate.get.get(Calendar.MONTH) == 2 - 1)
+      assert(maybeDate.get.get(Calendar.DAY_OF_MONTH) == 14 - 1)
     }
     "fail to retrieve elements if date includes unexpected time" in {
       val maybeDateTime = parser.simpleParse("2022/02/14T20:30:00")
@@ -30,18 +35,18 @@ class DateParserSpec extends AnyWordSpec with Matchers {
     "retrieve date elements when it matches the regular expression" in {
       val maybeDate = parser.regexParse(naiveDateRegExp, "2022/02/14")
       assert(maybeDate.isDefined)
-      assert(maybeDate.get.year == 2022)
+      assert(maybeDate.get.get(Calendar.YEAR) == 2022)
       // in the case class, elements are 0-based:
-      assert(maybeDate.get.month == 2 - 1)
-      assert(maybeDate.get.day == 14 - 1)
+      assert(maybeDate.get.get(Calendar.MONTH) == 2 - 1)
+      assert(maybeDate.get.get(Calendar.DAY_OF_MONTH) == 14 - 1)
     }
     "retrieve date elements even if it includes unexpected elements (time)" in {
       val maybeDate = parser.regexParse(naiveDateRegExp, "2022/02/14T20:30:00")
       assert(maybeDate.isDefined)
-      assert(maybeDate.get.year == 2022)
+      assert(maybeDate.get.get(Calendar.YEAR) == 2022)
       // in the case class, elements are 0-based:
-      assert(maybeDate.get.month == 2 - 1)
-      assert(maybeDate.get.day == 14 - 1)
+      assert(maybeDate.get.get(Calendar.MONTH) == 2 - 1)
+      assert(maybeDate.get.get(Calendar.DAY_OF_MONTH) == 14 - 1)
     }
   }
 
