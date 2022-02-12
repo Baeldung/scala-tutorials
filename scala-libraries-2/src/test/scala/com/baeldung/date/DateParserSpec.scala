@@ -51,7 +51,25 @@ class DateParserSpec extends AnyWordSpec with Matchers {
   }
 
   "a library-based parser" should {
-    "retrieve date elements when a complex date/time string is passed" in {}
-    "fail to retrieve date elements when an invalide date/time is passed" in {}
+    "retrieve date elements when a complex date/time string is passed" in {
+      val attemptedParse =
+        Try(ZonedDateTime.parse("2022-02-14T20:30:00.00Z[Europe/Paris]"))
+      assert(attemptedParse.isSuccess)
+      val zdt = attemptedParse.get
+      assert(zdt.get(ChronoField.YEAR) == 2022)
+      assert(zdt.get(ChronoField.MONTH_OF_YEAR) == 2)
+      assert(zdt.get(ChronoField.DAY_OF_MONTH) == 14)
+      assert(zdt.get(ChronoField.HOUR_OF_DAY) == 20)
+      assert(zdt.get(ChronoField.MINUTE_OF_HOUR) == 30)
+      assert(zdt.getZone == ZoneId.of("Europe/Paris"))
+    }
+    "fail to retrieve date elements when an invalid date/time is passed" in {
+      val attemptedParse =
+        Try(ZonedDateTime.parse("2022-02-14"))
+      assert(attemptedParse.isFailure)
+      assert(
+        attemptedParse.failed.get.getMessage.contains("could not be parsed")
+      )
+    }
   }
 }
