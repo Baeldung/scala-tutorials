@@ -189,6 +189,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 val circeVersion = "0.14.1"
 val monixVersion = "3.4.0"
 val elastic4sVersion = "7.16.0"
+val sparkVersion = "3.2.1"
 
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
@@ -210,6 +211,10 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
+    ),
+    libraryDependencies ++= Seq(
+      "org.apache.spark" %% "spark-core" % sparkVersion,
+      "org.apache.spark" %% "spark-sql" % sparkVersion
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.16",
