@@ -13,3 +13,4 @@ This module contains articles about Scala's core features.
 - [Implicit Conversions](https://www.baeldung.com/scala/implicit-conversions)
 - [A Guide to Scala Maps](https://www.baeldung.com/scala/maps-guide)
 - [Break Statement in Scala](https://www.baeldung.com/scala/break-statement)
+- [Range in Scala](https://www.baeldung.com/scala/range)
