@@ -1,4 +1,5 @@
 package com.baeldung.packaging
+import os._
 
 @main def mainMethod() = 
   val osName = System.getProperty("os.name")
