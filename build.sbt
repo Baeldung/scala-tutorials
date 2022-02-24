@@ -72,7 +72,12 @@ lazy val scala_core_7 = (project in file("scala-core-7"))
     name := "scala-core-7",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
+    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
+    libraryDependencies += "com.github.scopt" %% "scopt" % "4.0.1",
+    libraryDependencies += "org.rogach" %% "scallop" % "4.1.0",
+    libraryDependencies += "org.backuity.clist" %% "clist-core"   % "3.5.1",
+    libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
+    libraryDependencies += "args4j" % "args4j" % "2.33"
   )
 
 
@@ -143,7 +148,8 @@ lazy val scala_akka = (project in file("scala-akka"))
     libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test
+    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
+    libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.2.7"
   )
 
 val monocleVersion = "2.0.4"
@@ -183,6 +189,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 val circeVersion = "0.14.1"
 val monixVersion = "3.4.0"
 val elastic4sVersion = "7.16.0"
+val sparkVersion = "3.2.1"
 
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
@@ -204,6 +211,10 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
+    ),
+    libraryDependencies ++= Seq(
+      "org.apache.spark" %% "spark-core" % sparkVersion,
+      "org.apache.spark" %% "spark-sql" % sparkVersion
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.16",

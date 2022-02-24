@@ -2,11 +2,12 @@ package com.baeldung.scala.await
 
 import java.util.concurrent.TimeoutException
 
-import org.scalatest.{ Matchers, WordSpec }
+import org.scalatest.{ Matchers, WordSpec, Ignore }
 
 import scala.concurrent.duration._
 import scala.concurrent.{ Await, Future }
 
+@Ignore // fixing in JAVA-9842
 class AwaitFutureUnitTest extends AwaitFutureTestUtil {
 
   private val url = "http://www.baeldung.com"
