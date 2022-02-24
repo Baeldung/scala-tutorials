@@ -136,6 +136,16 @@ lazy val scala_test = (project in file("scala-test"))
       )
   )
 
+lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
+  .settings(
+    name := "scala-test-junit4",
+    libraryDependencies ++=
+    Seq(
+      "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
+      junit
+    )
+  )
+
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
