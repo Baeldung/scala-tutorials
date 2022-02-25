@@ -13,7 +13,7 @@ import pureconfig.module.enumeratum._
 
 sealed trait Protocol
 object Protocol {
-  implicit val seasonConvert: ConfigReader[Protocol] = deriveEnumerationReader[Protocol]
+  implicit val protocolConvert: ConfigReader[Protocol] = deriveEnumerationReader[Protocol]
   case object Http extends Protocol
   case object Https extends Protocol
 }
