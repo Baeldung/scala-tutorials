@@ -19,21 +19,8 @@ class SampleConfigLoader extends AnyWordSpec with Matchers {
       val monitoringConf =
         ConfigSource.default.at("monitoring").load[MonitoringConf]
 
-      println(httpConf.isRight)
-      println(httpConf)
-      println(httpConf.right.get.defaultTimeout)
-
-      println(monitoringConf.isRight)
-      println(monitoringConf)
-
       httpConf.isRight shouldBe true
       monitoringConf.isRight shouldBe true
-
-      implicit def hint[A] =
-        ProductHint[A](ConfigFieldMapping(CamelCase, CamelCase))
-
-      val dummy = ConfigSource.default.loadOrThrow[BaseAppConfig]
-      println(dummy)
 
     }
 
