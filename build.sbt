@@ -197,10 +197,6 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
     ),
-    libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-sql" % sparkVersion
-    ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.16",
       "com.typesafe.akka" %% "akka-stream" % "2.6.16",
@@ -216,6 +212,16 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
       "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
       "ch.qos.logback" % "logback-classic" % "1.2.3"
+    )
+  )
+
+lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
+      "org.apache.spark" %% "spark-core" % sparkVersion,
+      "org.apache.spark" %% "spark-sql" % sparkVersion
     )
   )
 
