@@ -1,8 +1,8 @@
 package com.baeldung.scala.scalatest
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class ListFunSuite extends FunSuite {
+class ListFunSuite extends AnyFunSuite {
 
   test("An empty List should have size 0") {
     assert(List.empty.size == 0)

@@ -1,9 +1,11 @@
 package com.baeldung.scala.scalatest
 
-import org.scalatest.{FlatSpec, Matchers}
-import org.scalactic.StringNormalizations._
 
-class ExampleFlatSpecWithMatchersUnitTest extends FlatSpec with Matchers {
+import org.scalactic.StringNormalizations._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
+
+class ExampleFlatSpecWithMatchersUnitTest extends AnyFlatSpec with Matchers {
 
   "With a matcher" should "let us check equality" in {
     val number = 25
