@@ -234,6 +234,16 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     )
   )
 
+lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
+      "org.apache.spark" %% "spark-core" % sparkVersion,
+      "org.apache.spark" %% "spark-sql" % sparkVersion
+    )
+  )
+
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
