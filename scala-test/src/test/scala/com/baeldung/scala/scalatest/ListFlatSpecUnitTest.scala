@@ -1,8 +1,8 @@
 package com.baeldung.scala.scalatest
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class ListFlatSpecUnitTest extends FlatSpec {
+class ListFlatSpecUnitTest extends AnyFlatSpec {
 
   "An empty List" should "have size 0" in {
     assert(List.empty.size == 0)

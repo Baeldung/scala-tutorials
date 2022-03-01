@@ -1,8 +1,8 @@
 package com.baeldung.scala.scalatest
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class ListFunSpecUnitTest extends FunSpec {
+class ListFunSpecUnitTest extends AnyFunSpec {
 
   describe("A List") {
     describe("when empty") {

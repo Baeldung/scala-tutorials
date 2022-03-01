@@ -75,11 +75,10 @@ lazy val scala_core_7 = (project in file("scala-core-7"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "com.github.scopt" %% "scopt" % "4.0.1",
     libraryDependencies += "org.rogach" %% "scallop" % "4.1.0",
-    libraryDependencies += "org.backuity.clist" %% "clist-core"   % "3.5.1",
+    libraryDependencies += "org.backuity.clist" %% "clist-core" % "3.5.1",
     libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
     libraryDependencies += "args4j" % "args4j" % "2.33"
   )
-
 
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
@@ -130,7 +129,8 @@ lazy val scala_test = (project in file("scala-test"))
     name := "scala-test",
     libraryDependencies ++=
       Seq(
-        scalaTest,
+        "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
+        "org.scalatest" %% "scalatest" % "3.2.10" % Test,
         junit,
         "org.scalamock" %% "scalamock" % "4.4.0" % Test
       )
@@ -234,6 +234,16 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     )
   )
 
+lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
+      "org.apache.spark" %% "spark-core" % sparkVersion,
+      "org.apache.spark" %% "spark-sql" % sparkVersion
+    )
+  )
+
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
@@ -273,5 +283,5 @@ lazy val doobie = (project in file("doobie"))
   .settings(
     name := "doobie",
     libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
-    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1",
+    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )

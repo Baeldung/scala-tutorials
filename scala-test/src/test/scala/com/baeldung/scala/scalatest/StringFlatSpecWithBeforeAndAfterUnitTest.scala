@@ -1,9 +1,10 @@
 package com.baeldung.scala.scalatest
 
-import org.scalatest._
+import org.scalatest.flatspec.AnyFlatSpec
 import collection.mutable.ListBuffer
+import org.scalatest.BeforeAndAfter
 
-class StringFlatSpecWithBeforeAndAfterUnitTest extends FlatSpec with BeforeAndAfter {
+class StringFlatSpecWithBeforeAndAfterUnitTest extends AnyFlatSpec with BeforeAndAfter {
 
   val builder = new StringBuilder
 
