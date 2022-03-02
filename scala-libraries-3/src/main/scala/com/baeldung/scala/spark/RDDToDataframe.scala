@@ -4,10 +4,7 @@ import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import org.apache.spark.rdd.RDD
 
-object RDDToDataframe extends App{
-
-  val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
-  val sc = spark.sparkContext
+object RDDToDataframe extends App with SparkSessionWrapper {
 
   val rdd = sc.parallelize(
     Seq(
