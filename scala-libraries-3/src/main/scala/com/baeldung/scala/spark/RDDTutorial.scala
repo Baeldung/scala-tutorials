@@ -19,7 +19,7 @@ object RDDTutorial extends SparkSessionWrapper with App {
   noCRDD.collect
 
   val numbers = sc.parallelize(List(1, 2, 3, 4, 5))
-  numbers.reduce(_ + _)
+  val numbersSum = numbers.reduce(_ + _)
 
   val rddOne = sc.parallelize(List((1, "cat"), (2, "dog"), (3, "frog")))
   val rddTwo = sc.parallelize(List((1, "mammal"), (3, "amphibian")))
