@@ -16,12 +16,9 @@ class SampleConfigLoader extends AnyWordSpec with Matchers {
   "pureconfig" should {
     "load config successfully" in {
       val httpConf = ConfigSource.default.at("http").load[HttpConfig]
-      val monitoringConf =
-        ConfigSource.default.at("monitoring").load[MonitoringConf]
-
+      val monitoringConf = ConfigSource.default.at("monitoring").load[MonitoringConf]
       httpConf.isRight shouldBe true
       monitoringConf.isRight shouldBe true
-
     }
 
     "load a config file other than application conf" in {
@@ -46,7 +43,6 @@ class SampleConfigLoader extends AnyWordSpec with Matchers {
     }
 
     "throw an exception if loadOrThrow is used" in {
-
       assertThrows[ConfigReaderException[_]] {
         ConfigSource
           .string("""{"database-nam": "strDB", "url":"mysql://localhost"}""")
