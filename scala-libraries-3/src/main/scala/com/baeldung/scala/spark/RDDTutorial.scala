@@ -6,12 +6,6 @@ object RDDTutorial extends SparkSessionWrapper with App {
   val animals = List("dog", "cat", "frog", "horse")
   val animalsRDD: RDD[String] = sc.parallelize(animals)
 
-  val dataPath = getClass.getResource("data.txt").getPath
-  val dataRDD = sc.textFile(dataPath)
-
-  val dataDF = spark.read.csv(dataPath)
-  val dataAnotherRDD = dataDF.rdd
-
   val countLengthRDD = animalsRDD.map(animal => (animal, animal.length))
   val noCRDD = animalsRDD.filter(_.startsWith("c"))
 
