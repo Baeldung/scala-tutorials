@@ -25,40 +25,41 @@ object RDDTutorial extends SparkSessionWrapper with App {
   rdd.filter(_ % 2 == 0).map(_ * 2)
 
   rdd.toDebugString
+
   /**
-   * (8) MapPartitionsRDD[2] at map at <console>:26 []
-   * | MapPartitionsRDD[1] at filter at <console>:26 []
-   * | ParallelCollectionRDD[0] at parallelize at <console>:27 []
-   * */
+    * (8) MapPartitionsRDD[2] at map at <console>:26 []
+    * | MapPartitionsRDD[1] at filter at <console>:26 []
+    * | ParallelCollectionRDD[0] at parallelize at <console>:27 []
+    * */
 
   import spark.implicits._
   val df = rdd.toDF()
-  df
-    .filter($"value" % 2 === 0)
+  df.filter($"value" % 2 === 0)
     .withColumn("value", $"value" * 2)
     .explain("formatted")
+
   /**
-   * == Physical Plan ==
-   * Project (4)
-   * +- * Filter (3)
-   * +- * SerializeFromObject (2)
-   * +- Scan (1)
-   *
-   *
-   * (1) Scan
-   * Output [1]: [obj#1]
-   * Arguments: obj#1: int, ParallelCollectionRDD[0] at parallelize at <console>:27
-   *
-   * (2) SerializeFromObject [codegen id : 1]
-   * Input [1]: [obj#1]
-   * Arguments: [input[0, int, false] AS value#2]
-   *
-   * (3) Filter [codegen id : 1]
-   * Input [1]: [value#2]
-   * Condition : ((value#2 % 2) = 0)
-   *
-   * (4) Project [codegen id : 1]
-   * Output [1]: [(value#2 * 2) AS value#11]
-   * Input [1]: [value#2]
-   */
+    * == Physical Plan ==
+    * Project (4)
+    * +- * Filter (3)
+    * +- * SerializeFromObject (2)
+    * +- Scan (1)
+    *
+    *
+    * (1) Scan
+    * Output [1]: [obj#1]
+    * Arguments: obj#1: int, ParallelCollectionRDD[0] at parallelize at <console>:27
+    *
+    * (2) SerializeFromObject [codegen id : 1]
+    * Input [1]: [obj#1]
+    * Arguments: [input[0, int, false] AS value#2]
+    *
+    * (3) Filter [codegen id : 1]
+    * Input [1]: [value#2]
+    * Condition : ((value#2 % 2) = 0)
+    *
+    * (4) Project [codegen id : 1]
+    * Output [1]: [(value#2 * 2) AS value#11]
+    * Input [1]: [value#2]
+    */
 }
