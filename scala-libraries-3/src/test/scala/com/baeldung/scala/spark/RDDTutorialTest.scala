@@ -1,12 +1,6 @@
 package com.baeldung.scala.spark
 
-import com.baeldung.scala.spark.RDDTutorial.{
-  animalsRDD,
-  joinedRDD,
-  noCRDD,
-  numbersSum,
-  sc
-}
+import com.baeldung.scala.spark.RDDTutorial.sc
 import org.apache.spark.rdd.RDD
 import org.scalatest.flatspec.AnyFlatSpec
 
