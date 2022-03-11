@@ -75,7 +75,7 @@ object RDDToDataframe extends App{
 
   dfUsingToDFMethod.printSchema()
   /**
-  root
+    root
      |-- Name: string (nullable = true)
      |-- Job: string (nullable = true)
      |-- Age: integer (nullable = false)
