@@ -1,10 +1,14 @@
 package com.baeldung.scala.spark
 
-import com.baeldung.scala.spark.RDDTutorial.sc
 import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.SparkSession
 import org.scalatest.flatspec.AnyFlatSpec
 
 class RDDTutorialTest extends AnyFlatSpec {
+
+  val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
+  val sc = spark.sparkContext
+
 
   "animals collection" should "became RDD size 4" in {
     val animals = List("dog", "cat", "frog", "horse")
