@@ -1,4 +1,4 @@
-package com.baeldung.scala.spark
+package com.baeldung.scala.spark.rdd
 
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
