@@ -21,14 +21,14 @@ object RDDToDataframe extends App{
 
   dfWitDefaultSchema.printSchema()
   /**
-  |-- _1: string (nullable = true)
+    |-- _1: string (nullable = true)
     |-- _2: string (nullable = true)
     |-- _3: integer (nullable = false)
    */
 
   dfWitDefaultSchema.show()
   /**
-  +-----+--------+---+
+    +-----+--------+---+
     |   _1|      _2| _3|
     +-----+--------+---+
     | John| Manager| 38|
@@ -53,7 +53,7 @@ object RDDToDataframe extends App{
 
   dfWithSchema.show()
   /**
-  +-----+--------+---+
+    +-----+--------+---+
     | Name|     Job|Age|
     +-----+--------+---+
     | John| Manager| 38|
@@ -64,7 +64,7 @@ object RDDToDataframe extends App{
 
   dfWithSchema.printSchema()
   /**
-  |-- Name: string (nullable = false)
+   |-- Name: string (nullable = false)
    |-- Job: string (nullable = true)
    |-- Age: integer (nullable = true)
    */
@@ -83,7 +83,7 @@ object RDDToDataframe extends App{
 
   dfUsingToDFMethod.show()
   /**
-  +-----+--------+---+
+    +-----+--------+---+
     | Name|     Job|Age|
     +-----+--------+---+
     | John| Manager| 38|
