@@ -1,8 +1,13 @@
 package com.baeldung.scala.spark
 
+import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.SparkSession
 
-object RDDTutorial extends SparkSessionWrapper with App {
+object RDDTutorial extends App {
+  val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
+  val sc: SparkContext = spark.sparkContext
+
   val animals = List("dog", "cat", "frog", "horse")
   val animalsRDD: RDD[String] = sc.parallelize(animals)
 
