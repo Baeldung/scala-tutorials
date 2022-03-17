@@ -25,18 +25,18 @@ object impl {
 
 final case class Port(number: Int) extends AnyVal
 
-final case class HttpConfig(
-  host: String,
+final case class KafkaConfig(
+  bootstrapServer: String,
   port: Port,
   protocol: Protocol,
-  defaultTimeout: FiniteDuration
+  timeout: FiniteDuration
 )
 
-final case class MonitoringServer(host: String, port: Port)
+final case class GraphiteServer(host: String, port: Port)
 
-final case class MonitoringConf(
+final case class GraphiteConf(
   enabled: Boolean,
-  servers: Seq[MonitoringServer]
+  servers: Seq[GraphiteServer]
 )
 
 /***  Config using Enumeratum based fields ***/
@@ -50,7 +50,7 @@ object Env extends Enum[Env] {
   override val values = findValues
 }
 
-final case class BaseAppConfig(name: String, startDate: LocalDate, env: Env)
+final case class BaseAppConfig(appName: String, baseDate: LocalDate, env: Env)
 
 
 import pureconfig._
@@ -72,3 +72,7 @@ object Greeting extends Enum[Greeting] {
 case class GreetingConf(s: Greeting, e: Greeting)
 
 case class DatabaseConfig(url:String, databaseName:String)
+
+case class NotificationConfig(notificationUrl:String, params:String){
+  def fullURL = s"$notificationUrl?$params"
+}

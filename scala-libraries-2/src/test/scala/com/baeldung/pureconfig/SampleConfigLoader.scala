@@ -10,43 +10,48 @@ import impl._
 import pureconfig.module.enumeratum._
 import pureconfig.generic.ProductHint
 import pureconfig.error.ConfigReaderException
+import scala.concurrent.duration._
 
 class SampleConfigLoader extends AnyWordSpec with Matchers {
 
   "pureconfig" should {
     "load config successfully" in {
-      val httpConf = ConfigSource.default.at("http").load[HttpConfig]
-      val monitoringConf = ConfigSource.default.at("monitoring").load[MonitoringConf]
-      httpConf.isRight shouldBe true
-      monitoringConf.isRight shouldBe true
+      val kafkaConf = ConfigSource.default.at("kafka").load[KafkaConfig]
+      val graphiteConf = ConfigSource.default.at("graphite").load[GraphiteConf]
+      kafkaConf.isRight shouldBe true
+      graphiteConf.isRight shouldBe true
+      graphiteConf.right.get.enabled shouldBe true
+      kafkaConf.right.get.protocol shouldBe Protocol.Https
+      kafkaConf.right.get.timeout shouldBe 2.seconds
     }
 
     "load a config file other than application conf" in {
-      val dbConf = ConfigSource.resources("database.conf").load[DatabaseConfig]
-      dbConf.isRight shouldBe true
-      dbConf.right.get.databaseName shouldBe "configs"
+      val notificationConf = ConfigSource.resources("notification.conf").load[NotificationConfig]
+      notificationConf.isRight shouldBe true
+      notificationConf.right.get.params shouldBe "status=completed"
+      notificationConf.right.get.fullURL shouldBe "http://mynotificationservice.com/push?status=completed"
     }
 
     "load a config from string content" in {
       val strConf = ConfigSource
-        .string("""{"database-name": "strDB", "url":"mysql://localhost"}""")
-        .load[DatabaseConfig]
+        .string("""{"notification-url": "https://newURL", "params":"status=pending"}""")
+        .load[NotificationConfig]
       strConf.isRight shouldBe true
-      strConf.right.get.databaseName shouldBe "strDB"
+      strConf.right.get.params shouldBe "status=pending"
     }
 
     "fail to load config if any field is not proper" in {
       val strConf = ConfigSource
-        .string("""{"database-nam": "strDB", "url":"mysql://localhost"}""")
-        .load[DatabaseConfig]
+        .string("""{"notification-u": "https://wrongURL", "params":"status=completed"}""")
+        .load[NotificationConfig]
       strConf.isRight shouldBe false
     }
 
     "throw an exception if loadOrThrow is used" in {
       assertThrows[ConfigReaderException[_]] {
         ConfigSource
-          .string("""{"database-nam": "strDB", "url":"mysql://localhost"}""")
-          .loadOrThrow[DatabaseConfig]
+          .string("""{"notification-u": "https://wrongURL", "params":"status=completed"}""")
+          .loadOrThrow[NotificationConfig]
       }
     }
   }
