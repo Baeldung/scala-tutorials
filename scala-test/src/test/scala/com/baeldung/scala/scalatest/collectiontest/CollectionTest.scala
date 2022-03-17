@@ -3,6 +3,7 @@ package com.baeldung.scala.scalatest.collectiontest
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
+import scala.util.Random
 
 class CollectionTest extends AnyFlatSpec with Matchers {
 
@@ -37,17 +38,21 @@ class CollectionTest extends AnyFlatSpec with Matchers {
   it should "pass only if exactly 1 element overlaps" in {
     val asianCountries = List("india", "china", "russia")
     asianCountries should contain oneOf ("germany", "italy", "russia") //exactly one element shoud match
-    asianCountries should contain atMostOneElementOf (Seq(
-      "germany",
-      "italy",
-      "russia"
-    )) // can use Seq()
   }
 
   it should "pass if atleast one element overlaps" in {
     val capitalCities = List("Berlin", "Paris", "Brussels", "Bern")
     val cities = List("Zurich", "Geneva", "Munich", "Paris")
     capitalCities should contain atLeastOneElementOf (cities)
+  }
+
+  it should "pass if atmost one element overlaps" in {
+    val capitalCities = List("Berlin", "Paris", "Brussels", "Bern")
+    val cities = List("Zurich", "Geneva", "Munich", "Paris")
+    capitalCities should contain atMostOneElementOf (cities)
+    capitalCities ++ cities should not contain atMostOneElementOf(
+      cities
+    ) // negative check
   }
 
   it should "check for no overlap" in {
@@ -66,16 +71,30 @@ class CollectionTest extends AnyFlatSpec with Matchers {
   it should "pass if both collections contains exactly same elements" in {
     val cities = List("Barcelona", "Hamburg")
     val cities2 = List("Barcelona", "Hamburg")
-    cities should contain theSameElementsAs (cities2)
+    Random.shuffle(cities) should contain theSameElementsAs (cities2)
     cities shouldBe cities2
-    cities should contain only (cities2: _*) // but duplicates are allowed
-    cities ++ cities should contain only (cities2: _*)
+    cities ++ cities should contain only (cities2: _*) // but duplicates are allowed
+    cities should contain only (cities2: _*)
   }
 
   it should "pass if both collections contains exactly same elements in same order" in {
     val cities = List("Barcelona", "Hamburg")
     val cities2 = List("Barcelona", "Hamburg")
     cities should contain theSameElementsInOrderAs (cities2)
+  }
+
+  it should "check if a key is present in the map" in {
+    val capitalMap =
+      Map("India" -> "New Delhi", "Germany" -> "Berlin", "France" -> "Paris")
+    capitalMap should contain key "India"
+    capitalMap should not contain key ("USA")
+  }
+
+  it should "check if a value is present in the map" in {
+    val capitalMap =
+      Map("India" -> "New Delhi", "Germany" -> "Berlin", "France" -> "Paris")
+    capitalMap should contain value "Berlin"
+    capitalMap should not contain value ("Munich")
   }
 
 }
