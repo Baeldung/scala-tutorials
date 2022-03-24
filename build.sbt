@@ -203,7 +203,9 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.github.cb372" %% "scalacache-guava" % "0.28.0",
       "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
       "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
-      "com.beachape" %% "enumeratum" % "1.7.0"
+      "com.beachape" %% "enumeratum" % "1.7.0",
+      "com.github.pureconfig" %% "pureconfig" % "0.17.1",
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.0.0",
