@@ -236,6 +236,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     )
   )
 
+val http4sVersion = "0.23.10"
+
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
     name := "scala-libraries",
@@ -243,6 +245,11 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-core" % sparkVersion,
       "org.apache.spark" %% "spark-sql" % sparkVersion
+    ),
+    libraryDependencies ++= Seq(
+      "org.http4s" %% "http4s-dsl" % http4sVersion,
+      "org.http4s" %% "http4s-blaze-server" % http4sVersion,
+      "org.http4s" %% "http4s-blaze-client" % http4sVersion
     )
   )
 
