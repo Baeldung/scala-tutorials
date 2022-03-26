@@ -12,5 +12,16 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
         DuplicatesRemover.removeDuplicates(withDuplicates)
       assertResult(withoutDuplicates)(deDuplicated)
     }
+    "return the same list if no duplicates" in {
+      val withoutDuplicates = List(3, 7, 2, 1, 4)
+      val deDuplicated =
+        DuplicatesRemover.removeDuplicates(withoutDuplicates)
+      assertResult(withoutDuplicates)(deDuplicated)
+    }
+    "handle empty lists" in {
+      assertResult(List.empty[Int])(
+        DuplicatesRemover.removeDuplicates(List.empty[Int])
+      )
+    }
   }
 }
