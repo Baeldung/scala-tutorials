@@ -11,5 +11,6 @@ object DuplicatesRemover {
   }
 
   def removeDuplicates[T: Ordering](list: List[T]): List[T] =
-    assessElement(list.init, list.last)
+    if (list.isEmpty) list
+    else assessElement(list.init, list.last)
 }
