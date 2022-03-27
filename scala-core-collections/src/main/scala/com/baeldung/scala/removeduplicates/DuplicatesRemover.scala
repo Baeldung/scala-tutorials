@@ -1,16 +1,17 @@
 package com.baeldung.scala.removeduplicates
 
 object DuplicatesRemover {
-  private def assessElement[T](init: List[T], last: T): List[T] = {
-    if (init.isEmpty) List(last)
-    else {
-      val recursiveList = assessElement(init.init, init.last)
-      if (init.contains(last)) recursiveList
-      else recursiveList :+ last
-    }
-  }
 
-  def removeDuplicates[T](list: List[T]): List[T] =
+  def removeDuplicatesRecursively[T](list: List[T]): List[T] = {
+    def assessRemoval(init: List[T], last: T): List[T] = {
+      if (init.isEmpty) List(last)
+      else {
+        val recursiveList = assessRemoval(init.init, init.last)
+        if (init.contains(last)) recursiveList
+        else recursiveList :+ last
+      }
+    }
+
     if (list.isEmpty) list
     else assessElement(list.init, list.last)
 }
