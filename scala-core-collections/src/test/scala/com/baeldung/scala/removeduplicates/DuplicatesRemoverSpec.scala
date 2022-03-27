@@ -2,8 +2,6 @@ package com.baeldung.scala.removeduplicates
 
 import org.scalatest.wordspec.AnyWordSpec
 
-import scala.language.implicitConversions
-
 class DuplicatesRemoverSpec extends AnyWordSpec {
 
   "DuplicatesRemover" should {
