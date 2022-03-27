@@ -4,16 +4,6 @@ import org.scalatest.wordspec.AnyWordSpec
 
 import scala.language.implicitConversions
 
-case class Person(userId: String, firstName: String, lastName: String) {
-  override def hashCode(): Int = userId.hashCode
-
-  override def equals(other: Any): Boolean = {
-    if (!canEqual(other)) false
-    else if (!other.isInstanceOf[Person]) false
-    else userId == other.asInstanceOf[Person].userId
-  }
-}
-
 class DuplicatesRemoverSpec extends AnyWordSpec {
 
   "DuplicatesRemover" should {
@@ -36,21 +26,62 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
       )
     }
     "de-duplicate lists of objects" in {
-      val withDuplicates = List(
-        Person(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
-        Person(userId = "jw04", firstName = "John", lastName = "Wayne"),
-        Person(userId = "mm01", firstName = "Marilyn", lastName = "Manson"),
-        Person(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
-        Person(userId = "jw04", firstName = "John", lastName = "Watson")
+      case class FullIdentityPerson(
+        userId: String,
+        firstName: String,
+        lastName: String
       )
-      val withoutDuplicates = List(
-        Person(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
-        Person(userId = "jw04", firstName = "John", lastName = "Wayne"),
-        Person(userId = "sh01", firstName = "Sherlock", lastName = "Holmes")
+
+      case class PartialIdentityPerson(
+        userId: String,
+        firstName: String,
+        lastName: String
+      ) {
+        override def hashCode(): Int = userId.hashCode
+
+        override def equals(other: Any): Boolean = {
+          if (!canEqual(other)) false
+          else if (!other.isInstanceOf[PartialIdentityPerson]) false
+          else userId == other.asInstanceOf[PartialIdentityPerson].userId
+        }
+      }
+
+      // First, let's test full equivalence
+      val withFullDuplicates = List(
+        FullIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
+        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
+        FullIdentityPerson(userId = "mm01", firstName = "Marilyn", lastName = "Manson"),
+        FullIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
+        FullIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
+        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Watson")
       )
-      val deDuplicated =
-        DuplicatesRemover.removeDuplicates(withDuplicates)
-      assertResult(withoutDuplicates)(deDuplicated)
+      val withoutFullDuplicates = List(
+        FullIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
+        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
+        FullIdentityPerson(userId = "mm01", firstName = "Marilyn", lastName = "Manson"),
+        FullIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
+        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Watson")
+      )
+      val deDuplicatedFull =
+        DuplicatesRemover.removeDuplicates(withFullDuplicates)
+      assertResult(withoutFullDuplicates)(deDuplicatedFull)
+
+      // Now, let's test partial equivalence
+      val withPartialDuplicates = List(
+        PartialIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
+        PartialIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
+        PartialIdentityPerson(userId = "mm01", firstName = "Marilyn", lastName = "Manson"),
+        PartialIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
+        PartialIdentityPerson(userId = "jw04", firstName = "John", lastName = "Watson")
+      )
+      val withoutPartialDuplicates = List(
+        PartialIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
+        PartialIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
+        PartialIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes")
+      )
+      val deDuplicatedPartial =
+        DuplicatesRemover.removeDuplicates(withPartialDuplicates)
+      assertResult(withoutPartialDuplicates)(deDuplicatedPartial)
     }
   }
 }
