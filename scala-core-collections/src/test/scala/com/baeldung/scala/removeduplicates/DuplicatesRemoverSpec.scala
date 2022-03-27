@@ -10,20 +10,23 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
     "return a shorter integers list without duplicates" in {
       val withDuplicates = List(3, 7, 2, 7, 1, 3, 4)
       val withoutDuplicates = List(3, 7, 2, 1, 4)
-      val deDuplicated =
-        DuplicatesRemover.removeDuplicates(withDuplicates)
-      assertResult(withoutDuplicates)(deDuplicated)
+      assertResult(withoutDuplicates)(
+        DuplicatesRemover.removeDuplicatesRecursively(withDuplicates))
+      assertResult(withoutDuplicates)(
+        DuplicatesRemover.removeDuplicatesIteratively(withDuplicates))
     }
     "return the same list if no duplicates" in {
       val withoutDuplicates = List(3, 7, 2, 1, 4)
-      val deDuplicated =
-        DuplicatesRemover.removeDuplicates(withoutDuplicates)
-      assertResult(withoutDuplicates)(deDuplicated)
+      assertResult(withoutDuplicates)(
+        DuplicatesRemover.removeDuplicatesRecursively(withoutDuplicates))
+      assertResult(withoutDuplicates)(
+        DuplicatesRemover.removeDuplicatesIteratively(withoutDuplicates))
     }
     "handle empty lists" in {
       assertResult(List.empty[Int])(
-        DuplicatesRemover.removeDuplicates(List.empty[Int])
-      )
+        DuplicatesRemover.removeDuplicatesRecursively(List.empty[Int]))
+      assertResult(List.empty[Int])(
+        DuplicatesRemover.removeDuplicatesIteratively(List.empty[Int]))
     }
     "de-duplicate lists of objects" in {
       case class FullIdentityPerson(
@@ -62,9 +65,10 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
         FullIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
         FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Watson")
       )
-      val deDuplicatedFull =
-        DuplicatesRemover.removeDuplicates(withFullDuplicates)
-      assertResult(withoutFullDuplicates)(deDuplicatedFull)
+      assertResult(withoutFullDuplicates)(
+        DuplicatesRemover.removeDuplicatesRecursively(withFullDuplicates))
+      assertResult(withoutFullDuplicates)(
+        DuplicatesRemover.removeDuplicatesIteratively(withFullDuplicates))
 
       // Now, let's test partial equivalence
       val withPartialDuplicates = List(
@@ -79,9 +83,10 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
         PartialIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
         PartialIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes")
       )
-      val deDuplicatedPartial =
-        DuplicatesRemover.removeDuplicates(withPartialDuplicates)
-      assertResult(withoutPartialDuplicates)(deDuplicatedPartial)
+      assertResult(withoutPartialDuplicates)(
+        DuplicatesRemover.removeDuplicatesRecursively(withPartialDuplicates))
+      assertResult(withoutPartialDuplicates)(
+        DuplicatesRemover.removeDuplicatesIteratively(withPartialDuplicates))
     }
   }
 }
