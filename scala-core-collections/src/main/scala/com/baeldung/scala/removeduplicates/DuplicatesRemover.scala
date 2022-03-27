@@ -13,5 +13,12 @@ object DuplicatesRemover {
     }
 
     if (list.isEmpty) list
-    else assessElement(list.init, list.last)
+    else assessRemoval(list.init, list.last)
+  }
+
+  def removeDuplicatesIteratively[T](list: List[T]): List[T] =
+    list.foldLeft(List.empty[T]) { (partialResult, element) =>
+      if (partialResult.contains(element)) partialResult
+      else partialResult :+ element
+    }
 }
