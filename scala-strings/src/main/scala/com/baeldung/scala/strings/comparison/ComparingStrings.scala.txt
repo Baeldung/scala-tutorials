@@ -1,0 +1,22 @@
+package com.baeldung.scala.strings.comparison
+
+object ComparingStrings {
+
+  def main(args: Array[String]) {
+    var stringOne = "baeldung"
+    var stringTwo = "baeldung"
+
+    assert(stringOne == stringTwo)
+    assert(stringOne eq stringTwo)
+    assert(stringOne.equals(stringTwo))
+
+    stringTwo = null
+    println(stringOne == stringTwo)
+
+    stringOne = "Baeldung"
+
+    println(stringOne == stringTwo)
+    assert(stringOne.toUpperCase() == stringTwo.toUpperCase())
+    assert(stringOne.equalsIgnoreCase(stringTwo))
+  }
+}
