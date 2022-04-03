@@ -8,9 +8,11 @@ import com.baeldung.cache.service.{
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.Ignore
 
 import scala.collection.JavaConverters.collectionAsScalaIterableConverter
 
+@Ignore //fixing in JAVA-11236
 class ScalaCacheCachingBlockUnitTest
   extends AnyWordSpec
   with Matchers
