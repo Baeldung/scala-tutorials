@@ -130,7 +130,7 @@ lazy val scala_test = (project in file("scala-test"))
     libraryDependencies ++=
       Seq(
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
-        "org.scalatest" %% "scalatest" % "3.2.10" % Test,
+        "org.scalatest" %% "scalatest" % "3.2.11" % Test,
         junit,
         "org.scalamock" %% "scalamock" % "4.4.0" % Test
       )

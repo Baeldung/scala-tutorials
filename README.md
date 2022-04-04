@@ -2,4 +2,4 @@
 
 # Code fomatting
 
-Before creating a PR, make sure the code is correctly formatted running `sbt scalafmt`.
+Before creating a PR, make sure the code is correctly formatted running `sbt scalafmt`. 
