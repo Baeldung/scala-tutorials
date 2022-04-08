@@ -294,3 +294,9 @@ lazy val doobie = (project in file("doobie"))
     libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
     libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )
+
+lazy val scala_native = (project in file("scala-native"))
+  .settings(
+    name := "scala-native",
+    libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
+  )
