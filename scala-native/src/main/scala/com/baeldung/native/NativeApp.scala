@@ -40,11 +40,12 @@ object NativeApp {
     def make_curl_call(str: CString): Int = extern
   }
 
-  def main(args: Array[String]): Unit = {
+  // Uncomment this main and run it. Make sure clang is installed in the machine, otherwise it will fail to run
+  /* def main(args: Array[String]): Unit = {
     printFromNative
     simpleNative
     nativeFromCFile
     testCurl
-  }
+  }*/
 
 }
