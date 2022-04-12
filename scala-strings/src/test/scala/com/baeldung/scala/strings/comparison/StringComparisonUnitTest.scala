@@ -5,10 +5,9 @@ import org.scalatest.featurespec.AnyFeatureSpec
 
 class StringComparisonUnitTest extends AnyFeatureSpec with GivenWhenThen {
 
-  Feature("String Comparison with ==, eq and equals") {
-    info("Demonstrate various scenarios of String comparison.")
-
-    Scenario("String Comparison") {
+  Feature("String Comparison") {
+    info("Demonstrate various scenarios on String comparison.")
+    Scenario("String Comparison with ==, eq and equals") {
 
       Given("two same Strings")
       val stringOne = "baeldung"
@@ -23,15 +22,15 @@ class StringComparisonUnitTest extends AnyFeatureSpec with GivenWhenThen {
       And("compared with equals method")
       val result3 = stringOne.equals(stringTwo)
 
-      Then("the result will be true")
+      Then("the results will be true")
       assert(result1 == true)
       assert(result2 == true)
-      assert(result2 == true)
+      assert(result3 == true)
     }
 
-    Scenario("null String comparison") {
+    Scenario("Handling of null String by == method") {
 
-      Given("two same Strings out of which one String is null")
+      Given("two Strings out of which one String is null")
       val stringOne = "baeldung"
       val stringTwo = null
 
@@ -60,11 +59,11 @@ class StringComparisonUnitTest extends AnyFeatureSpec with GivenWhenThen {
       Then("the result will be true")
       assert(result2 == true)
 
-      And("compared with equalsIgnoreCase method")
+      When("compared with equalsIgnoreCase method")
       val result3 = stringOne.equalsIgnoreCase(stringTwo)
 
       Then("the result will be true")
-      assert(result3 == false)
+      assert(result3 == true)
     }
   }
 }
