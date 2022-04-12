@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.strings.comparison
 
 import org.scalatest.GivenWhenThen
 import org.scalatest.featurespec.AnyFeatureSpec
