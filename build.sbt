@@ -294,3 +294,10 @@ lazy val doobie = (project in file("doobie"))
     libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
     libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )
+  
+lazy val reflection = (project in file("reflection"))
+  .settings(
+    name := "reflection",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
+    libraryDependencies += "junit" % "junit" % "4.13" % Test
+  )
