@@ -12,6 +12,8 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
         DuplicatesRemover.removeDuplicatesRecursively(withDuplicates))
       assertResult(withoutDuplicates)(
         DuplicatesRemover.removeDuplicatesIteratively(withDuplicates))
+      assertResult(withoutDuplicates)(
+        DuplicatesRemover.removeDuplicatesWithLibrary(withDuplicates))
     }
     "return the same list if no duplicates" in {
       val withoutDuplicates = List(3, 7, 2, 1, 4)
@@ -19,12 +21,16 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
         DuplicatesRemover.removeDuplicatesRecursively(withoutDuplicates))
       assertResult(withoutDuplicates)(
         DuplicatesRemover.removeDuplicatesIteratively(withoutDuplicates))
+      assertResult(withoutDuplicates)(
+        DuplicatesRemover.removeDuplicatesWithLibrary(withoutDuplicates))
     }
     "handle empty lists" in {
       assertResult(List.empty[Int])(
         DuplicatesRemover.removeDuplicatesRecursively(List.empty[Int]))
       assertResult(List.empty[Int])(
         DuplicatesRemover.removeDuplicatesIteratively(List.empty[Int]))
+      assertResult(List.empty[Int])(
+        DuplicatesRemover.removeDuplicatesWithLibrary(List.empty[Int]))
     }
     "de-duplicate lists of objects" in {
       case class FullIdentityPerson(
@@ -67,6 +73,8 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
         DuplicatesRemover.removeDuplicatesRecursively(withFullDuplicates))
       assertResult(withoutFullDuplicates)(
         DuplicatesRemover.removeDuplicatesIteratively(withFullDuplicates))
+      assertResult(withoutFullDuplicates)(
+        DuplicatesRemover.removeDuplicatesWithLibrary(withFullDuplicates))
 
       // Now, let's test partial equivalence
       val withPartialDuplicates = List(
@@ -85,6 +93,8 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
         DuplicatesRemover.removeDuplicatesRecursively(withPartialDuplicates))
       assertResult(withoutPartialDuplicates)(
         DuplicatesRemover.removeDuplicatesIteratively(withPartialDuplicates))
+      assertResult(withoutPartialDuplicates)(
+        DuplicatesRemover.removeDuplicatesWithLibrary(withPartialDuplicates))
     }
   }
 }

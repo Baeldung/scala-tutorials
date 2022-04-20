@@ -20,4 +20,6 @@ object DuplicatesRemover {
       if (partialResult.contains(element)) partialResult
       else partialResult :+ element
     }
+
+  def removeDuplicatesWithLibrary[T](list: List[T]): List[T] = list.distinct
 }
