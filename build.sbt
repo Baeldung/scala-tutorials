@@ -136,6 +136,19 @@ lazy val scala_test = (project in file("scala-test"))
       )
   )
 
+lazy val scala_akka_dependencies: Seq[ModuleID] = Seq (
+  "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.18",
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
+  "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.18" % Test,
+  "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
+  "com.typesafe.akka" %% "akka-stream" % "2.6.18",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
+  "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
+  "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+  "com.novocode" % "junit-interface" % "0.11" % "test",
+  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
+  "com.typesafe.akka" %% "akka-http" % "10.2.7",
+)
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
@@ -149,19 +162,14 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.18",
-    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
-    libraryDependencies += "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.18" % Test,
-    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
-    libraryDependencies += "com.typesafe.akka" %% "akka-stream" % "2.6.18",
-    libraryDependencies += "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
-    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
-    libraryDependencies += "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
-    libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.2.7"
+    libraryDependencies ++= scala_akka_dependencies
   )
 
+lazy val scala_akka_2 = (project in file("scala-akka-2"))
+  .settings(
+    name := "scala-akka-2",
+    libraryDependencies ++= scala_akka_dependencies
+  )
 val monocleVersion = "2.0.4"
 val slickVersion = "3.3.2"
 val shapelessVersion = "2.3.3"
@@ -305,7 +313,7 @@ lazy val doobie = (project in file("doobie"))
     libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
     libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )
-  
+
 lazy val reflection = (project in file("reflection"))
   .settings(
     name := "reflection",
