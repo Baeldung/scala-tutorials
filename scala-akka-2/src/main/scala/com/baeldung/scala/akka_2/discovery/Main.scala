@@ -1,4 +1,5 @@
-package com.baeldung.scala.akka.discovery
+package com.baeldung.scala.akka_2
+package discovery
 
 import akka.actor.typed.receptionist.Receptionist.{Find, Listing}
 import akka.actor.typed.receptionist.{Receptionist, ServiceKey}
