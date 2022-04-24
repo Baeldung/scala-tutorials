@@ -1,0 +1,2 @@
+enablePlugins(ScalaNativePlugin)
+nativeLinkStubs := true
