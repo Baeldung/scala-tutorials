@@ -31,5 +31,4 @@ object MagnetPattern extends App{
 
   println(combineElements(List(1,2,3,4)))
   println(combineElements(List("a","b","c")))
-
 }

@@ -1,6 +1,5 @@
-package com.baeldung.scala.cakepattern
+package com.baeldung.scala.magnetpattern
 
-import com.baeldung.scala.magnetpattern.MagnetPattern
 import org.scalatest.{FlatSpec, Matchers}
 
 class MagnetPatternTest extends FlatSpec with Matchers{
