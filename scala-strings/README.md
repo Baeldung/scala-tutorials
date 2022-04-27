@@ -6,3 +6,4 @@ This module contains articles about Scala's core features
 
 - [String Interpolation in Scala](https://www.baeldung.com/scala/string-interpolation)
 - [Introduction to Strings in Scala](https://www.baeldung.com/scala/strings-intro)
+- [String Comparison in Scala](https://www.baeldung.com/scala/string-comparison)
