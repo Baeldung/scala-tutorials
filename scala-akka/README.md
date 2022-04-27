@@ -14,3 +14,4 @@ This module contains articles about the Akka library in Scala.
 - [Discovering Actors in Akka](https://www.baeldung.com/scala/discovering-actors-in-akka)
 - [Different Ways to Stop Akka Actors](https://www.baeldung.com/scala/stop-akka-actors)
 - [Reading an Akka Response Body as a String](https://www.baeldung.com/scala/akka-response-body-to-string)
+- [Actor Discovery in Typed Akka](https://www.baeldung.com/scala/akka-typed-actor-discovery)
