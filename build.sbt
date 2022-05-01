@@ -153,10 +153,10 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
     libraryDependencies ++=
-    Seq(
-      "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
-      junit
-    )
+      Seq(
+        "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
+        junit
+      )
   )
 
 lazy val scala_akka = (project in file("scala-akka"))
@@ -249,7 +249,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
       "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
       "ch.qos.logback" % "logback-classic" % "1.2.3"
-    )
+    ),
+    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test
   )
 
 val http4sVersion = "0.23.10"
