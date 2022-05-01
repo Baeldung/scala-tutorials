@@ -249,8 +249,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
       "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
       "ch.qos.logback" % "logback-classic" % "1.2.3"
-    ),
-    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test
+    )
   )
 
 val http4sVersion = "0.23.10"
@@ -270,7 +269,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "com.beachape" %% "enumeratum" % "1.7.0",
       "com.github.pureconfig" %% "pureconfig" % "0.17.1",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
-    )
+    ),
+    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
