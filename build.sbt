@@ -320,3 +320,10 @@ lazy val reflection = (project in file("reflection"))
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "junit" % "junit" % "4.13" % Test
   )
+
+lazy val scala3_libraries = (project in file("scala3-libraries"))
+.settings(
+  scalaVersion := "3.1.1",
+  name := "scala3-libraries",
+  libraryDependencies +=  "com.github.japgolly.clearconfig" %% "core" % "3.0.0"
+)
