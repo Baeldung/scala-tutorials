@@ -66,31 +66,3 @@ object KafkaConfig {
       KafkaConfig(port, server, Protocol.resolve(protocol), timeout)
   }
 }
-
-object ClearConfigReader extends App {
-  val notificationConfig: CCNotificationConfig =
-    CCNotificationConfig.notificationConfig
-      .run(CCNotificationConfig.configSources)
-      .getOrDie()
-
-  val kafkaConfigSource: ConfigSources[Id] =
-    ConfigSource.propFileOnClasspath[Id]("kafka.conf", optional = false)
-
-  val kafkaConfig: KafkaConfig =
-    KafkaConfig.kafkaConfigDef
-      .withPrefix("kafka.")
-      .run(kafkaConfigSource)
-      .getOrDie()
-
-  // println(notificationConfig)
-  // println(kafkaConfig)
-
-
-  val (notificationConfigResult, notificationReport) = CCNotificationConfig.notificationConfig
-  .withReport.run(CCNotificationConfig.configSources).getOrDie()
-
-  // println(notificationReport.full)
-  val reducedReport = notificationReport.mapUnused(_.withoutSources(ConfigSourceName.environment, ConfigSourceName.system)).full
-  println(reducedReport)
-
-}

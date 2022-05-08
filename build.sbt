@@ -136,7 +136,7 @@ lazy val scala_test = (project in file("scala-test"))
       )
   )
 
-lazy val scala_akka_dependencies: Seq[ModuleID] = Seq (
+lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.18",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.18" % Test,
@@ -147,16 +147,16 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq (
   "org.scalatest" %% "scalatest" % "3.0.5" % Test,
   "com.novocode" % "junit-interface" % "0.11" % "test",
   "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
-  "com.typesafe.akka" %% "akka-http" % "10.2.7",
+  "com.typesafe.akka" %% "akka-http" % "10.2.7"
 )
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
     libraryDependencies ++=
-    Seq(
-      "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
-      junit
-    )
+      Seq(
+        "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
+        junit
+      )
   )
 
 lazy val scala_akka = (project in file("scala-akka"))
@@ -322,8 +322,11 @@ lazy val reflection = (project in file("reflection"))
   )
 
 lazy val scala3_libraries = (project in file("scala3-libraries"))
-.settings(
-  scalaVersion := "3.1.1",
-  name := "scala3-libraries",
-  libraryDependencies +=  "com.github.japgolly.clearconfig" %% "core" % "3.0.0"
-)
+  .settings(
+    scalaVersion := "3.1.1",
+    name := "scala3-libraries",
+    libraryDependencies ++= Seq(
+      "com.github.japgolly.clearconfig" %% "core" % "3.0.0",
+      "org.scalameta" %% "munit" % "0.7.29" % Test
+    )
+  )
