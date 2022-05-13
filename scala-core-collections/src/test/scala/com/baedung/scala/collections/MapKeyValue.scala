@@ -42,9 +42,9 @@ class MapKeyValue extends AnyWordSpec with Matchers {
       newIterable shouldBe Iterable("A", "B", "B", "C", "C", "C")
 
       val newMap: Map[Int, String] = m flatMap {
-        case (k, v) => (1 to k).map(i => i -> v.repeat(i))
+        case (k, v) => (1 to k).map(i => i -> s"$i$v")
       }
-      newMap shouldBe Map(1 -> "C", 2 -> "CC", 3 -> "CCC")
+      newMap shouldBe Map(1 -> "1C", 2 -> "2C", 3 -> "3C")
     }
   }
 
@@ -53,9 +53,9 @@ class MapKeyValue extends AnyWordSpec with Matchers {
       val m: Map[Int, Char] = Map(1 -> 'A', 2 -> 'B', 3 -> 'C')
 
       val newMap: Map[Int, String] = m transform {
-        case (k, v) => v.toString.repeat(k)
+        case (k, v) => s"$k$v"
       }
-      newMap shouldBe Map(1 -> "A", 2 -> "BB", 3 -> "CCC")
+      newMap shouldBe Map(1 -> "1A", 2 -> "2B", 3 -> "3C")
     }
   }
 }
