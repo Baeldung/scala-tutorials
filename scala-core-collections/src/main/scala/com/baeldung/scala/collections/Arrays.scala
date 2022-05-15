@@ -1,4 +1,4 @@
-package com.baeldung.scala
+package com.baeldung.scala.collections
 
 object Arrays extends App {
 
