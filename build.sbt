@@ -296,7 +296,8 @@ lazy val scala3_lang_2 = project in file("scala3-lang-2")
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
-    libraryDependencies += "org.typelevel" %% "cats-effect" % "3.1.1",
+    libraryDependencies += "org.typelevel" %% "cats-effect" % "3.3.12",
+    libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
     libraryDependencies += "junit" % "junit" % "4.13" % Test
   )
 
@@ -316,8 +317,8 @@ lazy val doobie = (project in file("doobie"))
     libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )
 
-// Scala Native Project is disabled as it needs clang to installed in the target machine. 
-// To test the scala-native code, install clang and then uncommment this build  
+// Scala Native Project is disabled as it needs clang to installed in the target machine.
+// To test the scala-native code, install clang and then uncommment this build
 // lazy val scala_native = (project in file("scala-native"))
 //   .settings(
 //     name := "scala-native",
