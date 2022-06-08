@@ -137,7 +137,7 @@ lazy val scala_test = (project in file("scala-test"))
       )
   )
 
-lazy val scala_akka_dependencies: Seq[ModuleID] = Seq (
+lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.18",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.18" % Test,
@@ -148,16 +148,16 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq (
   "org.scalatest" %% "scalatest" % "3.0.5" % Test,
   "com.novocode" % "junit-interface" % "0.11" % "test",
   "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
-  "com.typesafe.akka" %% "akka-http" % "10.2.7",
+  "com.typesafe.akka" %% "akka-http" % "10.2.7"
 )
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
     libraryDependencies ++=
-    Seq(
-      "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
-      junit
-    )
+      Seq(
+        "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
+        junit
+      )
   )
 
 lazy val scala_akka = (project in file("scala-akka"))
@@ -270,7 +270,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "com.beachape" %% "enumeratum" % "1.7.0",
       "com.github.pureconfig" %% "pureconfig" % "0.17.1",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
-    )
+    ),
+    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
@@ -295,7 +296,8 @@ lazy val scala3_lang_2 = project in file("scala3-lang-2")
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
-    libraryDependencies += "org.typelevel" %% "cats-effect" % "3.1.1",
+    libraryDependencies += "org.typelevel" %% "cats-effect" % "3.3.12",
+    libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
     libraryDependencies += "junit" % "junit" % "4.13" % Test
   )
 
@@ -315,8 +317,8 @@ lazy val doobie = (project in file("doobie"))
     libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )
 
-// Scala Native Project is disabled as it needs clang to installed in the target machine. 
-// To test the scala-native code, install clang and then uncommment this build  
+// Scala Native Project is disabled as it needs clang to installed in the target machine.
+// To test the scala-native code, install clang and then uncommment this build
 // lazy val scala_native = (project in file("scala-native"))
 //   .settings(
 //     name := "scala-native",
@@ -328,4 +330,14 @@ lazy val reflection = (project in file("reflection"))
     name := "reflection",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "junit" % "junit" % "4.13" % Test
+  )
+
+lazy val scala3_libraries = (project in file("scala3-libraries"))
+  .settings(
+    scalaVersion := "3.1.1",
+    name := "scala3-libraries",
+    libraryDependencies ++= Seq(
+      "com.github.japgolly.clearconfig" %% "core" % "3.0.0",
+      "org.scalameta" %% "munit" % "0.7.29" % Test
+    )
   )

@@ -10,4 +10,3 @@
 - [Better Enumerations In Scala Using Enumeratum](https://www.baeldung.com/scala/enumeratum)
 - [Guide to elastic4s – Elasticsearch Scala Client](https://www.baeldung.com/scala/elastic4s-elasticsearch-client)
 - [Convert a String to Date in Scala](https://www.baeldung.com/scala/string-to-date)
-- [Load Configuration Files In Scala Using PureConfig](https://www.baeldung.com/scala/pureconfig-load-config-files)
