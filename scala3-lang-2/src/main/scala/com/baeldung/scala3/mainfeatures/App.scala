@@ -39,20 +39,22 @@ object App {
 
   @main
   def main(): Unit = {
-    println(sum(Seq(1, 2, 3, 4)))
+    assert(sum(Seq(1, 2, 3, 4)) == 10)
 
-    println(DiscountedItem(10, 4).discountedPrice)
+    assert(DiscountedItem(10, 4).discountedPrice == 6)
 
     val javaList = util.LinkedList[Int]()
     javaList.add(1)
     javaList.add(2)
     val scalaList: List[Int] = javaList.asScala.toList
-    println(scalaList)
+    assert(scalaList == List(1, 2))
 
-    println(length("Test"))
-    println(length(10))
+    assert(length("Test") == 4)
+    assert(length(10) == 2)
 
-    println("ThisIsJustATest".removeOccurrences("Just"))
-    println("ThisIsJustATest".removeOccurrencesIgnoreCase("just"))
+    assert("ThisIsJustATest".removeOccurrences("Just") == "ThisIsATest")
+    assert(
+      "ThisIsJustATest".removeOccurrencesIgnoreCase("just") == "ThisIsATest"
+    )
   }
 }
