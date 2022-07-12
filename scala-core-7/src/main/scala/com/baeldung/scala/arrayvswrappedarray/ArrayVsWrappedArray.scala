@@ -1,6 +1,7 @@
-package com.baeldung.scala.`return`
+package com.baeldung.scala.arrayvswrappedarray
 
-import scala.collection.mutable
+import scala.collection.mutable.WrappedArray
+import scala.collection.mutable.ArrayOps
 
 object ArrayVsWrappedArray extends App {
   private def simpleArrayTest(): Unit = {
@@ -16,7 +17,7 @@ object ArrayVsWrappedArray extends App {
 
   private def arrayToOpsTest(): Unit = {
     val simpleArray: Array[Int] = Array(1, 2, 3, 4, 5)
-    val ops: collection.ArrayOps[Int] = simpleArray
+    val ops: ArrayOps[Int] = simpleArray
     print(ops.reverse)
   }
 
