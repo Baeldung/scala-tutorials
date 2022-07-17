@@ -202,8 +202,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
-      "com.softwaremill.retry" %% "retry" % "0.3.5",
-      "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test
+      "com.softwaremill.retry" %% "retry" % "0.3.5"
     )
   )
 
