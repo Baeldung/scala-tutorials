@@ -24,6 +24,9 @@ class PrimeNumberRetryTest extends AsyncWordSpec with Matchers {
         }
     }
 
+    /*
+     * This test is affected by <a href="https://github.com/softwaremill/retry/issues/31">this issue</a>
+     */
     "retry in any exception" in {
       val counter = new AtomicInteger(0)
       val result = PrimeNumberRetry.outerPolicy.apply(Future {
@@ -34,7 +37,7 @@ class PrimeNumberRetryTest extends AsyncWordSpec with Matchers {
         .map(_ => assert(false))
         .recover {
           case _: IllegalArgumentException =>
-            assert(counter.get() == 6)
+            assert(counter.get() == 7)
         }
     }
 
@@ -50,6 +53,9 @@ class PrimeNumberRetryTest extends AsyncWordSpec with Matchers {
         })
     }
 
+    /*
+     * This test is affected by <a href="https://github.com/softwaremill/retry/issues/31">this issue</a>
+     */
     "fail when a non prime number is returned" in {
       val counter = new AtomicInteger(0)
       val result = PrimeNumberRetry.outerPolicy.apply(Future {
@@ -58,7 +64,7 @@ class PrimeNumberRetryTest extends AsyncWordSpec with Matchers {
       })
       result
         .flatMap(number => {
-          assert(counter.get() == 6)
+          assert(counter.get() == 7)
           assert(number == 10)
         })
     }
