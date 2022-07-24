@@ -52,3 +52,4 @@ object PrimeNumberRetry {
     case _: NumberFormatException => true
   }
 }
+
