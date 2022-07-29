@@ -7,3 +7,4 @@
 - [Initializing an Array in Scala](https://www.baeldung.com/scala/array-initialize)
 - [Count All Occurrences of a char Within a String in Scala](https://www.baeldung.com/scala/string-char-count)
 - [Array vs. WrappedArray in Scala](https://www.baeldung.com/scala/array-vs-wrappedarray)
+- [@specialized Annotation In Scala](https://www.baeldung.com/scala/specialized-annotation)
