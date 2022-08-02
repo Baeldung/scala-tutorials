@@ -201,8 +201,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "ch.qos.logback" % "logback-classic" % "1.2.3" % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
-      "com.softwaremill.retry" %% "retry" % "0.3.5"
+      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion
     )
   )
 
@@ -272,7 +271,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "com.github.pureconfig" %% "pureconfig" % "0.17.1",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
     ),
-    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test
+    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
+    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
