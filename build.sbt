@@ -271,7 +271,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "com.github.pureconfig" %% "pureconfig" % "0.17.1",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
     ),
-    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test
+    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
+    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
@@ -296,7 +297,7 @@ lazy val scala3_lang_2 = project in file("scala3-lang-2")
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
-    libraryDependencies += "org.typelevel" %% "cats-effect" % "3.3.12",
+    libraryDependencies += "org.typelevel" %% "cats-effect" % "3.3.13",
     libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
     libraryDependencies += "junit" % "junit" % "4.13" % Test
   )
