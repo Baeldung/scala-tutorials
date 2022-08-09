@@ -7,7 +7,7 @@ def main(args: Array[String]): Unit = {
   def generateTextParagraph(): Unit = {
     import org.scalajs.dom.document
     val paragraph = document.createElement("p")
-    paragraph.textContent = "This is test paragraph."
+    paragraph.textContent = "This is a test paragraph."
     document.body.appendChild(paragraph)
   }
 }
