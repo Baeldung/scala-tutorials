@@ -4,7 +4,11 @@ import com.softwaremill.macwire._
 import macwire.components.{OrderComponents, UserComponents}
 import play.api.ApplicationLoader.Context
 import play.api.routing.Router
-import play.api.{ApplicationLoader, BuiltInComponents, BuiltInComponentsFromContext}
+import play.api.{
+  ApplicationLoader,
+  BuiltInComponents,
+  BuiltInComponentsFromContext
+}
 import play.filters.HttpFiltersComponents
 import router.Routes
 
@@ -24,6 +28,7 @@ class AppComponents(context: Context)
 
   lazy val router: Router = {
     lazy val prefix = "/"
-    wire[Routes]
+    //    wire[Routes]
+    Router.empty
   }
 }
