@@ -4,7 +4,7 @@
 # ~~~~
 
 # Guice
-# GET     /users                           guice.controllers.UserController.index()
+GET     /users                           guice.controllers.UserController.index()
 
 # MacWire
-GET     /users                           macwire.controllers.UserController.index()
+#GET     /users                           macwire.controllers.UserController.index()
