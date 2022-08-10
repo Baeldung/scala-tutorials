@@ -10,3 +10,4 @@
 - [Introduction to Generic Programming in Scala with shapeless](https://www.baeldung.com/scala/generic-programming)
 - [Actor Lifecycle in Akka](https://www.baeldung.com/scala/akka-actor-lifecycle)
 - [Introduction to Reactive Mongo](https://www.baeldung.com/scala/mongo-reactive-intro)
+- [A Guide to the Scala Retry Library](https://www.baeldung.com/scala/retry-library)
