@@ -169,7 +169,8 @@ lazy val scala_akka = (project in file("scala-akka"))
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .settings(
     name := "scala-akka-2",
-    libraryDependencies ++= scala_akka_dependencies
+    libraryDependencies ++= scala_akka_dependencies,
+    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "3.0.4"
   )
 val monocleVersion = "2.0.4"
 val slickVersion = "3.3.2"
