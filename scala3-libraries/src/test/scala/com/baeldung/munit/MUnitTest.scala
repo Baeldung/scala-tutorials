@@ -4,7 +4,6 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import munit.GenericBeforeEach
 
-
 class MUnitTest extends munit.FunSuite {
 
   test("test assert") {
@@ -52,6 +51,12 @@ class MUnitTest extends munit.FunSuite {
     Future {
         println("this is asyc test")
     }
+  }
+
+  test("a failing test expected".fail){
+    val expected = "1.0"
+    val actual = "1"
+    assertEquals(actual, expected)
   }
 
   override def beforeAll(): Unit = println("before all tests")
