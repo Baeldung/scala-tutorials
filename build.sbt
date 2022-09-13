@@ -343,3 +343,5 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
       "org.scalameta" %% "munit" % "0.7.29" % Test
     )
   )
+
+testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
