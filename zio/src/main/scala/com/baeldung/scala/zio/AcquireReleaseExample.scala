@@ -15,5 +15,4 @@ object AcquireReleaseExample extends ZIOAppDefault {
       _ <- Console.printLine("File content:")
       _ <- Console.print(content)
     } yield ()
- 
 }
