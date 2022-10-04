@@ -274,7 +274,11 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
     ),
     libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
-    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5"
+    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5",
+    libraryDependencies ++= Seq(
+      "org.apache.logging.log4j" % "log4j-api-scala_2.13" % "12.0",
+      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+    )
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
