@@ -276,8 +276,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5",
     libraryDependencies ++= Seq(
-      "org.apache.logging.log4j" % "log4j-api-scala_2.13" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
+      "org.apache.logging.log4j" % "log4j-core" % "2.13.0" % Runtime
     )
   )
 
