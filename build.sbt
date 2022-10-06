@@ -271,7 +271,9 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.http4s" %% "http4s-blaze-client" % http4sVersion,
       "com.beachape" %% "enumeratum" % "1.7.0",
       "com.github.pureconfig" %% "pureconfig" % "0.17.1",
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1",
+      "com.typesafe" % "config" % "1.4.2",
+      "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
     libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5"
