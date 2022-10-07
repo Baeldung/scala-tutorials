@@ -15,8 +15,8 @@ object AsynchronousAPI {
   val login: ZIO[Any, AuthError, User] =
     ZIO.async[Any, AuthError, User] { callback =>
       LegacyAPI.login(
-        user => callback(IO.succeed(user)),
-        err => callback(IO.fail(err))
+        user => callback(ZIO.succeed(user)),
+        err => callback(ZIO.fail(err))
       )
     }
 }

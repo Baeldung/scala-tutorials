@@ -276,7 +276,11 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
     libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
-    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5"
+    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5",
+    libraryDependencies ++= Seq(
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
+      "org.apache.logging.log4j" % "log4j-core" % "2.13.0" % Runtime
+    )
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
@@ -309,9 +313,9 @@ lazy val cats_effects = (project in file("cats-effects"))
 lazy val zio = (project in file("zio"))
   .settings(
     name := "zio",
-    libraryDependencies += "dev.zio" %% "zio" % "2.0.0-M4",
-    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.0-M4",
-    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.0-M4" % "test",
+    libraryDependencies += "dev.zio" %% "zio" % "2.0.2",
+    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.2",
+    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.2" % "test",
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
