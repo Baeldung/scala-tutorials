@@ -32,6 +32,7 @@
   </appender>
 
   <logger name="play" level="INFO" />
+  <logger name="errors" level="INFO" />
   <logger name="application" level="DEBUG" />
 
   <root level="WARN">
