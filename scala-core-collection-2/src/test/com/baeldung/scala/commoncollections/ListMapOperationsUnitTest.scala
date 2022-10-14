@@ -33,6 +33,14 @@ class ListMapOperationsUnitTest extends FlatSpec with Matchers {
     )
     assert(newListMap.head == ("Canada" -> "Ottawa"))
   }
+  
+  "+ operator" should "update the value of an existing key in the ListMap" in {
+    assert(countryCapitals("India") == "Delhi")
+    val newListMap = countryCapitals + ("India" -> "New Delhi")
+
+    assert(newListMap.size == 3)
+    assert(newListMap("India") == "New Delhi")
+  }
 
   "- operator" should "remove an entry from the ListMap" in {
     val newListMap = countryCapitals - ("Russia");
