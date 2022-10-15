@@ -1,4 +1,4 @@
-package com.baeldung.scala.zstreams
+package com.baeldung.scala.zio.streams
 
 import zio.stream.{ZSink, ZStream}
 import zio.{Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
@@ -6,7 +6,7 @@ import zio.{Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
 import java.io.File
 import scala.io.Source
 object FileProcessingExample extends ZIOAppDefault {
-  val fileIterator = Source.fromFile(getClass.getResource("/file.txt").getFile).getLines()
+  val fileIterator = Source.fromFile(getClass.getResource("/textFile.txt").getFile).getLines()
   val fileInputStream: ZStream[Any, Throwable, String] =
     ZStream.fromIterator(fileIterator)
 

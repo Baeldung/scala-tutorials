@@ -1,9 +1,7 @@
-package com.baeldung.scala.zstreams
+package com.baeldung.scala.zio.streams
 
 import zio.stream.ZStream
 import zio.{Schedule, Scope, Task, ZIO, ZIOAppArgs, ZIOAppDefault}
-
-
 
 object FailureRetryExample extends ZIOAppDefault {
 object Generator{

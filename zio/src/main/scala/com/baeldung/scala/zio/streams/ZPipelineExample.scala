@@ -1,4 +1,4 @@
-package com.baeldung.scala.zstreams
+package com.baeldung.scala.zio.streams
 
 import zio.stream.{ZPipeline, ZStream}
 import zio.{Scope, ZIO, ZIOAppArgs, ZIOAppDefault}

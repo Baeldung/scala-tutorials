@@ -319,15 +319,6 @@ lazy val zio = (project in file("zio"))
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
-lazy val zio_streams = (project in file("zio-streams"))
-  .settings(
-    name := "zio-streams",
-    libraryDependencies += "dev.zio" %% "zio" % "2.0.0",
-    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.0",
-    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.0" % "test",
-    testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
-  )
-
 lazy val doobie = (project in file("doobie"))
   .settings(
     name := "doobie",
