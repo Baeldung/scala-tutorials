@@ -10,5 +10,5 @@ object OsApp extends App {
 
   os.proc("ls", "-l", "dir").call(check = false)
 
-  val lines = os.read(os.pwd / "LICENSE").lines.count()
+  val lines = os.read(os.pwd / "LICENSE").linesIterator.size
 }
