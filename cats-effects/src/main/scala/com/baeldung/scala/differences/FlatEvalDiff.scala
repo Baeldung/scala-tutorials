@@ -45,7 +45,7 @@ object FlatEvalDiff extends IOApp.Simple {
   val modifiedResource: Resource[IO,ComplexConnection] = resource.evalMap(con => transformConnection(con))
   val tappedResource: Resource[IO,SimpleConnection] = resource.evalTap(con => transformConnection(con))
 
-  val result: IO[Unit] = tappedResource.use(c => IO.println("Using complex connection to execute.."))
+  val result: IO[Unit] = tappedResource.use(c => IO.println("Using simple connection to execute.."))
 
 
   override def run: IO[Unit] = result
