@@ -9,3 +9,4 @@
 - [Guide to Arrays in Scala](https://www.baeldung.com/scala/arrays-guide)
 - [Map Both Keys and Values of a Scala Map](https://www.baeldung.com/scala/map-keys-values)
 - [Split List by Fixed Number of Elements](https://www.baeldung.com/scala/split-list-by-fixed-number-of-elements)
+- [Merge Two Maps in Scala](https://www.baeldung.com/scala/merge-two-maps)
