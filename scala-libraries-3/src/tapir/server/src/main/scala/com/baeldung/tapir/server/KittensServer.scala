@@ -12,9 +12,9 @@ object KittensServer extends App with BaseAkkaServer {
 
   val getKittens = AkkaHttpServerInterpreter().toRoute(
     AnimalEndpoints.kittens
-          .serverLogic(_ => {
-            Future.successful[Either[String, List[Kitten]]](Right(DB.kittens))
-          })
+      .serverLogic(_ => {
+        Future.successful[Either[String, List[Kitten]]](Right(DB.kittens))
+      })
   )
 
   val postKittens = AkkaHttpServerInterpreter().toRoute(
@@ -67,18 +67,5 @@ object KittensServer extends App with BaseAkkaServer {
   )
 
   start(Seq(getKittens, postKittens, putKittens, deleteKittens, withSwaggerDocs(endpointsForDocs)))
-
-}
-
-object GetKittensWithPathParam extends App with BaseAkkaServer {
-
-  val getKittensWithPathParam = AkkaHttpServerInterpreter().toRoute(
-    AnimalEndpoints.kittensWithPathParam
-      .serverLogic(name => {
-        Future.successful[Either[String, Option[Kitten]]](Right(DB.kittens.find(_.name == name)))
-      })
-  )
-
-  start(Seq(getKittensWithPathParam))
 
 }
