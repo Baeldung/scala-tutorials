@@ -31,11 +31,11 @@ object ResourceHandling extends ZIOAppDefault {
   }
 
 
-  def acquireDB = ZIO.succeed(println("OPening DB Connection")) *> ZIO.succeed("pgsql://localhost:5432")
+  def acquireDBCon = ZIO.succeed(println("Opening DB Connection")) *> ZIO.succeed("pgsql://localhost:5432")
   def releaseDBCon(con: String) = ZIO.succeed(println("Closing DB Connection to URL: "+con))
   val nestedResourceZIO = ZIO.acquireReleaseWith(acquireFile)(releaseFile) { file =>
-    ZIO.acquireReleaseWith(acquireDB)(releaseDBCon) { con =>
-      ZIO.succeed(println("Reading the content from the file: "+file + "Writing to DB: "+con)) *>
+    ZIO.acquireReleaseWith(acquireDBCon)(releaseDBCon) { con =>
+      ZIO.succeed(println("Reading the content from the file: "+file + ". Writing to DB: "+con)) *>
       ZIO.succeed("One ring to rule them all AND bring them back!")
     }
   }
