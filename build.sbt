@@ -280,7 +280,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.13.0" % Runtime
-    )
+    ),
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.8.1"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
