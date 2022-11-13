@@ -15,8 +15,8 @@ object Flattener {
     new FullFlat(seq)
 
   class FullFlat(seq: Seq[Any]) {
-    def fullFlat: Seq[Any] = seq flatten {
-      case seq: Seq[Any] => seq.fullFlat
+    def fullFlatten: Seq[Any] = seq flatten {
+      case seq: Seq[Any] => seq.fullFlatten
       case nonSeq        => Seq(nonSeq)
     }
   }
