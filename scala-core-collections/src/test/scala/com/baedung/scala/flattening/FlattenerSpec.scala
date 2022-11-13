@@ -2,6 +2,8 @@ package com.baedung.scala.flattening
 
 import org.scalatest.wordspec.AnyWordSpec
 
+import scala.collection.immutable.Queue
+
 class FlattenerSpec extends AnyWordSpec {
 
   import com.baeldung.scala.flattening.Flattener.sequenceFlattener
@@ -30,6 +32,12 @@ class FlattenerSpec extends AnyWordSpec {
         List(6)
       )
       assertResult(List(1, 2, 3, 4, 5, 6))(list.fullFlat)
+    }
+    "flatten diverse types of collections" in {
+      val list = List(
+        Vector(1, Queue(2, 3))
+      )
+      assertResult(List(1, 2, 3))(list.fullFlat)
     }
     "flatten several lists of the diverse types, diverse levels deep" in {
       val list = List(
