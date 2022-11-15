@@ -10,3 +10,4 @@
 - [Introduction to Lightbend Config](https://www.baeldung.com/scala/lightbend-config)
 - [Introduction to Apache Log4j in Scala](https://www.baeldung.com/scala/apache-log4j)
 - [Introduction to Tapir](https://www.baeldung.com/scala/tapir)
+- [How to Execute OS Commands in Scala Using os-lib](https://www.baeldung.com/scala/os-lib)
