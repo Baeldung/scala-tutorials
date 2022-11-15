@@ -314,9 +314,9 @@ lazy val cats_effects = (project in file("cats-effects"))
 lazy val zio = (project in file("zio"))
   .settings(
     name := "zio",
-    libraryDependencies += "dev.zio" %% "zio" % "2.0.2",
-    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.2",
-    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.2" % "test",
+    libraryDependencies += "dev.zio" %% "zio" % "2.0.3",
+    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.3",
+    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.3" % "test",
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
