@@ -1,6 +1,4 @@
-package com.baedung.scala.flattening
-
-import org.scalatest.wordspec.AnyWordSpec
+package com.baeldung.scala.flattening
 
 import scala.collection.immutable.Queue
 

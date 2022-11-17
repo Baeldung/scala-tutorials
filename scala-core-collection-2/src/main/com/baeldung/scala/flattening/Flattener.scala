@@ -1,7 +1,5 @@
 package com.baeldung.scala.flattening
 
-import scala.language.implicitConversions
-
 object Flattener {
 
   /** This wrapper "pimps" the Seq type, adding the `fullFlat` method.
