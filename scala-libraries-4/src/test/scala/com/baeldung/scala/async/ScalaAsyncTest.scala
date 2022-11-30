@@ -31,13 +31,19 @@ object ScalaAsyncTest {
     await(r1) + await(r2)
   }
 
-  /*def invalid = async {
+  /* Uncommenting this snippet will produce the following error:
+  await must not be used under a nested method. await(slowComputation)
+
+  def invalid = async {
     def localFunction = {
       await(slowComputation)
     }
 
     localFunction
-  }
+  }*/
+
+  /* Uncommenting this snippet will produce the following error:
+  await must not be used under a try/catch. await(slowComputation)
 
   def tryCatch = async {
     try {
