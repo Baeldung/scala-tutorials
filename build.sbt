@@ -138,11 +138,11 @@ lazy val scala_test = (project in file("scala-test"))
   )
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
-  "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.18",
+  "com.typesafe.akka" % "akka-actor-typed_2.12" % "2.6.19",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.18" % Test,
+  "com.typesafe.akka" % "akka-actor-testkit-typed_2.12" % "2.6.19" % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
-  "com.typesafe.akka" %% "akka-stream" % "2.6.18",
+  "com.typesafe.akka" %% "akka-stream" % "2.6.19",
   "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
   "org.scalatest" %% "scalatest" % "3.0.5" % Test,
@@ -167,9 +167,11 @@ lazy val scala_akka = (project in file("scala-akka"))
   )
 
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
+  .enablePlugins(AkkaGrpcPlugin)
   .settings(
     name := "scala-akka-2",
-    libraryDependencies ++= scala_akka_dependencies
+    libraryDependencies ++= scala_akka_dependencies,
+    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "3.0.4"
   )
 val monocleVersion = "2.0.4"
 val slickVersion = "3.3.2"
@@ -269,10 +271,24 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.http4s" %% "http4s-blaze-client" % http4sVersion,
       "com.beachape" %% "enumeratum" % "1.7.0",
       "com.github.pureconfig" %% "pureconfig" % "0.17.1",
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1"
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.1",
+      "com.typesafe" % "config" % "1.4.2",
+      "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
     libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
-    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5"
+    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.5",
+    libraryDependencies ++= Seq(
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
+      "org.apache.logging.log4j" % "log4j-core" % "2.13.0" % Runtime
+    ),
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.8.1"
+  )
+
+lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
+  .settings(
+    name := "scala-libraries-4",
+    libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
+    testFrameworks += new TestFramework("utest.runner.Framework")
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
@@ -305,9 +321,9 @@ lazy val cats_effects = (project in file("cats-effects"))
 lazy val zio = (project in file("zio"))
   .settings(
     name := "zio",
-    libraryDependencies += "dev.zio" %% "zio" % "2.0.0-M4",
-    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.0-M4",
-    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.0-M4" % "test",
+    libraryDependencies += "dev.zio" %% "zio" % "2.0.3",
+    libraryDependencies += "dev.zio" %% "zio-streams" % "2.0.3",
+    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.3" % "test",
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
@@ -342,3 +358,5 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
       "org.scalameta" %% "munit" % "0.7.29" % Test
     )
   )
+
+testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
