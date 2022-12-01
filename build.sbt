@@ -171,8 +171,10 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .settings(
     name := "scala-akka-2",
     libraryDependencies ++= scala_akka_dependencies,
-    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "3.0.4"
-  )
+    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "3.0.4",
+    libraryDependencies += "com.typesafe.akka" %% "akka-stream-testkit" % "2.6.19",
+    libraryDependencies += "com.typesafe.akka" %% "akka-http-testkit" % "10.2.7"
+)
 val monocleVersion = "2.0.4"
 val slickVersion = "3.3.2"
 val shapelessVersion = "2.3.3"
