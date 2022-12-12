@@ -284,6 +284,24 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.8.1"
   )
 
+lazy val scala_libraries_os = (project in file("scala-libraries-os"))
+  .settings(
+    name := "scala-libraries",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
+      "org.apache.logging.log4j" % "log4j-core" % "2.13.0" % Runtime
+    ),
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.8.1"
+  )
+
+lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
+  .settings(
+    name := "scala-libraries-4",
+    libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
+    testFrameworks += new TestFramework("utest.runner.Framework")
+  )
+
 lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   .settings(
     name := "scala-libraries",
