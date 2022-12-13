@@ -299,7 +299,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   .settings(
     name := "scala-libraries-4",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
-    testFrameworks += new TestFramework("utest.runner.Framework")
+    testFrameworks += new TestFramework("utest.runner.Framework"),
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
+    ),
+    scalacOptions += "-Xasync"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
