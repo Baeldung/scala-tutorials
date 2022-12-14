@@ -11,8 +11,8 @@ sealed trait SimpleLazyList[+T] {
     case 1 => head
     case n => tail.!!(n - 1)
   }
-
 }
+
 case object SLNil extends SimpleLazyList[Nothing] {
   override def head = throw new IllegalArgumentException("Head of empty list")
   override def tail = throw new IllegalArgumentException("Tail of empty list")
