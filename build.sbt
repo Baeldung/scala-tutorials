@@ -125,13 +125,6 @@ lazy val scala_core_collections = (project in file("scala-core-collections"))
       scalaTest
   )
 
-lazy val scala_core_collections_213 = (project in file("scala-core-collections-213"))
-  .settings(
-    scalaVersion := "2.13.10",
-    name := "scala-core-collections-213",
-    libraryDependencies += scalaTest
-  )
-
 lazy val scala_test = (project in file("scala-test"))
   .settings(
     name := "scala-test",
