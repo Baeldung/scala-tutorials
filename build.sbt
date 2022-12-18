@@ -318,11 +318,12 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   )
 
 lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
+  .configs(IntegrationTest)
   .settings(
     name := "scala-libraries-4",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % "it,test",
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
@@ -330,7 +331,14 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       sparkSqlDep,
       sparkCoreDep
     ),
-    scalacOptions += "-Xasync"
+    libraryDependencies ++= Seq(
+      "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
+      "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.0",
+      "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
+    ),
+    scalacOptions += "-Xasync",
+    Defaults.itSettings,
+    IntegrationTest / fork := true
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
