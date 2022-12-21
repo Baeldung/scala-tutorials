@@ -296,6 +296,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   )
 
 lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
+  .configs(IntegrationTest)
   .settings(
     name := "scala-libraries-4",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
@@ -305,7 +306,15 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
     ),
-    scalacOptions += "-Xasync"
+    libraryDependencies ++= Seq(
+      "software.amazon.awssdk" % "s3" % "2.19.0",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.368" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
+    ),
+    scalacOptions += "-Xasync",
+    Defaults.itSettings,
+    IntegrationTest / fork := true
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
