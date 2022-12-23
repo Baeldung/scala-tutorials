@@ -14,7 +14,7 @@ object StringWrapper {
       * @return
       *   a string in camel-case format
       */
-    def toCamelCase: String = useMapReduce(spacedString)
+    def toCamelCase: String = useStreams(spacedString)
   }
 
   val useMapReduce: String => String = { spacedString =>
@@ -23,6 +23,26 @@ object StringWrapper {
     val changedRest = rest.map(w => w.take(1).toUpperCase.concat(w.drop(1)))
     val reunited = first :: changedRest
     reunited.foldLeft("")((a, b) => a + b)
+  }
+
+  val useStreams: String => String = { spacedString =>
+    val first = spacedString.take(1).toLowerCase
+    val rest =
+      spacedString.toStream.sliding(2).foldLeft("") { (str, charStream) =>
+        val added = charStream.toList match {
+          case ' ' :: ' ' :: _ => ""
+          case ' ' :: '_' :: _ => ""
+          case '_' :: ' ' :: _ => ""
+          case '_' :: '_' :: _ => ""
+          case ' ' :: other    => other.mkString.toUpperCase
+          case '_' :: other    => other.mkString.toUpperCase
+          case _ :: other :: _ if other != ' ' && other != '_' =>
+            other.toLower.toString
+          case _ => ""
+        }
+        str.concat(added)
+      }
+    first.concat(rest)
   }
 
 }
