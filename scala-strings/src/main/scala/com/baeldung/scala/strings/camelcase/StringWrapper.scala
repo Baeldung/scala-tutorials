@@ -9,10 +9,10 @@ object StringWrapper {
     */
   implicit class CamelCaseWrapper(val spacedString: String) extends AnyVal {
 
-    /** Transforms a spaced string to a camel-case string.
+    /** Transforms a spaced string to a camelCase string.
       *
       * @return
-      *   a string in camel-case format
+      *   a string in camelCase format
       */
     def toCamelCase: String = useMapReduce(spacedString)
   }
@@ -22,7 +22,7 @@ object StringWrapper {
       spacedString.split(Array(' ', '_')).toList.map(_.toLowerCase)
     val changedRest = rest.map(w => w.take(1).toUpperCase + w.drop(1))
     val reunited = first :: changedRest
-    reunited.foldLeft("")((a, b) => a + b)
+    reunited.mkString
   }
 
   val useStreams: String => String = { spacedString =>
