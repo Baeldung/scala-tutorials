@@ -2,7 +2,7 @@ package com.baeldung.scala.strings.camelcase
 
 object StringWrapper {
 
-  /** A value class that adds the `toCamelClass` method to strings.
+  /** A value class that adds the `toCamelCase` method to strings.
     *
     * @param spacedString
     *   a string with spaces
