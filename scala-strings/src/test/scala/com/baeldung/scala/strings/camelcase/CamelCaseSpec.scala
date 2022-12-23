@@ -6,7 +6,7 @@ class CamelCaseSpec extends WordSpec {
 
   import StringWrapper._
 
-  "Camel case converter" should {
+  "A camelCase converter" should {
     "handle the empty string gracefully" in {
       assertResult("")("".toCamelCase)
     }
