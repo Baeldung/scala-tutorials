@@ -14,7 +14,7 @@ object StringWrapper {
       * @return
       *   a string in camel-case format
       */
-    def toCamelCase: String = useStreams(spacedString)
+    def toCamelCase: String = useMapReduce(spacedString)
   }
 
   val useMapReduce: String => String = { spacedString =>
