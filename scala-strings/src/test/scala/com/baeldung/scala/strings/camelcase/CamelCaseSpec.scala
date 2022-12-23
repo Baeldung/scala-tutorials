@@ -7,10 +7,6 @@ class CamelCaseSpec extends WordSpec {
   import StringWrapper._
 
   "Camel case converter" should {
-    "do nothing to strings already in camelCase" in {
-      val camelCase = "thisStringIsAlreadyInCamelCase"
-      assertResult(camelCase)(camelCase.toCamelCase)
-    }
     "handle the empty string gracefully" in {
       assertResult("")("".toCamelCase)
     }
