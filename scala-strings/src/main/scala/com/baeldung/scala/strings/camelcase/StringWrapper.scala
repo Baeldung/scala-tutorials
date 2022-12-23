@@ -20,7 +20,7 @@ object StringWrapper {
   val useMapReduce: String => String = { spacedString =>
     val first :: rest =
       spacedString.split(Array(' ', '_')).toList.map(_.toLowerCase)
-    val changedRest = rest.map(w => w.take(1).toUpperCase.concat(w.drop(1)))
+    val changedRest = rest.map(w => w.take(1).toUpperCase + w.drop(1))
     val reunited = first :: changedRest
     reunited.foldLeft("")((a, b) => a + b)
   }
@@ -40,9 +40,9 @@ object StringWrapper {
             other.toLower.toString
           case _ => ""
         }
-        str.concat(added)
+        str + added
       }
-    first.concat(rest)
+    first + rest
   }
 
 }
