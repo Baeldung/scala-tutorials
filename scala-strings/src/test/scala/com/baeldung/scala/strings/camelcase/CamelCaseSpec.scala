@@ -16,7 +16,7 @@ class CamelCaseSpec extends WordSpec {
       assertResult(camelCase)(notCamelCase.toCamelCase)
     }
     "remove underscores and spaces" in {
-      val notCamelCase = "I don't like_snakes_becauseThey_BITE"
+      val notCamelCase = "I don't like_snakes_because   They_BITE"
       val camelCase = "iDon'tLikeSnakesBecauseTheyBite"
       assertResult(camelCase)(notCamelCase.toCamelCase)
     }
