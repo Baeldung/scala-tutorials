@@ -14,6 +14,15 @@ object StringWrapper {
       * @return
       *   a string in camel-case format
       */
-    def toCamelCase: String = spacedString
+    def toCamelCase: String = useMapReduce(spacedString)
   }
+
+  val useMapReduce: String => String = { spacedString =>
+    val first :: rest =
+      spacedString.split(Array(' ', '_')).toList.map(_.toLowerCase)
+    val changedRest = rest.map(w => w.take(1).toUpperCase.concat(w.drop(1)))
+    val reunited = first :: changedRest
+    reunited.foldLeft("")((a, b) => a + b)
+  }
+
 }
