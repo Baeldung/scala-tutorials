@@ -170,8 +170,15 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .enablePlugins(AkkaGrpcPlugin)
   .settings(
     name := "scala-akka-2",
-    libraryDependencies ++= scala_akka_dependencies,
-    libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "3.0.4"
+    scalaVersion := "2.13.10",
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
+      "com.typesafe.akka" %% "akka-http" % "10.2.10",
+      "com.typesafe.akka" %% "akka-http-spray-json" % "10.2.10",
+      "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "4.0.0",
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
+      "org.scalatest" %% "scalatest" % "3.0.8" % Test
+    )
   )
 val monocleVersion = "2.0.4"
 val slickVersion = "3.3.2"
