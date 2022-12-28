@@ -24,6 +24,9 @@ object Finder {
       else if (predicate(list.last)) list.size - 1
       else useRecursiveScan(list.take(list.size - 1), predicate)
 
+    private def useNativeLibrary(list: List[T], predicate: T => Boolean): Int =
+      list.lastIndexWhere(predicate)
+
   }
 
 }
