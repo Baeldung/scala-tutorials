@@ -3,7 +3,7 @@ package com.baeldung.scala.abstractclassesvstraits
 import org.scalatest.{FlatSpec, Matchers}
 import myClasses._
 
-class AbstractclassesVsTraitsSpec extends AnyFlatSpec with Matchers {
+class AbstractclassesVsTraitsSpec extends FlatSpec with Matchers {
   "FruitTrait" should "contain 2 string values and a unit value" in {
     class Foo extends FruitTrait {
       override val name = "Banana"
