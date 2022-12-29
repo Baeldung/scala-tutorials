@@ -1,7 +1,6 @@
 package com.baeldung.scala.abstractclassesvstraits
 
-import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should._
+import org.scalatest.{FlatSpec, Matchers}
 import myClasses._
 
 class AbstractclassesVsTraitsSpec extends AnyFlatSpec with Matchers {
