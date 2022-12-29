@@ -14,7 +14,7 @@ class AbstractclassesVsTraitsSpec extends FlatSpec with Matchers {
     val fooTest = new Foo
     fooTest.name shouldBe an[String]
     fooTest.color shouldBe an[String]
-    fooTest.taste shouldBe an[Unit]
+    fooTest.taste shouldBe an[scala.runtime.BoxedUnit]
   }
 
   "FruitAbstractClass" should "contain 2 string values and a unit value" in {
@@ -27,7 +27,7 @@ class AbstractclassesVsTraitsSpec extends FlatSpec with Matchers {
     val fooTest = new Foo
     fooTest.name shouldBe an[String]
     fooTest.color shouldBe an[String]
-    fooTest.taste shouldBe an[Unit]
+    fooTest.taste shouldBe an[scala.runtime.BoxedUnit]
   }
 
   "NumTrait" should "contain an Int" in {
@@ -35,7 +35,7 @@ class AbstractclassesVsTraitsSpec extends FlatSpec with Matchers {
       override val number = 4
     }
     val barTest = new Bar
-    barTest.number shouldBe an[Int]
+    barTest.number shouldBe an[java.lang.Integer]
   }
 
   "NumAbstractClass" should "contain an Int" in {
@@ -43,7 +43,7 @@ class AbstractclassesVsTraitsSpec extends FlatSpec with Matchers {
       override val number = 5
     }
     val barTest = new Bar
-    barTest.number shouldBe an[Int]
+    barTest.number shouldBe an[java.lang.Integer]
   }
 
   "MyFruit1" should "contain the following" in {
@@ -51,7 +51,7 @@ class AbstractclassesVsTraitsSpec extends FlatSpec with Matchers {
     myFruit1.name should be("Apple")
     myFruit1.color should be("Green")
     myFruit1.number should be(3)
-    myFruit1.taste shouldBe an[Unit]
+    myFruit1.taste shouldBe an[scala.runtime.BoxedUnit]
   }
 
   "FruitAbstractClass2" should "contain 2 string values and a unit value" in {
@@ -62,6 +62,6 @@ class AbstractclassesVsTraitsSpec extends FlatSpec with Matchers {
     val fooTest = new Foo
     fooTest.name shouldBe an[String]
     fooTest.color shouldBe an[String]
-    fooTest.taste shouldBe an[Unit]
+    fooTest.taste shouldBe an[scala.runtime.BoxedUnit]
   }
 }
