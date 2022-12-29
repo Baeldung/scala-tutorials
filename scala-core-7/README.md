@@ -10,4 +10,3 @@
 - [@specialized Annotation In Scala](https://www.baeldung.com/scala/specialized-annotation)
 - [Apply Method In Scala](https://www.baeldung.com/scala/apply-method)
 - [Product With Serializable in Scala](https://www.baeldung.com/scala/product-with-serializable)
-- [Abstract classes vs traits](https://drafts.baeldung.com/scala/?p=53841&preview=true)
