@@ -71,5 +71,5 @@ object AbstractclassesVsTraits extends App {
   fruit.taste // my 3 Green Apples taste yummy
 
   val myAgeT = new Age with HeightTrait // compiles
-  val myAgeAC = new Age with HeightAC // throws error
+  //val myAgeAC = new Age with HeightAC // throws error
 }
