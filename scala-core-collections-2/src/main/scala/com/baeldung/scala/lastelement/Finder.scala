@@ -16,13 +16,16 @@ object Finder {
       *   or a negative number if it's not found
       */
     def lastWhen(predicate: T => Boolean): Int =
-      useRecursiveScan(list, predicate)
+      useReverse(list, predicate)
 
     @tailrec
     private def useRecursiveScan(list: List[T], predicate: T => Boolean): Int =
       if (list.isEmpty) -1
       else if (predicate(list.last)) list.size - 1
       else useRecursiveScan(list.take(list.size - 1), predicate)
+
+    private def useReverse(list: List[T], predicate: T => Boolean): Int =
+      list.size - list.reverse.takeWhile(predicate(_) == false).size - 1
 
     private def useNativeLibrary(list: List[T], predicate: T => Boolean): Int =
       list.lastIndexWhere(predicate)
