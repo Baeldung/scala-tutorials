@@ -1,5 +1,5 @@
 package com.baeldung;
-import com.baeldung.scala3.targetname.Calculator;
+import com.baeldung.scala3.targetname.*;
 
 public class MyJavaCalculator {
     public static void main(String[] args) {
@@ -15,6 +15,9 @@ public class MyJavaCalculator {
         System.out.println(calc.calcType());
 
         calc.InnerCalculator().print();
+
+        Operator op = new Operator();
+        //System.out.println(op.$times());
 
     }
 }
