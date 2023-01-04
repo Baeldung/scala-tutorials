@@ -80,6 +80,15 @@ lazy val scala_core_7 = (project in file("scala-core-7"))
     libraryDependencies += "args4j" % "args4j" % "2.33"
   )
 
+lazy val scala_core_8 = (project in file("scala-core-8"))
+  .settings(
+    name := "scala-core-8",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+    libraryDependencies += scalaTest,
+    libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test"
+    // scalacOptions += "-Ymacro-debug-lite"
+  )
+
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
     name := "scala-core-io",
@@ -301,7 +310,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   .settings(
     name := "scala-libraries-4",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
-    testFrameworks += new TestFramework("utest.runner.Framework")
+    testFrameworks += new TestFramework("utest.runner.Framework"),
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
+    ),
+    scalacOptions += "-Xasync"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
@@ -372,4 +387,4 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
     )
   )
 
-testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
+Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
