@@ -6,7 +6,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 case class Movie(id: Int, name: String, length: Int)
 
 class MovieService {
-  var movies: List[Movie] = Nil
+  var movies: List[Movie] = List(Movie(100, "The Grand Budapest Hotel", 100))
 
   def getAllMovies(): Future[List[Movie]] = Future.successful(movies.toList)
 
