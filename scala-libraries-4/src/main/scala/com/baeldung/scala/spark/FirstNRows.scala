@@ -44,10 +44,18 @@ object FirstNRows extends App {
   /** [[Ann,25], [Brian,16]]
     */
 
-  data.limit(2).foreach(println)
+  data.limit(2).foreach(println(_))
 
   /** [Ann,25] [Brian,16]
     */
+
+  data.limit(2).show()
+
+  /** | Name  | Age |
+    * |:------|:----|
+    * | Ann   | 25  |
+    * | Brian | 16  |
+    */    
 
   println(data.first())
 
