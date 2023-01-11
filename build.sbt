@@ -321,6 +321,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
     ),
+     libraryDependencies ++= Seq(
+      "org.apache.spark" %% "spark-core" % sparkVersion,
+      "org.apache.spark" %% "spark-sql" % sparkVersion
+    ),
     scalacOptions += "-Xasync"
   )
 
