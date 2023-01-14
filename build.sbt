@@ -319,7 +319,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
+      "org.tpolecat" %% "skunk-core" % "0.3.2"
     ),
      libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-core" % sparkVersion,
