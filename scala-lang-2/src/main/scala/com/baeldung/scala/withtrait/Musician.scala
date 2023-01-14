@@ -1,8 +1,7 @@
 package com.baeldung.scala.withtrait
 
 trait Musician {
-  val instrument, genre: String
-  val repertoire: List[String]
+  val instrument: String
 
   def tuneInstrument(): String =
     s"I'm tuning my $instrument"
