@@ -2,7 +2,7 @@ package com.baeldung.scala.withtrait
 
 import java.time.LocalDate
 
-case class Person(name: String, address: String, dateOfBirth: LocalDate) {
+class Person(name: String, address: String, dateOfBirth: LocalDate) {
   def breathe(): String = s"I'm $name, alive and kicking"
 
   def eat(): String = "I'm eating: chomp chomp"
