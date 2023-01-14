@@ -22,6 +22,7 @@ class WithTraitSpec extends AnyWordSpec {
       assertResult("I'm tuning my guitar")(mary.tuneInstrument())
     }
   }
+
   "A politician" should {
     "know their name, as a person" in {
       assertResult("I'm Prudence, alive and kicking")(prudence.breathe())
@@ -32,6 +33,7 @@ class WithTraitSpec extends AnyWordSpec {
       )
     }
   }
+
   "A musician/politician" should {
     "know their name, as a person" in {
       assertResult("I'm Giorgio, alive and kicking")(giorgio.breathe())
