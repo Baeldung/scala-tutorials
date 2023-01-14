@@ -1,6 +1,6 @@
 package com.baeldung.scala.withtrait
 
 case class Animal(name: String, species: String) {
-  def makeNoise(noise: String): Unit =
-    println(s"I'm $name (a $species) making this noise: $noise")
+  def makeNoise(noise: String): String =
+    s"I'm $name (a $species) making this noise: $noise"
 }
