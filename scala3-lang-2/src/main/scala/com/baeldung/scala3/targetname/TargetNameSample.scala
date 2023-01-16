@@ -18,7 +18,7 @@ trait Super {
 
 class Child extends Super {
 
-    //This doesnt compile due to conflict.
+    //This doesn't compile due to conflict.
     //@targetName("myMethod")
     //def targetMethod(): String = "From Child class"
 }
@@ -33,7 +33,6 @@ class Calculator {
     @targetName("weirdType")
     def `type` = println("This is a weird type!") 
 
-    //@targetName("calculatorType")
     lazy val calcType: String = "Simple"
 
     @targetName("InnerCalculator")
