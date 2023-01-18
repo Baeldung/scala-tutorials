@@ -1,5 +1,5 @@
 package com.baeldung.scala.functionalloops
-
+import scala.language.postfixOps
 object FunctionalLoops {
   def getSumOfList(list: List[Int]): Int = {
     var sum = 0

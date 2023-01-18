@@ -38,7 +38,7 @@ class SupervisionApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
     val webServerClient = testKit.createTestProbe[Response]()
     webServer ! Get("http://restart", webServerClient.ref)
     webServer ! Get("http://a-valid-uri", webServerClient.ref)
-    webServerClient.expectMessageType[Ok](5 seconds)
+    webServerClient.expectMessageType[Ok](5.seconds)
   }
 
   "The Cache actor" should "resume from an error" in {
@@ -47,7 +47,7 @@ class SupervisionApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
     val cacheClient = testKit.createTestProbe[Cache.Response]()
     cache ! Find("http://resume", cacheClient.ref)
     cache ! Find("http://a-valid-uri", cacheClient.ref)
-    cacheClient.expectMessageType[Hit](5 seconds)
+    cacheClient.expectMessageType[Hit](5.seconds)
   }
 
   override protected def afterAll(): Unit = testKit.shutdownTestKit()

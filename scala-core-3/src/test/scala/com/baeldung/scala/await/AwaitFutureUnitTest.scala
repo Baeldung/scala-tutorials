@@ -16,7 +16,7 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       val fut = AwaitFuture.fetchDataFrom(url)
 
       fut.isCompleted shouldBe false
-      val completedFuture = Await.ready(fut, 2 seconds)
+      val completedFuture = Await.ready(fut, 2.seconds)
 
       fut shouldBe completedFuture
       completedFuture.isCompleted shouldBe true
@@ -31,7 +31,7 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
     "throw a timeout Exception when the future doesn't complete within the stipulated time" in {
       val fut = AwaitFuture.fetchDataFrom(url, 3000)
       fut.isCompleted shouldBe false
-      val exception = intercept[Exception](Await.ready(fut, 2 seconds))
+      val exception = intercept[Exception](Await.ready(fut, 2.seconds))
 
       val assertion = exception match {
         case _ : TimeoutException => true
@@ -45,7 +45,7 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       val fut = AwaitFuture.futureWithException()
 
       fut.isCompleted shouldBe false
-      val completedFuture = Await.ready(fut, 2 seconds)
+      val completedFuture = Await.ready(fut, 2.seconds)
 
       fut shouldBe completedFuture
       completedFuture.isCompleted shouldBe true
@@ -62,13 +62,13 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       val fut = AwaitFuture.fetchDataFrom(url)
 
       fut.isCompleted shouldBe false
-      val completedFutureResult = Await.result(fut, 2 seconds)
+      val completedFutureResult = Await.result(fut, 2.seconds)
       completedFutureResult.isInstanceOf[String] shouldBe true
     }
     "throw a timeout Exception when the future doesn't complete within the stipulated time" in {
       val fut = AwaitFuture.fetchDataFrom("https://www.facebook.com", 5000)
       fut.isCompleted shouldBe false
-      val exception = intercept[Exception](Await.result(fut, 2 seconds))
+      val exception = intercept[Exception](Await.result(fut, 2.seconds))
 
       val assertion = exception match {
         case _ : TimeoutException => true
@@ -81,7 +81,7 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       val fut = AwaitFuture.futureWithException()
 
       fut.isCompleted shouldBe false
-      val exception = intercept[Exception](Await.result(fut, 2 seconds))
+      val exception = intercept[Exception](Await.result(fut, 2.seconds))
 
       val assertion = exception match {
         case _ : NullPointerException => true

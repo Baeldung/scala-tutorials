@@ -1,11 +1,10 @@
 package com.baeldung.scala.structuraltypes
 
 import org.scalatest.{FlatSpec, Matchers}
-
-import scala.collection.convert.DecorateAsScala
+import scala.jdk.CollectionConverters._
 import scala.io.Source
 
-class ResourceClosingUnitTest extends FlatSpec with Matchers with DecorateAsScala with ResourceClosing {
+class ResourceClosingUnitTest extends FlatSpec with Matchers with ResourceClosing {
   "Scala Sources" should "be closed" in {
      val file = Source.fromResource("animals")
      using(file) {

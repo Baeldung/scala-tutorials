@@ -1,11 +1,10 @@
 package com.baeldung.scala.maps
 
 import java.util.concurrent.atomic.AtomicInteger
-
 import org.scalatest.{Matchers, WordSpec}
 
 import scala.collection.immutable.ListMap
-import scala.collection.{SortedMap, immutable, mutable}
+import scala.collection.{MapView, SortedMap, immutable, mutable}
 
 class MapsUnitTest extends WordSpec with Matchers {
 
@@ -141,7 +140,7 @@ class MapsUnitTest extends WordSpec with Matchers {
         value.reverse
       }
 
-      val reversed: Map[Int, String] = initialMap.mapValues(reverse)
+      val reversed = initialMap.view.mapValues(reverse)
 
       counter.get() shouldBe 0
 
@@ -159,7 +158,7 @@ class MapsUnitTest extends WordSpec with Matchers {
 
       val reverse: String => String = value => value.reverse
 
-      val reversed: Map[Int, String] = initialMap.mapValues(reverse)
+      val reversed: Map[Int, String] = initialMap.view.mapValues(reverse).toMap
 
       reversed.get(1) shouldBe Some("tsrif")
       reversed.get(2) shouldBe Some("dnoces")
@@ -173,10 +172,11 @@ class MapsUnitTest extends WordSpec with Matchers {
         value.reverse
       }
 
+      //todo: force is no more supported, better to remove from article?
       val reversed: Map[Int, String] = initialMap
         .mapValues(reverse)
         .view
-        .force
+        .force.toMap
 
       counter.get() shouldBe map.size
 
@@ -195,8 +195,7 @@ class MapsUnitTest extends WordSpec with Matchers {
         counter.incrementAndGet()
         key > 1
       }
-
-      val filtered: Map[Int, String] = initialMap.filterKeys(predicate)
+      val filtered: Map[Int, String] = initialMap.view.filterKeys(predicate).toMap
 
       counter.get() shouldBe 0
 
@@ -213,9 +212,9 @@ class MapsUnitTest extends WordSpec with Matchers {
         counter.incrementAndGet()
         key > 1
       }
-
+      //todo: force is no more supported, better to remove from article?
       val filtered: Map[Int, String] =
-        initialMap.filterKeys(predicate).view.force
+        initialMap.view.filterKeys(predicate).view.force.toMap
 
       counter.get() shouldBe initialMap.size
 
@@ -242,7 +241,7 @@ class MapsUnitTest extends WordSpec with Matchers {
 
       val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
 
-      val filtered: Map[Int, String] = initialMap.filterKeys(predicate)
+      val filtered: Map[Int, String] = initialMap.view.filterKeys(predicate).toMap
 
       filtered.get(1) shouldBe None
       filtered.get(2) shouldBe Some("second")
