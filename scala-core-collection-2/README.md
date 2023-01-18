@@ -5,3 +5,4 @@
 - [Guide to Scala ListSet](https://www.baeldung.com/scala/listset)
 - [Guide to Scala ListMap](https://www.baeldung.com/scala/listmap)
 - [How to Flatten Collections in Scala](https://www.baeldung.com/scala/flattening-collections)
+- [LazyList in Scala](https://www.baeldung.com/scala/lazylist)
