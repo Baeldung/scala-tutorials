@@ -10,7 +10,7 @@ object UnitReturnType extends App{
   println("result of function returning Unit: %s".format(functionReturnUnit))
 
   def functionReturnImplicitUnit{
-    """
+    s"""
       do something, don't return anything
     """
   }

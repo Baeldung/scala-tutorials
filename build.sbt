@@ -134,12 +134,13 @@ lazy val scala_core_collections = (project in file("scala-core-collections"))
     )
   )
 
-lazy val scala_core_collections_2 = (project in file("scala-core-collections-2"))
-  .settings(
-    name := "scala-core-collections-2",
-    libraryDependencies +=
-      "org.scalatest" %% "scalatest" % "3.2.14" % Test
-  )
+lazy val scala_core_collections_2 =
+  (project in file("scala-core-collections-2"))
+    .settings(
+      name := "scala-core-collections-2",
+      libraryDependencies +=
+        "org.scalatest" %% "scalatest" % "3.2.14" % Test
+    )
 
 lazy val scala_test = (project in file("scala-test"))
   .settings(
@@ -330,11 +331,11 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
       "org.tpolecat" %% "skunk-core" % "0.3.2"
     ),
-     libraryDependencies ++= Seq(
+    libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-core" % sparkVersion,
       "org.apache.spark" %% "spark-sql" % sparkVersion
     ),
-    scalacOptions += "-Xasync"
+    //scalacOptions += "-Xasync"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))

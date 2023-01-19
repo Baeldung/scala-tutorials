@@ -14,6 +14,6 @@ object ScalaSysApp extends App {
   val resultErr = "ls -l dir".!
 
   val source = Source.fromFile("./LICENSE")
-  val lines = source.getLines.size
+  val lines = source.getLines().size
   source.close()
 }

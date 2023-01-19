@@ -18,7 +18,7 @@ object ResourceHandling extends ZIOAppDefault {
   val complexZIO = simpleZIO *> failingZIO *> ZIO.succeed(println("Final step in chain"))
   val complexZIOWithFinalizer = complexZIO.ensuring(finalizerBlock)
 
-  val finalizer2 = ZIO.suspend {
+  val finalizer2: RIO[String, Nothing] = ZIO.suspend {
     throw new Exception
   }
 
