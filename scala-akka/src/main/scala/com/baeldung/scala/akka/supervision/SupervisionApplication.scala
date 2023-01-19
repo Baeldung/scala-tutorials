@@ -123,7 +123,7 @@ object SupervisionApplication {
             .supervise(search)
             .onFailure[IOException](SupervisorStrategy.resume))
         .onFailure[Exception](SupervisorStrategy.restart.withLimit(
-          maxNrOfRetries = 10, withinTimeRange = 5 minutes))
+          maxNrOfRetries = 10, withinTimeRange = 5.minutes))
     }
 
     private def search: Behavior[FsFind] =

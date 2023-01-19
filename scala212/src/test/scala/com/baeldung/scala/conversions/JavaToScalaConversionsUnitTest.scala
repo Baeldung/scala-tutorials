@@ -1,10 +1,10 @@
 package com.baeldung.scala.conversions
 
 import com.baedung.scala.conversions.JavaApi
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.convert.{DecorateAsJava, DecorateAsScala}
-
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.should.Matchers
 class JavaToScalaConversionsUnitTest extends FlatSpec with Matchers
   with DecorateAsScala with DecorateAsJava {
 
