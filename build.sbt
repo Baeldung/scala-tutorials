@@ -238,7 +238,6 @@ val sparkVersion = "3.2.1"
 
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
-    scalaVersion := "2.12.15",
     name := "scala-libraries",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
     libraryDependencies ++= Seq(
@@ -252,15 +251,11 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.beachape" %% "enumeratum" % "1.7.0"
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-slick" % "5.0.0",
+      "com.typesafe.play" %% "play-slick" % "5.1.0",
       "org.postgresql" % "postgresql" % "42.2.12"
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
-    ),
-    libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-sql" % sparkVersion
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.16",
@@ -330,10 +325,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
       "org.tpolecat" %% "skunk-core" % "0.3.2"
-    ),
-    libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-sql" % sparkVersion
     ),
     scalacOptions += "-Xasync"
   )
@@ -413,6 +404,8 @@ lazy val scala212 = (project in file("scala212"))
     scalaVersion := "2.12.17",
     name := "scala212",
     libraryDependencies ++= Seq(
-      scalaTest
+      scalaTest,
+      "org.apache.spark" %% "spark-core" % sparkVersion,
+      "org.apache.spark" %% "spark-sql" % sparkVersion
     )
   )
