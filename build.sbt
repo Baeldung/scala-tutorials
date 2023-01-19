@@ -335,7 +335,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.apache.spark" %% "spark-core" % sparkVersion,
       "org.apache.spark" %% "spark-sql" % sparkVersion
     ),
-    //scalacOptions += "-Xasync"
+    scalacOptions += "-Xasync"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
