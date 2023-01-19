@@ -260,12 +260,12 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "io.monix" %% "monix" % monixVersion
     ),
     dependencyOverrides := Seq(
-      "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.16",
-      "com.typesafe.akka" %% "akka-stream" % "2.6.16",
-      "com.typesafe.akka" %% "akka-serialization-jackson" % "2.6.16"
+      "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.19",
+      "com.typesafe.akka" %% "akka-stream" % "2.6.19",
+      "com.typesafe.akka" %% "akka-serialization-jackson" % "2.6.19"
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.16" % Test,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
       "org.scalatest" %% "scalatest" % "3.1.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.14.1" % Test,
       "com.lihaoyi" %% "requests" % "0.6.9"
