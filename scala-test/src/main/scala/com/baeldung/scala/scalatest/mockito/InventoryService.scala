@@ -34,8 +34,11 @@ class InventoryService(
     txn: InventoryTransaction
   ): Future[InventoryTransaction] = {
     dao.saveAsync(txn).map { res =>
-      if (txn.inventoryType == InventoryTypes.CHOCOLATE)
+      println("************ saveAndPublish *********" + txn.inventoryType)
+      if (txn.inventoryType == InventoryTypes.CHOCOLATE) {
+        println("Inside chocolate inventor, before publishing")
         kafkaProducer.publish(txn)
+      }
       res
     }
   }
