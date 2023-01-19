@@ -56,10 +56,11 @@ class InventoryServiceTest extends AnyWordSpec with MockitoSugar with ScalaFutur
       when(dao.saveAsync(any[InventoryTransaction])).thenReturn(Future.successful(txn))
       when(mockProducer.publish(any[InventoryTransaction])).thenThrow(new RuntimeException("This should never occur"))
       val result = service.saveAndPublish(txn)
-      whenReady(result) {
+      whenReady(result) { _ =>
         verify(mockProducer, times(0)).publish(any[InventoryTransaction])
         verify(mockProducer, never).publish(any[InventoryTransaction])
       }
+
     }
 
     "save and log the txn details" in {
@@ -71,7 +72,7 @@ class InventoryServiceTest extends AnyWordSpec with MockitoSugar with ScalaFutur
       val service = new InventoryService(dao, mockProducer, mockLogger)
       when(dao.saveAsync(any[InventoryTransaction])).thenReturn(Future.successful(txn))
       val result = service.saveAndLogTime(txn)
-      whenReady(result) {
+      whenReady(result) { _ =>
         val refCapture = ArgumentCaptor.forClass(classOf[String])
         val refLocalDateTime = ArgumentCaptor.forClass(classOf[LocalDateTime])
 
