@@ -12,7 +12,7 @@ object RequireUsage extends App {
     issueDrivingLicense("Jr. Darwin", 5) // prints "Failed in require precondition"
   } catch {
     case e: IllegalArgumentException =>
-      println("Failed in require precondition")
+      println("Failed in require precondition-"+e.getMessage)
   }
 
 }

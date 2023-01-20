@@ -1,7 +1,6 @@
 package com.baeldung.scala.akka.http
-import scala.concurrent.Future
-import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 case class Movie(id: Int, name: String, length: Int)
 

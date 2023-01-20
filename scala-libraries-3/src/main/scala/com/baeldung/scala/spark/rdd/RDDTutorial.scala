@@ -5,7 +5,7 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 
 object RDDTutorial extends App {
-  val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
+  val spark: SparkSession = SparkSession.builder().master("local").getOrCreate
   val sc: SparkContext = spark.sparkContext
 
   val animals = List("dog", "cat", "frog", "horse")
@@ -14,8 +14,8 @@ object RDDTutorial extends App {
   val countLengthRDD = animalsRDD.map(animal => (animal, animal.length))
   val noCRDD = animalsRDD.filter(_.startsWith("c"))
 
-  countLengthRDD.collect
-  noCRDD.collect
+  countLengthRDD.collect()
+  noCRDD.collect()
 
   val numbers = sc.parallelize(List(1, 2, 3, 4, 5))
   val numbersSum = numbers.reduce(_ + _)

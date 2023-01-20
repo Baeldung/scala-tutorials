@@ -10,7 +10,7 @@ import com.baeldung.scala.akka.supervision.SupervisionApplication.Filesystem.{Fs
 import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.Request
 
 import scala.concurrent.duration.DurationInt
-import scala.util.{Failure, Random, Success, Try}
+import scala.util.{Failure, Success, Try}
 
 object SupervisionApplication {
 

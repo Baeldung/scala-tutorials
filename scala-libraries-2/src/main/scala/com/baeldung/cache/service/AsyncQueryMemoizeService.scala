@@ -4,7 +4,6 @@ import scalacache._
 import scalacache.guava._
 import com.google.common.cache.CacheBuilder
 import scalacache.modes.scalaFuture._
-import scalacache.serialization.binary._
 import scalacache.memoization._
 import scala.concurrent.ExecutionContext.Implicits.global
 

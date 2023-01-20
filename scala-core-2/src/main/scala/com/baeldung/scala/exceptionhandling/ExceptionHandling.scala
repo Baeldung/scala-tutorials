@@ -21,7 +21,7 @@ object ExceptionHandling {
     try {
       divide(a, 0)
     } catch {
-      case e: DivideByZero => null
+      case _: DivideByZero => null
     } finally {
       println("Finished")
     }
