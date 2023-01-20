@@ -1,8 +1,8 @@
 package com.baeldung.scala.callbynameandvalue
 
-/**
- * @author vid2010
- */
+/** @author
+  *   vid2010
+  */
 object CallByNameCallByValue {
   def getTimeByVal(time: Long) = time
 

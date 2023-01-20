@@ -29,5 +29,5 @@ object Inheritance {
     def cut: Unit
 
   def cutWithInheritance(cuttingTool: CuttingTool) =
-        cuttingTool.cut
+    cuttingTool.cut
 }

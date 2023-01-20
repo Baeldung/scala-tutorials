@@ -1,9 +1,9 @@
 package com.baeldung.scala.vectorbenefits
 import scala.util.Random
 
-object VectorRandomAccess extends App{
+object VectorRandomAccess extends App {
 
-  def randomAccessSeq(seq:Seq[Int], it:Int): (Double) ={
+  def randomAccessSeq(seq: Seq[Int], it: Int): (Double) = {
     val begin = System.currentTimeMillis
     for (j <- 0 until it) {
       val idx = Random.nextInt(it)
@@ -14,11 +14,15 @@ object VectorRandomAccess extends App{
   }
 
   val numElements = 10000
-  val vec:Vector[Int] = (1 to numElements).toVector
-  val lst:List[Int] = (1 to numElements).toList
+  val vec: Vector[Int] = (1 to numElements).toVector
+  val lst: List[Int] = (1 to numElements).toList
 
-  val randomAccessTimeRatio = randomAccessSeq(lst, numElements)/randomAccessSeq(vec, numElements)
+  val randomAccessTimeRatio =
+    randomAccessSeq(lst, numElements) / randomAccessSeq(vec, numElements)
 
-  println("Random access test with %s elements, Vector is ~ %s times faster than List".format(numElements, randomAccessTimeRatio))
+  println(
+    "Random access test with %s elements, Vector is ~ %s times faster than List"
+      .format(numElements, randomAccessTimeRatio)
+  )
 
 }

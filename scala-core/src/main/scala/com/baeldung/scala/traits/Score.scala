@@ -1,12 +1,15 @@
 package com.baeldung.scala.traits
 
-class Score(var composer: String,
-            var engineer: String,
-            var orchestra: String,
-            var mixer: String,
-            override val qualityRatio: Double,
-            var studio: String)
-  extends RecordLabel with Composition with SoundProduction {
+class Score(
+  var composer: String,
+  var engineer: String,
+  var orchestra: String,
+  var mixer: String,
+  override val qualityRatio: Double,
+  var studio: String
+) extends RecordLabel
+  with Composition
+  with SoundProduction {
 
   override def compose(): String =
     s"""The score is composed by $composer,

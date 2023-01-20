@@ -5,7 +5,12 @@ import scala.util.Try
 
 import java.time.LocalDate
 
-final case class Movie(name: String, year: Year, runningTime: RunningTimeInMin, noOfOscarsWon: NoOfOscarsWon)
+final case class Movie(
+  name: String,
+  year: Year,
+  runningTime: RunningTimeInMin,
+  noOfOscarsWon: NoOfOscarsWon
+)
 
 object types {
 
@@ -26,7 +31,8 @@ object types {
   object RunningTimeInMin {
     def apply(value: Int): RunningTimeInMin = value
 
-    def safe(value: Int): Option[RunningTimeInMin] = if (value > 10 && value < 300) Some(value) else None
+    def safe(value: Int): Option[RunningTimeInMin] =
+      if (value > 10 && value < 300) Some(value) else None
 
     extension (time: RunningTimeInMin) {
       def value: Int = time
@@ -38,7 +44,8 @@ object types {
   object NoOfOscarsWon {
     def apply(value: Int): NoOfOscarsWon = value
 
-    def safe(value: Int): Option[NoOfOscarsWon] = if (value >= 0) Some(value) else None
+    def safe(value: Int): Option[NoOfOscarsWon] =
+      if (value >= 0) Some(value) else None
 
     extension (oscars: NoOfOscarsWon) {
       def value: Int = oscars
@@ -48,7 +55,9 @@ object types {
   opaque type ReleaseDate <: LocalDate = LocalDate
   object ReleaseDate {
     def apply(date: LocalDate): ReleaseDate = date
-    def safeParse(date: String): Option[ReleaseDate] = Try(LocalDate.parse(date)).toOption
+    def safeParse(date: String): Option[ReleaseDate] = Try(
+      LocalDate.parse(date)
+    ).toOption
     extension (releaseDate: ReleaseDate) {
       def toStr = releaseDate.toString()
     }

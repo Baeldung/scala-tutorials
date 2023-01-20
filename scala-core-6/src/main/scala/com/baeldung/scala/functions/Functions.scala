@@ -27,13 +27,13 @@ object Functions {
   val getNameLengthVal: String => Int = name => name.length
   val multiplyByTwoVal: Int => Int = num => num * 2
 
-  getNameLengthVal.andThen(multiplyByTwoVal) //compiles
+  getNameLengthVal.andThen(multiplyByTwoVal) // compiles
 
   def getNameLengthDef(name: String): Int = name.length
 
   def multiplyByTwoDef(number: Int): Int = number * 2
 
-  //getNameLengthDef.andThen(multiplyByTwoDef) //doesn't compile
+  // getNameLengthDef.andThen(multiplyByTwoDef) //doesn't compile
 
   /** Method to Function value */
   val getNameLengthDefFnValue = getNameLengthDef _
@@ -45,7 +45,7 @@ object Functions {
     s"$protocol$domain"
   }
 
-  /** repetitive non-DRY code  */
+  /** repetitive non-DRY code */
   //  val baeldung = createUrl("https://","www.baeldung.com")
   //  val facebook = createUrl("https://","www.facebook.com")
   //  val twitter = createUrl("https://","www.twitter.com")
@@ -61,16 +61,16 @@ object Functions {
   val google = withHttpsProtocol("www.google.com")
 
   def htmlPrinter(
-      tag: String,
-      value: String,
-      attributes: Map[String, String]
+    tag: String,
+    value: String,
+    attributes: Map[String, String]
   ): String = {
     s"<$tag${attributes.map { case (k, v) => s"""$k="$v"""" }.mkString(" ", " ", "")}>$value</$tag>"
   }
 
   htmlPrinter("div", "Big Animal", Map("size" -> "34", "show" -> "true"))
 
-  /** repetitive non-DRY code  */
+  /** repetitive non-DRY code */
   val div1 = htmlPrinter("div", "1", Map("size" -> "34"))
   val div2 = htmlPrinter("div", "2", Map("size" -> "34"))
   val div3 = htmlPrinter("div", "3", Map("size" -> "34"))

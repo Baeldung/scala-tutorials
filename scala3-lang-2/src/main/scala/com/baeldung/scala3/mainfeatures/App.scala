@@ -28,7 +28,7 @@ object App {
       case n: Int    => n.toString.length
     }
 
-  extension(s: String) {
+  extension (s: String) {
     def removeOccurrences(subString: String): String = s.replace(subString, "")
     def removeOccurrencesIgnoreCase(subString: String) =
       Pattern

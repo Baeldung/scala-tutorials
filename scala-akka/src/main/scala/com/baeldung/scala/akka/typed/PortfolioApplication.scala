@@ -5,8 +5,14 @@ import java.util.UUID
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.{ActorRef, ActorSystem, Behavior}
 import akka.util.Timeout
-import com.baeldung.scala.akka.typed.PortfolioApplication.Bank.{CreatePortfolio, PortfolioCreated}
-import com.baeldung.scala.akka.typed.PortfolioApplication.PortfolioActor.{Buy, PortfolioCommand}
+import com.baeldung.scala.akka.typed.PortfolioApplication.Bank.{
+  CreatePortfolio,
+  PortfolioCreated
+}
+import com.baeldung.scala.akka.typed.PortfolioApplication.PortfolioActor.{
+  Buy,
+  PortfolioCommand
+}
 
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
@@ -53,10 +59,9 @@ object PortfolioApplication {
     def apply(bank: ActorRef[CreatePortfolio]): Behavior[PortfolioCreated] =
       Behaviors.setup { context =>
         bank ! CreatePortfolio(context.self)
-        Behaviors.receiveMessage {
-          case PortfolioCreated(portfolio) =>
-            portfolio ! Buy("AAPL", 100L)
-            Behaviors.empty
+        Behaviors.receiveMessage { case PortfolioCreated(portfolio) =>
+          portfolio ! Buy("AAPL", 100L)
+          Behaviors.empty
         }
       }
   }
@@ -67,7 +72,8 @@ object PortfolioApplication {
 
     def apply(): Behavior[CreatePortfolio] =
       Behaviors.receive { (context, message) =>
-        val replyTo = context.spawn(PortfolioActor(), UUID.randomUUID().toString)
+        val replyTo =
+          context.spawn(PortfolioActor(), UUID.randomUUID().toString)
         message.client ! PortfolioCreated(replyTo)
         Behaviors.same
       }
@@ -76,7 +82,8 @@ object PortfolioApplication {
   object PortfolioActor {
     sealed trait PortfolioCommand
     final case class Buy(stock: String, quantity: Long) extends PortfolioCommand
-    final case class Sell(stock: String, quantity: Long) extends PortfolioCommand
+    final case class Sell(stock: String, quantity: Long)
+      extends PortfolioCommand
 
     def apply(): Behavior[PortfolioCommand] = {
       portfolio(Portfolio(Map.empty))
@@ -100,9 +107,8 @@ object PortfolioApplication {
 
     def sell(name: String, qty: Long): Portfolio = {
       val maybeStock = stocks.get(name)
-      maybeStock.fold(this) {
-        actuallyOwned =>
-          copy(stocks + (name -> actuallyOwned.sell(qty)))
+      maybeStock.fold(this) { actuallyOwned =>
+        copy(stocks + (name -> actuallyOwned.sell(qty)))
       }
     }
   }

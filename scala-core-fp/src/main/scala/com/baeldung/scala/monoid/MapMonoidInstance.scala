@@ -1,8 +1,8 @@
 package com.baeldung.scala.monoid
 
-/**
-  * This Monoid type class instance supports combining maps that have a numeric value.
-  * the value of maps with common keys, are added using the underlying Numeric.plus
+/** This Monoid type class instance supports combining maps that have a numeric
+  * value. the value of maps with common keys, are added using the underlying
+  * Numeric.plus
   */
 object MapMonoidInstance {
   implicit def mapMonoid[K, V: Numeric]: Monoid[Map[K, V]] = {

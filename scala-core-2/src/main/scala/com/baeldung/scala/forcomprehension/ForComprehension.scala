@@ -9,7 +9,8 @@ object ForComprehension {
       result <- results
       if result.succeeded
     } yield result.successfulAsserts
-  val passedAssertsInSucceededTests: Int = listOfPassedAssertsInSucceededTests.sum
+  val passedAssertsInSucceededTests: Int =
+    listOfPassedAssertsInSucceededTests.sum
 
   val numberOfAssertsWithExecutionTime: List[(String, Int, Int)] =
     for {
@@ -55,7 +56,8 @@ object ForComprehension {
     def foreach(f: A => Unit): Unit = f(result)
     def map[B](f: A => B): Result[B] = Result(f(result))
     def flatMap[B](f: A => Result[B]): Result[B] = f(result)
-    def withFilter(f: A => Boolean): Result[_] = if (f(result)) this else EmptyResult
+    def withFilter(f: A => Boolean): Result[_] =
+      if (f(result)) this else EmptyResult
   }
 
   object EmptyResult extends Result[Null](null)

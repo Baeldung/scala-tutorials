@@ -4,17 +4,17 @@ import java.sql.Date
 
 object ObjectExample extends App {
 
-  //Pattern Matching
+  // Pattern Matching
   messageVehicle(Car)
 
-  //Throws exception
-  //nonExhaustive(FlyingObject.drone)
+  // Throws exception
+  // nonExhaustive(FlyingObject.drone)
 
   sealedTraitMatch(BirdCaseObject)
 
   def messageVehicle(vehicle: Vehicle): Unit = {
     vehicle match {
-      case Car => println("send message to Car")
+      case Car     => println("send message to Car")
       case Bicycle => println("send message to Bicycle")
     }
   }
@@ -23,14 +23,14 @@ object ObjectExample extends App {
   def nonExhaustive(objects: FlyingObject.Value) {
     objects match {
       case FlyingObject.airplane => println("I am an airplane")
-      case FlyingObject.bird => println("I am a bird")
+      case FlyingObject.bird     => println("I am a bird")
     }
   }
 
   def sealedTraitMatch(flyingObject: FlyingCaseObjects): Unit = {
     flyingObject match {
       case AirplaneCaseObject => println("I am an airplane")
-      case BirdCaseObject => println("I am a bird")
+      case BirdCaseObject     => println("I am a bird")
     }
   }
 
@@ -57,7 +57,7 @@ abstract class Vehicle
 //Create enumeration
 object FlyingObject extends Enumeration {
 
-  //Assigning values
+  // Assigning values
   val airplane: Value = Value("AP")
   val bird: Value = Value("BD")
   val drone: Value = Value("DE")
@@ -66,7 +66,7 @@ object FlyingObject extends Enumeration {
 // Enumeration changing default ID of an value
 object FlyingObjectChangingID extends Enumeration {
 
-  //Assigning values
+  // Assigning values
   val airplane: Value = Value(2, "AP")
   val bird: Value = Value(3, "BD")
   val drone: Value = Value(1, "DE")

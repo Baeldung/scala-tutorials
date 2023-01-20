@@ -8,13 +8,18 @@ object IterateMap {
     'd' -> 100
   )
 
-  val iterateWithCase: Iterable[String] = asciiConversion.map { case (key, value) => s"Key: $key, Value: $value" }
+  val iterateWithCase: Iterable[String] = asciiConversion.map {
+    case (key, value) => s"Key: $key, Value: $value"
+  }
 
-  val iterateWithTuple: Iterable[String] = asciiConversion.map(pair => s"Key: ${pair._1}, Value: ${pair._2}")
+  val iterateWithTuple: Iterable[String] =
+    asciiConversion.map(pair => s"Key: ${pair._1}, Value: ${pair._2}")
 
-  val iterateWithForTuple: Iterable[String] = for (pair <- asciiConversion) yield s"${pair._1} : ${pair._2}"
+  val iterateWithForTuple: Iterable[String] =
+    for (pair <- asciiConversion) yield s"${pair._1} : ${pair._2}"
 
-  val iterateWithForSplit: Iterable[String] = for ((key, value) <- asciiConversion) yield s"$key : $value"
+  val iterateWithForSplit: Iterable[String] =
+    for ((key, value) <- asciiConversion) yield s"$key : $value"
 
   val values: Iterable[Int] = asciiConversion.values
 

@@ -16,8 +16,8 @@ class TimerActor(replyTo: ActorRef) extends Actor with Timers {
     super.preStart()
   }
 
-  override def receive: Receive = {
-    case PeriodicTick => replyTo ! "Periodic-Tick"
+  override def receive: Receive = { case PeriodicTick =>
+    replyTo ! "Periodic-Tick"
   }
 
 }

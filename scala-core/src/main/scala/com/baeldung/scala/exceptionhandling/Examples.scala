@@ -12,7 +12,7 @@ object Examples {
       return Calculator.sum(a, b)
       // println(s"${a} + ${b} = ${result}")
     } catch {
-      case e: IntOverflowException => -1
+      case e: IntOverflowException    => -1
       case e: NegativeNumberException => -2
     } finally {
       // This block will always be invoked

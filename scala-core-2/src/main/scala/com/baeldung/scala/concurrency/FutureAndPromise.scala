@@ -34,7 +34,8 @@ object ScalaAndPromise {
   }
 
   def md5hash(str: String): String =
-    new BigInteger(1,
+    new BigInteger(
+      1,
       MessageDigest
         .getInstance("MD5")
         .digest(str.getBytes)
