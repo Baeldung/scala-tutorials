@@ -10,7 +10,7 @@ object AwaitFuture  {
     Source.fromURL(url).getLines().mkString
   }
 
-  def fetchDataFrom(url : String, waitTime : Long = 0l) : Future[String] =  Future {
+  def fetchDataFrom(url : String, waitTime : Long = 0L) : Future[String] =  Future {
     Thread.sleep(waitTime)
     Source.fromURL(url).getLines().mkString
   }

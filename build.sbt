@@ -188,7 +188,6 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .enablePlugins(AkkaGrpcPlugin)
   .settings(
     name := "scala-akka-2",
-    scalaVersion := "2.13.10",
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
       "com.typesafe.akka" %% "akka-http" % "10.2.10",
@@ -236,9 +235,11 @@ val monixVersion = "3.4.0"
 val elastic4sVersion = "7.16.0"
 val sparkVersion = "3.2.1"
 
+val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
+val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
+
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
-    scalaVersion := "2.12.15",
     name := "scala-libraries",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
@@ -252,23 +253,19 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.beachape" %% "enumeratum" % "1.7.0"
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-slick" % "5.0.0",
+      "com.typesafe.play" %% "play-slick" % "5.1.0",
       "org.postgresql" % "postgresql" % "42.2.12"
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
     ),
-    libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-sql" % sparkVersion
-    ),
     dependencyOverrides := Seq(
-      "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.16",
-      "com.typesafe.akka" %% "akka-stream" % "2.6.16",
-      "com.typesafe.akka" %% "akka-serialization-jackson" % "2.6.16"
+      "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.19",
+      "com.typesafe.akka" %% "akka-stream" % "2.6.19",
+      "com.typesafe.akka" %% "akka-serialization-jackson" % "2.6.19"
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.16" % Test,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
       "org.scalacheck" %% "scalacheck" % "1.14.1" % Test,
       "com.lihaoyi" %% "requests" % "0.6.9"
     ) ++ scalaTestDeps,
@@ -286,8 +283,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     name := "scala-libraries",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-sql" % sparkVersion
+      sparkSqlDep,
+      sparkCoreDep
     ),
     libraryDependencies ++= Seq(
       "org.http4s" %% "http4s-dsl" % http4sVersion,
@@ -328,11 +325,9 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
-      "org.tpolecat" %% "skunk-core" % "0.3.2"
-    ),
-     libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-sql" % sparkVersion
+      "org.tpolecat" %% "skunk-core" % "0.3.2",
+      sparkSqlDep,
+      sparkCoreDep
     ),
     scalacOptions += "-Xasync"
   )

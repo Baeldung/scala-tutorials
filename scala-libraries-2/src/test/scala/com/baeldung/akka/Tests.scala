@@ -72,7 +72,7 @@ class GreeterTest extends TestService {
   sender ! Greeter.GreetingRequest(greeting, probe.ref)
   probe.expectMessage(Greeter.GreetingResponse(greeting))
   // no other message should be received by the greeter actor
-  probe.expectNoMessage(50 millis)
+  probe.expectNoMessage(50.millis)
 }
 
 class TrafficLightTest extends TestService {
@@ -83,29 +83,29 @@ class TrafficLightTest extends TestService {
   // ensure that initial state is RED
   sender ! TrafficLight.SignalCommand.GetSignal(probe.ref)
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.RED))
-  probe.expectNoMessage(50 millis)
+  probe.expectNoMessage(50.millis)
 
 
   // now try to change signal
   sender ! TrafficLight.SignalCommand.ChangeSignal(probe.ref)
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.YELLOW))
   // ensure no other message is received
-  probe.expectNoMessage(50 millis)
+  probe.expectNoMessage(50.millis)
 
   // ensure that the state is preserved
   sender ! TrafficLight.SignalCommand.ChangeSignal(probe.ref)
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.GREEN))
-  probe.expectNoMessage(50 millis)
+  probe.expectNoMessage(50.millis)
   //ensure that the state is preserved
   sender ! TrafficLight.SignalCommand.ChangeSignal(probe.ref)
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.RED))
-  probe.expectNoMessage(50 millis)
+  probe.expectNoMessage(50.millis)
 }
 
 class TrafficLightTestFut extends TestService {
   import scala.concurrent.duration._
   val sender = testKit.spawn(TrafficLight(), "traffic")
-  val duration = 300 millis
+  val duration = 300.millis
   implicit val timeout = Timeout(duration)
 
   val signalFut =  sender.ask(replyTo =>TrafficLight.SignalCommand.GetSignal(replyTo))

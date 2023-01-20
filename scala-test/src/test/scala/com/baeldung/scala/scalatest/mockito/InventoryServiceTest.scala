@@ -43,8 +43,10 @@ class InventoryServiceTest extends AnyWordSpec with MockitoSugar with ScalaFutur
       val service = new InventoryService(dao, mockProducer, mockLogger)
       when(dao.saveAsync(any[InventoryTransaction])).thenReturn(Future.successful(txn))
       doNothing().when(mockProducer).publish(txn)
-      service.saveAndPublish(txn)
-      verify(mockProducer, times(1)).publish(any[InventoryTransaction])
+      val result = service.saveAndPublish(txn)
+      whenReady(result){ _ =>
+        verify(mockProducer, times(1)).publish(any[InventoryTransaction])
+      }
     }
 
     "save and NOT publish to kafka for non chocolate inventory" in {

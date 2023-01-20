@@ -32,7 +32,7 @@ object ErrorHandling extends App {
     case Failure(e: UnknownHostException) =>
       println(s"Unknown host specified: ${e.getMessage}")
     case Failure(e: IOException) =>
-      println("Network failure: ${e.getMessage}")
+      println(s"Network failure: ${e.getMessage}")
     case Failure(t) =>
       t.printStackTrace()
   }

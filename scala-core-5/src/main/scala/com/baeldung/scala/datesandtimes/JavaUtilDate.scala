@@ -2,7 +2,6 @@ package com.baeldung.scala.datesandtimes
 import java.text.SimpleDateFormat
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
-import scala.languageFeature.experimental.macros
 
 object JavaUtilDate extends App{
 
@@ -28,5 +27,5 @@ object JavaUtilDate extends App{
   val date1 = Await.result(r1, Duration.Inf)
   val date2 = Await.result(r2, Duration.Inf)
 
-  println(date1, date2) // Prints "Wed Jul 01 2020, Fri Aug 21 2020"
+  println(date1 +", "+ date2) // Prints "Wed Jul 01 2020, Fri Aug 21 2020"
 }

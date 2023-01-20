@@ -15,7 +15,7 @@ class MessageProcessorActor extends Actor {
 
   override def receive: Receive = {
     case msg: MessageProcessorActor.Greet =>
-      sender ! MessageProcessorActor.Reply("Hey, " + msg.msg)
+      sender() ! MessageProcessorActor.Reply("Hey, " + msg.msg)
   }
 
 }

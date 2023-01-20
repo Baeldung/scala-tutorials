@@ -52,7 +52,7 @@ object ScalaAndPromise {
     } yield User(name, email, hashedPassword, avatar)
 
   def runByPromise[T](block: => T)(implicit ec: ExecutionContext): Future[T] = {
-    val p = Promise[T]
+    val p = Promise[T]()
     ec.execute { () =>
       try {
         p.success(block)
