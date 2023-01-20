@@ -1,9 +1,10 @@
 package com.baeldung.scala.conditional
 
 import com.baeldung.scala.conditional.ScalaConditionalExpressions.max
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ScalaConditionalExpressionsUnitTest extends FlatSpec with Matchers {
+class ScalaConditionalExpressionsUnitTest extends AnyFlatSpec with Matchers {
 
     "max" should "return maximum of two numbers" in {
         max(10, 20) should be(20)

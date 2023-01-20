@@ -1,9 +1,9 @@
 package com.baeldung.scala.datesandtimes
 
-import java.util.Locale
-
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
+
+import java.util.Locale
 
 object JodaTime extends App{
 

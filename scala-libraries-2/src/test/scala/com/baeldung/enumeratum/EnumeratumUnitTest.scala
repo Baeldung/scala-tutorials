@@ -1,9 +1,9 @@
 package com.baeldung.enumeratum
 
-import org.scalatest.WordSpec
-import org.scalatest.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.should.Matchers
 
-class EnumeratumUnitTest extends WordSpec with Matchers {
+class EnumeratumUnitTest extends AnyWordSpec with Matchers {
   "Enumeratum" should {
 
     "create and parse Country enums" in {

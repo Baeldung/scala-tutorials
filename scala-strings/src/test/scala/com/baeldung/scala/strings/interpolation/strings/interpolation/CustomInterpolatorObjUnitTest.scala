@@ -1,9 +1,10 @@
 package com.baeldung.scala.strings.interpolation
 
-import org.scalatest.{FeatureSpec, GivenWhenThen}
 import com.baeldung.scala.strings.interpolation.CustomInterpolatorObj._
+import org.scalatest.GivenWhenThen
+import org.scalatest.featurespec.AnyFeatureSpec
 
-class CustomInterpolatorObjUnitTest extends FeatureSpec with GivenWhenThen {
+class CustomInterpolatorObjUnitTest extends AnyFeatureSpec with GivenWhenThen {
 
   scenario("The custom interpolator may work as expected") {
 

@@ -1,9 +1,10 @@
 package com.baeldung.scala.mutability
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
+
 import scala.collection.mutable.ArrayBuffer
 
-class MutableCollectionsUnitTest extends FunSuite {
+class MutableCollectionsUnitTest extends AnyFunSuite {
   test("Mutable collection can be added with new elements") {
     val breakfasts = ArrayBuffer("Sandwich", "Salad")
 

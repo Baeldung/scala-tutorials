@@ -4,13 +4,14 @@ import akka.actor.testkit.typed.scaladsl.{ActorTestKit, LoggingTestKit}
 import akka.actor.typed.ActorSystem
 import com.baeldung.scala.akka.supervision.SupervisionApplication.Cache.{Find, Hit}
 import com.baeldung.scala.akka.supervision.SupervisionApplication.Main.{Created, Start}
-import com.baeldung.scala.akka.supervision.SupervisionApplication.{Cache, File, Filesystem, WebServer}
 import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.{BadRequest, Get, Ok, Response}
-import org.scalatest.{BeforeAndAfterAll, FlatSpec}
+import com.baeldung.scala.akka.supervision.SupervisionApplication.{Cache, Filesystem, WebServer}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.concurrent.duration.DurationInt
 
-class SupervisionApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
+class SupervisionApplicationUnitTest extends AnyFlatSpec with BeforeAndAfterAll {
 
   val testKit: ActorTestKit = ActorTestKit()
   implicit val actorSystem: ActorSystem[_] = testKit.internalSystem

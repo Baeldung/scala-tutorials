@@ -1,8 +1,10 @@
 package com.baeldung.scala.macros
 
-import org.scalatest.{MustMatchers, WordSpec}
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class OddEvenMacrosTest extends WordSpec with MustMatchers {
+
+class OddEvenMacrosTest extends AnyWordSpec with Matchers {
 
   "def macros" should {
     "return literal odd for odd number" in {

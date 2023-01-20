@@ -2,11 +2,12 @@ package com.baeldung.scala.slick
 
 import java.sql.SQLException
 import java.time.LocalDate
-
 import com.baeldung.scala.slick.SlickTables.PlayerTable
 import org.scalactic.Equality
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{AsyncWordSpec, BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome, Matchers}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AsyncWordSpec
+import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome}
 import slick.jdbc.H2Profile.api._
 
 import scala.concurrent.Future

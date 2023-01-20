@@ -1,8 +1,9 @@
 package com.baeldung.scala.vectorbenefits
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class VectorHeadTailAccessUnitTest extends FlatSpec with Matchers{
+class VectorHeadTailAccessUnitTest extends AnyFlatSpec with Matchers{
   "headTailAccessSeq" should "be able to access head/tail element of a Sequence" in {
     val numElements = 10000
     val vec:Vector[Int] = (1 to numElements).toVector

@@ -1,9 +1,10 @@
 package com.baeldung.scala.higherkindedtypes
 
-import org.scalatest.{Matchers, WordSpec}
 import com.baeldung.scala.higherkindedtypes.HigherKindedTypes._
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class HigherKindedTypesUnitTest extends  WordSpec with Matchers {
+class HigherKindedTypesUnitTest extends AnyWordSpec with Matchers {
 
   "Collections" should {
     "accept any type creator" in {

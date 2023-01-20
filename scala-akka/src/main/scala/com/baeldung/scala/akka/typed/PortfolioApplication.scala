@@ -1,13 +1,12 @@
 package com.baeldung.scala.akka.typed
 
-import java.util.UUID
-
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.{ActorRef, ActorSystem, Behavior}
 import akka.util.Timeout
 import com.baeldung.scala.akka.typed.PortfolioApplication.Bank.{CreatePortfolio, PortfolioCreated}
 import com.baeldung.scala.akka.typed.PortfolioApplication.PortfolioActor.{Buy, PortfolioCommand}
 
+import java.util.UUID
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
 

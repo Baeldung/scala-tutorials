@@ -3,7 +3,6 @@ package com.baeldung.scala.concurrency
 import java.math.BigInteger
 import java.net.URL
 import java.security.MessageDigest
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext, Future, Promise}

@@ -1,7 +1,7 @@
 package com.baeldung.scala.packageimport.vehicle
 
-import java.util.{Date => _, _}
 import java.sql.Date
+import java.util.{Date => _}
 
 class Bicycle(numberOfTires: Int, brand: String) extends Vehicle(numberOfTires, brand) {
   override def run(): Unit = {

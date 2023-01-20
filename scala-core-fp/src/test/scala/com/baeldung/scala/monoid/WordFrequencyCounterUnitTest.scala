@@ -1,8 +1,8 @@
 package com.baeldung.scala.monoid
 
-import org.scalatest.WordSpec
+import org.scalatest.wordspec.AnyWordSpec
 
-class WordFrequencyCounterUnitTest extends WordSpec {
+class WordFrequencyCounterUnitTest extends AnyWordSpec {
 
   object WordFrequencyCounter {
 

@@ -1,8 +1,8 @@
 package scala.com.baeldung.scala.typetag
 import com.baeldung.scala.typtag.TypeTagExample.checkType
-import org.scalatest.WordSpec
+import org.scalatest.wordspec.AnyWordSpec
 
-class TypeTagExampleUnitTest extends WordSpec {
+class TypeTagExampleUnitTest extends AnyWordSpec {
   val intList: List[Int] = List(1, 2, 3)
   val strList: List[String] = List("foo", "bar")
 

@@ -1,8 +1,9 @@
 package com.baeldung.scala.caseobjectsvsenums
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class CurrencyEnumUnitTest extends FlatSpec with Matchers {
+class CurrencyEnumUnitTest extends AnyFlatSpec with Matchers {
   "Enumerations" should "have a collection with all the values" in {
     import CurrencyEnum._
 

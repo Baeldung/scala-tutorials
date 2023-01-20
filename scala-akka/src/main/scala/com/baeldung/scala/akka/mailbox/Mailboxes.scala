@@ -2,8 +2,8 @@ package com.baeldung.scala.akka.mailbox
 
 import akka.actor.DeadLetter
 import akka.actor.typed.eventstream.EventStream
-import akka.actor.typed.{ActorRef, ActorSystem, Behavior, MailboxSelector}
 import akka.actor.typed.scaladsl.Behaviors
+import akka.actor.typed.{ActorRef, ActorSystem, Behavior, MailboxSelector}
 
 object Mailboxes {
 

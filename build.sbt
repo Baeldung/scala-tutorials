@@ -4,27 +4,33 @@ ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
-val scalaTest = "org.scalatest" %% "scalatest" % "3.1.2" % Test
 val junit = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "2.1.4"
 val catsCore = "org.typelevel" %% "cats-effect" % "2.1.4"
+
+val scalaTestDeps = Seq(
+  "org.scalatest" %% "scalatest" % "3.2.15" % Test,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % Test,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test,
+)
+
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
     name := "scala-core",
     libraryDependencies ++=
       Seq(
-        scalaTest,
         junit,
         catsCore,
         catsEffect
-      )
+      ) ++ scalaTestDeps
   )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
     name := "scala-core-2",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
@@ -32,7 +38,7 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
 lazy val scala_core_3 = (project in file("scala-core-3"))
   .settings(
     name := "scala-core-3",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
@@ -41,7 +47,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
 lazy val scala_core_4 = (project in file("scala-core-4"))
   .settings(
     name := "scala-core-4",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1"
@@ -50,7 +56,7 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
 lazy val scala_core_5 = (project in file("scala-core-5"))
   .settings(
     name := "scala-core-5",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaV,
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1",
@@ -62,7 +68,7 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
 lazy val scala_core_6 = (project in file("scala-core-6"))
   .settings(
     name := "scala-core-6",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
@@ -70,7 +76,7 @@ lazy val scala_core_6 = (project in file("scala-core-6"))
 lazy val scala_core_7 = (project in file("scala-core-7"))
   .settings(
     name := "scala-core-7",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "com.github.scopt" %% "scopt" % "4.0.1",
@@ -84,7 +90,7 @@ lazy val scala_core_8 = (project in file("scala-core-8"))
   .settings(
     name := "scala-core-8",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    libraryDependencies += scalaTest,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test"
     // scalacOptions += "-Ymacro-debug-lite"
   )
@@ -92,7 +98,7 @@ lazy val scala_core_8 = (project in file("scala-core-8"))
 lazy val scala_core_io = (project in file("scala-core-io"))
   .settings(
     name := "scala-core-io",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaV
   )
@@ -101,44 +107,42 @@ lazy val scala_core_oop = (project in file("scala-core-oop"))
   .settings(
     name := "scala-core-oop",
     libraryDependencies ++=
-      Seq(catsCore, scalaTest, junit)
+      Seq(catsCore, junit) ++ scalaTestDeps
   )
 
 lazy val scala_core_fp = (project in file("scala-core-fp"))
   .settings(
     name := "scala-core-fp",
     libraryDependencies ++=
-      Seq(catsCore, scalaTest, junit)
+      Seq(catsCore, junit) ++ scalaTestDeps
   )
 
 lazy val scala_lang = (project in file("scala-lang"))
   .settings(
     name := "scala-lang",
     libraryDependencies ++=
-      Seq(scalaTest, junit)
+      Seq(junit) ++ scalaTestDeps
   )
 
 lazy val scala_lang_2 = (project in file("scala-lang-2"))
   .settings(
     name := "scala-lang",
     libraryDependencies ++=
-      Seq(scalaTest, junit)
+      Seq(junit) ++ scalaTestDeps
   )
 
 lazy val scala_core_collections = (project in file("scala-core-collections"))
   .settings(
     name := "scala-core-collections",
     libraryDependencies ++= Seq(
-      scalaTest,
       "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
-    )
+    ) ++ scalaTestDeps,
   )
 
 lazy val scala_core_collections_2 = (project in file("scala-core-collections-2"))
   .settings(
     name := "scala-core-collections-2",
-    libraryDependencies +=
-      "org.scalatest" %% "scalatest" % "3.2.14" % Test
+    libraryDependencies ++= scalaTestDeps,
   )
 
 lazy val scala_test = (project in file("scala-test"))
@@ -147,10 +151,9 @@ lazy val scala_test = (project in file("scala-test"))
     libraryDependencies ++=
       Seq(
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
-        "org.scalatest" %% "scalatest" % "3.2.11" % Test,
         junit,
         "org.scalamock" %% "scalamock" % "4.4.0" % Test
-      )
+      ) ++ scalaTestDeps
   )
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
@@ -161,11 +164,10 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-stream" % "2.6.19",
   "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
-  "org.scalatest" %% "scalatest" % "3.1.2" % Test,
   "com.novocode" % "junit-interface" % "0.11" % "test",
   "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
   "com.typesafe.akka" %% "akka-http" % "10.2.7"
-)
+) ++ scalaTestDeps
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
@@ -193,8 +195,7 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-http-spray-json" % "10.2.10",
       "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "4.0.0",
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
-      "org.scalatest" %% "scalatest" % "3.0.8" % Test
-    )
+    ) ++ scalaTestDeps
   )
 val monocleVersion = "2.0.4"
 val slickVersion = "3.3.2"
@@ -207,7 +208,7 @@ val reactiveMongo = "1.0.3"
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
     name := "scala-libraries",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
@@ -239,7 +240,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .settings(
     scalaVersion := "2.12.15",
     name := "scala-libraries",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       "io.circe" %% "circe-generic" % circeVersion,
@@ -268,10 +269,9 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.16" % Test,
-      "org.scalatest" %% "scalatest" % "3.1.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.14.1" % Test,
       "com.lihaoyi" %% "requests" % "0.6.9"
-    ),
+    ) ++ scalaTestDeps,
     libraryDependencies ++= Seq(
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
       "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
@@ -284,7 +284,7 @@ val http4sVersion = "0.23.10"
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
     name := "scala-libraries",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-core" % sparkVersion,
       "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -311,7 +311,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
     name := "scala-libraries",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.13.0" % Runtime
@@ -324,7 +324,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     name := "scala-libraries-4",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
@@ -340,21 +340,25 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
 
 lazy val scala_design_patterns = (project in file("scala-design-patterns"))
   .settings(
     name := "scala-design-patterns",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "org.scalamock" %% "scalamock" % "4.4.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
-lazy val scala3_lang = project in file("scala3-lang")
+lazy val scala3_lang = (project in file("scala3-lang")).settings(
+  libraryDependencies ++= scalaTestDeps
+)
 
-lazy val scala3_lang_2 = project in file("scala3-lang-2")
+lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
+  libraryDependencies ++= scalaTestDeps
+  )
 
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
@@ -411,7 +415,5 @@ lazy val scala212 = (project in file("scala212"))
   .settings(
     scalaVersion := "2.12.17",
     name := "scala212",
-    libraryDependencies ++= Seq(
-      scalaTest
-    )
+    libraryDependencies ++= scalaTestDeps
   )

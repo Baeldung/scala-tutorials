@@ -1,10 +1,6 @@
 package com.baeldung.scala.akka.stopping
 
 import akka.actor.Actor
-import akka.actor.ActorSystem
-import akka.actor.Props
-import akka.actor.PoisonPill
-import akka.actor.DeadLetter
 
 object MessageProcessorActor {
   trait Message

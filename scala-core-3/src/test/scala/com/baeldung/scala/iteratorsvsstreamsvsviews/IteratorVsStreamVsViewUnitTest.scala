@@ -1,9 +1,9 @@
 package com.baeldung.scala.iteratorsvsstreamsvsviews
 
-import com.baeldung.scala.iteratorsvsstreamsvsviews.NonStrictDataStructures
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class IteratorVsStreamVsViewUnitTest extends WordSpec with Matchers {
+class IteratorVsStreamVsViewUnitTest extends AnyWordSpec with Matchers {
 
   "strict collections after transformations" should {
     "be evaluated immediately" in {

@@ -1,16 +1,17 @@
 package com.baeldung.scala.exceptionhandling
 
-import java.io.IOException
-
 import cats.data.NonEmptyList
 import cats.data.Validated.{Invalid, Valid}
 import com.baeldung.scala.exceptionhandling.LegacyErrors.{ResourceNotFound, ServerError, UserNotFound}
 import com.baeldung.scala.exceptionhandling.ValidationErrors.{IllegalLogin, IllegalPassword}
-import org.scalatest.{FeatureSpec, FlatSpec, GivenWhenThen, Matchers}
+import org.scalatest.GivenWhenThen
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
 
+import java.io.IOException
 import scala.util.{Failure, Success, Try}
 
-class IdiomaticExceptionHandlingUnitTest extends FeatureSpec with GivenWhenThen  with Matchers {
+class IdiomaticExceptionHandlingUnitTest extends AnyFeatureSpec with GivenWhenThen  with Matchers {
   val user = User("user1", "password1")
   val rootUser = User("root", "root_password")
 

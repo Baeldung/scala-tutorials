@@ -1,9 +1,6 @@
 package com.baeldung.scala.differences
 
-import cats.effect.IOApp
-import cats.effect.IO
-import cats.effect.Resource
-import cats.effect.std.Random
+import cats.effect.{IO, IOApp, Resource}
 
 object FlatEvalDiff extends IOApp.Simple {
 

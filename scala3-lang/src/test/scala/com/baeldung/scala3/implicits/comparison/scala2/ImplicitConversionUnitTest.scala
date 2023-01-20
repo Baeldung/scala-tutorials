@@ -1,8 +1,7 @@
 package com.baeldung.scala3.implicits.comparison.scala2
-import org.scalatest.matchers.should.Matchers
+import com.baeldung.scala3.implicits.comparison.scala2.ImplicitConversion.*
 import org.scalatest.flatspec.AnyFlatSpec
-
-import ImplicitConversion._
+import org.scalatest.matchers.should.Matchers
 
 class ImplicitConversionUnitTest extends AnyFlatSpec with Matchers {
   it should "use the implicit conversion" in {

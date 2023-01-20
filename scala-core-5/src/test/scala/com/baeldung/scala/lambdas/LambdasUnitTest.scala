@@ -1,8 +1,9 @@
 package com.baeldung.scala.lambdas
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class LambdasUnitTest extends WordSpec with Matchers {
+class LambdasUnitTest extends AnyWordSpec with Matchers {
 
   "A lambda" should {
     "multiply a number by two" in {

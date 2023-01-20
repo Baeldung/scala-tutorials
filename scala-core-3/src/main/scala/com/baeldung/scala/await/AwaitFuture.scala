@@ -1,8 +1,8 @@
 package com.baeldung.scala.await
 
-import scala.concurrent.{ Await, Future }
-import scala.io.Source
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+import scala.io.Source
 
 object AwaitFuture  {
 

@@ -1,7 +1,7 @@
 package com.baeldung.scala.future
 
 import com.baeldung.scala.future.FutureRecovery.{Sunny, Windy}
-import org.scalatest.AsyncFlatSpec
+import org.scalatest.flatspec.AsyncFlatSpec
 
 class FutureRecoveryUnitTest extends AsyncFlatSpec {
 

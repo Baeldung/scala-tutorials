@@ -4,10 +4,10 @@ import akka.actor.testkit.typed.CapturedLogEvent
 import akka.actor.testkit.typed.scaladsl.{BehaviorTestKit, TestInbox}
 import com.baeldung.scala.akka.tell.LoggingApplication.MicroserviceActor.DoSomeStuff
 import com.baeldung.scala.akka.tell.LoggingApplication.{LogKeeperActor, MicroserviceActor}
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 import org.slf4j.event.Level
 
-class LoggingApplicationUnitTest extends FlatSpec {
+class LoggingApplicationUnitTest extends AnyFlatSpec {
 
   "A LogKeeperActor" should "log received messages using the trace level" in {
     val logger = BehaviorTestKit(LogKeeperActor())

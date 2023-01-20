@@ -1,12 +1,10 @@
 package com.baeldung.scala.akka_2.grpc
 
 import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
 import akka.stream.scaladsl.{Keep, Sink, Source}
 import akka.testkit.TestKit
-import org.scalatest.{AsyncWordSpecLike, BeforeAndAfterAll}
-
-import scala.concurrent.Future
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.wordspec.AsyncWordSpecLike
 
 class MessageExchangeServiceTest
   extends TestKit(ActorSystem("Akka-gRPC"))

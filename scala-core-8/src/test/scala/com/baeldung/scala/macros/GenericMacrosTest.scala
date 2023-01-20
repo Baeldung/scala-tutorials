@@ -1,8 +1,9 @@
 package com.baeldung.scala.macros
 
-import org.scalatest.{MustMatchers, WordSpec}
+import org.scalatest.matchers.must.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class GenericMacrosTest extends WordSpec with MustMatchers {
+class GenericMacrosTest extends AnyWordSpec with Matchers {
   "generic macro" should {
     "return String for string argument" in {
       GenericMacros.getType("this is a string") mustBe "String"

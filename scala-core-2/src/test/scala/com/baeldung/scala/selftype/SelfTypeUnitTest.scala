@@ -1,8 +1,9 @@
 package com.baeldung.scala.selftype
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class SelfTypeUnitTest extends FlatSpec {
+
+class SelfTypeUnitTest extends AnyFlatSpec {
 
   "TestExecutor class" should "be extended creating a new type" in {
     assertCompiles(
