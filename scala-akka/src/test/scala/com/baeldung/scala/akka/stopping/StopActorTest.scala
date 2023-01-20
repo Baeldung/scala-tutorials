@@ -26,7 +26,8 @@ class StoppingActorTest
 
     "stop the actor using stop() method" in {
       import scala.concurrent.ExecutionContext.Implicits.global
-      val actor = system.actorOf(Props(classOf[MessageProcessorActor]), "StopActor")
+      val actor =
+        system.actorOf(Props(classOf[MessageProcessorActor]), "StopActor")
       val probe = testkit.TestProbe()
       probe.watch(actor)
 

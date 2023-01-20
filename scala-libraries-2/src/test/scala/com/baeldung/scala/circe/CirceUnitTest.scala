@@ -33,21 +33,25 @@ class CirceUnitTest extends AnyFlatSpec with should.Matchers {
     val parseResult: Either[ParsingFailure, Json] = parse(jsonString)
 
     parseResult match {
-      case Left(parsingError) => throw new IllegalArgumentException(s"Invalid JSON object: ${parsingError.message}")
+      case Left(parsingError) =>
+        throw new IllegalArgumentException(
+          s"Invalid JSON object: ${parsingError.message}"
+        )
       case Right(json) =>
         val numbers = json \\ "numericField"
-        val firstNumber: Option[Option[JsonNumber]] = numbers.collectFirst{
+        val firstNumber: Option[Option[JsonNumber]] = numbers.collectFirst {
           case field => field.asNumber
         }
 
         val singleOption: Option[Int] = firstNumber.flatten.flatMap(_.toInt)
 
-        singleOption shouldEqual  Some[Int](123)
+        singleOption shouldEqual Some[Int](123)
     }
   }
 
   it should "convert JSON into object using converters and back to original string" in {
-    import io.circe._, io.circe.generic.semiauto._, io.circe.parser._, io.circe.syntax._
+    import io.circe._, io.circe.generic.semiauto._, io.circe.parser._,
+    io.circe.syntax._
 
     case class Nested(arrayField: List[Int])
 
@@ -61,7 +65,9 @@ class CirceUnitTest extends AnyFlatSpec with should.Matchers {
     implicit val nestedDecoder: Decoder[Nested] = deriveDecoder[Nested]
     implicit val jsonDecoder: Decoder[OurJson] = deriveDecoder[OurJson]
 
-    decode[OurJson](jsonString) shouldEqual Right(OurJson("textContent", 123, true, Nested(List(1, 2, 3))))
+    decode[OurJson](jsonString) shouldEqual Right(
+      OurJson("textContent", 123, true, Nested(List(1, 2, 3)))
+    )
 
     val decoded = decode[OurJson](jsonString)
 
@@ -98,7 +104,9 @@ class CirceUnitTest extends AnyFlatSpec with should.Matchers {
     implicit val nestedDecoder: Decoder[Nested] = deriveDecoder[Nested]
     implicit val jsonDecoder: Decoder[OurJson] = deriveDecoder[OurJson]
 
-    decode[OurJson](jsonStringWithMissingFields) shouldEqual Right(OurJson("textContent", None, None, Nested(None)))
+    decode[OurJson](jsonStringWithMissingFields) shouldEqual Right(
+      OurJson("textContent", None, None, Nested(None))
+    )
   }
 
   it should "decode a JSON with missing fields using a custom decoder" in {
@@ -113,16 +121,19 @@ class CirceUnitTest extends AnyFlatSpec with should.Matchers {
       nestedObject: Nested
     )
 
-    implicit val decodeNested: Decoder[Nested] = (c: HCursor) => for {
-      arrayField <- c.downField("arrayField").as[Option[List[Int]]]
-    } yield {
-      val flattenedArray = arrayField.getOrElse(Nil)
-      Nested(flattenedArray)
-    }
+    implicit val decodeNested: Decoder[Nested] = (c: HCursor) =>
+      for {
+        arrayField <- c.downField("arrayField").as[Option[List[Int]]]
+      } yield {
+        val flattenedArray = arrayField.getOrElse(Nil)
+        Nested(flattenedArray)
+      }
 
     implicit val jsonDecoder: Decoder[OurJson] = deriveDecoder[OurJson]
 
-    decode[OurJson](jsonStringWithMissingFields) shouldEqual Right(OurJson("textContent", None, None, Nested(Nil)))
+    decode[OurJson](jsonStringWithMissingFields) shouldEqual Right(
+      OurJson("textContent", None, None, Nested(Nil))
+    )
 
     val jsonStringWithArray =
       """{
@@ -132,7 +143,9 @@ class CirceUnitTest extends AnyFlatSpec with should.Matchers {
         |  }
         |}""".stripMargin
 
-    decode[OurJson](jsonStringWithArray) shouldEqual Right(OurJson("textContent", None, None, Nested(List(1, 2))))
+    decode[OurJson](jsonStringWithArray) shouldEqual Right(
+      OurJson("textContent", None, None, Nested(List(1, 2)))
+    )
   }
 
   it should "use automatic decoder derivation" in {
@@ -147,6 +160,8 @@ class CirceUnitTest extends AnyFlatSpec with should.Matchers {
       nestedObject: Nested
     )
 
-    parser.decode[OurJson](jsonString) shouldEqual Right(OurJson("textContent", 123, true, Nested(List(1, 2, 3))))
+    parser.decode[OurJson](jsonString) shouldEqual Right(
+      OurJson("textContent", 123, true, Nested(List(1, 2, 3)))
+    )
   }
 }

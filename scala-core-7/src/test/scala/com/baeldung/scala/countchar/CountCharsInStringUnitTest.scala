@@ -39,5 +39,4 @@ class CountCharsInStringUnitTest extends FlatSpec with Matchers {
     count shouldBe 5
   }
 
-
 }

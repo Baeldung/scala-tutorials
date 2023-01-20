@@ -18,15 +18,15 @@ class CurrencyAdtUnitTest extends FlatSpec with Matchers {
 
   "The Currency ADT" should "are type safe and do not clash with other enumerations" in {
     object InternetCodes extends Enumeration {
-          type CountryCode = Value
-          val EU, DE, CO = Value
-       }
-       import InternetCodes._
-       import CurrencyADT._
-       object Methods {
-         def method(arg1: CurrencyADT): CurrencyADT = arg1
-         def method(arg1: CountryCode): CountryCode = arg1
-       }
+      type CountryCode = Value
+      val EU, DE, CO = Value
+    }
+    import InternetCodes._
+    import CurrencyADT._
+    object Methods {
+      def method(arg1: CurrencyADT): CurrencyADT = arg1
+      def method(arg1: CountryCode): CountryCode = arg1
+    }
     Methods.method(EU) shouldBe EU
     Methods.method(EUR) shouldBe EUR
   }

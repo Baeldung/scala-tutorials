@@ -38,17 +38,17 @@ class ScalaCacheSyncUnitTest
       sycQueryService.queryCount shouldBe 0
       GuavaCacheConfig.underlyingGuavaCache.size() shouldBe 0
 
-      //query from db
+      // query from db
       sycQueryService.getUser(9)
       sycQueryService.queryCount shouldBe 1
       GuavaCacheConfig.underlyingGuavaCache.asMap().keySet().size() shouldBe 1
 
-      //query same user again
+      // query same user again
       sycQueryService.getUser(9)
       sycQueryService.queryCount shouldBe 1
       GuavaCacheConfig.underlyingGuavaCache.size() shouldBe 1
 
-      //query for a new user
+      // query for a new user
       sycQueryService.getUser(5)
       sycQueryService.queryCount shouldBe 2
       GuavaCacheConfig.underlyingGuavaCache.size() shouldBe 2
@@ -68,7 +68,7 @@ class ScalaCacheSyncUnitTest
       service.queryCount shouldBe 0
       GuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache.size() shouldBe 0
 
-      //query from db
+      // query from db
       service.getUser(1)
       service.queryCount shouldBe 1
       GuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
@@ -76,12 +76,12 @@ class ScalaCacheSyncUnitTest
         .keySet()
         .size() shouldBe 1
 
-      //query same user again
+      // query same user again
       service.getUser(1)
       service.queryCount shouldBe 1
       GuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache.size() shouldBe 1
 
-      //query for a new user
+      // query for a new user
       service.getUser(2)
       service.queryCount shouldBe 2
       GuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache.size() shouldBe 2

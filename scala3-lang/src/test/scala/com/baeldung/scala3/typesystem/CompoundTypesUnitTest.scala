@@ -21,7 +21,6 @@ class CompoundTypesUnitTest extends AnyWordSpec with Matchers {
 
   }
 
-
   "shutdown function which require intersection of Show and Closable types" should {
     "shoutdown a res object which is intersection of these two data types" in {
       shutdown(res) shouldBe ()

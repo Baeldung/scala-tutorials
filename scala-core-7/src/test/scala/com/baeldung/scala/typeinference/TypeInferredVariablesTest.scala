@@ -2,7 +2,7 @@ package com.baeldung.scala.typeinference
 
 import org.scalatest.{Matchers, WordSpec}
 
-class TypeInferredVariablesTest  extends WordSpec with Matchers {
+class TypeInferredVariablesTest extends WordSpec with Matchers {
   "type inference for variables " should {
     import com.baeldung.scala.typeinference.TypeInferredVariables._
     "An integer number given as initial value should infer a Integer type" in {

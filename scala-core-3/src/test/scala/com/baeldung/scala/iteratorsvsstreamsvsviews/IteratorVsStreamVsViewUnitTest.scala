@@ -8,10 +8,9 @@ class IteratorVsStreamVsViewUnitTest extends WordSpec with Matchers {
   "strict collections after transformations" should {
     "be evaluated immediately" in {
       val list = List(1, 2, 3)
-      list.map(_*2) shouldBe List(2, 4, 6)
+      list.map(_ * 2) shouldBe List(2, 4, 6)
     }
   }
-
 
   "an iterator of collection" should {
     "be exhausted after applying foreach on it" in {
@@ -23,7 +22,8 @@ class IteratorVsStreamVsViewUnitTest extends WordSpec with Matchers {
 
   "an iterator of collection" should {
     "have next element after applying map on it" in {
-      val it = NonStrictDataStructures.data.iterator // in case of running all tests, the iterator should be got again
+      val it =
+        NonStrictDataStructures.data.iterator // in case of running all tests, the iterator should be got again
       val itUpd = it.map(_ + 1)
       itUpd.next shouldBe 1
     }
@@ -48,7 +48,8 @@ class IteratorVsStreamVsViewUnitTest extends WordSpec with Matchers {
 
   "Factorial" should {
     "throw StackOverflow error if implemented via List" in {
-      def factorial(a: Int, b: Int): List[Int] = a :: factorial(a*(b+1), b+1)
+      def factorial(a: Int, b: Int): List[Int] =
+        a :: factorial(a * (b + 1), b + 1)
       assertThrows[StackOverflowError] {
         factorial(1, 1).take(7)
       }
@@ -64,9 +65,13 @@ class IteratorVsStreamVsViewUnitTest extends WordSpec with Matchers {
 
   "View" should {
     "handle large set of data" in {
-      val words: Iterable[String] = List.range(0, 100000).map(_ => "Java") ++ List("Scala") ++ List.range(0, 100000).map(_ => "Java")
+      val words: Iterable[String] =
+        List.range(0, 100000).map(_ => "Java") ++ List("Scala") ++ List
+          .range(0, 100000)
+          .map(_ => "Java")
       val occurence = "Scala"
-      val hasOccurence = (listOfWords: Iterable[String]) => listOfWords.exists(_ == occurence)
+      val hasOccurence =
+        (listOfWords: Iterable[String]) => listOfWords.exists(_ == occurence)
 
       hasOccurence(words.view) shouldBe true
     }

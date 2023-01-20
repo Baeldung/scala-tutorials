@@ -2,7 +2,7 @@ package com.baeldung.scala.typecasts
 
 import org.scalatest.{Matchers, WordSpec}
 
-class TypeErasureUnitTest extends  WordSpec with Matchers {
+class TypeErasureUnitTest extends WordSpec with Matchers {
 
   "Generic types" should {
     "be discarded" in {

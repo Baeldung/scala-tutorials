@@ -3,7 +3,7 @@ package com.baeldung.scala.typeclasses
 import com.baeldung.scala.typeclasses.TypeClassExample._
 import org.scalatest._
 
-class TypeClassExampleUnitTest extends FlatSpec{
+class TypeClassExampleUnitTest extends FlatSpec {
   it should "custom print different types" in {
     val studentId = StudentId(25)
     val staffId = StaffId(12)

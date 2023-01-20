@@ -10,10 +10,10 @@ import org.scalatest._
 @Ignore
 // fixing in JAVA-4839
 class SchedulerUnitTest
-    extends TestKit(ActorSystem("test-system"))
-    with ImplicitSender
-    with WordSpecLike
-    with Matchers {
+  extends TestKit(ActorSystem("test-system"))
+  with ImplicitSender
+  with WordSpecLike
+  with Matchers {
 
   "Akka scheduler" must {
 
@@ -23,7 +23,7 @@ class SchedulerUnitTest
       system.scheduler.scheduleOnce(500.millis, greeter, greet)
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
       expectMsg(1.seconds, expectedMessage)
-      //should not get anymore message
+      // should not get anymore message
       expectNoMessage(1.seconds)
       system.stop(greeter)
     }
@@ -32,13 +32,16 @@ class SchedulerUnitTest
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Greeter-With-Runnable")
       val greet = Greet("Detective", "Lucifer")
-      system.scheduler.scheduleOnce(500.millis, new Runnable {
-        override def run(): Unit = greeter ! greet
-      })
+      system.scheduler.scheduleOnce(
+        500.millis,
+        new Runnable {
+          override def run(): Unit = greeter ! greet
+        }
+      )
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
       expectMsg(1.seconds, expectedMessage)
-      //should not get anymore message
+      // should not get anymore message
       expectNoMessage(1.seconds)
       system.stop(greeter)
     }
@@ -51,7 +54,7 @@ class SchedulerUnitTest
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
       expectMsg(300.millis, expectedMessage)
-      //get another message after 500 millis
+      // get another message after 500 millis
       expectMsg(300.millis, expectedMessage)
       expectMsg(300.millis, expectedMessage)
       system.stop(greeter)
@@ -73,7 +76,7 @@ class SchedulerUnitTest
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
       expectMsg(350.millis, expectedMessage)
-      //get another message after 500 millis
+      // get another message after 500 millis
       expectMsg(350.millis, expectedMessage)
       expectMsg(350.millis, expectedMessage)
       system.stop(greeter)
@@ -83,13 +86,17 @@ class SchedulerUnitTest
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Periodic-Greeter-Runnable")
       val greet = Greet("Detective", "Lucifer")
-      system.scheduler.schedule(10.millis, 250.millis, new Runnable {
-        override def run(): Unit = greeter ! greet
-      })
+      system.scheduler.schedule(
+        10.millis,
+        250.millis,
+        new Runnable {
+          override def run(): Unit = greeter ! greet
+        }
+      )
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
       expectMsg(300.millis, expectedMessage)
-      //get another message after 500 millis
+      // get another message after 500 millis
       expectMsg(300.millis, expectedMessage)
       expectMsg(300.millis, expectedMessage)
       system.stop(greeter)
@@ -104,7 +111,7 @@ class SchedulerUnitTest
 
       val expectedMessage = Greeted("Lucifer MorningStar: Hello, Detective")
       expectMsg(350.millis, expectedMessage)
-      //Cancel the schedule, should not get any more messages after that
+      // Cancel the schedule, should not get any more messages after that
       schedulerInstance.cancel()
       schedulerInstance.isCancelled shouldBe true
       expectNoMsg(1.seconds)
@@ -127,7 +134,7 @@ class SchedulerUnitTest
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
       expectMsg(500.millis, expectedMessage)
-      //get the next message in 300 millis
+      // get the next message in 300 millis
       expectMsg(310.millis, expectedMessage)
       system.stop(greeter)
     }

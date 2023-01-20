@@ -24,7 +24,9 @@ class SwapIntegerSignUnitTest extends FlatSpec {
 
   "swapSign andThen printIfPositive" should "chain and print a positive number" in {
     assert(
-      (SwapIntegerSign.swapSign andThen SwapIntegerSign.printIfPositive)(-1).getClass == classOf[
+      (SwapIntegerSign.swapSign andThen SwapIntegerSign.printIfPositive)(
+        -1
+      ).getClass == classOf[
         Unit
       ]
     )

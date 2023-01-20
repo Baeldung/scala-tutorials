@@ -15,7 +15,7 @@ class SelfTypeUnitTest extends FlatSpec {
 
   it should "be instantiated directly using mixing a TestEnvironment" in {
     assertCompiles(
-    """
+      """
         |import SelfType._
         |val windowsGeneralExecutor: TestExecutor = new TestExecutor with WindowsTestEnvironment
         |""".stripMargin

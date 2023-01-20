@@ -5,8 +5,11 @@ import com.baedung.scala.conversions.JavaApi
 import scala.collection.convert.{DecorateAsJava, DecorateAsScala}
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.should.Matchers
-class JavaToScalaConversionsUnitTest extends FlatSpec with Matchers
-  with DecorateAsScala with DecorateAsJava {
+class JavaToScalaConversionsUnitTest
+  extends FlatSpec
+  with Matchers
+  with DecorateAsScala
+  with DecorateAsJava {
 
   "Standard conversions" should "convert from Java Iterators and back" in {
     val api = new JavaApi
@@ -23,7 +26,9 @@ class JavaToScalaConversionsUnitTest extends FlatSpec with Matchers
     val scalaList = for (name <- javaList.asScala) yield s"Hello ${name}"
     val withExclamation = api.addExclamation(scalaList.asJava)
 
-    assert(withExclamation.toString == "[Hello Oscar!, Hello Helga!, Hello Faust!]")
+    assert(
+      withExclamation.toString == "[Hello Oscar!, Hello Helga!, Hello Faust!]"
+    )
     assert(!(withExclamation eq javaList))
   }
 

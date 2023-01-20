@@ -13,20 +13,28 @@ class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
     case object Mid extends Level
     case object Senior extends Level
   }
-  case class Programmer(name: String,
-                        level: Level,
-                        knownLanguages: List[String])
+  case class Programmer(
+    name: String,
+    level: Level,
+    knownLanguages: List[String]
+  )
 
   val programmers: List[Programmer] = List(
-    Programmer(name = "Kelly",
-               level = Level.Mid,
-               knownLanguages = List("JavaScript")),
-    Programmer(name = "John",
-               level = Level.Senior,
-               knownLanguages = List("Java", "Scala", "Kotlin")),
-    Programmer(name = "Dave",
-               level = Level.Junior,
-               knownLanguages = List("C", "C++"))
+    Programmer(
+      name = "Kelly",
+      level = Level.Mid,
+      knownLanguages = List("JavaScript")
+    ),
+    Programmer(
+      name = "John",
+      level = Level.Senior,
+      knownLanguages = List("Java", "Scala", "Kotlin")
+    ),
+    Programmer(
+      name = "Dave",
+      level = Level.Junior,
+      knownLanguages = List("C", "C++")
+    )
   )
 
   def isMidOrSenior(implicit counter: AtomicInteger): Programmer => Boolean =
@@ -36,8 +44,9 @@ class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
       List(Level.Mid, Level.Senior).contains(programmer.level)
     }
 
-  def knowsMoreThan1Language(
-      implicit counter: AtomicInteger): Programmer => Boolean =
+  def knowsMoreThan1Language(implicit
+    counter: AtomicInteger
+  ): Programmer => Boolean =
     programmer => {
       counter.incrementAndGet()
       println("verify number of known languages " + programmer)

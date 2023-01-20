@@ -2,10 +2,10 @@ package com.baeldung.scala.await
 
 import java.util.concurrent.TimeoutException
 
-import org.scalatest.{ Matchers, WordSpec, Ignore }
+import org.scalatest.{Matchers, WordSpec, Ignore}
 
 import scala.concurrent.duration._
-import scala.concurrent.{ Await, Future }
+import scala.concurrent.{Await, Future}
 
 @Ignore // fixing in JAVA-9842
 class AwaitFutureUnitTest extends AwaitFutureTestUtil {
@@ -23,7 +23,7 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       completedFuture.isInstanceOf[Future[String]] shouldBe true
       val assertion = completedFuture.value match {
         case Some(result) => result.isSuccess
-        case _ => false
+        case _            => false
       }
       assertion shouldBe true
     }
@@ -34,8 +34,8 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       val exception = intercept[Exception](Await.ready(fut, 2.seconds))
 
       val assertion = exception match {
-        case _ : TimeoutException => true
-        case _ => false
+        case _: TimeoutException => true
+        case _                   => false
       }
 
       assertion shouldBe true
@@ -51,7 +51,7 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       completedFuture.isCompleted shouldBe true
       val assertion = completedFuture.value match {
         case Some(result) => result.isFailure
-        case _ => false
+        case _            => false
       }
       assertion shouldBe true
     }
@@ -71,8 +71,8 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       val exception = intercept[Exception](Await.result(fut, 2.seconds))
 
       val assertion = exception match {
-        case _ : TimeoutException => true
-        case _ => false
+        case _: TimeoutException => true
+        case _                   => false
       }
       assertion shouldBe true
     }
@@ -84,8 +84,8 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
       val exception = intercept[Exception](Await.result(fut, 2.seconds))
 
       val assertion = exception match {
-        case _ : NullPointerException => true
-        case _ => false
+        case _: NullPointerException => true
+        case _                       => false
       }
       assertion shouldBe true
     }
@@ -94,6 +94,9 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
 }
 
 trait AwaitFutureTestUtil extends WordSpec with Matchers {
-  //needed to avoid a 403 error
-  System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36")
+  // needed to avoid a 403 error
+  System.setProperty(
+    "http.agent",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36"
+  )
 }

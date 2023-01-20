@@ -9,5 +9,4 @@ case class Person(name: String, age: Int) extends PersonInterface {
        |}
        |""".stripMargin
 
-  
 }

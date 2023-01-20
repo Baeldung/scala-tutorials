@@ -3,7 +3,7 @@ package com.baeldung.scala.scalaz.principles
 import com.baeldung.scala.scalaz.principles.ScalazPrinciplesExamples._
 import org.scalatest._
 
-class ScalazPrinciplesExamplesUnitTest extends FlatSpec{
+class ScalazPrinciplesExamplesUnitTest extends FlatSpec {
 
   it should "sort ints and strings" in {
     val integers = List(3, 2, 6, 5, 4, 1)
@@ -16,7 +16,9 @@ class ScalazPrinciplesExamplesUnitTest extends FlatSpec{
   it should "sort custom types" in {
     val wrappedInts = List(IntWrapper(3), IntWrapper(2), IntWrapper(1))
 
-    assertResult(expected = List(IntWrapper(1), IntWrapper(2), IntWrapper(3)))(wrappedInts.sorted)
+    assertResult(expected = List(IntWrapper(1), IntWrapper(2), IntWrapper(3)))(
+      wrappedInts.sorted
+    )
   }
 
   "Doubler" should "work on any supported container type" in {

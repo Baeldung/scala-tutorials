@@ -18,8 +18,8 @@ object JSONConversions {
   val parseResult = parse(stringJson)
 
   parseResult match {
-    case Left(_) => println("Inputted JSON failed")
-    case Right(_)   => println("JSON conversion succeeded")
+    case Left(_)  => println("Inputted JSON failed")
+    case Right(_) => println("JSON conversion succeeded")
   }
 
   val json: Json = parseResult.getOrElse(null)

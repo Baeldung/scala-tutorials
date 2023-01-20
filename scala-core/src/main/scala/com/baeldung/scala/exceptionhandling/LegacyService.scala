@@ -4,9 +4,9 @@ import java.io.IOException
 
 object LegacyService {
   def authenticate(user: User): Session = user match {
-    case null                  => null
-    case User("root", _)       => throw new IllegalArgumentException
-    case User(login, _) => Session(s"""${login}_session""", 3600)
+    case null            => null
+    case User("root", _) => throw new IllegalArgumentException
+    case User(login, _)  => Session(s"""${login}_session""", 3600)
   }
 
   def getResource(recourceId: String, session: Session): Resource =

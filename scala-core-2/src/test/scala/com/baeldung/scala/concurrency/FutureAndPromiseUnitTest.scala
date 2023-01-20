@@ -3,7 +3,10 @@ package com.baeldung.scala.concurrency
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{AsyncFreeSpecLike, Matchers}
 
-class FutureAndPromiseUnitTest extends AsyncFreeSpecLike with Matchers with ScalaFutures {
+class FutureAndPromiseUnitTest
+  extends AsyncFreeSpecLike
+  with Matchers
+  with ScalaFutures {
   import ScalaAndPromise._
 
   "sampleFuture() should return 5" in {
@@ -24,4 +27,3 @@ class FutureAndPromiseUnitTest extends AsyncFreeSpecLike with Matchers with Scal
     runByPromise(5).map(_ shouldBe 5)
   }
 }
-

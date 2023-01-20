@@ -26,7 +26,7 @@ class ScalaCacheAsyncUnitTest
       asyncService.getUser(100)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 0
-      //wait for the prev operation to complete and set to cache
+      // wait for the prev operation to complete and set to cache
       Thread.sleep(1100)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 1
@@ -37,11 +37,10 @@ class ScalaCacheAsyncUnitTest
       import scala.concurrent.ExecutionContext.Implicits.global
       val asyncService = new AsyncQueryMemoizeService()
       val future = asyncService.checkFutureThread(88)
-      future.foreach {
-        case (main, memThread) =>
-          main should not be (memThread)
+      future.foreach { case (main, memThread) =>
+        main should not be (memThread)
       }
-      //wait for the prev operation to complete and set to cache
+      // wait for the prev operation to complete and set to cache
       Thread.sleep(300)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 1
@@ -53,7 +52,7 @@ class ScalaCacheAsyncUnitTest
       asyncService.getUserFail(100)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 0
-      //wait for the prev operation to complete and set to cache
+      // wait for the prev operation to complete and set to cache
       Thread.sleep(200)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 0

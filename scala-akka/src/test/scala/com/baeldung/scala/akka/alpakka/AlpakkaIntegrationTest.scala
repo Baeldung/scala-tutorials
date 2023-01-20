@@ -18,9 +18,9 @@ import scala.concurrent.duration._
 
 class AlpakkaIntegrationTest
   extends WordSpec
-    with Matchers
-    with ScalaFutures
-    with BeforeAndAfterAll {
+  with Matchers
+  with ScalaFutures
+  with BeforeAndAfterAll {
 
   val starter = MongodStarter.getDefaultInstance
   val ip = ConfigFactory.load.getString("alpakka.mongo.connection.ip")
@@ -56,7 +56,9 @@ class AlpakkaIntegrationTest
 
       integration.process(Source(gpsData)).flatMap { _ =>
         val documentsFuture = MongoSource(
-          Collections.db.getCollection(classOf[VehicleData].getSimpleName).find()
+          Collections.db
+            .getCollection(classOf[VehicleData].getSimpleName)
+            .find()
         ).runWith(Sink.seq)
 
         documentsFuture map { documents =>
@@ -78,7 +80,13 @@ class AlpakkaIntegrationTest
 
       val fs = FileSystems.getDefault
       val filePath = "vehicle_data.csv"
-      val path: Path = Paths.get(Thread.currentThread().getContextClassLoader().getResource(filePath).toURI())
+      val path: Path = Paths.get(
+        Thread
+          .currentThread()
+          .getContextClassLoader()
+          .getResource(filePath)
+          .toURI()
+      )
       val flatFileSource =
         FileTailSource.lines(
           path = path,
@@ -95,10 +103,11 @@ class AlpakkaIntegrationTest
       ).runWith(Sink.seq)
 
       documentsFuture.map { documents =>
-        //4 from the previous source and 2 from the file source
+        // 4 from the previous source and 2 from the file source
         documents.size shouldBe 6
         documents
-          .map(_.get("vehicleId")) should contain allElementsOf (Seq(1, 2, 3, 23, 24))
+          .map(_.get("vehicleId")) should contain allElementsOf (Seq(1, 2, 3,
+          23, 24))
 
         documents.map(_.get("vehicleId")).size shouldBe 6
       }

@@ -3,7 +3,7 @@ package com.baeldung.scala.pimpmylib
 import com.baeldung.scala.pimpmylib.PimpLibExample._
 import org.scalatest.FlatSpec
 
-class PimpLibExampleUnitTest extends FlatSpec{
+class PimpLibExampleUnitTest extends FlatSpec {
 
   "Bot" should "detect new member details" in {
     val intro = IntroText(

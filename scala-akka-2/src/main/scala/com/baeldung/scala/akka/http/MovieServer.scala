@@ -31,13 +31,13 @@ object MovieServer extends App {
     get {
       onComplete(movieService.getAllMovies()) {
         case util.Success(res) => complete(res)
-        case util.Failure(_)  => complete(StatusCodes.InternalServerError)
+        case util.Failure(_)   => complete(StatusCodes.InternalServerError)
       }
     } ~ post {
       entity(as[Movie]) { movie =>
         onComplete(movieService.saveMovie(movie)) {
           case Success(res) => complete(res)
-          case Failure(_)  => complete(StatusCodes.InternalServerError)
+          case Failure(_)   => complete(StatusCodes.InternalServerError)
         }
       }
     }
@@ -46,7 +46,7 @@ object MovieServer extends App {
       entity(as[Movie]) { movie =>
         onComplete(movieService.updateMovie(id, movie)) {
           case Success(res) => complete(res)
-          case Failure(_)  => complete(StatusCodes.InternalServerError)
+          case Failure(_)   => complete(StatusCodes.InternalServerError)
         }
       }
     }
@@ -54,7 +54,7 @@ object MovieServer extends App {
     delete {
       onComplete(movieService.deleteMovie(id)) {
         case Success(res) => complete(res)
-        case Failure(_)  => complete(StatusCodes.InternalServerError)
+        case Failure(_)   => complete(StatusCodes.InternalServerError)
       }
     }
   } ~ path("test-headers") {

@@ -3,16 +3,16 @@ package com.baeldung.scala.underscore
 import com.baeldung.scala.underscore.UnderscoreUsages._
 import org.scalatest.{Matchers, WordSpec}
 
-class UnderscoreUsagesUnitTest extends  WordSpec with Matchers {
+class UnderscoreUsagesUnitTest extends WordSpec with Matchers {
 
   "The underscore" should {
     "match all types in existential types" in {
       getLength(List(List(8), List("str"))) shouldBe 2
-      getLength(List(List(5.00), List("str"))) shouldBe  2
-      getLength(List(List(Array(7)), List("str"))) shouldBe  2
+      getLength(List(List(5.00), List("str"))) shouldBe 2
+      getLength(List(List(Array(7)), List("str"))) shouldBe 2
     }
     "catch all possible cases" in {
-      itemTransaction(130) shouldBe  "Buy"
+      itemTransaction(130) shouldBe "Buy"
       itemTransaction(150) shouldBe "Sell"
       itemTransaction(89.00) shouldBe "Need approval"
       itemTransaction(1000.99) shouldBe "Need approval"
@@ -27,7 +27,12 @@ class UnderscoreUsagesUnitTest extends  WordSpec with Matchers {
       pricesToInts shouldBe Seq(10, 23, 49)
     }
     "access nested the items of nested seq" in {
-      val items = Seq(("candy", 2, true), ("cola", 7, false), ("apple", 3, false), ("milk", 4, true))
+      val items = Seq(
+        ("candy", 2, true),
+        ("cola", 7, false),
+        ("apple", 3, false),
+        ("milk", 4, true)
+      )
       val itemsToBuy = items
         .filter(_._3)
         .filter(_._2 > 3)
@@ -62,12 +67,12 @@ class UnderscoreUsagesUnitTest extends  WordSpec with Matchers {
       sumOfSumable shouldBe 22
     }
     "generate a partially applied function" in {
-      val sumToTen = sum(10,_:Int)
+      val sumToTen = sum(10, _: Int)
       val sumFiveAndTen = sumToTen(5)
       sumFiveAndTen shouldBe 15
 
-      val foo = bar(1,2) _
-      foo("Some string", "Another string")(3/5, 6/5) shouldBe 1
+      val foo = bar(1, 2) _
+      foo("Some string", "Another string")(3 / 5, 6 / 5) shouldBe 1
     }
     "work in overriding a method's setter" in {
       val product = new Product
@@ -79,7 +84,7 @@ class UnderscoreUsagesUnitTest extends  WordSpec with Matchers {
         product.price = 7 // will fail because 7 is not greater than 10
         fail("Price must be greater than 10")
       } catch {
-        case _: IllegalArgumentException => product.price shouldNot(equal(7))
+        case _: IllegalArgumentException => product.price shouldNot (equal(7))
       }
     }
     "let operators be used a variable name" in {

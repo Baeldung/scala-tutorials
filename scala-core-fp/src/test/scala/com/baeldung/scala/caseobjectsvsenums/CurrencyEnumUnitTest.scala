@@ -27,16 +27,16 @@ class CurrencyEnumUnitTest extends FlatSpec with Matchers {
 
   "Enumerations" should "not compile because of erasure" in {
     object InternetCodes extends Enumeration {
-          type CountryCode = Value
-          val EU, DE, CO = Value
-       }
-       import InternetCodes._
-       import CurrencyEnum._
+      type CountryCode = Value
+      val EU, DE, CO = Value
+    }
+    import InternetCodes._
+    import CurrencyEnum._
 
-       object Methods {
-         def method(arg1: Currency): Currency = arg1
-         // Uncommenting the following will result on a compiler error
-         // def method(arg1: CountryCode): CountryCode = arg1
-       }
+    object Methods {
+      def method(arg1: Currency): Currency = arg1
+      // Uncommenting the following will result on a compiler error
+      // def method(arg1: CountryCode): CountryCode = arg1
+    }
   }
 }

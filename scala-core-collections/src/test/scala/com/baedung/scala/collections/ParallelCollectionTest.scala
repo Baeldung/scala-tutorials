@@ -7,7 +7,6 @@ class ParallelCollectionTest extends FlatSpec {
   val ZERO_TO_HUNDRED_SUM = 5050
   val ZERO_TO_HUNDRED_SUM_TIMES2 = 10100
 
-
   "Parallel list of 100 filtered" should "return half size" in {
     assert(parallelFilter.size == 50)
   }

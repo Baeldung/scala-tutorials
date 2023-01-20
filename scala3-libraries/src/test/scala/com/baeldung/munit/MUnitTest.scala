@@ -7,11 +7,11 @@ import munit.GenericBeforeEach
 class MUnitTest extends munit.FunSuite {
 
   test("test assert") {
-    assert(10+2 == 12)
+    assert(10 + 2 == 12)
   }
 
   test("test assert with clue") {
-    assert(10+2 == 12, "incorrect sum")
+    assert(10 + 2 == 12, "incorrect sum")
   }
 
   test("test assertEquals") {
@@ -20,7 +20,7 @@ class MUnitTest extends munit.FunSuite {
     assertEquals(str1, str2)
   }
 
-    test("test assertNoDiff") {
+  test("test assertNoDiff") {
     val str1 = "a  "
     val str2 = " a   "
     assertNoDiff(str1, str2)
@@ -34,13 +34,13 @@ class MUnitTest extends munit.FunSuite {
 
   test("verify exception is thrown".ignore) {
     intercept[RuntimeException] {
-        badMethod()
+      badMethod()
     }
   }
 
   test("verify exception is thrown with correct error message") {
     interceptMessage[RuntimeException]("uh oh...") {
-        badMethod()
+      badMethod()
     }
   }
   def badMethod() = {
@@ -49,11 +49,11 @@ class MUnitTest extends munit.FunSuite {
 
   test("a simple munit test") {
     Future {
-        println("this is asyc test")
+      println("this is asyc test")
     }
   }
 
-  test("a failing test expected".fail){
+  test("a failing test expected".fail) {
     val expected = "1.0"
     val actual = "1"
     assertEquals(actual, expected)
@@ -61,13 +61,15 @@ class MUnitTest extends munit.FunSuite {
 
   override def beforeAll(): Unit = println("before all tests")
 
-  override def beforeEach(context: BeforeEach): Unit = println("before each test")
+  override def beforeEach(context: BeforeEach): Unit = println(
+    "before each test"
+  )
 }
 
 class MacOnlyTest extends munit.FunSuite {
   override def munitIgnore: Boolean = !scala.util.Properties.isWin
   test("This is a mac only test") {
     println("mac only test")
-    assert("mac"=="mac")
+    assert("mac" == "mac")
   }
 }

@@ -7,7 +7,7 @@ import scala.util.{Failure, Success}
 class ImplicitImportsUnitTest extends FlatSpec with Matchers {
 
   "???" should "return exception" in {
-    def notImplemeted:Int => Boolean = ???
+    def notImplemeted: Int => Boolean = ???
     assertThrows[NotImplementedError] {
       notImplemeted
     }

@@ -8,7 +8,7 @@ object LoggingApp extends App with Logging {
   logger.info("Writing an informative message to the log")
   logger.debug("Writing a debug message to the log")
   Try(1 / 0) match {
-    case Success(_)     => logger.warn("Math has changed")
+    case Success(_)         => logger.warn("Math has changed")
     case Failure(exception) => logger.catching(exception)
   }
 }

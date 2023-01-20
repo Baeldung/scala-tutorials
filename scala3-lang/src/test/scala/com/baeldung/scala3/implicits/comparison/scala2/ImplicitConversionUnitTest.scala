@@ -7,7 +7,7 @@ import ImplicitConversion._
 class ImplicitConversionUnitTest extends AnyFlatSpec with Matchers {
   it should "use the implicit conversion" in {
     val processingTime = 100
-    //auto conversion from Int to Second using intToSecond()
+    // auto conversion from Int to Second using intToSecond()
     val result = TimeUtil.doSomethingWithProcessingTime(processingTime)
     result shouldBe "100 seconds"
   }

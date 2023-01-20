@@ -5,10 +5,6 @@ object ReturnExamples extends App {
   /** Referential transparency
     */
 
-  
-
-  
-
 //  /**
 //   * Referential transparency BAD
 //   * */

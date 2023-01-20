@@ -411,3 +411,5 @@ lazy val scala212 = (project in file("scala212"))
       scalaTest
     )
   )
+
+addCommandAlias("ci", "clean;compile;scalafmtCheckAll;test")

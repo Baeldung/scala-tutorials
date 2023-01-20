@@ -6,19 +6,35 @@ import Examples._
 class ExamplesUnitTest extends FlatSpec {
 
   "getSqrtRootMessagePartialFunction" should "calculate square root" in {
-    assert(Examples.getSqrtRootMessagePartialFunction(4.0) == "Square root of 4.0 is 2.0")
+    assert(
+      Examples.getSqrtRootMessagePartialFunction(
+        4.0
+      ) == "Square root of 4.0 is 2.0"
+    )
   }
 
   it should "not calculate square root" in {
-    assert(Examples.getSqrtRootMessagePartialFunction(-3.0) == "Cannot calculate square root for -3.0")
+    assert(
+      Examples.getSqrtRootMessagePartialFunction(
+        -3.0
+      ) == "Cannot calculate square root for -3.0"
+    )
   }
 
   "getSqrtRootMessageTotalFunction" should "calculate square root" in {
-    assert(Examples.getSqrtRootMessageTotalFunction(4.0) == "Square root of 4.0 is 2.0")
+    assert(
+      Examples.getSqrtRootMessageTotalFunction(
+        4.0
+      ) == "Square root of 4.0 is 2.0"
+    )
   }
 
   it should "not calculate square root" in {
-    assert(Examples.getSqrtRootMessageTotalFunction(-3.0) == "Cannot calculate square root for -3.0")
+    assert(
+      Examples.getSqrtRootMessageTotalFunction(
+        -3.0
+      ) == "Cannot calculate square root for -3.0"
+    )
   }
 
   "Methods" should "combine correctly" in {
@@ -26,7 +42,7 @@ class ExamplesUnitTest extends FlatSpec {
   }
 
   "Functions" should "combine correctly" in {
-    assert((funcAdd5 andThen funcIsEven)(3)  == true)
+    assert((funcAdd5 andThen funcIsEven)(3) == true)
   }
 
   "getGreetingsBasic" should "return the correct sentence" in {

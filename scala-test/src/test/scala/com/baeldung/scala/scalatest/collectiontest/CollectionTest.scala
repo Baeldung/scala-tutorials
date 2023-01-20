@@ -37,7 +37,7 @@ class CollectionTest extends AnyFlatSpec with Matchers {
 
   it should "pass only if exactly 1 element overlaps" in {
     val asianCountries = List("india", "china", "russia")
-    asianCountries should contain oneOf ("germany", "italy", "russia") //exactly one element shoud match
+    asianCountries should contain oneOf ("germany", "italy", "russia") // exactly one element shoud match
   }
 
   it should "pass if atleast one element overlaps" in {
@@ -87,14 +87,14 @@ class CollectionTest extends AnyFlatSpec with Matchers {
     val capitalMap =
       Map("India" -> "New Delhi", "Germany" -> "Berlin", "France" -> "Paris")
     capitalMap should contain key "India"
-    capitalMap should not contain key ("USA")
+    capitalMap should not contain key("USA")
   }
 
   it should "check if a value is present in the map" in {
     val capitalMap =
       Map("India" -> "New Delhi", "Germany" -> "Berlin", "France" -> "Paris")
     capitalMap should contain value "Berlin"
-    capitalMap should not contain value ("Munich")
+    capitalMap should not contain value("Munich")
   }
 
 }

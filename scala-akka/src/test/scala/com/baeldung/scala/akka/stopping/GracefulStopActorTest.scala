@@ -27,7 +27,8 @@ class GracefulStopActorTest
 
     "stop the actor successfully" in {
       import scala.concurrent.ExecutionContext.Implicits.global
-      val actor = system.actorOf(Props(classOf[MessageProcessorActor]), "GracefulActor")
+      val actor =
+        system.actorOf(Props(classOf[MessageProcessorActor]), "GracefulActor")
       val probe = testkit.TestProbe()
       probe.watch(actor)
 
@@ -45,7 +46,6 @@ class GracefulStopActorTest
         case e: AskTimeoutException => fail()
       }
 
-      
     }
 
   }

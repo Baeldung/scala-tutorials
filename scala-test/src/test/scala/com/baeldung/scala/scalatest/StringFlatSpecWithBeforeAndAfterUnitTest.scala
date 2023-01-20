@@ -4,7 +4,9 @@ import org.scalatest.flatspec.AnyFlatSpec
 import collection.mutable.ListBuffer
 import org.scalatest.BeforeAndAfter
 
-class StringFlatSpecWithBeforeAndAfterUnitTest extends AnyFlatSpec with BeforeAndAfter {
+class StringFlatSpecWithBeforeAndAfterUnitTest
+  extends AnyFlatSpec
+  with BeforeAndAfter {
 
   val builder = new StringBuilder
 

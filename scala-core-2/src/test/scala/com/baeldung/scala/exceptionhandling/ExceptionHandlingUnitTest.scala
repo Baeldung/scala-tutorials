@@ -1,6 +1,11 @@
 package com.baeldung.scala.exceptionhandling
 
-import com.baeldung.scala.exceptionhandling.ExceptionHandling.{DivideByZero, divideWithEither, divideWithOption, divideWithTry}
+import com.baeldung.scala.exceptionhandling.ExceptionHandling.{
+  DivideByZero,
+  divideWithEither,
+  divideWithOption,
+  divideWithTry
+}
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.util.{Failure, Success}

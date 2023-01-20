@@ -7,9 +7,14 @@ import scala.util.Random
 
 class FunctionsAndMethodsUnitTest {
   @Test
-  def givenAnonymousFunction_whenPassItToAMethodCall_thenAnonymousFunctionUsage (): Unit = {
-    val result1 = FunctionsAndMethods.anonymousFunctionUsage((number: Int) => number + 1)
-    val result2 = FunctionsAndMethods.anonymousFunctionUsageWithApply((number: Int) => number + 1)
+  def givenAnonymousFunction_whenPassItToAMethodCall_thenAnonymousFunctionUsage()
+    : Unit = {
+    val result1 =
+      FunctionsAndMethods.anonymousFunctionUsage((number: Int) => number + 1)
+    val result2 =
+      FunctionsAndMethods.anonymousFunctionUsageWithApply((number: Int) =>
+        number + 1
+      )
 
     assertEquals(result1, result2)
   }
@@ -22,12 +27,15 @@ class FunctionsAndMethodsUnitTest {
 
     assert(functionWithoutParameters.isInstanceOf[Function0[Int]])
     assert(functionWithOneParameter.isInstanceOf[Function1[Int, Int]])
-    assert(functionWithTwoParameters.isInstanceOf[Function2[Int, Int, (Int, Int)]])
+    assert(
+      functionWithTwoParameters.isInstanceOf[Function2[Int, Int, (Int, Int)]]
+    )
   }
 
   @Test
   def givenByValueFunction_whenCallIt_thenValuesAreEquals(): Unit = {
-    val (firstAccess, secondAccess) = FunctionsAndMethods.byValue(Random.nextInt)
+    val (firstAccess, secondAccess) =
+      FunctionsAndMethods.byValue(Random.nextInt)
     assert(firstAccess == secondAccess)
   }
 
@@ -46,10 +54,10 @@ class FunctionsAndMethodsUnitTest {
 
   @Test
   def givenLine45_whenUseItInAPlot_thenCorrectResults(): Unit = {
-    val a45DegreeLine = FunctionsAndMethods.line(1,0)
+    val a45DegreeLine = FunctionsAndMethods.line(1, 0)
     val results = FunctionsAndMethods.plot(a45DegreeLine)
-    val expected = List(-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0,
-                        0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0)
+    val expected = List(-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0,
+      -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0)
     assertEquals(expected, results)
   }
 
@@ -69,7 +77,6 @@ class FunctionsAndMethodsUnitTest {
     val ints = Seq(10, 3, 11, 22, 10)
     val second = FunctionsAndMethods.pop(ints)
     assertEquals(10, second)
-
 
   }
 }

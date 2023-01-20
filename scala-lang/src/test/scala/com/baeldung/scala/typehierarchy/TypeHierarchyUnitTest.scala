@@ -3,9 +3,9 @@ package com.baeldung.scala.typehierarchy
 import com.baeldung.scala.typehierarchy.TypeHierarchy._
 import org.scalatest.{FlatSpec, Matchers}
 
-/**
- * @author vid2010
- */
+/** @author
+  *   vid2010
+  */
 
 class TypeHierarchyUnitTest extends FlatSpec with Matchers {
 

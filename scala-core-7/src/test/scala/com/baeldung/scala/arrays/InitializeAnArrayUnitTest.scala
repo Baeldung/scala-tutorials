@@ -16,14 +16,14 @@ class InitializeAnArrayUnitTest extends FlatSpec with Matchers {
 
   "passing values to the array constructor" should "initialize an array of specific size and type" in {
     var array = Array("This", "is", "a", "string", "array")
-    
+
     array(0) should be("This")
     array.length should be(5)
   }
 
   "Array.fill" should "initialize an array of specified size and type" in {
     var array = Array.fill(4) { math.random() }
-    
+
     array.length should be(4)
   }
 

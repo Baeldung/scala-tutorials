@@ -1,6 +1,5 @@
 package com.baeldung.scala.scalatest
 
-
 import org.scalactic.StringNormalizations._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
@@ -29,7 +28,15 @@ class ExampleFlatSpecWithMatchersUnitTest extends AnyFlatSpec with Matchers {
   }
 
   it should "let us check the size of collections" in {
-    val days = List("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    val days = List(
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    )
     days should have size 7
   }
 

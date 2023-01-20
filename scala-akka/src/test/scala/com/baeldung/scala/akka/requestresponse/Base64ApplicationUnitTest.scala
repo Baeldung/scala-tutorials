@@ -2,11 +2,29 @@ package com.baeldung.scala.akka.requestresponse
 
 import akka.actor.testkit.typed.CapturedLogEvent
 import akka.actor.testkit.typed.Effect.MessageAdapter
-import akka.actor.testkit.typed.scaladsl.{ActorTestKit, BehaviorTestKit, TestInbox}
-import com.baeldung.scala.akka.requestresponse.Base64Application.APIGateway.{GentlyEncoded, PleaseEncode}
-import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{ToEncode, Encoded}
-import com.baeldung.scala.akka.requestresponse.Base64Application.EncoderClient.{KeepASecret, WrappedEncoderResponse}
-import com.baeldung.scala.akka.requestresponse.Base64Application.{APIGateway, Base64Encoder, EncoderClient, NaiveEncoderClient}
+import akka.actor.testkit.typed.scaladsl.{
+  ActorTestKit,
+  BehaviorTestKit,
+  TestInbox
+}
+import com.baeldung.scala.akka.requestresponse.Base64Application.APIGateway.{
+  GentlyEncoded,
+  PleaseEncode
+}
+import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{
+  ToEncode,
+  Encoded
+}
+import com.baeldung.scala.akka.requestresponse.Base64Application.EncoderClient.{
+  KeepASecret,
+  WrappedEncoderResponse
+}
+import com.baeldung.scala.akka.requestresponse.Base64Application.{
+  APIGateway,
+  Base64Encoder,
+  EncoderClient,
+  NaiveEncoderClient
+}
 import org.scalatest.{BeforeAndAfterAll, FlatSpec}
 import org.slf4j.event.Level
 
@@ -32,7 +50,12 @@ class Base64ApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
     val naiveClient = BehaviorTestKit(NaiveEncoderClient(encoder.ref))
     naiveClient.run(Encoded("VGhlIGFuc3dlciBpcyA0Mg=="))
     assertResult(naiveClient.logEntries()) {
-      Seq(CapturedLogEvent(Level.INFO, "The encoded payload is VGhlIGFuc3dlciBpcyA0Mg=="))
+      Seq(
+        CapturedLogEvent(
+          Level.INFO,
+          "The encoded payload is VGhlIGFuc3dlciBpcyA0Mg=="
+        )
+      )
     }
   }
 
@@ -53,7 +76,12 @@ class Base64ApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
     val client = BehaviorTestKit(EncoderClient(encoder.ref))
     client.run(WrappedEncoderResponse(Encoded("VGhlIGFuc3dlciBpcyA0Mg==")))
     assertResult(client.logEntries()) {
-      Seq(CapturedLogEvent(Level.INFO, "I will keep a secret for you: VGhlIGFuc3dlciBpcyA0Mg=="))
+      Seq(
+        CapturedLogEvent(
+          Level.INFO,
+          "I will keep a secret for you: VGhlIGFuc3dlciBpcyA0Mg=="
+        )
+      )
     }
   }
 

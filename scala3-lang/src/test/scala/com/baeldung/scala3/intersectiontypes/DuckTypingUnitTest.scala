@@ -9,8 +9,8 @@ class DuckTypingUnitTest extends AnyWordSpec with Matchers {
 
   "DuckTyping" should {
     "work as Intersection type alternative" in {
-        cutPaper(new Scissors()) shouldBe ()
-        cutPaper(new Knife()) shouldBe ()
+      cutPaper(new Scissors()) shouldBe ()
+      cutPaper(new Knife()) shouldBe ()
     }
   }
 }

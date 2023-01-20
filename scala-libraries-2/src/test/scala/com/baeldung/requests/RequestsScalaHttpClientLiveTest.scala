@@ -12,7 +12,7 @@ class RequestsScalaHttpClientLiveTest
 
   override protected def beforeAll(): Unit = createTempFile()
 
-  //create temp file for testing
+  // create temp file for testing
   def createTempFile() = {
     new PrintWriter("file.txt") {
       try { write("this is a file content") }
