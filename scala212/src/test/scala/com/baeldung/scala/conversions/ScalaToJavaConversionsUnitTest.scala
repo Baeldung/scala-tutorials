@@ -4,7 +4,6 @@ import com.baedung.scala.conversions.JavaApi
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.convert.DecorateAsJava
-
 class ScalaToJavaConversionsUnitTest extends FlatSpec with Matchers
   with DecorateAsJava {
 

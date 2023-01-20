@@ -1,8 +1,9 @@
 package com.baeldung.scala.conversions
 
-import java.util.ArrayList
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.should.Matchers
 
-import org.scalatest.{FlatSpec, Matchers}
+import java.util.ArrayList
 
 class ConversionWrappersUnitTest extends FlatSpec with Matchers {
 

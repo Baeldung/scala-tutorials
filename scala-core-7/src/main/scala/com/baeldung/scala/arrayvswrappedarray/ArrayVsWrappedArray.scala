@@ -1,7 +1,7 @@
 package com.baeldung.scala.arrayvswrappedarray
 
 import scala.collection.mutable.WrappedArray
-import scala.collection.mutable.ArrayOps
+import scala.collection.ArrayOps
 
 object ArrayVsWrappedArray extends App {
   private def printSimpleArray(): Unit = {

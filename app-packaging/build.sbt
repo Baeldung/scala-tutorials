@@ -1,7 +1,7 @@
 name := "app-packaging"
 version := "1.0.2"
 
-ThisBuild / scalaVersion := "3.1.0"
+ThisBuild / scalaVersion := "3.2.0"
 
 libraryDependencies ++= Seq(
   "com.lihaoyi" %% "os-lib" % "0.7.8"
