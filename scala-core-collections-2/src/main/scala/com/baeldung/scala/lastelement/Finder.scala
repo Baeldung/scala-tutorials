@@ -27,8 +27,7 @@ object Finder {
     private def useReverse(list: List[T], predicate: T => Boolean): Int =
       list.size - list.reverse.takeWhile(predicate(_) == false).size - 1
 
-    private def useNativeLibrary(list: List[T], predicate: T => Boolean): Int =
-      list.lastIndexWhere(predicate)
+    
 
   }
 

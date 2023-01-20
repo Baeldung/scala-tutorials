@@ -57,7 +57,6 @@ object Mailboxes {
     val deadLettersActor: ActorRef[DeadLetter] =
       system.systemActorOf(deadLettersListener, "deadLettersListener")
     system.eventStream.tell(EventStream.Subscribe[DeadLetter](deadLettersActor))
-    val defaultDeadLettersActor: ActorRef[DeadLetter] =
-      system.deadLetters[DeadLetter]
+    system.deadLetters[DeadLetter]
   }
 }

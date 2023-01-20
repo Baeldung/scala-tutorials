@@ -1,6 +1,6 @@
 package com.baeldung.scala.packageimport.vehicle
 
-import java.util.{Date => _, _}
+import java.util.{Date => _}
 import java.sql.Date
 
 class Bicycle(numberOfTires: Int, brand: String)

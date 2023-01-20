@@ -3,7 +3,6 @@ package com.baeldung.scala.differences
 import cats.effect.IOApp
 import cats.effect.IO
 import cats.effect.Resource
-import cats.effect.std.Random
 
 object FlatEvalDiff extends IOApp.Simple {
 
@@ -37,7 +36,7 @@ object FlatEvalDiff extends IOApp.Simple {
   val resource: Resource[IO, SimpleConnection] =
     Resource.make(acquireResource)(releaseResource)
   val simpleResourceData: IO[Unit] =
-    resource.use(simpleConn => IO.println("Result using Simple Resource"))
+    resource.use(_ => IO.println("Result using Simple Resource"))
 
   def transformConnection(con: SimpleConnection) = {
     IO {
@@ -51,10 +50,10 @@ object FlatEvalDiff extends IOApp.Simple {
   val tappedResource: Resource[IO, SimpleConnection] =
     resource.evalTap(con => transformConnection(con))
 
-  val evalTapRes: IO[Unit] = tappedResource.use(simple =>
+  val evalTapRes: IO[Unit] = tappedResource.use(_ =>
     IO.println("Using simple connection from evalTap to execute..")
   )
-  val evalMapRes: IO[Unit] = modifiedResource.use(complex =>
+  val evalMapRes: IO[Unit] = modifiedResource.use(_ =>
     IO.println("Using complex connection from evalMap to execute..")
   )
 

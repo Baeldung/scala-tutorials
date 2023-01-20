@@ -411,3 +411,27 @@ lazy val scala212 = (project in file("scala212"))
       scalaTest
     )
   )
+
+val root = (project in file("scala-tutorials"))
+  .settings(
+    ThisBuild / semanticdbEnabled := true,
+    ThisBuild / semanticdbVersion := scalafixSemanticdb.revision,
+    ThisBuild / scalacOptions ++= Seq(
+      "-Wunused",
+      "-Wunused:imports"
+    )
+  )
+  .aggregate(
+    scala_core,
+    scala_core_2,
+    scala_core_3,
+    scala_core_4,
+    scala_core_5,
+    scala_core_6,
+    scala_core_7,
+    scala_core_8,
+    scala_libraries,
+    scala_libraries_2,
+    scala_libraries_3,
+    scala_libraries_4
+  )

@@ -8,7 +8,7 @@ object GenericsIntro {
     NonGenericWay.run()
     val empty = new Queue[String](Nil, Nil)
     val stringQ: Queue[String] = empty.enqueue("The answer")
-    val intQ: Queue[Any] = stringQ.enqueue(42)
+    stringQ.enqueue(42)
   }
 
   def findMax[T <: Ordered[T], B](xs: List[T]): Option[T] =
@@ -60,10 +60,10 @@ object GenericsIntro {
     def run() = {
 
       val rabbits = List[Rabbit](Rabbit(2), Rabbit(3), Rabbit(7))
-      val middleRabbit: Rabbit = middle[Rabbit](rabbits)
+      middle[Rabbit](rabbits)
 
       val apples = List[Apple](Apple("gala"), Apple("pink lady"))
-      val items: (Rabbit, Apple) = itemsAt[Rabbit, Apple](1, rabbits, apples)
+      itemsAt[Rabbit, Apple](1, rabbits, apples)
     }
 
   }
@@ -74,7 +74,7 @@ object GenericsIntro {
     def run() = {
       val rabbits = List[Rabbit](Rabbit(2), Rabbit(3), Rabbit(7))
       val strings = List("a", "b")
-      val size: Int = totalSize(rabbits, strings)
+      totalSize(rabbits, strings)
     }
 
   }

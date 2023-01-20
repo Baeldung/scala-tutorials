@@ -40,7 +40,7 @@ object Car extends Vehicle {
   val numberOfWheels = 4
 
   def run(): Unit = {
-    val currentDateAndTime: Date = new Date(System.currentTimeMillis())
+    new Date(System.currentTimeMillis())
   }
 }
 
@@ -48,7 +48,7 @@ case object Bicycle extends Vehicle {
   val numberOfWheels = 2
 
   def run(): Unit = {
-    val currentDateAndTime: Date = new Date(System.currentTimeMillis())
+    new Date(System.currentTimeMillis())
   }
 }
 

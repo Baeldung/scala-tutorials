@@ -2,7 +2,6 @@ package com.baeldung.scala.monocle
 
 import monocle.{Iso, Lens, Prism, Optional}
 import monocle.macros.GenLens
-import monocle.macros.Lenses
 
 object OpticsExamples {
 

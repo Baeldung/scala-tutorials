@@ -13,8 +13,8 @@ object SelaedExtendedDifferentFile extends App {
   case class OptionY() extends OptionX
 
   def selectOption(option: MultipleChoice): String = option match {
-    case optionY: OptionY => "Option-Y Selected"
-    case optionX: OptionX => "Option-X Selected"
+    case _: OptionY => "Option-Y Selected"
+    case _: OptionX => "Option-X Selected"
   }
 
   println(selectOption(OptionY()))

@@ -48,7 +48,7 @@ class FileIO {
     fileWriter.write("Hello World!")
     fileWriter.close()
   }.toEither match {
-    case Left(ex) =>
+    case Left(_) =>
     // handle exception: ex
     case Right(_) => // write operation was successful
   }
@@ -87,7 +87,7 @@ class FileIO {
     }
     bufferedSource
   }.toEither match {
-    case Left(error) =>
+    case Left(_) =>
     // handle error
     case Right(bufferedSource) =>
       // close buffered source

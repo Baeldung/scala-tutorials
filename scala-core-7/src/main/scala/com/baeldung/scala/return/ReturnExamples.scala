@@ -5,16 +5,9 @@ object ReturnExamples extends App {
   /** Referential transparency
     */
 
-  private def isPositiveNumber1(number: Int): Boolean = {
-    val isTrue = true
-    val isFalse = false
+  
 
-    if (number > 0) isTrue else isFalse
-  }
-
-  private def isPositiveNumber2(number: Int): Boolean = {
-    if (number > 0) true else false
-  }
+  
 
 //  /**
 //   * Referential transparency BAD

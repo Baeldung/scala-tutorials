@@ -8,8 +8,7 @@ import akka.actor.typed.{ActorRef, Behavior}
 import akka.util.Timeout
 import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{
   ToEncode,
-  Encoded,
-  Request
+  Encoded
 }
 
 import scala.concurrent.duration.DurationInt

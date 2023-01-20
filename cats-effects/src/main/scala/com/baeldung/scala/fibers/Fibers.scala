@@ -29,8 +29,8 @@ object Fibers extends IOApp.Simple {
   } yield res
 
   val outcome: IO[String] = fibCancel.flatMap {
-    case Outcome.Succeeded(fa) => IO("fiber executed successfully").debug
-    case Outcome.Errored(e) => IO("error occurred during fiber execution").debug
+    case Outcome.Succeeded(_) => IO("fiber executed successfully").debug
+    case Outcome.Errored(_) => IO("error occurred during fiber execution").debug
     case Outcome.Canceled() => IO("fiber was canceled!").debug
   }
 

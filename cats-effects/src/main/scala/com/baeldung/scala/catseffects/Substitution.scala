@@ -4,7 +4,7 @@ import scala.concurrent.{ExecutionContext, ExecutionContextExecutor, Future}
 
 object Substitution {
   def effectful(): Unit = {
-    val tuple = (println("Launch missiles"), println("Launch missiles"))
+    (println("Launch missiles"), println("Launch missiles"))
     println("--------------")
     val print: Unit = println("Launch missiles")
     (print, print)

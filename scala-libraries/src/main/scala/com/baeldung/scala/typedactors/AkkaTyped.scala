@@ -11,7 +11,7 @@ import akka.actor.typed.scaladsl.Behaviors
 
 object AkkaTyped extends App {
   object StringActor {
-    def apply(): Behavior[String] = Behaviors.setup { context =>
+    def apply(): Behavior[String] = Behaviors.setup { _ =>
       println("Before receiving messages")
       Behaviors
         .receiveMessage[String] {

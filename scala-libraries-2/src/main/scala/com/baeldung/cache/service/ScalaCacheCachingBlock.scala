@@ -1,7 +1,7 @@
 package com.baeldung.cache.service
 
 import com.google.common.cache.CacheBuilder
-import scalacache.{Cache, Entry, Id, caching, cachingF}
+import scalacache.{Cache, Entry, caching, cachingF}
 import scalacache.guava.GuavaCache
 
 import scala.concurrent.ExecutionContext.Implicits.global

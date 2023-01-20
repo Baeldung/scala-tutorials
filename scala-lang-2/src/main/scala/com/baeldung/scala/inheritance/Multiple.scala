@@ -14,6 +14,6 @@ object Multiple {
   }
 
   def main(args: Array[String]): Unit = {
-    val c = new C
+    new C
   }
 }

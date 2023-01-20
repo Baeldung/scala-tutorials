@@ -62,7 +62,7 @@ object ResourceHandling extends ZIOAppDefault {
     ZIO.succeed(println("acquiring file")) *> ZIO.succeed("Sauron.txt") *> ZIO
       .fail("ERROR")
   def fileContentFailedAcquire =
-    ZIO.acquireReleaseWith(acquireFileWithFailure)(releaseFile) { file =>
+    ZIO.acquireReleaseWith(acquireFileWithFailure)(releaseFile) { _ =>
       ZIO.succeed(println("reading from file"))
     }
 

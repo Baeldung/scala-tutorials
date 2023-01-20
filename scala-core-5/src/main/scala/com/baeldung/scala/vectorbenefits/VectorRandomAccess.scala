@@ -7,7 +7,7 @@ object VectorRandomAccess extends App {
     val begin = System.currentTimeMillis
     for (j <- 0 until it) {
       val idx = Random.nextInt(it)
-      val elem = seq(idx)
+      seq(idx)
     }
     val elapsedTime = System.currentTimeMillis - begin
     return (elapsedTime)

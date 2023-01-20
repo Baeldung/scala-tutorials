@@ -10,6 +10,6 @@ object Single {
   }
 
   def main(args: Array[String]): Unit = {
-    val b = new B
+    new B
   }
 }

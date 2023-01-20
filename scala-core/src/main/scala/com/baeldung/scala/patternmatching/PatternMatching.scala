@@ -102,10 +102,10 @@ class PatternMatching {
     toMatch match {
       case list: List[Any] if (list.size <= maxLength) =>
         "List is of acceptable size"
-      case list: List[Any] => "List has not an acceptable size"
+      case _: List[Any] => "List has not an acceptable size"
       case string: String if (string.length <= maxLength) =>
         "String is of acceptable size"
-      case string: String => "String has not an acceptable size"
+      case _: String => "String has not an acceptable size"
       case _              => "Input is neither a List or a String"
     }
   }
@@ -134,8 +134,8 @@ class PatternMatching {
     try {
       throw exception
     } catch {
-      case ex: IllegalArgumentException => "It's an IllegalArgumentException"
-      case ex: RuntimeException         => "It's a RuntimeException"
+      case _: IllegalArgumentException => "It's an IllegalArgumentException"
+      case _: RuntimeException         => "It's a RuntimeException"
       case _                            => "It's an unknown kind of exception"
     }
   }

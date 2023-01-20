@@ -11,8 +11,8 @@ class OptionX() extends MultipleChoice
 object MultipleChoiceExam extends App {
 
   def selectOption(option: MultipleChoice): String = option match {
-    case optionA: OptionA => "Option-A Selected"
-    case optionB: OptionB => "Option-B Selected"
+    case _: OptionA => "Option-A Selected"
+    case _: OptionB => "Option-B Selected"
   }
   /*
   Warning:(11, 54) match may not be exhaustive.

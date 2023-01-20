@@ -71,7 +71,7 @@ object Scopt {
 
   def main(args: Array[String]): Unit = {
     OParser.parse(argParser, args, Config()) match {
-      case Some(config) =>
+      case Some(_) =>
         println(OParser.usage(argParser))
       // do stuff with config
       case _ =>
