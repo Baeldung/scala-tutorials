@@ -211,7 +211,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "1.4.200",
+      "com.h2database" % "h2" % "2.1.214",
       "com.chuusai" %% "shapeless" % shapelessVersion,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
@@ -273,7 +273,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     )
   )
 
-val http4sVersion = "0.23.10"
+val http4sBlaze = "0.23.13"
+val http4sVersion = "0.23.18"
 
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
@@ -285,8 +286,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     ),
     libraryDependencies ++= Seq(
       "org.http4s" %% "http4s-dsl" % http4sVersion,
-      "org.http4s" %% "http4s-blaze-server" % http4sVersion,
-      "org.http4s" %% "http4s-blaze-client" % http4sVersion,
+      "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
+      "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       "com.beachape" %% "enumeratum" % "1.7.2",
       "com.github.pureconfig" %% "pureconfig" % "0.17.2",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.2",
