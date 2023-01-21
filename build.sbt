@@ -364,7 +364,7 @@ lazy val zio = (project in file("zio"))
     name := "zio",
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
-    libraryDependencies += "dev.zio" %% "zio-test-sbt" % "2.0.6" % zioVersion,
+    libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
