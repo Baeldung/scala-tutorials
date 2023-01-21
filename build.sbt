@@ -15,7 +15,9 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % Test,
   "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test,
 )
+val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
 val zioVersion = "2.0.6"
+
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -31,7 +33,7 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
   .settings(
     name := "scala-core-2",
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += "org.scalamock" %% "scalamock" % "5.2.0" % Test,
+    libraryDependencies += scalaMock,
     libraryDependencies += jUnitInterface
   )
 
@@ -148,7 +150,7 @@ lazy val scala_test = (project in file("scala-test"))
       Seq(
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
         jUnitInterface,
-        "org.scalamock" %% "scalamock" % "4.4.0" % Test
+        scalaMock
       ) ++ scalaTestDeps
   )
 
@@ -194,11 +196,11 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
   )
 val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
-val shapelessVersion = "2.3.3"
-val scalazVersion = "7.3.2"
+val shapelessVersion = "2.3.10"
+val scalazVersion = "7.3.7"
 val fs2Version = "2.5-15-e328d68"
 val AkkaVersion = "2.6.12"
-val reactiveMongo = "1.0.3"
+val reactiveMongo = "1.0.10"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -209,9 +211,8 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "1.4.200",
+      "com.h2database" % "h2" % "2.1.214",
       "com.chuusai" %% "shapeless" % shapelessVersion,
-      "com.h2database" % "h2" % "1.4.200",
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
       "co.fs2" %% "fs2-io" % fs2Version,
@@ -227,9 +228,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
   )
 
 val circeVersion = "0.14.3"
-val monixVersion = "3.4.0"
-val elastic4sVersion = "7.16.0"
-val sparkVersion = "3.2.1"
+val monixVersion = "3.4.1"
+val elastic4sVersion = "8.5.2"
+val sparkVersion = "3.2.2"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -272,7 +273,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     )
   )
 
-val http4sVersion = "0.23.10"
+val http4sBlaze = "0.23.13"
+val http4sVersion = "0.23.18"
 
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
@@ -284,15 +286,15 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     ),
     libraryDependencies ++= Seq(
       "org.http4s" %% "http4s-dsl" % http4sVersion,
-      "org.http4s" %% "http4s-blaze-server" % http4sVersion,
-      "org.http4s" %% "http4s-blaze-client" % http4sVersion,
+      "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
+      "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       "com.beachape" %% "enumeratum" % "1.7.2",
       "com.github.pureconfig" %% "pureconfig" % "0.17.2",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.2",
       "com.typesafe" % "config" % "1.4.2",
       "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
-    libraryDependencies += "org.scalamock" %% "scalamock" % "5.2.0" % Test,
+    libraryDependencies += scalaMock,
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
@@ -339,7 +341,7 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
   .settings(
     name := "scala-design-patterns",
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += "org.scalamock" %% "scalamock" % "5.2.0" % Test,
+    libraryDependencies += scalaMock,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
