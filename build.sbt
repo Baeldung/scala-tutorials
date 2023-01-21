@@ -7,7 +7,7 @@ ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.4.5"
+val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
