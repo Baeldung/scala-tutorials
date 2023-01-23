@@ -1,9 +1,9 @@
 package com.baeldung.scala.variance
 
 import com.baeldung.scala.variance.Variance._
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class VarianceUnitTest extends FlatSpec {
+class VarianceUnitTest extends AnyFlatSpec {
 
   "A TestSuite" should "contain both unit and integration tests" in {
     val expected = List(new UnitTest, new IntegrationTest)

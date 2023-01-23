@@ -1,11 +1,13 @@
 package com.baeldung.scala.io
 
 
-import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.io.Source
 
-class SourceUnitTest extends WordSpec with Matchers with BeforeAndAfterAll {
+class SourceUnitTest extends AnyWordSpec with Matchers with BeforeAndAfterAll {
   lazy val sourceFromUrl: Source = Source.fromURL("https://google.com")
   lazy val sourceFromClassPath: Source = Source.fromResource("com.baeldung.scala.io/file_in_classpath.txt")
   lazy val sourceFromFile: Source = Source.fromFile("./some_text_file")

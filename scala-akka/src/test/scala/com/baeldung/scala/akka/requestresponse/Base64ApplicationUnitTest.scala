@@ -4,13 +4,14 @@ import akka.actor.testkit.typed.CapturedLogEvent
 import akka.actor.testkit.typed.Effect.MessageAdapter
 import akka.actor.testkit.typed.scaladsl.{ActorTestKit, BehaviorTestKit, TestInbox}
 import com.baeldung.scala.akka.requestresponse.Base64Application.APIGateway.{GentlyEncoded, PleaseEncode}
-import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{ToEncode, Encoded}
+import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{Encoded, ToEncode}
 import com.baeldung.scala.akka.requestresponse.Base64Application.EncoderClient.{KeepASecret, WrappedEncoderResponse}
 import com.baeldung.scala.akka.requestresponse.Base64Application.{APIGateway, Base64Encoder, EncoderClient, NaiveEncoderClient}
-import org.scalatest.{BeforeAndAfterAll, FlatSpec}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.flatspec.AnyFlatSpec
 import org.slf4j.event.Level
 
-class Base64ApplicationUnitTest extends FlatSpec with BeforeAndAfterAll {
+class Base64ApplicationUnitTest extends AnyFlatSpec with BeforeAndAfterAll {
 
   val testKit: ActorTestKit = ActorTestKit()
 

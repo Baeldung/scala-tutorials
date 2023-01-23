@@ -1,11 +1,12 @@
 package com.baeldung.scala.withfilter
 
-import java.util.concurrent.atomic.AtomicInteger
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
+import java.util.concurrent.atomic.AtomicInteger
 import scala.collection.WithFilter
 
-class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
+class WithFilterVsFilterUnitTest extends AnyWordSpec with Matchers {
 
   sealed trait Level
   object Level {

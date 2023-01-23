@@ -1,7 +1,6 @@
 package com.baeldung.scala.futures
 
 import java.util.concurrent._
-
 import scala.concurrent.duration.{Duration, FiniteDuration}
 import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}

@@ -1,9 +1,9 @@
 package com.baeldung.scala.exceptionhandling
 
 import cats.data.ValidatedNel
-import cats.syntax.validated._
 import cats.syntax.apply._
-import com.baeldung.scala.exceptionhandling.ValidationErrors.{IllegalPassword, IllegalLogin}
+import cats.syntax.validated._
+import com.baeldung.scala.exceptionhandling.ValidationErrors.{IllegalLogin, IllegalPassword}
 
 object HandlingWithValidated {
   type InvalidOr[T] = ValidatedNel[ValidationErrors, T]

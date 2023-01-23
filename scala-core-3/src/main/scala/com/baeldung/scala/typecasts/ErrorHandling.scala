@@ -2,7 +2,6 @@ package com.baeldung.scala.typecasts
 
 import java.io._
 import java.net._
-
 import scala.io.Source
 import scala.util.{Failure, Success, Try}
 import scala.xml.XML

@@ -1,8 +1,8 @@
 package com.baeldung.scala.commoncollections
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.matchers.should.Matchers
 
-class GetListItemsUnitTest extends FlatSpec with Matchers {
+class GetListItemsUnitTest extends AnyFlatSpec with Matchers {
   val numbers = List.range(1, 10);
 
   "List.apply" should "return the item at specified index" in {

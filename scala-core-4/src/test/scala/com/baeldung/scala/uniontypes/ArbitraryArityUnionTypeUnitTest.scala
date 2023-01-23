@@ -1,8 +1,9 @@
 package com.baeldung.scala.uniontypes
-import org.scalatest.{Matchers, FlatSpec}
 import com.baeldung.scala.uniontypes.ArbitraryArityUnionType._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ArbitraryArityUnionTypeUnitTest extends FlatSpec with Matchers {
+class ArbitraryArityUnionTypeUnitTest extends AnyFlatSpec with Matchers {
 
   "isIntOrStringOrBool" should "be able to take an integer parameter" in {
     isIntOrStringOrBool(10) shouldEqual "10 is an Integer"

@@ -1,8 +1,9 @@
 package com.baeldung.scala.arrays
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class InitializeAnArrayUnitTest extends FlatSpec with Matchers {
+class InitializeAnArrayUnitTest extends AnyFlatSpec with Matchers {
 
   "new keyword" should "initialize an array of specified size and type" in {
     var array = new Array[Int](4)

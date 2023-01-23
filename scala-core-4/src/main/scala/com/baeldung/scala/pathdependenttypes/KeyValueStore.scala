@@ -1,7 +1,6 @@
 package com.baeldung.scala.pathdependenttypes
 
 import java.nio.ByteBuffer
-
 import scala.collection.mutable
 
 abstract class Key(val name: String) {

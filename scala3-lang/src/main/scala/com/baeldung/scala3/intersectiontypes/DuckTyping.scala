@@ -1,5 +1,5 @@
 package com.baeldung.scala3.intersectiontypes
-import reflect.Selectable.reflectiveSelectable
+import scala.reflect.Selectable.reflectiveSelectable
 
 object DuckTyping {
 

@@ -5,10 +5,10 @@ import akka.actor.testkit.typed.scaladsl.{BehaviorTestKit, TestInbox}
 import com.baeldung.scala.akka.typed.PortfolioApplication.Bank.{CreatePortfolio, PortfolioCreated}
 import com.baeldung.scala.akka.typed.PortfolioApplication.BankMain.Start
 import com.baeldung.scala.akka.typed.PortfolioApplication.PortfolioActor.{Buy, PortfolioCommand}
-import com.baeldung.scala.akka.typed.PortfolioApplication.{Bank, BankClientUsingTheTellPattern, BankMain, Portfolio, PortfolioActor, Stock}
-import org.scalatest.FlatSpec
+import com.baeldung.scala.akka.typed.PortfolioApplication._
+import org.scalatest.flatspec.AnyFlatSpec
 
-class PortfolioApplicationUnitTest extends FlatSpec {
+class PortfolioApplicationUnitTest extends AnyFlatSpec {
 
   "A Stock" should "let you add some quantity to actual" in {
     val appleStock = Stock("AAPL", 1000L)

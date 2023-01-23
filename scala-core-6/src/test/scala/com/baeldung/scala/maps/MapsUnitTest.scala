@@ -1,12 +1,12 @@
 //package com.baeldung.scala.maps
 //
 //import java.util.concurrent.atomic.AtomicInteger
-//import org.scalatest.{Matchers, WordSpec}
+//import org.scalatest.matchers.should.Matchers; import org.scalatest.wordspec.AnyWordSpec
 //
 //import scala.collection.immutable.ListMap
 //import scala.collection.{MapView, SortedMap, immutable, mutable}
 //
-//class MapsUnitTest extends WordSpec with Matchers {
+//class MapsUnitTest extends AnyWordSpec with Matchers {
 //
 //  "immutable.Map" should {
 //    val map: Map[Int, String] = immutable.Map((1, "first"), 2 -> "second")

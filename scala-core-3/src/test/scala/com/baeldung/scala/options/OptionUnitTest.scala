@@ -1,8 +1,9 @@
 package com.baeldung.scala.options
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class OptionUnitTest extends WordSpec with Matchers {
+class OptionUnitTest extends AnyWordSpec with Matchers {
   val tournament: Tournament = new Tournament {
     private val scores = Map("TeamA" -> 11, "TeamB" -> 3, "TeamC" -> 19)
 

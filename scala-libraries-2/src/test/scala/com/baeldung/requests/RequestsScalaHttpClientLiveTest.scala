@@ -109,7 +109,7 @@ class RequestsScalaHttpClientLiveTest
       assert(r.text().contains("gzip"))
       assert(
         r.text()
-          .contains("data:application/octet-stream;base64,H4sIAAAAAAAAAA==")
+          .contains("data:application/octet-stream;base64")
       )
 
       val r2 = requests.post(

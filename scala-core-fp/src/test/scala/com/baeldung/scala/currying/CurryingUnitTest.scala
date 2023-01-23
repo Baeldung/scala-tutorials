@@ -1,7 +1,7 @@
 package com.baeldung.scala.currying
 
 import org.junit.Test
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 class CurryingUnitTest extends Matchers {
 

@@ -1,7 +1,7 @@
 package com.baeldung.scala.akka.tell
 
-import akka.actor.typed.{ActorRef, Behavior}
 import akka.actor.typed.scaladsl.Behaviors
+import akka.actor.typed.{ActorRef, Behavior}
 
 object LoggingApplication {
   object LogKeeperActor {

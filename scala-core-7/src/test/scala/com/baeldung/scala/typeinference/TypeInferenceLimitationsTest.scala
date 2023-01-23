@@ -1,8 +1,9 @@
 package com.baeldung.scala.typeinference
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class TypeInferenceLimitationsTest extends WordSpec with Matchers {
+class TypeInferenceLimitationsTest extends AnyWordSpec with Matchers {
   "type inference limitations" should {
     import com.baeldung.scala.typeinference.TypeInferenceLimitations._
     "An list of integers given input to recursiveSum function should calculate sum of its elements" in {

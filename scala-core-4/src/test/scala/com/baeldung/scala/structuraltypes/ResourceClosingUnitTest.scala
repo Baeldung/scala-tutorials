@@ -1,10 +1,12 @@
 package com.baeldung.scala.structuraltypes
 
-import org.scalatest.{FlatSpec, Matchers}
-import scala.jdk.CollectionConverters._
-import scala.io.Source
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ResourceClosingUnitTest extends FlatSpec with Matchers with ResourceClosing {
+import scala.io.Source
+import scala.jdk.CollectionConverters._
+
+class ResourceClosingUnitTest extends AnyFlatSpec with Matchers with ResourceClosing {
   "Scala Sources" should "be closed" in {
      val file = Source.fromResource("animals")
      using(file) {
@@ -16,9 +18,7 @@ class ResourceClosingUnitTest extends FlatSpec with Matchers with ResourceClosin
   }
 
   "Java files" should "be closed" in {
-    import java.io.File
-    import java.io.BufferedReader
-    import java.io.FileReader
+    import java.io.{BufferedReader, File, FileReader}
 
     val resource = getClass.getClassLoader.getResource("animals")
     val file = new FileReader(new File(resource.toURI()))

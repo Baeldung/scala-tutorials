@@ -1,9 +1,10 @@
 package com.baeldung.scala.datesandtimes
 import com.github.nscala_time.time.Imports._
 import org.joda.time.DateTime
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class NScalaTimeUnitTest extends FlatSpec with Matchers{
+class NScalaTimeUnitTest extends AnyFlatSpec with Matchers{
   "measureElapsedTimePeriod" should "be able to calculate the time period between starting and ending DateTime objects and  return a Period object" in {
 
     val processStart:DateTime = DateTime.now()

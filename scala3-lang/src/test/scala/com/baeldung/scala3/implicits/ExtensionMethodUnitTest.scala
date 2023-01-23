@@ -1,6 +1,6 @@
 package com.baeldung.scala3.implicits
 
-import com.baeldung.scala3.implicits.ExtensionMethod._
+import com.baeldung.scala3.implicits.ExtensionMethod.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 

@@ -1,8 +1,8 @@
 package com.baeldung.scala.doobie
 
 import cats.effect.{IO, IOApp}
-import doobie.{Fragment, Transactor}
 import doobie.implicits._
+import doobie.{Fragment, Transactor}
 
 object DoobieFragments extends IOApp.Simple {
 
