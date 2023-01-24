@@ -1,9 +1,10 @@
 package com.baedung.scala.mergemaps
 
 import com.baeldung.scala.mergemaps.CombineIterables
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class MergeMapsUnitTest extends FlatSpec with Matchers {
+class MergeMapsUnitTest extends AnyFlatSpec with Matchers {
 
   "++ operator" should "merge maps preferring duplicates from second map" in {
     val firstMap = Map(1 -> "Apple", 5 -> "Banana", 3 -> "Orange");

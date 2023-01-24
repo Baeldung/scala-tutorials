@@ -1,9 +1,9 @@
 package com.baeldung.scala.monad
 
 import com.baeldung.scala.monad.LazyMonad.Lazy
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class LazyMonadUnitTest extends FlatSpec {
+class LazyMonadUnitTest extends AnyFlatSpec {
   "Lazy.get" should "evaluate and return the internal value" in {
     val lazy42 = Lazy(42)
     assert( lazy42.get == 42)

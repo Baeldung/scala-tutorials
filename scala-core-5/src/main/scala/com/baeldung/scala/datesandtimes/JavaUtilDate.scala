@@ -1,6 +1,5 @@
 package com.baeldung.scala.datesandtimes
 import java.text.SimpleDateFormat
-
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 

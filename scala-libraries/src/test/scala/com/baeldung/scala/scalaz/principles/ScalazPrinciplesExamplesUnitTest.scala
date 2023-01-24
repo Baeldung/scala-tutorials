@@ -1,9 +1,9 @@
 package com.baeldung.scala.scalaz.principles
 
 import com.baeldung.scala.scalaz.principles.ScalazPrinciplesExamples._
-import org.scalatest._
+import org.scalatest.flatspec.AnyFlatSpec
 
-class ScalazPrinciplesExamplesUnitTest extends FlatSpec{
+class ScalazPrinciplesExamplesUnitTest extends AnyFlatSpec {
 
   it should "sort ints and strings" in {
     val integers = List(3, 2, 6, 5, 4, 1)

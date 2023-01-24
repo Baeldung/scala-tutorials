@@ -1,13 +1,13 @@
 package com.baeldung.scala.classcompositionwithtraits
 
 import com.baeldung.scala.classcompositionwithtraits.CarTraits._
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers; import org.scalatest.wordspec.AnyWordSpec
 
 /**
  * @author Sergey Ionin
  */
 
-class CarTraitsUnitTest extends WordSpec with Matchers {
+class CarTraitsUnitTest extends AnyWordSpec with Matchers {
 
   "Class that extends Car" should {
     "inherit abstract class fields" in {

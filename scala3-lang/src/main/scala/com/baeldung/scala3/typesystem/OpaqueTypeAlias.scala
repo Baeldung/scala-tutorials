@@ -1,9 +1,9 @@
 package com.baeldung.scala3.typesystem
 
-import com.baeldung.scala3.typesystem.types._
-import scala.util.Try
+import com.baeldung.scala3.typesystem.types.*
 
 import java.time.LocalDate
+import scala.util.Try
 
 final case class Movie(name: String, year: Year, runningTime: RunningTimeInMin, noOfOscarsWon: NoOfOscarsWon)
 

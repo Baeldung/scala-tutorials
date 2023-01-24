@@ -1,15 +1,15 @@
 package com.baeldung.scala.akka.http
 
 import akka.actor.ActorSystem
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.Http
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala._
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
-import spray.json.DefaultJsonProtocol._
-import scala.util._
+import akka.http.scaladsl.model._
 import akka.http.scaladsl.model.headers.RawHeader
+import akka.http.scaladsl.server.Directives._
+import spray.json.DefaultJsonProtocol._
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util._
 
 object MovieServer extends App {
 

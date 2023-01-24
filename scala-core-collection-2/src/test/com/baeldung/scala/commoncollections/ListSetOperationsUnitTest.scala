@@ -1,10 +1,10 @@
 package com.baeldung.scala.commoncollections
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.matchers.should.Matchers
 
 import scala.collection.immutable.ListSet
 
-class ListSetOperationsUnitTest extends FlatSpec with Matchers {
+class ListSetOperationsUnitTest extends AnyFlatSpec with Matchers {
 
   val listSet = ListSet(1, 2, 3, 4);
 

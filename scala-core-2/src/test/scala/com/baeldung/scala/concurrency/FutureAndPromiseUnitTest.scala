@@ -1,7 +1,8 @@
 package com.baeldung.scala.concurrency
 
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{AsyncFreeSpecLike, Matchers}
+import org.scalatest.freespec.AsyncFreeSpecLike
+import org.scalatest.matchers.should.Matchers
 
 class FutureAndPromiseUnitTest extends AsyncFreeSpecLike with Matchers with ScalaFutures {
   import ScalaAndPromise._

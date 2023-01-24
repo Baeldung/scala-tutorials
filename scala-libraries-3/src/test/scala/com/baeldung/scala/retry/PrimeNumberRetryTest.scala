@@ -1,7 +1,7 @@
 package com.baeldung.scala.retry
 
 import com.baeldung.scala.retry.PrimeNumberRetry.success
-import org.scalatest.matchers.must.Matchers
+import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
 
 import java.util.concurrent.atomic.AtomicInteger

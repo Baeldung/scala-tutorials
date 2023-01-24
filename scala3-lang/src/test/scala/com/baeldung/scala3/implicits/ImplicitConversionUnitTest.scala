@@ -1,6 +1,6 @@
 package com.baeldung.scala3.implicits
 
-import com.baeldung.scala3.implicits.ImplicitConversion._
+import com.baeldung.scala3.implicits.ImplicitConversion.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 

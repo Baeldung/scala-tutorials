@@ -1,8 +1,8 @@
 package com.baeldung.scala.partialfunctions
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class SwapIntegerSignUnitTest extends FlatSpec {
+class SwapIntegerSignUnitTest extends AnyFlatSpec {
 
   "swapSign" should "return a positive number when a negative is given" in {
     assert(SwapIntegerSign.swapSign(-3) == 3)

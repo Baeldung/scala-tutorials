@@ -1,8 +1,9 @@
 package com.baeldung.scala.implicitconversions
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class LengthUnitTest extends WordSpec with Matchers {
+class LengthUnitTest extends AnyWordSpec with Matchers {
 
   "Implicit conversion" should {
     import scala.language.implicitConversions

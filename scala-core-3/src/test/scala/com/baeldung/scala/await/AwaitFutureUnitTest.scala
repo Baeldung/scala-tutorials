@@ -1,14 +1,15 @@
 package com.baeldung.scala.await
 
+import org.scalatest.Ignore
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.{AnyWordSpec, AnyWordSpecLike}
+
 import java.util.concurrent.TimeoutException
-
-import org.scalatest.{ Matchers, WordSpec, Ignore }
-
 import scala.concurrent.duration._
-import scala.concurrent.{ Await, Future }
+import scala.concurrent.{Await, Future}
 
 @Ignore // fixing in JAVA-9842
-class AwaitFutureUnitTest extends AwaitFutureTestUtil {
+class AwaitFutureUnitTest extends AwaitFutureTestUtil with Matchers with AnyWordSpecLike {
 
   private val url = "http://www.baeldung.com"
   "Using Await.ready" should {
@@ -93,7 +94,7 @@ class AwaitFutureUnitTest extends AwaitFutureTestUtil {
 
 }
 
-trait AwaitFutureTestUtil extends WordSpec with Matchers {
+trait AwaitFutureTestUtil extends AnyWordSpec with Matchers {
   //needed to avoid a 403 error
   System.setProperty("http.agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.29 Safari/537.36")
 }

@@ -1,8 +1,9 @@
 package com.baeldung.scala.typecasts
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class TypeErasureUnitTest extends  WordSpec with Matchers {
+class TypeErasureUnitTest extends AnyWordSpec with Matchers {
 
   "Generic types" should {
     "be discarded" in {

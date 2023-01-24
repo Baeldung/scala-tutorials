@@ -1,13 +1,12 @@
 package com.baeldung.scala.akka.requestresponse
 
-import java.nio.charset.StandardCharsets
-import java.util.Base64
-
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.{ActorRef, Behavior}
 import akka.util.Timeout
-import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{ToEncode, Encoded, Request}
+import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{Encoded, ToEncode}
 
+import java.nio.charset.StandardCharsets
+import java.util.Base64
 import scala.concurrent.duration.DurationInt
 import scala.util.{Failure, Success}
 

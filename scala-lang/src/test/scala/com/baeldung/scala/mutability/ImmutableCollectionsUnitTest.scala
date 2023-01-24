@@ -1,8 +1,8 @@
 package com.baeldung.scala.mutability
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class ImmutableCollectionsUnitTest extends FunSuite {
+class ImmutableCollectionsUnitTest extends AnyFunSuite {
   test("Immutable collections will create new instance if we add or update the elements") {
     val pets = Seq("Cat", "Dog")
     val myPets = pets :+ "Hamster"

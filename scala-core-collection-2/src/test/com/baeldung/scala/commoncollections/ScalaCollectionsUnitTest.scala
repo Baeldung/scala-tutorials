@@ -2,7 +2,7 @@ package com.baeldung.scala.commoncollections
 
 import org.scalatest.{Matchers, _}
 
-class ScalaCollectionsUnitTest extends FlatSpec with Matchers {
+class ScalaCollectionsUnitTest extends AnyFlatSpec with Matchers {
 
   "Scala list" should "concatenate using ::: operator" in {
     //given
