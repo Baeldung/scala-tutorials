@@ -4,7 +4,7 @@ import java.nio.charset.StandardCharsets
 
 object ByteArrayToString {
   def main(args: Array[String]): Unit = {
-    val helloInUtf16 = Array[Byte](104, 101, 108, 108, 111)
+    val helloInUtf8 = Array[Byte](104, 101, 108, 108, 111)
     val helloInUtf16Le = Array[Byte](104, 0, 101, 0, 108, 0, 108, 0, 111, 0)
 
     usingToString(helloInUtf16)
