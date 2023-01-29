@@ -7,9 +7,9 @@ object ByteArrayToString {
     val helloInUtf8 = Array[Byte](104, 101, 108, 108, 111)
     val helloInUtf16Le = Array[Byte](104, 0, 101, 0, 108, 0, 108, 0, 111, 0)
 
-    usingToString(helloInUtf16)
-    usingNewString(helloInUtf16)
-    usingToChar(helloInUtf16)
+    usingToString(helloInUtf8)
+    usingNewString(helloInUtf8)
+    usingToChar(helloInUtf8)
     usingDifferentCharSet(helloInUtf16Le)
   }
 

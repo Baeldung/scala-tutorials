@@ -6,16 +6,16 @@ import org.scalatest.wordspec.AnyWordSpec
 
 class ByteArrayToStringTest extends AnyWordSpec with Matchers {
   "byte array" should {
-    val helloInUtf16 = Array[Byte](104, 101, 108, 108, 111)
+    val helloInUtf8 = Array[Byte](104, 101, 108, 108, 111)
     val helloInUtf16Le = Array[Byte](104, 0, 101, 0, 108, 0, 108, 0, 111, 0)
     val hello = "hello"
 
     "return correct String for usingNewString" in {
-      usingNewString(helloInUtf16) mustBe hello
+      usingNewString(helloInUtf8) mustBe hello
     }
 
     "return correct String for usingToChar" in {
-      usingToChar(helloInUtf16) mustBe hello
+      usingToChar(helloInUtf8) mustBe hello
     }
 
     "return correct String for usingDifferentCharSet" in {
