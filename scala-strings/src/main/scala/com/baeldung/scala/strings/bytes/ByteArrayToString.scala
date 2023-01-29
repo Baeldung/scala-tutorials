@@ -18,7 +18,7 @@ object ByteArrayToString {
   }
 
   def usingNewString(bytes: Array[Byte]) = {
-    new String(bytes, StandardCharsets.UTF_16)
+    new String(bytes, StandardCharsets.UTF_8)
   }
 
   def usingToChar(bytes: Array[Byte]) = {
