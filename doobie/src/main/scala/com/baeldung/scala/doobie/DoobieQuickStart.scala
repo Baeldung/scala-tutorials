@@ -1,8 +1,8 @@
 package com.baeldung.scala.doobie
 
 import cats.effect.{IO, IOApp}
-import doobie.{ConnectionIO, Transactor}
 import doobie.implicits._
+import doobie.{ConnectionIO, Transactor}
 
 // Equivalent to world db city table
 case class City(id: Long, name: String, countryCode: String, district: String, population: Int)

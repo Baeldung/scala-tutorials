@@ -2,6 +2,7 @@ package com.baedung.scala.collections
 
 import org.scalatest.wordspec.AnyWordSpec
 
+
 class ListConcatenationUnitTest extends AnyWordSpec {
 
   private val list1 = 1 :: 2 :: 3 :: Nil

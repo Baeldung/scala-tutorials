@@ -1,10 +1,11 @@
 package com.baeldung.scala.exceptionhandling
 
-import org.scalatest._
-import org.scalatest.Assertions._
-import scala.util.{Success, Failure}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ExamplesUnitTest extends FlatSpec with Matchers {
+import scala.util.{Failure, Success}
+
+class ExamplesUnitTest extends AnyFlatSpec with Matchers {
 
   "tryCatch" should "handle NegativeNumberException" in {
     noException should be thrownBy Examples.tryCatch(-1, -2)
@@ -40,7 +41,6 @@ class ExamplesUnitTest extends FlatSpec with Matchers {
   }
 
   it should "return the correct sum" in {
-    import CalculatorExceptions._
     val result = Examples.trySuccessFailure(3, 2)
     result match {
       case Failure(e)      => fail("Should succed!")
@@ -67,7 +67,6 @@ class ExamplesUnitTest extends FlatSpec with Matchers {
   }
 
   it should "return the correct sum" in {
-    import CalculatorExceptions._
     val result = Examples.catchObjects(3, 2)
     result match {
       case Failure(e)      => fail("Should succed!")
@@ -92,7 +91,6 @@ class ExamplesUnitTest extends FlatSpec with Matchers {
   }
 
   it should "return the correct sum" in {
-    import CalculatorExceptions._
     val result = Examples.customCatchObjects(3, 2)
     result match {
       case Failure(e)      => fail("Should succed!")
@@ -101,7 +99,6 @@ class ExamplesUnitTest extends FlatSpec with Matchers {
   }
 
   "customCatchObjects composed with trySuccessFailure" should "return the correct sum" in {
-    import CalculatorExceptions._
     val result = Examples.customCatchObjects(3, 2) flatMap (Examples
       .trySuccessFailure(_, 3))
     result match {

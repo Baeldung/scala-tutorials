@@ -1,13 +1,8 @@
 package com.baeldung.scala3.quitesyntax
 
-import scala.collection.*                   // Scala 3
-import scala.collection._                   // Scala 2
-
-import scala.collection.mutable.Map as MMap   // Scala 3
-import scala.collection.mutable.{Map => MMap} // Scala 2
-
-import java.util.{Random as _, *}             // Scala 3
-import java.util.{Random => _, _}             // Scala 2
+import java.util.{Random as _, *}
+import scala.collection.*
+import scala.collection.mutable.Map as MMap             // Scala 2
 
 object Example {
 

@@ -1,7 +1,5 @@
 package com.baeldung.scala.callbynameandvalue
 
-import java.lang.Thread.sleep
-
 import com.baeldung.scala.callbynameandvalue.CallByNameCallByValue._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers

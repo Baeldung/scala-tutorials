@@ -1,5 +1,5 @@
 package com.baeldung.scala.collections
-
+import scala.collection.parallel.CollectionConverters._
 object FoldingLists extends App {
 
   case class Person(name: String, sex: String)

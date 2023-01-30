@@ -6,7 +6,7 @@ import org.scalatest.wordspec.AnyWordSpec
 class ExtensionsUnitTest extends AnyWordSpec with Matchers {
 
   "String Extensions" should {
-    import StringExtensions._
+    import StringExtensions.*
 
     "convert string to snake case" in {
       val str = "helloWorldScala3"
@@ -26,7 +26,7 @@ class ExtensionsUnitTest extends AnyWordSpec with Matchers {
   }
 
   "Generic Extensions" should {
-    import GenericExtensions._
+    import GenericExtensions.*
 
     "work for List[Int] for getSecond method" in {
       val intList = List(1, 2, 3, 4)

@@ -1,8 +1,9 @@
 package com.baeldung.scala.ranges
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class RangeUnitTest extends WordSpec with Matchers {
+class RangeUnitTest extends AnyWordSpec with Matchers {
 
   "Inclusive Range" should {
     "include both start and end of a range" in {

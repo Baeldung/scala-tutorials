@@ -6,7 +6,7 @@ import org.apache.spark.rdd.RDD
 
 object RDDToDataframe extends App{
 
-  val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
+  val spark: SparkSession = SparkSession.builder().master("local").getOrCreate
   val sc = spark.sparkContext
 
   val rdd = sc.parallelize(

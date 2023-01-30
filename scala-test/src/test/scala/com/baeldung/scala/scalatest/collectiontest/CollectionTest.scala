@@ -2,7 +2,7 @@ package com.baeldung.scala.scalatest.collectiontest
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpec
+
 import scala.util.Random
 
 class CollectionTest extends AnyFlatSpec with Matchers {

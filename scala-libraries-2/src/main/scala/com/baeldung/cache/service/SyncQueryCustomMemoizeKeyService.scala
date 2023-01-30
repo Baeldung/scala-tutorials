@@ -1,12 +1,10 @@
 package com.baeldung.cache.service
 
+import com.google.common.cache.CacheBuilder
 import scalacache._
 import scalacache.guava._
-import com.google.common.cache.CacheBuilder
-import scalacache.memoization.MethodCallToStringConverter.onlyMethodParams
-import scalacache.modes.sync._
-import scalacache.serialization.binary._
 import scalacache.memoization._
+import scalacache.modes.sync._
 
 import scala.concurrent.duration._
 

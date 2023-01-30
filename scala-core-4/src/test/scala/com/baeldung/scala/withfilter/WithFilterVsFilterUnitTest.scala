@@ -1,12 +1,12 @@
 package com.baeldung.scala.withfilter
 
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+
 import java.util.concurrent.atomic.AtomicInteger
+import scala.collection.WithFilter
 
-import org.scalatest.{Matchers, WordSpec}
-
-import scala.collection.generic.FilterMonadic
-
-class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
+class WithFilterVsFilterUnitTest extends AnyWordSpec with Matchers {
 
   sealed trait Level
   object Level {
@@ -71,7 +71,7 @@ class WithFilterVsFilterUnitTest extends WordSpec with Matchers {
     "filter programmers" in {
       implicit val counter: AtomicInteger = new AtomicInteger(0)
 
-      val desiredProgrammers: FilterMonadic[Programmer, List[Programmer]] =
+      val desiredProgrammers: WithFilter[Programmer, List] =
         programmers
           .withFilter(isMidOrSenior)
           .withFilter(knowsMoreThan1Language)

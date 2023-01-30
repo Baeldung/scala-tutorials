@@ -1,8 +1,9 @@
 package com.baeldung.scala.structuraltypes
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class DuckUnitTest extends FlatSpec with Matchers {
+class DuckUnitTest extends AnyFlatSpec with Matchers {
   type Flyer = { def fly(): Unit }
   def callFly(thing: Flyer): Unit = thing.fly()
 

@@ -1,6 +1,6 @@
 package com.baeldung.scala.exceptionhandling
 
-import scala.util.{Failure, Success, Try, control}
+import scala.util.Try
 import scala.util.control.Exception._
 
 object Examples {

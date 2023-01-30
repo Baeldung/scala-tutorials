@@ -1,8 +1,9 @@
 package com.baeldung.scala.companionobject
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class TaskUnitTest extends FlatSpec with Matchers {
+class TaskUnitTest extends AnyFlatSpec with Matchers {
 
   "Task" should "be instantiated with default constructor" in {
     val task = new Task("do something")

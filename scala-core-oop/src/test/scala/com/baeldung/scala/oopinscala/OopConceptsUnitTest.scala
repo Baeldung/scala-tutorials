@@ -1,9 +1,10 @@
 package com.baeldung.scala.oopinscala
-import org.scalatest.FunSuite
+
+import org.scalatest.funsuite.AnyFunSuite
 
 import scala.collection.mutable.ArrayBuffer
 
-class OopConceptsUnitTest extends FunSuite {
+class OopConceptsUnitTest extends AnyFunSuite {
   test("access bread fields from object") {
     val whiteBread = new Bread
     assert(whiteBread.name === "white")

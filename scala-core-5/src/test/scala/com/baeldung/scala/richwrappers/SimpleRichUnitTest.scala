@@ -1,8 +1,9 @@
 package com.baeldung.scala.richwrappers
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class SimpleRichUnitTest extends WordSpec with Matchers {
+class SimpleRichUnitTest extends AnyWordSpec with Matchers {
 
   "SimpleRichInt" should {
     "count the digits of a number" in {

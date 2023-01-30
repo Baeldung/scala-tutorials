@@ -1,7 +1,5 @@
 package com.baeldung.scala.akka.alpakka
 
-import java.nio.file.{FileSystems, Path, Paths}
-
 import akka.stream.alpakka.file.scaladsl.FileTailSource
 import akka.stream.alpakka.mongodb.scaladsl.MongoSource
 import akka.stream.scaladsl.{Sink, Source}
@@ -10,14 +8,17 @@ import de.flapdoodle.embed.mongo.MongodStarter
 import de.flapdoodle.embed.mongo.config.{MongodConfigBuilder, Net}
 import de.flapdoodle.embed.mongo.distribution.Version
 import de.flapdoodle.embed.process.runtime.Network
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
+import java.nio.file.{FileSystems, Path, Paths}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 
 class AlpakkaIntegrationTest
-  extends WordSpec
+  extends AnyWordSpec
     with Matchers
     with ScalaFutures
     with BeforeAndAfterAll {

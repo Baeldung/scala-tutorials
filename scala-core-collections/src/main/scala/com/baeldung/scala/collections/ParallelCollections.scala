@@ -1,7 +1,7 @@
 package com.baeldung.scala.collections
 
 import scala.collection.parallel.immutable.{ParSeq, ParVector}
-
+import scala.collection.parallel.CollectionConverters._
 object ParallelCollections {
   lazy val parallelList: ParSeq[Int] = (0 to 100).toList.par
 

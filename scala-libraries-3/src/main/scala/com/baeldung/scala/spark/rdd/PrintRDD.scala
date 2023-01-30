@@ -3,7 +3,7 @@ package com.baeldung.scala.spark.rdd
 import org.apache.spark.sql.SparkSession
 
 object PrintRDD extends App {
-  val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
+  val spark: SparkSession = SparkSession.builder().master("local").getOrCreate
   import spark.implicits._
 
   val numbers = List(4, 6, 1, 7, 12, 2)

@@ -1,8 +1,8 @@
 package com.baeldung.scala.fibers
 
-import cats.effect.{FiberIO, IO, IOApp, OutcomeIO}
-import IOExtensions._
 import cats.effect.kernel.Outcome
+import cats.effect.{FiberIO, IO, IOApp, OutcomeIO}
+import com.baeldung.scala.fibers.IOExtensions._
 
 import scala.concurrent.duration._
 import scala.util.Random

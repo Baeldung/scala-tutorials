@@ -1,8 +1,9 @@
 package com.baeldung.scala.strings.comparison
 
-import org.scalatest.{FeatureSpec, GivenWhenThen}
+import org.scalatest.GivenWhenThen
+import org.scalatest.featurespec.AnyFeatureSpec
 
-class StringComparisonUnitTest extends FeatureSpec with GivenWhenThen {
+class StringComparisonUnitTest extends AnyFeatureSpec with GivenWhenThen {
 
   scenario("String Comparison with ==, eq and equals") {
     

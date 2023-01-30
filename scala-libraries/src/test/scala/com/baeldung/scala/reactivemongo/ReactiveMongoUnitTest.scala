@@ -4,12 +4,12 @@ import de.flapdoodle.embed.mongo.MongodStarter
 import de.flapdoodle.embed.mongo.config.{MongodConfig, Net}
 import de.flapdoodle.embed.mongo.distribution.Version
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AsyncWordSpec
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome}
 import MongoEntityImplicits._
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.Sink
+import org.scalatest.wordspec.AsyncWordSpec
 import reactivemongo.api.Cursor
 import reactivemongo.api.bson.BSONDocument
 

@@ -1,7 +1,5 @@
 package com.baeldung.scala.akka.alpakka
 
-import java.nio.file.FileSystems
-
 import akka.NotUsed
 import akka.stream.alpakka.mongodb.scaladsl.MongoSink
 import akka.stream.scaladsl.Source

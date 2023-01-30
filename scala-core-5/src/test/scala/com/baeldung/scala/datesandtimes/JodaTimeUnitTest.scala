@@ -1,8 +1,9 @@
 package com.baeldung.scala.datesandtimes
 import org.joda.time.DateTime
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class JodaTimeUnitTest extends FlatSpec with Matchers{
+class JodaTimeUnitTest extends AnyFlatSpec with Matchers{
   "parseDate" should "be able to parse a date-string using the pattern-input and return a DateTime object" in {
     val dateStr = "2021-06-13"
     val pattern = "yyyy-MM-dd"

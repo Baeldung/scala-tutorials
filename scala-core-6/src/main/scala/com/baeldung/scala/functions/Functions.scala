@@ -2,7 +2,6 @@ package com.baeldung.scala.functions
 
 import java.util.Date
 import java.util.concurrent.Executors
-
 import scala.concurrent.{ExecutionContext, Future}
 
 object Functions {

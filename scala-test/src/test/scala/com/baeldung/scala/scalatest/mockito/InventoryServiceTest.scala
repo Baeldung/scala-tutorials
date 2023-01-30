@@ -1,8 +1,8 @@
 package com.baeldung.scala.scalatest.mockito
 
-import org.mockito.Mockito._
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatchers.any
+import org.mockito.Mockito._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
@@ -43,8 +43,10 @@ class InventoryServiceTest extends AnyWordSpec with MockitoSugar with ScalaFutur
       val service = new InventoryService(dao, mockProducer, mockLogger)
       when(dao.saveAsync(any[InventoryTransaction])).thenReturn(Future.successful(txn))
       doNothing().when(mockProducer).publish(txn)
-      service.saveAndPublish(txn)
-      verify(mockProducer, times(1)).publish(any[InventoryTransaction])
+      val result = service.saveAndPublish(txn)
+      whenReady(result){ _ =>
+        verify(mockProducer, times(1)).publish(any[InventoryTransaction])
+      }
     }
 
     "save and NOT publish to kafka for non chocolate inventory" in {
@@ -55,9 +57,12 @@ class InventoryServiceTest extends AnyWordSpec with MockitoSugar with ScalaFutur
       val service = new InventoryService(dao, mockProducer, mockLogger)
       when(dao.saveAsync(any[InventoryTransaction])).thenReturn(Future.successful(txn))
       when(mockProducer.publish(any[InventoryTransaction])).thenThrow(new RuntimeException("This should never occur"))
-      service.saveAndPublish(txn)
-      verify(mockProducer, times(0)).publish(any[InventoryTransaction])
-      verify(mockProducer, never).publish(any[InventoryTransaction])
+      val result = service.saveAndPublish(txn)
+      whenReady(result) { _ =>
+        verify(mockProducer, times(0)).publish(any[InventoryTransaction])
+        verify(mockProducer, never).publish(any[InventoryTransaction])
+      }
+
     }
 
     "save and log the txn details" in {
@@ -68,13 +73,15 @@ class InventoryServiceTest extends AnyWordSpec with MockitoSugar with ScalaFutur
       val mockLogger = mock[Logger]
       val service = new InventoryService(dao, mockProducer, mockLogger)
       when(dao.saveAsync(any[InventoryTransaction])).thenReturn(Future.successful(txn))
-      service.saveAndLogTime(txn)
-      val refCapture = ArgumentCaptor.forClass(classOf[String])
-      val refLocalDateTime = ArgumentCaptor.forClass(classOf[LocalDateTime])
+      val result = service.saveAndLogTime(txn)
+      whenReady(result) { _ =>
+        val refCapture = ArgumentCaptor.forClass(classOf[String])
+        val refLocalDateTime = ArgumentCaptor.forClass(classOf[LocalDateTime])
 
-      verify(mockLogger, times(1)).logTime(refCapture.capture(), refLocalDateTime.capture())
-      refCapture.getValue shouldBe txn.txnRef
-      refLocalDateTime.getValue shouldBe txn.created
+        verify(mockLogger, times(1)).logTime(refCapture.capture(), refLocalDateTime.capture())
+        refCapture.getValue shouldBe txn.txnRef
+        refLocalDateTime.getValue shouldBe txn.created
+      }
 
     }
 

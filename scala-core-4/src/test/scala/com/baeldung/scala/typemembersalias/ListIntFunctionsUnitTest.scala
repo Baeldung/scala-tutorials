@@ -1,7 +1,8 @@
 package com.baeldung.scala.typemembersalias
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ListIntFunctionsUnitTest extends FlatSpec with Matchers {
+class ListIntFunctionsUnitTest extends AnyFlatSpec with Matchers {
   "Mean function" should "be able to get mean from list of int" in {
     val intList = List(3, 6, 2, 2)
     ListIntFunctions.mean(intList) shouldEqual 3.25

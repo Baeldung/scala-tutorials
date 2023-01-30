@@ -1,16 +1,15 @@
 package com.baeldung.scala.akka.supervision
 
-import java.io.IOException
-import java.net.URL
-
 import akka.actor.typed._
 import akka.actor.typed.scaladsl.{ActorContext, Behaviors}
 import akka.util.Timeout
 import com.baeldung.scala.akka.supervision.SupervisionApplication.Filesystem.{FsFind, FsFound}
 import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.Request
 
+import java.io.IOException
+import java.net.URL
 import scala.concurrent.duration.DurationInt
-import scala.util.{Failure, Random, Success, Try}
+import scala.util.{Failure, Success, Try}
 
 object SupervisionApplication {
 
@@ -123,7 +122,7 @@ object SupervisionApplication {
             .supervise(search)
             .onFailure[IOException](SupervisorStrategy.resume))
         .onFailure[Exception](SupervisorStrategy.restart.withLimit(
-          maxNrOfRetries = 10, withinTimeRange = 5 minutes))
+          maxNrOfRetries = 10, withinTimeRange = 5.minutes))
     }
 
     private def search: Behavior[FsFind] =

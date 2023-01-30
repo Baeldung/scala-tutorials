@@ -2,17 +2,19 @@ package com.baeldung.scala.akka.scheduler
 
 import akka.actor.{ActorSystem, Props}
 import akka.testkit.{ImplicitSender, TestKit}
-import org.scalatest.{Matchers, WordSpecLike}
-import scala.concurrent.duration._
-import scala.concurrent.ExecutionContext.Implicits.global
 import org.scalatest._
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.{AnyWordSpec, AnyWordSpecLike}
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 @Ignore
 // fixing in JAVA-4839
 class SchedulerUnitTest
     extends TestKit(ActorSystem("test-system"))
     with ImplicitSender
-    with WordSpecLike
+    with AnyWordSpecLike
     with Matchers {
 
   "Akka scheduler" must {

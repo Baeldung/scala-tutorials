@@ -1,7 +1,7 @@
 package com.baeldung.scala3.macros.inline
 
-import scala.util.Random
 import scala.compiletime.*
+import scala.util.Random
 
 object InlineCompilerError {
   inline def checkPort(portNo: Int) = {

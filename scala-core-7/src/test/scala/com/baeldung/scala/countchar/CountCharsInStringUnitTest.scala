@@ -1,8 +1,9 @@
 package com.baeldung.scala.countchar
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class CountCharsInStringUnitTest extends FlatSpec with Matchers {
+class CountCharsInStringUnitTest extends AnyFlatSpec with Matchers {
   "count with count()" should "correctly count char occurences in String" in {
     val string = "ThisIsAVeryLengthyString"
     val char = 'i';

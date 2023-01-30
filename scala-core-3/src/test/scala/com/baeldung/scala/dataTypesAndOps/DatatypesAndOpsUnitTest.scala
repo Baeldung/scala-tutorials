@@ -1,8 +1,9 @@
 package com.baeldung.scala.dataTypesAndOps
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class DatatypesAndOpsUnitTest extends WordSpec with Matchers  {
+class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
 
   "Basic  DataTypes of Scala" should {
     "infer the type from assignment " in {

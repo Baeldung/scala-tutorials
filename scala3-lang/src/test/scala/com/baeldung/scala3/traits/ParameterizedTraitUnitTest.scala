@@ -1,6 +1,6 @@
 package com.baeldung.scala3.traits
 
-import com.baeldung.scala3.traits.ParameterizedTrait.{Foo, Base}
+import com.baeldung.scala3.traits.ParameterizedTrait.{Base, Foo}
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
