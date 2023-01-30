@@ -3,10 +3,12 @@ package com.baeldung.scala3.contextualabstractions
 import com.baeldung.scala3.contextualabstractions.Givens.Item
 import Givens.{Item, priceOrdering, pageLimit}
 
-object UsingClause extends App{
+object UsingClause extends App {
 
-  def listItems(products: Seq[Item])(using ordering: Ordering[Item])(using limit:Int) = {
-      products.sorted.take(limit)
+  def listItems(
+    products: Seq[Item]
+  )(using ordering: Ordering[Item])(using limit: Int) = {
+    products.sorted.take(limit)
   }
 
   val shoppingCart = List(
@@ -17,5 +19,5 @@ object UsingClause extends App{
   )
 
   val sortedItems = listItems(shoppingCart)
-  println(sortedItems)  // prints -> List(Item(Coke,1.0), Item(Burger,3.0))
+  println(sortedItems) // prints -> List(Item(Coke,1.0), Item(Burger,3.0))
 }

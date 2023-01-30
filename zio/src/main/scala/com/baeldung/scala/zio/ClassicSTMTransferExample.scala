@@ -15,7 +15,11 @@ object ClassicSTMTransferExample extends ZIOAppDefault {
     to.update(_ + amount)
   }
 
-  def transfer(from: TRef[Int], to: TRef[Int], amount: Int): ZIO[Any, String, Unit] =
+  def transfer(
+    from: TRef[Int],
+    to: TRef[Int],
+    amount: Int
+  ): ZIO[Any, String, Unit] =
     STM.atomically {
       for {
         _ <- withdraw(from, amount)

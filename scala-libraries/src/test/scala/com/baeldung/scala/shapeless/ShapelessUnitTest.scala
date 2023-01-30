@@ -32,9 +32,9 @@ class ShapelessUnitTest extends AnyWordSpec with Matchers {
     case class Yellow() extends TrafficLight
 
     "convert sealed trait coproduct to shapeless coproduct" in {
-      val gen    = Generic[TrafficLight]
-      val green  = gen.to(Green())
-      val red    = gen.to(Red())
+      val gen = Generic[TrafficLight]
+      val green = gen.to(Green())
+      val red = gen.to(Red())
       val yellow = gen.to(Yellow())
       assert(green == Inl(Green()))
       assert(red == Inr(Inl(Red())))
@@ -42,9 +42,9 @@ class ShapelessUnitTest extends AnyWordSpec with Matchers {
     }
 
     "convert back shapeless coproduct to sealed trait product type" in {
-      val gen    = Generic[TrafficLight]
-      val green  = gen.from(Inl(Green()))
-      val red    = gen.from(Inr(Inl(Red())))
+      val gen = Generic[TrafficLight]
+      val green = gen.from(Inl(Green()))
+      val red = gen.from(Inr(Inl(Red())))
       val yellow = gen.from(Inr(Inr(Inl(Yellow()))))
       assert(green == Green())
       assert(red == Red())
@@ -67,20 +67,20 @@ class ShapelessUnitTest extends AnyWordSpec with Matchers {
 
   "Generic" should {
     "Convert case class to corresponding HList product type" in {
-      val user      = User("John", 25)
+      val user = User("John", 25)
       val userHList = Generic[User].to(user)
       assert(userHList == "John" :: 25 :: HNil)
     }
 
     "Convert back hlist to corresponding case class product type" in {
-      val user       = User("John", 25)
-      val userHList  = Generic[User].to(user)
+      val user = User("John", 25)
+      val userHList = Generic[User].to(user)
       val userRecord = Generic[User].from(userHList)
       assert(user == userRecord)
     }
 
     "Convert tuple to HList product type" in {
-      val user      = ("John", 25)
+      val user = ("John", 25)
       val userHList = Generic[(String, Int)].to(user)
       assert(userHList == "John" :: 25 :: HNil)
     }
@@ -106,8 +106,8 @@ class ShapelessUnitTest extends AnyWordSpec with Matchers {
     }
 
     "Convert back hlist to corresponding tuple product type" in {
-      val user       = ("John", 25)
-      val userHList  = Generic[(String, Int)].to(user)
+      val user = ("John", 25)
+      val userHList = Generic[(String, Int)].to(user)
       val userRecord = Generic[(String, Int)].from(userHList)
       assert(user == userRecord)
     }
@@ -116,8 +116,8 @@ class ShapelessUnitTest extends AnyWordSpec with Matchers {
   "LabelledGeneric" should {
     import shapeless._
     import record._
-    val user               = User("John", 25)
-    val userGen            = LabelledGeneric[User]
+    val user = User("John", 25)
+    val userGen = LabelledGeneric[User]
     val userLaballedRecord = userGen.to(user)
 
     "read name field from labelled Hlist" in {
@@ -138,9 +138,9 @@ class ShapelessUnitTest extends AnyWordSpec with Matchers {
     "calculate length of variant input types" in {
       import shapeless._
       object polyLength extends Poly1 {
-        implicit val listCase   = at[List[Int]](i => i.length)
+        implicit val listCase = at[List[Int]](i => i.length)
         implicit val stringCase = at[String](d => d.length)
-        implicit val arrayCase  = at[Array[Int]](d => d.length)
+        implicit val arrayCase = at[Array[Int]](d => d.length)
       }
 
       val list = List(1, 2) :: "123" :: Array(1, 2, 3, 4) :: HNil

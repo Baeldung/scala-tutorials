@@ -30,8 +30,9 @@ object Fibers extends IOApp.Simple {
 
   val outcome: IO[String] = fibCancel.flatMap {
     case Outcome.Succeeded(fa) => IO("fiber executed successfully").printIO
-    case Outcome.Errored(e)    => IO("error occurred during fiber execution").printIO
-    case Outcome.Canceled()    => IO("fiber was canceled!").printIO
+    case Outcome.Errored(e) =>
+      IO("error occurred during fiber execution").printIO
+    case Outcome.Canceled() => IO("fiber was canceled!").printIO
   }
 
   val ioWithCancelationHook =
@@ -67,7 +68,10 @@ object Fibers extends IOApp.Simple {
 
   val ioWithTimeout: IO[String] = participant1.timeout(400.millis)
 
-  val ioWithFallback = participant1.timeoutTo(400.millis, IO("Fallback IO executed after timeout").printIO)
+  val ioWithFallback = participant1.timeoutTo(
+    400.millis,
+    IO("Fallback IO executed after timeout").printIO
+  )
 
   override def run: IO[Unit] = ioWithFallback.void
 }

@@ -18,7 +18,7 @@ class BasicIntersectionTypeUnitTest extends AnyWordSpec with Matchers {
     }
 
     "make paper cutter work" in {
-       cutPaper(PaperCutter) shouldBe ()
+      cutPaper(PaperCutter) shouldBe ()
     }
   }
 }

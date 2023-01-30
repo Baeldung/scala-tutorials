@@ -6,9 +6,10 @@ object implicitconversion {
     def less(other: T): Boolean
   }
 
-  implicit val intToOrder: Int => Order[Int] = x => new Order[Int](x) {
-    override def less(other: Int): Boolean = me < other
-  }
+  implicit val intToOrder: Int => Order[Int] = x =>
+    new Order[Int](x) {
+      override def less(other: Int): Boolean = me < other
+    }
 
   def maximum[A](a: A, b: A)(implicit toOrder: A => Order[A]): A = {
     if (toOrder(a).less(b)) b else a

@@ -22,7 +22,7 @@ class SortingUnitTest extends AnyWordSpec with Matchers {
     users.sorted shouldBe List(
       User("Mike", 16),
       User("Kelly", 21),
-      User("Mike", 43),
+      User("Mike", 43)
     )
   }
 
@@ -33,7 +33,7 @@ class SortingUnitTest extends AnyWordSpec with Matchers {
     users.sorted shouldBe List(
       User("Mike", 16),
       User("Kelly", 21),
-      User("Mike", 43),
+      User("Mike", 43)
     )
   }
 
@@ -45,7 +45,7 @@ class SortingUnitTest extends AnyWordSpec with Matchers {
     users.sorted shouldBe List(
       User("Mike", 43),
       User("Kelly", 21),
-      User("Mike", 16),
+      User("Mike", 16)
     )
   }
 
@@ -54,7 +54,7 @@ class SortingUnitTest extends AnyWordSpec with Matchers {
     users.sortBy(_.name) shouldBe List(
       User("Kelly", 21),
       User("Mike", 43),
-      User("Mike", 16),
+      User("Mike", 16)
     )
   }
 
@@ -63,7 +63,7 @@ class SortingUnitTest extends AnyWordSpec with Matchers {
     users.sortWith(_.age > _.age) shouldBe List(
       User("Mike", 43),
       User("Kelly", 21),
-      User("Mike", 16),
+      User("Mike", 16)
     )
   }
 
@@ -72,7 +72,7 @@ class SortingUnitTest extends AnyWordSpec with Matchers {
     users.sortBy(u => (u.name, u.age)) shouldBe List(
       User("Kelly", 21),
       User("Mike", 16),
-      User("Mike", 43),
+      User("Mike", 43)
     )
   }
 }

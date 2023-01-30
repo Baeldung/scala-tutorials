@@ -27,9 +27,8 @@ class MapsUnitTest extends AnyWordSpec with Matchers {
     }
     "fold list into map" in {
       val map: Map[Int, String] = List(1 -> "first", 2 -> "second")
-        .foldLeft(Map.empty[Int, String]) {
-          case (map, (key, value)) =>
-            map + (key -> value)
+        .foldLeft(Map.empty[Int, String]) { case (map, (key, value)) =>
+          map + (key -> value)
         }
 
       map shouldBe Map(1 -> "first", 2 -> "second")
@@ -121,10 +120,9 @@ class MapsUnitTest extends AnyWordSpec with Matchers {
     "map" in {
       val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")
 
-      val abbreviate: ((Int, String)) => (Int, String) = {
-        case (key, value) =>
-          val newValue = key + value.takeRight(2)
-          key -> newValue
+      val abbreviate: ((Int, String)) => (Int, String) = { case (key, value) =>
+        val newValue = key + value.takeRight(2)
+        key -> newValue
       }
 
       val abbreviatedMap = initialMap.map(abbreviate)
@@ -226,8 +224,8 @@ class MapsUnitTest extends AnyWordSpec with Matchers {
     }
 
     "filter" in {
-      val predicate: ((Int, String)) => Boolean = {
-        case (key, value) => key > 1 && value.length > 5
+      val predicate: ((Int, String)) => Boolean = { case (key, value) =>
+        key > 1 && value.length > 5
       }
 
       val initialMap: Map[Int, String] = Map(1 -> "first", 2 -> "second")

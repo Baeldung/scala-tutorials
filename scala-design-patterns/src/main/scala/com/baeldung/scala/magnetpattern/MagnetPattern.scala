@@ -1,6 +1,6 @@
 package com.baeldung.scala.magnetpattern
 
-object MagnetPattern extends App{
+object MagnetPattern extends App {
 
   /*
   def combineElements(stringList:List[String]):String= stringList.mkString
@@ -11,24 +11,24 @@ object MagnetPattern extends App{
   def combineElements(stringList: List[String]): String at line 5 and
   def combineElements(charList: List[Char]): String at line 6
   have same type after erasure: (stringList: List)String
-  */
+   */
 
   sealed trait CombineMagnet {
     type Result
-    def apply() : Result
+    def apply(): Result
   }
 
-  def combineElements(magnet:CombineMagnet):magnet.Result = magnet()
+  def combineElements(magnet: CombineMagnet): magnet.Result = magnet()
 
-  implicit def intCombineMagnet(intList:List[Int]) = new CombineMagnet {
+  implicit def intCombineMagnet(intList: List[Int]) = new CombineMagnet {
     override type Result = Int
-    override def apply(): Result = intList.reduce((i,c) => i+c)
+    override def apply(): Result = intList.reduce((i, c) => i + c)
   }
-  implicit def strCombineMagnet(stringList:List[String]) = new CombineMagnet {
+  implicit def strCombineMagnet(stringList: List[String]) = new CombineMagnet {
     override type Result = String
-    override def apply(): Result = stringList.reduce((s,c)=> s.concat(c))
+    override def apply(): Result = stringList.reduce((s, c) => s.concat(c))
   }
 
-  println(combineElements(List(1,2,3,4)))
-  println(combineElements(List("a","b","c")))
+  println(combineElements(List(1, 2, 3, 4)))
+  println(combineElements(List("a", "b", "c")))
 }

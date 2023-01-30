@@ -16,11 +16,16 @@ object CommandsUnitTest extends Commands {
   override type State = TrafficLight
   override type Sut = SystemUnderTest
 
-  override def canCreateNewSut(newState: TrafficLight, initSuts: Traversable[TrafficLight], runningSuts: Traversable[SystemUnderTest]): Boolean = {
+  override def canCreateNewSut(
+    newState: TrafficLight,
+    initSuts: Traversable[TrafficLight],
+    runningSuts: Traversable[SystemUnderTest]
+  ): Boolean = {
     !initSuts.exists(_.uuid == newState.uuid)
   }
 
-  override def newSut(state: TrafficLight): SystemUnderTest = SystemUnderTest(UUID.randomUUID(), Clock.systemUTC().millis(), state)
+  override def newSut(state: TrafficLight): SystemUnderTest =
+    SystemUnderTest(UUID.randomUUID(), Clock.systemUTC().millis(), state)
 
   override def destroySut(sut: SystemUnderTest): Unit = {
     println(s"Destroying: $sut")
@@ -29,17 +34,19 @@ object CommandsUnitTest extends Commands {
   override def initialPreCondition(state: TrafficLight): Boolean = true
 
   override def genInitialState: Gen[TrafficLight] = {
-    for (
-      trafficLightColor <- Gen.oneOf(model.Red, model.Yellow, model.Green)
-    ) yield TrafficLight(UUID.randomUUID(), trafficLightColor)
+    for (trafficLightColor <- Gen.oneOf(model.Red, model.Yellow, model.Green))
+      yield TrafficLight(UUID.randomUUID(), trafficLightColor)
   }
 
   override def genCommand(state: TrafficLight): Gen[Command] = {
     state.color match {
-      case model.Green => TransitionToYellow(state)
+      case model.Green  => TransitionToYellow(state)
       case model.Yellow => TransitionToRed(state)
-      case model.Red => TransitionToGreen(state)
-      case _ => throw new RuntimeException("Traffic lights have only green, yellow and red color.")
+      case model.Red    => TransitionToGreen(state)
+      case _ =>
+        throw new RuntimeException(
+          "Traffic lights have only green, yellow and red color."
+        )
     }
   }
 
@@ -51,11 +58,16 @@ object CommandsUnitTest extends Commands {
       true
     }
 
-    override def nextState(state: TrafficLight): TrafficLight = state.copy(color = model.Green)
+    override def nextState(state: TrafficLight): TrafficLight =
+      state.copy(color = model.Green)
 
-    override def preCondition(state: TrafficLight): Boolean = state.color == model.Red
+    override def preCondition(state: TrafficLight): Boolean =
+      state.color == model.Red
 
-    override def postCondition(state: TrafficLight, result: Try[Boolean]): Prop = result == Success(true)
+    override def postCondition(
+      state: TrafficLight,
+      result: Try[Boolean]
+    ): Prop = result == Success(true)
   }
 
   case class TransitionToRed(trafficLight: TrafficLight) extends Command {
@@ -66,11 +78,16 @@ object CommandsUnitTest extends Commands {
       true
     }
 
-    override def nextState(state: TrafficLight): TrafficLight = state.copy(color = model.Red)
+    override def nextState(state: TrafficLight): TrafficLight =
+      state.copy(color = model.Red)
 
-    override def preCondition(state: TrafficLight): Boolean = state.color == model.Yellow
+    override def preCondition(state: TrafficLight): Boolean =
+      state.color == model.Yellow
 
-    override def postCondition(state: TrafficLight, result: Try[Boolean]): Prop = result == Success(true)
+    override def postCondition(
+      state: TrafficLight,
+      result: Try[Boolean]
+    ): Prop = result == Success(true)
   }
 
   case class TransitionToYellow(trafficLight: TrafficLight) extends Command {
@@ -81,10 +98,15 @@ object CommandsUnitTest extends Commands {
       true
     }
 
-    override def nextState(state: TrafficLight): TrafficLight = state.copy(color = model.Yellow)
+    override def nextState(state: TrafficLight): TrafficLight =
+      state.copy(color = model.Yellow)
 
-    override def preCondition(state: TrafficLight): Boolean = state.color == model.Green
+    override def preCondition(state: TrafficLight): Boolean =
+      state.color == model.Green
 
-    override def postCondition(state: TrafficLight, result: Try[Boolean]): Prop = result == Success(true)
+    override def postCondition(
+      state: TrafficLight,
+      result: Try[Boolean]
+    ): Prop = result == Success(true)
   }
 }

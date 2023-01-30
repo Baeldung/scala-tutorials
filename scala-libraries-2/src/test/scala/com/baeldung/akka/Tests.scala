@@ -14,7 +14,10 @@ import scala.concurrent.Await
 object ActorTest {
 
   object Greeter {
-    case class GreetingRequest(greeting: String, self: ActorRef[GreetingResponse])
+    case class GreetingRequest(
+      greeting: String,
+      self: ActorRef[GreetingResponse]
+    )
     case class GreetingResponse(greeting: String)
 
     def apply(): Behavior[GreetingRequest] = Behaviors.receiveMessage {
@@ -34,20 +37,22 @@ object ActorTest {
 
     sealed trait SignalCommand
     object SignalCommand {
-      case class ChangeSignal(recipient : ActorRef[CurrentSignal]) extends SignalCommand
-      case class GetSignal (recipient : ActorRef[CurrentSignal]) extends SignalCommand
+      case class ChangeSignal(recipient: ActorRef[CurrentSignal])
+        extends SignalCommand
+      case class GetSignal(recipient: ActorRef[CurrentSignal])
+        extends SignalCommand
     }
-    case class CurrentSignal(signal : Signal)
+    case class CurrentSignal(signal: Signal)
 
     import Signal._
-    def apply() : Behavior[SignalCommand] = Behaviors.setup{_ =>
-      var state : Signal = RED
+    def apply(): Behavior[SignalCommand] = Behaviors.setup { _ =>
+      var state: Signal = RED
       Behaviors.receiveMessage {
         case ChangeSignal(recipient) =>
-          val nextState =  state match {
-            case RED => YELLOW
+          val nextState = state match {
+            case RED    => YELLOW
             case YELLOW => GREEN
-            case GREEN => RED
+            case GREEN  => RED
 
           }
           state = nextState
@@ -67,7 +72,7 @@ class GreeterTest extends TestService {
   import scala.concurrent.duration._
   val greeting = "Hello there"
   val sender = testKit.spawn(Greeter(), "greeter")
-  //create a test probe of type Greeter.GreetingResponse
+  // create a test probe of type Greeter.GreetingResponse
   val probe = testKit.createTestProbe[Greeter.GreetingResponse]()
   sender ! Greeter.GreetingRequest(greeting, probe.ref)
   probe.expectMessage(Greeter.GreetingResponse(greeting))
@@ -85,7 +90,6 @@ class TrafficLightTest extends TestService {
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.RED))
   probe.expectNoMessage(50.millis)
 
-
   // now try to change signal
   sender ! TrafficLight.SignalCommand.ChangeSignal(probe.ref)
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.YELLOW))
@@ -96,7 +100,7 @@ class TrafficLightTest extends TestService {
   sender ! TrafficLight.SignalCommand.ChangeSignal(probe.ref)
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.GREEN))
   probe.expectNoMessage(50.millis)
-  //ensure that the state is preserved
+  // ensure that the state is preserved
   sender ! TrafficLight.SignalCommand.ChangeSignal(probe.ref)
   probe.expectMessage(TrafficLight.CurrentSignal(TrafficLight.Signal.RED))
   probe.expectNoMessage(50.millis)
@@ -108,7 +112,8 @@ class TrafficLightTestFut extends TestService {
   val duration = 300.millis
   implicit val timeout = Timeout(duration)
 
-  val signalFut =  sender.ask(replyTo =>TrafficLight.SignalCommand.GetSignal(replyTo))
+  val signalFut =
+    sender.ask(replyTo => TrafficLight.SignalCommand.GetSignal(replyTo))
   val signal = Await.result(signalFut, duration)
   assert(signal == CurrentSignal(RED))
 }

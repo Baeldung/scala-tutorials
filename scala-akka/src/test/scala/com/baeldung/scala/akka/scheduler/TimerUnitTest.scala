@@ -10,10 +10,10 @@ import scala.concurrent.duration._
 
 @Ignore //fixing in JAVA-9843
 class TimerUnitTest
-    extends TestKit(ActorSystem("test-system"))
-    with ImplicitSender
-    with AnyWordSpecLike
-    with Matchers {
+  extends TestKit(ActorSystem("test-system"))
+  with ImplicitSender
+  with AnyWordSpecLike
+  with Matchers {
 
   "Timer Actor" must {
     "reply with a msg after timer ticks periodically" in {

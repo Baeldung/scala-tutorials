@@ -15,7 +15,8 @@ class VarianceUnitTest extends AnyFlatSpec {
   "Asserts on Employee" should "allow to test conditions on Employees and Persons" in {
     val bob = new Employee("Bob", 50000)
     val personAssert = new Assert[Person](p => p.name == "Alice")
-    val employeeAssert = new Assert[Employee](e => e.name == "Bob" && e.salary < 70000)
+    val employeeAssert =
+      new Assert[Employee](e => e.name == "Bob" && e.salary < 70000)
 
     val tester = new AssertsEmployee(List(personAssert, employeeAssert))
 

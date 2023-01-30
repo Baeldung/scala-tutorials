@@ -1,11 +1,16 @@
 package com.baeldung.scala.spark
 
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
+import org.apache.spark.sql.types.{
+  IntegerType,
+  StringType,
+  StructField,
+  StructType
+}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 
-class RDDToDataframeTest  extends AnyFlatSpec with should.Matchers {
+class RDDToDataframeTest extends AnyFlatSpec with should.Matchers {
 
   val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
 
@@ -25,6 +30,10 @@ class RDDToDataframeTest  extends AnyFlatSpec with should.Matchers {
 
     val df = convertRowRDDToDataframe(rdd, schema, spark)
 
-    df.schema.fields shouldEqual Array(StructField("Name", StringType, false), StructField("Job", StringType, true), StructField("Age", IntegerType, true))
+    df.schema.fields shouldEqual Array(
+      StructField("Name", StringType, false),
+      StructField("Job", StringType, true),
+      StructField("Age", IntegerType, true)
+    )
   }
 }

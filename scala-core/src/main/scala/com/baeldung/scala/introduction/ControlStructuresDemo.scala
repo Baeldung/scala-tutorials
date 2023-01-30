@@ -1,11 +1,10 @@
 package com.baeldung.scala.introduction
 
-/**
- * Sample code demonstrating the various control structured.
- *
- * @author Chandra Prakash
- *
- */
+/** Sample code demonstrating the various control structured.
+  *
+  * @author
+  *   Chandra Prakash
+  */
 object ControlStructuresDemo {
   def gcd(x: Int, y: Int): Int = {
     if (y == 0) x else gcd(y, x % y)

@@ -25,14 +25,21 @@ class OopConceptsUnitTest extends AnyFunSuite {
   }
 
   test("get description from a sandwich") {
-    val sandwich = new Sandwich(new Bread("white"), ArrayBuffer("strawberry jam", "chocolate"))
-    assert(sandwich.getDescription === "This is a sandwich with white bread and strawberry jam, chocolate filling")
+    val sandwich = new Sandwich(
+      new Bread("white"),
+      ArrayBuffer("strawberry jam", "chocolate")
+    )
+    assert(
+      sandwich.getDescription === "This is a sandwich with white bread and strawberry jam, chocolate filling"
+    )
   }
 
   test("add a filling to a sandwich") {
     val sandwich = new Sandwich(new Bread("sourdough"), ArrayBuffer("chicken"))
     sandwich.addFilling("lettuce")
-    assert(sandwich.getDescription === "This is a sandwich with sourdough bread and chicken, lettuce filling")
+    assert(
+      sandwich.getDescription === "This is a sandwich with sourdough bread and chicken, lettuce filling"
+    )
   }
 
   test("define a bicycle") {

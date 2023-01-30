@@ -13,9 +13,8 @@ class MessageProcessorActor extends Actor {
   override def postStop(): Unit =
     println(s"Stopping MessageProcessorActor actor: $self")
 
-  override def receive: Receive = {
-    case msg: MessageProcessorActor.Greet =>
-      sender() ! MessageProcessorActor.Reply("Hey, " + msg.msg)
+  override def receive: Receive = { case msg: MessageProcessorActor.Greet =>
+    sender() ! MessageProcessorActor.Reply("Hey, " + msg.msg)
   }
 
 }

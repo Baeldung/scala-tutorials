@@ -66,18 +66,17 @@ object Main extends App {
         )
         .refresh(RefreshPolicy.Immediate)
     }
-    .andThen {
-      case Success(_) =>
-        client.execute(
-          indexInto("activities")
-            .fields(
-              "username" -> "robert",
-              "when" -> Instant.now,
-              "ip" -> "192.168.197.103",
-              "action" -> "DeleteArticle"
-            )
-            .refreshImmediately
-        )
+    .andThen { case Success(_) =>
+      client.execute(
+        indexInto("activities")
+          .fields(
+            "username" -> "robert",
+            "when" -> Instant.now,
+            "ip" -> "192.168.197.103",
+            "action" -> "DeleteArticle"
+          )
+          .refreshImmediately
+      )
     }
     .await
 

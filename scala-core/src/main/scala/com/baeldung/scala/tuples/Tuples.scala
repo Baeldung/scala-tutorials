@@ -23,9 +23,8 @@ object Tuples {
   //  myAge: Int = 34
 
   def partition[A](xs: List[A])(predicate: A => Boolean): (List[A], List[A]) = {
-    xs.foldRight((List.empty[A], List.empty[A])) {
-      case (a, (lefts, rights)) =>
-        if (predicate(a)) (a :: lefts, rights) else (lefts, a :: rights)
+    xs.foldRight((List.empty[A], List.empty[A])) { case (a, (lefts, rights)) =>
+      if (predicate(a)) (a :: lefts, rights) else (lefts, a :: rights)
     }
   }
 

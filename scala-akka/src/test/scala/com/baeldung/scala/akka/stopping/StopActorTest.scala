@@ -18,7 +18,8 @@ class StoppingActorTest
   "Stop method" should {
 
     "stop the actor using stop() method" in {
-      val actor = system.actorOf(Props(classOf[MessageProcessorActor]), "StopActor")
+      val actor =
+        system.actorOf(Props(classOf[MessageProcessorActor]), "StopActor")
       val probe = testkit.TestProbe()
       probe.watch(actor)
 

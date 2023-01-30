@@ -9,7 +9,9 @@ class CustomInterpolatorObjUnitTest extends AnyFeatureSpec with GivenWhenThen {
   scenario("The custom interpolator may work as expected") {
 
     info("As a programmer")
-    info("I want to demonstrate the expected behavior of custom string interpolator")
+    info(
+      "I want to demonstrate the expected behavior of custom string interpolator"
+    )
 
     Given("a string to be interpolated")
     val testString = "well"
@@ -18,7 +20,8 @@ class CustomInterpolatorObjUnitTest extends AnyFeatureSpec with GivenWhenThen {
     val result = custom"the custom interpolator works $testString"
 
     Then("the result will be as expected")
-    val expectedResult = new StringContext("the custom interpolator works ", "").custom(testString)
+    val expectedResult =
+      new StringContext("the custom interpolator works ", "").custom(testString)
     assert(result == expectedResult)
   }
 }

@@ -11,7 +11,8 @@ object GenericsIntro {
     val intQ: Queue[Any] = stringQ.enqueue(42)
   }
 
-  def findMax[T <: Ordered[T], B](xs: List[T]): Option[T] = xs.reduceOption((x1, x2) => if (x1 >= x2) x1 else x2)
+  def findMax[T <: Ordered[T], B](xs: List[T]): Option[T] =
+    xs.reduceOption((x1, x2) => if (x1 >= x2) x1 else x2)
 
   object LongHandWay {
 
@@ -53,7 +54,8 @@ object GenericsIntro {
   object GenericMethods {
     def middle[A](input: Seq[A]): A = input(input.size / 2)
 
-    def itemsAt[A, B](index: Int, seq1: Seq[A], seq2: Seq[B]): (A, B) = (seq1(index), seq2(index))
+    def itemsAt[A, B](index: Int, seq1: Seq[A], seq2: Seq[B]): (A, B) =
+      (seq1(index), seq2(index))
 
     def run() = {
 
@@ -67,7 +69,8 @@ object GenericsIntro {
   }
 
   object NonGenericMethods {
-    def totalSize(list1: List[_], list2: List[_]): Int = list1.length + list2.length
+    def totalSize(list1: List[_], list2: List[_]): Int =
+      list1.length + list2.length
     def run() = {
       val rabbits = List[Rabbit](Rabbit(2), Rabbit(3), Rabbit(7))
       val strings = List("a", "b")

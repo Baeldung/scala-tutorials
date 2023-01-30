@@ -41,7 +41,7 @@ object NamingConvention extends Enum[NamingConvention] {
 
 import enumeratum.values._
 sealed abstract class HttpCode(val value: Int, val name: String)
-    extends IntEnumEntry
+  extends IntEnumEntry
 object HttpCode extends IntEnum[HttpCode] {
   override def values = findValues
   case object OK extends HttpCode(200, "Ok")

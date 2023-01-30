@@ -26,7 +26,8 @@ class SampleConfigLoader extends AnyWordSpec with Matchers {
     }
 
     "load a config file other than application conf" in {
-      val notificationConf = ConfigSource.resources("notification.conf").load[NotificationConfig]
+      val notificationConf =
+        ConfigSource.resources("notification.conf").load[NotificationConfig]
       notificationConf.isRight shouldBe true
       notificationConf.right.get.params shouldBe "status=completed"
       notificationConf.right.get.fullURL shouldBe "http://mynotificationservice.com/push?status=completed"
@@ -34,7 +35,9 @@ class SampleConfigLoader extends AnyWordSpec with Matchers {
 
     "load a config from string content" in {
       val strConf = ConfigSource
-        .string("""{"notification-url": "https://newURL", "params":"status=pending"}""")
+        .string(
+          """{"notification-url": "https://newURL", "params":"status=pending"}"""
+        )
         .load[NotificationConfig]
       strConf.isRight shouldBe true
       strConf.right.get.params shouldBe "status=pending"
@@ -42,7 +45,9 @@ class SampleConfigLoader extends AnyWordSpec with Matchers {
 
     "fail to load config if any field is not proper" in {
       val strConf = ConfigSource
-        .string("""{"notification-u": "https://wrongURL", "params":"status=completed"}""")
+        .string(
+          """{"notification-u": "https://wrongURL", "params":"status=completed"}"""
+        )
         .load[NotificationConfig]
       strConf.isRight shouldBe false
     }
@@ -50,7 +55,9 @@ class SampleConfigLoader extends AnyWordSpec with Matchers {
     "throw an exception if loadOrThrow is used" in {
       assertThrows[ConfigReaderException[_]] {
         ConfigSource
-          .string("""{"notification-u": "https://wrongURL", "params":"status=completed"}""")
+          .string(
+            """{"notification-u": "https://wrongURL", "params":"status=completed"}"""
+          )
           .loadOrThrow[NotificationConfig]
       }
     }

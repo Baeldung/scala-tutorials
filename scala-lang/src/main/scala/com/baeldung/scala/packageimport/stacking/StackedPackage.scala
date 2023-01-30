@@ -3,5 +3,5 @@ package packageimport
 package stacking
 
 object StackedPackage {
-    val combined = OuterStackedSample.scalaName + InnerStackSample.innerName
+  val combined = OuterStackedSample.scalaName + InnerStackSample.innerName
 }

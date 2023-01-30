@@ -32,27 +32,32 @@ class OptionUnitTest extends AnyWordSpec with Matchers {
 
   "Player High Scores" should {
     "Player 1 over Player 2" in {
-      OptionExample.whoHasTopScoringTeam(player1, player2, tournament).foreach { case (winningPlayer, winningScore) =>
-        assert(winningPlayer == player2)
-        assert(winningScore == 19)
+      OptionExample.whoHasTopScoringTeam(player1, player2, tournament).foreach {
+        case (winningPlayer, winningScore) =>
+          assert(winningPlayer == player2)
+          assert(winningScore == 19)
       }
     }
 
     "Player 1 over Player 3" in {
-      OptionExample.whoHasTopScoringTeam(player1, player3, tournament).foreach { case (winningPlayer, winningScore) =>
-        assert(winningPlayer == player1)
-        assert(winningScore == 11)
+      OptionExample.whoHasTopScoringTeam(player1, player3, tournament).foreach {
+        case (winningPlayer, winningScore) =>
+          assert(winningPlayer == player1)
+          assert(winningScore == 11)
       }
     }
 
     "Player 1 over Player 3 (reverse order of parameters)" in {
-      OptionExample.whoHasTopScoringTeam(player3, player1, tournament).foreach { case (winningPlayer, winningScore) =>
-        assert(winningPlayer == player1)
-        assert(winningScore == 11)
+      OptionExample.whoHasTopScoringTeam(player3, player1, tournament).foreach {
+        case (winningPlayer, winningScore) =>
+          assert(winningPlayer == player1)
+          assert(winningScore == 11)
       }
     }
     "Player 3 draws Player 4 (neither has favorite teams)" in {
-      assert(OptionExample.whoHasTopScoringTeam(player3, player4, tournament).isEmpty)
+      assert(
+        OptionExample.whoHasTopScoringTeam(player3, player4, tournament).isEmpty
+      )
     }
   }
 

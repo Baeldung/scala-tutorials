@@ -13,18 +13,18 @@ object StringExtensions {
 }
 
 object GenericExtensions {
-  extension[T] (list: List[T]) {
+  extension [T](list: List[T]) {
     def getSecond = if (list.isEmpty) None else list.tail.headOption
   }
 
-  extension[T: Numeric] (a: T) {
+  extension [T: Numeric](a: T) {
     def add(b: T): T = {
       val numeric = summon[Numeric[T]]
       numeric.plus(a, b)
     }
   }
 
-  extension[T] (a: T)(using numeric: Numeric[T]) {
+  extension [T](a: T)(using numeric: Numeric[T]) {
     def add2(b: T): T = {
       numeric.plus(a, b)
     }

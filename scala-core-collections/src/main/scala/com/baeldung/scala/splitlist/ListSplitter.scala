@@ -21,10 +21,14 @@ object ListSplitter {
 
   /** Dispatch method, to pick on of several implementations of the splitter.
     *
-    * @param list original list to be split in sub-lists
-    * @param n desired size of the resulting sub-lists
-    * @tparam A type of the elements of the original list and its sub-lists
-    * @return a list of the sub-lists of `list`
+    * @param list
+    *   original list to be split in sub-lists
+    * @param n
+    *   desired size of the resulting sub-lists
+    * @tparam A
+    *   type of the elements of the original list and its sub-lists
+    * @return
+    *   a list of the sub-lists of `list`
     */
   def split[A](list: List[A], n: Int): Try[List[List[A]]] =
     Try(splitUsingSliding(list, n))

@@ -2,9 +2,9 @@ package com.baeldung.scala.datesandtimes
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-object JavaTime extends App{
+object JavaTime extends App {
 
-  def parseDate(dateStr:String, pattern:String):LocalDate={
+  def parseDate(dateStr: String, pattern: String): LocalDate = {
     val formatter = DateTimeFormatter.ofPattern(pattern)
     val localDate = LocalDate.parse(dateStr, formatter)
     localDate

@@ -9,7 +9,6 @@ class RDDTutorialTest extends AnyFlatSpec {
   val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
   val sc = spark.sparkContext
 
-
   "animals collection" should "became RDD size 4" in {
     val animals = List("dog", "cat", "frog", "horse")
     val animalsRDD: RDD[String] = sc.parallelize(animals)

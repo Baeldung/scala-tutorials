@@ -11,12 +11,12 @@ object FutureRecovery {
 
   object Weather {
     def apply(s: String): Weather = s match {
-      case "Sunny" => Sunny
+      case "Sunny"  => Sunny
       case "Cloudy" => Cloudy
-      case "Rainy" => Rainy
-      case "Windy" => Windy
-      case "Snowy" => Snowy
-      case "Foggy" => Foggy
+      case "Rainy"  => Rainy
+      case "Windy"  => Windy
+      case "Snowy"  => Snowy
+      case "Foggy"  => Foggy
     }
   }
 
@@ -37,7 +37,8 @@ object FutureRecovery {
     var lastWeatherValue: Weather = Sunny
 
     def forecast(date: String): Future[Weather] =
-      http.get(s"http://weather.now/rome?when=$date")
+      http
+        .get(s"http://weather.now/rome?when=$date")
         .transform {
           case Success(result) =>
             val retrieved = Weather(result)
@@ -48,19 +49,20 @@ object FutureRecovery {
         }
 
     def forecastUsingMapAndRecover(date: String): Future[Weather] =
-      http.get(s"http://weather.now/rome?when=$date")
+      http
+        .get(s"http://weather.now/rome?when=$date")
         .map { result =>
           val retrieved = Weather(result)
           lastWeatherValue = retrieved
           retrieved
         }
-        .recover {
-          case _ =>
-            lastWeatherValue
+        .recover { case _ =>
+          lastWeatherValue
         }
 
     def forecast(date: String, fallbackUrl: String): Future[Weather] =
-      http.get(s"http://weather.now/rome?when=$date")
+      http
+        .get(s"http://weather.now/rome?when=$date")
         .transformWith {
           case Success(result) =>
             val retrieved = Weather(result)
@@ -70,16 +72,19 @@ object FutureRecovery {
             http.get(fallbackUrl).map(Weather(_))
         }
 
-    def forecastUsingFlatMapAndRecoverWith(date: String, fallbackUrl: String): Future[Weather] =
-      http.get(s"http://weather.now/rome?when=$date")
+    def forecastUsingFlatMapAndRecoverWith(
+      date: String,
+      fallbackUrl: String
+    ): Future[Weather] =
+      http
+        .get(s"http://weather.now/rome?when=$date")
         .flatMap { result =>
           val retrieved = Weather(result)
           lastWeatherValue = retrieved
           Future(retrieved)
         }
-        .recoverWith {
-          case _ =>
-            http.get(fallbackUrl).map(Weather(_))
+        .recoverWith { case _ =>
+          http.get(fallbackUrl).map(Weather(_))
         }
   }
 

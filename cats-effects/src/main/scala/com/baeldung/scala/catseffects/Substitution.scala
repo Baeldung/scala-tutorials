@@ -11,8 +11,10 @@ object Substitution {
   }
 
   def effectfulWithFuture(): Unit = {
-    implicit val ec: ExecutionContextExecutor = ExecutionContext.global 
-    Future(println("Launch missiles")).map(_ => Future(println("Launch missiles")))
+    implicit val ec: ExecutionContextExecutor = ExecutionContext.global
+    Future(println("Launch missiles")).map(_ =>
+      Future(println("Launch missiles"))
+    )
   }
 
   def effectfulWithFutureRefactored(): Unit = {

@@ -6,9 +6,10 @@ object viewbound {
     def less(other: T): Boolean
   }
 
-  implicit val intToOrder: Int => Order[Int] = x => new Order[Int](x) {
-    override def less(other: Int): Boolean = me < other
-  }
+  implicit val intToOrder: Int => Order[Int] = x =>
+    new Order[Int](x) {
+      override def less(other: Int): Boolean = me < other
+    }
 
   def maximum[A <% Order[A]](a: A, b: A): A = {
     val toOrder = implicitly[A => Order[A]]

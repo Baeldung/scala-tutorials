@@ -28,18 +28,19 @@ class Vehicle(val numWheels: Int, val color: String) {
   def accelerate(): Unit = { println("Vroom Vroom") }
 }
 
-class Bicycle(bikeColor: String, val bikeType: String) extends Vehicle(2, bikeColor) {
+class Bicycle(bikeColor: String, val bikeType: String)
+  extends Vehicle(2, bikeColor) {
   def maxSpeed(): Int = {
     bikeType match {
       case "road" => 60
-      case _ => 20
+      case _      => 20
     }
   }
 
   def maxSpeed(speedLimit: Int): Int = {
     bikeType match {
-      case "road" => if(speedLimit < 60) speedLimit else 60
-      case _ => if(speedLimit < 20) speedLimit else 20
+      case "road" => if (speedLimit < 60) speedLimit else 60
+      case _      => if (speedLimit < 20) speedLimit else 20
     }
   }
 
