@@ -15,7 +15,7 @@ class FibersUnitTest extends CatsEffectSuite {
   test("Fiber should be canceled") {
     val fibCancel: IO[Outcome[IO, Throwable, String]] = for {
       fib <- io.start
-      _ <- IO.sleep(100.millis) >> fib.cancel >> IO("Fiber cancelled").debug()
+      _ <- IO.sleep(100.millis) >> fib.cancel >> IO("Fiber cancelled").printIO
       res <- fib.join
     } yield res
 
