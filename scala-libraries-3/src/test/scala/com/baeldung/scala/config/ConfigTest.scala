@@ -41,10 +41,10 @@ class ConfigTest extends munit.FunSuite {
   }
 
   test("verify include directive") {
-    val conf = ConfigFactory.load("main.conf") 
-    val username = conf.getString("db.username") 
-    val protocol = conf.getString("http.protocol") 
-    assertEquals(username, "postgres") 
+    val conf = ConfigFactory.load("main.conf")
+    val username = conf.getString("db.username")
+    val protocol = conf.getString("http.protocol")
+    assertEquals(username, "postgres")
     assertEquals(protocol, "https")
   }
 
@@ -53,10 +53,14 @@ class ConfigTest extends munit.FunSuite {
     val conf = ConfigFactory.load("application.conf").withFallback(defaultConf)
     val version = conf.getString("fallback.version")
     assertEquals(version, "9.9")
-    assert(ConfigFactory.load("application.conf").hasPath("fallback.version") == false )
+    assert(
+      ConfigFactory
+        .load("application.conf")
+        .hasPath("fallback.version") == false
+    )
   }
 
-   test("throw exception if key doesnt exist") {
+  test("throw exception if key doesnt exist") {
     val conf = ConfigFactory.load()
     intercept[ConfigException](conf.getString("dummy.key"))
     assert(conf.hasPath("dummy.key") == false)

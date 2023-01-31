@@ -10,32 +10,35 @@ import scala.concurrent._
 class LazyValUnitTest extends AnyFunSuite {
 
   test("lazy val is computed only once") {
-    //given
+    // given
     val lazyVal = new LazyVal
-    lazyVal.getMemberNo //initialize the lazy val
+    lazyVal.getMemberNo // initialize the lazy val
     lazyVal.age shouldBe 28
 
-    //when
+    // when
     lazyVal.getMemberNo
 
-    //then
+    // then
     lazyVal.age shouldBe 28
   }
 
   test("lazy vals should execute sequentially in an instance ") {
-    //given
-    val futures = Future.sequence(Seq(
-      Future {
-        LazyValStore.squareOf5
-      },
-      Future {
-        LazyValStore.squareOf6
-      }))
+    // given
+    val futures = Future.sequence(
+      Seq(
+        Future {
+          LazyValStore.squareOf5
+        },
+        Future {
+          LazyValStore.squareOf6
+        }
+      )
+    )
 
-    //when
+    // when
     val result = Await.result(futures, 5.second)
 
-    //then
+    // then
     result should contain(25)
     result should contain(36)
   }

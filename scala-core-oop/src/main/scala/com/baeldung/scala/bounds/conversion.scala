@@ -6,9 +6,10 @@ object conversion {
     def less(other: T): Boolean
   }
 
-  val intToOrder: Int => Order[Int] = x => new Order[Int](x) {
-    override def less(other: Int): Boolean = me < other
-  }
+  val intToOrder: Int => Order[Int] = x =>
+    new Order[Int](x) {
+      override def less(other: Int): Boolean = me < other
+    }
 
   def maximum[A](a: A, b: A)(toOrder: A => Order[A]): A = {
     if (toOrder(a).less(b)) b else a

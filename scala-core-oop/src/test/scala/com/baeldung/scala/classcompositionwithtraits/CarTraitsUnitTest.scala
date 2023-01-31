@@ -1,11 +1,12 @@
 package com.baeldung.scala.classcompositionwithtraits
 
 import com.baeldung.scala.classcompositionwithtraits.CarTraits._
-import org.scalatest.matchers.should.Matchers; import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.should.Matchers;
+import org.scalatest.wordspec.AnyWordSpec
 
-/**
- * @author Sergey Ionin
- */
+/** @author
+  *   Sergey Ionin
+  */
 
 class CarTraitsUnitTest extends AnyWordSpec with Matchers {
 
@@ -30,28 +31,34 @@ class CarTraitsUnitTest extends AnyWordSpec with Matchers {
   "Classes that extends Car with SimpleMarshaller" should {
     "inherit abstract class fields and methods" +
       "and be marshallable" in {
-      val bmw0 = new BMW0("F15", 309) with SimpleMarshaller
-      bmw0.toJson shouldBe "{\"model\":F15,\n\"horsePower\":309}"
-    }
+        val bmw0 = new BMW0("F15", 309) with SimpleMarshaller
+        bmw0.toJson shouldBe "{\"model\":F15,\n\"horsePower\":309}"
+      }
   }
 
   "Classes that extends Car with Marshaller" should {
     "inherit abstract class fields and methods" +
       "and be marshallable" in {
-      val bmw0 = new BMW0("F15", 309) with Marshaller
-      bmw0.toJson shouldBe "{\"model\":F15,\n\"horsePower\":309}"
-    }
+        val bmw0 = new BMW0("F15", 309) with Marshaller
+        bmw0.toJson shouldBe "{\"model\":F15,\n\"horsePower\":309}"
+      }
   }
 
   // in this case the print method pf the rightmost trait calls the print method of the previously mixed trait (
   // see super.print... in the implementation)
   "Classes that extends Car with PrettyPrintable with ShortPrintable" should {
     "behave differently depending from the mixing order" in {
-      val bmwPrintable1 = new BMWPrintable("F15", 309) with PrettyPrintable with ShortPrintable
-      val bmwPrintable2 = new BMWPrintable("F15", 309) with ShortPrintable with PrettyPrintable
-      bmwPrintable1.printInfo() shouldBe s"the model ${bmwPrintable1.model} has ${bmwPrintable1.horsePower}" +
+      val bmwPrintable1 = new BMWPrintable("F15", 309)
+        with PrettyPrintable
+        with ShortPrintable
+      val bmwPrintable2 = new BMWPrintable("F15", 309)
+        with ShortPrintable
+        with PrettyPrintable
+      bmwPrintable1
+        .printInfo() shouldBe s"the model ${bmwPrintable1.model} has ${bmwPrintable1.horsePower}" +
         s" HP under the hood. You'll definitelly enjoy driving!"
-      bmwPrintable2.printInfo() shouldBe s"the model ${bmwPrintable1.model} has ${bmwPrintable1.horsePower} " +
+      bmwPrintable2
+        .printInfo() shouldBe s"the model ${bmwPrintable1.model} has ${bmwPrintable1.horsePower} " +
         s"HP under the hood. "
     }
   }

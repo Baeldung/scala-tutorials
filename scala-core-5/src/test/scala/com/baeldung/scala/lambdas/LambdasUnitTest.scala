@@ -44,7 +44,7 @@ class LambdasUnitTest extends AnyWordSpec with Matchers {
     "modify closed local variables" in {
       var count = 0
       val ints = List(1, 2, 3, 4)
-      val doubled = ints.map{ i =>
+      val doubled = ints.map { i =>
         count = count + 1
         i * 2
       }

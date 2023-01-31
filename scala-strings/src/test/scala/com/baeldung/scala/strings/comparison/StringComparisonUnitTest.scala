@@ -6,7 +6,7 @@ import org.scalatest.featurespec.AnyFeatureSpec
 class StringComparisonUnitTest extends AnyFeatureSpec with GivenWhenThen {
 
   scenario("String Comparison with ==, eq and equals") {
-    
+
     info("Demonstrate various scenarios on String comparison.")
 
     Given("two same Strings")

@@ -7,9 +7,10 @@ object ParallelCollections {
 
   lazy val parallelVector: ParVector[Int] = ParVector.range(0, 1000)
 
-  lazy val otherParallelVector: ParVector[Int] = ParVector.tabulate(1000)(x=>x)
+  lazy val otherParallelVector: ParVector[Int] =
+    ParVector.tabulate(1000)(x => x)
 
-  lazy val parallelMap: ParSeq[Int] = parallelList.map(_*2)
+  lazy val parallelMap: ParSeq[Int] = parallelList.map(_ * 2)
 
   lazy val parallelFold: Int = parallelList.fold(0)(_ + _)
 

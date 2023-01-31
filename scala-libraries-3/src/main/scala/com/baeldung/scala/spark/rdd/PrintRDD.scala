@@ -11,35 +11,20 @@ object PrintRDD extends App {
 
   rdd.foreach(println)
 
-  /**
-    * 4
-    * 6
-    * 1
-    * 7
-    * 12
-    * 2
+  /** 4 6 1 7 12 2
     */
 
   val collectConvertion = rdd.collect()
   collectConvertion.foreach(println)
 
-  /**
-    * 4
-    * 6
-    * 1
-    * 7
-    * 12
-    * 2
+  /** 4 6 1 7 12 2
     */
 
   val takeConvertion = rdd.take(3)
   takeConvertion.foreach(println)
 
-  /**
-   * 4
-   * 6
-   * 1
-   */
+  /** 4 6 1
+    */
 
   val df = spark.sparkContext
     .parallelize(
@@ -53,13 +38,10 @@ object PrintRDD extends App {
 
   df.show()
 
-  /**
-  +-------+------------+--------+
-  |Subject|       Level|Duration|
-  +-------+------------+--------+
-  |   Math|Intermediate|     800|
-  |English|       Basic|     500|
-  |Science|    Advanced|     400|
-  +-------+------------+--------+
+  /** | Subject |        Level | Duration |
+    * |:--------|-------------:|:---------|
+    * | Math    | Intermediate | 800      |
+    * | English |        Basic | 500      |
+    * | Science |     Advanced | 400      |
     */
 }

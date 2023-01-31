@@ -55,7 +55,7 @@ object FirstNRows extends App {
     * |:------|:----|
     * | Ann   | 25  |
     * | Brian | 16  |
-    */    
+    */
 
   println(data.first())
 

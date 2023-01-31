@@ -2,16 +2,33 @@ package com.baeldung.scala.akka.supervision
 
 import akka.actor.testkit.typed.scaladsl.{ActorTestKit, LoggingTestKit}
 import akka.actor.typed.ActorSystem
-import com.baeldung.scala.akka.supervision.SupervisionApplication.Cache.{Find, Hit}
-import com.baeldung.scala.akka.supervision.SupervisionApplication.Main.{Created, Start}
-import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.{BadRequest, Get, Ok, Response}
-import com.baeldung.scala.akka.supervision.SupervisionApplication.{Cache, Filesystem, WebServer}
+import com.baeldung.scala.akka.supervision.SupervisionApplication.Cache.{
+  Find,
+  Hit
+}
+import com.baeldung.scala.akka.supervision.SupervisionApplication.Main.{
+  Created,
+  Start
+}
+import com.baeldung.scala.akka.supervision.SupervisionApplication.WebServer.{
+  BadRequest,
+  Get,
+  Ok,
+  Response
+}
+import com.baeldung.scala.akka.supervision.SupervisionApplication.{
+  Cache,
+  Filesystem,
+  WebServer
+}
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.concurrent.duration.DurationInt
 
-class SupervisionApplicationUnitTest extends AnyFlatSpec with BeforeAndAfterAll {
+class SupervisionApplicationUnitTest
+  extends AnyFlatSpec
+  with BeforeAndAfterAll {
 
   val testKit: ActorTestKit = ActorTestKit()
   implicit val actorSystem: ActorSystem[_] = testKit.internalSystem
@@ -19,11 +36,17 @@ class SupervisionApplicationUnitTest extends AnyFlatSpec with BeforeAndAfterAll 
   "The Main actor" should "log that the WebServer stopped" in {
     val mainClient = testKit.createTestProbe[Created]()
     val mainActor = testKit.spawn(SupervisionApplication.Main(), "webServer")
-    LoggingTestKit.error("Child actor akka://SupervisionApplicationUnitTest/user/webServer/ws1 failed with error null")
+    LoggingTestKit
+      .error(
+        "Child actor akka://SupervisionApplicationUnitTest/user/webServer/ws1 failed with error null"
+      )
       .expect {
         mainActor ! Start("ws1", mainClient.ref)
         val createdMsg = mainClient.receiveMessage()
-        createdMsg.webServer ! Get("http://stop", testKit.createTestProbe[Response]().ref)
+        createdMsg.webServer ! Get(
+          "http://stop",
+          testKit.createTestProbe[Response]().ref
+        )
       }
   }
 

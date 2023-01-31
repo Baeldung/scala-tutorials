@@ -8,7 +8,7 @@ object ImplicitParameter extends App {
     s"""Writing "$text" in ${color.value} color by ${by.value}."""
 
   def writeByMixColors(
-      text: String
+    text: String
   )(implicit color: Color, color2: Color, by: DrawingDevice = null) =
     s"""Writing "$text" in ${color.value} and ${color2.value} colors by ${by.value}."""
 }

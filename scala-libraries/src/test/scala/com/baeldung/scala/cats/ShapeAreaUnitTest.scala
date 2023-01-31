@@ -3,7 +3,7 @@ import org.scalatest._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class ShapeAreaUnitTest extends AnyFlatSpec with Matchers{
+class ShapeAreaUnitTest extends AnyFlatSpec with Matchers {
   val rectangle: Rectangle = Rectangle(2, 3)
   val circle: Circle = Circle(2)
 

@@ -24,5 +24,5 @@ class DurationSugarUnitTest extends AnyFlatSpec with Matchers {
   "20.seconds + 1.minutes" should "be equal to 80.seconds" in {
     20 seconds + 20 minutes shouldBe 80.seconds
   }
-  */
+   */
 }

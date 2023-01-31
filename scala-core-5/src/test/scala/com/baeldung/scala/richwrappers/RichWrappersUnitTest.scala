@@ -21,7 +21,7 @@ class RichWrappersUnitTest extends AnyWordSpec with Matchers {
     }
 
     "select a char as if it was an array" in {
-      assert("test"(1) == 'e')
+      assert("test" (1) == 'e')
     }
   }
 

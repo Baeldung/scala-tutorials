@@ -1,6 +1,5 @@
 package com.baedung.scala.flattening
 
-
 import org.scalatest.wordspec.AnyWordSpec
 
 import scala.collection.immutable.Queue

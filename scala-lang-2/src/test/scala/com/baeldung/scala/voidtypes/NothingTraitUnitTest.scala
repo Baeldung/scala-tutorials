@@ -2,11 +2,11 @@ package com.baeldung.scala.voidtypes
 
 import org.scalatest.funsuite.AnyFunSuite
 
-class NothingTraitUnitTest extends AnyFunSuite{
-  test("Nothing return function test"){
+class NothingTraitUnitTest extends AnyFunSuite {
+  test("Nothing return function test") {
 
-    val exceptionThrown = intercept[Exception]{
-      val e:Exception = new Exception("An error occured");
+    val exceptionThrown = intercept[Exception] {
+      val e: Exception = new Exception("An error occured");
       NothingTrait.logException(e);
     }
     assert(exceptionThrown.getMessage == "My New Exception")

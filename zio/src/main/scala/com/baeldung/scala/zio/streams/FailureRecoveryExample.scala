@@ -10,8 +10,7 @@ object FailureRecoveryExample extends ZIOAppDefault {
   val recoveryStream: ZStream[Any, Throwable, Int] = ZStream.range(10, 15)
 
   override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = {
-    ZStream.range(0, 5)
-      .runSum
+    ZStream.range(0, 5).runSum
   }
 
 }

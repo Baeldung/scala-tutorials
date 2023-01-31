@@ -4,7 +4,6 @@ import org.scalamock.scalatest.MockFactory
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-
 class ScalaMockFlatSpec extends AnyFlatSpec with MockFactory with Matchers {
 
   "A mocked Foo" should "return a mocked bar value" in {

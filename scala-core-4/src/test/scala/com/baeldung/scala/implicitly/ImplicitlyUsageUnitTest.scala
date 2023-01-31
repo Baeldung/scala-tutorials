@@ -1,6 +1,14 @@
 package com.baeldung.scala.implicitly
 
-import com.baeldung.scala.implicitly.ImplicitlyUsage.{Customer, Policy, searchWithContextBound, searchWithImplicit, weight, weightUsingImplicit, weightUsingImplicitly}
+import com.baeldung.scala.implicitly.ImplicitlyUsage.{
+  Customer,
+  Policy,
+  searchWithContextBound,
+  searchWithImplicit,
+  weight,
+  weightUsingImplicit,
+  weightUsingImplicitly
+}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class ImplicitlyUsageUnitTest extends AnyFlatSpec {

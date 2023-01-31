@@ -29,7 +29,8 @@ object SelfType {
       System.getenv().asScala.toMap
   }
 
-  class TestWithLogging(name: String, assertion: Map[String, String] => Boolean) extends Test(name, assertion) {
+  class TestWithLogging(name: String, assertion: Map[String, String] => Boolean)
+    extends Test(name, assertion) {
     inner: Test =>
     override def execute(env: Map[String, String]): Boolean = {
       println("Before the test")

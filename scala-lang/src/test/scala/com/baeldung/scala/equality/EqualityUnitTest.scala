@@ -43,8 +43,10 @@ class EqualityUnitTest extends AnyFlatSpec {
   }
 
   "Equality operator" should "work for PersonClassWithOverrides" in {
-    val firstClassWithOverridesInstance = new PersonClassWithOverrides("Donald", 66)
-    val secondClassWithOverridesInstance = new PersonClassWithOverrides("Donald", 66)
+    val firstClassWithOverridesInstance =
+      new PersonClassWithOverrides("Donald", 66)
+    val secondClassWithOverridesInstance =
+      new PersonClassWithOverrides("Donald", 66)
     assert(firstClassWithOverridesInstance == secondClassWithOverridesInstance)
   }
 

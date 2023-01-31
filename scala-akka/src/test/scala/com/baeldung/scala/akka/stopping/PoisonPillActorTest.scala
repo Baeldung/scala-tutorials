@@ -15,7 +15,8 @@ class PoisonPillActorTest
 
   "Sending PoisonPill" should {
     "stop the actor when the PoisonPill message is received" in {
-      val actor = system.actorOf(Props(classOf[MessageProcessorActor]),"PoisonPillActor")
+      val actor =
+        system.actorOf(Props(classOf[MessageProcessorActor]), "PoisonPillActor")
       val probe = testkit.TestProbe()
       probe.watch(actor)
 
@@ -30,7 +31,6 @@ class PoisonPillActorTest
       expectNoMessage()
       probe.expectTerminated(actor)
     }
-
 
   }
 

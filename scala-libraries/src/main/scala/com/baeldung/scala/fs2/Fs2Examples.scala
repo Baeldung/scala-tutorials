@@ -7,9 +7,8 @@ import java.nio.file.Paths
 
 object Fs2Examples {
 
-  /**
-   * OOM from processing large file
-   * */
+  /** OOM from processing large file
+    */
 
 //  def readAndWriteFile(readFrom: String, writeTo: String) = {
 //    val counts = mutable.Map.empty[String, Int]
@@ -36,21 +35,17 @@ object Fs2Examples {
 //    writer.close()
 //  }
 
+  /** Using Fs2 Streams
+    */
 
-  /**
-   * Using Fs2 Streams
-   * */
-
-  //defining a simple stresm of Ints
+  // defining a simple stresm of Ints
   val intStream: Stream[Pure, Int] = Stream(1, 2, 3, 4, 5)
 
-  //defining a pipe
+  // defining a pipe
   val add1Pipe: Pipe[Pure, Int, Int] = _.map(_ + 1)
 
-
-  /**
-   * Word count Using Fs2
-   * */
+  /** Word count Using Fs2
+    */
 
   implicit val ioContextShift: ContextShift[IO] =
     IO.contextShift(scala.concurrent.ExecutionContext.Implicits.global)
@@ -68,9 +63,8 @@ object Fs2Examples {
           .fold(Map.empty[String, Int]) { (count, word) =>
             count + (word -> (count.getOrElse(word, 0) + 1))
           }
-          .map(_.foldLeft("") {
-            case (accumulator, (word, count)) =>
-              accumulator + s"$word = $count\n"
+          .map(_.foldLeft("") { case (accumulator, (word, count)) =>
+            accumulator + s"$word = $count\n"
           })
           .through(text.utf8Encode)
 
@@ -85,14 +79,12 @@ object Fs2Examples {
       stream
     }
 
-
   // Batching in Fs2
-  Stream((1 to 100) : _*)
+  Stream((1 to 100): _*)
     .chunkN(10) // group 10 elements together
     .map(println)
     .compile
     .drain
-
 
   // Asynchronicity in fs2
   def writeToSocket[F[_]: Async](chunk: Chunk[String]): F[Unit] = {

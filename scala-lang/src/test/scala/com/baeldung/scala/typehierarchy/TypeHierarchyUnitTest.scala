@@ -4,9 +4,9 @@ import com.baeldung.scala.typehierarchy.TypeHierarchy._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-/**
- * @author vid2010
- */
+/** @author
+  *   vid2010
+  */
 
 class TypeHierarchyUnitTest extends AnyFlatSpec with Matchers {
 

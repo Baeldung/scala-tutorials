@@ -1,6 +1,11 @@
 package com.baeldung.scala.introduction
 
-import com.baeldung.scala.introduction.Utils.{average, fibonacci, power, randomLessThan}
+import com.baeldung.scala.introduction.Utils.{
+  average,
+  fibonacci,
+  power,
+  randomLessThan
+}
 import org.junit.Assert.{assertEquals, assertTrue}
 import org.junit.Test
 
@@ -12,7 +17,8 @@ class UtilsUnitTest {
   }
 
   @Test
-  def whenRandomLessThanInvokedWithANumber_thenARandomLessThanItReturned: Unit = {
+  def whenRandomLessThanInvokedWithANumber_thenARandomLessThanItReturned
+    : Unit = {
     val d = 0.1
     assertTrue(randomLessThan(d) < d)
   }
@@ -26,7 +32,6 @@ class UtilsUnitTest {
   def whenFibonacciCalled_thenCorrectValueReturned: Unit = {
     assertEquals(1, fibonacci(0))
     assertEquals(1, fibonacci(1))
-    assertEquals(fibonacci(6),
-      fibonacci(4) + fibonacci(5))
+    assertEquals(fibonacci(6), fibonacci(4) + fibonacci(5))
   }
 }

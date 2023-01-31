@@ -19,9 +19,8 @@ class MapMonoidUnitTest extends AnyWordSpec {
         Map("four" -> 4, "one-or-ten" -> 9)
       )
 
-      /**
-        * uncomment if you want to see the results
-        * computed.keys.foreach(k => println(s"key: $k, value: ${computed(k)}"))
+      /** uncomment if you want to see the results computed.keys.foreach(k =>
+        * println(s"key: $k, value: ${computed(k)}"))
         */
       val actual =
         Map("one-or-ten" -> 10, "two" -> 2, "three" -> 3, "four" -> 4)

@@ -8,7 +8,7 @@ import java.time.LocalDate
 
 class ParameterizedTraitUnitTest extends AnyWordSpec with Matchers {
   "Traits can have parameters" in {
-      val foo = new Foo
-      assert(foo.msg == "Foo")
-    }
+    val foo = new Foo
+    assert(foo.msg == "Foo")
+  }
 }
