@@ -7,7 +7,7 @@ ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
+val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
@@ -156,7 +156,7 @@ lazy val scala_test = (project in file("scala-test"))
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
-  logback,
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
   "com.typesafe.akka" %% "akka-stream" % "2.6.19",
@@ -328,7 +328,9 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       scalaReflection % Provided,
       "org.tpolecat" %% "skunk-core" % "0.3.2",
       sparkSqlDep,
-      sparkCoreDep
+      sparkCoreDep,
+      logback,
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
     ),
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
