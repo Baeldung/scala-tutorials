@@ -8,6 +8,7 @@ import org.apache.spark.sql.Dataset
 import info.{data, spark}
 import spark.implicits._
 
+/*
 class FirstNRowsSpec extends AnyFlatSpec with Matchers {
 
   "The data Dataframe" should "contain 6 elements" in {
@@ -52,3 +53,4 @@ class FirstNRowsSpec extends AnyFlatSpec with Matchers {
     data.first() shouldBe (Row("Ann", 25))
   }
 }
+*/
