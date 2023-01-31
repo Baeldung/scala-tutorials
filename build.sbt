@@ -337,6 +337,12 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.0",
       "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
     ),
+    libraryDependencies ++= Seq(
+      "software.amazon.awssdk" % "s3" % "2.19.0",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.368" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
+    ),
     scalacOptions += "-Xasync",
     Defaults.itSettings,
     IntegrationTest / fork := true
