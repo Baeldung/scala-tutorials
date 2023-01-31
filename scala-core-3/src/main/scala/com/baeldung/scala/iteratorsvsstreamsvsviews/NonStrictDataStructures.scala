@@ -6,7 +6,9 @@ object NonStrictDataStructures {
   val data = Seq.range(0, 3)
   val iter = data.iterator
   val stream = data.toStream
-  val view: AnyRef with SeqView[Int, Seq[Int]] = data.view
+  //todo: check if this is ok, better to separate into separate module
+  //val view: AnyRef with SeqView[Int, Seq[Int]] = data.view
+  val view: AnyRef with SeqView[Int] = data.view
 }
 
 case class Factorial() {

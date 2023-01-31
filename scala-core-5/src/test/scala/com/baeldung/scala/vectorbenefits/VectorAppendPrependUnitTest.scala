@@ -1,7 +1,8 @@
 package com.baeldung.scala.vectorbenefits
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class VectorAppendPrependUnitTest extends FlatSpec with Matchers{
+class VectorAppendPrependUnitTest extends AnyFlatSpec with Matchers{
   "appendPrependSeq" should "be able to append or prepend elements to a Sequence" in {
     val vec:Vector[Int] = Vector()
     val numElements = 10000

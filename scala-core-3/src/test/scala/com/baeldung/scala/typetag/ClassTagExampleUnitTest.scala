@@ -1,9 +1,9 @@
 package scala.com.baeldung.scala.typetag
 
 import com.baeldung.scala.typtag.ClassTagExample.makeArrayFrom
-import org.scalatest.WordSpec
+import org.scalatest.wordspec.AnyWordSpec
 
-class ClassTagExampleUnitTest extends WordSpec {
+class ClassTagExampleUnitTest extends AnyWordSpec {
   "makeArrayFrom should create array of integer from arbitrary integer numbers" in {
     assert(makeArrayFrom(1, 2, 3) sameElements Array(1, 2, 3))
   }

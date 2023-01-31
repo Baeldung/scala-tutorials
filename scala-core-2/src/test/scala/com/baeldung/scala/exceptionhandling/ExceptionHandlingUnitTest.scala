@@ -1,11 +1,12 @@
 package com.baeldung.scala.exceptionhandling
 
 import com.baeldung.scala.exceptionhandling.ExceptionHandling.{DivideByZero, divideWithEither, divideWithOption, divideWithTry}
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.util.{Failure, Success}
 
-class ExceptionHandlingUnitTest extends FlatSpec with Matchers {
+class ExceptionHandlingUnitTest extends AnyFlatSpec with Matchers {
 
   "divideWithOption" should "return Some when divisor not zero" in {
     divideWithOption(10, 2) should be(Some(5))

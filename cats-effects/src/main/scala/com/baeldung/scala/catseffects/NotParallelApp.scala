@@ -1,8 +1,8 @@
 package com.baeldung.scala.catseffects
 
 import cats.effect.{ExitCode, IO, IOApp}
-import com.baeldung.scala.catseffects.Utils.ShowThread
 import cats.implicits._
+import com.baeldung.scala.catseffects.Utils.ShowThread
 
 object NotParallelApp extends IOApp {
   val tasks: List[IO[Int]] = (1 to 10).map(IO.pure).map(_.showThread).toList

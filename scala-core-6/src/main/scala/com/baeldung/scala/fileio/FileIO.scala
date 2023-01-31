@@ -1,7 +1,6 @@
 package com.baeldung.scala.fileio
 
 import java.io._
-
 import scala.util.{Random, Try}
 
 class FileIO {

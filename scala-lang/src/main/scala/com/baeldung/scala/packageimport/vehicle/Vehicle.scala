@@ -1,7 +1,7 @@
 package com.baeldung.scala.packageimport.vehicle {
 
-  import java.util.{Date => utilDate}
   import java.sql.{Date => sqlDate}
+  import java.util.{Date => utilDate}
 
   abstract class Vehicle(numberOfTires: Int, brand: String) {
 

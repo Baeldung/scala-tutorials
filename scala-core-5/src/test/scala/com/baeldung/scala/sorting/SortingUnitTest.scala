@@ -1,9 +1,10 @@
 package com.baeldung.scala.sorting
 
 import org.junit.Test
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class SortingUnitTest extends WordSpec with Matchers {
+class SortingUnitTest extends AnyWordSpec with Matchers {
 
   case class User(name: String, age: Int) extends Ordered[User] {
     override def compare(that: User): Int =

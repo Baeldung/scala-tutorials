@@ -2,8 +2,9 @@ package com.baeldung.scala.oopinscala.polymorphism
 
 import org.scalatest._
 import PolymorphismExamples._
+import org.scalatest.flatspec.AnyFlatSpec
 
-class PolymorphismExamplesUnitTest extends FlatSpec{
+class PolymorphismExamplesUnitTest extends AnyFlatSpec {
 
   it should "pair-wise reverse an even length int list" in {
     val original = List(1, 2, 3, 4, 5, 6)

@@ -1,13 +1,12 @@
 package com.baeldung.cache.service
 
+import com.google.common.cache.CacheBuilder
 import scalacache._
 import scalacache.guava._
-import com.google.common.cache.CacheBuilder
-import scalacache.serialization.binary._
 import scalacache.memoization._
 
 import scala.concurrent.duration._
-import scala.util.{Failure, Try}
+import scala.util.Try
 
 object GuavaCacheMemoizationConfig {
   val memoizedUnderlyingGuavaCache =
@@ -18,8 +17,8 @@ object GuavaCacheMemoizationConfig {
 }
 
 class SyncQueryMemoizeService {
-  import scalacache.modes.sync._
   import GuavaCacheMemoizationConfig._
+  import scalacache.modes.sync._
 
   var queryCount = 0
 
@@ -44,8 +43,8 @@ class SyncQueryMemoizeService {
 }
 
 class TryMemoizeService {
-  import scalacache.modes.try_._
   import GuavaCacheMemoizationConfig._
+  import scalacache.modes.try_._
 
   var queryCount = 0
   var failQueryCount = 0

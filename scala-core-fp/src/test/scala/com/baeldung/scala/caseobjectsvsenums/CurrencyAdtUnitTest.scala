@@ -1,8 +1,9 @@
 package com.baeldung.scala.caseobjectsvsenums
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class CurrencyAdtUnitTest extends FlatSpec with Matchers {
+class CurrencyAdtUnitTest extends AnyFlatSpec with Matchers {
   "The Currency ADT" should "be parsed from a string" in {
     import CurrencyADT._
 

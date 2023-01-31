@@ -1,8 +1,9 @@
 package com.baeldung.scala.implicitparameter
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class ImplicitParameterTest extends WordSpec with Matchers {
+class ImplicitParameterTest extends AnyWordSpec with Matchers {
 
   import ImplicitParameter._
   "Implicit Parameter" should {

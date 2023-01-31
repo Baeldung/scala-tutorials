@@ -1,8 +1,9 @@
 package com.baeldung.scala.arrays
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class CopyAnArrayToAnotherUnitTest extends FlatSpec with Matchers {
+class CopyAnArrayToAnotherUnitTest extends AnyFlatSpec with Matchers {
   val array1 = Array(1, 2, 3, 4)
 
   "splat operator" should "copy an entire array to another" in {

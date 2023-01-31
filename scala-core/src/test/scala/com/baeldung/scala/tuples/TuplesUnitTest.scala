@@ -1,8 +1,9 @@
 package com.baeldung.scala.tuples
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class TuplesUnitTest extends WordSpec with Matchers {
+class TuplesUnitTest extends AnyWordSpec with Matchers {
   val tuple = ("Joe", 34)
 
   "Tuples" should {

@@ -2,7 +2,8 @@ package com.baeldung.scala.akka_2.alpakka_sse
 
 import akka.actor.ActorSystem
 import akka.testkit.TestKit
-import org.scalatest.{AsyncWordSpecLike, BeforeAndAfterAll}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.wordspec.AsyncWordSpecLike
 
 class WikimediaSSEConsumerTest
   extends TestKit(ActorSystem("wikimediaSSESpec"))

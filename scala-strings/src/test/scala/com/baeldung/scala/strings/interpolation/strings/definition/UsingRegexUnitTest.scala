@@ -1,10 +1,11 @@
 package com.baeldung.scala.strings.introduction
 
-import org.scalatest.{FeatureSpec, GivenWhenThen}
+import org.scalatest.GivenWhenThen
+import org.scalatest.featurespec.AnyFeatureSpec
 
 import scala.util.matching.Regex
 
-class UsingRegexUnitTest extends FeatureSpec with GivenWhenThen {
+class UsingRegexUnitTest extends AnyFeatureSpec with GivenWhenThen {
 
   scenario("Match with regular expression if a string contains letters and numbers") {
 

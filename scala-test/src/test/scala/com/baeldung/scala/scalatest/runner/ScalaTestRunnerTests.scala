@@ -1,8 +1,8 @@
 package com.baeldung.scala.scalatest.runner
 
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers
 import org.scalatest.Tag
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 /**
   * This test class is a just a sample test to show scalatest Runner features.

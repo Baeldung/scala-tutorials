@@ -1,9 +1,10 @@
 package com.baeldung.scala.namedanddefaultargs
 
 import com.baeldung.scala.namedanddefaultargs.NamedAndDefaultArgs._
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class NamedAndDefaultArgsUnitTest extends WordSpec with Matchers {
+class NamedAndDefaultArgsUnitTest extends AnyWordSpec with Matchers {
   "Named and Default Args" should {
     "work with default args" in {
       prettyPrint(Array(1, 2, 3)) shouldBe "(1,2,3)"

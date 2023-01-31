@@ -1,9 +1,9 @@
 package com.baedung.scala.collections
 
 import com.baeldung.scala.collections.FoldingLists.Person
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class FoldingListsUnitTest extends FlatSpec {
+class FoldingListsUnitTest extends AnyFlatSpec {
 
   val persons = List(Person("Thomas", "male"), Person("Sowell", "male"), Person("Liz", "female"))
 

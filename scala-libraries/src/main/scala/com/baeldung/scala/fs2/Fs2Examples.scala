@@ -1,14 +1,9 @@
 package com.baeldung.scala.fs2
 
-import java.io.{File, PrintWriter}
-import java.nio.file.Paths
-
 import cats.effect.{Async, Blocker, ContextShift, IO}
-
-import scala.util.Random
 import fs2._
 
-import scala.collection.mutable
+import java.nio.file.Paths
 
 object Fs2Examples {
 

@@ -1,9 +1,10 @@
 package com.baeldung.scala.listcreation
 
-import com.baeldung.scala.listcreation.ListCreationMethods.{createListUsingApply, createListUsingCons, createListUsingFill, createListUsingTabulate, createListUsingToList}
-import org.scalatest.{FlatSpec, Matchers}
+import com.baeldung.scala.listcreation.ListCreationMethods._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ListCreationMethodsUnitTest extends FlatSpec with Matchers{
+class ListCreationMethodsUnitTest extends AnyFlatSpec with Matchers{
 
   "createListUsingCons" should "be able to create a new list using the cons (::) operator" in {
     val listUsingCons = createListUsingCons()

@@ -1,10 +1,12 @@
 package com.baeldung.scala.monix
 
 import monix.execution.schedulers.TestScheduler
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
+
 import scala.util.Success
 
-class MonixTaskUnitTest extends FlatSpec with Matchers{
+class MonixTaskUnitTest extends AnyFlatSpec with Matchers{
   import MonixTask.sampleMonixTask
   "sampleMonixTask" should "be able to create and return a Task which adds two integer parameters" in {
     implicit val s:TestScheduler = TestScheduler()

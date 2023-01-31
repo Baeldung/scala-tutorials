@@ -1,14 +1,13 @@
 package com.baeldung.scala.lazyval
 
-import org.scalatest.FunSuite
-import org.scalatest.Matchers._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
-import scala.concurrent.{Future, _}
-import com.baeldung.scala.lazyval
+import scala.concurrent._
 
-class LazyValUnitTest extends FunSuite {
+class LazyValUnitTest extends AnyFunSuite {
 
   test("lazy val is computed only once") {
     //given

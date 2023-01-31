@@ -1,10 +1,10 @@
 package com.baeldung.scala.commoncollections
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.matchers.should.Matchers
 
 import scala.collection.immutable.ListMap
 
-class ListMapOperationsUnitTest extends FlatSpec with Matchers {
+class ListMapOperationsUnitTest extends AnyFlatSpec with Matchers {
 
   val countryCapitals: ListMap[String, String] = ListMap(
     "Canada" -> "Ottawa",

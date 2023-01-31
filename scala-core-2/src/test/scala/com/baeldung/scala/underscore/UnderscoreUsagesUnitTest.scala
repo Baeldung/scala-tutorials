@@ -1,9 +1,9 @@
 package com.baeldung.scala.underscore
 
 import com.baeldung.scala.underscore.UnderscoreUsages._
-import org.scalatest.{Matchers, WordSpec}
-
-class UnderscoreUsagesUnitTest extends  WordSpec with Matchers {
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+class UnderscoreUsagesUnitTest extends  AnyWordSpec with Matchers {
 
   "The underscore" should {
     "match all types in existential types" in {

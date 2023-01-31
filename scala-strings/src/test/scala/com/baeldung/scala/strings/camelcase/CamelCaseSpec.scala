@@ -1,8 +1,8 @@
 package com.baeldung.scala.strings.camelcase
 
-import org.scalatest.WordSpec
+import org.scalatest.wordspec.AnyWordSpec
 
-class CamelCaseSpec extends WordSpec {
+class CamelCaseSpec extends AnyWordSpec {
 
   import StringWrapper._
 

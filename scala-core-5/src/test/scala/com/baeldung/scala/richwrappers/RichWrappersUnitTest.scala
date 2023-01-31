@@ -1,8 +1,9 @@
 package com.baeldung.scala.richwrappers
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class RichWrappersUnitTest extends WordSpec with Matchers {
+class RichWrappersUnitTest extends AnyWordSpec with Matchers {
 
   "RichInt" should {
     "format a number in base 2" in {

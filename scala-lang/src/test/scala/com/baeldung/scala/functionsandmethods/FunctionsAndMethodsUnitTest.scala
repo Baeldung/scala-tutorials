@@ -1,7 +1,7 @@
 package com.baeldung.scala.functionsandmethods
 
 import org.junit.Assert.assertEquals
-import org.junit.{Before, Test}
+import org.junit.Test
 
 import scala.util.Random
 

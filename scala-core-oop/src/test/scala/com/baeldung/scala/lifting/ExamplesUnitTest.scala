@@ -1,9 +1,9 @@
 package com.baeldung.scala.lifting
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 import Examples._
 
-class ExamplesUnitTest extends FlatSpec {
+class ExamplesUnitTest extends AnyFlatSpec {
 
   "getSqrtRootMessagePartialFunction" should "calculate square root" in {
     assert(Examples.getSqrtRootMessagePartialFunction(4.0) == "Square root of 4.0 is 2.0")

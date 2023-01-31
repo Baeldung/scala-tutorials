@@ -1,8 +1,8 @@
 package com.baeldung.scala.differences
-import cats.effect.IO
-import scala.concurrent.duration._
+import cats.effect.{IO, IOApp}
 import cats.effect.kernel.Deferred
-import cats.effect.IOApp
+
+import scala.concurrent.duration._
 
 object Differences extends IOApp.Simple {
 

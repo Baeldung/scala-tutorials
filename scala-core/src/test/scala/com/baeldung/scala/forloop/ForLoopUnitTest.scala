@@ -1,6 +1,5 @@
 package com.baeldung.scala.forloop
 
-import com.baeldung.scala.forloop.ForLoop
 import org.junit.Assert.assertEquals
 import org.junit.{Before, Test}
 

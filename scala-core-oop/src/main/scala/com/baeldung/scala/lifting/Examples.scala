@@ -39,7 +39,7 @@ object Examples {
       name  <- firstname
     } yield s"${hello.get} $name"
 
-    Await.result(maybeHello, 1 second)
+    Await.result(maybeHello, 1.second)
   }
 
   def getGreetingsMonadTranformer() = {
@@ -50,7 +50,7 @@ object Examples {
 
     val result: Future[Option[String]] = maybeHello.value
 
-    Await.result(result, 1 second)
+    Await.result(result, 1.second)
   }
 
   val optionLength: Option[String] => Option[Int] = Functor[Option].lift(_.length)

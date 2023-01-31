@@ -13,4 +13,4 @@ This module contains articles about the Akka library in Scala.
 - [Typed Mailboxes in Scala](https://www.baeldung.com/scala/typed-mailboxes)
 - [Discovering Actors in Akka](https://www.baeldung.com/scala/discovering-actors-in-akka)
 - [Different Ways to Stop Akka Actors](https://www.baeldung.com/scala/stop-akka-actors)
-- [Reading an Akka Response Body as a String](https://www.baeldung.com/scala/akka-response-body-to-string)
+- [Reading an Akka-HTTP Response Body as a String](https://www.baeldung.com/scala/akka-response-body-to-string)

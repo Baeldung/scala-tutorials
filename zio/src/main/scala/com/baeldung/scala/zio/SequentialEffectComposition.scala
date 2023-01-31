@@ -1,7 +1,6 @@
 package com.baeldung.scala.zio
 
-import zio.ZIOAppDefault
-import zio.Console
+import zio.{Console, ZIOAppDefault}
 
 object SequentialEffectComposition extends ZIOAppDefault {
   def run =

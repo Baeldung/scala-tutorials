@@ -1,11 +1,11 @@
 package com.baeldung.scala.exceptionhandling
 
-import cats.MonadError // for MonadError
+import cats.MonadError
 import cats.syntax.flatMap._
 import cats.syntax.functor._
+import com.baeldung.scala.exceptionhandling.LegacyErrors.{ResourceNotFound, ServerError, UserNotFound}
 
 import scala.util.{Failure, Success, Try}
-import com.baeldung.scala.exceptionhandling.LegacyErrors.{ResourceNotFound, ServerError, UserNotFound}
 
 object HandlingWithMonadError {
   def monadErrorAuthenticate[F[_], E] (user: User)(implicit me: MonadError[F, E], adoptError: LegacyErrors => E): F[Session] = {
