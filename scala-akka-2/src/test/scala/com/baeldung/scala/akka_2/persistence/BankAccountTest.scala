@@ -15,7 +15,11 @@ class BankAccountTest extends ScalaTestWithActorTestKit with AnyWordSpecLike {
         StatusReply.Success(BankAccount.BalanceCheckResponse(0))
       )
       bankAccount ! BankAccount.DepositCommand(100, probe.ref)
-      probe.expectMessage(StatusReply.Success(BankAccount.ActionResponse("Amount 100 was deposited")))
+      probe.expectMessage(
+        StatusReply.Success(
+          BankAccount.ActionResponse("Amount 100 was deposited")
+        )
+      )
       bankAccount ! BankAccount.BalanceCheckCommand(probe.ref)
       probe.expectMessage(
         StatusReply.Success(BankAccount.BalanceCheckResponse(100))
@@ -31,13 +35,21 @@ class BankAccountTest extends ScalaTestWithActorTestKit with AnyWordSpecLike {
         StatusReply.Success(BankAccount.BalanceCheckResponse(0))
       )
       bankAccount ! BankAccount.DepositCommand(100, probe.ref)
-      probe.expectMessage(StatusReply.Success(BankAccount.ActionResponse("Amount 100 was deposited")))
+      probe.expectMessage(
+        StatusReply.Success(
+          BankAccount.ActionResponse("Amount 100 was deposited")
+        )
+      )
       bankAccount ! BankAccount.BalanceCheckCommand(probe.ref)
       probe.expectMessage(
         StatusReply.Success(BankAccount.BalanceCheckResponse(100))
       )
       bankAccount ! BankAccount.WithdrawCommand(20, probe.ref)
-      probe.expectMessage(StatusReply.Success(BankAccount.ActionResponse("Amount 20 was withdrawn")))
+      probe.expectMessage(
+        StatusReply.Success(
+          BankAccount.ActionResponse("Amount 20 was withdrawn")
+        )
+      )
       bankAccount ! BankAccount.BalanceCheckCommand(probe.ref)
       probe.expectMessage(
         StatusReply.Success(BankAccount.BalanceCheckResponse(80))
@@ -53,13 +65,21 @@ class BankAccountTest extends ScalaTestWithActorTestKit with AnyWordSpecLike {
         StatusReply.Success(BankAccount.BalanceCheckResponse(0))
       )
       bankAccount ! BankAccount.DepositCommand(100, probe.ref)
-      probe.expectMessage(StatusReply.Success(BankAccount.ActionResponse("Amount 100 was deposited")))
+      probe.expectMessage(
+        StatusReply.Success(
+          BankAccount.ActionResponse("Amount 100 was deposited")
+        )
+      )
       bankAccount ! BankAccount.BalanceCheckCommand(probe.ref)
       probe.expectMessage(
         StatusReply.Success(BankAccount.BalanceCheckResponse(100))
       )
       bankAccount ! BankAccount.WithdrawCommand(120, probe.ref)
-      probe.expectMessage(StatusReply.Error("Account has insufficient funds. Available balance 100"))
+      probe.expectMessage(
+        StatusReply.Error(
+          "Account has insufficient funds. Available balance 100"
+        )
+      )
       bankAccount ! BankAccount.BalanceCheckCommand(probe.ref)
       probe.expectMessage(
         StatusReply.Success(BankAccount.BalanceCheckResponse(100))
