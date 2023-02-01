@@ -4,7 +4,6 @@ import cats.effect.testing.scalatest.AsyncIOSpec
 import org.scalatest.flatspec.AsyncFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-import java.io.File
 import scala.io.Source
 
 class FS2SampleTest extends AsyncFlatSpec with AsyncIOSpec with Matchers {
@@ -19,7 +18,3 @@ class FS2SampleTest extends AsyncFlatSpec with AsyncIOSpec with Matchers {
   }
 
 }
-
-//override def run: IO[Unit] = {
-//  readAndWriteFile("fs2data.txt", "wc.txt").compile.drain
-//}
