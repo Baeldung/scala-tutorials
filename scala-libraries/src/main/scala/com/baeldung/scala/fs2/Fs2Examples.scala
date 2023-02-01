@@ -51,7 +51,7 @@ object Fs2Examples {
   def readAndWriteFile(readFrom: String, writeTo: String): Stream[IO, Unit] = {
 
     val path = ClassLoader.getSystemResource(readFrom)
-    val fs2Path = Path.fromNioPath(java.nio.file.Path.of(path.toURI))
+    val fs2Path = Path.fromNioPath(java.nio.file.Paths.get(path.toURI))
 
     val source: Stream[IO, Byte] =
       Files[IO].readAll(fs2Path)
