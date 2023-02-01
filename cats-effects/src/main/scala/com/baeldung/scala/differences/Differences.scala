@@ -11,10 +11,10 @@ object Differences extends IOApp.Simple {
 
   val delayedDurationIO = io.delayBy(3.seconds)
 
-  //This will fail with Stackoverflow Exception
+  // This will fail with Stackoverflow Exception
   def neverEnding(io: IO[Int]): IO[Unit] = { io *> neverEnding(io) }
 
-  //This will run forever without any StackOverflowException
+  // This will run forever without any StackOverflowException
   def neverEndingV2(io: IO[Int]): IO[Unit] = {
     io *> IO.defer(neverEndingV2(io))
   }

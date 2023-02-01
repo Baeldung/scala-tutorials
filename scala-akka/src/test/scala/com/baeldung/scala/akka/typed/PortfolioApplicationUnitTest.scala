@@ -2,9 +2,15 @@ package com.baeldung.scala.akka.typed
 
 import akka.actor.testkit.typed.Effect.Spawned
 import akka.actor.testkit.typed.scaladsl.{BehaviorTestKit, TestInbox}
-import com.baeldung.scala.akka.typed.PortfolioApplication.Bank.{CreatePortfolio, PortfolioCreated}
+import com.baeldung.scala.akka.typed.PortfolioApplication.Bank.{
+  CreatePortfolio,
+  PortfolioCreated
+}
 import com.baeldung.scala.akka.typed.PortfolioApplication.BankMain.Start
-import com.baeldung.scala.akka.typed.PortfolioApplication.PortfolioActor.{Buy, PortfolioCommand}
+import com.baeldung.scala.akka.typed.PortfolioApplication.PortfolioActor.{
+  Buy,
+  PortfolioCommand
+}
 import com.baeldung.scala.akka.typed.PortfolioApplication._
 import org.scalatest.flatspec.AnyFlatSpec
 

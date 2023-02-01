@@ -8,7 +8,10 @@ object ListIntFunctions {
     items.sum.toDouble / items.length
   }
 
-  def IntItemsToString(items: IntItems, intToString: IntToString): List[String] = {
+  def IntItemsToString(
+    items: IntItems,
+    intToString: IntToString
+  ): List[String] = {
     items.map(intToString)
   }
 }

@@ -20,7 +20,8 @@ class GracefulStopActorTest
   "Graceful shutdown" should {
 
     "stop the actor successfully" in {
-      val actor = system.actorOf(Props(classOf[MessageProcessorActor]), "GracefulActor")
+      val actor =
+        system.actorOf(Props(classOf[MessageProcessorActor]), "GracefulActor")
       val probe = testkit.TestProbe()
       probe.watch(actor)
 
@@ -38,7 +39,6 @@ class GracefulStopActorTest
         case e: AskTimeoutException => fail()
       }
 
-      
     }
 
   }

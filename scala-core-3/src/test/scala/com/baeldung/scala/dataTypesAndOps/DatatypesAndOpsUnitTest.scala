@@ -3,7 +3,7 @@ package com.baeldung.scala.dataTypesAndOps
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
+class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers {
 
   "Basic  DataTypes of Scala" should {
     "infer the type from assignment " in {
@@ -25,13 +25,11 @@ class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
       c3 should be('~')
       c4 should be('©')
 
+      val i1: Int = 65535
+      val i2: Int = 65536
+      val l1: Long = 65536
 
-      val i1: Int   = 65535
-      val i2: Int   = 65536
-      val l1: Long  = 65536
-
-
-      val i3: Int   = 32768
+      val i3: Int = 32768
       val s1: Short = 32767
       // val s2: Short = 32768 (will not compile)
 
@@ -41,22 +39,21 @@ class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
       val s2: Short = 32767 // qualify with intended type
       val i7 = 127 // inferred as an Int
       val b3: Byte = 127 // qualify with intended type
-      val i8 = 0xAFBF // HEX value, inferred as an Int
+      val i8 = 0xafbf // HEX value, inferred as an Int
       val c5 = 234 // inferred as an Int
       val c6 = '®' // inferred as a Char
       val l4 = 1234L // 'L' signifies a Long literal
-      val l3 = 0xCAFEBABEL // 'L' signifies a Long literal, even for a HEX value
-
+      val l3 = 0xcafebabeL // 'L' signifies a Long literal, even for a HEX value
 
       val trueVal = true
       val falseValOtherWay = !true
 
-      trueVal            should be (true)
-      falseValOtherWay   should be (false)
+      trueVal should be(true)
+      falseValOtherWay should be(false)
 
-      val f1 = 12.05f  // 'f' signifies that it is a Float
-      val d1 = 12.3495067  // inferred as a Double
-      val d2 = 12.3495067D // 'D' signfies a Double, but is optional
+      val f1 = 12.05f // 'f' signifies that it is a Float
+      val d1 = 12.3495067 // inferred as a Double
+      val d2 = 12.3495067d // 'D' signfies a Double, but is optional
 
       val name = "Diego Armando Maradona"
       val nameWithQuote = "Kerry O\'keffey"
@@ -65,18 +62,17 @@ class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
 
     "convert to and from Int types, following the conversion rules " in {
 
-       // The line below will not compile!
-       // val justAByte: Byte =  129  // Beyond the range of values allowed for Byte, will not compile
+      // The line below will not compile!
+      // val justAByte: Byte =  129  // Beyond the range of values allowed for Byte, will not compile
 
-       val aByteSizedInteger = 127
-       val byteFromInt = aByteSizedInteger.toByte
-       val aNonByteInteger = 128
-       val wrappedByte = aNonByteInteger.toByte // wrapped around
-       val anotherNonByteInteger = 129
-       val wrappedByteAgain = anotherNonByteInteger.toByte // wrapped around
-       val convFromInt: Byte = 129.toByte
-       val converedBackToInt = convFromInt.toInt
-
+      val aByteSizedInteger = 127
+      val byteFromInt = aByteSizedInteger.toByte
+      val aNonByteInteger = 128
+      val wrappedByte = aNonByteInteger.toByte // wrapped around
+      val anotherNonByteInteger = 129
+      val wrappedByteAgain = anotherNonByteInteger.toByte // wrapped around
+      val convFromInt: Byte = 129.toByte
+      val converedBackToInt = convFromInt.toInt
 
       byteFromInt.isInstanceOf[Byte] should be(true)
       byteFromInt should be(127)
@@ -116,7 +112,7 @@ class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
       val i31 = 65536
       i31.isValidShort should be(false)
 
-      val d3 = 2E31
+      val d3 = 2e31
       d3.isValidInt should be(false)
 
     }
@@ -126,7 +122,7 @@ class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
       class Article(heading: String, noOfLines: Int)
 
       val i: Int = 1234
-      val d = 1.2E7
+      val d = 1.2e7
       val b = false
       val a1: AnyVal = i // casting an Int to AnyVal
       val a2: AnyVal = d // casting a Double to an AnyVal
@@ -134,7 +130,8 @@ class DatatypesAndOpsUnitTest extends AnyWordSpec with Matchers  {
       val article = new Article("Baeldung", 2000) // an application class
       val author = "Eugene"
 
-      val parentClass1: AnyRef = article // casting an User-Defined Object to an AnyRef
+      val parentClass1: AnyRef =
+        article // casting an User-Defined Object to an AnyRef
       val parentClass2: AnyRef = author // casting a String to an AnyRef
 
     }

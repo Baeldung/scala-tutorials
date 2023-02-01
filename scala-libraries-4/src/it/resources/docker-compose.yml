@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  localstack:
+    image: localstack/localstack:1.3.0
+    restart: always
+    ports:
+      - "5000:4566"

@@ -13,13 +13,17 @@ import org.scalatest.wordspec.AsyncWordSpec
 import reactivemongo.api.Cursor
 import reactivemongo.api.bson.BSONDocument
 
-class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
-  with BeforeAndAfterAll with BeforeAndAfterEach {
+class ReactiveMongoUnitTest
+  extends AsyncWordSpec
+  with Matchers
+  with BeforeAndAfterAll
+  with BeforeAndAfterEach {
 
   val starter = MongodStarter.getDefaultInstance()
   val PORT = 27079
   val IP = "localhost"
-  val mongodConfig = MongodConfig.builder()
+  val mongodConfig = MongodConfig
+    .builder()
     .version(Version.Main.V4_0)
     .net(new Net(IP, PORT, false))
     .build();
@@ -35,14 +39,15 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
     super.afterAll()
   }
 
-  lazy val connection = new MongoDBConnection(s"mongodb://${IP}:$PORT", "movies")
+  lazy val connection =
+    new MongoDBConnection(s"mongodb://${IP}:$PORT", "movies")
 
   "ReactiveMongo spec" should {
 
-
     "connect to the mongo and insert a movie into the collection" in {
 
-      val movie = Movie("The Shawshank Redemption", "Morgan Freeman", "Drama", 144)
+      val movie =
+        Movie("The Shawshank Redemption", "Morgan Freeman", "Drama", 144)
       connection.getCollection("Movie").flatMap { col =>
         val insertResultFuture = col.insert.one(movie)
         insertResultFuture.flatMap { writeRes =>
@@ -58,28 +63,44 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
 
     "insert multiple movies into the collection" in {
       val allMovies: Seq[Movie] = getMoviesList
-      val insertListStatus = connection.getCollection("Movie").flatMap(_.insert.many(allMovies))
+      val insertListStatus =
+        connection.getCollection("Movie").flatMap(_.insert.many(allMovies))
       insertListStatus.map { insertList =>
         insertList.totalN shouldBe allMovies.size
       }
     }
 
     "get all records from database for matching condition" in {
-      val dramaMovies = connection.getCollection("Movie")
-        .flatMap(_.find(BSONDocument("genre" -> "Drama")).cursor[Movie]().collect(err = Cursor.FailOnError[List[Movie]]()))
+      val dramaMovies = connection
+        .getCollection("Movie")
+        .flatMap(
+          _.find(BSONDocument("genre" -> "Drama"))
+            .cursor[Movie]()
+            .collect(err = Cursor.FailOnError[List[Movie]]())
+        )
       dramaMovies.map { dramaList =>
-        dramaList.map(_.name) should contain allElementsOf (getMoviesList.filter(_.genre == "Drama").map(_.name))
+        dramaList.map(_.name) should contain allElementsOf (getMoviesList
+          .filter(_.genre == "Drama")
+          .map(_.name))
       }
     }
 
     "get all records matching multiple conditions" in {
-      val bradPittDramasFuture = connection.getCollection("Movie")
-        .flatMap(_.find(
-          BSONDocument("genre" -> "Drama", "leadActor" -> "Brad Pitt", "durationInMin" -> BSONDocument("$gt" -> 130))
-        ).cursor[Movie]().collect(err = Cursor.FailOnError[List[Movie]]()))
+      val bradPittDramasFuture = connection
+        .getCollection("Movie")
+        .flatMap(
+          _.find(
+            BSONDocument(
+              "genre" -> "Drama",
+              "leadActor" -> "Brad Pitt",
+              "durationInMin" -> BSONDocument("$gt" -> 130)
+            )
+          ).cursor[Movie]().collect(err = Cursor.FailOnError[List[Movie]]())
+        )
       bradPittDramasFuture.map { bradPittDramas =>
         bradPittDramas.size shouldBe 2
-        bradPittDramas.map(_.name) should contain allElementsOf (Seq("Troy", "Fight Club"))
+        bradPittDramas
+          .map(_.name) should contain allElementsOf (Seq("Troy", "Fight Club"))
       }
     }
 
@@ -90,9 +111,10 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
           BSONDocument("$set" -> BSONDocument("durationInMin" -> 145))
         )
         updateStatus.flatMap { upResult =>
-          //upResult.lastError shouldBe empty
-          //Get from mongo and verify
-          val fightClubFuture = col.find(BSONDocument("name" -> "Fight Club")).one[Movie]
+          // upResult.lastError shouldBe empty
+          // Get from mongo and verify
+          val fightClubFuture =
+            col.find(BSONDocument("name" -> "Fight Club")).one[Movie]
           fightClubFuture.map { fcOpt =>
             fcOpt shouldBe defined
             fcOpt.get.durationInMin shouldBe 145
@@ -114,12 +136,18 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
 
       updateFuture.flatMap { updateResult =>
         updateResult.totalN shouldBe 4
-        //get from mongo and verify updated field
-        val filteredMovies = connection.getCollection("Movie")
-          .flatMap(_.find(BSONDocument("genre" -> "Dramatic")).cursor[Movie]()
-            .collect(err = Cursor.FailOnError[List[Movie]]()))
+        // get from mongo and verify updated field
+        val filteredMovies = connection
+          .getCollection("Movie")
+          .flatMap(
+            _.find(BSONDocument("genre" -> "Dramatic"))
+              .cursor[Movie]()
+              .collect(err = Cursor.FailOnError[List[Movie]]())
+          )
         filteredMovies.map { dramaticMovies =>
-          dramaticMovies.map(_.name) should contain allElementsOf (getMoviesList.filter(_.genre == "Drama").map(_.name))
+          dramaticMovies.map(_.name) should contain allElementsOf (getMoviesList
+            .filter(_.genre == "Drama")
+            .map(_.name))
           dramaticMovies.map(_.genre).distinct shouldBe Seq("Dramatic")
         }
       }
@@ -127,16 +155,19 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
 
     "return empty result if a non-existing field name is used in find" in {
       connection.getCollection("Movie").flatMap { col =>
-        col.find(BSONDocument("director" -> "Quentin Tarantino")).one[Movie].map { findResult =>
-          findResult shouldBe empty
-        }
+        col
+          .find(BSONDocument("director" -> "Quentin Tarantino"))
+          .one[Movie]
+          .map { findResult =>
+            findResult shouldBe empty
+          }
       }
     }
 
     "delete a record matching the condition" in {
       connection.getCollection("Movie").flatMap { col =>
         col.findAndRemove(BSONDocument("name" -> "Troy")).flatMap { _ =>
-          //verify from mongo
+          // verify from mongo
           col.find(BSONDocument("name" -> "Troy")).one[Movie].map { troy =>
             troy shouldBe empty
           }
@@ -146,9 +177,11 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
 
     "filter by condition and fetch only a limited records" in {
       connection.getCollection("Movie").flatMap { col =>
-        val dramasLimited = col.find(BSONDocument("genre" -> "Drama"))
-          //get only 3 records out of 4
-          .cursor[Movie]().collect(3, Cursor.FailOnError[List[Movie]]())
+        val dramasLimited = col
+          .find(BSONDocument("genre" -> "Drama"))
+          // get only 3 records out of 4
+          .cursor[Movie]()
+          .collect(3, Cursor.FailOnError[List[Movie]]())
         dramasLimited.map { dramas =>
           dramas.size shouldBe 3
         }
@@ -157,15 +190,18 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
 
     "filter and sort by movie duration" in {
       connection.getCollection("Movie").flatMap { col =>
-        //use -1 for descending order and 1 for ascending order of sorting
-        val longestTwoDramas = col.find(BSONDocument("genre" -> "Drama")).sort(BSONDocument("durationInMin" -> -1))
-          .cursor[Movie]().collect(2, Cursor.FailOnError[List[Movie]]())
+        // use -1 for descending order and 1 for ascending order of sorting
+        val longestTwoDramas = col
+          .find(BSONDocument("genre" -> "Drama"))
+          .sort(BSONDocument("durationInMin" -> -1))
+          .cursor[Movie]()
+          .collect(2, Cursor.FailOnError[List[Movie]]())
         longestTwoDramas.map { dramas =>
           dramas.size shouldBe 2
-          //first result should be movie with longest duration
+          // first result should be movie with longest duration
           dramas.head.name shouldBe "Troy"
           dramas.head.durationInMin shouldBe 163
-          //second result should be the movie with 2nd longest duration
+          // second result should be the movie with 2nd longest duration
           dramas.last.name shouldBe "Fight Club"
           dramas.last.durationInMin shouldBe 140
         }
@@ -173,14 +209,20 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
     }
 
     "stream the movies and calculate total duration using akka stream api" in {
-      //Note: This import(cursorProducer) is required for reactive mongo and akka stream integration
+      // Note: This import(cursorProducer) is required for reactive mongo and akka stream integration
       import reactivemongo.akkastream.{State, cursorProducer}
       implicit val system = ActorSystem("reactive-mongo-stream")
       implicit val materializer = ActorMaterializer()
       connection.getCollection("Movie").flatMap { col =>
-        val source = col.find(BSONDocument()).cursor[Movie]().documentSource(100, Cursor.FailOnError())
-        val totalDurationFuture = source.map(_.durationInMin).runWith(Sink.fold(0)(_ + _))
-        totalDurationFuture.map(_ shouldBe getMoviesList.map(_.durationInMin).sum)
+        val source = col
+          .find(BSONDocument())
+          .cursor[Movie]()
+          .documentSource(100, Cursor.FailOnError())
+        val totalDurationFuture =
+          source.map(_.durationInMin).runWith(Sink.fold(0)(_ + _))
+        totalDurationFuture.map(
+          _ shouldBe getMoviesList.map(_.durationInMin).sum
+        )
       }
     }
 
@@ -192,17 +234,29 @@ class ReactiveMongoUnitTest extends AsyncWordSpec with Matchers
     val wonderWoman = Movie("Wonder Woman", "Gal Gadot", "Fantasy", 141)
     val prestige = Movie("The Prestige", "Hugh Jackman", "Mystery", 130)
     val reader = Movie("The Reader", "Kate Winslet", "Drama", 124)
-    val silenceOfLambs = Movie("The Silence of the Lambs", "Anthony Hopkins", "Thriller", 130)
+    val silenceOfLambs =
+      Movie("The Silence of the Lambs", "Anthony Hopkins", "Thriller", 130)
     val troy = Movie("Troy", "Brad Pitt", "Drama", 163)
     val seven = Movie("Se7en", "Brad Pitt", "Drama", 127)
-    val allMovies = Seq(fightClub, pulpFiction, wonderWoman, prestige, reader, silenceOfLambs, troy, seven)
+    val allMovies = Seq(
+      fightClub,
+      pulpFiction,
+      wonderWoman,
+      prestige,
+      reader,
+      silenceOfLambs,
+      troy,
+      seven
+    )
     allMovies
   }
 
   override def withFixture(test: NoArgAsyncTest) =
     new FutureOutcome(for {
       _ <- connection.getCollection("Movie").flatMap(_.drop())
-      _ <- connection.getCollection("Movie").flatMap(_.insert.many(getMoviesList))
+      _ <- connection
+        .getCollection("Movie")
+        .flatMap(_.insert.many(getMoviesList))
       testResult <- super.withFixture(test).toFuture
     } yield {
       testResult

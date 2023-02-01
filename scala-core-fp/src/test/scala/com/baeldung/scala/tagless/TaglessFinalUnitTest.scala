@@ -1,6 +1,10 @@
 package com.baeldung.scala.tagless
 
-import com.baeldung.scala.tagless.TaglessFinal.{Product, Program, ProgramWithDep}
+import com.baeldung.scala.tagless.TaglessFinal.{
+  Product,
+  Program,
+  ProgramWithDep
+}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class TaglessFinalUnitTest extends AnyFlatSpec {

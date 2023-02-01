@@ -33,7 +33,7 @@ object BasicIntersectionType {
   }
 
   def cutPaper(pc: Knife & Scissors) =
-      pc.cut
+    pc.cut
 
   trait OneGenerator:
     def generate: Int = 1
@@ -50,5 +50,5 @@ object BasicIntersectionType {
   }
 
   def generateNumbers(generator: OneGenerator & TwoGenerator) =
-      generator.generate
+    generator.generate
 }

@@ -12,17 +12,35 @@ class MutableCollectionsUnitTest extends AnyFunSuite {
     assert(breakfasts == ArrayBuffer("Sandwich", "Salad", "Bagels"))
 
     breakfasts ++= Seq("PB & J", "Pancake")
-    assert(breakfasts == ArrayBuffer("Sandwich", "Salad", "Bagels", "PB & J", "Pancake"))
+    assert(
+      breakfasts == ArrayBuffer(
+        "Sandwich",
+        "Salad",
+        "Bagels",
+        "PB & J",
+        "Pancake"
+      )
+    )
   }
 
   test("Mutable collection's elements can be updated") {
-    val breakfasts = ArrayBuffer("Sandwich", "Salad", "Bagels", "PB & J", "Pancake")
+    val breakfasts =
+      ArrayBuffer("Sandwich", "Salad", "Bagels", "PB & J", "Pancake")
     breakfasts.update(2, "Steak")
-    assert(breakfasts == ArrayBuffer("Sandwich", "Salad", "Steak", "PB & J", "Pancake"))
+    assert(
+      breakfasts == ArrayBuffer(
+        "Sandwich",
+        "Salad",
+        "Steak",
+        "PB & J",
+        "Pancake"
+      )
+    )
   }
 
   test("Mutable collection elements can be removed") {
-    val breakfasts = ArrayBuffer("Sandwich", "Salad", "Steak", "PB & J", "Pancake")
+    val breakfasts =
+      ArrayBuffer("Sandwich", "Salad", "Steak", "PB & J", "Pancake")
 
     breakfasts -= "PB & J"
     assert(breakfasts == ArrayBuffer("Sandwich", "Salad", "Steak", "Pancake"))

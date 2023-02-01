@@ -1,16 +1,13 @@
 package com.baeldung.scala.introduction
 
-/**
- * Sample Code demonstrating a class.
- *
- * @author Chandra Prakash
- *
- */
-class Employee(val name : String,
-               var salary : Int,
-               annualIncrement : Int = 20) {
+/** Sample Code demonstrating a class.
+  *
+  * @author
+  *   Chandra Prakash
+  */
+class Employee(val name: String, var salary: Int, annualIncrement: Int = 20) {
 
-  def incrementSalary() : Unit = {
+  def incrementSalary(): Unit = {
     salary += annualIncrement
   }
 
@@ -18,10 +15,8 @@ class Employee(val name : String,
     s"Employee(name=$name, salary=$salary)"
 }
 
-/**
- * A Trait which will make the toString return upper case value.
- */
+/** A Trait which will make the toString return upper case value.
+  */
 trait UpperCasePrinter {
   override def toString: String = super.toString.toUpperCase
 }
-

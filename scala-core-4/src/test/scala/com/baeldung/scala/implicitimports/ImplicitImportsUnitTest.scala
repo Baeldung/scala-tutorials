@@ -7,7 +7,7 @@ import org.scalatest.matchers.should.Matchers
 class ImplicitImportsUnitTest extends AnyFlatSpec with Matchers {
 
   "???" should "return exception" in {
-    def notImplemeted:Int => Boolean = ???
+    def notImplemeted: Int => Boolean = ???
     assertThrows[NotImplementedError] {
       notImplemeted
     }

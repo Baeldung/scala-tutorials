@@ -3,12 +3,12 @@ package com.baeldung.scala.higherorder
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-
 class HigherOrderFunctionsExamplesUnitTest {
 
   @Test
   def whenCallingMapWithAnonymousFunction_thenTransformationIsApplied() = {
-    val expected = Seq("sir Alex Ferguson", "sir Bobby Charlton", "sir Frank Lampard")
+    val expected =
+      Seq("sir Alex Ferguson", "sir Bobby Charlton", "sir Frank Lampard")
 
     val names = Seq("Alex Ferguson", "Bobby Charlton", "Frank Lampard")
     val sirNames = names.map(name => "sir " + name)
@@ -18,7 +18,8 @@ class HigherOrderFunctionsExamplesUnitTest {
 
   @Test
   def whenCallingMapWithDefined_thenTransformationIsApplied() = {
-    val expected = Seq("sir Alex Ferguson", "sir Bobby Charlton", "sir Frank Lampard")
+    val expected =
+      Seq("sir Alex Ferguson", "sir Bobby Charlton", "sir Frank Lampard")
 
     val names = Seq("Alex Ferguson", "Bobby Charlton", "Frank Lampard")
 
@@ -62,10 +63,10 @@ class HigherOrderFunctionsExamplesUnitTest {
   def whenCallingOwnHigherOrderFunction_thenProperFunctionIsReturned() = {
     def mathOperation(name: String): (Int, Int) => Int = (x: Int, y: Int) => {
       name match {
-        case "addition" => x + y
+        case "addition"       => x + y
         case "multiplication" => x * y
-        case "division" => x/y
-        case "subtraction" => x - y
+        case "division"       => x / y
+        case "subtraction"    => x - y
       }
     }
 

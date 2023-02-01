@@ -7,17 +7,16 @@ ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
+val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
   "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % Test,
   "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % Test,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test
 )
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
 val zioVersion = "2.0.6"
-
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -51,7 +50,7 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
     name := "scala-core-4",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
-    libraryDependencies += scalaReflection,
+    libraryDependencies += scalaReflection
   )
 
 lazy val scala_core_5 = (project in file("scala-core-5"))
@@ -134,14 +133,15 @@ lazy val scala_core_collections = (project in file("scala-core-collections"))
     name := "scala-core-collections",
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
-    ) ++ scalaTestDeps,
+    ) ++ scalaTestDeps
   )
 
-lazy val scala_core_collections_2 = (project in file("scala-core-collections-2"))
-  .settings(
-    name := "scala-core-collections-2",
-    libraryDependencies ++= scalaTestDeps,
-  )
+lazy val scala_core_collections_2 =
+  (project in file("scala-core-collections-2"))
+    .settings(
+      name := "scala-core-collections-2",
+      libraryDependencies ++= scalaTestDeps
+    )
 
 lazy val scala_test = (project in file("scala-test"))
   .settings(
@@ -156,7 +156,7 @@ lazy val scala_test = (project in file("scala-test"))
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
-  logback,
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
   "com.typesafe.akka" %% "akka-stream" % "2.6.19",
@@ -187,12 +187,14 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .settings(
     name := "scala-akka-2",
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
-      "com.typesafe.akka" %% "akka-http" % "10.2.10",
-      "com.typesafe.akka" %% "akka-http-spray-json" % "10.2.10",
-      "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "4.0.0",
-      "com.typesafe.akka" %% "akka-http-testkit" % "10.2.10",
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
+      "com.typesafe.akka" %% "akka-actor-typed" % "2.7.0",
+      "com.typesafe.akka" %% "akka-stream" % "2.7.0",
+      "com.typesafe.akka" %% "akka-http" % "10.4.0",
+      "com.typesafe.akka" %% "akka-http-spray-json" % "10.4.0",
+      "com.typesafe.akka" %% "akka-http-testkit" % "10.4.0",
+      "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
+      "com.typesafe.akka" %% "akka-persistence-typed" % "2.7.0",
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.7.0" % Test
     ) ++ scalaTestDeps
   )
 val monocleVersion = "2.1.0"
@@ -327,12 +329,20 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       scalaReflection % Provided,
       "org.tpolecat" %% "skunk-core" % "0.3.2",
       sparkSqlDep,
-      sparkCoreDep
+      sparkCoreDep,
+      logback,
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
     ),
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.0",
       "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
+    ),
+    libraryDependencies ++= Seq(
+      "software.amazon.awssdk" % "s3" % "2.19.0",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.368" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
     ),
     scalacOptions += "-Xasync",
     Defaults.itSettings,
@@ -360,7 +370,7 @@ lazy val scala3_lang = (project in file("scala3-lang")).settings(
 
 lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
   libraryDependencies ++= scalaTestDeps
-  )
+)
 
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(

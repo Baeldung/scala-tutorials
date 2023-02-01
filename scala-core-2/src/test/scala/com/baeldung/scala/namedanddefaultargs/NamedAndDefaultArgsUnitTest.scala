@@ -11,13 +11,19 @@ class NamedAndDefaultArgsUnitTest extends AnyWordSpec with Matchers {
       prettyPrint(Array(1, 2, 3), "[", ";", "]") shouldBe "[1;2;3]"
     }
     "work with named args" in {
-      prettyPrint(Array(1, 2, 3), start = "[", separator = ";", end = "]") shouldBe "[1;2;3]"
+      prettyPrint(
+        Array(1, 2, 3),
+        start = "[",
+        separator = ";",
+        end = "]"
+      ) shouldBe "[1;2;3]"
       // this code will not compile
       // prettyPrint(start = "{", separator = ",", end = "}", Array(1, 2, 3))
     }
 
     "work work with class constructors" in {
-      val orderWithNamedAndDefault = new DeliveryOrder(product = "Pho Bo",
+      val orderWithNamedAndDefault = new DeliveryOrder(
+        product = "Pho Bo",
         addressToDeliver = "42 Some Street, suite 24",
         promoCode = Some("SALE42")
       )

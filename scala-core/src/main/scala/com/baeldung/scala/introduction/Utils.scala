@@ -1,11 +1,10 @@
 package com.baeldung.scala.introduction
 
-/**
- * Some utility methods.
- *
- * @author Chandra Prakash
- *
- */
+/** Some utility methods.
+  *
+  * @author
+  *   Chandra Prakash
+  */
 object Utils {
   def average(x: Double, y: Double): Double = (x + y) / 2
 

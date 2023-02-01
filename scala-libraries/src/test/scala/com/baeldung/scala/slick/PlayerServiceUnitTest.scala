@@ -14,10 +14,10 @@ import scala.concurrent.Future
 
 class PlayerServiceUnitTest
   extends AsyncWordSpec
-    with Matchers
-    with ScalaFutures
-    with BeforeAndAfterAll
-    with BeforeAndAfterEach {
+  with Matchers
+  with ScalaFutures
+  with BeforeAndAfterAll
+  with BeforeAndAfterEach {
 
   private val playerTable = TableQuery[PlayerTable]
   lazy val db = Connection.db
@@ -32,7 +32,8 @@ class PlayerServiceUnitTest
 
         // get inserted record from database and check
         val germanPlayersQuery = playerTable.filter(_.country === "Germany")
-        val germanPlayers: Future[Seq[Player]] = db.run(germanPlayersQuery.result)
+        val germanPlayers: Future[Seq[Player]] =
+          db.run(germanPlayersQuery.result)
         germanPlayers map { allPlayers =>
           allPlayers.find(_.name == "Steffi").get shouldEqual player
         }
@@ -51,13 +52,13 @@ class PlayerServiceUnitTest
             playersFromDB should contain allElementsOf (Seq(steffi, sharapova))
             playersFromDB
               .map(_.id)
-              .forall(_ > 0) shouldBe true //verify auto-increment field
+              .forall(_ > 0) shouldBe true // verify auto-increment field
           }
       }
     }
 
     "insert and then update the country field of a player" in {
-      //force insert a record
+      // force insert a record
       val player = Player(500L, "Boris", "Deutschland", None)
       val forceInsertAction = playerTable.forceInsert(player)
       db.run(forceInsertAction).flatMap { insertedResult =>
@@ -67,29 +68,33 @@ class PlayerServiceUnitTest
             .map(_.country)
             .update("Germany")
         db.run(updateCountryAction).flatMap { updateResult =>
-          db.run(playerTable.filter(_.id === 500L).result).map {
-            filterResult =>
-              filterResult.size shouldBe 1
-              filterResult.head.country shouldBe "Germany"
+          db.run(playerTable.filter(_.id === 500L).result).map { filterResult =>
+            filterResult.size shouldBe 1
+            filterResult.head.country shouldBe "Germany"
           }
         }
       }
     }
 
     "update DoB field of a player" in {
-      db.run(playerTable.filter(_.name === "Serena").result) flatMap { foundSerena =>
-        foundSerena should not be empty
+      db.run(playerTable.filter(_.name === "Serena").result) flatMap {
+        foundSerena =>
+          foundSerena should not be empty
 
-        val newDoB = Option(LocalDate.parse("1981-09-26"))
-        db.run(playerTable.filter(_.id === foundSerena.head.id).map(_.dob).update(newDoB)) flatMap {
-          updateResult =>
+          val newDoB = Option(LocalDate.parse("1981-09-26"))
+          db.run(
+            playerTable
+              .filter(_.id === foundSerena.head.id)
+              .map(_.dob)
+              .update(newDoB)
+          ) flatMap { updateResult =>
             updateResult shouldBe 1
 
             db.run(playerTable.result) map { serenasAgain =>
               val serena = serenasAgain.find(_.name == "Serena")
               serena.flatMap(_.dob).get shouldBe newDoB.get
             }
-        }
+          }
       }
     }
 
@@ -120,7 +125,7 @@ class PlayerServiceUnitTest
         combinedAction.transactionally
       } flatMap { _ =>
         db.run(playerTable.result) map { allPlayers =>
-          allPlayers should contain allOf(player1, player2)
+          allPlayers should contain allOf (player1, player2)
           allPlayers.find(_.name == "Federer").map(_.country) should contain(
             "Swiss"
           )
@@ -131,7 +136,7 @@ class PlayerServiceUnitTest
     "rollback the entire transaction if a failure occur" in {
       val steffi = Player(100L, "Steffi", "Germany", None)
       val sharapova = Player(100L, "Sharapova", "Russia", None)
-      //doing force insert to make the second insertion fail
+      // doing force insert to make the second insertion fail
       val insertAction1 = playerTable.forceInsert(steffi)
       val insertAction2 = playerTable.forceInsert(sharapova)
       val transactionAction = insertAction1.andThen(insertAction2)
@@ -142,28 +147,36 @@ class PlayerServiceUnitTest
         ex.getMessage should include("primary key violation")
 
         db.run(playerTable.result) map { allPlayers =>
-          allPlayers should contain noneOf(steffi, sharapova)
+          allPlayers should contain noneOf (steffi, sharapova)
         }
       }
     }
 
     "update multiple records in a single query" in {
-      val updateMultipleAction = playerTable.filter(_.country === "Swiss").map(_.country).update("Switzerland")
+      val updateMultipleAction = playerTable
+        .filter(_.country === "Swiss")
+        .map(_.country)
+        .update("Switzerland")
       val updatedRowsFut = db.run(updateMultipleAction)
       updatedRowsFut flatMap { updatedRows =>
         updatedRows shouldBe 2
 
-        db.run(playerTable.filter(_.country === "Switzerland").result) map { swissPlayers =>
-          swissPlayers.size shouldBe 2
-          swissPlayers
-            .map(_.name) should contain allElementsOf (Seq("Federer", "Hingis"))
+        db.run(playerTable.filter(_.country === "Switzerland").result) map {
+          swissPlayers =>
+            swissPlayers.size shouldBe 2
+            swissPlayers
+              .map(_.name) should contain allElementsOf (Seq(
+              "Federer",
+              "Hingis"
+            ))
         }
       }
     }
   }
 
   "retrieve the records from the database using sql interpolator" in {
-    val selectCountryAction: DBIO[Seq[String]] = sql"""select "name" from "Player" where "country" = 'Spain' """.as[String]
+    val selectCountryAction: DBIO[Seq[String]] =
+      sql"""select "name" from "Player" where "country" = 'Spain' """.as[String]
     db.run(selectCountryAction) map { spainPlayers =>
       spainPlayers.size shouldBe 1
       spainPlayers.head shouldBe "Nadal"
@@ -193,7 +206,7 @@ class PlayerServiceUnitTest
     new FutureOutcome(for {
       _ <- createTableFut
       _ <- clearAll
-      //Insert multiple players together using ++=
+      // Insert multiple players together using ++=
       _ <- db.run(playerTable ++= players)
       testResult <- super.withFixture(test).toFuture
     } yield {

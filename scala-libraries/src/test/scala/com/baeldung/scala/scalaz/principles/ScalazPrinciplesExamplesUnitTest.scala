@@ -16,7 +16,9 @@ class ScalazPrinciplesExamplesUnitTest extends AnyFlatSpec {
   it should "sort custom types" in {
     val wrappedInts = List(IntWrapper(3), IntWrapper(2), IntWrapper(1))
 
-    assertResult(expected = List(IntWrapper(1), IntWrapper(2), IntWrapper(3)))(wrappedInts.sorted)
+    assertResult(expected = List(IntWrapper(1), IntWrapper(2), IntWrapper(3)))(
+      wrappedInts.sorted
+    )
   }
 
   "Doubler" should "work on any supported container type" in {

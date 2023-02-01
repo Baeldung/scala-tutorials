@@ -37,7 +37,7 @@ object ScalazExamples {
       }
   }
 
-  //enum
+  // enum
   case class Priority(num: Int, name: String)
   val HIGH = Priority(3, "HIGH")
   val MEDIUM = Priority(2, "MEDIUM")

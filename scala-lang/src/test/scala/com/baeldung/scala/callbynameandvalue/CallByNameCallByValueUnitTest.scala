@@ -4,9 +4,9 @@ import com.baeldung.scala.callbynameandvalue.CallByNameCallByValue._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-/**
- * @author vid2010
- */
+/** @author
+  *   vid2010
+  */
 class CallByNameCallByValueUnitTest extends AnyFlatSpec with Matchers {
 
   "A call by-value" should "have evaluated before passing an argument" in {
@@ -20,13 +20,13 @@ class CallByNameCallByValueUnitTest extends AnyFlatSpec with Matchers {
 
   "A call by-value" should "have produce StackOverflowError when addFirst is invoked with an argument " +
     "infinite() as a call by-value" in {
-    assertThrows[StackOverflowError] {
-      addFirst(infinite(), 4)
+      assertThrows[StackOverflowError] {
+        addFirst(infinite(), 4)
+      }
     }
-  }
 
   "A call by-name" should "have reduced to final value when addFirst is invoked with an argument infinite() " +
     "as a call by-name" in {
-    assert(addFirst(4, infinite()) == 8)
-  }
+      assert(addFirst(4, infinite()) == 8)
+    }
 }

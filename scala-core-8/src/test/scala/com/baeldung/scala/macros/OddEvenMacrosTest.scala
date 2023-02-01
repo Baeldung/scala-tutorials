@@ -3,7 +3,6 @@ package com.baeldung.scala.macros
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-
 class OddEvenMacrosTest extends AnyWordSpec with Matchers {
 
   "def macros" should {
