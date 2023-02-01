@@ -54,31 +54,31 @@ object Fs2Examples {
     val fs2Path = Path.fromNioPath(java.nio.file.Path.of(path.toURI))
 
     val source: Stream[IO, Byte] =
-        Files[IO].readAll(fs2Path)
+      Files[IO].readAll(fs2Path)
 
     val pipe: Pipe[IO, Byte, Byte] = src =>
-        src
-          .through(text.utf8.decode)
-          .through(text.lines)
-          .flatMap(line => Stream.apply(line.split("\\W+"): _*))
-          .fold(Map.empty[String, Int]) { (count, word) =>
-            count + (word -> (count.getOrElse(word, 0) + 1))
-          }
-          .map(_.foldLeft("") { case (accumulator, (word, count)) =>
-            accumulator + s"$word = $count\n"
-          })
-          .through(text.utf8.encode)
+      src
+        .through(text.utf8.decode)
+        .through(text.lines)
+        .flatMap(line => Stream.apply(line.split("\\W+"): _*))
+        .fold(Map.empty[String, Int]) { (count, word) =>
+          count + (word -> (count.getOrElse(word, 0) + 1))
+        }
+        .map(_.foldLeft("") { case (accumulator, (word, count)) =>
+          accumulator + s"$word = $count\n"
+        })
+        .through(text.utf8.encode)
 
-      val sink: Pipe[IO, Byte, Unit] =
-        Files[IO].writeAll(Path(writeTo))
+    val sink: Pipe[IO, Byte, Unit] =
+      Files[IO].writeAll(Path(writeTo))
 
-      val stream: Stream[IO, Unit] =
-        source
-          .through(pipe)
-          .through(sink)
+    val stream: Stream[IO, Unit] =
+      source
+        .through(pipe)
+        .through(sink)
 
-      stream
-}
+    stream
+  }
 
   // Batching in Fs2
   Stream((1 to 100): _*)
