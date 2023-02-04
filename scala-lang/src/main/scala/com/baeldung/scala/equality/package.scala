@@ -10,7 +10,8 @@ package object equality {
       case _ => false
     }
 
-    override def hashCode(): Int = if (name eq null) age else name.hashCode + 31 * age
+    override def hashCode(): Int =
+      if (name eq null) age else name.hashCode + 31 * age
   }
 
   case class PersonCaseClass(name: String, age: Int)

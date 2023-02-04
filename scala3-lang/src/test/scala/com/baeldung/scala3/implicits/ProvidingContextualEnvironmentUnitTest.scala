@@ -1,13 +1,13 @@
 package com.baeldung.scala3.implicits
 
-import com.baeldung.scala3.implicits.ProvidingContextualEnvironment._
+import com.baeldung.scala3.implicits.ProvidingContextualEnvironment.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
 import java.time.LocalDate
+import scala.concurrent.duration.*
 import scala.concurrent.{Await, ExecutionContext}
 import scala.language.implicitConversions
-import scala.concurrent.duration._
 class ProvidingContextualEnvironmentUnitTest extends AnyWordSpec with Matchers {
 
   "calling square function requiring execution context" should {

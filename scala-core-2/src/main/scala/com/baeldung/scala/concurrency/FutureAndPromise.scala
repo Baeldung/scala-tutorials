@@ -3,7 +3,6 @@ package com.baeldung.scala.concurrency
 import java.math.BigInteger
 import java.net.URL
 import java.security.MessageDigest
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext, Future, Promise}
@@ -34,7 +33,8 @@ object ScalaAndPromise {
   }
 
   def md5hash(str: String): String =
-    new BigInteger(1,
+    new BigInteger(
+      1,
       MessageDigest
         .getInstance("MD5")
         .digest(str.getBytes)
@@ -53,7 +53,7 @@ object ScalaAndPromise {
     } yield User(name, email, hashedPassword, avatar)
 
   def runByPromise[T](block: => T)(implicit ec: ExecutionContext): Future[T] = {
-    val p = Promise[T]
+    val p = Promise[T]()
     ec.execute { () =>
       try {
         p.success(block)

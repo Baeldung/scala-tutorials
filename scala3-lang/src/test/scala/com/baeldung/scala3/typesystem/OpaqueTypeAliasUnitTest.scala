@@ -1,6 +1,6 @@
 package com.baeldung.scala3.typesystem
 
-import com.baeldung.scala3.typesystem.types._
+import com.baeldung.scala3.typesystem.types.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
@@ -10,7 +10,8 @@ class OpaqueTypeAliasUnitTest extends AnyWordSpec with Matchers {
 
   "Opaque type alias test" should {
     "successfully create and get values for opaque types" in {
-      val movie = Movie("Star Trek", Year(2009), RunningTimeInMin(127), NoOfOscarsWon(1))
+      val movie =
+        Movie("Star Trek", Year(2009), RunningTimeInMin(127), NoOfOscarsWon(1))
       movie.name shouldBe "Star Trek"
       movie.year.value shouldBe 2009
       movie.runningTime.value shouldBe 127
@@ -69,7 +70,7 @@ class OpaqueTypeAliasUnitTest extends AnyWordSpec with Matchers {
       netflixReleaseDate shouldBe date
       val releaseDate: ReleaseDate = netflixReleaseDate
       netflixReleaseDate.toStr shouldBe "2021-04-20"
-      //NetflixReleaseDate.safeParse("2021-01-01") -- This will not compile even though NetflixReleaseDate has context bound
+      // NetflixReleaseDate.safeParse("2021-01-01") -- This will not compile even though NetflixReleaseDate has context bound
     }
 
   }

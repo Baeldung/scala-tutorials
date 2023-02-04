@@ -8,6 +8,6 @@ case class Person(name: String, age: Int) extends PersonInterface {
        |  age: $age
        |}
        |""".stripMargin
-  
+
   private val password = "123"
 }

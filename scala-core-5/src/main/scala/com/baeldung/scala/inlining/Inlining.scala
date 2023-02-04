@@ -18,6 +18,8 @@ object Inlining extends App {
   def greetBaeldung6 = veryInformalGreeting("Baeldung"): @inline
   def greetBaeldung7 = veryInformalGreeting("Baeldung"): @noinline
 
-  def greetBaeldung8 = informalGreeting("Baeldung") + informalGreeting("Baeldung"): @noinline
-  def greetBaeldung9 = informalGreeting("Baeldung") + (informalGreeting("Baeldung"): @noinline)
+  def greetBaeldung8 =
+    informalGreeting("Baeldung") + informalGreeting("Baeldung"): @noinline
+  def greetBaeldung9 =
+    informalGreeting("Baeldung") + (informalGreeting("Baeldung"): @noinline)
 }

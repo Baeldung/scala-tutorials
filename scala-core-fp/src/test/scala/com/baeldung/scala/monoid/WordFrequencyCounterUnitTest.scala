@@ -1,8 +1,8 @@
 package com.baeldung.scala.monoid
 
-import org.scalatest.WordSpec
+import org.scalatest.wordspec.AnyWordSpec
 
-class WordFrequencyCounterUnitTest extends WordSpec {
+class WordFrequencyCounterUnitTest extends AnyWordSpec {
 
   object WordFrequencyCounter {
 
@@ -15,11 +15,10 @@ class WordFrequencyCounterUnitTest extends WordSpec {
         .map(x => (x._1 -> x._2.foldLeft(0)((a, c) => c.count + a)))
         .toMap
 
-    
-  def frequency(wordCounts: Map[String, Int]*)(
-      implicit monoid: Monoid[Map[String, Int]]
-  ): Map[String, Int] =
-    wordCounts.foldLeft(monoid.zero)(monoid.op(_, _))
+    def frequency(wordCounts: Map[String, Int]*)(implicit
+      monoid: Monoid[Map[String, Int]]
+    ): Map[String, Int] =
+      wordCounts.foldLeft(monoid.zero)(monoid.op(_, _))
   }
   def show(m: Map[String, Int]): Unit =
     m.keys.foreach(k => println(s"frequency $k: ${m(k)}"))
@@ -48,13 +47,11 @@ class WordFrequencyCounterUnitTest extends WordSpec {
       implicit val monoid: Monoid[Map[String, Int]] = mapMonoid
       val combined = frequency(f1, f2, f3)
 
-      /**
-        * show(f1) // uncomment if you want to see the results
-        * show(f2)
+      /** show(f1) // uncomment if you want to see the results show(f2)
         * show(combined)
         */
-      assert( combined("monoid") === 7 )
-      assert( combined("algebra") === 2)
+      assert(combined("monoid") === 7)
+      assert(combined("algebra") === 2)
       assert(combined("are") === 3)
       assert(combined("an") === 1)
     }

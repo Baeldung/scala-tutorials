@@ -1,8 +1,8 @@
 package com.baeldung.scala.caseobject
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class ObjectExampleUnitTest extends FlatSpec {
+class ObjectExampleUnitTest extends AnyFlatSpec {
 
   "Bicyle" should "be an instance of Serializable" in {
     assert(Bicycle.isInstanceOf[Serializable])

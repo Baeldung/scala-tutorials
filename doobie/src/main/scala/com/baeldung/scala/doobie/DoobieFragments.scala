@@ -1,8 +1,8 @@
 package com.baeldung.scala.doobie
 
 import cats.effect.{IO, IOApp}
-import doobie.{Fragment, Transactor}
 import doobie.implicits._
+import doobie.{Fragment, Transactor}
 
 object DoobieFragments extends IOApp.Simple {
 
@@ -16,15 +16,20 @@ object DoobieFragments extends IOApp.Simple {
 
     import doobie.Fragments._
     val optionalCityNameParam: Option[String] = Some("%Pol%")
-    val optionalCityNameFragment: Option[Fragment] = optionalCityNameParam.map(name => fr"name like $name")
+    val optionalCityNameFragment: Option[Fragment] =
+      optionalCityNameParam.map(name => fr"name like $name")
     val limitFragment = fr"limit 5"
 
     (for {
-      selectedCities <- (fr"select name from city" ++ whereAndOpt(optionalCityNameFragment)).query[String].to[List]
-      selectedLimitedCities <- (fr"select name from city" ++ limitFragment).query[String].to[List]
-    } yield (selectedCities, selectedLimitedCities)).transact(transactor).map { tuple =>
-      println(s"fragment results: $tuple")
+      selectedCities <- (fr"select name from city" ++ whereAndOpt(
+        optionalCityNameFragment
+      )).query[String].to[List]
+      selectedLimitedCities <- (fr"select name from city" ++ limitFragment)
+        .query[String]
+        .to[List]
+    } yield (selectedCities, selectedLimitedCities)).transact(transactor).map {
+      tuple =>
+        println(s"fragment results: $tuple")
     }
   }
 }
-

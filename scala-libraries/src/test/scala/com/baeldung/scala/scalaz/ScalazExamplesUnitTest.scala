@@ -133,18 +133,18 @@ class ScalazExamplesUnitTest {
     val expectedEnum =
       IList(Priority(1, "LOW"), Priority(2, "MEDIUM"), Priority(3, "HIGH"))
     assertEquals(expectedEnum, LOW |-> HIGH)
-    //range to list
+    // range to list
     assertEquals(expectedEnum.toList, (LOW |-> HIGH).toList)
 
-    //pred and succ
+    // pred and succ
     assertEquals(HIGH, LOW.pred)
     assertEquals(HIGH, MEDIUM.succ)
 
-    //step forward and back
+    // step forward and back
     assertEquals(MEDIUM, HIGH -+- 2)
     assertEquals(LOW, LOW --- 3)
 
-    //min and max
+    // min and max
     assertEquals(Some(Priority(3, "HIGH")), Enum[Priority].max)
     assertEquals(Some(Priority(1, "LOW")), Enum[Priority].min)
   }
@@ -381,19 +381,19 @@ class ScalazExamplesUnitTest {
 
   @Test
   def givenValues_thenCreateNonEmptyList: Unit = {
-    //wrap a value in a nel
+    // wrap a value in a nel
     val nel1 = 1.wrapNel
     assertEquals(NonEmptyList(1), nel1)
 
-    //standard apply
+    // standard apply
     val nel2 = NonEmptyList(3, 4)
 
-    //cons approach
+    // cons approach
     val nel3 = 2 <:: nel2
 
     assertEquals(NonEmptyList(2, 3, 4), nel3)
 
-    //append
+    // append
     val nel4 = nel1 append nel3
     assertEquals(NonEmptyList(1, 2, 3, 4), nel4)
   }

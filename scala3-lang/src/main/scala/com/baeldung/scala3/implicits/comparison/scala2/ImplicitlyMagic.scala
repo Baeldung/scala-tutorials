@@ -5,7 +5,7 @@ object PrinterProvider {
 }
 
 class ImplicitlyMagic {
-  import PrinterProvider._
+  import PrinterProvider.*
   def greet(msg: String): Unit = {
     val printer = implicitly[Printer]
     printer.write(msg)

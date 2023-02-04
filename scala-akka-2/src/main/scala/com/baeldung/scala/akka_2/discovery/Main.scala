@@ -24,23 +24,18 @@ object Main extends App {
     // key to uniquely identify Worker actors
     val key: ServiceKey[WorkerMessage] = ServiceKey("Worker")
 
-
     import WorkerMessage._
 
     def apply(id: Int): Behavior[WorkerMessage] = Behaviors.setup { context =>
-
-
       // register actor with receptionist using the key and passing itself
       context.system.receptionist ! Receptionist.Register(key, context.self)
 
-      Behaviors.receiveMessage {
-        case IdentifyYourself =>
-          println(s"Hello, I am worker $id")
-          Behaviors.same
+      Behaviors.receiveMessage { case IdentifyYourself =>
+        println(s"Hello, I am worker $id")
+        Behaviors.same
       }
     }
   }
-
 
   object Master {
     sealed trait MasterMessage
@@ -59,22 +54,21 @@ object Main extends App {
     }
 
     def apply(): Behavior[MasterMessage] = Behaviors.setup { context =>
-
       Behaviors.receiveMessage {
         case StartWorkers(numWorker) =>
-
           // spin up new workers
           for (id <- 0 to numWorker) {
             context.spawn(Worker(id), workerName(id))
           }
           Behaviors.same
 
-
         case IdentifyWorker(id) =>
           implicit val timeout: Timeout = 1.second
           context.ask(
             context.system.receptionist,
-            Find(Worker.key) // ask the receptionist for actors with the key defined by Worker.key
+            Find(
+              Worker.key
+            ) // ask the receptionist for actors with the key defined by Worker.key
           ) {
             case Success(listing: Listing) =>
               val instances = listing.serviceInstances(Worker.key)
@@ -100,7 +94,6 @@ object Main extends App {
     }
   }
 
-
   import Master.MasterMessage
 
   // create the ActorSystem
@@ -112,10 +105,7 @@ object Main extends App {
   // send the Start message to the Master Actor
   master ! MasterMessage.StartWorkers(10)
 
-
-
   // prints "Hello, I am worker 5"
   master ! MasterMessage.IdentifyWorker(5)
 
 }
-

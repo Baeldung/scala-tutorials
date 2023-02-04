@@ -13,20 +13,21 @@ object ColorV2 {
 }
 
 object Inference {
-    def isError: Boolean = true
-    val consoleColor: Product with Serializable with Color = if(isError) Color.Red else Color.Green
+  def isError: Boolean = true
+  val consoleColor: Product with Serializable with Color =
+    if (isError) Color.Red else Color.Green
 
-    val consoleColorV2: Color = if(isError) Color.Red else Color.Green
+  val consoleColorV2: Color = if (isError) Color.Red else Color.Green
 
-    val consoleColorV3 = if(isError) ColorV2.Red else ColorV2.Green
+  val consoleColorV3 = if (isError) ColorV2.Red else ColorV2.Green
 
-    def showColor(data: Data[Color]) = {
-      println("The color is "+data.color)
-    } 
+  def showColor(data: Data[Color]) = {
+    println("The color is " + data.color)
+  }
 
-    val data = Data("This is coloured text", consoleColor)
-    // Note: The below line will show compilation error due to type inference issue
-    // showColor(data)
+  val data = Data("This is coloured text", consoleColor)
+  // Note: The below line will show compilation error due to type inference issue
+  // showColor(data)
 }
 
 case class Data[C <: Color](value: String, color: C)

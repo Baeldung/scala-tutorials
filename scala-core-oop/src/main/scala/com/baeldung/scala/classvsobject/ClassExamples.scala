@@ -51,7 +51,7 @@ object ClassExamples {
   }
 
   class Toyota(transmission: String, brand: String, model: String)
-      extends Car("Toyota", brand, model) {
+    extends Car("Toyota", brand, model) {
     override def start(keyType: String): String = {
       if (isOn) {
         return "Car is already on."

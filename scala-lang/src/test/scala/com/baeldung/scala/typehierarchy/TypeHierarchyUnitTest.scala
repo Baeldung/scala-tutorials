@@ -1,13 +1,14 @@
 package com.baeldung.scala.typehierarchy
 
 import com.baeldung.scala.typehierarchy.TypeHierarchy._
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-/**
- * @author vid2010
- */
+/** @author
+  *   vid2010
+  */
 
-class TypeHierarchyUnitTest extends FlatSpec with Matchers {
+class TypeHierarchyUnitTest extends AnyFlatSpec with Matchers {
 
   "A Any type" should "compatible with any type" in {
     assert(any(1) == "")

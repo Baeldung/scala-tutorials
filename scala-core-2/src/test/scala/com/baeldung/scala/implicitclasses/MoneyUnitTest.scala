@@ -1,8 +1,8 @@
 package com.baeldung.scala.implicitclasses
 
-import org.scalatest.{Matchers, WordSpec}
-
-class MoneyUnitTest extends WordSpec with Matchers {
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+class MoneyUnitTest extends AnyWordSpec with Matchers {
   val amount: Double = 30.5
 
   "MoneySyntax" should {

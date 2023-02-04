@@ -1,6 +1,6 @@
 package com.baeldung.scala3.implicits.comparison.scala2
-import org.scalatest.matchers.should.Matchers
 import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 class ImplicitParameterUnitTest extends AnyFlatSpec with Matchers {
   it should "use the implicit parameter" in {

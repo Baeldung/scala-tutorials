@@ -1,9 +1,9 @@
 package com.baeldung.scala.variance
 
 import com.baeldung.scala.variance.Variance._
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class VarianceUnitTest extends FlatSpec {
+class VarianceUnitTest extends AnyFlatSpec {
 
   "A TestSuite" should "contain both unit and integration tests" in {
     val expected = List(new UnitTest, new IntegrationTest)
@@ -15,7 +15,8 @@ class VarianceUnitTest extends FlatSpec {
   "Asserts on Employee" should "allow to test conditions on Employees and Persons" in {
     val bob = new Employee("Bob", 50000)
     val personAssert = new Assert[Person](p => p.name == "Alice")
-    val employeeAssert = new Assert[Employee](e => e.name == "Bob" && e.salary < 70000)
+    val employeeAssert =
+      new Assert[Employee](e => e.name == "Bob" && e.salary < 70000)
 
     val tester = new AssertsEmployee(List(personAssert, employeeAssert))
 

@@ -4,7 +4,7 @@ object AwardPunishmentDiscipline extends App {
   val john = Parent("John")
   val scarlet = Parent("Scarlet")
   john.punish(john.child)
- 
+
   // Compile time error:
   // john.punish(scarlet.car)
 }

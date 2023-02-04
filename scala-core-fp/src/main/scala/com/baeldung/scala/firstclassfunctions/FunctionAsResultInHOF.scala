@@ -7,12 +7,16 @@ object FunctionAsResultInHOF {
 
   def performMultiplication(x: Int, y: Int): Int = x * y
 
-  def performArithmeticOperation(num1: Int, num2: Int, operation: String): Int = {
+  def performArithmeticOperation(
+    num1: Int,
+    num2: Int,
+    operation: String
+  ): Int = {
     operation match {
-      case "addition" => performAddition(num1, num2)
-      case "subtraction" => performSubtraction(num1, num2)
+      case "addition"       => performAddition(num1, num2)
+      case "subtraction"    => performSubtraction(num1, num2)
       case "multiplication" => performMultiplication(num1, num2)
-      case _ => -1
-     }
+      case _                => -1
+    }
   }
 }

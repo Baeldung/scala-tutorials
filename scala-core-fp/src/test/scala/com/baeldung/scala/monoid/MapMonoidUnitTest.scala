@@ -1,8 +1,9 @@
 package com.baeldung.scala.monoid
 
 import org.scalatest._
+import org.scalatest.wordspec.AnyWordSpec
 
-class MapMonoidUnitTest extends WordSpec {
+class MapMonoidUnitTest extends AnyWordSpec {
 
   "A Monoid type class" should {
     "combine two Lists using ListMonoidInstance" in {
@@ -18,9 +19,8 @@ class MapMonoidUnitTest extends WordSpec {
         Map("four" -> 4, "one-or-ten" -> 9)
       )
 
-      /**
-        * uncomment if you want to see the results
-        * computed.keys.foreach(k => println(s"key: $k, value: ${computed(k)}"))
+      /** uncomment if you want to see the results computed.keys.foreach(k =>
+        * println(s"key: $k, value: ${computed(k)}"))
         */
       val actual =
         Map("one-or-ten" -> 10, "two" -> 2, "three" -> 3, "four" -> 4)

@@ -1,8 +1,8 @@
 package com.baeldung.scala3.intersectiontypes
 
+import com.baeldung.scala3.intersectiontypes.BasicIntersectionType.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
-import com.baeldung.scala3.intersectiontypes.BasicIntersectionType._
 
 class BasicIntersectionTypeUnitTest extends AnyWordSpec with Matchers {
 
@@ -18,7 +18,7 @@ class BasicIntersectionTypeUnitTest extends AnyWordSpec with Matchers {
     }
 
     "make paper cutter work" in {
-       cutPaper(PaperCutter) shouldBe ()
+      cutPaper(PaperCutter) shouldBe ()
     }
   }
 }

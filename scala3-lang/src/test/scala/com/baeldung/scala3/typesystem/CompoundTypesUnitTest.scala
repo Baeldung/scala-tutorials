@@ -1,8 +1,8 @@
 package com.baeldung.scala3.typesystem
 
-import com.baeldung.scala3.typesystem.CompoundTypes.Union._
-import com.baeldung.scala3.typesystem.CompoundTypes.Intersection._
-import com.baeldung.scala3.typesystem.types._
+import com.baeldung.scala3.typesystem.CompoundTypes.Intersection.*
+import com.baeldung.scala3.typesystem.CompoundTypes.Union.*
+import com.baeldung.scala3.typesystem.types.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
@@ -20,7 +20,6 @@ class CompoundTypesUnitTest extends AnyWordSpec with Matchers {
     }
 
   }
-
 
   "shutdown function which require intersection of Show and Closable types" should {
     "shoutdown a res object which is intersection of these two data types" in {

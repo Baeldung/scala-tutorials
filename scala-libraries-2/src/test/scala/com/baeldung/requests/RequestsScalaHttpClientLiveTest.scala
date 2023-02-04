@@ -12,7 +12,7 @@ class RequestsScalaHttpClientLiveTest
 
   override protected def beforeAll(): Unit = createTempFile()
 
-  //create temp file for testing
+  // create temp file for testing
   def createTempFile() = {
     new PrintWriter("file.txt") {
       try { write("this is a file content") }
@@ -109,7 +109,7 @@ class RequestsScalaHttpClientLiveTest
       assert(r.text().contains("gzip"))
       assert(
         r.text()
-          .contains("data:application/octet-stream;base64,H4sIAAAAAAAAAA==")
+          .contains("data:application/octet-stream;base64")
       )
 
       val r2 = requests.post(

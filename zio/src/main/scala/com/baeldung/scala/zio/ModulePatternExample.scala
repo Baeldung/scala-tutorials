@@ -28,7 +28,6 @@ object Logging {
     ZIO.serviceWith[Logging](_.log(line))
 }
 
-
 // Live implementation of Logging service
 class LoggingLive extends Logging {
   override def log(line: String): UIO[Unit] =

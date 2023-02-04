@@ -19,8 +19,8 @@ class MapKeyValue extends AnyWordSpec with Matchers {
 
     "map both keys and values to a new Map" in {
       val m: Map[Int, String] = Map(1 -> "A", 2 -> "BB")
-      val newMap: Map[String, Int] = m map {
-        case (k, v) => (k.toString, v.length)
+      val newMap: Map[String, Int] = m map { case (k, v) =>
+        (k.toString, v.length)
       }
       newMap shouldBe Map("1" -> 1, "2" -> 2)
     }
@@ -36,13 +36,13 @@ class MapKeyValue extends AnyWordSpec with Matchers {
     "map both keys and values to a new Iterable" in {
       val m = Map(1 -> "A", 2 -> "B", 3 -> "C")
 
-      val newIterable: Iterable[String] = m flatMap {
-        case (k, v) => List.fill(k)(v)
+      val newIterable: Iterable[String] = m flatMap { case (k, v) =>
+        List.fill(k)(v)
       }
       newIterable shouldBe Iterable("A", "B", "B", "C", "C", "C")
 
-      val newMap: Map[Int, String] = m flatMap {
-        case (k, v) => (1 to k).map(i => i -> s"$i$v")
+      val newMap: Map[Int, String] = m flatMap { case (k, v) =>
+        (1 to k).map(i => i -> s"$i$v")
       }
       newMap shouldBe Map(1 -> "1C", 2 -> "2C", 3 -> "3C")
     }
@@ -52,8 +52,8 @@ class MapKeyValue extends AnyWordSpec with Matchers {
     "produce a new Map by taking the original keys into account" in {
       val m: Map[Int, Char] = Map(1 -> 'A', 2 -> 'B', 3 -> 'C')
 
-      val newMap: Map[Int, String] = m transform {
-        case (k, v) => s"$k$v"
+      val newMap: Map[Int, String] = m transform { case (k, v) =>
+        s"$k$v"
       }
       newMap shouldBe Map(1 -> "1A", 2 -> "2B", 3 -> "3C")
     }

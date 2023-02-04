@@ -1,12 +1,11 @@
 package com.baedung.scala.collections
 
 import com.baeldung.scala.collections.ParallelCollections._
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class ParallelCollectionTest extends FlatSpec {
+class ParallelCollectionTest extends AnyFlatSpec {
   val ZERO_TO_HUNDRED_SUM = 5050
   val ZERO_TO_HUNDRED_SUM_TIMES2 = 10100
-
 
   "Parallel list of 100 filtered" should "return half size" in {
     assert(parallelFilter.size == 50)

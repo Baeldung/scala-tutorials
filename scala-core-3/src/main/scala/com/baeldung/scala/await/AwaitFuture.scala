@@ -1,16 +1,16 @@
 package com.baeldung.scala.await
 
-import scala.concurrent.{ Await, Future }
-import scala.io.Source
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+import scala.io.Source
 
-object AwaitFuture  {
+object AwaitFuture {
 
-  def fetchDataFromUrl(url : String) : Future[String] = Future {
+  def fetchDataFromUrl(url: String): Future[String] = Future {
     Source.fromURL(url).getLines().mkString
   }
 
-  def fetchDataFrom(url : String, waitTime : Long = 0l) : Future[String] =  Future {
+  def fetchDataFrom(url: String, waitTime: Long = 0L): Future[String] = Future {
     Thread.sleep(waitTime)
     Source.fromURL(url).getLines().mkString
   }

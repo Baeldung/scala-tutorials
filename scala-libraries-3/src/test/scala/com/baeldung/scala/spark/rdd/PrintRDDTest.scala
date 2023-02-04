@@ -2,9 +2,9 @@ package com.baeldung.scala.spark.rdd
 
 import org.apache.spark.sql.SparkSession
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.must.Matchers.{a, convertToAnyMustWrapper}
+import org.scalatest.matchers.must.Matchers
 
-class PrintRDDTest extends AnyFlatSpec {
+class PrintRDDTest extends AnyFlatSpec with Matchers {
   val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
 
   "default rdd" should "have size six" in {

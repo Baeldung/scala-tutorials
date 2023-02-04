@@ -2,8 +2,9 @@ package com.baeldung.scala.catseffects
 
 case class LazyIO[A](runEffect: () => A) {
   def map[B](fn: A => B): LazyIO[B] = LazyIO.io(fn(runEffect()))
-  
-  def flatMap[B](fn: A => LazyIO[B]): LazyIO[B] = LazyIO.io(fn(runEffect()).runEffect())
+
+  def flatMap[B](fn: A => LazyIO[B]): LazyIO[B] =
+    LazyIO.io(fn(runEffect()).runEffect())
 }
 
 object LazyIO {

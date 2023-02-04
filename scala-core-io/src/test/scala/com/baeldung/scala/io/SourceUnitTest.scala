@@ -1,19 +1,23 @@
 package com.baeldung.scala.io
 
-
-import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.io.Source
 
-class SourceUnitTest extends WordSpec with Matchers with BeforeAndAfterAll {
+class SourceUnitTest extends AnyWordSpec with Matchers with BeforeAndAfterAll {
   lazy val sourceFromUrl: Source = Source.fromURL("https://google.com")
-  lazy val sourceFromClassPath: Source = Source.fromResource("com.baeldung.scala.io/file_in_classpath.txt")
+  lazy val sourceFromClassPath: Source =
+    Source.fromResource("com.baeldung.scala.io/file_in_classpath.txt")
   lazy val sourceFromFile: Source = Source.fromFile("./some_text_file")
-  lazy val sourceFromFileWithCustomEncoder: Source = Source.fromFile("./some_text_file", enc = "Cp1252")
+  lazy val sourceFromFileWithCustomEncoder: Source =
+    Source.fromFile("./some_text_file", enc = "Cp1252")
 
   "Source" should {
     "eagerly convert into a string" in {
-      val oneLineSource = Source.fromResource("com.baeldung.scala.io/one_line_string.txt")
+      val oneLineSource =
+        Source.fromResource("com.baeldung.scala.io/one_line_string.txt")
       try {
         oneLineSource.mkString shouldEqual "One line string"
       } finally {
@@ -23,9 +27,12 @@ class SourceUnitTest extends WordSpec with Matchers with BeforeAndAfterAll {
 
     "process data line by line" in {
       // Every line in the test file starts with the 'String' prefix
-      val fourLinesSource = Source.fromResource("com.baeldung.scala.io/four_lines_string.txt")
+      val fourLinesSource =
+        Source.fromResource("com.baeldung.scala.io/four_lines_string.txt")
       try {
-        fourLinesSource.getLines().foreach(line => assert(line.startsWith("String")))
+        fourLinesSource
+          .getLines()
+          .foreach(line => assert(line.startsWith("String")))
       } finally {
         fourLinesSource.close()
       }

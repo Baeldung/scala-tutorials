@@ -2,10 +2,13 @@ package com.baeldung.scala.monocle
 
 import org.scalatest._
 import org.scalatest.Assertions._
-import scala.util.{Success, Failure}
-import OpticsExamples._
 
-class OpticsExamplesUnitTest extends FlatSpec with Matchers {
+import scala.util.{Failure, Success}
+import OpticsExamples._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
+
+class OpticsExamplesUnitTest extends AnyFlatSpec with Matchers {
 
   "OpticExamples" should "update stock without Lenses" in {
     val currentStock = 10

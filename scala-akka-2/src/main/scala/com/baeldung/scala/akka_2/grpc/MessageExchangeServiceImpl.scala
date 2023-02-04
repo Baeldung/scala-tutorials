@@ -1,6 +1,6 @@
 package com.baeldung.scala.akka_2.grpc
-import akka.stream.Materializer
 import akka.NotUsed
+import akka.stream.Materializer
 import akka.stream.scaladsl.{Sink, Source}
 import com.google.protobuf.timestamp.Timestamp
 

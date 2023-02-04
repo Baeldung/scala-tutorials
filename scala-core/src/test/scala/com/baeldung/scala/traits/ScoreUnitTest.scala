@@ -15,10 +15,12 @@ class ScoreUnitTest {
     val studio = "Abbey Studios"
     val score = new Score(composer, engineer, orchestra, mixer, 10, studio)
 
-    assertEquals(score.compose(),
+    assertEquals(
+      score.compose(),
       s"""The score is composed by $composer,
          |Orchestration by $orchestra,
-         |Mixed by $mixer""".stripMargin)
+         |Mixed by $mixer""".stripMargin
+    )
   }
 
   @Test
@@ -68,7 +70,8 @@ class ScoreUnitTest {
     val orchestra = "Berlin Philharmonic"
     val mixer = "Dave Stewart"
     val studio = "Abbey Studios"
-    val score = new Score(composer, engineer, orchestra, mixer, 10, studio) with Vocals
+    val score = new Score(composer, engineer, orchestra, mixer, 10, studio)
+      with Vocals
 
     assertEquals(score.sing, "Vocals mixin")
   }

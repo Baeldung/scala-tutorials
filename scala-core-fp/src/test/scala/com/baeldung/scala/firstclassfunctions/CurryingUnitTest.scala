@@ -12,7 +12,8 @@ class CurryingUnitTest extends AnyFlatSpec with Matchers {
 
   "Currying" should "perform multiplication using special curried function" in {
     val multiplicationResult = Currying.multiplication(3, 5)
-    val conciseCurriedMultiplicationResult = Currying.conciseCurriedMultiplication(3)(5)
+    val conciseCurriedMultiplicationResult =
+      Currying.conciseCurriedMultiplication(3)(5)
     assert(multiplicationResult == conciseCurriedMultiplicationResult)
   }
 

@@ -1,9 +1,8 @@
 package com.baeldung.scala.assertvsrequire
-import com.baeldung.scala.assertvsrequire.AssertUsage
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-import org.scalatest.{FlatSpec, Matchers}
-
-class AssertUsageUnitTest extends FlatSpec with Matchers {
+class AssertUsageUnitTest extends AnyFlatSpec with Matchers {
 
   "getSquareOfNumber" should "be able to calculate square of an integer without any error" in {
     noException should be thrownBy AssertUsage.getSquareOfNumber(4)

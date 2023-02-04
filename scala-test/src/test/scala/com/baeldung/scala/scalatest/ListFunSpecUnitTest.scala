@@ -10,7 +10,9 @@ class ListFunSpecUnitTest extends AnyFunSpec {
         assert(List.empty.size == 0)
       }
 
-      it("should throw an IndexOutOfBoundsException when to access an element") {
+      it(
+        "should throw an IndexOutOfBoundsException when to access an element"
+      ) {
         val emptyList = List()
         assertThrows[IndexOutOfBoundsException] {
           emptyList(1)

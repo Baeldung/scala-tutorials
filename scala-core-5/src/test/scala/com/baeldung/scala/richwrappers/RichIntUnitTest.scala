@@ -1,8 +1,9 @@
 package com.baeldung.scala.richwrappers
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class RichIntUnitTest extends WordSpec with Matchers {
+class RichIntUnitTest extends AnyWordSpec with Matchers {
 
   import RichIntImplicits._
 

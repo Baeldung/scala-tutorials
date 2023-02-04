@@ -5,7 +5,10 @@ object HandlingWithOption {
     Option(LegacyService.authenticate(user))
   }
 
-  def getResourceOptional(resourceId: String, session: Session): Option[Resource] = {
+  def getResourceOptional(
+    resourceId: String,
+    session: Session
+  ): Option[Resource] = {
     Option(LegacyService.getResource(resourceId, session))
   }
 }

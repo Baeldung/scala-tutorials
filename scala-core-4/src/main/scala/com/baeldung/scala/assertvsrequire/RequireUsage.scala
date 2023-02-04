@@ -9,10 +9,13 @@ object RequireUsage extends App {
   issueDrivingLicense("Darwin", 38) // prints "Issued Driving License to Darwin"
 
   try {
-    issueDrivingLicense("Jr. Darwin", 5) // prints "Failed in require precondition"
+    issueDrivingLicense(
+      "Jr. Darwin",
+      5
+    ) // prints "Failed in require precondition"
   } catch {
     case e: IllegalArgumentException =>
-      println("Failed in require precondition")
+      println("Failed in require precondition-" + e.getMessage)
   }
 
 }

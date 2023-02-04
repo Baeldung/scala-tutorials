@@ -8,7 +8,9 @@ object SequenceApp extends IOApp {
 
   val tasks: List[IO[Int]] = (1 to 1000).map(IO.pure).toList
   val sequenceAllTasks: IO[List[Int]] = tasks.sequence
-  val printTaskSequence: IO[Unit] = sequenceAllTasks.map(_.mkString(", ")).flatMap(putStr)
-  
-  override def run(args: List[String]): IO[ExitCode] = sequenceAllTasks.as(ExitCode.Success)
+  val printTaskSequence: IO[Unit] =
+    sequenceAllTasks.map(_.mkString(", ")).flatMap(putStr)
+
+  override def run(args: List[String]): IO[ExitCode] =
+    sequenceAllTasks.as(ExitCode.Success)
 }

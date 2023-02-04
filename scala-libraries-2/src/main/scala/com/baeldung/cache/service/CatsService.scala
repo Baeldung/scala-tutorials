@@ -5,7 +5,6 @@ import com.google.common.cache.CacheBuilder
 import scalacache._
 import scalacache.memoization._
 import scalacache.guava.GuavaCache
-import scala.concurrent.duration._
 
 object GuavaCacheCatsConfig {
   val underlyingGuavaCacheCats =

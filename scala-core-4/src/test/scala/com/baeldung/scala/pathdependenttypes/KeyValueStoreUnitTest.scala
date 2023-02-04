@@ -1,8 +1,9 @@
 package com.baeldung.scala.pathdependenttypes
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class KeyValueStoreUnitTest extends FlatSpec with Matchers {
+class KeyValueStoreUnitTest extends AnyFlatSpec with Matchers {
 
   "KeyValueStore" should "be able to store typed key with specify the type of the value of that key" in {
     val db = Database()
