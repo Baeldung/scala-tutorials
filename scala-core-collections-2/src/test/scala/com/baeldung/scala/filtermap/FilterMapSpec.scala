@@ -6,8 +6,8 @@ import org.scalatest.prop.TableDrivenPropertyChecks
 import FilterMap._
 
 class FilterMapSpec extends AnyFlatSpec with Matchers with TableDrivenPropertyChecks {
-  "xmen and xmen2" should "be a Map of Rank and Option[String]" in {
-    Array(xmen, xmen2).foreach(_ shouldBe an[Map[Rank, Option[String]]])
+  "xmen" should "be a Map of Rank and Option[String]" in {
+    xmen shouldBe an[Map[Rank, Option[String]]]
   }
   "filterMap, filterNotMap, collectMap, forMap, filterKeysMap, filterKeysSet and withFilterMap on xmen" should "not include None values" in {
     val filteredMapTable = Table(
