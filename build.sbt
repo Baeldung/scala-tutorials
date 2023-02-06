@@ -346,7 +346,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.19.15",
+      "software.amazon.awssdk" % "s3" % "2.19.31",
       "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     scalacOptions += "-Xasync",
