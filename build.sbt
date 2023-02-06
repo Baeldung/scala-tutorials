@@ -6,6 +6,7 @@ ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.5" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
 
@@ -201,7 +202,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
-val fs2Version = "2.5-15-e328d68"
+val fs2Version = "3.5.0"
 val AkkaVersion = "2.6.12"
 val reactiveMongo = "1.0.10"
 
@@ -226,7 +227,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       logback % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion
+      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
+      catEffectTest,
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
     )
   )
 
