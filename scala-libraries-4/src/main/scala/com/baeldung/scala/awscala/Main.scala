@@ -20,13 +20,6 @@ object Main extends App {
     val s3 = S3Client
       .builder()
       .region(Region.US_WEST_1)
-      .forcePathStyle(true)
-      .endpointOverride(new URI("http://localhost:4566"))
-      .credentialsProvider(
-        StaticCredentialsProvider.create(
-          AwsBasicCredentials.create("accessKeyId", "secretAccessKey")
-        )
-      )
       .build()
 
     Try {
