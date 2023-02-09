@@ -8,3 +8,4 @@ This module contains articles about Scala's core features
 - [Introduction to Strings in Scala](https://www.baeldung.com/scala/strings-intro)
 - [String Comparison in Scala](https://www.baeldung.com/scala/string-comparison)
 - [Convert a String to Camel Case in Scala](https://www.baeldung.com/scala/string-to-camel-case)
+- [Convert Byte Array to String in Scala](https://www.baeldung.com/scala/convert-byte-array-to-string)
