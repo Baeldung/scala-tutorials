@@ -6,6 +6,3 @@ import org.junit.runners.Suite
 @RunWith(classOf[Suite])
 @Suite.SuiteClasses(Array(classOf[IntJunitTests], classOf[StringJunitTests]))
 class TypesTestSuite
-
-
-

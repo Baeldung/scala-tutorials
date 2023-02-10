@@ -40,7 +40,7 @@ object Protocol {
     protocol.toLowerCase match {
       case "http"  => Http
       case "https" => Https
-      case any     => throw new RuntimeException(s"`$any` is not a valid protocol")
+      case any => throw new RuntimeException(s"`$any` is not a valid protocol")
     }
   }
 }
@@ -61,8 +61,7 @@ object KafkaConfig {
     ConfigDef.need[String]("bootstrap-server"),
     ConfigDef.need[String]("protocol"),
     ConfigDef.need[FiniteDuration]("timeout")
-  ).mapN {
-    case (port, server, protocol, timeout) =>
-      KafkaConfig(port, server, Protocol.resolve(protocol), timeout)
+  ).mapN { case (port, server, protocol, timeout) =>
+    KafkaConfig(port, server, Protocol.resolve(protocol), timeout)
   }
 }

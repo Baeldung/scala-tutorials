@@ -1,9 +1,13 @@
 package com.baeldung.scala.tagless
 
-import com.baeldung.scala.tagless.TaglessFinal.{Product, Program, ProgramWithDep}
-import org.scalatest.FlatSpec
+import com.baeldung.scala.tagless.TaglessFinal.{
+  Product,
+  Program,
+  ProgramWithDep
+}
+import org.scalatest.flatspec.AnyFlatSpec
 
-class TaglessFinalUnitTest extends FlatSpec {
+class TaglessFinalUnitTest extends AnyFlatSpec {
 
   "Program.createAndAddToCart" should "create a cart and add a new product using the implicit object resolution" in {
     import com.baeldung.scala.tagless.TaglessFinal.ShoppingCarts._

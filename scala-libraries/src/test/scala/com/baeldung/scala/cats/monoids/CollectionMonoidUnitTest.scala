@@ -6,7 +6,8 @@ import org.scalatest.matchers.should.Matchers
 
 class CollectionMonoidUnitTest extends AnyFlatSpec with Matchers {
   "CollectionMonoid" should "combine all strings" in {
-    val sequenceOfStrings: Seq[String] = Seq("Welcome", "To", "The", "World", "Of", "Programming")
+    val sequenceOfStrings: Seq[String] =
+      Seq("Welcome", "To", "The", "World", "Of", "Programming")
     val finalString = "WelcomeToTheWorldOfProgramming"
     assert(CollectionMonoid.combineAll(sequenceOfStrings) == finalString)
   }

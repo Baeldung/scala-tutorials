@@ -8,7 +8,7 @@ object UnderscoreUsages {
     price match {
       case 130 => "Buy"
       case 150 => "Sell"
-      case _ => "Need approval"
+      case _   => "Need approval"
     }
   }
 
@@ -40,7 +40,8 @@ object UnderscoreUsages {
   }
 
   object SeqContainer extends ObjectContainer[Seq] {
-    override def checkIfEmpty(collection: Seq[_]): Boolean = !collection.nonEmpty
+    override def checkIfEmpty(collection: Seq[_]): Boolean =
+      !collection.nonEmpty
   }
 
 }

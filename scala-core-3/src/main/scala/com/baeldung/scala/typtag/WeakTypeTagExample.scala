@@ -3,7 +3,6 @@ package com.baeldung.scala.typtag
 import scala.reflect.runtime.universe
 import scala.reflect.runtime.universe._
 
-
 object WeakTypeTagExample {
 
   trait Foo {

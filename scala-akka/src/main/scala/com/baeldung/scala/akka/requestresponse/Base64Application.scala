@@ -1,13 +1,15 @@
 package com.baeldung.scala.akka.requestresponse
 
-import java.nio.charset.StandardCharsets
-import java.util.Base64
-
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.{ActorRef, Behavior}
 import akka.util.Timeout
-import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{ToEncode, Encoded, Request}
+import com.baeldung.scala.akka.requestresponse.Base64Application.Base64Encoder.{
+  Encoded,
+  ToEncode
+}
 
+import java.nio.charset.StandardCharsets
+import java.util.Base64
 import scala.concurrent.duration.DurationInt
 import scala.util.{Failure, Success}
 
@@ -15,26 +17,27 @@ object Base64Application {
 
   object Base64Encoder {
     sealed trait Request
-    final case class ToEncode(payload: String, replyTo: ActorRef[Encoded]) extends Request
+    final case class ToEncode(payload: String, replyTo: ActorRef[Encoded])
+      extends Request
     sealed trait Response
     final case class Encoded(payload: String) extends Response
 
     def apply(): Behavior[ToEncode] =
-      Behaviors.receiveMessage {
-        case ToEncode(payload, replyTo) =>
-          val encodedPayload = Base64.getEncoder.encode(payload.getBytes(StandardCharsets.UTF_8))
-          replyTo ! Encoded(encodedPayload.map(_.toChar).mkString)
-          Behaviors.same
-    }
+      Behaviors.receiveMessage { case ToEncode(payload, replyTo) =>
+        val encodedPayload =
+          Base64.getEncoder.encode(payload.getBytes(StandardCharsets.UTF_8))
+        replyTo ! Encoded(encodedPayload.map(_.toChar).mkString)
+        Behaviors.same
+      }
   }
 
   object NaiveEncoderClient {
     def apply(encoder: ActorRef[ToEncode]): Behavior[Encoded] =
       Behaviors.setup { context =>
         encoder ! ToEncode("The answer is 42", context.self)
-        Behaviors.receiveMessage {
-          case Encoded(payload) => context.log.info(s"The encoded payload is $payload")
-            Behaviors.empty
+        Behaviors.receiveMessage { case Encoded(payload) =>
+          context.log.info(s"The encoded payload is $payload")
+          Behaviors.empty
         }
       }
   }
@@ -42,7 +45,9 @@ object Base64Application {
   object EncoderClient {
     sealed trait Command
     final case class KeepASecret(secret: String) extends Command
-    private[requestresponse] final case class WrappedEncoderResponse(response: Encoded) extends Command
+    private[requestresponse] final case class WrappedEncoderResponse(
+      response: Encoded
+    ) extends Command
 
     def apply(encoder: ActorRef[ToEncode]): Behavior[Command] =
       Behaviors.setup { context =>
@@ -53,7 +58,9 @@ object Base64Application {
             encoder ! ToEncode(secret, encoderResponseMapper)
             Behaviors.same
           case WrappedEncoderResponse(response) =>
-            context.log.info(s"I will keep a secret for you: ${response.payload}")
+            context.log.info(
+              s"I will keep a secret for you: ${response.payload}"
+            )
             Behaviors.same
         }
       }
@@ -61,9 +68,15 @@ object Base64Application {
 
   object APIGateway {
     sealed trait Command
-    final case class PleaseEncode(payload: String, replyTo: ActorRef[GentlyEncoded]) extends Command
+    final case class PleaseEncode(
+      payload: String,
+      replyTo: ActorRef[GentlyEncoded]
+    ) extends Command
     final case class GentlyEncoded(encodedPayload: String)
-    private case class AdaptedResponse(payload: String, replyTo: ActorRef[GentlyEncoded]) extends Command
+    private case class AdaptedResponse(
+      payload: String,
+      replyTo: ActorRef[GentlyEncoded]
+    ) extends Command
     private case class AdaptedErrorResponse(error: String) extends Command
 
     def apply(encoder: ActorRef[ToEncode]): Behavior[Command] =
@@ -71,9 +84,14 @@ object Base64Application {
         implicit val timeout: Timeout = 5.seconds
         Behaviors.receiveMessage {
           case PleaseEncode(payload, replyTo) =>
-            context.ask(encoder, (ref: ActorRef[Encoded]) => ToEncode(payload, ref)) {
-              case Success(Encoded(encodedPayload)) => AdaptedResponse(encodedPayload, replyTo)
-              case Failure(exception) => AdaptedErrorResponse(exception.getMessage)
+            context.ask(
+              encoder,
+              (ref: ActorRef[Encoded]) => ToEncode(payload, ref)
+            ) {
+              case Success(Encoded(encodedPayload)) =>
+                AdaptedResponse(encodedPayload, replyTo)
+              case Failure(exception) =>
+                AdaptedErrorResponse(exception.getMessage)
             }
             Behaviors.same
           case AdaptedResponse(encoded, ref) =>

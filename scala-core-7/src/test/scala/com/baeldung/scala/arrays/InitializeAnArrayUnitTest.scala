@@ -1,8 +1,9 @@
 package com.baeldung.scala.arrays
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class InitializeAnArrayUnitTest extends FlatSpec with Matchers {
+class InitializeAnArrayUnitTest extends AnyFlatSpec with Matchers {
 
   "new keyword" should "initialize an array of specified size and type" in {
     var array = new Array[Int](4)
@@ -16,14 +17,14 @@ class InitializeAnArrayUnitTest extends FlatSpec with Matchers {
 
   "passing values to the array constructor" should "initialize an array of specific size and type" in {
     var array = Array("This", "is", "a", "string", "array")
-    
+
     array(0) should be("This")
     array.length should be(5)
   }
 
   "Array.fill" should "initialize an array of specified size and type" in {
     var array = Array.fill(4) { math.random() }
-    
+
     array.length should be(4)
   }
 

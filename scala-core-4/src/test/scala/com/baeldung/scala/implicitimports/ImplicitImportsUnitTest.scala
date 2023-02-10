@@ -1,13 +1,13 @@
 package com.baeldung.scala.implicitimports
 
-import org.scalatest.{FlatSpec, Matchers}
-import org.scalatest.exceptions.{TestFailedException, TestCanceledException}
-import scala.util.{Failure, Success}
+import org.scalatest.exceptions.{TestCanceledException, TestFailedException}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ImplicitImportsUnitTest extends FlatSpec with Matchers {
+class ImplicitImportsUnitTest extends AnyFlatSpec with Matchers {
 
   "???" should "return exception" in {
-    def notImplemeted:Int => Boolean = ???
+    def notImplemeted: Int => Boolean = ???
     assertThrows[NotImplementedError] {
       notImplemeted
     }

@@ -19,7 +19,10 @@ class DateParser {
     }
   }
 
-  def regexParse(regex: Regex, dateString: String): Option[GregorianCalendar] = {
+  def regexParse(
+    regex: Regex,
+    dateString: String
+  ): Option[GregorianCalendar] = {
     val groupsIteratorOption = Try(
       regex.findAllIn(dateString).matchData
     ).toOption

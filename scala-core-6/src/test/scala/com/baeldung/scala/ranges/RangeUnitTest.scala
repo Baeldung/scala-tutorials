@@ -1,12 +1,13 @@
 package com.baeldung.scala.ranges
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class RangeUnitTest extends WordSpec with Matchers {
+class RangeUnitTest extends AnyWordSpec with Matchers {
 
   "Inclusive Range" should {
     "include both start and end of a range" in {
-      val rangeIncl = Range.inclusive(1,10)
+      val rangeIncl = Range.inclusive(1, 10)
       rangeIncl.size shouldBe 10
       rangeIncl.head shouldBe 1
       rangeIncl.last shouldBe 10
@@ -25,7 +26,7 @@ class RangeUnitTest extends WordSpec with Matchers {
 
   "Range" should {
     "create an exclusive range" in {
-      val rangeExcl = Range(1,10)
+      val rangeExcl = Range(1, 10)
       rangeExcl.size shouldBe 9
       rangeExcl.head shouldBe 1
       rangeExcl.last shouldBe 9
@@ -44,17 +45,17 @@ class RangeUnitTest extends WordSpec with Matchers {
   it should {
     "create a range with step value 2" in {
       val rangeStepOpt1 = 1 to 10 by 3
-      rangeStepOpt1.toList should contain allElementsOf List(1,4,7,10)
+      rangeStepOpt1.toList should contain allElementsOf List(1, 4, 7, 10)
 
-      val rangeStepOpt2 = Range.inclusive(1,10,3)
-      rangeStepOpt2.toList should contain allElementsOf List(1,4,7,10)
+      val rangeStepOpt2 = Range.inclusive(1, 10, 3)
+      rangeStepOpt2.toList should contain allElementsOf List(1, 4, 7, 10)
     }
   }
 
   it should {
     "create a range with odd numbers" in {
       val rangeOdd = 1 to 10 by 2
-      rangeOdd.toList should contain allElementsOf List(1,3,5,7,9)
+      rangeOdd.toList should contain allElementsOf List(1, 3, 5, 7, 9)
     }
   }
 
@@ -69,14 +70,15 @@ class RangeUnitTest extends WordSpec with Matchers {
   it should {
     "create a negative number range" in {
       val negativeRange = -1 to -5 by -1
-      negativeRange.toList should contain allElementsOf List(-1,-2,-3,-4,-5)
+      negativeRange.toList should contain allElementsOf List(-1, -2, -3, -4, -5)
     }
   }
 
   it should {
     "create a range of decimal numbers" in {
       val decimalRange = BigDecimal(0.1) to BigDecimal(0.5) by 0.1
-      decimalRange.toList should contain allElementsOf List(0.1d, 0.2d, 0.3d, 0.4d, 0.5d)
+      decimalRange.toList should contain allElementsOf List(0.1d, 0.2d, 0.3d,
+        0.4d, 0.5d)
     }
   }
 

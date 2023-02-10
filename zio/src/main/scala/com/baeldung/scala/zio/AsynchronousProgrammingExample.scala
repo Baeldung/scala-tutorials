@@ -10,7 +10,6 @@ object LegacyAPI {
   def login(onSuccess: User => Unit, onFailure: AuthError => Unit): Unit = ???
 }
 
-
 object AsynchronousAPI {
   val login: ZIO[Any, AuthError, User] =
     ZIO.async[Any, AuthError, User] { callback =>

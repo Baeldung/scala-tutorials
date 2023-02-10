@@ -15,7 +15,8 @@ class GivensUsingClauseUnitTest extends AnyWordSpec with Matchers {
         Item("Pizza", 5),
         Item("Burger", 3)
       )
-      List(Item("Coke",1.0), Item("Burger",3.0)) shouldEqual UsingClause.listItems(shoppingCart)
+      List(Item("Coke", 1.0), Item("Burger", 3.0)) shouldEqual UsingClause
+        .listItems(shoppingCart)
     }
   }
 }

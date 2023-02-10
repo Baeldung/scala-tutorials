@@ -1,7 +1,8 @@
 package com.baeldung.scala.typemembersalias
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class RepeatUnitTest extends FlatSpec with Matchers {
+class RepeatUnitTest extends AnyFlatSpec with Matchers {
   "Classes that extend Repeat" should "be able to do integer repetition" in {
     IntegerRepeat(3, 5) shouldEqual 33333
     IntegerRepeat(10, 3) shouldEqual 101010

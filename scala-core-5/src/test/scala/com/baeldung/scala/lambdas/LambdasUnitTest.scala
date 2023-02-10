@@ -1,8 +1,9 @@
 package com.baeldung.scala.lambdas
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class LambdasUnitTest extends WordSpec with Matchers {
+class LambdasUnitTest extends AnyWordSpec with Matchers {
 
   "A lambda" should {
     "multiply a number by two" in {
@@ -43,7 +44,7 @@ class LambdasUnitTest extends WordSpec with Matchers {
     "modify closed local variables" in {
       var count = 0
       val ints = List(1, 2, 3, 4)
-      val doubled = ints.map{ i =>
+      val doubled = ints.map { i =>
         count = count + 1
         i * 2
       }

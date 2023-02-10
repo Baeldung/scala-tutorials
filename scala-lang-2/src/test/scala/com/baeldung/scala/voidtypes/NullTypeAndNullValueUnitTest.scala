@@ -1,7 +1,6 @@
 package com.baeldung.scala.voidtypes
 import org.scalatest.funsuite.AnyFunSuite
 
-
 class NullTypeAndNullValueUnitTest extends AnyFunSuite {
 
   test("Instance of Null type ") {

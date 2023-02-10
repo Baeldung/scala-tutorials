@@ -1,7 +1,6 @@
 package com.baeldung.scala.futures
 
 import java.util.concurrent._
-
 import scala.concurrent.duration.{Duration, FiniteDuration}
 import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
@@ -76,7 +75,7 @@ object Futures extends App {
 
     def printResult[A](result: Try[A]): Unit = result match {
       case Failure(exception) => println("Failed with: " + exception.getMessage)
-      case Success(number) => println("Succeed with: " + number)
+      case Success(number)    => println("Succeed with: " + number)
     }
 
     numberF.onComplete(printResult)
@@ -131,19 +130,20 @@ object Futures extends App {
     )
 
     val f = value.transformWith {
-      case Success(value) => Future.successful(s"Successfully computed the $value")
+      case Success(value) =>
+        Future.successful(s"Successfully computed the $value")
       case Failure(cause) => Future.failed(new IllegalStateException(cause))
     }
 
-    val v = Future.successful(42).andThen {
-      case Success(v) => println(s"The answer is $v")
+    val v = Future.successful(42).andThen { case Success(v) =>
+      println(s"The answer is $v")
     }
 
-    val g = Future.successful(42).andThen {
-      case Success(v) => println(s"The answer is $v")
+    val g = Future.successful(42).andThen { case Success(v) =>
+      println(s"The answer is $v")
     } andThen {
       case Success(_) => // send HTTP request to signal success
-      case Failure(_) =>  // send HTTP request to signal failure
+      case Failure(_) => // send HTTP request to signal failure
     }
 
     g.onComplete { v =>

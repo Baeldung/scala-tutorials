@@ -1,7 +1,6 @@
 package com.baeldung.scala.pathdependenttypes
 
 import java.nio.ByteBuffer
-
 import scala.collection.mutable
 
 abstract class Key(val name: String) {
@@ -9,17 +8,25 @@ abstract class Key(val name: String) {
 }
 
 trait Operations {
-  def set(key: Key)(v: key.ValueType)(implicit enc: Encoder[key.ValueType]): Unit
-  def get(key: Key)(implicit decoder: Decoder[key.ValueType]): Option[key.ValueType]
+  def set(key: Key)(v: key.ValueType)(implicit
+    enc: Encoder[key.ValueType]
+  ): Unit
+  def get(key: Key)(implicit
+    decoder: Decoder[key.ValueType]
+  ): Option[key.ValueType]
 }
 
 case class Database() extends Operations {
   private val db = mutable.Map.empty[String, Array[Byte]]
 
-  def set(key: Key)(value: key.ValueType)(implicit enc: Encoder[key.ValueType]): Unit =
+  def set(key: Key)(value: key.ValueType)(implicit
+    enc: Encoder[key.ValueType]
+  ): Unit =
     db.update(key.name, enc.encode(value))
 
-  def get(key: Key)(implicit decoder: Decoder[key.ValueType]): Option[key.ValueType] = {
+  def get(
+    key: Key
+  )(implicit decoder: Decoder[key.ValueType]): Option[key.ValueType] = {
     db.get(key.name).map(x => decoder.encode(x))
   }
 

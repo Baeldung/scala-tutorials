@@ -25,13 +25,16 @@ object SecondObj {
 
 object Deadlock extends App {
   def run = {
-    val result = Future.sequence(Seq(
-      Future {
-        FirstObj.start
-      },
-      Future {
-        SecondObj.initialState
-      }))
+    val result = Future.sequence(
+      Seq(
+        Future {
+          FirstObj.start
+        },
+        Future {
+          SecondObj.initialState
+        }
+      )
+    )
     Await.result(result, 10.second)
   }
 
@@ -48,13 +51,16 @@ object LazyValStore {
 
 object SequentialLazyVals extends App {
   def run = {
-    val futures = Future.sequence(Seq(
-      Future {
-        LazyValStore.squareOf5
-      },
-      Future {
-        LazyValStore.squareOf6
-      }))
+    val futures = Future.sequence(
+      Seq(
+        Future {
+          LazyValStore.squareOf5
+        },
+        Future {
+          LazyValStore.squareOf6
+        }
+      )
+    )
     Await.result(futures, 5.second)
   }
 

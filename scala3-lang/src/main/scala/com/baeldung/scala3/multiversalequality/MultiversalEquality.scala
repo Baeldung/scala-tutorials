@@ -1,7 +1,7 @@
 package com.baeldung.scala3.multiversalequality
 import scala.language.strictEquality
 
-object MultiversalEquality extends App{
+object MultiversalEquality extends App {
   case class Dog(name: String)
   val rover = Dog("Rover")
   val fido = Dog("Fido")

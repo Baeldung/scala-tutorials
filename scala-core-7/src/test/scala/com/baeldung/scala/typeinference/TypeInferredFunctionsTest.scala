@@ -1,8 +1,9 @@
 package com.baeldung.scala.typeinference
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class TypeInferredFunctionsTest extends WordSpec with Matchers {
+class TypeInferredFunctionsTest extends AnyWordSpec with Matchers {
   "type inference for functions" should {
     import com.baeldung.scala.typeinference.TypeInferredFunctions._
     "An integer number given as input to the function squareInt should calculate its square value, and its return type is inferred as Integer type" in {

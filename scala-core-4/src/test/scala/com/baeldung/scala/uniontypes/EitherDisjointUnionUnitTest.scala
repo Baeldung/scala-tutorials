@@ -1,8 +1,9 @@
 package com.baeldung.scala.uniontypes
-import org.scalatest.{Matchers, FlatSpec}
 import com.baeldung.scala.uniontypes.EitherDisjointUnion._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class EitherDisjointUnionUnitTest extends FlatSpec with Matchers {
+class EitherDisjointUnionUnitTest extends AnyFlatSpec with Matchers {
   "isIntOrString" should "be able to take an integer parameter" in {
     isIntOrString(Left(10)) shouldEqual "10 is an Integer"
   }

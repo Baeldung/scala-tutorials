@@ -8,6 +8,6 @@ object Configs {
   implicit val actorSystem = ActorSystem("Alpakka")
   implicit val materializer = ActorMaterializer()
 
-  val filePath    = "vehicle_data.log"
+  val filePath = "vehicle_data.log"
 
 }

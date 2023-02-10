@@ -1,8 +1,8 @@
 package com.baeldung.scala.partialfunctions
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class SquareRootUnitTest extends FlatSpec {
+class SquareRootUnitTest extends AnyFlatSpec {
 
   "SquareRoot" should "return the correct value for positive double" in {
     assert(SquareRoot.squareRoot(4.0) == 2.0)

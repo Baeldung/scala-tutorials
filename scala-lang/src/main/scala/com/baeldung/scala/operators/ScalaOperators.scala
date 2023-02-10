@@ -1,8 +1,7 @@
 package com.baeldung.scala.operators
 
-/**
- * Code examples for Scala operators
- */
+/** Code examples for Scala operators
+  */
 object ScalaOperators {
 
   // Operator & dot notation
@@ -14,7 +13,7 @@ object ScalaOperators {
   assert(char == 'B')
 
   assert("Baeldung".replace('g', 'G') == "BaeldunG")
-  val str: String = "Baeldung" replace('g', 'G')
+  val str: String = "Baeldung" replace ('g', 'G')
   assert(str == "BaeldunG")
 
   // Unary operator notation

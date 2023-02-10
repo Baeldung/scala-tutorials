@@ -3,11 +3,14 @@ package com.baeldung.scala.akka.tell
 import akka.actor.testkit.typed.CapturedLogEvent
 import akka.actor.testkit.typed.scaladsl.{BehaviorTestKit, TestInbox}
 import com.baeldung.scala.akka.tell.LoggingApplication.MicroserviceActor.DoSomeStuff
-import com.baeldung.scala.akka.tell.LoggingApplication.{LogKeeperActor, MicroserviceActor}
-import org.scalatest.FlatSpec
+import com.baeldung.scala.akka.tell.LoggingApplication.{
+  LogKeeperActor,
+  MicroserviceActor
+}
+import org.scalatest.flatspec.AnyFlatSpec
 import org.slf4j.event.Level
 
-class LoggingApplicationUnitTest extends FlatSpec {
+class LoggingApplicationUnitTest extends AnyFlatSpec {
 
   "A LogKeeperActor" should "log received messages using the trace level" in {
     val logger = BehaviorTestKit(LogKeeperActor())
@@ -36,9 +39,12 @@ class LoggingApplicationUnitTest extends FlatSpec {
   "A MicroserviceActor" should
     """send an info log message containing the the string
       | representation of the received object""".stripMargin in {
-    val loggerInbox = TestInbox[LoggingApplication.LogKeeperActor.Log]()
-    val microserviceActor = BehaviorTestKit(MicroserviceActor(loggerInbox.ref))
-    microserviceActor.run(DoSomeStuff("My personal message"))
-    loggerInbox.expectMessage(LoggingApplication.LogKeeperActor.Info("My personal message"))
-  }
+      val loggerInbox = TestInbox[LoggingApplication.LogKeeperActor.Log]()
+      val microserviceActor =
+        BehaviorTestKit(MicroserviceActor(loggerInbox.ref))
+      microserviceActor.run(DoSomeStuff("My personal message"))
+      loggerInbox.expectMessage(
+        LoggingApplication.LogKeeperActor.Info("My personal message")
+      )
+    }
 }

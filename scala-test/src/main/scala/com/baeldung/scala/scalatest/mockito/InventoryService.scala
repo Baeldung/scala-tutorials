@@ -34,8 +34,9 @@ class InventoryService(
     txn: InventoryTransaction
   ): Future[InventoryTransaction] = {
     dao.saveAsync(txn).map { res =>
-      if (txn.inventoryType == InventoryTypes.CHOCOLATE)
+      if (txn.inventoryType == InventoryTypes.CHOCOLATE) {
         kafkaProducer.publish(txn)
+      }
       res
     }
   }

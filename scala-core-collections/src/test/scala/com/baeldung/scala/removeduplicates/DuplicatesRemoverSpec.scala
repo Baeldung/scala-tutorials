@@ -9,28 +9,37 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
       val withDuplicates = List(3, 7, 2, 7, 1, 3, 4)
       val withoutDuplicates = List(3, 7, 2, 1, 4)
       assertResult(withoutDuplicates)(
-        DuplicatesRemover.removeDuplicatesRecursively(withDuplicates))
+        DuplicatesRemover.removeDuplicatesRecursively(withDuplicates)
+      )
       assertResult(withoutDuplicates)(
-        DuplicatesRemover.removeDuplicatesIteratively(withDuplicates))
+        DuplicatesRemover.removeDuplicatesIteratively(withDuplicates)
+      )
       assertResult(withoutDuplicates)(
-        DuplicatesRemover.removeDuplicatesWithLibrary(withDuplicates))
+        DuplicatesRemover.removeDuplicatesWithLibrary(withDuplicates)
+      )
     }
     "return the same list if no duplicates" in {
       val withoutDuplicates = List(3, 7, 2, 1, 4)
       assertResult(withoutDuplicates)(
-        DuplicatesRemover.removeDuplicatesRecursively(withoutDuplicates))
+        DuplicatesRemover.removeDuplicatesRecursively(withoutDuplicates)
+      )
       assertResult(withoutDuplicates)(
-        DuplicatesRemover.removeDuplicatesIteratively(withoutDuplicates))
+        DuplicatesRemover.removeDuplicatesIteratively(withoutDuplicates)
+      )
       assertResult(withoutDuplicates)(
-        DuplicatesRemover.removeDuplicatesWithLibrary(withoutDuplicates))
+        DuplicatesRemover.removeDuplicatesWithLibrary(withoutDuplicates)
+      )
     }
     "handle empty lists" in {
       assertResult(List.empty[Int])(
-        DuplicatesRemover.removeDuplicatesRecursively(List.empty[Int]))
+        DuplicatesRemover.removeDuplicatesRecursively(List.empty[Int])
+      )
       assertResult(List.empty[Int])(
-        DuplicatesRemover.removeDuplicatesIteratively(List.empty[Int]))
+        DuplicatesRemover.removeDuplicatesIteratively(List.empty[Int])
+      )
       assertResult(List.empty[Int])(
-        DuplicatesRemover.removeDuplicatesWithLibrary(List.empty[Int]))
+        DuplicatesRemover.removeDuplicatesWithLibrary(List.empty[Int])
+      )
     }
     "de-duplicate lists of objects" in {
       case class FullIdentityPerson(
@@ -55,46 +64,128 @@ class DuplicatesRemoverSpec extends AnyWordSpec {
 
       // First, let's test full equivalence
       val withFullDuplicates = List(
-        FullIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
-        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
-        FullIdentityPerson(userId = "mm01", firstName = "Marilyn", lastName = "Manson"),
-        FullIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
-        FullIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
-        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Watson")
+        FullIdentityPerson(
+          userId = "mm01",
+          firstName = "Mickey",
+          lastName = "Mouse"
+        ),
+        FullIdentityPerson(
+          userId = "jw04",
+          firstName = "John",
+          lastName = "Wayne"
+        ),
+        FullIdentityPerson(
+          userId = "mm01",
+          firstName = "Marilyn",
+          lastName = "Manson"
+        ),
+        FullIdentityPerson(
+          userId = "sh01",
+          firstName = "Sherlock",
+          lastName = "Holmes"
+        ),
+        FullIdentityPerson(
+          userId = "mm01",
+          firstName = "Mickey",
+          lastName = "Mouse"
+        ),
+        FullIdentityPerson(
+          userId = "jw04",
+          firstName = "John",
+          lastName = "Watson"
+        )
       )
       val withoutFullDuplicates = List(
-        FullIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
-        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
-        FullIdentityPerson(userId = "mm01", firstName = "Marilyn", lastName = "Manson"),
-        FullIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
-        FullIdentityPerson(userId = "jw04", firstName = "John", lastName = "Watson")
+        FullIdentityPerson(
+          userId = "mm01",
+          firstName = "Mickey",
+          lastName = "Mouse"
+        ),
+        FullIdentityPerson(
+          userId = "jw04",
+          firstName = "John",
+          lastName = "Wayne"
+        ),
+        FullIdentityPerson(
+          userId = "mm01",
+          firstName = "Marilyn",
+          lastName = "Manson"
+        ),
+        FullIdentityPerson(
+          userId = "sh01",
+          firstName = "Sherlock",
+          lastName = "Holmes"
+        ),
+        FullIdentityPerson(
+          userId = "jw04",
+          firstName = "John",
+          lastName = "Watson"
+        )
       )
       assertResult(withoutFullDuplicates)(
-        DuplicatesRemover.removeDuplicatesRecursively(withFullDuplicates))
+        DuplicatesRemover.removeDuplicatesRecursively(withFullDuplicates)
+      )
       assertResult(withoutFullDuplicates)(
-        DuplicatesRemover.removeDuplicatesIteratively(withFullDuplicates))
+        DuplicatesRemover.removeDuplicatesIteratively(withFullDuplicates)
+      )
       assertResult(withoutFullDuplicates)(
-        DuplicatesRemover.removeDuplicatesWithLibrary(withFullDuplicates))
+        DuplicatesRemover.removeDuplicatesWithLibrary(withFullDuplicates)
+      )
 
       // Now, let's test partial equivalence
       val withPartialDuplicates = List(
-        PartialIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
-        PartialIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
-        PartialIdentityPerson(userId = "mm01", firstName = "Marilyn", lastName = "Manson"),
-        PartialIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes"),
-        PartialIdentityPerson(userId = "jw04", firstName = "John", lastName = "Watson")
+        PartialIdentityPerson(
+          userId = "mm01",
+          firstName = "Mickey",
+          lastName = "Mouse"
+        ),
+        PartialIdentityPerson(
+          userId = "jw04",
+          firstName = "John",
+          lastName = "Wayne"
+        ),
+        PartialIdentityPerson(
+          userId = "mm01",
+          firstName = "Marilyn",
+          lastName = "Manson"
+        ),
+        PartialIdentityPerson(
+          userId = "sh01",
+          firstName = "Sherlock",
+          lastName = "Holmes"
+        ),
+        PartialIdentityPerson(
+          userId = "jw04",
+          firstName = "John",
+          lastName = "Watson"
+        )
       )
       val withoutPartialDuplicates = List(
-        PartialIdentityPerson(userId = "mm01", firstName = "Mickey", lastName = "Mouse"),
-        PartialIdentityPerson(userId = "jw04", firstName = "John", lastName = "Wayne"),
-        PartialIdentityPerson(userId = "sh01", firstName = "Sherlock", lastName = "Holmes")
+        PartialIdentityPerson(
+          userId = "mm01",
+          firstName = "Mickey",
+          lastName = "Mouse"
+        ),
+        PartialIdentityPerson(
+          userId = "jw04",
+          firstName = "John",
+          lastName = "Wayne"
+        ),
+        PartialIdentityPerson(
+          userId = "sh01",
+          firstName = "Sherlock",
+          lastName = "Holmes"
+        )
       )
       assertResult(withoutPartialDuplicates)(
-        DuplicatesRemover.removeDuplicatesRecursively(withPartialDuplicates))
+        DuplicatesRemover.removeDuplicatesRecursively(withPartialDuplicates)
+      )
       assertResult(withoutPartialDuplicates)(
-        DuplicatesRemover.removeDuplicatesIteratively(withPartialDuplicates))
+        DuplicatesRemover.removeDuplicatesIteratively(withPartialDuplicates)
+      )
       assertResult(withoutPartialDuplicates)(
-        DuplicatesRemover.removeDuplicatesWithLibrary(withPartialDuplicates))
+        DuplicatesRemover.removeDuplicatesWithLibrary(withPartialDuplicates)
+      )
     }
   }
 }

@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
     jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()
   )
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.10"
 
 scalaJSUseMainModuleInitializer := true
 libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.2.0"

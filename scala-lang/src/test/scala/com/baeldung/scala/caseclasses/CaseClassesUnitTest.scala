@@ -1,10 +1,13 @@
 package com.baeldung.scala.caseclasses
 
-
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-case class CovidCountryStats(countryCode: String, deaths: Int, confirmedCases: Int)
+case class CovidCountryStats(
+  countryCode: String,
+  deaths: Int,
+  confirmedCases: Int
+)
 
 class CaseClassesUnitTest {
   @Test
@@ -12,7 +15,8 @@ class CaseClassesUnitTest {
     val covidPL = CovidCountryStats("PL", 776, 15366)
 
     val text = covidPL match {
-      case CovidCountryStats("PL", x, y) => "Death rate for Poland is " + x.toFloat / y.toFloat
+      case CovidCountryStats("PL", x, y) =>
+        "Death rate for Poland is " + x.toFloat / y.toFloat
       case _ => "Unknown country"
     }
 
@@ -21,7 +25,9 @@ class CaseClassesUnitTest {
 
   @Test
   def givenTwoEqualsCaseClasses_whenCheckingEquality_thenReturnsTrue(): Unit = {
-    assert(CovidCountryStats("PL", 776, 15366) == CovidCountryStats("PL", 776, 15366))
+    assert(
+      CovidCountryStats("PL", 776, 15366) == CovidCountryStats("PL", 776, 15366)
+    )
   }
 
   @Test

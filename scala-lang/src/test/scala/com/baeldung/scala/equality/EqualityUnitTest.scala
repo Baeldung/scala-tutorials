@@ -1,8 +1,8 @@
 package com.baeldung.scala.equality
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class EqualityUnitTest extends FlatSpec {
+class EqualityUnitTest extends AnyFlatSpec {
   "Equality operator for AnyVal" should "work as in Java" in {
     val intAnyVal = 4
     assert(intAnyVal == 2 * 2)
@@ -43,8 +43,10 @@ class EqualityUnitTest extends FlatSpec {
   }
 
   "Equality operator" should "work for PersonClassWithOverrides" in {
-    val firstClassWithOverridesInstance = new PersonClassWithOverrides("Donald", 66)
-    val secondClassWithOverridesInstance = new PersonClassWithOverrides("Donald", 66)
+    val firstClassWithOverridesInstance =
+      new PersonClassWithOverrides("Donald", 66)
+    val secondClassWithOverridesInstance =
+      new PersonClassWithOverrides("Donald", 66)
     assert(firstClassWithOverridesInstance == secondClassWithOverridesInstance)
   }
 

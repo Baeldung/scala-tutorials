@@ -1,13 +1,8 @@
 package com.baeldung.scala3.quitesyntax
 
-import scala.collection.*                   // Scala 3
-import scala.collection._                   // Scala 2
-
-import scala.collection.mutable.Map as MMap   // Scala 3
-import scala.collection.mutable.{Map => MMap} // Scala 2
-
-import java.util.{Random as _, *}             // Scala 3
-import java.util.{Random => _, _}             // Scala 2
+import java.util.{Random as _, *}
+import scala.collection.*
+import scala.collection.mutable.Map as MMap // Scala 2
 
 object Example {
 
@@ -32,16 +27,17 @@ object Example {
   }
 
   for i <- 0 until 1 do println(i) // Scala 3
-  for (i <- 0 until 1) println(i)  // Scala 2
+  for (i <- 0 until 1) println(i) // Scala 2
 
   if 5 % 2 == 0 then println("even") // Scala 3
   else println("odd")
   if (5 % 2 == 0) println("even") // Scala 2
   else println("odd")
 
-  for i <- 0 until 5 // Scala 3
+  for
+    i <- 0 until 5 // Scala 3
     if i % 2 == 1
-      iWasOdd = 2 * i
+    iWasOdd = 2 * i
   yield iWasOdd
 
   for {

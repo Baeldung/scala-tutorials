@@ -2,7 +2,12 @@ package com.baeldung.scala.reactivemongo
 
 import reactivemongo.api.bson.{BSONDocumentReader, BSONDocumentWriter, Macros}
 
-case class Movie(name:String, leadActor:String, genre:String, durationInMin: Int)
+case class Movie(
+  name: String,
+  leadActor: String,
+  genre: String,
+  durationInMin: Int
+)
 
 object MongoEntityImplicits {
   implicit def moviesWriter: BSONDocumentWriter[Movie] = Macros.writer[Movie]

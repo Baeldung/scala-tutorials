@@ -1,10 +1,11 @@
 package com.baeldung.scala.durationsugar
 
-import org.scalatest._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.concurrent.duration.{FiniteDuration, SECONDS}
 
-class DurationSugarUnitTest extends FlatSpec with Matchers {
+class DurationSugarUnitTest extends AnyFlatSpec with Matchers {
 
   "20.seconds" should "equal the object created with the native scala sugar" in {
     20.seconds shouldBe new FiniteDuration(20, SECONDS)
@@ -23,5 +24,5 @@ class DurationSugarUnitTest extends FlatSpec with Matchers {
   "20.seconds + 1.minutes" should "be equal to 80.seconds" in {
     20 seconds + 20 minutes shouldBe 80.seconds
   }
-  */
+   */
 }

@@ -1,8 +1,8 @@
 package com.baeldung.scala.selftype
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class SelfTypeUnitTest extends FlatSpec {
+class SelfTypeUnitTest extends AnyFlatSpec {
 
   "TestExecutor class" should "be extended creating a new type" in {
     assertCompiles(
@@ -15,7 +15,7 @@ class SelfTypeUnitTest extends FlatSpec {
 
   it should "be instantiated directly using mixing a TestEnvironment" in {
     assertCompiles(
-    """
+      """
         |import SelfType._
         |val windowsGeneralExecutor: TestExecutor = new TestExecutor with WindowsTestEnvironment
         |""".stripMargin

@@ -1,20 +1,15 @@
 package com.baeldung.scala.fs2
 
-import java.io.{File, PrintWriter}
-import java.nio.file.Paths
-
-import cats.effect.{Async, Blocker, ContextShift, IO}
-
-import scala.util.Random
+import cats.effect.{Async, ExitCode, IO, IOApp}
 import fs2._
+import fs2.io.file.{Files, Path}
 
-import scala.collection.mutable
+import java.nio.file.Paths
 
 object Fs2Examples {
 
-  /**
-   * OOM from processing large file
-   * */
+  /** OOM from processing large file
+    */
 
 //  def readAndWriteFile(readFrom: String, writeTo: String) = {
 //    val counts = mutable.Map.empty[String, Int]
@@ -41,67 +36,59 @@ object Fs2Examples {
 //    writer.close()
 //  }
 
+  /** Using Fs2 Streams
+    */
 
-  /**
-   * Using Fs2 Streams
-   * */
-
-  //defining a simple stresm of Ints
+  // defining a simple stresm of Ints
   val intStream: Stream[Pure, Int] = Stream(1, 2, 3, 4, 5)
 
-  //defining a pipe
+  // defining a pipe
   val add1Pipe: Pipe[Pure, Int, Int] = _.map(_ + 1)
 
+  /** Word count Using Fs2
+    */
 
-  /**
-   * Word count Using Fs2
-   * */
+  def readAndWriteFile(readFrom: String, writeTo: String): Stream[IO, Unit] = {
 
-  implicit val ioContextShift: ContextShift[IO] =
-    IO.contextShift(scala.concurrent.ExecutionContext.Implicits.global)
+    val fs2Path = Path.fromNioPath(java.nio.file.Paths.get(readFrom))
 
-  def readAndWriteFile(readFrom: String, writeTo: String): Stream[IO, Unit] =
-    Stream.resource(Blocker[IO]).flatMap { blocker =>
-      val source: Stream[IO, Byte] =
-        io.file.readAll[IO](Paths.get(readFrom), blocker, 4096)
+    val source: Stream[IO, Byte] =
+      Files[IO].readAll(fs2Path)
 
-      val pipe: Pipe[IO, Byte, Byte] = src =>
-        src
-          .through(text.utf8Decode)
-          .through(text.lines)
-          .flatMap(line => Stream.apply(line.split("\\W+"): _*))
-          .fold(Map.empty[String, Int]) { (count, word) =>
-            count + (word -> (count.getOrElse(word, 0) + 1))
-          }
-          .map(_.foldLeft("") {
-            case (accumulator, (word, count)) =>
-              accumulator + s"$word = $count\n"
-          })
-          .through(text.utf8Encode)
+    val pipe: Pipe[IO, Byte, Byte] = src =>
+      src
+        .through(text.utf8.decode)
+        .through(text.lines)
+        .flatMap(line => Stream.apply(line.split("\\W+"): _*))
+        .fold(Map.empty[String, Int]) { (count, word) =>
+          count + (word -> (count.getOrElse(word, 0) + 1))
+        }
+        .map(_.foldLeft("") { case (accumulator, (word, count)) =>
+          accumulator + s"$word = $count\n"
+        })
+        .through(text.utf8.encode)
 
-      val sink: Pipe[IO, Byte, Unit] =
-        io.file.writeAll(Paths.get(writeTo), blocker)
+    val sink: Pipe[IO, Byte, Unit] =
+      Files[IO].writeAll(Path(writeTo))
 
-      val stream: Stream[IO, Unit] =
-        source
-          .through(pipe)
-          .through(sink)
+    val stream: Stream[IO, Unit] =
+      source
+        .through(pipe)
+        .through(sink)
 
-      stream
-    }
-
+    stream
+  }
 
   // Batching in Fs2
-  Stream((1 to 100) : _*)
+  Stream((1 to 100): _*)
     .chunkN(10) // group 10 elements together
     .map(println)
     .compile
     .drain
 
-
   // Asynchronicity in fs2
   def writeToSocket[F[_]: Async](chunk: Chunk[String]): F[Unit] = {
-    Async[F].async { callback =>
+    Async[F].async_ { callback =>
       println(
         s"[thread: ${Thread.currentThread().getName}] :: Writing $chunk to socket"
       )
@@ -116,5 +103,4 @@ object Fs2Examples {
     .parEvalMapUnordered(10)(writeToSocket[IO])
     .compile
     .drain
-
 }

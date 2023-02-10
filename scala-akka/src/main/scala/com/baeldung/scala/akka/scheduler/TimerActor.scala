@@ -2,6 +2,7 @@ package com.baeldung.scala.akka.scheduler
 
 import akka.actor.{Actor, ActorRef, Timers}
 import com.baeldung.scala.akka.scheduler.TimerActor._
+
 import scala.concurrent.duration._
 
 object TimerActor {
@@ -16,8 +17,8 @@ class TimerActor(replyTo: ActorRef) extends Actor with Timers {
     super.preStart()
   }
 
-  override def receive: Receive = {
-    case PeriodicTick => replyTo ! "Periodic-Tick"
+  override def receive: Receive = { case PeriodicTick =>
+    replyTo ! "Periodic-Tick"
   }
 
 }

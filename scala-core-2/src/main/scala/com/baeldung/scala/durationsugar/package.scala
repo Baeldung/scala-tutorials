@@ -1,6 +1,11 @@
 package com.baeldung.scala
 
-import scala.concurrent.duration.{FiniteDuration, MILLISECONDS, MINUTES, SECONDS}
+import scala.concurrent.duration.{
+  FiniteDuration,
+  MILLISECONDS,
+  MINUTES,
+  SECONDS
+}
 
 package object durationsugar {
 

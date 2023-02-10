@@ -2,17 +2,20 @@ package com.baeldung.scala.akka.mailbox
 
 import akka.actor.DeadLetter
 import akka.actor.typed.eventstream.EventStream
-import akka.actor.typed.{ActorRef, ActorSystem, Behavior, MailboxSelector}
 import akka.actor.typed.scaladsl.Behaviors
+import akka.actor.typed.{ActorRef, ActorSystem, Behavior, MailboxSelector}
 
 object Mailboxes {
 
   sealed trait UserEvent {
     val usedId: String
   }
-  case class MouseClick(override val usedId: String, x: Int, y: Int) extends UserEvent
-  case class TextSniffing(override val usedId: String, text: String) extends UserEvent
-  case class MouseMove(override val usedId: String, x: Int, y: Int) extends UserEvent
+  case class MouseClick(override val usedId: String, x: Int, y: Int)
+    extends UserEvent
+  case class TextSniffing(override val usedId: String, text: String)
+    extends UserEvent
+  case class MouseMove(override val usedId: String, x: Int, y: Int)
+    extends UserEvent
 
   val eventCollector: Behavior[UserEvent] = Behaviors.receive { (ctx, msg) =>
     msg match {
@@ -31,24 +34,30 @@ object Mailboxes {
     msg match {
       case Start(id) =>
         ctx.spawn(eventCollector, id, MailboxSelector.bounded(1000))
-        val props = MailboxSelector.fromConfig("mailboxes.event-collector-mailbox")
+        val props =
+          MailboxSelector.fromConfig("mailboxes.event-collector-mailbox")
         ctx.spawn(eventCollector, s"{$id}_1", props)
         Behaviors.same
     }
   }
 
-  val deadLettersListener: Behavior[DeadLetter] = Behaviors.receive { (ctx, msg) =>
-    msg match {
-      case DeadLetter(message, sender, recipient) =>
-        ctx.log.debug(s"Dead letter received: ($message, $sender, $recipient)")
-        Behaviors.same
-    }
+  val deadLettersListener: Behavior[DeadLetter] = Behaviors.receive {
+    (ctx, msg) =>
+      msg match {
+        case DeadLetter(message, sender, recipient) =>
+          ctx.log.debug(
+            s"Dead letter received: ($message, $sender, $recipient)"
+          )
+          Behaviors.same
+      }
   }
 
   def main(args: Array[String]): Unit = {
     implicit val system: ActorSystem[Start] = ActorSystem(siteActor, "main")
-    val deadLettersActor: ActorRef[DeadLetter] = system.systemActorOf(deadLettersListener, "deadLettersListener")
+    val deadLettersActor: ActorRef[DeadLetter] =
+      system.systemActorOf(deadLettersListener, "deadLettersListener")
     system.eventStream.tell(EventStream.Subscribe[DeadLetter](deadLettersActor))
-    val defaultDeadLettersActor: ActorRef[DeadLetter] = system.deadLetters[DeadLetter]
+    val defaultDeadLettersActor: ActorRef[DeadLetter] =
+      system.deadLetters[DeadLetter]
   }
 }

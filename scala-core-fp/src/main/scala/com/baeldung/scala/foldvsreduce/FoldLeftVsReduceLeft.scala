@@ -4,7 +4,7 @@ object FoldLeftVsReduceLeft {
 
   case class Person(name: String, age: Int)
 
-  def getAllPeople(people: Map[Int, Person]): List[Person] =  {
+  def getAllPeople(people: Map[Int, Person]): List[Person] = {
     people.foldLeft(List.empty[Person])((people, current) => {
       people :+ current._2
     })
@@ -20,6 +20,3 @@ object FoldLeftVsReduceLeft {
     })
   }
 }
-
-
-

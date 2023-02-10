@@ -1,10 +1,11 @@
 package com.baeldung.scala.conversions
 
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
+
 import java.util.ArrayList
 
-import org.scalatest.{FlatSpec, Matchers}
-
-class ConversionWrappersUnitTest extends FlatSpec with Matchers {
+class ConversionWrappersUnitTest extends AnyFlatSpec with Matchers {
 
   import scala.collection.JavaConverters._
 

@@ -1,12 +1,9 @@
 package com.baeldung.scala.resources
 
-import cats.effect.IO
-import java.io.File
-import scala.io.Source
-import cats.effect.IOApp
-import scala.io.BufferedSource
+import cats.effect.{IO, IOApp, Resource}
+
 import java.io.FileWriter
-import cats.effect.Resource
+import scala.io.Source
 
 object ResourceHandling extends IOApp.Simple {
 

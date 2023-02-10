@@ -1,7 +1,7 @@
 package com.baeldung.scala.retry
 
 import com.baeldung.scala.retry.PrimeNumberRetry.success
-import org.scalatest.matchers.must.Matchers
+import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
 
 import java.util.concurrent.atomic.AtomicInteger
@@ -18,9 +18,8 @@ class PrimeNumberRetryTest extends AsyncWordSpec with Matchers {
       })
       result
         .map(_ => assert(false))
-        .recover {
-          case _: NumberFormatException =>
-            assert(counter.get() == 1)
+        .recover { case _: NumberFormatException =>
+          assert(counter.get() == 1)
         }
     }
 
@@ -35,9 +34,8 @@ class PrimeNumberRetryTest extends AsyncWordSpec with Matchers {
       })
       result
         .map(_ => assert(false))
-        .recover {
-          case _: IllegalArgumentException =>
-            assert(counter.get() == 7)
+        .recover { case _: IllegalArgumentException =>
+          assert(counter.get() == 7)
         }
     }
 

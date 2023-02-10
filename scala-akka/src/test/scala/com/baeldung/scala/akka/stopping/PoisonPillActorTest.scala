@@ -1,28 +1,22 @@
 package com.baeldung.scala.akka.stopping
 
-import akka.testkit.TestKit
-import akka.actor.ActorSystem
-import org.scalatest.WordSpec
-import org.scalatest.Matchers
-import akka.testkit.ImplicitSender
-import org.scalatest.WordSpecLike
-import akka.actor.Props
-import MessageProcessorActor._
-import akka.actor.PoisonPill
-import akka.testkit.TestActorRef
+import akka.actor.{ActorSystem, PoisonPill, Props}
 import akka.testkit
-import akka.actor.DeadLetter
-import scala.concurrent.duration._
+import akka.testkit.{ImplicitSender, TestKit}
+import com.baeldung.scala.akka.stopping.MessageProcessorActor._
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
 class PoisonPillActorTest
   extends TestKit(ActorSystem("test_system"))
-  with WordSpecLike
+  with AnyWordSpecLike
   with Matchers
   with ImplicitSender {
 
   "Sending PoisonPill" should {
     "stop the actor when the PoisonPill message is received" in {
-      val actor = system.actorOf(Props(classOf[MessageProcessorActor]),"PoisonPillActor")
+      val actor =
+        system.actorOf(Props(classOf[MessageProcessorActor]), "PoisonPillActor")
       val probe = testkit.TestProbe()
       probe.watch(actor)
 
@@ -37,7 +31,6 @@ class PoisonPillActorTest
       expectNoMessage()
       probe.expectTerminated(actor)
     }
-
 
   }
 

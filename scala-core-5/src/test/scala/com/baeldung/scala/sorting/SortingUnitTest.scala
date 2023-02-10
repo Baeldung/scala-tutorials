@@ -1,9 +1,10 @@
 package com.baeldung.scala.sorting
 
 import org.junit.Test
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class SortingUnitTest extends WordSpec with Matchers {
+class SortingUnitTest extends AnyWordSpec with Matchers {
 
   case class User(name: String, age: Int) extends Ordered[User] {
     override def compare(that: User): Int =
@@ -21,7 +22,7 @@ class SortingUnitTest extends WordSpec with Matchers {
     users.sorted shouldBe List(
       User("Mike", 16),
       User("Kelly", 21),
-      User("Mike", 43),
+      User("Mike", 43)
     )
   }
 
@@ -32,7 +33,7 @@ class SortingUnitTest extends WordSpec with Matchers {
     users.sorted shouldBe List(
       User("Mike", 16),
       User("Kelly", 21),
-      User("Mike", 43),
+      User("Mike", 43)
     )
   }
 
@@ -44,7 +45,7 @@ class SortingUnitTest extends WordSpec with Matchers {
     users.sorted shouldBe List(
       User("Mike", 43),
       User("Kelly", 21),
-      User("Mike", 16),
+      User("Mike", 16)
     )
   }
 
@@ -53,7 +54,7 @@ class SortingUnitTest extends WordSpec with Matchers {
     users.sortBy(_.name) shouldBe List(
       User("Kelly", 21),
       User("Mike", 43),
-      User("Mike", 16),
+      User("Mike", 16)
     )
   }
 
@@ -62,7 +63,7 @@ class SortingUnitTest extends WordSpec with Matchers {
     users.sortWith(_.age > _.age) shouldBe List(
       User("Mike", 43),
       User("Kelly", 21),
-      User("Mike", 16),
+      User("Mike", 16)
     )
   }
 
@@ -71,7 +72,7 @@ class SortingUnitTest extends WordSpec with Matchers {
     users.sortBy(u => (u.name, u.age)) shouldBe List(
       User("Kelly", 21),
       User("Mike", 16),
-      User("Mike", 43),
+      User("Mike", 43)
     )
   }
 }

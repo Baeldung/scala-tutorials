@@ -1,9 +1,9 @@
 package com.baeldung.scala.assertvsrequire
 
-import com.baeldung.scala.assertvsrequire.RequireUsage
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class RequireUsageUnitTest extends FlatSpec with Matchers {
+class RequireUsageUnitTest extends AnyFlatSpec with Matchers {
 
   "issueDrivingLicense" should "be able to execute if age is greater than or equal to 18" in {
     noException should be thrownBy RequireUsage.issueDrivingLicense(
