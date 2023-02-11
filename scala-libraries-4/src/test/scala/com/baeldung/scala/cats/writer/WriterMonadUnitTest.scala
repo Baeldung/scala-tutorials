@@ -36,13 +36,9 @@ class WriterMonadUnitTest extends AnyFlatSpec with Matchers {
   }
 
   it should "add additional log to log side" in {
-    val writer = Writer("Get User from token", getUser("token"))
-    val expectedUser = User(1, "user-1")
-    val writer2 = writer.tell(", Added something more")
-    val (log, usr) = writer.run
-    usr.name shouldBe expectedUser.name
-    log shouldBe "Get User from token"
-    writer2.run._1 shouldBe "Get User from token, Added something more"
+    val writer = Writer("Init Value", 100)
+    val writer2 = writer.tell(",Starting manipulations")
+    writer2.run._1 shouldBe "Init Value,Starting manipulations"
   }
 
   it should "use a list as log side" in {
@@ -68,25 +64,32 @@ class WriterMonadUnitTest extends AnyFlatSpec with Matchers {
   }
 
   it should "modify the value side using map function" in {
-    val writer = Writer("Get User from token", getUser("token"))
-    val capitalizedWriter = writer.map(_.name.toUpperCase)
-    val (log, name) = capitalizedWriter.run
-    name shouldBe "USER-1"
-    log shouldBe "Get User from token"
+    val writer = Writer("Number", 5)
+    val doubleIt = writer.map(_ * 2)
+    val (log, value) = doubleIt.run
+    value shouldBe 10
+    log shouldBe "Number"
   }
 
   it should "clear the log side of writer" in {
-    val writer = Writer("Get User from token", getUser("token"))
+    val writer = Writer("Init Value", 100)
     val resetWriter = writer.reset
-    val (log, usr) = resetWriter.run
-    usr.name shouldBe "user-1"
+    val (log, value) = resetWriter.run
+    value shouldBe 100
     log shouldBe empty
   }
 
   it should "get the value from writer" in {
-    val writer = Writer("Get User from token", getUser("token"))
-    val usr = writer.value
-    usr.name shouldBe "user-1"
+    val writer = Writer("Log Side", 100)
+    val value: Int = writer.value
+    value shouldBe 100
+  }
+
+  it should "swap the values in writer" in {
+    val writer = Writer("Log Side", 100)
+    val (log, value) = writer.swap.run
+    log shouldBe 100
+    value shouldBe "Log Side"
   }
 
   it should "extract the value as a tuple" in {
