@@ -426,9 +426,10 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
 
 Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
 
-lazy val scala212 = (project in file("scala212"))
+lazy val scala212 = (project in file("scala-2-modules/scala212"))
   .settings(
     scalaVersion := "2.12.17",
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
+
