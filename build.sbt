@@ -5,8 +5,8 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.5" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.6"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.6" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
 
@@ -17,7 +17,7 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test
 )
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
-val zioVersion = "2.0.6"
+val zioVersion = "2.0.8"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -220,7 +220,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
       "co.fs2" %% "fs2-io" % fs2Version,
-      "junit" % "junit" % "4.13" % Test,
+      "junit" % "junit" % "4.13.2" % Test,
       "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
       "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "3.0.0" % Test,
@@ -233,9 +233,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     )
   )
 
-val circeVersion = "0.14.3"
+val circeVersion = "0.14.4"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.5.2"
+val elastic4sVersion = "8.5.3"
 val sparkVersion = "3.2.2"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -257,7 +257,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.1.0",
-      "org.postgresql" % "postgresql" % "42.5.1"
+      "org.postgresql" % "postgresql" % "42.5.3"
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
@@ -343,7 +343,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     ),
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.19.0",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.368" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.405" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
     ),
