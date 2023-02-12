@@ -202,7 +202,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
-val fs2Version = "3.5.0"
+val fs2Version = "3.6.1"
 val AkkaVersion = "2.6.12"
 val reactiveMongo = "1.0.10"
 
@@ -342,7 +342,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.19.0",
+      "software.amazon.awssdk" % "s3" % "2.20.2",
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.405" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
@@ -400,7 +400,7 @@ lazy val doobie = (project in file("doobie"))
   )
 
 // Scala Native Project is disabled as it needs clang to installed in the target machine.
-// To test the scala-native code, install clang and then uncommment this build
+// To test the scala-native code, install clang and then uncomment this build
 // lazy val scala_native = (project in file("scala-native"))
 //   .settings(
 //     name := "scala-native",
