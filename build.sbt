@@ -157,7 +157,7 @@ lazy val scala_test = (project in file("scala-test"))
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
-  "ch.qos.logback" % "logback-classic" % "1.2.3",
+  "ch.qos.logback" % "logback-classic" % "1.2.11",
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
   "com.typesafe.akka" %% "akka-stream" % "2.6.19",
