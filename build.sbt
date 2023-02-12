@@ -399,13 +399,14 @@ lazy val doobie = (project in file("doobie"))
     libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
   )
 
-// Scala Native Project is disabled as it needs clang to installed in the target machine.
+// Scala Native Project needs clang to installed in the target machine to run.
 // To test the scala-native code, install clang and then uncommment this build
-// lazy val scala_native = (project in file("scala-native"))
-//   .settings(
-//     name := "scala-native",
-//     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
-//   )
+// If facing errors in running code, comment out this code temporarily.
+ lazy val scala_native = (project in file("scala-native"))
+   .settings(
+     name := "scala-native",
+     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
+   )
 
 lazy val reflection = (project in file("reflection"))
   .settings(
