@@ -4,7 +4,7 @@ ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
-val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
+val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.5" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
@@ -364,7 +364,7 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     name := "scala-design-patterns",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += scalaMock,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
+    libraryDependencies += "com.github.sbt" % "junit-interface" % "0.13.3" % Test
   )
 
 lazy val scala3_lang = (project in file("scala3-lang")).settings(
