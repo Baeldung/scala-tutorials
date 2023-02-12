@@ -233,7 +233,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     )
   )
 
-val circeVersion = "0.14.3"
+val circeVersion = "0.14.4"
 val monixVersion = "3.4.1"
 val elastic4sVersion = "8.5.2"
 val sparkVersion = "3.2.2"
