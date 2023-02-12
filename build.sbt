@@ -257,7 +257,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.1.0",
-      "org.postgresql" % "postgresql" % "42.5.1"
+      "org.postgresql" % "postgresql" % "42.5.3"
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
