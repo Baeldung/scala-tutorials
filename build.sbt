@@ -202,7 +202,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
-val fs2Version = "3.5.0"
+val fs2Version = "3.6.1"
 val AkkaVersion = "2.6.12"
 val reactiveMongo = "1.0.10"
 
