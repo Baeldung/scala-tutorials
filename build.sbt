@@ -416,7 +416,7 @@ lazy val reflection = (project in file("reflection"))
 
 lazy val scala3_libraries = (project in file("scala3-libraries"))
   .settings(
-    scalaVersion := "3.1.1",
+    scalaVersion := "3.1.3",
     name := "scala3-libraries",
     libraryDependencies ++= Seq(
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
