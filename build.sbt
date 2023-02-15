@@ -5,8 +5,8 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.6"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.6" % Test
+val catsEffect = "org.typelevelcatsEffect" %% "cats-effect" % "3.4.7"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.7" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
 
@@ -378,7 +378,7 @@ lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
-    libraryDependencies += catsEffect,
+    libraryDependencies += ,
     libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
