@@ -5,7 +5,7 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
-val catsEffect = "org.typelevelcatsEffect" %% "cats-effect" % "3.4.7"
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.7"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.7" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
