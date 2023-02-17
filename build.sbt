@@ -156,16 +156,16 @@ lazy val scala_test = (project in file("scala-test"))
   )
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
-  "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
+  "com.typesafe.akka" %% "akka-actor-typed" % "2.7.0",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
-  "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
-  "com.typesafe.akka" %% "akka-stream" % "2.6.19",
+  "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.7.0" % Test,
+  "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
+  "com.typesafe.akka" %% "akka-stream" % "2.7.0",
   "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
-  "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
+  "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
-  "com.typesafe.akka" %% "akka-http" % "10.2.7"
+  "com.typesafe.akka" %% "akka-http" % "10.4.0"
 ) ++ scalaTestDeps
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
@@ -263,12 +263,12 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "io.monix" %% "monix" % monixVersion
     ),
     dependencyOverrides := Seq(
-      "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.19",
-      "com.typesafe.akka" %% "akka-stream" % "2.6.19",
-      "com.typesafe.akka" %% "akka-serialization-jackson" % "2.6.19"
+      "com.typesafe.akka" %% "akka-protobuf-v3" % "2.7.0",
+      "com.typesafe.akka" %% "akka-stream" % "2.7.0",
+      "com.typesafe.akka" %% "akka-serialization-jackson" % "2.7.0"
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.7.0" % Test,
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
       "com.lihaoyi" %% "requests" % "0.8.0"
     ) ++ scalaTestDeps,
