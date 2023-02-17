@@ -43,7 +43,7 @@ object Skunk {
 
     val preparedQuery: Resource[IO, PreparedQuery[IO, Int ~ String, User]] =
       resource
-        .flatMap(session => session.prepare(query))
+        .flatMap(session => session.prepareR(query))
 
     preparedQuery.use(pq => pq.unique(1, "baeldungUser"))
   }
@@ -65,7 +65,7 @@ object Skunk {
           id = $int4 and username = $varchar
        """.command
     resource
-      .flatMap(session => session.prepare(command))
+      .flatMap(session => session.prepareR(command))
       .use(pc => pc.execute((1, "baeldungUser")))
   }
 }
