@@ -1,10 +1,11 @@
 val scalaV = "2.13.10"
+val scala3Version = "3.2.2"
 ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
-val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
+val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.7"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.7" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
@@ -416,7 +417,7 @@ lazy val reflection = (project in file("reflection"))
 
 lazy val scala3_libraries = (project in file("scala3-libraries"))
   .settings(
-    scalaVersion := "3.1.1",
+    scalaVersion := scala3Version,
     name := "scala3-libraries",
     libraryDependencies ++= Seq(
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
