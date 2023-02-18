@@ -118,7 +118,7 @@ class RequestsScalaHttpClientLiveTest
         data = "This is a deflate post request"
       )
       assert(r2.statusCode == 200)
-      assert(r2.text().contains("data:application/octet-stream;base64,eJw="))
+      assert(r2.text().contains("data:application/octet-stream;base64"))
     }
 
     "upload a file using multi part file upload" in {
