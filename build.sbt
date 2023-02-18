@@ -180,7 +180,7 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies ++= scala_akka_dependencies
+    libraryDependencies ++= scala_akka_dependencies ++ Seq(logback)
   )
 
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
