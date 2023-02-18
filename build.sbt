@@ -161,7 +161,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "2.0.1",
   "com.typesafe.akka" %% "akka-stream" % "2.6.19",
-  "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.0",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
   jUnitInterface,
   "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
