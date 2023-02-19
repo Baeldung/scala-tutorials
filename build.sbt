@@ -158,11 +158,10 @@ lazy val scala_test = (project in file("scala-test"))
   )
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
-  "com.typesafe.akka" %% "akka-actor-typed" % "2.7.0",
-  "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.7.0" % Test,
+  "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+  "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
-  "com.typesafe.akka" %% "akka-stream" % "2.7.0",
+  "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
   "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
@@ -182,7 +181,9 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies ++= scala_akka_dependencies
+    libraryDependencies ++= scala_akka_dependencies ++ Seq(
+      "ch.qos.logback" % "logback-classic" % "1.2.3" // scala-steward:off
+    )
   )
 
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
@@ -190,14 +191,14 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .settings(
     name := "scala-akka-2",
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-typed" % "2.7.0",
-      "com.typesafe.akka" %% "akka-stream" % "2.7.0",
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       "com.typesafe.akka" %% "akka-http" % "10.4.0",
       "com.typesafe.akka" %% "akka-http-spray-json" % "10.4.0",
       "com.typesafe.akka" %% "akka-http-testkit" % "10.4.0",
       "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
-      "com.typesafe.akka" %% "akka-persistence-typed" % "2.7.0",
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.7.0" % Test
+      "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test
     ) ++ scalaTestDeps
   )
 val monocleVersion = "2.1.0"
@@ -205,7 +206,7 @@ val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
 val fs2Version = "3.6.1"
-val AkkaVersion = "2.6.12"
+val AkkaVersion = "2.7.0"
 val reactiveMongo = "1.0.10"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
@@ -238,7 +239,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 val circeVersion = "0.14.4"
 val monixVersion = "3.4.1"
 val elastic4sVersion = "8.5.3"
-val sparkVersion = "3.2.2"
+val sparkVersion = "3.3.2"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -259,18 +260,18 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.1.0",
-      "org.postgresql" % "postgresql" % "42.5.3"
+      "org.postgresql" % "postgresql" % "42.5.4"
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
     ),
     dependencyOverrides := Seq(
-      "com.typesafe.akka" %% "akka-protobuf-v3" % "2.7.0",
-      "com.typesafe.akka" %% "akka-stream" % "2.7.0",
-      "com.typesafe.akka" %% "akka-serialization-jackson" % "2.7.0"
+      "com.typesafe.akka" %% "akka-protobuf-v3" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.7.0" % Test,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
       "com.lihaoyi" %% "requests" % "0.8.0"
     ) ++ scalaTestDeps,
@@ -344,8 +345,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.5",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.405" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.20.7",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.410" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
     ),
