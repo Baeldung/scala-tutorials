@@ -5,7 +5,7 @@ import akka.stream.alpakka.mongodb.scaladsl.MongoSource
 import akka.stream.scaladsl.{Sink, Source}
 import com.typesafe.config.ConfigFactory
 import de.flapdoodle.embed.mongo.MongodStarter
-import de.flapdoodle.embed.mongo.config.{MongodConfigBuilder, Net}
+import de.flapdoodle.embed.mongo.config.{MongodConfig, Net}
 import de.flapdoodle.embed.mongo.distribution.Version
 import de.flapdoodle.embed.process.runtime.Network
 import org.scalatest.BeforeAndAfterAll
@@ -26,7 +26,8 @@ class AlpakkaIntegrationTest
   val starter = MongodStarter.getDefaultInstance
   val ip = ConfigFactory.load.getString("alpakka.mongo.connection.ip")
   val port = ConfigFactory.load.getInt("alpakka.mongo.connection.port")
-  val mongoDBConfig = new MongodConfigBuilder()
+  val mongoDBConfig = MongodConfig
+    .builder()
     .version(Version.Main.PRODUCTION)
     .net(new Net(ip, port, Network.localhostIsIPv6()))
     .build()
