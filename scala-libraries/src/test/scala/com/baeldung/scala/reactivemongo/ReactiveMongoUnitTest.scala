@@ -1,15 +1,16 @@
 package com.baeldung.scala.reactivemongo
 
-import de.flapdoodle.embed.mongo.MongodStarter
-import de.flapdoodle.embed.mongo.config.{MongodConfig, Net}
-import de.flapdoodle.embed.mongo.distribution.Version
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome}
-import MongoEntityImplicits._
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.Sink
+import com.baeldung.scala.reactivemongo.MongoEntityImplicits._
+import de.flapdoodle.embed.mongo.config.Net
+import de.flapdoodle.embed.mongo.distribution.Version
+import de.flapdoodle.embed.mongo.transitions.{ImmutableMongod, Mongod}
+import de.flapdoodle.reverse.transitions.Start
+import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
+import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome}
 import reactivemongo.api.Cursor
 import reactivemongo.api.bson.BSONDocument
 
@@ -19,23 +20,19 @@ class ReactiveMongoUnitTest
   with BeforeAndAfterAll
   with BeforeAndAfterEach {
 
-  val starter = MongodStarter.getDefaultInstance()
   val PORT = 27079
   val IP = "localhost"
-  val mongodConfig = MongodConfig
-    .builder()
-    .version(Version.Main.V4_0)
-    .net(new Net(IP, PORT, false))
-    .build();
-  val exec = starter.prepare(mongodConfig)
+
+  val mongodInstance: ImmutableMongod = Mongod.builder()
+    .net(Start.to(classOf[Net]).initializedWith(Net.of(IP, PORT, false)))
+    .build()
 
   override def beforeAll(): Unit = {
-    exec.start()
+    mongodInstance.start(Version.Main.V4_0)
     super.beforeAll()
   }
 
   override protected def afterAll(): Unit = {
-    if (exec != null) exec.stop()
     super.afterAll()
   }
 
@@ -210,7 +207,7 @@ class ReactiveMongoUnitTest
 
     "stream the movies and calculate total duration using akka stream api" in {
       // Note: This import(cursorProducer) is required for reactive mongo and akka stream integration
-      import reactivemongo.akkastream.{State, cursorProducer}
+      import reactivemongo.akkastream.cursorProducer
       implicit val system = ActorSystem("reactive-mongo-stream")
       implicit val materializer = ActorMaterializer()
       connection.getCollection("Movie").flatMap { col =>

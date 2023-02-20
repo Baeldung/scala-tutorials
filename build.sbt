@@ -10,6 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.7"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.7" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
+val embedMongoVersion = "4.5.1"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
@@ -161,10 +162,10 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
-  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
+  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
   "com.typesafe.akka" %% "akka-http" % "10.4.0"
 ) ++ scalaTestDeps
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
@@ -225,7 +226,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "junit" % "junit" % "4.13.2" % Test,
       "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
       "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
-      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "3.0.0" % Test,
+      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
       logback % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,

@@ -4,10 +4,11 @@ import akka.stream.alpakka.file.scaladsl.FileTailSource
 import akka.stream.alpakka.mongodb.scaladsl.MongoSource
 import akka.stream.scaladsl.{Sink, Source}
 import com.typesafe.config.ConfigFactory
-import de.flapdoodle.embed.mongo.MongodStarter
-import de.flapdoodle.embed.mongo.config.{MongodConfigBuilder, Net}
+import de.flapdoodle.embed.mongo.config.Net
 import de.flapdoodle.embed.mongo.distribution.Version
+import de.flapdoodle.embed.mongo.transitions.{ImmutableMongod, Mongod}
 import de.flapdoodle.embed.process.runtime.Network
+import de.flapdoodle.reverse.transitions.Start
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers
@@ -23,21 +24,14 @@ class AlpakkaIntegrationTest
   with ScalaFutures
   with BeforeAndAfterAll {
 
-  val starter = MongodStarter.getDefaultInstance
   val ip = ConfigFactory.load.getString("alpakka.mongo.connection.ip")
   val port = ConfigFactory.load.getInt("alpakka.mongo.connection.port")
-  val mongoDBConfig = new MongodConfigBuilder()
-    .version(Version.Main.PRODUCTION)
-    .net(new Net(ip, port, Network.localhostIsIPv6()))
+  val mongodInstance: ImmutableMongod = Mongod.builder()
+    .net(Start.to(classOf[Net]).initializedWith(Net.of(ip, port, Network.localhostIsIPv6())))
     .build()
-  val mongod = starter.prepare(mongoDBConfig)
 
   override def beforeAll() = {
-    mongod.start()
-  }
-
-  override def afterAll() = {
-    mongod.stop()
+    mongodInstance.start(Version.Main.V4_4)
   }
 
   "Alpakka MongoDB integration service" must {
