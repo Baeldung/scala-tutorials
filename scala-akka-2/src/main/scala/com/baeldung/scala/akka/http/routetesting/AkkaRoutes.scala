@@ -29,11 +29,11 @@ object AkkaRoutes {
         }
       )
     } ~
-      post {
-        path("hello-name") {
-          entity(as[String]) { name =>
-            complete(s"Hello $name")
-          }
+    post {
+      path("hello-name") {
+        entity(as[String]) { name =>
+          complete(s"Hello $name")
         }
       }
+    }
 }
