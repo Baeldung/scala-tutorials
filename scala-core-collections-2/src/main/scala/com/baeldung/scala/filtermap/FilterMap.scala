@@ -5,19 +5,19 @@ import scala.collection.mutable
 object FilterMap {
   type Rank = Int
   val xmen: Map[Rank, Option[String]] = Map(
-    1 -> Some("ProfessorX"),
-    2 -> Some("Wolverine"),
-    3 -> None,
-    4 -> Some("Night Crawler"),
-    5 -> None,
+    (1,Some("ProfessorX")),
+    (2,Some("Wolverine")),
+    (3,None),
+    (4,Some("Night Crawler")),
+    (5,None)
   )
 
   val xmenMutable: mutable.Map[Rank, Option[String]] = mutable.Map(
-    1 -> Some("ProfessorX"),
-    2 -> Some("Wolverine"),
-    3 -> None,
-    4 -> Some("Night Crawler"),
-    5 -> None,
+    (1,Some("ProfessorX")),
+    (2,Some("Wolverine")),
+    (3,None),
+    (4,Some("Night Crawler")),
+    (5,None)
   )
 
   // filter
