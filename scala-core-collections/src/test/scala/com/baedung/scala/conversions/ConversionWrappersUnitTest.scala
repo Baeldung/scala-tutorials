@@ -1,13 +1,12 @@
-package com.baeldung.scala.conversions
+package com.baedung.scala.conversions
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 import java.util.ArrayList
+import scala.jdk.CollectionConverters._
 
 class ConversionWrappersUnitTest extends AnyFlatSpec with Matchers {
-
-  import scala.collection.JavaConverters._
 
   "Round trip conversions from Java to Scala" should "not have any overhead" in {
     val javaList = new ArrayList[Int]
@@ -18,7 +17,7 @@ class ConversionWrappersUnitTest extends AnyFlatSpec with Matchers {
   }
 
   "Round trip conversions from Scala to Java" should "not have any overhead" in {
-    val scalaSeq = Seq(1, 2, 3).toIterator
+    val scalaSeq = Seq(1, 2, 3).iterator
     assert(scalaSeq eq scalaSeq.asJava.asScala)
   }
 
