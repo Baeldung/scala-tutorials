@@ -347,7 +347,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.7",
+      "software.amazon.awssdk" % "s3" % "2.20.13",
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.410" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
@@ -441,4 +441,3 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
-
