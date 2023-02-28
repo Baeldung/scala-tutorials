@@ -327,6 +327,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   .configs(IntegrationTest)
   .settings(
     name := "scala-libraries-4",
+    scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
     libraryDependencies ++= scalaTestDeps,
@@ -350,6 +351,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.410" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
+    ),
+    libraryDependencies ++= Seq(
+      "software.amazon.awssdk" % "s3" % "2.19.31",
+      "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     scalacOptions += "-Xasync",
     Defaults.itSettings,
