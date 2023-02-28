@@ -26,9 +26,8 @@ object RDDToDataframe extends App {
 
   dfWitDefaultSchema.printSchema()
 
-  /** \|-- _1: string (nullable = true)
-    * \|-- _2: string (nullable = true)
-    * \|-- _3: integer (nullable = false)
+  /** \|-- _1: string (nullable = true) \|-- _2: string (nullable = true) \|--
+    * _3: integer (nullable = false)
     */
 
   dfWitDefaultSchema.show()
@@ -69,8 +68,7 @@ object RDDToDataframe extends App {
 
   dfWithSchema.printSchema()
 
-  /** \|-- Name: string (nullable = false)
-    * \|-- Job: string (nullable = true)
+  /** \|-- Name: string (nullable = false) \|-- Job: string (nullable = true)
     * \|-- Age: integer (nullable = true)
     */
 
@@ -80,10 +78,8 @@ object RDDToDataframe extends App {
 
   dfUsingToDFMethod.printSchema()
 
-  /** root
-    * \|-- Name: string (nullable = true)
-    * \|-- Job: string (nullable = true)
-    * \|-- Age: integer (nullable = false)
+  /** root \|-- Name: string (nullable = true) \|-- Job: string (nullable =
+    * true) \|-- Age: integer (nullable = false)
     */
 
   dfUsingToDFMethod.show()

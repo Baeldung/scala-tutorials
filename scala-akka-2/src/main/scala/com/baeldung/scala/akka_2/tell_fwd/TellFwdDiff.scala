@@ -19,21 +19,21 @@ object TestActors {
   case object TellWithExplicitSenderMsg
 
   class ActorA(actorB: ActorRef) extends Actor {
-    override def receive: Receive = {
-      case msg:Any => actorB ! msg
+    override def receive: Receive = { case msg: Any =>
+      actorB ! msg
     }
   }
 
   class ActorB(actorC: ActorRef) extends Actor {
     override def receive: Receive = {
-      case TellMsg => actorC ! "Tell"
+      case TellMsg    => actorC ! "Tell"
       case ForwardMsg => actorC tell ("Forward", sender)
     }
   }
 
   class ActorC extends Actor {
-    override def receive: Receive = {
-      case msg: Any => println(s"Received message: $msg, sender: ${sender.path.name}")
+    override def receive: Receive = { case msg: Any =>
+      println(s"Received message: $msg, sender: ${sender.path.name}")
     }
   }
 }

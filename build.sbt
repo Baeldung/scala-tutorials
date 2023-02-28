@@ -441,4 +441,3 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
-
