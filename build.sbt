@@ -307,7 +307,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
   )
@@ -318,7 +318,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
   )
@@ -441,4 +441,3 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
-
