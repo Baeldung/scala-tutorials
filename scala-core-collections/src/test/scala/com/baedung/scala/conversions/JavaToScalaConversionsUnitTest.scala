@@ -1,15 +1,14 @@
-package com.baeldung.scala.conversions
+package com.baedung.scala.conversions
 
 import com.baedung.scala.conversions.JavaApi
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-import scala.collection.convert.{DecorateAsJava, DecorateAsScala}
+import scala.jdk.CollectionConverters._
+
 class JavaToScalaConversionsUnitTest
   extends AnyFlatSpec
-  with Matchers
-  with DecorateAsScala
-  with DecorateAsJava {
+  with Matchers {
 
   "Standard conversions" should "convert from Java Iterators and back" in {
     val api = new JavaApi
