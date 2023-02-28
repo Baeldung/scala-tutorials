@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.7"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.7" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
-val embedMongoVersion = "4.5.1"
+val embedMongoVersion = "4.6.1"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
@@ -441,4 +441,3 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
-
