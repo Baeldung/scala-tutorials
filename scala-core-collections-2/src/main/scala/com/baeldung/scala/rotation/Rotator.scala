@@ -8,8 +8,8 @@ object Rotator {
       if (length == 0) sequence
       else {
         val normalisedIndex = (index % length + length) % length
-        val (left, right) = sequence.splitAt(normalisedIndex).swap
-        left ++ right
+        val (left, right) = sequence.splitAt(normalisedIndex)
+        right ++ left
       }
     }
 
