@@ -20,8 +20,8 @@ class RotatorSpec extends AnyWordSpec {
     "handle positive rotations" in {
       val sequence = Vector('a', 'b', 'c', 'd', 'e')
       assertResult(Vector('b', 'c', 'd', 'e', 'a'))(sequence.rotatedView(1))
-      assertResult(Vector('e', 'a', 'b', 'c', 'd'))(sequence.rotatedView(3))
-      assertResult(Vector('a', 'b', 'c', 'd', 'e'))(sequence.rotatedView(5))
+      assertResult(Vector('e', 'a', 'b', 'c', 'd'))(sequence.rotatedView(4))
+      assertResult(Vector('b', 'c', 'd', 'e', 'a'))(sequence.rotatedView(6))
     }
 
     "handle negative rotations" in {
