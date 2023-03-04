@@ -31,6 +31,15 @@ class RotatorSpec extends AnyWordSpec {
       assertResult(Vector('a', 'b', 'c', 'd', 'e'))(sequence.rotatedView(-10))
     }
 
+    "support folding" in {
+      val sequence = Vector('u', 'n', 'g', 'b', 'a', 'e', 'l', 'd')
+      val rotatedAndFolded =
+        sequence
+          .rotatedView(3)
+          .foldLeft("")((str, char) => str :+ char)
+      assertResult("baeldung")(rotatedAndFolded)
+    }
+
   }
 
 }
