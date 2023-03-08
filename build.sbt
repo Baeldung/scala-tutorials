@@ -416,6 +416,15 @@ lazy val doobie = (project in file("doobie"))
 //     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
 //   )
 
+// ScalaPy Python Project is disabled as it needs clang and python to installed in the target machine.
+// To test this code, install clang, python and then uncommment this build
+// lazy val scala_python = (project in file("scala-python"))
+//   .settings(
+//     name := "scala-python",
+//     libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.5.2",
+//     fork := true
+//   )
+
 lazy val reflection = (project in file("reflection"))
   .settings(
     name := "reflection",
