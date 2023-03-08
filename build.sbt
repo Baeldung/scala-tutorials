@@ -21,7 +21,7 @@ val scalaTestDeps = Seq(
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
 val zioVersion = "2.0.9"
 
-lazy val scala_core = (project in file("scala-core"))
+lazy val scala_core = (project in file("scala-2-modules/scala-core"))
   .settings(
     name := "scala-core",
     libraryDependencies ++=
@@ -31,7 +31,7 @@ lazy val scala_core = (project in file("scala-core"))
       ) ++ scalaTestDeps
   )
 
-lazy val scala_core_2 = (project in file("scala-core-2"))
+lazy val scala_core_2 = (project in file("scala-2-modules/scala-core-2"))
   .settings(
     name := "scala-core-2",
     libraryDependencies ++= scalaTestDeps,
@@ -39,7 +39,7 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
     libraryDependencies += jUnitInterface
   )
 
-lazy val scala_core_3 = (project in file("scala-core-3"))
+lazy val scala_core_3 = (project in file("scala-2-modules/scala-core-3"))
   .settings(
     name := "scala-core-3",
     libraryDependencies ++= scalaTestDeps,
