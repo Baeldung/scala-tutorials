@@ -12,18 +12,18 @@ case object TellWithExplicitSenderMsg
 
 class ActorA(actorBRef: ActorRef) extends Actor {
   override def receive: Receive = {
-    case TellMsg => actorBRef ! "Tell"
+    case TellMsg    => actorBRef ! "Tell"
     case ForwardMsg => actorBRef forward "Forward"
-    case TellWithExplicitSenderMsg => actorBRef tell ("TellWithExplicitSender", self)
+    case TellWithExplicitSenderMsg =>
+      actorBRef tell ("TellWithExplicitSender", self)
   }
 }
 
 class ActorB(replyTo: ActorRef) extends Actor {
-  override def receive: Receive = {
-    case msg: Any =>
-      val senderName = sender.path.name
-      println(s"Sender of this message($msg) is : $senderName")
-      replyTo ! s"[$msg] Sender: ${sender.path.name}"
+  override def receive: Receive = { case msg: Any =>
+    val senderName = sender.path.name
+    println(s"Sender of this message($msg) is : $senderName")
+    replyTo ! s"[$msg] Sender: ${sender.path.name}"
   }
 }
 
@@ -40,8 +40,8 @@ class TellForwardDiffUnitTest
   expectMsg(1.second, "[Tell] Sender: ActorA")
 
   actorA ! ForwardMsg
-  expectMsgPF(1.second) {
-    case msg:String => msg contains "[Forward] Sender: testActor"
+  expectMsgPF(1.second) { case msg: String =>
+    msg contains "[Forward] Sender: testActor"
   }
 
   actorA ! TellWithExplicitSenderMsg

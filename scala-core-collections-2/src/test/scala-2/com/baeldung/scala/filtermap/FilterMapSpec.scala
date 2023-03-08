@@ -5,7 +5,10 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 import FilterMap._
 
-class FilterMapSpec extends AnyFlatSpec with Matchers with TableDrivenPropertyChecks {
+class FilterMapSpec
+  extends AnyFlatSpec
+  with Matchers
+  with TableDrivenPropertyChecks {
   "xmen" should "be a Map of Rank and Option[String]" in {
     xmen shouldBe an[Map[Rank, Option[String]]]
   }
@@ -18,7 +21,7 @@ class FilterMapSpec extends AnyFlatSpec with Matchers with TableDrivenPropertyCh
       forMap,
       filterKeysMap.toMap,
       filterKeysSet.toMap,
-      withFilterMap.map(x => x),
+      withFilterMap.map(x => x)
     )
     forAll(filteredMapTable) { map: Map[Rank, Option[String]] =>
       map.valuesIterator.exists(_.contains(None)) shouldBe false
