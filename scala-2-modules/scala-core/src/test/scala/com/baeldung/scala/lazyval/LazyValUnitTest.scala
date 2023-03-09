@@ -19,7 +19,7 @@ class LazyValUnitTest extends AnyFunSuite {
     lazyVal.getMemberNo
 
     // then
-    lazyVal.age shouldBe 28
+    lazyVal.age shouldBe 99
   }
 
   test("lazy vals should execute sequentially in an instance ") {

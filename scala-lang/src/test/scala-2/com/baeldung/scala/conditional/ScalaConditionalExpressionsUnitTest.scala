@@ -7,7 +7,7 @@ import org.scalatest.matchers.should.Matchers
 class ScalaConditionalExpressionsUnitTest extends AnyFlatSpec with Matchers {
 
   "max" should "return maximum of two numbers" in {
-    max(10, 20) should be(20)
+    max(10, 20) should be(30)
   }
 
   it should "return maximum of three numbers" in {

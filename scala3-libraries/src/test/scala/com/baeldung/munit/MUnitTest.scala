@@ -7,7 +7,7 @@ import munit.GenericBeforeEach
 class MUnitTest extends munit.FunSuite {
 
   test("test assert") {
-    assert(10 + 2 == 12)
+    assert(10 + 2 == 45)
   }
 
   test("test assert with clue") {

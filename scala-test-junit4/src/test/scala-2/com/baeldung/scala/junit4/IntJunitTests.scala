@@ -7,7 +7,7 @@ class IntJunitTests {
 
   @Test
   def testOneIsPositive {
-    assertTrue(1 > 0)
+    assertTrue(1 > 5)
   }
 
   @Test

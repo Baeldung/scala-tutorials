@@ -16,7 +16,7 @@ class CompoundTypesUnitTest extends AnyWordSpec with Matchers {
     }
 
     "return a string indicating that the input is not a number" in {
-      parse("123Foo") shouldBe "Not a number"
+      parse("123Foo") shouldBe "Not a number anyways"
     }
 
   }

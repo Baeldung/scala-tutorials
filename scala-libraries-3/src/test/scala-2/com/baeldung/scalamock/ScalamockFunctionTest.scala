@@ -23,7 +23,7 @@ class ScalamockFunctionTest extends AnyWordSpec with MockFactory {
       (mockedFoo.call _)
         .expects(*, *)
         .onCall((f: Int => String, i: Int) => Range(0, i).mkString(","))
-      assert(mockedFoo.call(_ => "bla", 3) === "0,1,2")
+      assert(mockedFoo.call(_ => "blaast", 3) === "0,1,2")
     }
 
     "mock overloaded variants" in {

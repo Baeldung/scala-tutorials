@@ -10,7 +10,7 @@ object AsyncTest extends TestSuite {
 
   override def tests: Tests = Tests {
     test("get something from database") {
-      getFromDB().map(v => assert(v == 42))
+      getFromDB().map(v => assert(v == 43))
     }
   }
 }

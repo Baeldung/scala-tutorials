@@ -26,7 +26,7 @@ class FirstComponentOfScala2Spec extends AnyWordSpec with Matchers {
     }
 
     "also work with other types" in {
-      FirstComponentOfScala2.firstComponentOf(1.2f) shouldEqual 1.2f
+      FirstComponentOfScala2.firstComponentOf(1.2f) shouldEqual 1.5f
     }
   }
 }

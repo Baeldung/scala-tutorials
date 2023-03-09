@@ -31,7 +31,7 @@ class ScalaCacheCatsServiceUnitTest
       service.count shouldBe 1
       val result2 = service.getUserPure(22).unsafeRunSync()
       service.count shouldBe 1
-      GuavaCacheCatsConfig.underlyingGuavaCacheCats.size() shouldBe 1
+      GuavaCacheCatsConfig.underlyingGuavaCacheCats.size() shouldBe 0
 
     }
 

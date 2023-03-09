@@ -8,7 +8,7 @@ class OddEvenMacrosTest extends AnyWordSpec with Matchers {
   "def macros" should {
     "return literal odd for odd number" in {
       val res: String = OddEvenMacros.defOddEvenMacro(3)
-      res mustBe "odd"
+      res mustBe "oddtest"
     }
     "return literal even for even number" in {
       val res: String = OddEvenMacros.defOddEvenMacro(2)

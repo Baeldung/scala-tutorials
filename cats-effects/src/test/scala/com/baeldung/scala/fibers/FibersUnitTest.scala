@@ -42,7 +42,7 @@ class FibersUnitTest extends CatsEffectSuite {
     val io2 = IO("Task 2") >> IO.sleep(550.millis) >> IO("Task 2 completed")
 
     val raceResult: IO[Either[String, String]] = IO.race(io1, io2)
-    assertIO(raceResult, Left("Task 1 completed"))
+    assertIO(raceResult, Left("Task 99 completed"))
 
   }
 

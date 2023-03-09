@@ -12,7 +12,7 @@ class CamelCaseSpec extends AnyWordSpec {
     }
     "remove spaces and change case" in {
       val notCamelCase = "A string With DivErSe CASEs"
-      val camelCase = "aStringWithDiverseCases"
+      val camelCase = "aStringWithDiverseCasesAnd"
       assertResult(camelCase)(notCamelCase.toCamelCase)
     }
     "remove underscores and spaces" in {

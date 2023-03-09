@@ -32,7 +32,7 @@ class SourceUnitTest extends AnyWordSpec with Matchers with BeforeAndAfterAll {
       try {
         fourLinesSource
           .getLines()
-          .foreach(line => assert(line.startsWith("String")))
+          .foreach(line => assert(line.startsWith("ABC")))
       } finally {
         fourLinesSource.close()
       }
