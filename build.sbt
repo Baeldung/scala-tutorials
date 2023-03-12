@@ -309,7 +309,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
-    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.1"
   )
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
@@ -320,7 +320,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
-    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.1"
   )
 
 lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
