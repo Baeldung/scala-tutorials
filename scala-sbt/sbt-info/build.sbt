@@ -1,8 +1,8 @@
 import sys.process._
 
-lazy val myProject = (project in file(".")).
-  enablePlugins(BuildInfoPlugin).
-  settings(
+lazy val myProject = (project in file("."))
+  .enablePlugins(BuildInfoPlugin)
+  .settings(
     buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion),
     buildInfoPackage := "buindInfoArticle"
   )
@@ -18,7 +18,9 @@ buildInfoKeys ++= Seq[BuildInfoKey](
   // Add library dependencies
   libraryDependencies,
   // Add custom version key and append timestamp to the version number
-  BuildInfoKey.map(version) { case (k, v) => "mycustom" + k.capitalize -> s"$v-${System.currentTimeMillis.toString}" },
+  BuildInfoKey.map(version) { case (k, v) =>
+    "mycustom" + k.capitalize -> s"$v-${System.currentTimeMillis.toString}"
+  },
   // Add a custom field with the team owning the package
   "ownerTeam" -> "BestTeam",
   // Add a custom field with the build size

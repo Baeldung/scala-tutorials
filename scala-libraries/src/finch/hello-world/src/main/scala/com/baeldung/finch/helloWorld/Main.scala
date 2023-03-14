@@ -12,8 +12,9 @@ object Main extends App {
   case class FullName(first: String, last: String)
 
   val hello: Endpoint[String] = get("hello") { Ok("Hello, World!") }
-  val helloName: Endpoint[String] = post("hello" :: jsonBody[FullName]) { name: FullName =>
-    Ok(s"Hello, ${name.first} ${name.last}!")
+  val helloName: Endpoint[String] = post("hello" :: jsonBody[FullName]) {
+    name: FullName =>
+      Ok(s"Hello, ${name.first} ${name.last}!")
   }
 
   Await.ready(Http.server.serve(":8081", (hello :+: helloName).toService))

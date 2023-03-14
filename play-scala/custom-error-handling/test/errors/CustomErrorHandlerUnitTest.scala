@@ -7,19 +7,24 @@ import org.scalatestplus.play.guice.GuiceOneAppPerTest
 import play.api.test.Helpers._
 import play.api.test._
 
-class CustomErrorHandlerUnitTest extends PlaySpec with GuiceOneAppPerTest with Injecting with Eventually {
+class CustomErrorHandlerUnitTest
+  extends PlaySpec
+  with GuiceOneAppPerTest
+  with Injecting
+  with Eventually {
   "CustomErrorHandler" should {
     "redirect to the home page when a page has not been found" in {
-      //given
+      // given
       val objectUnderTest = new CustomErrorHandler()
       val request = FakeRequest(GET, "/fake")
       val statusCode = StatusCodes.NotFound
       val message = ""
 
-      //when
-      val responseFuture = objectUnderTest.onClientError(request, statusCode.intValue, message)
+      // when
+      val responseFuture =
+        objectUnderTest.onClientError(request, statusCode.intValue, message)
 
-      //then
+      // then
       eventually {
         status(responseFuture) mustBe StatusCodes.SeeOther.intValue
       }

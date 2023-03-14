@@ -3,7 +3,12 @@ package com.baeldung.hello.api
 import akka.NotUsed
 import akka.stream.scaladsl.Source
 import com.baeldung.hello.akka.{Job, JobAccepted, JobStatus}
-import com.lightbend.lagom.scaladsl.api.{Descriptor, Service, ServiceAcl, ServiceCall}
+import com.lightbend.lagom.scaladsl.api.{
+  Descriptor,
+  Service,
+  ServiceAcl,
+  ServiceCall
+}
 
 trait HelloService extends Service {
 

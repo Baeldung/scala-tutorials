@@ -33,7 +33,7 @@ class ListMapOperationsUnitTest extends AnyFlatSpec with Matchers {
     )
     assert(newListMap.head == ("Canada" -> "Ottawa"))
   }
-  
+
   "+ operator" should "update the value of an existing key in the ListMap" in {
     assert(countryCapitals("India") == "Delhi")
     val newListMap = countryCapitals + ("India" -> "New Delhi")

@@ -6,7 +6,10 @@ import org.scalatestplus.play.guice.GuiceOneAppPerTest
 import play.api.test.Helpers.{GET, contentAsString, stubControllerComponents, _}
 import play.api.test.{FakeRequest, Injecting}
 
-class MenuControllerUnitTest extends PlaySpec with GuiceOneAppPerTest with Injecting {
+class MenuControllerUnitTest
+  extends PlaySpec
+  with GuiceOneAppPerTest
+  with Injecting {
   "MenuController should return the menu positions" should {
     "return the price in the right format" in {
       val priceFormatter = new PriceFormatter()
@@ -14,9 +17,11 @@ class MenuControllerUnitTest extends PlaySpec with GuiceOneAppPerTest with Injec
 
       val controller = new MenuController(template, stubControllerComponents())
 
-      val result = controller.availableProducts().apply(
-        FakeRequest(GET, "/menu")
-      )
+      val result = controller
+        .availableProducts()
+        .apply(
+          FakeRequest(GET, "/menu")
+        )
 
       contentAsString(result) must include("coffee 8,99 €")
     }

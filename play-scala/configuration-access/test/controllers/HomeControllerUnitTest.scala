@@ -7,11 +7,11 @@ import play.api.test.Helpers._
 import play.api.test._
 import services.MyService
 
-/**
-  * Add your spec here.
-  * You can mock out a whole application including requests, plugins etc.
+/** Add your spec here. You can mock out a whole application including requests,
+  * plugins etc.
   *
-  * For more information, see https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
+  * For more information, see
+  * https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
   */
 class HomeControllerUnitTest
   extends PlaySpec
