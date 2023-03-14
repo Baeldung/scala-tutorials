@@ -8,7 +8,6 @@ import java.util.concurrent.TimeoutException
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 
-@Ignore // fixing in JAVA-9842
 class AwaitFutureUnitTest
   extends AwaitFutureTestUtil
   with Matchers

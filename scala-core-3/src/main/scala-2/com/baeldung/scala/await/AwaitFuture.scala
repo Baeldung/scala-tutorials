@@ -7,12 +7,12 @@ import scala.io.Source
 object AwaitFuture {
 
   def fetchDataFromUrl(url: String): Future[String] = Future {
-    Source.fromURL(url).getLines().mkString
+    s"Mock response from $url"
   }
 
   def fetchDataFrom(url: String, waitTime: Long = 0L): Future[String] = Future {
     Thread.sleep(waitTime)
-    Source.fromURL(url).getLines().mkString
+    s"Mock response from $url"
   }
 
   def futureWithoutException(): Future[String] = Future {
