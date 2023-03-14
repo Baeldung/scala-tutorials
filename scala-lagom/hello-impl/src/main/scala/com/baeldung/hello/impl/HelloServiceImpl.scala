@@ -16,9 +16,8 @@ import com.lightbend.lagom.scaladsl.pubsub.{PubSubRegistry, TopicId}
 import scala.concurrent.{ExecutionContext, Future}
 import scala.concurrent.duration._
 
-class HelloServiceImpl(system: ActorSystem, pubSub: PubSubRegistry)(implicit
-  ec: ExecutionContext
-) extends HelloService {
+class HelloServiceImpl(system: ActorSystem, pubSub: PubSubRegistry)(implicit ec: ExecutionContext)
+  extends HelloService {
 
   if (Cluster.get(system).selfRoles("worker-node")) {
     system.actorOf(Worker.props(pubSub), "worker")
@@ -26,12 +25,9 @@ class HelloServiceImpl(system: ActorSystem, pubSub: PubSubRegistry)(implicit
 
   val workerRouter = {
     val paths = List("/user/worker")
-    val groupConf = ConsistentHashingGroup(
-      paths,
-      hashMapping = { case Job(_, task, _) =>
-        task
-      }
-    )
+    val groupConf = ConsistentHashingGroup(paths, hashMapping = {
+      case Job(_, task, _) => task
+    })
     val routerProps = ClusterRouterGroup(
       groupConf,
       ClusterRouterGroupSettings(
@@ -44,16 +40,17 @@ class HelloServiceImpl(system: ActorSystem, pubSub: PubSubRegistry)(implicit
     system.actorOf(routerProps, "workerRouter")
   }
 
-  override def submit(): ServiceCall[Job, JobAccepted] = ServiceCall { job =>
-    // Future{JobAccepted(job.jobId)}
-    implicit val timeout = Timeout(5.seconds)
-    (workerRouter ? job).mapTo[JobAccepted]
+  override def submit(): ServiceCall[Job, JobAccepted] = ServiceCall {
+    job =>
+      //Future{JobAccepted(job.jobId)}
+      implicit val timeout = Timeout(5.seconds)
+      (workerRouter ? job).mapTo[JobAccepted]
   }
 
-  override def status(): ServiceCall[NotUsed, Source[JobStatus, NotUsed]] =
-    ServiceCall { _ =>
+  override def status(): ServiceCall[NotUsed, Source[JobStatus, NotUsed]] = ServiceCall {
+    _ =>
       val topic = pubSub.refFor(TopicId[JobStatus]("job-status"))
       Future.successful(topic.subscriber)
-    }
+  }
 
 }

@@ -15,4 +15,4 @@ object ScalaCliApp {
 }
 
 // package this app using scala-cli, use the command `scala-cli package ScalaCliApp.scala -o cliapp --assembly`
-// This will generate cliapp and it can be executed as ./cliapp
+// This will generate cliapp and it can be executed as ./cliapp 

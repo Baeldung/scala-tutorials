@@ -7,9 +7,7 @@ import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}
 import scala.collection.mutable
 
 @Singleton
-class TodoListController @Inject() (
-  val controllerComponents: ControllerComponents
-) extends BaseController {
+class TodoListController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
   private val todoList = new mutable.ListBuffer[TodoListItem]()
   todoList += TodoListItem(1, "test", true)
   todoList += TodoListItem(2, "some other value", false)
@@ -27,7 +25,7 @@ class TodoListController @Inject() (
     val foundItem = todoList.find(_.id == itemId)
     foundItem match {
       case Some(item) => Ok(Json.toJson(item))
-      case None       => NotFound
+      case None => NotFound
     }
   }
 
@@ -55,8 +53,7 @@ class TodoListController @Inject() (
     val content = request.body
     val jsonObject = content.asJson
 
-    val todoListItem: Option[NewTodoListItem] =
-      jsonObject.flatMap(Json.fromJson[NewTodoListItem](_).asOpt)
+    val todoListItem: Option[NewTodoListItem] = jsonObject.flatMap(Json.fromJson[NewTodoListItem](_).asOpt)
 
     todoListItem match {
       case Some(newItem) =>

@@ -6,7 +6,9 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.jdk.CollectionConverters.IterableHasAsJava
 
-class ScalaToJavaConversionsUnitTest extends AnyFlatSpec with Matchers {
+class ScalaToJavaConversionsUnitTest
+  extends AnyFlatSpec
+  with Matchers {
 
   "A Scala Iterable" should "be passable as a parameter expecting a Java Collection" in {
     val api = new JavaApi

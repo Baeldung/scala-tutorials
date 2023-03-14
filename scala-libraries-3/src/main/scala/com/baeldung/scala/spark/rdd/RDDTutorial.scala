@@ -31,9 +31,9 @@ object RDDTutorial extends App {
 
   rdd.toDebugString
 
-  /** (8) MapPartitionsRDD[2] at map at <console>:26 [] \| MapPartitionsRDD[1]
-    * at filter at <console>:26 [] \| ParallelCollectionRDD[0] at parallelize at
-    * <console>:27 []
+  /** (8) MapPartitionsRDD[2] at map at <console>:26 []
+    * \| MapPartitionsRDD[1] at filter at <console>:26 []
+    * \| ParallelCollectionRDD[0] at parallelize at <console>:27 []
     */
 
   import spark.implicits._

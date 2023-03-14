@@ -16,9 +16,8 @@ object ScalaCollections {
   val emptySet: Set[Int] = Set()
   val numbersSet: Set[Int] = Set(1, 2, 3, 4)
 
-  // Scala Map
+  //Scala Map
   val immutableMap: Map[Int, String] = Map(1 -> "a", 2 -> "b")
-  val mutableMap: mutable.Map[Int, String] =
-    collection.mutable.Map(1 -> "a", 2 -> "b")
+  val mutableMap: mutable.Map[Int, String] = collection.mutable.Map(1 -> "a", 2 -> "b")
 
 }

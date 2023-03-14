@@ -1,4 +1,4 @@
 @main
 def main(fruits: String*) = {
-  fruits foreach { println(_) }
+  fruits foreach {println(_)}
 }

@@ -26,13 +26,8 @@ class AlpakkaIntegrationTest
 
   val ip = ConfigFactory.load.getString("alpakka.mongo.connection.ip")
   val port = ConfigFactory.load.getInt("alpakka.mongo.connection.port")
-  val mongodInstance: ImmutableMongod = Mongod
-    .builder()
-    .net(
-      Start
-        .to(classOf[Net])
-        .initializedWith(Net.of(ip, port, Network.localhostIsIPv6()))
-    )
+  val mongodInstance: ImmutableMongod = Mongod.builder()
+    .net(Start.to(classOf[Net]).initializedWith(Net.of(ip, port, Network.localhostIsIPv6())))
     .build()
 
   override def beforeAll() = {

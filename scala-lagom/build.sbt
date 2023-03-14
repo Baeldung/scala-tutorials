@@ -29,3 +29,4 @@ lazy val `hello-impl` = (project in file("hello-impl"))
   )
   .settings(lagomForkedTestSettings)
   .dependsOn(`hello-api`)
+

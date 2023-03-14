@@ -17,9 +17,7 @@ trait BaseAkkaServer {
   implicit val system: ActorSystem = ActorSystem("my-system")
 
   def withSwaggerDocs(endpoints: List[AnyEndpoint]): server.Route = {
-    AkkaHttpServerInterpreter().toRoute(
-      SwaggerInterpreter().fromEndpoints[Future](endpoints, "My App", "1.0")
-    )
+    AkkaHttpServerInterpreter().toRoute(SwaggerInterpreter().fromEndpoints[Future](endpoints, "My App", "1.0"))
   }
 
   def start(routes: Iterable[server.Route]): Unit = {

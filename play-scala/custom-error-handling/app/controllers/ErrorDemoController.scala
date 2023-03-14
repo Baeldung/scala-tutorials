@@ -4,9 +4,7 @@ import javax.inject._
 import play.api.mvc.{BaseController, ControllerComponents, Action, AnyContent}
 
 @Singleton
-class ErrorDemoController @Inject() (
-  val controllerComponents: ControllerComponents
-) extends BaseController {
+class ErrorDemoController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
   def noError(): Action[AnyContent] = Action {
     Ok
   }

@@ -12,18 +12,14 @@ case class Kitten(id: Long, name: String, gender: String, ageInDays: Int)
 
 object AnimalEndpoints {
 
-  val kittens: Endpoint[Unit, Unit, String, List[Kitten], Any] = endpoint.get
+  val kittens: Endpoint[Unit, Unit, String, List[Kitten], Any] = endpoint
+    .get
     .in("kitten")
     .errorOut(stringBody)
     .out(jsonBody[List[Kitten]])
 
-  val kittensWithQueryParam: Endpoint[
-    Unit,
-    Int,
-    (StatusCode, ErrorResponse),
-    (StatusCode, List[Kitten]),
-    Any
-  ] = endpoint.get
+  val kittensWithQueryParam: Endpoint[Unit, Int, (StatusCode, ErrorResponse), (StatusCode, List[Kitten]), Any] = endpoint
+    .get
     .in("kitten")
     .in(query[Int]("ageInDays"))
     .errorOut(statusCode)
@@ -31,20 +27,15 @@ object AnimalEndpoints {
     .out(statusCode)
     .out(jsonBody[List[Kitten]])
 
-  val kittensWithPathParam
-    : Endpoint[Unit, String, String, Option[Kitten], Any] = endpoint.get
+  val kittensWithPathParam: Endpoint[Unit, String, String, Option[Kitten], Any] = endpoint
+    .get
     .in("kitten")
     .in(path[String]("name"))
     .errorOut(stringBody)
     .out(jsonBody[Option[Kitten]])
 
-  val kittensPost: Endpoint[
-    Unit,
-    Kitten,
-    (StatusCode, ErrorResponse),
-    (StatusCode, Kitten),
-    Any
-  ] = endpoint.post
+  val kittensPost: Endpoint[Unit, Kitten, (StatusCode, ErrorResponse), (StatusCode, Kitten), Any] = endpoint
+    .post
     .in("kitten")
     .in(jsonBody[Kitten])
     .errorOut(statusCode)
@@ -52,13 +43,8 @@ object AnimalEndpoints {
     .out(statusCode)
     .out(jsonBody[Kitten])
 
-  val kittensPut: Endpoint[
-    Unit,
-    Kitten,
-    (StatusCode, ErrorResponse),
-    (StatusCode, Kitten),
-    Any
-  ] = endpoint.put
+  val kittensPut: Endpoint[Unit, Kitten, (StatusCode, ErrorResponse), (StatusCode, Kitten), Any] = endpoint
+    .put
     .in("kitten")
     .in(jsonBody[Kitten])
     .errorOut(statusCode)
@@ -66,13 +52,9 @@ object AnimalEndpoints {
     .out(statusCode)
     .out(jsonBody[Kitten])
 
-  val kittensDelete: Endpoint[
-    Unit,
-    Long,
-    (StatusCode, ErrorResponse),
-    (StatusCode, Kitten),
-    Any
-  ] = endpoint.delete
+
+  val kittensDelete: Endpoint[Unit, Long, (StatusCode, ErrorResponse), (StatusCode, Kitten), Any] = endpoint
+    .delete
     .in("kitten")
     .in(path[Long]("id"))
     .errorOut(statusCode)

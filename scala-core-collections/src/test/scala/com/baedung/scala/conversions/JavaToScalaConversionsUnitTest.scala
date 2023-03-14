@@ -6,7 +6,9 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.jdk.CollectionConverters._
 
-class JavaToScalaConversionsUnitTest extends AnyFlatSpec with Matchers {
+class JavaToScalaConversionsUnitTest
+  extends AnyFlatSpec
+  with Matchers {
 
   "Standard conversions" should "convert from Java Iterators and back" in {
     val api = new JavaApi

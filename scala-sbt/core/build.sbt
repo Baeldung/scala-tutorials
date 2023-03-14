@@ -1,9 +1,10 @@
-lazy val root = (project in file(".")).settings(
-  name := "scala-sbt",
-  version := "1.0",
-  mainClass in Compile := Some("com.baeldung.scala.sbt.SbtAssemblyExample"),
-  mainClass in assembly := Some("com.baeldung.scala.sbt.SbtAssemblyExample")
-)
+lazy val root = (project in file(".")).
+  settings(
+    name := "scala-sbt",
+    version := "1.0",
+    mainClass in Compile := Some("com.baeldung.scala.sbt.SbtAssemblyExample"),
+    mainClass in assembly := Some("com.baeldung.scala.sbt.SbtAssemblyExample")
+  )
 
 val sparkVersion = "2.4.4"
 
@@ -14,6 +15,8 @@ assemblyJarName in assembly := "baeldung-scala-sbt-assembly-fatjar-1.0.jar"
 
 // META-INF discarding
 assemblyMergeStrategy in assembly := {
-  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
-  case x                             => MergeStrategy.first
+ case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+ case x => MergeStrategy.first
 }
+
+

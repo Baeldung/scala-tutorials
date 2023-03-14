@@ -8,6 +8,7 @@ shellPrompt := { state =>
 //addSbtPlugin("com.scalapenos" % "sbt-prompt" % "1.0.2")
 
 //Setting the configuration
-/** import com.scalapenos.sbt.prompt.SbtPrompt.autoImport._ promptTheme :=
-  * com.scalapenos.sbt.prompt.PromptThemes.ScalapenosTheme
-  */
+/**
+import com.scalapenos.sbt.prompt.SbtPrompt.autoImport._ 
+promptTheme := com.scalapenos.sbt.prompt.PromptThemes.ScalapenosTheme  
+*/ 

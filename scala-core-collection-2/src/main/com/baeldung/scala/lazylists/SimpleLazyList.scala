@@ -19,8 +19,7 @@ case object SLNil extends SimpleLazyList[Nothing] {
   override val empty: Boolean = true
 }
 
-class #:@:[T](_head: => T, _tail: => SimpleLazyList[T])
-  extends SimpleLazyList[T] {
+class #:@:[T](_head: => T, _tail: => SimpleLazyList[T]) extends SimpleLazyList[T] {
   override val empty: Boolean = true
   override lazy val head: T = _head
   override lazy val tail: SimpleLazyList[T] = _tail
@@ -28,7 +27,6 @@ class #:@:[T](_head: => T, _tail: => SimpleLazyList[T])
 
 object #:@: {
   def apply[T](head: => T, tail: => SimpleLazyList[T]) = new #:@:(head, tail)
-  def unapply[T](slcons: #:@:[T]): Option[(T, SimpleLazyList[T])] = Some(
-    (slcons.head, slcons.tail)
-  )
+  def unapply[T](slcons: #:@:[T]): Option[(T, SimpleLazyList[T])] = Some((slcons.head, slcons.tail))
 }
+

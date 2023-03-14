@@ -7,8 +7,7 @@ class ScalaJsUnitTest extends AnyFlatSpec {
   "Scala Js" should "generate test paragraph with expected text" in {
     ScalaJsApp.generateTextParagraph()
     val paragraphs = document.querySelectorAll("p")
-    val paragraphsWithText =
-      paragraphs.count(_.textContent == "This is a test paragraph.")
+    val paragraphsWithText = paragraphs.count(_.textContent == "This is a test paragraph.")
     assert(paragraphsWithText == 1)
   }
 }

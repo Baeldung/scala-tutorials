@@ -6,21 +6,16 @@ import play.api.libs.json.{JsObject, JsString}
 import play.api.test._
 import play.api.test.Helpers._
 
-class TodoListControllerUnitTest
-  extends PlaySpec
-  with GuiceOneAppPerTest
-  with Injecting {
+class TodoListControllerUnitTest extends PlaySpec with GuiceOneAppPerTest with Injecting {
   "TodoListController add new item" should {
 
     "should return 400 Bad Request if the Content-Type header is not set" in {
       val todoListItemJson = "{\"description\":\"some test description\"}"
 
       val controller = new TodoListController(stubControllerComponents())
-      val addNewItem = controller
-        .addNewItem()
-        .apply(
-          FakeRequest(POST, "/todo").withTextBody(todoListItemJson)
-        )
+      val addNewItem = controller.addNewItem().apply(
+        FakeRequest(POST, "/todo").withTextBody(todoListItemJson)
+      )
 
       status(addNewItem) mustBe BAD_REQUEST
     }
@@ -30,23 +25,19 @@ class TodoListControllerUnitTest
       val jsonObject = JsObject(Map("description" -> JsString(taskContent)))
 
       val controller = new TodoListController(stubControllerComponents())
-      val addNewItem = controller
-        .addNewItem()
-        .apply(
-          FakeRequest(POST, "/todo")
-            .withJsonBody(jsonObject)
-            .withHeaders(
-              FakeHeaders(Seq(("Content-type", "application-json")))
-            )
-        )
+      val addNewItem = controller.addNewItem().apply(
+        FakeRequest(POST, "/todo")
+          .withJsonBody(jsonObject)
+          .withHeaders(
+            FakeHeaders(Seq(("Content-type", "application-json")))
+          )
+      )
 
       status(addNewItem) mustBe CREATED
 
-      val getAll = controller
-        .getAll()
-        .apply(
-          FakeRequest(GET, "/todo")
-        )
+      val getAll = controller.getAll().apply(
+        FakeRequest(GET, "/todo")
+      )
 
       status(getAll) mustBe OK
       contentAsString(getAll) must include(taskContent)

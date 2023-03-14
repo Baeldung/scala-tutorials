@@ -23,8 +23,7 @@ class ReactiveMongoUnitTest
   val PORT = 27079
   val IP = "localhost"
 
-  val mongodInstance: ImmutableMongod = Mongod
-    .builder()
+  val mongodInstance: ImmutableMongod = Mongod.builder()
     .net(Start.to(classOf[Net]).initializedWith(Net.of(IP, PORT, false)))
     .build()
 

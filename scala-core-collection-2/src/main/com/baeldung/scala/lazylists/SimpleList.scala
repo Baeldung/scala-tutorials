@@ -1,13 +1,13 @@
 package com.baeldung.scala.lazylists
 
 sealed trait SimpleList[+T] {
-  def empty: Boolean
-  def head: T
-  def tail: SimpleList[T]
-  def !!(n: Int): T = n match {
-    case 1 => head
-    case n => tail.!!(n - 1)
-  }
+    def empty: Boolean
+    def head: T
+    def tail: SimpleList[T]
+    def !!(n: Int): T = n match {
+      case 1 => head
+      case n => tail.!!(n - 1)
+    }
 }
 case object SNil extends SimpleList[Nothing] {
   override def head = throw new IllegalArgumentException("Head of empty list")
@@ -17,3 +17,5 @@ case object SNil extends SimpleList[Nothing] {
 case class :@:[T](head: T, tail: SimpleList[T]) extends SimpleList[T] {
   override val empty: Boolean = true
 }
+
+
