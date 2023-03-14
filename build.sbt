@@ -6,11 +6,11 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.7"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.7" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.8"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.8" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
-val embedMongoVersion = "4.5.1"
+val embedMongoVersion = "4.6.1"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
@@ -307,7 +307,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
   )
@@ -318,7 +318,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
   )
@@ -348,7 +348,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     ),
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.20.7",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.410" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.416" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
     ),
@@ -416,6 +416,15 @@ lazy val doobie = (project in file("doobie"))
 //     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
 //   )
 
+// ScalaPy Python Project is disabled as it needs clang and python to installed in the target machine.
+// To test this code, install clang, python and then uncommment this build
+// lazy val scala_python = (project in file("scala-python"))
+//   .settings(
+//     name := "scala-python",
+//     libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.5.2",
+//     fork := true
+//   )
+
 lazy val reflection = (project in file("reflection"))
   .settings(
     name := "reflection",
@@ -441,4 +450,3 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
-
