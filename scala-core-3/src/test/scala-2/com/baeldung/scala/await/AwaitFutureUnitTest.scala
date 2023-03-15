@@ -8,7 +8,6 @@ import java.util.concurrent.TimeoutException
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 
-@Ignore // fixing in JAVA-9842
 class AwaitFutureUnitTest
   extends AwaitFutureTestUtil
   with Matchers
@@ -17,7 +16,7 @@ class AwaitFutureUnitTest
   private val url = "http://www.baeldung.com"
   "Using Await.ready" should {
     "return original completed future" in {
-      val fut = AwaitFuture.fetchDataFrom(url)
+      val fut = AwaitFuture.fetchDataFrom(url, 500)
 
       fut.isCompleted shouldBe false
       val completedFuture = Await.ready(fut, 2.seconds)
@@ -63,7 +62,7 @@ class AwaitFutureUnitTest
 
   "Using Await.result" should {
     "return content of future " in {
-      val fut = AwaitFuture.fetchDataFrom(url)
+      val fut = AwaitFuture.fetchDataFrom(url, 500)
 
       fut.isCompleted shouldBe false
       val completedFutureResult = Await.result(fut, 2.seconds)
