@@ -12,7 +12,6 @@ import org.scalatest.Ignore
 
 import scala.collection.JavaConverters.collectionAsScalaIterableConverter
 
-@Ignore //fixing in JAVA-11236
 class ScalaCacheCachingBlockUnitTest
   extends AnyWordSpec
   with Matchers
