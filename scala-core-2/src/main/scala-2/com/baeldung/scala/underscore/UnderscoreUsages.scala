@@ -12,7 +12,7 @@ object UnderscoreUsages {
     }
   }
 
-  def multiplier(a: Int, b: Int): Int = a * b
+  def multiplier(a: Int, b: Int):   Int = a * b
 
   def sum(args: Int*): Int = {
     args.reduce(_ + _)
@@ -36,7 +36,7 @@ object UnderscoreUsages {
   def list_++(list: List[_]): List[_] = List.concat(list, list)
 
   trait ObjectContainer[T[_]] { // higher kinded type parameter
-    def checkIfEmpty(collection: T[_]): Boolean
+  def checkIfEmpty(collection: T[_]): Boolean
   }
 
   object SeqContainer extends ObjectContainer[Seq] {
