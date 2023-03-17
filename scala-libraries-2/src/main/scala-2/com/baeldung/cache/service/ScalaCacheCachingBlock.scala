@@ -50,7 +50,7 @@ class ScalaCacheCachingBlockAsyncService {
 
   private def queryResultFuture(id: Long): Future[User] = {
     Future {
-      Thread.sleep(1000)
+      Thread.sleep(500)
       User(id, "caching block")
     }
 
