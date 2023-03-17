@@ -12,15 +12,15 @@ object AkkaRoutes {
           complete("Hello World!")
         },
         path("hello-name") {
-          parameters(Symbol("name").as[String]) {
-            name => {
+          parameters(Symbol("name").as[String]) { name =>
+            {
               complete(s"Hello $name")
             }
           }
         },
         path("hello-user") {
           headerValueByName("X-User-Id") { userId =>
-            if(userId== "123") {
+            if (userId == "123") {
               complete("Welcome user")
             } else {
               complete(StatusCodes.Unauthorized, "Incorrect user")
@@ -29,11 +29,11 @@ object AkkaRoutes {
         }
       )
     } ~
-    post {
-      path("hello-name") {
-        entity(as[String]) { name =>
-          complete(s"Hello $name")
+      post {
+        path("hello-name") {
+          entity(as[String]) { name =>
+            complete(s"Hello $name")
+          }
         }
       }
-    }
 }

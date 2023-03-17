@@ -38,7 +38,10 @@ class AkkaRoutesTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
 
   "hello-name" should "return hello to name provided in request body" in {
     val testName = "Sarah"
-    new RequestBuilder(HttpMethods.POST)("/hello-name", testName) ~> routes ~> check {
+    new RequestBuilder(HttpMethods.POST)(
+      "/hello-name",
+      testName
+    ) ~> routes ~> check {
       status shouldEqual StatusCodes.OK
       responseAs[String] shouldBe s"Hello $testName"
     }
