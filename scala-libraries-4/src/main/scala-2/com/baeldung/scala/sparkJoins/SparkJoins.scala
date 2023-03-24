@@ -155,7 +155,7 @@ object SparkJoinsProgram extends App {
     */
 
   // Cartesian/Cross Join
-  crossJoin.show()
+  crossJoin.show(5)
 
   /** | IMDB Rating | IGN Movie Picks | IMDB Rating | AVC Movie Picks |
     * |:------------|:----------------|:------------|:----------------|
@@ -164,22 +164,6 @@ object SparkJoinsProgram extends App {
     * | 7.0         | Pearl           | 6.6         | x               |
     * | 7.0         | Pearl           | 7.0         | Barbarian       |
     * | 7.0         | Pearl           | 6.9         | Bones And All   |
-    * | 6.5         | The Sadness     | 6.8         | Nope            |
-    * | 6.5         | The Sadness     | 7.0         | Pearl           |
-    * | 6.5         | The Sadness     | 6.6         | x               |
-    * | 6.5         | The Sadness     | 7.0         | Barbarian       |
-    * | 6.5         | The Sadness     | 6.9         | Bones And All   |
-    * | 4.9         | Offseason       | 6.8         | Nope            |
-    * | 4.9         | Offseason       | 7.0         | Pearl           |
-    * | 4.9         | Offseason       | 6.6         | x               |
-    * | 4.9         | Offseason       | 7.0         | Barbarian       |
-    * | 4.9         | Offseason       | 6.9         | Bones And All   |
-    * | 6.2         | Hatching        | 6.8         | Nope            |
-    * | 6.2         | Hatching        | 7.0         | Pearl           |
-    * | 6.2         | Hatching        | 6.6         | x               |
-    * | 6.2         | Hatching        | 7.0         | Barbarian       |
-    * | 6.2         | Hatching        | 6.9         | Bones And All   |
-    * only showing top 20 rows
     */
 
   // Self Join
