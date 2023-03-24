@@ -155,7 +155,7 @@ object SparkJoinsProgram extends App {
     */
 
   // Cartesian/Cross Join
-  crossJoin.show(4)
+  crossJoin.show(5)
 
   /** | IMDB Rating | IGN Movie Picks | IMDB Rating | AVC Movie Picks |
     * |:------------|:----------------|:------------|:----------------|
