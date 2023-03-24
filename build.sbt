@@ -1,13 +1,24 @@
 val scalaV = "2.13.10"
+<<<<<<< HEAD
+=======
+val scala3Version = "3.2.2"
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
 ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
+<<<<<<< HEAD
 val jUnitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
+=======
+val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.8"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.8" % Test
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
+val embedMongoVersion = "4.6.1"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
@@ -16,7 +27,11 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test
 )
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
+<<<<<<< HEAD
 val zioVersion = "2.0.6"
+=======
+val zioVersion = "2.0.10"
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -60,7 +75,7 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection,
     libraryDependencies += "joda-time" % "joda-time" % "2.12.2",
-    libraryDependencies += "org.joda" % "joda-convert" % "2.2.2",
+    libraryDependencies += "org.joda" % "joda-convert" % "2.2.3",
     libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0"
   )
 
@@ -155,6 +170,7 @@ lazy val scala_test = (project in file("scala-test"))
   )
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
+<<<<<<< HEAD
   "com.typesafe.akka" %% "akka-actor-typed" % "2.6.19",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
@@ -162,9 +178,17 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-stream" % "2.6.19",
   "org.mongodb.scala" %% "mongo-scala-driver" % "2.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.2",
+=======
+  "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+  "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+  "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
+  "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+  "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.0",
+  "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
   jUnitInterface,
-  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0" % Test,
-  "com.typesafe.akka" %% "akka-http" % "10.2.7"
+  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
+  "com.typesafe.akka" %% "akka-http" % "10.4.0"
 ) ++ scalaTestDeps
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
@@ -179,7 +203,9 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
 lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
-    libraryDependencies ++= scala_akka_dependencies
+    libraryDependencies ++= scala_akka_dependencies ++ Seq(
+      "ch.qos.logback" % "logback-classic" % "1.2.3" // scala-steward:off
+    )
   )
 
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
@@ -187,22 +213,23 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .settings(
     name := "scala-akka-2",
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-typed" % "2.7.0",
-      "com.typesafe.akka" %% "akka-stream" % "2.7.0",
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       "com.typesafe.akka" %% "akka-http" % "10.4.0",
       "com.typesafe.akka" %% "akka-http-spray-json" % "10.4.0",
       "com.typesafe.akka" %% "akka-http-testkit" % "10.4.0",
       "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
-      "com.typesafe.akka" %% "akka-persistence-typed" % "2.7.0",
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.7.0" % Test
+      "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "com.typesafe.akka" %% "akka-http-testkit" % "10.4.0" % Test
     ) ++ scalaTestDeps
   )
 val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
-val fs2Version = "2.5-15-e328d68"
-val AkkaVersion = "2.6.12"
+val fs2Version = "3.6.1"
+val AkkaVersion = "2.7.0"
 val reactiveMongo = "1.0.10"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
@@ -219,21 +246,31 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
       "co.fs2" %% "fs2-io" % fs2Version,
-      "junit" % "junit" % "4.13" % Test,
+      "junit" % "junit" % "4.13.2" % Test,
       "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
       "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
+<<<<<<< HEAD
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "3.0.0" % Test,
+=======
+      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
       logback % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion
+      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
+      catEffectTest,
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
     )
   )
 
+<<<<<<< HEAD
 val circeVersion = "0.14.3"
+=======
+val circeVersion = "0.14.5"
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.5.2"
-val sparkVersion = "3.2.2"
+val elastic4sVersion = "8.5.3"
+val sparkVersion = "3.3.2"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -254,20 +291,33 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.1.0",
+<<<<<<< HEAD
       "org.postgresql" % "postgresql" % "42.5.1"
+=======
+      "org.postgresql" % "postgresql" % "42.5.4"
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
     ),
     dependencyOverrides := Seq(
+<<<<<<< HEAD
       "com.typesafe.akka" %% "akka-protobuf-v3" % "2.6.19",
       "com.typesafe.akka" %% "akka-stream" % "2.6.19",
       "com.typesafe.akka" %% "akka-serialization-jackson" % "2.6.19"
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.19" % Test,
+=======
+      "com.typesafe.akka" %% "akka-protobuf-v3" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion
+    ),
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
-      "com.lihaoyi" %% "requests" % "0.6.9"
+      "com.lihaoyi" %% "requests" % "0.8.0"
     ) ++ scalaTestDeps,
     libraryDependencies ++= Seq(
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
@@ -276,9 +326,13 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     )
   )
 
-val http4sBlaze = "0.23.13"
+val http4sBlaze = "0.23.14"
 val http4sVersion = "0.23.18"
+<<<<<<< HEAD
 
+=======
+val osLibVersion = "0.9.1"
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
     name := "scala-libraries",
@@ -301,9 +355,13 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
+<<<<<<< HEAD
     libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
+=======
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
   )
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
@@ -312,26 +370,28 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.19.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
-    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
   )
 
 lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   .configs(IntegrationTest)
   .settings(
     name := "scala-libraries-4",
+    scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
-      "org.tpolecat" %% "skunk-core" % "0.3.2",
+      "org.tpolecat" %% "skunk-core" % "0.5.1",
       sparkSqlDep,
       sparkCoreDep,
       logback,
-      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+      "org.typelevel" %% "cats-core" % "2.9.0"
     ),
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
@@ -339,10 +399,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.19.0",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.368" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.20.26",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.429" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
+    ),
+    libraryDependencies ++= Seq(
+      "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     scalacOptions += "-Xasync",
     Defaults.itSettings,
@@ -392,16 +455,25 @@ lazy val zio = (project in file("zio"))
 lazy val doobie = (project in file("doobie"))
   .settings(
     name := "doobie",
-    libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC1",
-    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC1"
+    libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC2",
+    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2"
   )
 
 // Scala Native Project is disabled as it needs clang to installed in the target machine.
-// To test the scala-native code, install clang and then uncommment this build
+// To test the scala-native code, install clang and then uncomment this build
 // lazy val scala_native = (project in file("scala-native"))
 //   .settings(
 //     name := "scala-native",
 //     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
+//   )
+
+// ScalaPy Python Project is disabled as it needs clang and python to installed in the target machine.
+// To test this code, install clang, python and then uncommment this build
+// lazy val scala_python = (project in file("scala-python"))
+//   .settings(
+//     name := "scala-python",
+//     libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.5.2",
+//     fork := true
 //   )
 
 lazy val reflection = (project in file("reflection"))
@@ -413,7 +485,7 @@ lazy val reflection = (project in file("reflection"))
 
 lazy val scala3_libraries = (project in file("scala3-libraries"))
   .settings(
-    scalaVersion := "3.1.1",
+    scalaVersion := scala3Version,
     name := "scala3-libraries",
     libraryDependencies ++= Seq(
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
@@ -423,7 +495,7 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
 
 Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
 
-lazy val scala212 = (project in file("scala212"))
+lazy val scala212 = (project in file("scala-2-modules/scala212"))
   .settings(
     scalaVersion := "2.12.17",
     name := "scala212",

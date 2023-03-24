@@ -5,3 +5,9 @@
 - [Introduction to Akka gRPC](https://www.baeldung.com/scala/akka-grpc)
 - [Introduction to Akka HTTP in Scala](https://www.baeldung.com/scala/akka-http)
 - [Introduction to Event Sourcing Using Akka Persistence](https://www.baeldung.com/scala/akka-event-sourcing)
+<<<<<<< HEAD
+=======
+- [Reading Query Parameters in Akka HTTP](https://www.baeldung.com/scala/akka-http-reading-query-parameters)
+- [Difference Between tell and forward in Akka Actor](https://www.baeldung.com/scala/akka-actor-tell-vs-forward)
+- [Testing an Akka HTTP Application](https://www.baeldung.com/scala/akka-http-testing)
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d

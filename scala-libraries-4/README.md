@@ -7,3 +7,8 @@
 - [Apache Pulsar Scala Client – pulsar4s](https://www.baeldung.com/scala/pulsar4s)
 - [Logging in Scala Applications Using Scala-Logging](https://www.baeldung.com/scala/scala-logging)
 - [Making Integration Testing Easier With TestContainers-scala](https://www.baeldung.com/scala/testcontainers-scala)
+<<<<<<< HEAD
+=======
+- [Writer Monad in Cats](https://www.baeldung.com/scala/writer-monad-in-cats)
+- [AWScala – AWS SDK for Scala](https://www.baeldung.com/scala/awscala-aws-sdk-for-scala)
+>>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d
