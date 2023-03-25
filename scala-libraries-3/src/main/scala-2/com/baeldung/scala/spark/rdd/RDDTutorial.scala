@@ -31,15 +31,9 @@ object RDDTutorial extends App {
 
   rdd.toDebugString
 
-<<<<<<< HEAD:scala-libraries-3/src/main/scala/com/baeldung/scala/spark/rdd/RDDTutorial.scala
-  /** (8) MapPartitionsRDD[2] at map at <console>:26 []
-    * \| MapPartitionsRDD[1] at filter at <console>:26 []
-    * \| ParallelCollectionRDD[0] at parallelize at <console>:27 []
-=======
   /** (8) MapPartitionsRDD[2] at map at <console>:26 [] \| MapPartitionsRDD[1]
     * at filter at <console>:26 [] \| ParallelCollectionRDD[0] at parallelize at
     * <console>:27 []
->>>>>>> 96fe189b888478a6d1a6b969a60b245b66f9308d:scala-libraries-3/src/main/scala-2/com/baeldung/scala/spark/rdd/RDDTutorial.scala
     */
 
   import spark.implicits._
