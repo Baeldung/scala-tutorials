@@ -19,6 +19,7 @@ object AwaitFuture {
     "Hello"
   }
   def futureWithException(): Future[String] = Future {
+    Thread.sleep(250)
     throw new NullPointerException
   }
 }

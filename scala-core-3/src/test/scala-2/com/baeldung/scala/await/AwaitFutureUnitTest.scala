@@ -1,17 +1,29 @@
 package com.baeldung.scala.await
 
-import org.scalatest.Ignore
+import org.scalatest.{Ignore, Retries}
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.{AnyWordSpec, AnyWordSpecLike}
+import org.scalatest.tagobjects.Retryable
+import org.scalatest.tags.Retryable
 
 import java.util.concurrent.TimeoutException
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
-
+@Retryable
 class AwaitFutureUnitTest
   extends AwaitFutureTestUtil
   with Matchers
-  with AnyWordSpecLike {
+  with AnyWordSpecLike
+  with Retries {
+
+  override def withFixture(test: NoArgTest) = {
+    if (isRetryable(test))
+      withRetry {
+        super.withFixture(test)
+      }
+    else
+      super.withFixture(test)
+  }
 
   private val url = "http://www.baeldung.com"
   "Using Await.ready" should {

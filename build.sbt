@@ -19,7 +19,7 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test
 )
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
-val zioVersion = "2.0.9"
+val zioVersion = "2.0.10"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -237,7 +237,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     )
   )
 
-val circeVersion = "0.14.4"
+val circeVersion = "0.14.5"
 val monixVersion = "3.4.1"
 val elastic4sVersion = "8.5.3"
 val sparkVersion = "3.3.2"
@@ -283,9 +283,9 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     )
   )
 
-val http4sBlaze = "0.23.13"
+val http4sBlaze = "0.23.14"
 val http4sVersion = "0.23.18"
-
+val osLibVersion = "0.9.1"
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
     name := "scala-libraries",
@@ -310,7 +310,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
-    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
   )
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
@@ -321,7 +321,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
       "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
     ),
-    libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.9.0"
+    libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
   )
 
 lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
@@ -348,13 +348,12 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.7",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.416" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.20.26",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.429" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.19.31",
       "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     scalacOptions += "-Xasync",

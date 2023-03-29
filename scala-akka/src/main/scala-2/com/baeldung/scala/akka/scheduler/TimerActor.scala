@@ -13,7 +13,7 @@ object TimerActor {
 class TimerActor(replyTo: ActorRef) extends Actor with Timers {
 
   override def preStart(): Unit = {
-    timers.startPeriodicTimer(PeriodicTimerKey, PeriodicTick, 200.millis)
+    timers.startTimerWithFixedDelay(PeriodicTimerKey, PeriodicTick, 200.millis)
     super.preStart()
   }
 
