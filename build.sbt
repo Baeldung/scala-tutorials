@@ -5,8 +5,6 @@ ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
-lazy val DeepIntegrationTest = IntegrationTest.extend(Test)
-
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.8"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.8" % Test
@@ -190,7 +188,7 @@ lazy val scala_akka = (project in file("scala-akka"))
     name := "scala-akka",
     libraryDependencies ++= scala_akka_dependencies ++ Seq(
       "ch.qos.logback" % "logback-classic" % "1.2.3", // scala-steward:off
-      embeddedMongo % DeepIntegrationTest
+      embeddedMongo % "it,compile"
     ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     Defaults.itSettings
   )
