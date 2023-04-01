@@ -45,6 +45,24 @@ object TestScenario2 {
   }
 }
 
+object TestScenario3 {
+  class CacheImpl {
+    private val cache: collection.mutable.Map[String, Int] =
+      collection.mutable.Map.empty
+    def getFromCache(key: String): Option[Int] = cache.get(key)
+    def getFromCache(key: String, category: String): Option[Int] =
+      cache.get(key)
+  }
+  class CacheService {
+    private val cacheImpl = new CacheImpl
+    export cacheImpl.*
+  }
+  class CacheServiceWithRename {
+    private val cacheImpl = new CacheImpl
+    export cacheImpl.getFromCache as get
+  }
+}
+
 class ExportClauseUnitTest extends AnyFlatSpec with Matchers {
   it should "export the selected member from CacheImpl" in {
     val service = new TestScenario1.CacheService
@@ -78,6 +96,18 @@ class ExportClauseUnitTest extends AnyFlatSpec with Matchers {
     val service = new TestScenario1.CacheServiceWithWildcardWithExclusion
     """service.getFromCache("Key")""" should compile
     """service.clear()""" shouldNot compile
+  }
+
+  it should "export members correctly when there are overloaded members" in {
+    val service = new TestScenario3.CacheService
+    """service.getFromCache("Key")""" should compile
+    """service.getFromCache("Key", "category")""" should compile
+  }
+
+  it should "export members correctly when there are overloaded members that are renamed" in {
+    val service = new TestScenario3.CacheServiceWithRename
+    """service.get("Key")""" should compile
+    """service.get("Key", "category")""" should compile
   }
 
 }
