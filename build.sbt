@@ -250,6 +250,7 @@ val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
 
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
+  .configs(IntegrationTest)
   .settings(
     name := "scala-libraries",
     libraryDependencies ++= scalaTestDeps,
@@ -284,7 +285,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
       "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
       logback
-    )
+    ),
+    Defaults.itSettings
   )
 
 val http4sBlaze = "0.23.14"
