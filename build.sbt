@@ -15,11 +15,12 @@ val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
 val embedMongoVersion = "4.6.1"
 
 val scalaTestDeps = Seq(
-  "org.scalatest" %% "scalatest" % "3.2.15" % DeepIntegrationTest,
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % DeepIntegrationTest,
-  "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % DeepIntegrationTest,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % DeepIntegrationTest
+  "org.scalatest" %% "scalatest" % "3.2.15" % Test,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % Test,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test
 )
+
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
 val zioVersion = "2.0.10"
 
@@ -159,6 +160,9 @@ lazy val scala_test = (project in file("scala-test"))
       ) ++ scalaTestDeps
   )
 
+val embeddedMongo =
+  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion
+
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
@@ -167,9 +171,9 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
-  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % DeepIntegrationTest,
+  embeddedMongo % Test,
   "com.typesafe.akka" %% "akka-http" % "10.4.0"
-) ++ scalaTestDeps
+)
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
@@ -185,8 +189,9 @@ lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
     libraryDependencies ++= scala_akka_dependencies ++ Seq(
-      "ch.qos.logback" % "logback-classic" % "1.2.3" // scala-steward:off
-    ),
+      "ch.qos.logback" % "logback-classic" % "1.2.3", // scala-steward:off
+      embeddedMongo % DeepIntegrationTest
+    ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     Defaults.itSettings
   )
 
@@ -253,7 +258,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .configs(IntegrationTest)
   .settings(
     name := "scala-libraries",
-    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies ++= scalaTestDeps
+      .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       "io.circe" %% "circe-generic" % circeVersion,
@@ -280,7 +286,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
       "com.lihaoyi" %% "requests" % "0.8.0"
-    ) ++ scalaTestDeps,
+    ),
     libraryDependencies ++= Seq(
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
       "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
@@ -337,7 +343,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
@@ -457,4 +463,7 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
     libraryDependencies ++= scalaTestDeps
   )
 
-addCommandAlias("ci", ";clean;compile;test:compile;it:compile;scalafmtCheckAll;test")
+addCommandAlias(
+  "ci",
+  ";clean;compile;test:compile;it:compile;scalafmtCheckAll;test"
+)
