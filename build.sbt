@@ -5,6 +5,8 @@ ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
+lazy val DeepIntegrationTest = IntegrationTest.extend(Test)
+
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.8"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.8" % Test
@@ -13,10 +15,10 @@ val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
 val embedMongoVersion = "4.6.1"
 
 val scalaTestDeps = Seq(
-  "org.scalatest" %% "scalatest" % "3.2.15" % Test,
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % Test,
-  "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % Test,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test
+  "org.scalatest" %% "scalatest" % "3.2.15" % DeepIntegrationTest,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % DeepIntegrationTest,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % DeepIntegrationTest,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % DeepIntegrationTest
 )
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
 val zioVersion = "2.0.10"
@@ -165,7 +167,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
-  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
+  "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % DeepIntegrationTest,
   "com.typesafe.akka" %% "akka-http" % "10.4.0"
 ) ++ scalaTestDeps
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
@@ -179,11 +181,13 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   )
 
 lazy val scala_akka = (project in file("scala-akka"))
+  .configs(IntegrationTest)
   .settings(
     name := "scala-akka",
     libraryDependencies ++= scala_akka_dependencies ++ Seq(
       "ch.qos.logback" % "logback-classic" % "1.2.3" // scala-steward:off
-    )
+    ),
+    Defaults.itSettings
   )
 
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
