@@ -25,42 +25,21 @@ class SubListOfListSpec extends AnyWordSpec with Matchers {
     }
   }
 
-  "usingFoldLeftAllowGaps" should {
+  "usingFoldLeft" should {
     "return true if list in list" in {
-      SubListOfList.usingFoldLeftAllowGaps(fullList, subList) shouldBe true
+      SubListOfList.usingFoldLeft(fullList, subList) shouldBe true
     }
     "return true if list in list but not together" in {
-      SubListOfList.usingFoldLeftAllowGaps(
-        fullList,
-        subListWithGap
-      ) shouldBe true
+      SubListOfList.usingFoldLeft(fullList, subListWithGap) shouldBe true
     }
     "return false if list in list but not in order" in {
-      SubListOfList.usingFoldLeftAllowGaps(
+      SubListOfList.usingFoldLeft(
         fullList,
         subListUnordered
       ) shouldBe false
     }
     "return false if list not in list" in {
-      SubListOfList.usingFoldLeftAllowGaps(fullList, notSubList) shouldBe false
-    }
-  }
-
-  "usingFoldLeftNoGaps" should {
-    "return true if list in list" in {
-      SubListOfList.usingFoldLeftNoGaps(fullList, subList) shouldBe true
-    }
-    "return true if list in list but not together" in {
-      SubListOfList.usingFoldLeftNoGaps(fullList, subListWithGap) shouldBe true
-    }
-    "return false if list in list but not in order" in {
-      SubListOfList.usingFoldLeftNoGaps(
-        fullList,
-        subListUnordered
-      ) shouldBe false
-    }
-    "return false if list not in list" in {
-      SubListOfList.usingFoldLeftNoGaps(fullList, notSubList) shouldBe false
+      SubListOfList.usingFoldLeft(fullList, notSubList) shouldBe false
     }
   }
 

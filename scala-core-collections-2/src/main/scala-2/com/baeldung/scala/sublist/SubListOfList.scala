@@ -6,19 +6,7 @@ object SubListOfList {
     littleList.forall(bigList.contains)
   }
 
-  def usingFoldLeftAllowGaps(
-    bigList: List[String],
-    littleList: List[String]
-  ): Boolean = {
-    bigList
-      .foldLeft(littleList)((lList, string) => {
-        val isStringInList = lList.contains(string)
-        if (isStringInList) lList.tail else lList
-      })
-      .isEmpty
-  }
-
-  def usingFoldLeftNoGaps(
+  def usingFoldLeft(
     bigList: List[String],
     littleList: List[String]
   ): Boolean = {
