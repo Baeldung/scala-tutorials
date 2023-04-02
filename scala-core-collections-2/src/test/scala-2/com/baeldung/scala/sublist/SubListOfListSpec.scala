@@ -30,10 +30,16 @@ class SubListOfListSpec extends AnyWordSpec with Matchers {
       SubListOfList.usingFoldLeftAllowGaps(fullList, subList) shouldBe true
     }
     "return true if list in list but not together" in {
-      SubListOfList.usingFoldLeftAllowGaps(fullList, subListWithGap) shouldBe true
+      SubListOfList.usingFoldLeftAllowGaps(
+        fullList,
+        subListWithGap
+      ) shouldBe true
     }
     "return false if list in list but not in order" in {
-      SubListOfList.usingFoldLeftAllowGaps(fullList, subListUnordered) shouldBe false
+      SubListOfList.usingFoldLeftAllowGaps(
+        fullList,
+        subListUnordered
+      ) shouldBe false
     }
     "return false if list not in list" in {
       SubListOfList.usingFoldLeftAllowGaps(fullList, notSubList) shouldBe false
@@ -48,7 +54,10 @@ class SubListOfListSpec extends AnyWordSpec with Matchers {
       SubListOfList.usingFoldLeftNoGaps(fullList, subListWithGap) shouldBe true
     }
     "return false if list in list but not in order" in {
-      SubListOfList.usingFoldLeftNoGaps(fullList, subListUnordered) shouldBe false
+      SubListOfList.usingFoldLeftNoGaps(
+        fullList,
+        subListUnordered
+      ) shouldBe false
     }
     "return false if list not in list" in {
       SubListOfList.usingFoldLeftNoGaps(fullList, notSubList) shouldBe false
@@ -78,7 +87,10 @@ class SubListOfListSpec extends AnyWordSpec with Matchers {
       SubListOfList.usingContainsSlice(fullList, subListWithGap) shouldBe false
     }
     "return false if list in list but not in order" in {
-      SubListOfList.usingContainsSlice(fullList, subListUnordered) shouldBe false
+      SubListOfList.usingContainsSlice(
+        fullList,
+        subListUnordered
+      ) shouldBe false
     }
     "return false if list not in list" in {
       SubListOfList.usingContainsSlice(fullList, notSubList) shouldBe false
