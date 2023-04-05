@@ -37,7 +37,7 @@ object SparkJoins {
   val innerJoin =
     TopHorrorsIGN2022.join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"))
 
-  // produces same results as innerJoinWithQuery
+  // inner join with explicit join type
   val innerJoin_v2 =
     TopHorrorsIGN2022.join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "inner")
 
