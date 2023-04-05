@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.8"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.8" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.6"
-val embedMongoVersion = "4.6.1"
+val embedMongoVersion = "4.6.2"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
