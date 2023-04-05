@@ -23,7 +23,10 @@ object Main extends IOApp {
   implicit val cs = IO.contextShift(ExecutionContexts.synchronous)
 
   val xa = Transactor.fromDriverManager[IO](
-    "org.sqlite.JDBC", "jdbc:sqlite:data.db", "", "",
+    "org.sqlite.JDBC",
+    "jdbc:sqlite:data.db",
+    "",
+    "",
     Blocker.liftExecutionContext(ExecutionContexts.synchronous)
   )
 
@@ -34,51 +37,50 @@ object Main extends IOApp {
       description TEXT,
       done NUMERIC
     )
-    """
-    .update
-    .run
-
+    """.update.run
 
   val todosPath: String = "todos"
 
-  val createTodo: Endpoint[IO, Todo] = post(todosPath :: jsonBody[Todo]) { todo: Todo =>
-    for {
-      id <- sql"insert into todo (name, description, done) values (${todo.name}, ${todo.description}, ${todo.done})"
-        .update
-        .withUniqueGeneratedKeys[Int]("id")
-        .transact(xa)
-      created <- sql"select * from todo where id = $id"
-        .query[Todo]
-        .unique
-        .transact(xa)
-    } yield Created(created)
+  val createTodo: Endpoint[IO, Todo] = post(todosPath :: jsonBody[Todo]) {
+    todo: Todo =>
+      for {
+        id <-
+          sql"insert into todo (name, description, done) values (${todo.name}, ${todo.description}, ${todo.done})".update
+            .withUniqueGeneratedKeys[Int]("id")
+            .transact(xa)
+        created <- sql"select * from todo where id = $id"
+          .query[Todo]
+          .unique
+          .transact(xa)
+      } yield Created(created)
   }
 
-  val getTodo: Endpoint[IO, Todo] = get(todosPath :: path[Int]) { id: Int =>
-    for {
-      todos <- sql"select * from todo where id = $id"
-        .query[Todo]
-        .to[Set]
-        .transact(xa)
-    } yield todos.headOption match {
-      case None => NotFound(new Exception("Record not found"))
-      case Some(todo) => Ok(todo)
+  val getTodo: Endpoint[IO, Todo] = get(todosPath :: path[Int]) {
+    id: Int =>
+      for {
+        todos <- sql"select * from todo where id = $id"
+          .query[Todo]
+          .to[Set]
+          .transact(xa)
+      } yield todos.headOption match {
+        case None       => NotFound(new Exception("Record not found"))
+        case Some(todo) => Ok(todo)
+      }
+  }
+
+  val updateTodo: Endpoint[IO, Todo] =
+    put(todosPath :: path[Int] :: jsonBody[Todo]) { (id: Int, todo: Todo) =>
+      for {
+        _ <-
+          sql"update todo set name = ${todo.name}, description = ${todo.description}, done = ${todo.done} where id = $id".update.run
+            .transact(xa)
+
+        todo <- sql"select * from todo where id = $id"
+          .query[Todo]
+          .unique
+          .transact(xa)
+      } yield Ok(todo)
     }
-  }
-
-  val updateTodo: Endpoint[IO, Todo] = put(todosPath :: path[Int] :: jsonBody[Todo]) { (id: Int, todo: Todo) => 
-    for {
-      _ <- sql"update todo set name = ${todo.name}, description = ${todo.description}, done = ${todo.done} where id = $id"
-        .update
-        .run
-        .transact(xa)
-       
-      todo <- sql"select * from todo where id = $id"
-        .query[Todo]
-        .unique
-        .transact(xa)
-    } yield Ok(todo)
-  }
 
   val getTodos: Endpoint[IO, Seq[Todo]] = get(todosPath) {
     for {
@@ -89,20 +91,22 @@ object Main extends IOApp {
     } yield Ok(todos)
   }
 
-  val deleteTodo: Endpoint[IO, Unit] = delete(todosPath :: path[Int]) { id: Int =>
-    for {
-      _ <- sql"delete from todo where id = $id"
-        .update
-        .run
-        .transact(xa)
-    } yield NoContent
+  val deleteTodo: Endpoint[IO, Unit] = delete(todosPath :: path[Int]) {
+    id: Int =>
+      for {
+        _ <- sql"delete from todo where id = $id".update.run
+          .transact(xa)
+      } yield NoContent
   }
 
-  def startServer: IO[ListeningServer] = 
+  def startServer: IO[ListeningServer] =
     createDb.transact(xa).flatMap { _ =>
-      IO(Http.server.serve(":8081", 
-        (createTodo :+: getTodo :+: updateTodo :+: deleteTodo :+: getTodos)
-          .toServiceAs[Application.Json])
+      IO(
+        Http.server.serve(
+          ":8081",
+          (createTodo :+: getTodo :+: updateTodo :+: deleteTodo :+: getTodos)
+            .toServiceAs[Application.Json]
+        )
       )
     }
 

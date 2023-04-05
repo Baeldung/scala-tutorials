@@ -11,7 +11,9 @@ val mainClassPath = "com.baeldung.packaging.mainMethod"
 
 // sbt-assembly configurations
 assembly / assemblyJarName := "assemblyApp.jar"
-assembly / mainClass := Some(mainClassPath) //since @main method name will be the class name of the main class in scala 3
+assembly / mainClass := Some(
+  mainClassPath
+) //since @main method name will be the class name of the main class in scala 3
 
 // sbt native packager settings
 enablePlugins(JavaAppPackaging)
@@ -28,7 +30,16 @@ jlinkIgnoreMissingDependency := JlinkIgnore.only(
 
 //SBT Proguard plugin
 enablePlugins(SbtProguard)
-Proguard / proguardOptions ++= Seq("-dontoptimize","-dontnote", "-dontwarn", "-ignorewarnings")
-Proguard / proguardOptions += ProguardOptions.keepMain("com.baeldung.packaging.mainMethod")
+Proguard / proguardOptions ++= Seq(
+  "-dontoptimize",
+  "-dontnote",
+  "-dontwarn",
+  "-ignorewarnings"
+)
+Proguard / proguardOptions += ProguardOptions.keepMain(
+  "com.baeldung.packaging.mainMethod"
+)
 Proguard / proguardInputs := (Compile / dependencyClasspath).value.files
-Proguard / proguardFilteredInputs ++= ProguardOptions.noFilter((Compile / packageBin).value)
+Proguard / proguardFilteredInputs ++= ProguardOptions.noFilter(
+  (Compile / packageBin).value
+)

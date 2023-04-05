@@ -10,7 +10,8 @@ class SimpleListSpec extends AnyWordSpec {
     }
     "Throw and Stack Overflow Exception if used to define a Fibonacci sequence" in {
       intercept[StackOverflowError] {
-        def fibonacci(current: Int = 0, next: Int = 1): SimpleList[Int] = :@:(current, fibonacci(next, current + 1))
+        def fibonacci(current: Int = 0, next: Int = 1): SimpleList[Int] =
+          :@:(current, fibonacci(next, current + 1))
         assertResult(8)(fibonacci().!!(7))
       }
     }

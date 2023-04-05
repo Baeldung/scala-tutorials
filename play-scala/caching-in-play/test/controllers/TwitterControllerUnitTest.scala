@@ -6,18 +6,22 @@ import org.scalatestplus.mockito.MockitoSugar
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice._
 import play.api.http.MimeTypes
-import play.api.libs.json.{ JsValue, Json }
+import play.api.libs.json.{JsValue, Json}
 import play.api.test.Helpers._
 import play.api.test._
 import services.TwitterSearchService
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.{ExecutionContext, Future}
 
-/**
-  * Test our Twitter WS endpoint
+/** Test our Twitter WS endpoint
   */
-class TwitterControllerUnitTest extends PlaySpec with GuiceOneAppPerTest with Injecting with MockitoSugar {
-  implicit val executionContext: ExecutionContext = ExecutionContext.Implicits.global
+class TwitterControllerUnitTest
+  extends PlaySpec
+  with GuiceOneAppPerTest
+  with Injecting
+  with MockitoSugar {
+  implicit val executionContext: ExecutionContext =
+    ExecutionContext.Implicits.global
   val twitterDevJsonResponse: JsValue = Json.parse(
     """
       |{
@@ -70,13 +74,18 @@ class TwitterControllerUnitTest extends PlaySpec with GuiceOneAppPerTest with In
         stubControllerComponents(),
         executionContext
       )
-      val twitterSearchResults = controller.recentSearch("TwitterDev").apply(FakeRequest(GET, "/"))
+      val twitterSearchResults =
+        controller.recentSearch("TwitterDev").apply(FakeRequest(GET, "/"))
 
       status(twitterSearchResults) mustBe OK
       contentType(twitterSearchResults) mustBe Some(MimeTypes.JSON)
       val json = contentAsJson(twitterSearchResults)
       assert(
-        json.as[Map[String, JsValue]].getOrElse("data", throw new AssertionError()).as[List[JsValue]].head ==
+        json
+          .as[Map[String, JsValue]]
+          .getOrElse("data", throw new AssertionError())
+          .as[List[JsValue]]
+          .head ==
           Json.parse(
             """
               |{
