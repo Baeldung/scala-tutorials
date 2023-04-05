@@ -9,148 +9,157 @@ object SparkJoins {
   import spark.implicits._
   // Creating two databases to join
   val TopHorrorsIGN2022 = Seq(
-    ("7.0", "Pearl"),
-    ("6.5", "The Sadness"),
-    ("4.9", "Offseason"),
-    ("6.2", "Hatching"),
-    ("6.6", "x")
+    (9, "Pearl"),
+    (6, "The Sadness"),
+    (6, "Offseason"),
+    (7, "Hatching"),
+    (8, "x")
   ).toDF("IMDB Rating", "IGN Movie Picks")
 
   val TopHorrorsTheAVClub2022 = Seq(
-    ("6.8", "Nope"),
-    ("7.0", "Pearl"),
-    ("6.6", "x"),
-    ("7.0", "Barbarian"),
-    ("6.9", "Bones And All")
+    (7, "Nope"),
+    (9, "Pearl"),
+    (8, "x"),
+    (5, "Barbarian"),
+    (5, "Bones And All")
   ).toDF("IMDB Rating", "AVC Movie Picks")
 
-  // Inner Joins
-  val movieQuery =
-    TopHorrorsIGN2022("IMDB Rating") === TopHorrorsTheAVClub2022("IMDB Rating")
+  val TopHorrors2022 = Seq(
+    ("Nope", "Jordan Peele", "Pearl", "Ti West"),
+    ("Pearl", "Ti West", "The Sadness", "Rob Jabbaz"),
+    ("x", "Ti West", "Offseason", "Robert Cole"),
+    ("Barbarian", "Zach Cregger", "Hatching", "Hanna Bergolm"),
+    ("Bones And All", "Luca Guadagninino", "x", "Ti West")
+  ).toDF("AVC Movie Picks", "Director_AVC", "IGN Movie Picks", "Director_IGN")
 
-  val innerJoinWithQuery =
-    TopHorrorsIGN2022.join(TopHorrorsTheAVClub2022, movieQuery)
+  // Inner Joins
+  val innerJoin =
+    TopHorrorsIGN2022.join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"))
 
   // produces same results as innerJoinWithQuery
-  val innerJoinWithQuery_v2 =
-    TopHorrorsIGN2022.join(TopHorrorsTheAVClub2022, movieQuery, "inner")
-
-  // taking care of duplicate columns
-  val innerJoin = TopHorrorsIGN2022
-    .join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "inner")
+  val innerJoin_v2 =
+    TopHorrorsIGN2022.join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "inner")
 
   // Outer Join
+  val cols = List(col("IGN Movie Picks"), col("AVC Movie Picks"))
+  val query = TopHorrorsIGN2022(
+    "IGN Movie Picks"
+  ) === TopHorrorsTheAVClub2022("AVC Movie Picks")
   val outerJoin = TopHorrorsIGN2022
-    .join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "outer")
+    .join(TopHorrorsTheAVClub2022, query, "outer")
+    .select(cols: _*)
 
   // Left Outer Join
   val leftOuterJoin = TopHorrorsIGN2022
-    .join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "left_outer")
+    .join(TopHorrorsTheAVClub2022, query, "left_outer")
+    .select(cols: _*)
 
   // Right Outer Join
   val rightOuterJoin = TopHorrorsIGN2022
-    .join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "right_outer")
+    .join(TopHorrorsTheAVClub2022, query, "right_outer")
+    .select(cols: _*)
 
   // Left Semi Join
   val leftSemiJoin = TopHorrorsIGN2022
-    .join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "left_semi")
+    .join(TopHorrorsTheAVClub2022, query, "left_semi")
+    .select("IGN Movie Picks", "IMDB Rating")
 
   // Left Anti Join
   val leftAntiJoin = TopHorrorsIGN2022
-    .join(TopHorrorsTheAVClub2022, Seq("IMDB Rating"), "left_anti")
+    .join(TopHorrorsTheAVClub2022, query, "left_anti")
+    .select("IGN Movie Picks", "IMDB Rating")
 
   // Cartesian/Cross Join
   val crossJoin = TopHorrorsIGN2022.crossJoin(TopHorrorsTheAVClub2022)
 
   // Self Join
-  val selfJoin = TopHorrorsIGN2022
+  val selfJoin = TopHorrors2022
     .alias("df1")
-    .join(TopHorrorsIGN2022.alias("df2"), Seq("IMDB Rating"), "inner")
-
-  val myQuery =
-    TopHorrorsIGN2022("IMDB Rating") === TopHorrorsIGN2022("IMDB Rating")
-  val selfJoin_v2 = TopHorrorsIGN2022
-    .alias("df1")
-    .join(TopHorrorsIGN2022.alias("df2"), myQuery, "inner")
+    .join(
+      TopHorrors2022.alias("df2"),
+      col("df1.Director_AVC") === col("df2.Director_IGN"),
+      "left_Semi"
+    )
+    .select("AVC Movie Picks", "Director_AVC")
 }
+
 object SparkJoinsProgram extends App {
   import SparkJoins._
-
-  innerJoinWithQuery.show()
-
-  /** | IMDB Rating | IGN Movie Picks | IMDB Rating | AVC Movie Picks |
-    * |:------------|:----------------|:------------|:----------------|
-    * | 7.0         | Pearl           | 7.0         | Barbarian       |
-    * | 7.0         | Pearl           | 7.0         | Pearl           |
-    * | 6.6         | x               | 6.6         | x               |
-    */
 
   innerJoin.show()
 
   /** | IMDB Rating | IGN Movie Picks | AVC Movie Picks |
     * |:------------|:----------------|:----------------|
-    * | 7.0         | Pearl           | Barbarian       |
-    * | 7.0         | Pearl           | Pearl           |
-    * | 6.6         | x               | x               |
+    * | 9           | Pearl           | Pearl           |
+    * | 7           | Hatching        | Nope            |
+    * | 8           | x               | x               |
+    */
+
+  innerJoin_v2.show()
+
+  /** | IMDB Rating | IGN Movie Picks | AVC Movie Picks |
+    * |:------------|:----------------|:----------------|
+    * | 9           | Pearl           | Pearl           |
+    * | 7           | Hatching        | Nope            |
+    * | 8           | x               | x               |
     */
 
   // Outer Join
   outerJoin.show()
 
-  /** | IMDB Rating | IGN Movie Picks | AVC Movie Picks |
-    * |:------------|:----------------|:----------------|
-    * | 4.9         | Offseason       | null            |
-    * | 6.2         | Hatching        | null            |
-    * | 6.5         | The Sadness     | null            |
-    * | 6.6         | x               | x               |
-    * | 6.8         | null            | Nope            |
-    * | 6.9         | null            | Bones And All   |
-    * | 7.0         | Pearl           | Pearl           |
-    * | 7.0         | Pearl           | Barbarian       |
+  /** | IGN Movie Picks | AVC Movie Picks |
+    * |:----------------|:----------------|
+    * | null            | Barbarian       |
+    * | null            | Bones And All   |
+    * | Hatching        | null            |
+    * | null            | Nope            |
+    * | Offseason       | null            |
+    * | Pearl           | Pearl           |
+    * | The Sadness     | null            |
+    * | x               | x               |
     */
 
   // Left Outer Join
   leftOuterJoin.show()
 
-  /** | IMDB Rating | IGN Movie Picks | AVC Movie Picks |
-    * |:------------|:----------------|:----------------|
-    * | 7.0         | Pearl           | Barbarian       |
-    * | 7.0         | Pearl           | Pearl           |
-    * | 6.5         | The Sadness     | null            |
-    * | 4.9         | Offseason       | null            |
-    * | 6.2         | Hatching        | null            |
-    * | 6.6         | x               | x               |
+  /** | IGN Movie Picks | AVC Movie Picks |
+    * |:----------------|:----------------|
+    * | Pearl           | Pearl           |
+    * | The Sadness     | null            |
+    * | Offseason       | null            |
+    * | Hatching        | null            |
+    * | x               | x               |
     */
 
   // Right Outer Join
   rightOuterJoin.show()
 
-  /** | IMDB Rating | IGN Movie Picks | AVC Movie Picks |
-    * |:------------|:----------------|:----------------|
-    * | 6.8         | null            | Nope            |
-    * | 7.0         | Pearl           | Pearl           |
-    * | 6.6         | x               | x               |
-    * | 7.0         | Pearl           | Barbarian       |
-    * | 6.9         | null            | Bones And All   |
+  /** | IGN Movie Picks | AVC Movie Picks |
+    * |:----------------|:----------------|
+    * | null            | Nope            |
+    * | Pearl           | Pearl           |
+    * | x               | x               |
+    * | null            | Barbarian       |
+    * | null            | Bones And All   |
     */
 
   // Left Semi Join
   leftSemiJoin.show()
 
-  /** | IMDB Rating | IGN Movie Picks |
-    * |:------------|:----------------|
-    * | 7.0         | Pearl           |
-    * | 6.6         | x               |
+  /** | IGN Movie Picks | IMDB Rating |
+    * |:----------------|:------------|
+    * | Pearl           | 9           |
+    * | x               | 8           |
     */
 
   // Left Anti Join
   leftAntiJoin.show()
 
-  /** | IMDB Rating | IGN Movie Picks |
-    * |:------------|:----------------|
-    * | 6.5         | The Sadness     |
-    * | 4.9         | Offseason       |
-    * | 6.2         | Hatching        |
+  /** | IGN Movie Picks | IMDB Rating |
+    * |:----------------|:------------|
+    * | The Sadness     | 6           |
+    * | Offseason       | 6           |
+    * | Hatching        | 7           |
     */
 
   // Cartesian/Cross Join
@@ -158,35 +167,23 @@ object SparkJoinsProgram extends App {
 
   /** | IMDB Rating | IGN Movie Picks | IMDB Rating | AVC Movie Picks |
     * |:------------|:----------------|:------------|:----------------|
-    * | 7.0         | Pearl           | 6.8         | Nope            |
-    * | 7.0         | Pearl           | 7.0         | Pearl           |
-    * | 7.0         | Pearl           | 6.6         | x               |
-    * | 7.0         | Pearl           | 7.0         | Barbarian       |
-    * | 7.0         | Pearl           | 6.9         | Bones And All   |
+    * | 9           | Pearl           | 7           | Nope            |
+    * | 9           | Pearl           | 9           | Pearl           |
+    * | 9           | Pearl           | 8           | x               |
+    * | 9           | Pearl           | 5           | Barbarian       |
+    * | 9           | Pearl           | 5           | Bones And All   |
+    * only showing top 5 rows
     */
 
   // Self Join
   selfJoin.show()
 
-  /** | IMDB Rating | IGN Movie Picks | IGN Movie Picks |
-    * |:------------|:----------------|:----------------|
-    * | 7.0         | Pearl           | Pearl           |
-    * | 6.5         | The Sadness     | The Sadness     |
-    * | 4.9         | Offseason       | Offseason       |
-    * | 6.2         | Hatching        | Hatching        |
-    * | 6.6         | x               | x               |
-    */
-
-  selfJoin_v2.show()
-
-  /** | IMDB Rating | IGN Movie Picks | IMDB Rating | IGN Movie Picks |
-    * |:------------|:----------------|:------------|:----------------|
-    * | 7.0         | Pearl           | 7.0         | Pearl           |
-    * | 6.5         | The Sadness     | 6.5         | The Sadness     |
-    * | 4.9         | Offseason       | 4.9         | Offseason       |
-    * | 6.2         | Hatching        | 6.2         | Hatching        |
-    * | 6.6         | x               | 6.6         | x               |
+  /** | AVC Movie Picks | Director_AVC |
+    * |:----------------|:-------------|
+    * | Pearl           | Ti West      |
+    * | x               | Ti West      |
     */
 
   spark.close()
 }
+
