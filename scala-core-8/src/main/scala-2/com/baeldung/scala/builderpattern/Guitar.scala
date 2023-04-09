@@ -1,7 +1,7 @@
 package com.baeldung.scala.builderpattern
 
 case class Guitar(
-  isElectric: Boolean = true,
+  isElectric: Boolean = false,
   numberOfStrings: Int = 6,
   tuning: String = "standard",
   tone: String = "clean",

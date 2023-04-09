@@ -3,10 +3,11 @@ package com.baeldung.scala.builderpattern
 import org.scalatest.wordspec.AnyWordSpec
 
 class GuitarSpec extends AnyWordSpec {
-  "a guitar" should {
+
+  "an unsafe guitar builder" should {
     "resort to defaults when not initialised" in {
       val expectedGuitar = Guitar(
-        isElectric = true,
+        isElectric = false,
         numberOfStrings = 6,
         tuning = "standard",
         tone = "clean",
@@ -16,7 +17,7 @@ class GuitarSpec extends AnyWordSpec {
       val actualGuitar = GuitarBuilder().build()
       assertResult(expectedGuitar)(actualGuitar)
     }
-    "initialise only some values" in {
+    "initialise from just some values" in {
       val expectedGuitar = Guitar(
         isElectric = true,
         numberOfStrings = 6,
@@ -25,6 +26,7 @@ class GuitarSpec extends AnyWordSpec {
         reverb = 0.2f
       )
       val actualGuitar = GuitarBuilder()
+        .withElectric(true)
         .withTuning("dadgad")
         .withTone("brit-j800")
         .withReverb(0.2f)
