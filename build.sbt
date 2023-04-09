@@ -62,7 +62,7 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection,
-    libraryDependencies += "joda-time" % "joda-time" % "2.12.4",
+    libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
     libraryDependencies += "org.joda" % "joda-convert" % "2.2.3",
     libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0"
   )
@@ -239,7 +239,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.5"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.5.3"
+val elastic4sVersion = "8.5.4"
 val sparkVersion = "3.3.2"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -345,11 +345,11 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.0",
-      "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.18.0" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.20.39",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.434" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.442" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.14" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.14" % IntegrationTest
     ),
