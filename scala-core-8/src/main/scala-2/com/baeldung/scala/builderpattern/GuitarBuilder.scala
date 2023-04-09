@@ -22,7 +22,7 @@ case class GuitarBuilder(
 
   def withDelay(delay: Int): GuitarBuilder = copy(delay = delay)
 
-  def build() = Guitar(
+  def build(): Guitar = Guitar(
     isElectric = isElectric,
     numberOfStrings = numberOfStrings,
     tuning = tuning,
