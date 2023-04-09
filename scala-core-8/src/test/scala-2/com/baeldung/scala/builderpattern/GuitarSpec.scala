@@ -34,4 +34,18 @@ class GuitarSpec extends AnyWordSpec {
       assertResult(expectedGuitar)(actualGuitar)
     }
   }
+
+  "a safe guitar builder" should {
+    "allow reverb only in electric guitars" in {
+      assertTypeError("""
+          |val acousticGuitar = SafeGuitarBuilder()
+          |          .withReverb(0.2f)
+          |          .build()
+          |""".stripMargin)
+      val electricGuitar = SafeGuitarBuilder().electric
+        .withReverb(0.2f)
+        .build()
+    }
+  }
+
 }
