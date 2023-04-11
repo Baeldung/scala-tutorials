@@ -9,8 +9,8 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.8"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.8" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.3.5"
-val embedMongoVersion = "4.6.1"
+val logback = "ch.qos.logback" % "logback-classic" % "1.3.6"
+val embedMongoVersion = "4.6.2"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.15" % Test,
@@ -63,7 +63,7 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection,
-    libraryDependencies += "joda-time" % "joda-time" % "2.12.2",
+    libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
     libraryDependencies += "org.joda" % "joda-convert" % "2.2.3",
     libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0"
   )
@@ -246,7 +246,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.5"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.5.3"
+val elastic4sVersion = "8.5.4"
 val sparkVersion = "3.3.2"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -270,7 +270,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.1.0",
-      "org.postgresql" % "postgresql" % "42.5.4"
+      "org.postgresql" % "postgresql" % "42.6.0"
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
@@ -355,13 +355,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.0",
-      "org.testcontainers" % "pulsar" % "1.17.6" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.18.0" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.26",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.429" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.12" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.12" % IntegrationTest
+      "software.amazon.awssdk" % "s3" % "2.20.39",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.442" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.14" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.14" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "com.github.seratch" %% "awscala" % "0.9.2"

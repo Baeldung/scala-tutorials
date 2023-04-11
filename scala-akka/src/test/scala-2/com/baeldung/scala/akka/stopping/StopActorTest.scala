@@ -4,11 +4,10 @@ import akka.actor.{ActorSystem, Props}
 import akka.testkit
 import akka.testkit.{ImplicitSender, TestKit}
 import com.baeldung.scala.akka.stopping.MessageProcessorActor._
-import org.scalatest.Ignore
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
+import scala.concurrent.duration._
 
-@Ignore // fixing in JAVA-9841
 class StoppingActorTest
   extends TestKit(ActorSystem("test_system"))
   with AnyWordSpecLike
@@ -24,15 +23,10 @@ class StoppingActorTest
       probe.watch(actor)
 
       actor ! Greet("Sheldon")
-      actor ! Greet("Penny")
-      actor ! Greet("Howard")
-      actor ! Greet("Raj")
-
-      system.stop(actor)
-
       expectMsg(Reply("Hey, Sheldon"))
+      system.stop(actor)
+      probe.expectTerminated(actor, 500.millis)
       expectNoMessage()
-      probe.expectTerminated(actor)
     }
 
   }
