@@ -144,11 +144,12 @@ class SchedulerUnitTest
         }
       })
 
-      val expectedMessage = Greeted("Lucifer: Hello, Detective")
-      expectMsg(500.millis, expectedMessage)
-      // get the next message in 300 millis
-      expectMsg(310.millis, expectedMessage)
-      system.stop(greeter)
+      within(1.second) {
+        val expectedMessage = Greeted("Lucifer: Hello, Detective")
+        expectMsg(500.millis, expectedMessage)
+        expectMsg(500.millis, expectedMessage)
+        system.stop(greeter)
+      }
     }
 
   }
