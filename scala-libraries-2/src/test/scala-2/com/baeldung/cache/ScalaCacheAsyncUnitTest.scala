@@ -1,13 +1,9 @@
 package com.baeldung.cache
 
-import com.baeldung.cache.service.{
-  AsyncGuavaCacheMemoizationConfig,
-  AsyncQueryMemoizeService,
-  GuavaCacheCatsConfig
-}
+import com.baeldung.cache.service.{AsyncGuavaCacheMemoizationConfig, AsyncQueryMemoizeService}
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.{AnyWordSpec, AsyncWordSpec}
+import org.scalatest.wordspec.AsyncWordSpec
 
 class ScalaCacheAsyncUnitTest
   extends AsyncWordSpec
