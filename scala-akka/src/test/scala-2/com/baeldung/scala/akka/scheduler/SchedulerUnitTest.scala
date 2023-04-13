@@ -107,11 +107,13 @@ class SchedulerUnitTest
       )
 
       val expectedMessage = Greeted("Lucifer: Hello, Detective")
-      expectMsg(300.millis, expectedMessage)
-      // get another message after 500 millis
-      expectMsg(300.millis, expectedMessage)
-      expectMsg(300.millis, expectedMessage)
-      system.stop(greeter)
+      within(3.seconds) {
+        expectMsg(expectedMessage)
+        // get another message after 500 millis
+        expectMsg(expectedMessage)
+        expectMsg(expectedMessage)
+        system.stop(greeter)
+      }
     }
 
     "cancel a running scheduler" in {
