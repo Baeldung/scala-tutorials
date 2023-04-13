@@ -47,5 +47,4 @@ class GuitarSpec extends AnyWordSpec {
         .build()
     }
   }
-
 }
