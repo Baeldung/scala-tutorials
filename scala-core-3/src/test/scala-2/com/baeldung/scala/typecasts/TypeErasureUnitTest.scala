@@ -34,4 +34,12 @@ class TypeErasureUnitTest extends AnyWordSpec with Matchers {
       assert(!t3.isInstanceOf[T1])
     }
   }
+
+  "Type ascriptions" should {
+    "work with varargs" in {
+      def varargFn(str: String*) = str.length
+      val input = Seq("Hello", "World")
+      assert(varargFn(input: _*) == 2)
+    }
+  }
 }
