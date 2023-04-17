@@ -10,4 +10,3 @@
 - [Writer Monad in Cats](https://www.baeldung.com/scala/writer-monad-in-cats)
 - [AWScala – AWS SDK for Scala](https://www.baeldung.com/scala/awscala-aws-sdk-for-scala)
 - [Working with Redis in Scala](https://www.baeldung.com/scala/redis)
-- [Joining 2 DataFrames In Scala Spark](https://www.baeldung.com/scala/joining-2-dataframes-in-spark)

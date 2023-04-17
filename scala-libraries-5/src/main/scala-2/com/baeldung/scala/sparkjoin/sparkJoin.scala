@@ -1,4 +1,4 @@
-package com.baeldung.scala.sparkJoin
+package com.baeldung.scala.sparkjoin
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.col
 

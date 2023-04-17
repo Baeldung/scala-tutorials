@@ -1,11 +1,11 @@
-package com.baeldung.scala.sparkJoin
+package com.baeldung.scala.sparkjoin
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.apache.spark.sql.types.{StringType, IntegerType}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.Column
-import com.baeldung.scala.sparkJoin.SparkJoins._
+import com.baeldung.scala.sparkjoin.SparkJoins._
 
 class SparkJoinsSpec extends AnyFlatSpec with Matchers {
 
