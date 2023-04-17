@@ -364,7 +364,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
     name := "scala-libraries-5",
-    scalaVersion := "2.13.10",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       sparkSqlDep,
