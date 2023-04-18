@@ -232,7 +232,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       logback % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-protobuf" % "2.8.0-M6", //todo: temp until main release
       catEffectTest,
       "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
     )
