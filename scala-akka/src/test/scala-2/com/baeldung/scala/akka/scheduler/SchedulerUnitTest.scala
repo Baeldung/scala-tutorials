@@ -126,7 +126,7 @@ class SchedulerUnitTest
       // Cancel the schedule, should not get any more messages after that
       schedulerInstance.cancel()
       schedulerInstance.isCancelled shouldBe true
-      expectNoMsg(1.seconds)
+      expectNoMessage(1.seconds)
 
     }
 
