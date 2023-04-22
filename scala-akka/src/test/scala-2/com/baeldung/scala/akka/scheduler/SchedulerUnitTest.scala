@@ -30,7 +30,9 @@ class SchedulerUnitTest
       case Failed(_) | Canceled(_) =>
         if (count == 1) super.withFixture(test)
         else {
-          println(s"Retrying SchedulerUnitTest flaky test  `${test.name}`, Attempts remaining: ${count - 1}")
+          println(
+            s"Retrying SchedulerUnitTest flaky test  `${test.name}`, Attempts remaining: ${count - 1}"
+          )
           withFixture(test, count - 1)
         }
       case other => other
