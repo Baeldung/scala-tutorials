@@ -3,7 +3,7 @@ package com.baeldung.scala.async
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.time.{Millis, Seconds, Span}
-import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.wordspec.{AnyWordSpec, AsyncWordSpec}
 
 import scala.async.Async.{async, await}
 import scala.concurrent.Future
@@ -59,7 +59,7 @@ object ScalaAsyncTest {
   } yield r1 + r2
 }
 
-class ScalaAsyncTest extends AnyWordSpec with Matchers with ScalaFutures {
+class ScalaAsyncTest extends AsyncWordSpec with Matchers with ScalaFutures {
 
   import ScalaAsyncTest._
 
@@ -68,19 +68,19 @@ class ScalaAsyncTest extends AnyWordSpec with Matchers with ScalaFutures {
 
   "Futures combination" should {
     "work sequentially" in {
-      whenReady(sequentialCombination) { r =>
+      sequentialCombination.map { r =>
         assert(r == 18)
       }
     }
 
     "work in parallel" in {
-      whenReady(parallelCombination) { r =>
+      parallelCombination.map { r =>
         assert(r == 18)
       }
     }
 
     "give the same result as Futures composed with for comprehension" in {
-      whenReady(withFor) { r =>
+      withFor.map { r =>
         assert(r == 18)
       }
     }

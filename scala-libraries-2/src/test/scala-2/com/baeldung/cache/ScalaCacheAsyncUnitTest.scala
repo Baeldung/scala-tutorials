@@ -2,15 +2,14 @@ package com.baeldung.cache
 
 import com.baeldung.cache.service.{
   AsyncGuavaCacheMemoizationConfig,
-  AsyncQueryMemoizeService,
-  GuavaCacheCatsConfig
+  AsyncQueryMemoizeService
 }
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.wordspec.AsyncWordSpec
 
 class ScalaCacheAsyncUnitTest
-  extends AnyWordSpec
+  extends AsyncWordSpec
   with Matchers
   with BeforeAndAfterEach {
 
@@ -21,33 +20,31 @@ class ScalaCacheAsyncUnitTest
 
   "Asynchronous memoization" should {
     "save the result to cache once the future is successful" in {
-      import AsyncGuavaCacheMemoizationConfig._
       val asyncService = new AsyncQueryMemoizeService()
-      asyncService.getUser(100)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 0
+      val userFuture = asyncService.getUser(100)
       // wait for the prev operation to complete and set to cache
       Thread.sleep(1100)
-      AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
-        .size() shouldBe 1
+      userFuture.map { _ =>
+        AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
+          .size() shouldBe 1
+      }
+
     }
 
     "get result from cache for future operation" in {
-      import AsyncGuavaCacheMemoizationConfig._
-      import scala.concurrent.ExecutionContext.Implicits.global
       val asyncService = new AsyncQueryMemoizeService()
-      val future = asyncService.checkFutureThread(88)
-      future.foreach { case (main, memThread) =>
+      for {
+        (main, memThread) <- asyncService.checkFutureThread(88)
+      } yield {
         main should not be (memThread)
+        AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
+          .size() shouldBe 1
       }
-      // wait for the prev operation to complete and set to cache
-      Thread.sleep(300)
-      AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
-        .size() shouldBe 1
     }
 
     "NOT save the result to cache if future is failed" in {
-      import AsyncGuavaCacheMemoizationConfig._
       val asyncService = new AsyncQueryMemoizeService()
       asyncService.getUserFail(100)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
@@ -56,10 +53,11 @@ class ScalaCacheAsyncUnitTest
       Thread.sleep(200)
       AsyncGuavaCacheMemoizationConfig.memoizedUnderlyingGuavaCache
         .size() shouldBe 0
-      asyncService.getUserFail(100)
-      Thread.sleep(50)
-      // increment twice since caching is not done due to failure
-      asyncService.queryCount shouldBe 2
+      asyncService.getUserFail(100).failed.map { _ =>
+        Thread.sleep(50)
+        // increment twice since caching is not done due to failure
+        asyncService.queryCount shouldBe 2
+      }
     }
   }
 
