@@ -28,13 +28,12 @@ class SchedulerUnitTest
     val outcome = super.withFixture(test)
     outcome match {
       case Failed(_) | Canceled(_) =>
-        throw new Exception(s"failed at $count try")
-      case _ =>
         if (count == 1) super.withFixture(test)
         else {
           println(s"Retrying `${test.name}`, Attempts remaining: ${count - 1}")
           withFixture(test, count - 1)
         }
+      case other => other
     }
   }
 
