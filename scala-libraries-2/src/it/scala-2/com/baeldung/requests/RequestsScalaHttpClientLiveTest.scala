@@ -1,13 +1,11 @@
 package com.baeldung.requests
 
-import requests.Response
-import java.io.FileOutputStream
-import java.io.PrintWriter
-import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.BeforeAndAfterAll
-import org.scalatest.Ignore
+import org.scalatest.wordspec.AnyWordSpec
+import requests.Response
 
-@Ignore
+import java.io.{FileOutputStream, PrintWriter}
+
 class RequestsScalaHttpClientLiveTest
   extends AnyWordSpec
   with BeforeAndAfterAll {
