@@ -465,3 +465,7 @@ addCommandAlias(
   "ci",
   ";clean;compile;test:compile;it:compile;scalafmtCheckAll;test"
 )
+addCommandAlias(
+  "ciFull",
+  ";ci;it:test"
+)
