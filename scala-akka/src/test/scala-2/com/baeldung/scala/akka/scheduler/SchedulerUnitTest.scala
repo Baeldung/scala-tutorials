@@ -53,6 +53,7 @@ class SchedulerUnitTest
     }
 
     "execute the task exactly once using Runnable interface" in {
+      println("running the test: execute the task exactly once using Runnable interface")
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Greeter-With-Runnable")
       val greet = Greet("Detective", "Lucifer")
@@ -85,6 +86,7 @@ class SchedulerUnitTest
     }
 
     "execute a task periodically using scheduleWithFixedDelay" in {
+      println("running the test: execute a task periodically using scheduleWithFixedDelay")
       val greeter =
         system.actorOf(
           Props(classOf[Greetings]),
@@ -107,6 +109,7 @@ class SchedulerUnitTest
     }
 
     "execute a task periodically using Runnable interface" in {
+      println("running the test: execute a task periodically using Runnable interface")
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Periodic-Greeter-Runnable")
       val greet = Greet("Detective", "Lucifer")
@@ -145,6 +148,7 @@ class SchedulerUnitTest
     }
 
     "scheduleAtFixedRate should run the next execution at fixed rate even if the previous task took more time" in {
+      println("running the test: scheduleAtFixedRate should run the next execution at fixed rate even if the previous task took more time")
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Fixed-Rate-Scheduling")
       val greet = Greet("Detective", "Lucifer")
