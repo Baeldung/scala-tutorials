@@ -170,8 +170,9 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
-  "com.typesafe.akka" %% "akka-http" % "10.4.0"
-)
+  "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion
+) ++ scalaTestDeps
+
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
@@ -200,13 +201,14 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-http" % "10.4.0",
-      "com.typesafe.akka" %% "akka-http-spray-json" % "10.4.0",
-      "com.typesafe.akka" %% "akka-http-testkit" % "10.4.0",
+      "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
+      "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion,
       "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
       "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
-      "com.typesafe.akka" %% "akka-http-testkit" % "10.4.0" % Test
+      "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test
     ) ++ scalaTestDeps
   )
 val monocleVersion = "2.1.0"
@@ -214,7 +216,8 @@ val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
 val fs2Version = "3.6.1"
-val AkkaVersion = "2.7.0"
+val AkkaVersion = "2.8.0"
+val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
@@ -238,7 +241,6 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       logback % Test,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-protobuf" % AkkaVersion,
       catEffectTest,
       "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
     )
