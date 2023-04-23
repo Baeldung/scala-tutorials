@@ -33,7 +33,8 @@ class SchedulerUnitTest
           println(
             s"Retrying SchedulerUnitTest flaky test  `${test.name}`, Attempts remaining: ${count - 1}"
           )
-          withFixture(test, count - 1)
+          // scheduling the retry after 1 second
+          withRetry(1.seconds)(withFixture(test, count - 1))
         }
       case other => other
     }
