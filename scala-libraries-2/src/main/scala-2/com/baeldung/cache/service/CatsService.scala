@@ -6,7 +6,7 @@ import scalacache._
 import scalacache.memoization._
 import scalacache.guava.GuavaCache
 
-object GuavaCacheCatsConfig {
+class GuavaCacheCatsConfig {
   val underlyingGuavaCacheCats =
     CacheBuilder.newBuilder().maximumSize(10000L).build[String, Entry[User]]
 
@@ -15,8 +15,8 @@ object GuavaCacheCatsConfig {
   )
 }
 
-class CatsService {
-  import GuavaCacheCatsConfig._
+class CatsService(config: GuavaCacheCatsConfig) {
+  import config._
   implicit val mode: Mode[IO] = scalacache.CatsEffect.modes.async
   var count = 0
 
