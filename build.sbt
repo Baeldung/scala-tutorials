@@ -20,7 +20,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
-val zioVersion = "2.0.10"
+val zioVersion = "2.0.13"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -343,7 +343,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    libraryDependencies ++= scalaTestDeps
+      .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
