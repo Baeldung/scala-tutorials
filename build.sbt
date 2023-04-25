@@ -166,7 +166,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.0",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.1",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -343,7 +343,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    libraryDependencies ++= scalaTestDeps
+      .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
