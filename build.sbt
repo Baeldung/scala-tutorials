@@ -343,7 +343,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    libraryDependencies ++= scalaTestDeps
+      .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
@@ -362,8 +363,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.20.39",
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.442" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.14" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.14" % IntegrationTest
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.15" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.15" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "com.github.seratch" %% "awscala" % "0.9.2"
