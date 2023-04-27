@@ -33,20 +33,26 @@ lazy val scala_core = (project in file("scala-core"))
   )
 
 lazy val scala_core_2 = (project in file("scala-core-2"))
+  .configs(ManualTests)
   .settings(
     name := "scala-core-2",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += scalaMock,
-    libraryDependencies += jUnitInterface
+    libraryDependencies += jUnitInterface,
+    manualTestSettings
   )
 
+lazy val manualTestSettings = inConfig(ManualTests)(Defaults.testSettings)
+
 lazy val scala_core_3 = (project in file("scala-core-3"))
+  .configs(ManualTests)
   .settings(
     name := "scala-core-3",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection,
-    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.1.0"
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.1.0",
+    manualTestSettings
   )
 
 lazy val scala_core_4 = (project in file("scala-core-4"))
@@ -343,7 +349,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    libraryDependencies ++= scalaTestDeps
+      .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
@@ -465,9 +472,11 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
 
 addCommandAlias(
   "ci",
-  ";clean;compile;test:compile;it:compile;scalafmtCheckAll;test"
+  ";compile;test:compile;it:compile;scalafmtCheckAll;test"
 )
 addCommandAlias(
   "ciFull",
   ";ci;it:test"
 )
+
+lazy val ManualTests = config("manual") extend (Test)
