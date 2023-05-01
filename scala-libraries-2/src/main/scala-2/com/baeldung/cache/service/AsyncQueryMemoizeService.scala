@@ -10,7 +10,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.concurrent.duration._
 
-object AsyncGuavaCacheMemoizationConfig {
+class AsyncGuavaCacheMemoizationConfig {
   val memoizedUnderlyingGuavaCache =
     CacheBuilder.newBuilder().maximumSize(10000L).build[String, Entry[User]]
   implicit val guavaCache: Cache[User] = GuavaCache(
@@ -18,8 +18,8 @@ object AsyncGuavaCacheMemoizationConfig {
   )
 }
 
-class AsyncQueryMemoizeService {
-  import AsyncGuavaCacheMemoizationConfig._
+class AsyncQueryMemoizeService(cacheConfig: AsyncGuavaCacheMemoizationConfig) {
+  import cacheConfig._
 
   var queryCount = 0
 
