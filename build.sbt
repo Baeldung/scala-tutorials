@@ -9,7 +9,7 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.8"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.8" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.3.6"
+val logback = "ch.qos.logback" % "logback-classic" % "1.3.7"
 val embedMongoVersion = "4.6.2"
 
 val scalaTestDeps = Seq(
@@ -345,7 +345,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     scalaVersion := "2.13.10",
     libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
-    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    libraryDependencies ++= scalaTestDeps
+      .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
