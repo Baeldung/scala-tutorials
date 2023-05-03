@@ -17,18 +17,14 @@ class ScalaCacheCachingBlockUnitTest
   with Matchers
   with BeforeAndAfterEach {
 
-  override def beforeEach(): Unit = {
-    GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
-      .invalidateAll()
-  }
-
   "ScalaCacheCachingBlockSpec" should {
     "execute the method inside the caching block and set the value to cache" in {
-      val service = new ScalaCacheCachingBlockSyncService()
+      val config = new GuavaCacheCachingBlockConfig
+      val service = new ScalaCacheCachingBlockSyncService(config)
       service.getUser(22)
-      GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
+      config.underlyingGuavaCacheForCachingBlock
         .size() shouldBe 1
-      GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
+      config.underlyingGuavaCacheForCachingBlock
         .asMap()
         .keySet()
         .asScala
@@ -36,11 +32,12 @@ class ScalaCacheCachingBlockUnitTest
     }
 
     "execute the method inside the caching block and set the value to cache with more than 1 keyparts" in {
-      val service = new ScalaCacheCachingBlockSyncService()
+      val config = new GuavaCacheCachingBlockConfig
+      val service = new ScalaCacheCachingBlockSyncService(config)
       service.getUserWithMoreKeys(22)
-      GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
+      config.underlyingGuavaCacheForCachingBlock
         .size() shouldBe 1
-      GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
+      config.underlyingGuavaCacheForCachingBlock
         .asMap()
         .keySet()
         .asScala
@@ -48,14 +45,15 @@ class ScalaCacheCachingBlockUnitTest
     }
 
     "execute the method inside the caching block and set the value to cache when future is done" in {
-      val service = new ScalaCacheCachingBlockAsyncService()
+      val config = new GuavaCacheCachingBlockConfig
+      val service = new ScalaCacheCachingBlockAsyncService(config)
       service.getUserFuture(42)
-      GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
+      config.underlyingGuavaCacheForCachingBlock
         .size() shouldBe 0
       Thread.sleep(1100)
-      GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
+      config.underlyingGuavaCacheForCachingBlock
         .size() shouldBe 1
-      GuavaCacheCachingBlockConfig.underlyingGuavaCacheForCachingBlock
+      config.underlyingGuavaCacheForCachingBlock
         .asMap()
         .keySet()
         .asScala
