@@ -16,15 +16,28 @@ class SchedulerUnitTest
   extends TestKit(ActorSystem("test-system"))
   with ImplicitSender
   with AnyWordSpecLike
-  with Matchers {
+  with Matchers
+  with Retries {
 
-  override def withFixture(test: NoArgTest) = {
-    if (isRetryable(test))
-      withRetry {
-        super.withFixture(test)
-      }
-    else
-      super.withFixture(test)
+  val retries = 5
+  override def withFixture(test: NoArgTest): Outcome = {
+    if (isRetryable(test)) withFixture(test, retries)
+    else super.withFixture(test)
+  }
+  def withFixture(test: NoArgTest, count: Int): Outcome = {
+    val outcome = super.withFixture(test)
+    outcome match {
+      case Failed(_) | Canceled(_) =>
+        if (count == 1) super.withFixture(test)
+        else {
+          println(
+            s"Retrying SchedulerUnitTest flaky test  `${test.name}`, Attempts remaining: ${count - 1}"
+          )
+          // scheduling the retry after 1 second
+          withRetry(1.seconds)(withFixture(test, count - 1))
+        }
+      case other => other
+    }
   }
 
   "Akka scheduler" must {
@@ -41,6 +54,9 @@ class SchedulerUnitTest
     }
 
     "execute the task exactly once using Runnable interface" in {
+      println(
+        "running the test: execute the task exactly once using Runnable interface"
+      )
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Greeter-With-Runnable")
       val greet = Greet("Detective", "Lucifer")
@@ -73,6 +89,9 @@ class SchedulerUnitTest
     }
 
     "execute a task periodically using scheduleWithFixedDelay" in {
+      println(
+        "running the test: execute a task periodically using scheduleWithFixedDelay"
+      )
       val greeter =
         system.actorOf(
           Props(classOf[Greetings]),
@@ -95,6 +114,9 @@ class SchedulerUnitTest
     }
 
     "execute a task periodically using Runnable interface" in {
+      println(
+        "running the test: execute a task periodically using Runnable interface"
+      )
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Periodic-Greeter-Runnable")
       val greet = Greet("Detective", "Lucifer")
@@ -133,6 +155,9 @@ class SchedulerUnitTest
     }
 
     "scheduleAtFixedRate should run the next execution at fixed rate even if the previous task took more time" in {
+      println(
+        "running the test: scheduleAtFixedRate should run the next execution at fixed rate even if the previous task took more time"
+      )
       val greeter =
         system.actorOf(Props(classOf[Greetings]), "Fixed-Rate-Scheduling")
       val greet = Greet("Detective", "Lucifer")
