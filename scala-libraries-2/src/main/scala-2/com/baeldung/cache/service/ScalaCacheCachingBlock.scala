@@ -7,7 +7,7 @@ import scalacache.guava.GuavaCache
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-object GuavaCacheCachingBlockConfig {
+class GuavaCacheCachingBlockConfig {
   val underlyingGuavaCacheForCachingBlock =
     CacheBuilder.newBuilder().maximumSize(10000L).build[String, Entry[User]]
 
@@ -16,8 +16,8 @@ object GuavaCacheCachingBlockConfig {
   )
 }
 
-class ScalaCacheCachingBlockSyncService {
-  import GuavaCacheCachingBlockConfig._
+class ScalaCacheCachingBlockSyncService(config: GuavaCacheCachingBlockConfig) {
+  import config._
   import scalacache.modes.sync._
 
   def getUser(id: Long) = {
@@ -38,9 +38,9 @@ class ScalaCacheCachingBlockSyncService {
 
 }
 
-class ScalaCacheCachingBlockAsyncService {
+class ScalaCacheCachingBlockAsyncService(config: GuavaCacheCachingBlockConfig) {
   import scalacache.modes.scalaFuture._
-  import GuavaCacheCachingBlockConfig._
+  import config._
 
   def getUserFuture(id: Long) = {
     cachingF("keyF", id)(None) {

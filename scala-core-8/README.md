@@ -2,3 +2,4 @@
 
 - [Introduction to Scala Macros](https://www.baeldung.com/scala/scala2-macros)
 - [Introduction to Macros in Scala 2](https://www.baeldung.com/scala/scala2-macros)
+- [The Builder Pattern in Scala](https://www.baeldung.com/scala/builder-pattern)
