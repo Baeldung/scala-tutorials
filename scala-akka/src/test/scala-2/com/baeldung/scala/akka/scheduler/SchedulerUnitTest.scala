@@ -58,7 +58,10 @@ class SchedulerUnitTest
         "running the test: execute the task exactly once using Runnable interface"
       )
       val greeter =
-        system.actorOf(Props(classOf[Greetings]), "Greeter-With-Runnable")
+        system.actorOf(
+          Props(classOf[Greetings]),
+          "Greeter-With-Runnable-" + System.currentTimeMillis()
+        )
       val greet = Greet("Detective", "Lucifer")
       system.scheduler.scheduleOnce(
         500.millis,
@@ -76,7 +79,10 @@ class SchedulerUnitTest
 
     "execute a task periodically" in {
       val greeter =
-        system.actorOf(Props(classOf[Greetings]), "Periodic-Greeter")
+        system.actorOf(
+          Props(classOf[Greetings]),
+          "Periodic-Greeter-" + System.currentTimeMillis()
+        )
       val greet = Greet("Detective", "Lucifer")
       system.scheduler.schedule(10.millis, 250.millis, greeter, greet)
 
@@ -95,7 +101,7 @@ class SchedulerUnitTest
       val greeter =
         system.actorOf(
           Props(classOf[Greetings]),
-          "Periodic-Greeter-Fixed-Delay"
+          "Periodic-Greeter-Fixed-Delay-" + System.currentTimeMillis()
         )
       val greet = Greet("Detective", "Lucifer")
       system.scheduler.scheduleWithFixedDelay(
@@ -118,7 +124,10 @@ class SchedulerUnitTest
         "running the test: execute a task periodically using Runnable interface"
       )
       val greeter =
-        system.actorOf(Props(classOf[Greetings]), "Periodic-Greeter-Runnable")
+        system.actorOf(
+          Props(classOf[Greetings]),
+          "Periodic-Greeter-Runnable-" + System.currentTimeMillis()
+        )
       val greet = Greet("Detective", "Lucifer")
       system.scheduler.schedule(
         10.millis,
@@ -140,7 +149,10 @@ class SchedulerUnitTest
 
     "cancel a running scheduler" in {
       val greeter =
-        system.actorOf(Props(classOf[Greetings]), "Cancelling-Greeter")
+        system.actorOf(
+          Props(classOf[Greetings]),
+          "Cancelling-Greeter-" + System.currentTimeMillis()
+        )
       val greet = Greet("Detective", "Lucifer MorningStar")
       val schedulerInstance =
         system.scheduler.schedule(10.millis, 1.seconds, greeter, greet)
@@ -159,7 +171,10 @@ class SchedulerUnitTest
         "running the test: scheduleAtFixedRate should run the next execution at fixed rate even if the previous task took more time"
       )
       val greeter =
-        system.actorOf(Props(classOf[Greetings]), "Fixed-Rate-Scheduling")
+        system.actorOf(
+          Props(classOf[Greetings]),
+          "Fixed-Rate-Scheduling-" + System.currentTimeMillis()
+        )
       val greet = Greet("Detective", "Lucifer")
       var flag = true
       system.scheduler.scheduleAtFixedRate(10.millis, 500.millis)(new Runnable {
