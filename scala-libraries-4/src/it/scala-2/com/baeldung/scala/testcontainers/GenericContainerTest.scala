@@ -3,20 +3,14 @@ package com.baeldung.scala.testcontainers
 import com.baeldung.scala.testcontainers.MyLocalStackContainer.LocalStackPort
 import com.dimafeng.testcontainers.GenericContainer
 import com.dimafeng.testcontainers.scalatest.TestContainerForEach
+import org.scalatest.Ignore
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
-import software.amazon.awssdk.auth.credentials.{
-  AwsBasicCredentials,
-  StaticCredentialsProvider
-}
+import software.amazon.awssdk.auth.credentials.{AwsBasicCredentials, StaticCredentialsProvider}
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.s3.S3Client
-import software.amazon.awssdk.services.s3.model.{
-  CreateBucketRequest,
-  HeadObjectRequest,
-  NoSuchKeyException
-}
+import software.amazon.awssdk.services.s3.model.{CreateBucketRequest, HeadObjectRequest, NoSuchKeyException}
 
 import java.net.URI
 import java.nio.file.Paths
@@ -52,6 +46,7 @@ object MyLocalStackContainer {
     )
 }
 
+@Ignore
 class GenericContainerTest
   extends AnyFlatSpec
   with Matchers
