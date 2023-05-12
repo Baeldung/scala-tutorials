@@ -221,6 +221,7 @@ val fs2Version = "3.6.1"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
+val spireVersion = "0.18.0"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -244,7 +245,8 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       catEffectTest,
-      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
+      "org.typelevel" %% "spire" % spireVersion
     )
   )
 
