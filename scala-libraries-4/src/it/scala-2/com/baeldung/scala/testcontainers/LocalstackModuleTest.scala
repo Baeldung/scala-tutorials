@@ -7,7 +7,11 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.testcontainers.containers.localstack.LocalStackContainer.Service
 import software.amazon.awssdk.services.s3.S3Client
-import software.amazon.awssdk.services.s3.model.{CreateBucketRequest, HeadObjectRequest, NoSuchKeyException}
+import software.amazon.awssdk.services.s3.model.{
+  CreateBucketRequest,
+  HeadObjectRequest,
+  NoSuchKeyException
+}
 
 import java.nio.file.Paths
 import scala.util.{Random, Try}
