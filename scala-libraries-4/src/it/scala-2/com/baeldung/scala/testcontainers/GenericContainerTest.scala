@@ -52,6 +52,13 @@ object MyLocalStackContainer {
     )
 }
 
+/** use sbt command to run the test for e.g.: sbt "it:testOnly
+  * *LocalstackModuleTest" To run in IntelliJ IDEA, you need to either set the
+  * working directory to the sub-module for the test. Otherwise, the path to the
+  * file will not be correct. Another option is to temporarily change the file
+  * path as below (by prefixing with the sub-module name)
+  * scala-libraries-4/src/it/resources/s3-test.txt
+  */
 class GenericContainerTest
   extends AnyFlatSpec
   with Matchers

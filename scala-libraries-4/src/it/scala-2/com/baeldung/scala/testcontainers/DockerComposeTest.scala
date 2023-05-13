@@ -1,14 +1,10 @@
 package com.baeldung.scala.testcontainers
 
-import com.dimafeng.testcontainers.{DockerComposeContainer, ExposedService}
 import com.dimafeng.testcontainers.scalatest.TestContainerForEach
-import org.scalatest.Ignore
+import com.dimafeng.testcontainers.{DockerComposeContainer, ExposedService}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import org.testcontainers.containers.wait.strategy.{
-  LogMessageWaitStrategy,
-  Wait
-}
+import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
 import software.amazon.awssdk.auth.credentials.{
   AwsBasicCredentials,
   StaticCredentialsProvider
@@ -23,13 +19,19 @@ import software.amazon.awssdk.services.s3.model.{
 
 import java.io.File
 import java.net.URI
-import java.nio.file.Paths
 import scala.util.{Random, Try}
 
+/** use sbt command to run the test for e.g.: sbt "it:testOnly
+  * *LocalstackModuleTest" To run in IntelliJ IDEA, you need to either set the
+  * working directory to the sub-module for the test. Otherwise, the path to the
+  * file will not be correct. Another option is to temporarily change the file
+  * path as below (by prefixing with the sub-module name)
+  * scala-libraries-4/src/it/resources/s3-test.txt
+  */
 class DockerComposeTest
   extends AnyFlatSpec
-    with Matchers
-    with TestContainerForEach {
+  with Matchers
+  with TestContainerForEach {
 
   private val BucketName = Random.alphanumeric.take(10).mkString.toLowerCase
   private val ExposedPort = 5000
@@ -74,12 +76,16 @@ class DockerComposeTest
 
     Try(
       s3.headObject(
-        HeadObjectRequest.builder().bucket(BucketName).key(uploadFile.getName).build()
+        HeadObjectRequest
+          .builder()
+          .bucket(BucketName)
+          .key(uploadFile.getName)
+          .build()
       )
     ).fold(
       {
-        case ex: NoSuchKeyException => fail("File not found: "+ex)
-        case _                     => fail
+        case ex: NoSuchKeyException => fail("File not found: " + ex)
+        case _                      => fail
       },
       _ => succeed
     )
