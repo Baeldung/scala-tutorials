@@ -45,14 +45,14 @@ class LocalstackModuleTest
         endpoint = ls.endpointOverride(Service.S3),
         accessKeyId = ls.container.getAccessKey,
         secretAccessKey = ls.container.getSecretKey
-      ).upload(BucketName, Paths.get("build.sbt"))
+      ).upload(BucketName, Paths.get("src/it/resources/s3-test.txt"))
 
       Try(
         s3.headObject(
           HeadObjectRequest
             .builder()
             .bucket(BucketName)
-            .key("build.sbt")
+            .key("s3-test.txt")
             .build()
         )
       ).fold(
