@@ -2,6 +2,7 @@ package com.baeldung.scala.testcontainers
 
 import com.dimafeng.testcontainers.{DockerComposeContainer, ExposedService}
 import com.dimafeng.testcontainers.scalatest.TestContainerForEach
+import org.scalatest.Ignore
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.testcontainers.containers.wait.strategy.{
@@ -27,15 +28,16 @@ import scala.util.{Random, Try}
 
 class DockerComposeTest
   extends AnyFlatSpec
-  with Matchers
-  with TestContainerForEach {
+    with Matchers
+    with TestContainerForEach {
 
   private val BucketName = Random.alphanumeric.take(10).mkString.toLowerCase
   private val ExposedPort = 5000
+  private val uploadFile = new File("src/it/resources/s3-test.txt")
 
   override val containerDef: DockerComposeContainer.Def =
     DockerComposeContainer.Def(
-      new File("scala-libraries-4/src/it/resources/docker-compose.yml"),
+      new File("src/it/resources/docker-compose.yml"),
       exposedServices = Seq(
         ExposedService(
           "localstack",
@@ -68,15 +70,15 @@ class DockerComposeTest
       endpoint = new URI(endpoint),
       accessKeyId = "not_used",
       secretAccessKey = "not_used"
-    ).upload(BucketName, Paths.get("build.sbt"))
+    ).upload(BucketName, uploadFile.toPath)
 
     Try(
       s3.headObject(
-        HeadObjectRequest.builder().bucket(BucketName).key("build.sbt").build()
+        HeadObjectRequest.builder().bucket(BucketName).key(uploadFile.getName).build()
       )
     ).fold(
       {
-        case _: NoSuchKeyException => fail("File not found")
+        case ex: NoSuchKeyException => fail("File not found: "+ex)
         case _                     => fail
       },
       _ => succeed
