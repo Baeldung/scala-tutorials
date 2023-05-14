@@ -55,7 +55,6 @@ class DifferenceBetweenDatesTest extends AnyWordSpec with Matchers {
       dateDiff shouldBe 10
     }
 
-
     "when given years unit and difference of 10y 3d, should only return 10" in {
       implicit val unit = ChronoUnit.YEARS
       val dateDiff = usingUnits(testDate3, testDate2)

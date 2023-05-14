@@ -13,7 +13,9 @@ object DifferenceBetweenDates {
     Period.between(fromDate, toDate)
   }
 
-  def usingUnits(fromDate: LocalDate, toDate: LocalDate)(implicit chronoUnit: ChronoUnit) = {
+  def usingUnits(fromDate: LocalDate, toDate: LocalDate)(implicit
+    chronoUnit: ChronoUnit
+  ) = {
     chronoUnit.between(fromDate, toDate)
   }
 
