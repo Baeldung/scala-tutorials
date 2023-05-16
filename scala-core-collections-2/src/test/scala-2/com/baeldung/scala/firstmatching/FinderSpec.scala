@@ -22,7 +22,7 @@ class FinderSpec extends AnyWordSpec {
       val collection =
         ('a' -> 0) :: ('b' -> 1) :: ('c' -> 2) :: ('d' -> 3) :: Nil
       val expected = 'b'
-      val actual = collection.findMatch(pair => pair._2 > 0)
+      val actual = collection.findMatch(pair => pair._2 > 0).get._1
       assertResult(expected)(actual)
     }
   }
