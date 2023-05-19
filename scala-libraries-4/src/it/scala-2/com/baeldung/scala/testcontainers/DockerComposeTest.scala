@@ -22,11 +22,9 @@ import java.net.URI
 import scala.util.{Random, Try}
 
 /** use sbt command to run the test for e.g.: sbt "it:testOnly
-  * *LocalstackModuleTest" To run in IntelliJ IDEA, you need to either set the
-  * working directory to the sub-module for the test. Otherwise, the path to the
-  * file will not be correct. Another option is to temporarily change the file
-  * path as below (by prefixing with the sub-module name)
-  * scala-libraries-4/src/it/resources/s3-test.txt
+  * *DockerComposeTest". When you run in IntelliJ IDEA and if you get error
+  * regarding the resources, then mark the src/it/resources directory as "test
+  * resources" in intellij.
   */
 class DockerComposeTest
   extends AnyFlatSpec
@@ -35,11 +33,15 @@ class DockerComposeTest
 
   private val BucketName = Random.alphanumeric.take(10).mkString.toLowerCase
   private val ExposedPort = 5000
-  private val uploadFile = new File("src/it/resources/s3-test.txt")
+  private val uploadFile = new File(
+    getClass.getClassLoader.getResource("s3-test.txt").getFile
+  )
 
-  override val containerDef: DockerComposeContainer.Def =
+  override lazy val containerDef: DockerComposeContainer.Def = {
     DockerComposeContainer.Def(
-      new File("src/it/resources/docker-compose.yml"),
+      new File(
+        this.getClass.getClassLoader.getResource("docker-compose.yml").getFile
+      ),
       exposedServices = Seq(
         ExposedService(
           "localstack",
@@ -48,6 +50,7 @@ class DockerComposeTest
         )
       )
     )
+  }
 
   "SimpleS3Uploader" should "upload a file in the desired bucket" in {
     val region = "us-east-1"

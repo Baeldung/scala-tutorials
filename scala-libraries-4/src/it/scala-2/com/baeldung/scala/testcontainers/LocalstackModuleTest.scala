@@ -16,12 +16,10 @@ import java.nio.file.Paths
 import scala.util.{Random, Try}
 
 /** use sbt command to run the test for e.g.: sbt "it:testOnly
-  * *LocalstackModuleTest" To run in IntelliJ IDEA, you need to either set the
-  * working directory to the sub-module for the test. Otherwise, the path to the
-  * file will not be correct. Another option is to temporarily change the file
-  * path as below (by prefixing with the sub-module name)
-  * scala-libraries-4/src/it/resources/s3-test.txt
-  */
+ * *LocalstackModuleTest". When you run in IntelliJ IDEA and if you get error
+ * regarding the resources, then mark the src/it/resources directory as "test
+ * resources" in intellij.
+ */
 class LocalstackModuleTest
   extends AnyFlatSpec
   with Matchers
@@ -52,7 +50,7 @@ class LocalstackModuleTest
         endpoint = ls.endpointOverride(Service.S3),
         accessKeyId = ls.container.getAccessKey,
         secretAccessKey = ls.container.getSecretKey
-      ).upload(BucketName, Paths.get("src/it/resources/s3-test.txt"))
+      ).upload(BucketName, Paths.get(getClass.getClassLoader.getResource("s3-test.txt").toURI))
 
       Try(
         s3.headObject(
