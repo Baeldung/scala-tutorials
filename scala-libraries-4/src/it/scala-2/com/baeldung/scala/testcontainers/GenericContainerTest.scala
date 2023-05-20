@@ -54,6 +54,7 @@ object MyLocalStackContainer {
 }
 
 @Ignore
+//ignored since this needs docker environment, which is not available in jenkins
 class GenericContainerTest
   extends AnyFlatSpec
   with Matchers

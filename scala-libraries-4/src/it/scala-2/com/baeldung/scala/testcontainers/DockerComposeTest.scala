@@ -27,6 +27,7 @@ import java.nio.file.Paths
 import scala.util.{Random, Try}
 
 @Ignore
+//ignored since this needs docker environment, which is not available in jenkins
 class DockerComposeTest
   extends AnyFlatSpec
   with Matchers

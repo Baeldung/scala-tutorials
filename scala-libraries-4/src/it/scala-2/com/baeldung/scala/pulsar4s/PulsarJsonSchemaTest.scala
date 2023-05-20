@@ -9,6 +9,7 @@ import org.testcontainers.utility.DockerImageName
 import scala.util.Success
 
 @Ignore
+//ignored since this needs docker environment, which is not available in jenkins
 class PulsarJsonSchemaTest
   extends AsyncWordSpec
   with BeforeAndAfterAll
