@@ -7,7 +7,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.13.10"
 
-libraryDependencies += guice
+libraryDependencies += "com.google.inject" % "guice" % "6.0.0"
 libraryDependencies += "com.h2database" % "h2" % "1.4.192"
 libraryDependencies += "org.postgresql" % "postgresql" % "42.2.14"
 libraryDependencies += "com.typesafe.play" %% "play-slick" % "5.1.0"

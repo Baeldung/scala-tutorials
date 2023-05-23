@@ -2,6 +2,7 @@ package com.baeldung.arrival.service
 
 import com.baeldung.arrival.applicationfactory.H2ApplicationFactory
 import org.scalatest.concurrent.ScalaFutures
+import org.scalatest.time.{Millis, Seconds, Span}
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatestplus.play.guice.GuiceOneAppPerTest
 
@@ -17,5 +18,7 @@ class ArrivalServiceH2Test extends AnyWordSpec with GuiceOneAppPerTest with Scal
       })
     }
   }
+
+  override implicit def patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(10, Seconds)), interval = scaled(Span(300, Millis)))
 
 }

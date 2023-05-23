@@ -6,7 +6,7 @@ import slick.dbio.{DBIO, SuccessAction}
 
 import scala.concurrent.Future
 
-class NoDbDbManager extends DbManager {
+class InMemoryDbManager extends DbManager {
   override def dbConfig: DatabaseConfig[_] = ???
 
   override def execute[T](dbio: DBIO[T]): Future[T] = Future.successful(dbio.asInstanceOf[SuccessAction[T]].value)

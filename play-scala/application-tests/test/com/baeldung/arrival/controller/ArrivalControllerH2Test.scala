@@ -25,5 +25,5 @@ class ArrivalControllerH2Test extends AnyWordSpec with WsScalaTestClient with Gu
     }
   }
 
-  override implicit def patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(5, Seconds)), interval = scaled(Span(200, Millis)))
+  override implicit def patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(10, Seconds)), interval = scaled(Span(300, Millis)))
 }

@@ -3,7 +3,7 @@ package com.baeldung.arrival.service
 import com.baeldung.arrival.db.manager.DbManager
 import com.baeldung.arrival.db.repository.ArrivalRepository
 import com.baeldung.arrival.modules.ServiceModule
-import com.baeldung.arrival.service.isolated.{NoDbArrivalRepository, NoDbDbManager}
+import com.baeldung.arrival.service.isolated.{InMemoryArrivalRepository, InMemoryDbManager}
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatestplus.play.guice.GuiceOneAppPerTest
@@ -21,13 +21,13 @@ class ArrivalServiceIsolatedTest extends AnyWordSpec with GuiceOneAppPerTest wit
         "medium-name-max" -> 8
       )
     )
-      .bindings(inject.bind[DbManager].toInstance(new NoDbDbManager))
-      .bindings(inject.bind[ArrivalRepository].toInstance(new NoDbArrivalRepository))
+      .bindings(inject.bind[DbManager].toInstance(new InMemoryDbManager))
+      .bindings(inject.bind[ArrivalRepository].toInstance(new InMemoryArrivalRepository))
       .build()
   }
 
   "ArrivalService#getArrivals" should {
-    "use the NoDbArrivalRepository without a connection to a database" in {
+    "use the InMemoryArrivalRepository without a connection to a database" in {
       val arrivalsF = app.injector.instanceOf[ArrivalService].getArrivals()
       whenReady(arrivalsF)(arrivals => {
         assert(arrivals.length === 2)
