@@ -9,7 +9,8 @@ class NonFatalExceptionsTest extends AnyWordSpec with Matchers {
 
   "NonFatalExceptionsTest" should {
     "catch all exceptions and errors using Throwable case block" in {
-      def explodingFn: String = throw new LinkageError("Could not link the native library")
+      def explodingFn: String =
+        throw new LinkageError("Could not link the native library")
       def exceptionHandlingFn = {
         try {
           explodingFn
@@ -22,7 +23,8 @@ class NonFatalExceptionsTest extends AnyWordSpec with Matchers {
     }
 
     "not be able to catch LinkageError using Exception catch block" in {
-      def explodingFn: String = throw new LinkageError("Could not link the native library")
+      def explodingFn: String =
+        throw new LinkageError("Could not link the native library")
       def exceptionHandlingFn = {
         try {
           explodingFn
@@ -37,7 +39,8 @@ class NonFatalExceptionsTest extends AnyWordSpec with Matchers {
   }
 
   "Not be able to catch errors using Try block" in {
-    def explodingFn: String = throw new LinkageError("Could not link the native library")
+    def explodingFn: String =
+      throw new LinkageError("Could not link the native library")
 
     def fnWithTry = {
       Try {
@@ -46,19 +49,20 @@ class NonFatalExceptionsTest extends AnyWordSpec with Matchers {
     }
 
     def tryToHandle = fnWithTry match {
-      case Success(v) => "success"
-      case Failure(ex) => "Handled exception: "+ex.getClass.getSimpleName
+      case Success(v)  => "success"
+      case Failure(ex) => "Handled exception: " + ex.getClass.getSimpleName
     }
 
-    //since it could not be handled, it should throw this linkage error.
+    // since it could not be handled, it should throw this linkage error.
     val intercepted = intercept[LinkageError](tryToHandle)
-    //notice that it is not returning the message "Handled exception: LinkageError"
+    // notice that it is not returning the message "Handled exception: LinkageError"
     intercepted.getMessage shouldBe "Could not link the native library"
 
   }
 
   "be able to catch NON-errors using Try block" in {
-    def explodingFn: String = throw new Exception("Could not link the native library")
+    def explodingFn: String =
+      throw new Exception("Could not link the native library")
 
     def fnWithTry = {
       Try {
@@ -67,15 +71,16 @@ class NonFatalExceptionsTest extends AnyWordSpec with Matchers {
     }
 
     val handled = fnWithTry match {
-      case Success(v) => "success"
+      case Success(v)  => "success"
       case Failure(ex) => "Handled exception: " + ex.getClass.getSimpleName
     }
 
     handled shouldBe "Handled exception: Exception"
   }
-  
+
   "handle non-errors using NonFatal block" in {
-    def explodingFn: String = throw new Exception("Could not link the native library")
+    def explodingFn: String =
+      throw new Exception("Could not link the native library")
     def fnWithTry = {
       Try {
         explodingFn
@@ -84,20 +89,21 @@ class NonFatalExceptionsTest extends AnyWordSpec with Matchers {
 
     val handled = fnWithTry.failed.get match {
       case NonFatal(nf) => "Handled only non-fatal exception here"
-      case _ => "Handled fatal exception: "
+      case _            => "Handled fatal exception: "
     }
     handled shouldBe "Handled only non-fatal exception here"
   }
 
   "NOT be able to handle errors using NonFatal block" in {
-    def explodingFn: String = throw new LinkageError("Could not link the native library")
+    def explodingFn: String =
+      throw new LinkageError("Could not link the native library")
 
     def fnWithTry = {
       Try {
         explodingFn
       }.failed.get match {
         case NonFatal(nf) => "Handled only non-fatal exception here"
-        case _ => "Handled fatal exception: "
+        case _            => "Handled fatal exception: "
       }
     }
 
