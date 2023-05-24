@@ -94,7 +94,7 @@ lazy val scala_core_8 = (project in file("scala-core-8"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test",
     libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "0.9.0",
-    libraryDependencies += "com.typesafe" % "config" % "1.2.0"
+    libraryDependencies += "com.typesafe" % "config" % "1.2.1"
     // scalacOptions += "-Ymacro-debug-lite"
   )
 
