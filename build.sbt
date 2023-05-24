@@ -213,7 +213,7 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test
     ) ++ scalaTestDeps
   )
-val monocleVersion = "2.1.0"
+val monocleVersion = "3.2.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
@@ -227,8 +227,8 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     name := "scala-libraries",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
-      "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
+      "dev.optics" %% "monocle-core" % monocleVersion,
+      "dev.optics" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
       "com.h2database" % "h2" % "2.1.214",
