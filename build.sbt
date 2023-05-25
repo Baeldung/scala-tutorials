@@ -313,8 +313,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       "com.beachape" %% "enumeratum" % "1.7.2",
-      "com.github.pureconfig" %% "pureconfig" % "0.17.3",
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.3",
+      "com.github.pureconfig" %% "pureconfig" % "0.17.4",
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.4",
       "com.typesafe" % "config" % "1.4.2",
       "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
