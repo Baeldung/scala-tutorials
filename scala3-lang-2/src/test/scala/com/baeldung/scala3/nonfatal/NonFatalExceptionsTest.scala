@@ -25,6 +25,7 @@ class NonFatalExceptionsTest extends AnyWordSpec with Matchers {
     "not be able to catch LinkageError using Exception catch block" in {
       def explodingFn: String =
         throw new LinkageError("Could not link the native library")
+      // Same for VirtualMachineError, ThreadDeath, InterruptedException, ControlThrowable and their subclasses
       def exceptionHandlingFn = {
         try {
           explodingFn
