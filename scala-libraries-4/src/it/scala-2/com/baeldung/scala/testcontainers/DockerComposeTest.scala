@@ -1,13 +1,10 @@
 package com.baeldung.scala.testcontainers
 
-import com.dimafeng.testcontainers.{DockerComposeContainer, ExposedService}
 import com.dimafeng.testcontainers.scalatest.TestContainerForEach
+import com.dimafeng.testcontainers.{DockerComposeContainer, ExposedService}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import org.testcontainers.containers.wait.strategy.{
-  LogMessageWaitStrategy,
-  Wait
-}
+import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
 import software.amazon.awssdk.auth.credentials.{
   AwsBasicCredentials,
   StaticCredentialsProvider
@@ -22,9 +19,13 @@ import software.amazon.awssdk.services.s3.model.{
 
 import java.io.File
 import java.net.URI
-import java.nio.file.Paths
 import scala.util.{Random, Try}
 
+/** use sbt command to run the test for e.g.: sbt "it:testOnly
+  * *DockerComposeTest". When you run in IntelliJ IDEA and if you get error
+  * regarding the resources, then mark the src/it/resources directory as "test
+  * resources" in intellij.
+  */
 class DockerComposeTest
   extends AnyFlatSpec
   with Matchers
@@ -32,10 +33,15 @@ class DockerComposeTest
 
   private val BucketName = Random.alphanumeric.take(10).mkString.toLowerCase
   private val ExposedPort = 5000
+  private val uploadFile = new File(
+    getClass.getClassLoader.getResource("s3-test.txt").getFile
+  )
 
-  override val containerDef: DockerComposeContainer.Def =
+  override lazy val containerDef: DockerComposeContainer.Def = {
     DockerComposeContainer.Def(
-      new File("scala-libraries-4/src/it/resources/docker-compose.yml"),
+      new File(
+        this.getClass.getClassLoader.getResource("docker-compose.yml").getFile
+      ),
       exposedServices = Seq(
         ExposedService(
           "localstack",
@@ -44,6 +50,7 @@ class DockerComposeTest
         )
       )
     )
+  }
 
   "SimpleS3Uploader" should "upload a file in the desired bucket" in {
     val region = "us-east-1"
@@ -68,16 +75,20 @@ class DockerComposeTest
       endpoint = new URI(endpoint),
       accessKeyId = "not_used",
       secretAccessKey = "not_used"
-    ).upload(BucketName, Paths.get("build.sbt"))
+    ).upload(BucketName, uploadFile.toPath)
 
     Try(
       s3.headObject(
-        HeadObjectRequest.builder().bucket(BucketName).key("build.sbt").build()
+        HeadObjectRequest
+          .builder()
+          .bucket(BucketName)
+          .key(uploadFile.getName)
+          .build()
       )
     ).fold(
       {
-        case _: NoSuchKeyException => fail("File not found")
-        case _                     => fail
+        case ex: NoSuchKeyException => fail("File not found: " + ex)
+        case _                      => fail
       },
       _ => succeed
     )

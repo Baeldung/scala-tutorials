@@ -52,6 +52,11 @@ object MyLocalStackContainer {
     )
 }
 
+/** use sbt command to run the test for e.g.: sbt "it:testOnly
+  * *GenericContainerTest". When you run in IntelliJ IDEA and if you get error
+  * regarding the resources, then mark the src/it/resources directory as "test
+  * resources" in intellij.
+  */
 class GenericContainerTest
   extends AnyFlatSpec
   with Matchers
@@ -85,14 +90,17 @@ class GenericContainerTest
         endpoint = new URI(ls.endpoint),
         accessKeyId = ls.accessKeyId,
         secretAccessKey = ls.secretAccessKey
-      ).upload(BucketName, Paths.get("build.sbt"))
+      ).upload(
+        BucketName,
+        Paths.get(getClass.getClassLoader.getResource("s3-test.txt").toURI)
+      )
 
       Try(
         s3.headObject(
           HeadObjectRequest
             .builder()
             .bucket(BucketName)
-            .key("build.sbt")
+            .key("s3-test.txt")
             .build()
         )
       ).fold(
