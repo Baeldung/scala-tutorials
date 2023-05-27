@@ -8,5 +8,5 @@
 - [Count All Occurrences of a char Within a String in Scala](https://www.baeldung.com/scala/string-char-count)
 - [Array vs. WrappedArray in Scala](https://www.baeldung.com/scala/array-vs-wrappedarray)
 - [@specialized Annotation In Scala](https://www.baeldung.com/scala/specialized-annotation)
-- [Apply Method In Scala](https://www.baeldung.com/scala/apply-method)
+- [Apply Method in Scala](https://www.baeldung.com/scala/apply-method)
 - [Product With Serializable in Scala](https://www.baeldung.com/scala/product-with-serializable)
