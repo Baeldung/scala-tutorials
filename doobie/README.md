@@ -1,3 +1,3 @@
 ### Relevant Articles:
 
-- [Introduction To doobie – a JDBC Layer for Scala](https://www.baeldung.com/scala/doobie-intro)
+- [Introduction to doobie – a JDBC Layer for Scala](https://www.baeldung.com/scala/doobie-intro)
