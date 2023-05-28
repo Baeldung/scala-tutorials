@@ -3,6 +3,7 @@ package com.baeldung.scala.testcontainers
 import com.baeldung.scala.testcontainers.MyLocalStackContainer.LocalStackPort
 import com.dimafeng.testcontainers.GenericContainer
 import com.dimafeng.testcontainers.scalatest.TestContainerForEach
+import org.scalatest.Ignore
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
@@ -57,6 +58,8 @@ object MyLocalStackContainer {
   * regarding the resources, then mark the src/it/resources directory as "test
   * resources" in intellij.
   */
+@Ignore
+//ignored since this needs docker environment, which is not available in jenkins
 class GenericContainerTest
   extends AnyFlatSpec
   with Matchers

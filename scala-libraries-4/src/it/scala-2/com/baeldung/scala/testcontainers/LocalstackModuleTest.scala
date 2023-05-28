@@ -2,6 +2,7 @@ package com.baeldung.scala.testcontainers
 
 import com.dimafeng.testcontainers.LocalStackV2Container
 import com.dimafeng.testcontainers.scalatest.TestContainerForEach
+import org.scalatest.Ignore
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.testcontainers.containers.localstack.LocalStackContainer.Service
@@ -20,6 +21,8 @@ import scala.util.{Random, Try}
   * regarding the resources, then mark the src/it/resources directory as "test
   * resources" in intellij.
   */
+@Ignore
+//ignored since this needs docker environment, which is not available in jenkins
 class LocalstackModuleTest
   extends AnyFlatSpec
   with Matchers

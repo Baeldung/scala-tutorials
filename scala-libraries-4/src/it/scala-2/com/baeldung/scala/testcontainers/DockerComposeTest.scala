@@ -1,6 +1,7 @@
 package com.baeldung.scala.testcontainers
 
 import com.dimafeng.testcontainers.scalatest.TestContainerForEach
+import org.scalatest.Ignore
 import com.dimafeng.testcontainers.{DockerComposeContainer, ExposedService}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
@@ -19,6 +20,7 @@ import software.amazon.awssdk.services.s3.model.{
 
 import java.io.File
 import java.net.URI
+import java.nio.file.Paths
 import scala.util.{Random, Try}
 
 /** use sbt command to run the test for e.g.: sbt "it:testOnly
@@ -26,6 +28,8 @@ import scala.util.{Random, Try}
   * regarding the resources, then mark the src/it/resources directory as "test
   * resources" in intellij.
   */
+@Ignore
+//ignored since this needs docker environment, which is not available in jenkins
 class DockerComposeTest
   extends AnyFlatSpec
   with Matchers
