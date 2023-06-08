@@ -7,3 +7,4 @@
 - [@targetName Annotation in Scala 3](https://www.baeldung.com/scala/targetname-annotation)
 - [Export Clause in Scala 3](https://www.baeldung.com/scala/scala-3-export)
 - [Introduction to Macros in Scala 3](https://www.baeldung.com/scala/macros-scala-3)
+- [Difference Between NonFatal And Exception In Scala](https://www.baeldung.com/scala/nonfatal-vs-exception)
