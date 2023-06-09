@@ -4,7 +4,7 @@ import spire.implicits.cfor
 
 object CFor extends App {
 
-  cfor(9)(_>=0, _-1) { i =>
+  cfor(9)(_ >= 0, _ - 1) { i =>
     println(i)
   }
 }

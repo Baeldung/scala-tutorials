@@ -4,8 +4,12 @@ import spire.implicits._
 import spire.math._
 
 object Complexes extends App {
-  
-  private def quadraticRoots(x: Complex[Double], y: Complex[Double], z: Complex[Double]): (Complex[Double], Complex[Double]) = {
+
+  private def quadraticRoots(
+    x: Complex[Double],
+    y: Complex[Double],
+    z: Complex[Double]
+  ): (Complex[Double], Complex[Double]) = {
     val discriminant = y * y - Complex(4.0) * x.*(z)
     val sqrtDiscriminant = discriminant.sqrt
     val r1 = (-y + sqrtDiscriminant) / (Complex(2.0) * x)
