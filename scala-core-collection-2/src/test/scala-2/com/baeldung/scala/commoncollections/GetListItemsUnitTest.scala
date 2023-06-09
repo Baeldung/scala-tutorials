@@ -1,5 +1,6 @@
 package com.baeldung.scala.commoncollections
 
+import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class GetListItemsUnitTest extends AnyFlatSpec with Matchers {
