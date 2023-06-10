@@ -5,8 +5,6 @@ import spire.math._
 
 object Naturals extends App {
 
-  // Naturals
-
   val a: Natural = Natural(42)
   val b: Natural = Natural(10)
   private val comparison: Int = a.compare(b)
