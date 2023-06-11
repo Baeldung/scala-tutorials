@@ -11,6 +11,6 @@ object Integral {
     else integral.times(n, factorial(integral.minus(n, integral.one)))
   }
 
-  def gcd[T](a: T, b: T)(implicit ev: Integral[T]) = ev.gcd(a, b)
+  def gcd[T](a: T, b: T)(implicit ev: Integral[T]): T = ev.gcd(a, b)
 
 }
