@@ -10,14 +10,14 @@ class FractionalUnitTest extends AnyWordSpec with Matchers {
 
   "avg" should {
 
-    "return the correct average for a list of doubles" in {
+    "calculate the average for a list of doubles" in {
       val doubleList = List(1.5, 2.5, 3.5, 4.5, 5.5)
       val expectedAverage = 3.5
 
       avg(doubleList) should be(expectedAverage)
     }
 
-    "return the correct average for a list of rationals" in {
+    "calculate the average for a list of rationals" in {
       val rationalList = List(
         Rational(1, 3),
         Rational(2, 3),
@@ -29,7 +29,7 @@ class FractionalUnitTest extends AnyWordSpec with Matchers {
 
       avg(rationalList) should be(expectedAverage)
     }
-    "return the correct average for a list of decimals" in {
+    "calculate the average for a list of decimals" in {
       val decimalList = List(
         BigDecimal("1.25"),
         BigDecimal("2.25"),
