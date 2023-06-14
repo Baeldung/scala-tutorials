@@ -479,7 +479,7 @@ Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
 
 lazy val scala212 = (project in file("scala-2-modules/scala212"))
   .settings(
-    scalaVersion := "2.12.17",
+    scalaVersion := "2.12.18",
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
