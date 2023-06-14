@@ -6,17 +6,17 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.9"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.9" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.4.11"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.4.11" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.7"
-val embedMongoVersion = "4.6.2"
+val embedMongoVersion = "4.6.3"
 
 val scalaTestDeps = Seq(
-  "org.scalatest" %% "scalatest" % "3.2.15" % Test,
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.15" % Test,
-  "org.scalatest" %% "scalatest-wordspec" % "3.2.15" % Test,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.15" % Test
+  "org.scalatest" %% "scalatest" % "3.2.16" % Test,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.16" % Test,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.16" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.16" % Test
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
@@ -99,8 +99,8 @@ lazy val scala_core_8 = (project in file("scala-core-8"))
     libraryDependencies += scalaReflection,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test",
-    libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "0.9.0",
-    libraryDependencies += "com.typesafe" % "config" % "1.2.0"
+    libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "0.9.1",
+    libraryDependencies += "com.typesafe" % "config" % "1.2.1"
     // scalacOptions += "-Ymacro-debug-lite"
   )
 
@@ -139,6 +139,13 @@ lazy val scala_lang_2 = (project in file("scala-lang-2"))
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
+
+lazy val scala_core_collection_2 =
+  (project in file("scala-core-collection-2"))
+    .settings(
+      name := "scala-core-collection-2",
+      libraryDependencies ++= scalaTestDeps
+    )
 
 lazy val scala_core_collections = (project in file("scala-core-collections"))
   .settings(
@@ -186,7 +193,7 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
     name := "scala-test-junit4",
     libraryDependencies ++=
       Seq(
-        "org.scalatestplus" %% "junit-4-12" % "3.2.2.0" % Test,
+        "org.scalatestplus" %% "junit-4-13" % "3.2.16.0" % Test,
         jUnitInterface
       )
   )
@@ -223,7 +230,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
-val fs2Version = "3.6.1"
+val fs2Version = "3.7.0"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
@@ -303,8 +310,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     Defaults.itSettings
   )
 
-val http4sBlaze = "0.23.14"
-val http4sVersion = "0.23.18"
+val http4sBlaze = "0.23.15"
+val http4sVersion = "0.23.19"
 val osLibVersion = "0.9.1"
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
@@ -319,8 +326,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       "com.beachape" %% "enumeratum" % "1.7.2",
-      "com.github.pureconfig" %% "pureconfig" % "0.17.3",
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.3",
+      "com.github.pureconfig" %% "pureconfig" % "0.17.4",
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.4",
       "com.typesafe" % "config" % "1.4.2",
       "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
@@ -366,11 +373,11 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.0",
-      "org.testcontainers" % "pulsar" % "1.18.0" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.18.1" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.52",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.455" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.20.71",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.474" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.15" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.15" % IntegrationTest
     ),
