@@ -3,7 +3,14 @@ package macwire.components
 import com.softwaremill.macwire.{wire, wireSet}
 import com.softwaremill.tagging._
 import models.Order
-import macwire.services.{Business, BusinessOrderValidationService, Enterprise, EnterpriseOrderValidationService, OrderPipelineProcessor, OrderService}
+import macwire.services.{
+  Business,
+  BusinessOrderValidationService,
+  Enterprise,
+  EnterpriseOrderValidationService,
+  OrderPipelineProcessor,
+  OrderService
+}
 
 trait OrderComponents extends {
 
