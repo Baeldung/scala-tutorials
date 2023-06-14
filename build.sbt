@@ -1,4 +1,4 @@
-val scalaV = "2.13.10"
+val scalaV = "2.13.11"
 val scala3Version = "3.2.2"
 ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
