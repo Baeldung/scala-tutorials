@@ -1,4 +1,4 @@
-package com.baeldung.scala.arrays
+package com.baeldung.scala.subarray
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
