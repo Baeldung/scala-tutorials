@@ -10,9 +10,7 @@ class GetASubarrayUnitTest extends AnyFlatSpec with Matchers {
     val subArr = arr.slice(1, 4)
 
     subArr.length should be(3)
-    subArr(0) should be(2)
-    subArr(1) should be(3)
-    subArr(2) should be(4)
+    subArr should contain theSameElementsAs List(2, 3, 4)
   }
 
   "operating drop and take functions on an array" should "return a subarray of the taken elements" in {
@@ -24,9 +22,7 @@ class GetASubarrayUnitTest extends AnyFlatSpec with Matchers {
 
     val subArr = afterDropArr.take(3)
     subArr.length should be(3)
-    subArr(0) should be(2)
-    subArr(1) should be(3)
-    subArr(2) should be(4)
+    subArr should contain theSameElementsAs List(2, 3, 4)
   }
 
 }
