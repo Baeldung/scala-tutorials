@@ -41,7 +41,8 @@ object Skunk {
        """
         .query(userDecoder)
 
-    val preparedQuery: Resource[IO, PreparedQuery[IO, Int *: String *: EmptyTuple, User]] =
+    val preparedQuery
+      : Resource[IO, PreparedQuery[IO, Int *: String *: EmptyTuple, User]] =
       resource
         .flatMap(session => session.prepareR(query))
 
