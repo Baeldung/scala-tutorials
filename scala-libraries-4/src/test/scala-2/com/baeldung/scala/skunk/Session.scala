@@ -22,11 +22,11 @@ object Skunk {
     )
 
   def getAllUsers(resource: Resource[IO, Session[IO]]) = {
-    val mappedQuery: Query[Void, User] =
+    val query: Query[Void, Int *: String *: String *: Int *: EmptyTuple]  =
       sql"SELECT * FROM Users"
         .query(int4 *: varchar(255) *: varchar(255) *: int4)
-        .to[User]
 
+    val mappedQuery = query.to[User]
     val results: IO[List[User]] = resource.use(s => s.execute(mappedQuery))
     results
   }
