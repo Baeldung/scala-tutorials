@@ -17,8 +17,7 @@ class LocallyBlockTest extends AnyFlatSpec with Matchers {
   it should "accidentally make a code block without newline as part of class body" in {
     class MyClass
 
-    lazy val myClass = new MyClass 
-    {
+    lazy val myClass = new MyClass {
       println("This should be an independant block")
     }
 
