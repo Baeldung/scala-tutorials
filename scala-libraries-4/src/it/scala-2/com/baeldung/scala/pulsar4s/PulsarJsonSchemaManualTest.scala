@@ -1,6 +1,6 @@
 package com.baeldung.scala.pulsar4s
 
-import org.scalatest.{BeforeAndAfterAll, Ignore}
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
 import org.testcontainers.containers.PulsarContainer
@@ -8,8 +8,6 @@ import org.testcontainers.utility.DockerImageName
 
 import scala.util.Success
 
-@Ignore
-//ignored since this needs docker environment, which is not available in jenkins
 class PulsarJsonSchemaManualTest
   extends AsyncWordSpec
   with BeforeAndAfterAll
