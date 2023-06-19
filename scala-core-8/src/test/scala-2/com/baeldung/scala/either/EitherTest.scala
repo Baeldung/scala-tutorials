@@ -7,7 +7,7 @@ class EitherTest extends AnyFunSuite {
     val e: Either[String, Int] = Right(5)
     e match {
       case Right(i) => assert(i == 5)
-      case Left(_) => fail("The Either should be a Right")
+      case Left(_)  => fail("The Either should be a Right")
     }
   }
 
@@ -35,7 +35,11 @@ class EitherTest extends AnyFunSuite {
 
     val e: Either[String, Int] = Left("Some error")
 
-    assert(e.fold(error => Left(MyError(error)), identity) == Left(MyError("Some error")))
+    assert(
+      e.fold(error => Left(MyError(error)), identity) == Left(
+        MyError("Some error")
+      )
+    )
   }
 
   test("map can be used to map the right projection of an Either") {
