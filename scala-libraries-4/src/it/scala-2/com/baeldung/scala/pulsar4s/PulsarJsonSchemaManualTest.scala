@@ -10,7 +10,7 @@ import scala.util.Success
 
 @Ignore
 //ignored since this needs docker environment, which is not available in jenkins
-class PulsarJsonSchemaTest
+class PulsarJsonSchemaManualTest
   extends AsyncWordSpec
   with BeforeAndAfterAll
   with Matchers {

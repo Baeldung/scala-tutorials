@@ -23,7 +23,7 @@ import scala.util.{Random, Try}
   */
 @Ignore
 //ignored since this needs docker environment, which is not available in jenkins
-class LocalstackModuleTest
+class LocalstackModuleManualTest
   extends AnyFlatSpec
   with Matchers
   with TestContainerForEach {
