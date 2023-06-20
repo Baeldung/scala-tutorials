@@ -10,7 +10,6 @@ class AppendAnElementToAnArrayUnitTest extends AnyFlatSpec with Matchers {
     val array2 = array :+ 4
 
     assert(array2 sameElements Array(1, 2, 3, 4))
-
   }
 
   "adding an element at the beginning of an array" should "yield a new array with the new element at the start" in {
