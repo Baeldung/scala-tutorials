@@ -13,17 +13,6 @@ class LocallyBlockTest extends AnyFlatSpec with Matchers {
 
     "ABC.num" shouldNot compile
   }
-
-  it should "accidentally make a code block without newline as part of class body" in {
-    class MyClass
-
-    lazy val myClass = new MyClass {
-      println("This should be an independant block")
-    }
-
-    // it should compile since print method is accidentally considered as part of MyClass
-    // "myClass.print" should compile
-  }
 }
 
 object Test extends App {
