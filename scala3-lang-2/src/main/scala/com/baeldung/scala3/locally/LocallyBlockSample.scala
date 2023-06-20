@@ -9,6 +9,15 @@ object LocallyBlockSampleDangling extends App {
     println("This should be an independant block")
   }
   //format: on
+
+  //format: off
+  lazy val myClass2 = new MyClass
+
+  {
+    println("*** This should be an independant block ***")
+  }
+  //format: on
+
 }
 
 object LocallyBlockSampleLocally extends App {
@@ -17,7 +26,7 @@ object LocallyBlockSampleLocally extends App {
   //format: off
   lazy val myClass = new MyClass
   locally {
-    println("This should be an independant block")
+    println("This should be an independant block using locally")
   }
   //format: on
 
