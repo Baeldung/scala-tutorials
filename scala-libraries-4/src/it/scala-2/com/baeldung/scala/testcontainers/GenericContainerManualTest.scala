@@ -58,7 +58,7 @@ object MyLocalStackContainer {
   * regarding the resources, then mark the src/it/resources directory as "test
   * resources" in intellij.
   */
-class GenericContainerTest
+class GenericContainerManualTest
   extends AnyFlatSpec
   with Matchers
   with TestContainerForEach {
