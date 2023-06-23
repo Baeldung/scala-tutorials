@@ -9,11 +9,12 @@ import scala.concurrent.duration._
 import scala.language.postfixOps
 
 @Singleton
-class AsyncTaskController @Inject()(
-    val controllerComponents: ControllerComponents,
-    val actorSystem: ActorSystem,
-    @Named("async-job-actor"
-) actor: ActorRef)(implicit ec: ExecutionContext) extends BaseController {
+class AsyncTaskController @Inject() (
+  val controllerComponents: ControllerComponents,
+  val actorSystem: ActorSystem,
+  @Named("async-job-actor") actor: ActorRef
+)(implicit ec: ExecutionContext)
+  extends BaseController {
   def runAsync(): Action[AnyContent] = Action {
     Console.println(s"In route handler: ${DateTime.now()}")
     actorSystem.scheduler.scheduleOnce(30 seconds) {

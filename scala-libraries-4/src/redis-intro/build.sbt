@@ -1,8 +1,8 @@
 import Dependencies._
 
-ThisBuild / scalaVersion     := "2.13.8"
-ThisBuild / version          := "1.0.0"
-ThisBuild / organization     := "com.baeldung"
+ThisBuild / scalaVersion := "2.13.8"
+ThisBuild / version := "1.0.0"
+ThisBuild / organization := "com.baeldung"
 
 lazy val root = (project in file("."))
   .settings(
@@ -12,4 +12,3 @@ lazy val root = (project in file("."))
     libraryDependencies += scalaTest % Test,
     libraryDependencies += mockito % Test
   )
-
