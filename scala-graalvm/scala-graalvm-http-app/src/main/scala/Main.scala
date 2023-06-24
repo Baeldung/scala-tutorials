@@ -26,7 +26,8 @@ object Main extends App {
 
   val binding = Http().bindAndHandle(route, host, port)
   binding.onComplete {
-    case Success(_) => println("ScalaGraalVM: Listening for incoming connections!")
+    case Success(_) =>
+      println("ScalaGraalVM: Listening for incoming connections!")
     case Failure(error) => println(s"Failed: ${error.getMessage}")
   }
   scala.io.StdIn.readLine()

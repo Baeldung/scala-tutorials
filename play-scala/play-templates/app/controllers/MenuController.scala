@@ -5,8 +5,10 @@ import play.api.mvc.{AbstractController, ControllerComponents}
 
 case class Product(productName: String, price: Double, isAvailable: Boolean)
 
-class MenuController @Inject()(template: views.html.Baeldung.menu, cc: ControllerComponents)
-  extends AbstractController(cc) {
+class MenuController @Inject() (
+  template: views.html.Baeldung.menu,
+  cc: ControllerComponents
+) extends AbstractController(cc) {
 
   def availableProducts = Action { implicit request =>
     val products = List(
