@@ -252,8 +252,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       catEffectTest,
-      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
-      "org.typelevel" %% "spire" % spireVersion
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
     )
   )
 
@@ -392,7 +391,8 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       sparkSqlDep,
-      sparkCoreDep
+      sparkCoreDep,
+      "org.typelevel" %% "spire" % spireVersion
     )
   )
 
