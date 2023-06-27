@@ -21,9 +21,7 @@ import scala.util.{Random, Try}
   * regarding the resources, then mark the src/it/resources directory as "test
   * resources" in intellij.
   */
-@Ignore
-//ignored since this needs docker environment, which is not available in jenkins
-class LocalstackModuleTest
+class LocalstackModuleManualTest
   extends AnyFlatSpec
   with Matchers
   with TestContainerForEach {

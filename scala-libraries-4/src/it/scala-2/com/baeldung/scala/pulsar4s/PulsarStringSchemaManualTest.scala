@@ -8,9 +8,7 @@ import org.testcontainers.utility.DockerImageName
 
 import scala.util.Success
 
-@Ignore
-//ignored since this needs docker environment, which is not available in jenkins
-class PulsarJsonSchemaTest
+class PulsarStringSchemaManualTest
   extends AsyncWordSpec
   with BeforeAndAfterAll
   with Matchers {
@@ -23,14 +21,11 @@ class PulsarJsonSchemaTest
 
   override def afterAll(): Unit = pulsar.stop()
 
-  "pulsar json producer" should {
+  "pulsar producer" should {
     "successfully send messages" in {
       val pulsarClient = new PulsarClient(pulsar.getPulsarBrokerUrl)
-      val producer = new JsonPulsarProducer(pulsarClient)
-      val messageIdTry = producer.sendMessage(
-        "my-key",
-        PulsarMessage(1, "a test message", System.currentTimeMillis())
-      )
+      val producer = new PulsarProducer(pulsarClient)
+      val messageIdTry = producer.sendMessage("my-key", "a test message")
       messageIdTry mustBe a[Success[_]]
     }
   }
@@ -38,39 +33,31 @@ class PulsarJsonSchemaTest
   "pulsar consumer" should {
     "successfully consume messages" in {
       val pulsarClient = new PulsarClient(pulsar.getPulsarBrokerUrl)
-      val producer = new JsonPulsarProducer(pulsarClient)
-      val consumer = new JsonPulsarConsumer(pulsarClient)
+      val producer = new PulsarProducer(pulsarClient)
+      val consumer = new PulsarConsumer(pulsarClient)
       val messageIdTry =
-        producer.sendMessage(
-          "key-to-consume",
-          PulsarMessage(2, "a test message", System.currentTimeMillis())
-        )
+        producer.sendMessage("key-to-consume", "a test message")
       messageIdTry mustBe a[Success[_]]
 
       val messageTry = consumer.consume()
       messageTry mustBe a[Success[_]]
       messageTry.get.key must contain("key-to-consume")
-      messageTry.get.value.id mustBe 2
-      messageTry.get.value.message mustBe "a test message"
+      messageTry.get.value mustBe "a test message"
     }
 
     "successfully consume async messages" in {
       val pulsarClient = new PulsarClient(pulsar.getPulsarBrokerUrl)
-      val producer = new JsonPulsarProducer(pulsarClient)
-      val consumer = new JsonPulsarConsumer(pulsarClient)
+      val producer = new PulsarProducer(pulsarClient)
+      val consumer = new PulsarConsumer(pulsarClient)
       val messageIdTry =
-        producer.sendMessage(
-          "key-to-consume",
-          PulsarMessage(3, "a test message", System.currentTimeMillis())
-        )
+        producer.sendMessage("key-to-consume", "a test message")
       messageIdTry mustBe a[Success[_]]
 
       consumer
         .consumeAsync()
         .map(message => {
           message.key must contain("key-to-consume")
-          message.value.id mustBe 3
-          message.value.message mustBe "a test message"
+          message.value mustBe "a test message"
         })
     }
   }

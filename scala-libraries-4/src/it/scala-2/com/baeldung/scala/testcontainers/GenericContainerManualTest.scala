@@ -58,9 +58,7 @@ object MyLocalStackContainer {
   * regarding the resources, then mark the src/it/resources directory as "test
   * resources" in intellij.
   */
-@Ignore
-//ignored since this needs docker environment, which is not available in jenkins
-class GenericContainerTest
+class GenericContainerManualTest
   extends AnyFlatSpec
   with Matchers
   with TestContainerForEach {
