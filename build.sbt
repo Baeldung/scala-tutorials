@@ -493,7 +493,7 @@ addCommandAlias(
 
 addCommandAlias(
   "ciFull",
-  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest")); it:test""".stripMargin
+  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") || !t.endsWith("LiveTest") ); it:test""".stripMargin
 )
 addCommandAlias(
   "manualTests",
