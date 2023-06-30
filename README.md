@@ -17,7 +17,7 @@ Here is a table describing about the different categories of tests and how they 
 | Unit Tests | `sbt test`     | `src/test/scala` or `src/test/scala-2` | No particular format restriction, but as a standard end with `Test` |
 | Integration Test | `sbt it:test`  | `src/it/scala` or `src/it/scala-2` | No format restriction, but as a standard end with `IntegrationTest` |
 | Live Test | `sbt liveTests` | `src/it/scala` or `src/it/scala-2` | Test class name must end with `LiveTest`                            |
-| Manual Test | `sbt manualTests` | `src/it/scala` or `src/it/scala-2 | Test class name must end with `ManualTest` |
+| Manual Test | `sbt manualTests` | `src/it/scala` or `src/it/scala-2` | Test class name must end with `ManualTest` |
 
 # Code fomatting
 
