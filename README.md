@@ -12,11 +12,11 @@ In this repository, we have classified the tests in 4 categories.
 
 Here is a table describing about the different categories of tests and how they can be executed in this project.
 
-| Category | Sbt command  | Test class location                    | Test class name format                                              |
-| -- |--------------|----------------------------------------|---------------------------------------------------------------------|
-| Unit Tests | `sbt test`     | `src/test/scala` or `src/test/scala-2` | No particular format restriction, but as a standard end with `Test` |
-| Integration Test | `sbt it:test`  | `src/it/scala` or `src/it/scala-2` | No format restriction, but as a standard end with `IntegrationTest` |
-| Live Test | `sbt liveTests` | `src/it/scala` or `src/it/scala-2` | Test class name must end with `LiveTest`                            |
+| Category | Sbt command       | Test class location                    | Test class name format                                              |
+| -- |-------------------|----------------------------------------|---------------------------------------------------------------------|
+| Unit Tests | `sbt ci`           | `src/test/scala` or `src/test/scala-2` | No particular format restriction, but as a standard end with `Test` |
+| Integration Test | `sbt ciFull`     | `src/it/scala` or `src/it/scala-2` | No format restriction, but as a standard end with `IntegrationTest` |
+| Live Test | `sbt liveTests`   | `src/it/scala` or `src/it/scala-2` | Test class name must end with `LiveTest`                            |
 | Manual Test | `sbt manualTests` | `src/it/scala` or `src/it/scala-2` | Test class name must end with `ManualTest` |
 
 # Code fomatting
