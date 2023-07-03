@@ -9,3 +9,4 @@
 - [Introduction to Macros in Scala 3](https://www.baeldung.com/scala/macros-scala-3)
 - [Difference Between NonFatal And Exception In Scala](https://www.baeldung.com/scala/nonfatal-vs-exception)
 - [Introduction to the @threadUnsafe Annotation in Scala 3](https://www.baeldung.com/scala/scala-3-threadunsafe)
+- [locally Block In Scala](https://www.baeldung.com/scala/locally-block)
