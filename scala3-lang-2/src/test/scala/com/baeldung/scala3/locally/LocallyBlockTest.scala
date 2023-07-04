@@ -7,9 +7,7 @@ class LocallyBlockTest extends AnyFlatSpec with Matchers {
 
   it should "create dangling code block without locally" in {
     // intentionally place a new line to create dangling code block
-    object ABC
-
-    { val num = 100 }
+    object ABC { val num = 100 }
 
     "ABC.num" shouldNot compile
   }
@@ -18,9 +16,7 @@ class LocallyBlockTest extends AnyFlatSpec with Matchers {
 object Test extends App {
   class MyClass
 
-  lazy val myClass = new MyClass
-
-  {
+  lazy val myClass = new MyClass {
     println("This should be an independant block")
   }
 }
