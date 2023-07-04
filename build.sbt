@@ -228,6 +228,7 @@ val fs2Version = "3.7.0"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
+val spireVersion = "0.18.0"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -390,7 +391,8 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       sparkSqlDep,
-      sparkCoreDep
+      sparkCoreDep,
+      "org.typelevel" %% "spire" % spireVersion
     )
   )
 
@@ -490,10 +492,21 @@ addCommandAlias(
 )
 
 addCommandAlias(
-  "ciFull",
-  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest")); it:test""".stripMargin
+  "integrationTests",
+  """;set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
 )
+
+addCommandAlias(
+  "ciFull",
+  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
+)
+
 addCommandAlias(
   "manualTests",
   """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("ManualTest")); it:test""".stripMargin
+)
+
+addCommandAlias(
+  "liveTests",
+  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("LiveTest")); it:test""".stripMargin
 )
