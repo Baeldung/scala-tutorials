@@ -2,7 +2,7 @@ name := """play-dependency-injection"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
+enablePlugins(PlayScala)
 
 scalaVersion := "2.13.10"
 

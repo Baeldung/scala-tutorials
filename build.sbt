@@ -510,3 +510,5 @@ addCommandAlias(
   "liveTests",
   """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("LiveTest")); it:test""".stripMargin
 )
+
+lazy val playGroup = (project in file("play-scala"))
