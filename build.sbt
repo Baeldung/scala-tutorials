@@ -1,5 +1,5 @@
-val scalaV = "2.13.11"
-val scala3Version = "3.2.2"
+val scalaV = ScalaVersions.scala2Version
+val scala3Version = ScalaVersions.scala3Version
 ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
@@ -481,7 +481,7 @@ Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
 
 lazy val scala212 = (project in file("scala-2-modules/scala212"))
   .settings(
-    scalaVersion := "2.12.18",
+    scalaVersion := ScalaVersions.scala212Version,
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )

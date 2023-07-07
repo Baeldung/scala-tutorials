@@ -5,6 +5,6 @@ version := "1.0-SNAPSHOT"
 
 enablePlugins(PlayScala)
 
-scalaVersion := "2.13.10"
+scalaVersion := ScalaVersions.scala2Version
 
 libraryDependencies += guice
