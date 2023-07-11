@@ -5,3 +5,4 @@
 - [Check if a List Is a Sublist of Another List](https://www.baeldung.com/scala/check-if-list-is-sublist)
 - [Get a Subarray in Scala](https://www.baeldung.com/scala/extract-subarray)
 - [Finding the First Element Matching a Condition in a Collection](https://www.baeldung.com/scala/find-first-match-in-collection)
+- [Append an Element to an Array in Scala](https://www.baeldung.com/scala/array-append-element)
