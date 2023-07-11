@@ -2,12 +2,12 @@
 
 In this repository, we have classified the tests in 4 categories. 
 
-| Category | Description                                                                                                        |
-| -- |--------------------------------------------------------------------------------------------------------------------|
-| Unit Tests | Smallest unit of testing, that tests a single layer.                                                               |
-| Integration Tests | IntegrationTests means those tests that tests multiple layers together                                             |
-| Live Tests | Tests that depends on some external services (like httpbin.org, or some internet-based links)                      |
-| Manual Tests | The tests where we need to set up an environment explicitly(for e.g. docker), without which the tests can't be run |
+| Category | Description                                                                                                                                                   |
+| -- |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Unit Tests | Smallest unit of testing, that are not dependent on external tools or services                                                                                |
+| Integration Tests | IntegrationTests means those tests that use some automatic setup within our environment like in-memory Mongo, h2 database etc which don't need explicit setup |
+| Live Tests | Tests that depends on some external services (like httpbin.org, or some internet-based links) or require a running component (eg: starting a Spring Boot application)                                                                 |
+| Manual Tests | The tests where we need to set up an environment explicitly(for e.g. docker), without which the tests can't be run                                             |
 
 
 Here is a table describing about the different categories of tests and how they can be executed in this project.
