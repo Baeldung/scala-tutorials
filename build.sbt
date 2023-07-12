@@ -205,8 +205,10 @@ lazy val scala_akka = (project in file("scala-akka"))
 
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .enablePlugins(AkkaGrpcPlugin)
+  .configs(IntegrationTest)
   .settings(
     name := "scala-akka-2",
+    Defaults.itSettings,
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
@@ -216,9 +218,9 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion,
       "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
       "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
-      "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test
-    ) ++ scalaTestDeps
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % "it,test",
+      "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % "it,test"
+    ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test")))
   )
 val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
