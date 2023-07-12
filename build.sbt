@@ -510,3 +510,10 @@ addCommandAlias(
   "liveTests",
   """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("LiveTest")); it:test""".stripMargin
 )
+ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
+
+ThisBuild / coverageEnabled := true
+
+ThisBuild / coverageExcludedFiles := """.*SlickTables;.*/scalaz/.*"""
+
+ThisBuild / coverageExcludedPackages := "<empty>;.*CollectionMonoid.*;.*reactivemongo.*"
