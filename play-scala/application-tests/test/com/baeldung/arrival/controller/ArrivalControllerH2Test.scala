@@ -11,13 +11,20 @@ import play.api.libs.ws.{WSClient, WSResponse}
 
 import scala.concurrent.Future
 
-class ArrivalControllerH2Test extends AnyWordSpec with WsScalaTestClient with GuiceOneServerPerTest with ScalaFutures with H2ApplicationFactory {
+class ArrivalControllerH2Test
+  extends AnyWordSpec
+  with WsScalaTestClient
+  with GuiceOneServerPerTest
+  with ScalaFutures
+  with H2ApplicationFactory {
 
   private implicit def wsClient = app.injector.instanceOf[WSClient]
 
   "ArrivalController#index" should {
     "return arrivals using h2" in {
-      val controllerResponseF: Future[WSResponse] = wsCall(com.baeldung.arrival.controller.routes.ArrivalController.index()).get()
+      val controllerResponseF: Future[WSResponse] = wsCall(
+        com.baeldung.arrival.controller.routes.ArrivalController.index()
+      ).get()
       whenReady(controllerResponseF)(controllerResponse => {
         val arrivals = controllerResponse.json.as[JsArray].value
         assert(arrivals.length === 6)
@@ -25,5 +32,8 @@ class ArrivalControllerH2Test extends AnyWordSpec with WsScalaTestClient with Gu
     }
   }
 
-  override implicit def patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(10, Seconds)), interval = scaled(Span(300, Millis)))
+  override implicit def patienceConfig: PatienceConfig = PatienceConfig(
+    timeout = scaled(Span(10, Seconds)),
+    interval = scaled(Span(300, Millis))
+  )
 }

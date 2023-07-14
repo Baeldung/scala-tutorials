@@ -8,10 +8,13 @@ import play.api.mvc.Headers
 import play.api.mvc.Results.NoContent
 import play.api.test.{FakeRequest, Helpers}
 
+class SourceActionsTest
+  extends AnyWordSpec
+  with SourceActions
+  with ScalaFutures {
 
-class SourceActionsTest extends AnyWordSpec with SourceActions with ScalaFutures {
-
-  private def anyContentParser = Helpers.stubControllerComponents().parsers.anyContent
+  private def anyContentParser =
+    Helpers.stubControllerComponents().parsers.anyContent
 
   private def globalEc = scala.concurrent.ExecutionContext.Implicits.global
 
@@ -26,7 +29,9 @@ class SourceActionsTest extends AnyWordSpec with SourceActions with ScalaFutures
 
     "return NO_CONTENT status for when source header is present" in {
       val testee = SourceAction(anyContentParser)(globalEc) { _ => NoContent }
-      whenReady(testee.apply(FakeRequest().withHeaders(Headers("source" -> "foo")))) { result =>
+      whenReady(
+        testee.apply(FakeRequest().withHeaders(Headers("source" -> "foo")))
+      ) { result =>
         assert(result.header.status === NO_CONTENT)
       }
     }
