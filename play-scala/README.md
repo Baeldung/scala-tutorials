@@ -6,3 +6,4 @@
 - [Caching in Play Framework for Scala](https://www.baeldung.com/scala/play-caching)
 - [Error Handling in the Play Framework Using Scala](https://www.baeldung.com/scala/play-error-handling)
 - [Dependency Injection with Play](https://www.baeldung.com/scala/play-di)
+- [Testing a Play Application](https://www.baeldung.com/scala/scalatest-play-app)
