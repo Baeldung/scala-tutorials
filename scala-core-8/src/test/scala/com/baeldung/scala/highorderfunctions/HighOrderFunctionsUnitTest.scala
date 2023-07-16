@@ -74,4 +74,23 @@ class HighOrderFunctionsUnitTest extends AnyFlatSpec with Matchers {
     val actualResult = numbers.scanRight(1)(_ + _)
     assert(List(16, 15, 13, 10, 6, 1) == actualResult)
   }
+
+  "reduceLeft" should "throw an exception" in {
+    val numbers = List.empty[Int]
+    assertThrows[UnsupportedOperationException] {
+      numbers.reduceLeft(_ max _)
+    }
+  }
+
+  "foldRight" should "return the initial element i.e $" in {
+    val alphabets = List.empty[String]
+    val actualResult = alphabets.foldRight("$")(_ + _)
+    assert("$" == actualResult)
+  }
+
+  "scanRight" should "return the initial element i.e 5" in {
+    val numbers = List.empty[Int]
+    val actualResult = numbers.scanRight(5)(_ + _)
+    assert(List(5) == actualResult)
+  }
 }
