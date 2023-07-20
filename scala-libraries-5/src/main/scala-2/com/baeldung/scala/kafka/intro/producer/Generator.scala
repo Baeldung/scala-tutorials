@@ -1,9 +1,9 @@
 package com.baeldung.scala.kafka.intro.producer
 
-import com.baeldung.scala.kafka.intro._
 import com.baeldung.scala.kafka.intro.common.{Article, Author}
 
-import java.util.{Date, UUID}
+import java.time.LocalDate
+import java.util.UUID
 
 object Generator {
   def articles: List[Article] = {
@@ -12,21 +12,21 @@ object Generator {
         UUID.randomUUID.toString,
         "Introduction to Scala Programming",
         "Scala is a powerful programming language...",
-        new Date(),
+        LocalDate.now(),
         Author(1, "John Doe")
       ),
       Article(
         UUID.randomUUID.toString,
         "Introduction to Scala Spire",
         "Spire  is a powerful numerical library...",
-        new Date(),
+        LocalDate.now(),
         Author(2, "Jane Doe")
       ),
       Article(
         UUID.randomUUID.toString,
         "Introduction to Kafka",
         "In this article, we'll have an overview of kafka in scala...",
-        new Date(),
+        LocalDate.now(),
         Author(3, "Foo Bar")
       )
     )

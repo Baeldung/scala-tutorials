@@ -1,12 +1,12 @@
 package com.baeldung.scala.kafka.intro.common
 
-import java.util.Date
+import java.time.LocalDate
 
 case class Article(
   id: String,
   title: String,
   content: String,
-  created: Date,
+  created: LocalDate,
   author: Author
 )
 

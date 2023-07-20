@@ -389,10 +389,13 @@ val pureconfigVersion = "0.17.4"
 val jackSonVersion = "2.15.1"
 val log4jApiScalaVersion = "12.0"
 val log4jVersion = "2.20.0"
+val avro4sVersion = "3.1.1"
+val kafkaAvroSerializer = "6.0.0"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
     name := "scala-libraries-5",
+    resolvers += "Kafka avro serializer" at "https://packages.confluent.io/maven",
     scalaVersion := scalaV,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
@@ -400,10 +403,11 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
       sparkCoreDep,
       "org.typelevel" %% "spire" % spireVersion,
       "org.apache.kafka" % "kafka-clients" % kafkaVersion,
-      "org.apache.kafka" % "kafka-streams" % kafkaVersion,
       "com.github.pureconfig" %% "pureconfig" % pureconfigVersion,
       "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
       "com.fasterxml.jackson.module" %% "jackson-module-scala" % jackSonVersion,
+      "com.sksamuel.avro4s" %% "avro4s-core" % avro4sVersion,
+      "io.confluent" % "kafka-avro-serializer" % kafkaAvroSerializer,
       "org.apache.logging.log4j" %% "log4j-api-scala" % log4jApiScalaVersion,
       "org.apache.logging.log4j" % "log4j-core" % log4jVersion % Runtime
     )
