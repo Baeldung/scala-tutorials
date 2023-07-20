@@ -228,7 +228,6 @@ val fs2Version = "3.7.0"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
-val spireVersion = "0.18.0"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -384,6 +383,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     IntegrationTest / fork := true
   )
 
+val spireVersion = "0.18.0"
+val kafkaVersion = "3.5.0"
+val pureconfigVersion = "0.17.4"
+val jackSonVersion = "2.15.1"
+val log4jApiScalaVersion = "12.0"
+val log4jVersion = "2.20.0"
+
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
     name := "scala-libraries-5",
@@ -392,7 +398,14 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     libraryDependencies ++= Seq(
       sparkSqlDep,
       sparkCoreDep,
-      "org.typelevel" %% "spire" % spireVersion
+      "org.typelevel" %% "spire" % spireVersion,
+      "org.apache.kafka" % "kafka-clients" % kafkaVersion,
+      "org.apache.kafka" % "kafka-streams" % kafkaVersion,
+      "com.github.pureconfig" %% "pureconfig" % pureconfigVersion,
+      "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % jackSonVersion,
+      "org.apache.logging.log4j" %% "log4j-api-scala" % log4jApiScalaVersion,
+      "org.apache.logging.log4j" % "log4j-core" % log4jVersion % Runtime
     )
   )
 

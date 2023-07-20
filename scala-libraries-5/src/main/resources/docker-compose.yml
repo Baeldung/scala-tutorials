@@ -1,0 +1,58 @@
+version: "2"
+
+volumes:
+  kafka_data:
+    driver: local
+
+networks:
+  kafka_net:
+    driver: bridge
+  traccar-net:
+    driver: bridge
+
+services:
+  kafka:
+    image: docker.io/bitnami/kafka:3.4
+    networks:
+      - kafka_net
+    ports:
+      - "9094:9094"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - BITNAMI_DEBUG=yes
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_KRAFT_CLUSTER_ID=9YoavaRpTCOitT3Dm2OQFQ
+      # For more details see See https://rmoff.net/2018/08/02/kafka-listeners-explained/
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+  kafka-schema-registry:
+    image: bitnami/schema-registry:6.0
+    networks:
+      - kafka_net
+    ports:
+      - "8081:8081"
+    depends_on:
+      kafka:
+        condition: service_started
+    environment:
+      SCHEMA_REGISTRY_DEBUG: true
+      SCHEMA_REGISTRY_KAFKA_BROKERS: PLAINTEXT://kafka:9092
+  kafka-ui:
+    image: provectuslabs/kafka-ui:v0.7.0
+    networks:
+      - kafka_net
+    ports:
+      - "8088:8080"
+    depends_on:
+      kafka:
+        condition: service_started
+      kafka-schema-registry:
+        condition: service_started
+    environment:
+      KAFKA_CLUSTERS_0_NAME: baeldung
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_SCHEMAREGISTRY: http://kafka-schema-registry:8081
+      DYNAMIC_CONFIG_ENABLED: 'true'
