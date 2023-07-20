@@ -1,6 +1,7 @@
 package com.baeldung.scala.kafka.intro.producer
 
 import com.baeldung.scala.kafka.intro.common.Article
+import com.baeldung.scala.kafka.intro.producer.common.SerdeConfig.SerdeConfig
 import com.baeldung.scala.kafka.intro.producer.common.{
   AvroSerializer,
   ProducerConfig,
@@ -10,6 +11,8 @@ import com.sksamuel.avro4s.RecordFormat
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.common.serialization.{Serializer, StringSerializer}
 
+import scala.util.Try
+
 object ArticleAvroProducer
   extends App
   with ProducerUtils[Article]
@@ -17,18 +20,32 @@ object ArticleAvroProducer
 
   private val (config, topic) =
     ProducerConfig.getConfig("kafka-intro-avro.conf")
+  private val serde = SerdeConfig.getConfig("kafka-intro-avro.conf")
 
   val keySerializer: StringSerializer = new StringSerializer()
 
   implicit lazy val Valueformat: RecordFormat[Article] = RecordFormat[Article]
   val valueSerializer: Serializer[Article] = AvroSerializer[Article]
-  valueSerializer.configure(config, false)
+  valueSerializer.configure(serde, false)
 
   private val producer =
     new KafkaProducer(config, keySerializer, valueSerializer)
   private val articles = Generator.articles
-  for (article <- articles) {
-    produce(producer, topic, article.id, article)
+
+  Try {
+    producer.initTransactions()
+    producer.beginTransaction()
+    for (article <- articles) {
+      produce(producer, topic, article.id, article)
+    }
+    producer.commitTransaction()
+    logger.info("Successfully completed kafka transaction.")
+  }.recover { case error =>
+    logger.error(error)
+    logger.error(
+      "Something went wrong during kafka transcation processing. Aborting"
+    )
+    producer.abortTransaction();
   }
   producer.close()
 
