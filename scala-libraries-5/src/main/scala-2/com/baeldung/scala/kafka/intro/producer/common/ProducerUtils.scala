@@ -1,7 +1,5 @@
-package com.baeldung.scala.kafka.intro.producer
+package com.baeldung.scala.kafka.intro.producer.common
 
-import com.fasterxml.jackson.databind.json.JsonMapper
-import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import org.apache.kafka.clients.producer.{
   Callback,
   KafkaProducer,
@@ -11,17 +9,6 @@ import org.apache.kafka.clients.producer.{
 import org.apache.logging.log4j.scala.Logging
 
 trait ProducerUtils[T] extends Logging {
-
-  implicit val jsonMapper: JsonMapper = JsonMapper
-    .builder()
-    .addModule(DefaultScalaModule)
-    .build()
-
-  implicit class ValueOps(value: T) {
-    def toJsonString()(implicit jsonMapper: JsonMapper): String = {
-      jsonMapper.writeValueAsString(value)
-    }
-  }
 
   implicit val callback: Callback = (
     metadata: RecordMetadata,
@@ -41,9 +28,9 @@ trait ProducerUtils[T] extends Logging {
     topic: String,
     key: K,
     value: V
-  )(implicit callback: Callback): Unit = {
+  ): Unit = {
     val record = new ProducerRecord(topic, key, value)
-    producer.send(record, callback)
+    producer.send(record, implicitly[Callback])
   }
 
 }

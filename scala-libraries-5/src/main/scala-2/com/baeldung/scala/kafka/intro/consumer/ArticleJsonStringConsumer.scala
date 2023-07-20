@@ -1,6 +1,11 @@
 package com.baeldung.scala.kafka.intro.consumer
 
-import com.baeldung.scala.kafka.intro.Article
+import com.baeldung.scala.kafka.intro.common.Article
+import com.baeldung.scala.kafka.intro.consumer.common.{
+  ConsumerConfig,
+  ConsumerUtils,
+  JsonStringDeSerializer
+}
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
 
@@ -8,13 +13,12 @@ import java.util.concurrent.TimeUnit.SECONDS
 import scala.concurrent.duration.FiniteDuration
 import scala.jdk.javaapi.CollectionConverters.asJavaCollection
 
-object ArticleConsumer extends App with ConsumerUtils[Article] {
+object ArticleJsonStringConsumer
+  extends App
+  with ConsumerUtils[Article]
+  with JsonStringDeSerializer[Article] {
 
-  private val (config, topic) =
-    ArticleConsumerConfig.getConfig("kafka-intro.conf")
-
-  private val keyDeSerializer = new StringDeserializer()
-  private val valueDeSerializer = new StringDeserializer()
+  private val (config, topic) = ConsumerConfig.getConfig("kafka-intro.conf")
 
   private val consumer =
     new KafkaConsumer(config, keyDeSerializer, valueDeSerializer)

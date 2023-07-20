@@ -1,4 +1,4 @@
-package com.baeldung.scala.kafka.intro
+package com.baeldung.scala.kafka.intro.common
 
 import java.util.Date
 

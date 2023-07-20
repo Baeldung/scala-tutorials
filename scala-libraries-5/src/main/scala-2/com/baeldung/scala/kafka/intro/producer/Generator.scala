@@ -1,30 +1,12 @@
 package com.baeldung.scala.kafka.intro.producer
 
 import com.baeldung.scala.kafka.intro._
-import org.apache.kafka.clients.producer.KafkaProducer
-import org.apache.kafka.common.serialization.StringSerializer
+import com.baeldung.scala.kafka.intro.common.{Article, Author}
 
 import java.util.{Date, UUID}
 
-object ArticleProducer extends App with ProducerUtils[Article] {
-
-  private val (config, topic) =
-    ArticleProducerConfig.getConfig("kafka-intro.conf")
-
-  private val keySerializer = new StringSerializer()
-  private val valueSerializer = new StringSerializer()
-
-  private val producer =
-    new KafkaProducer(config, keySerializer, valueSerializer)
-
-  private val articles = getArticles
-
-  for (article <- articles) {
-    produce(producer, topic, article.id, article.toJsonString)
-  }
-  producer.close()
-
-  private def getArticles: List[Article] = {
+object Generator {
+  def articles: List[Article] = {
     List(
       Article(
         UUID.randomUUID.toString,

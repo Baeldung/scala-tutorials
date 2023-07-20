@@ -1,8 +1,7 @@
-package com.baeldung.scala.kafka.intro
+package com.baeldung.scala.kafka.intro.common
 
 import com.typesafe.config.Config
 
-import java.util.Properties
 import scala.jdk.CollectionConverters._
 trait ClientConfig {
   implicit class configMapperOps(config: Config) {
@@ -13,11 +12,5 @@ trait ClientConfig {
       .asScala
       .map(pair => (pair.getKey, config.getAnyRef(pair.getKey)))
       .toMap
-
-    def toProperties: Properties = {
-      val properties = new Properties()
-      properties.putAll(config.toMap.asJava)
-      properties
-    }
   }
 }
