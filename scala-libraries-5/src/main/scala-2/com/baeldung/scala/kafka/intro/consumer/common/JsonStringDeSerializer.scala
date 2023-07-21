@@ -2,6 +2,7 @@ package com.baeldung.scala.kafka.intro.consumer.common
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import org.apache.kafka.common.serialization.StringDeserializer
 
@@ -15,6 +16,7 @@ trait JsonStringDeSerializer[T] {
   implicit val jsonMapper: JsonMapper = JsonMapper
     .builder()
     .addModule(DefaultScalaModule)
+    .addModule(new JavaTimeModule())
     .enable(DeserializationFeature.FAIL_ON_NULL_CREATOR_PROPERTIES)
     .build()
 

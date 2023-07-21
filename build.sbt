@@ -405,6 +405,7 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
       "org.apache.kafka" % "kafka-clients" % kafkaVersion,
       "com.github.pureconfig" %% "pureconfig" % pureconfigVersion,
       "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
+      "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
       "com.fasterxml.jackson.module" %% "jackson-module-scala" % jackSonVersion,
       "com.sksamuel.avro4s" %% "avro4s-core" % avro4sVersion,
       "io.confluent" % "kafka-avro-serializer" % kafkaAvroSerializer,

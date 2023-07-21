@@ -1,6 +1,5 @@
-package com.baeldung.scala.kafka.intro.producer.common.SerdeConfig
+package com.baeldung.scala.kafka.intro.common
 
-import com.baeldung.scala.kafka.intro.common.ClientConfig
 import com.typesafe.config.Config
 import pureconfig.ConfigSource
 import pureconfig.generic.auto.exportReader

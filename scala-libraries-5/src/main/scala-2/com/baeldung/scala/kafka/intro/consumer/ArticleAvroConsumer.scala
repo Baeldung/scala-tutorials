@@ -1,12 +1,11 @@
 package com.baeldung.scala.kafka.intro.consumer
 
-import com.baeldung.scala.kafka.intro.common.Article
+import com.baeldung.scala.kafka.intro.common.{Article, SerdeConfig}
 import com.baeldung.scala.kafka.intro.consumer.common.{
   AvroDeSerializer,
   ConsumerConfig,
   ConsumerUtils
 }
-import com.baeldung.scala.kafka.intro.producer.common.SerdeConfig.SerdeConfig
 import com.sksamuel.avro4s.RecordFormat
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.{Deserializer, StringDeserializer}

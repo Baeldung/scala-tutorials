@@ -18,8 +18,7 @@ trait ProducerUtils[T] extends Logging {
       .map(error => logger.error("fail to send record due to: ", error))
       .getOrElse(
         logger.info(
-          s"Successfully produce a new record to kafka: ${s"topic: ${metadata.topic()}, partition: ${metadata
-                .partition()}, offset: ${metadata.offset()}"}"
+          s"Successfully produced a new record to kafka: ${s"topic: ${metadata.topic}, partition: ${metadata.partition}, offset: ${metadata.offset}, key size: ${metadata.serializedKeySize}, value size: ${metadata.serializedKeySize}"}"
         )
       )
 

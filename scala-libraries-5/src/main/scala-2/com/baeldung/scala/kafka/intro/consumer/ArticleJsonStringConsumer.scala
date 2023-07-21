@@ -7,7 +7,6 @@ import com.baeldung.scala.kafka.intro.consumer.common.{
   JsonStringDeSerializer
 }
 import org.apache.kafka.clients.consumer.KafkaConsumer
-import org.apache.kafka.common.serialization.StringDeserializer
 
 import java.util.concurrent.TimeUnit.SECONDS
 import scala.concurrent.duration.FiniteDuration

@@ -1,7 +1,6 @@
 package com.baeldung.scala.kafka.intro.producer
 
-import com.baeldung.scala.kafka.intro.common.Article
-import com.baeldung.scala.kafka.intro.producer.common.SerdeConfig.SerdeConfig
+import com.baeldung.scala.kafka.intro.common.{Article, SerdeConfig}
 import com.baeldung.scala.kafka.intro.producer.common.{
   AvroSerializer,
   ProducerConfig,
