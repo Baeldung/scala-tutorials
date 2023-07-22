@@ -2,9 +2,9 @@ package com.baeldung.scala.reverselists
 
 import scala.annotation.tailrec
 
-/**
- * Contains several implementations of methods to reverse sequences (SCALA-623).
- */
+/** Contains several implementations of methods to reverse sequences
+  * (SCALA-623).
+  */
 object ListReverser {
 
   /** Builds a sequence with the same elements as the argument, in reverse
@@ -17,7 +17,8 @@ object ListReverser {
     *   sequence with the input elements in reverse order
     */
   def naiveRecursiveReverse[T](xs: Seq[T]): Seq[T] = {
-    xs
+    if (xs.isEmpty) xs
+    else naiveRecursiveReverse(xs.drop(1)) :+ xs.head
   }
 
   /** Builds a sequence with the same elements as the argument, in reverse
