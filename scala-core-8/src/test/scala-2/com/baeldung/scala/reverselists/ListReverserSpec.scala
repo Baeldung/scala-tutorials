@@ -51,4 +51,16 @@ class ListReverserSpec extends AnyWordSpec with BeforeAndAfterEach {
       testReverseBigList(reversingFunction)
     }
   }
+
+  "The folding list reverser" should {
+    val reversingFunction: Seq[_] => Seq[_] = foldBasedReverse
+
+    "reverse small lists" in {
+      testReverseSmallList(reversingFunction)
+    }
+
+    "handle big lists" in {
+      testReverseBigList(reversingFunction)
+    }
+  }
 }
