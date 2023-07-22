@@ -31,9 +31,13 @@ object ListReverser {
     * @return
     *   sequence with the input elements in reverse order
     */
-  @tailrec
   def tailRecursiveReverse[T](xs: Seq[T]): Seq[T] = {
-    tailRecursiveReverse(xs)
+    @tailrec
+    def aux(acc: Seq[T], sequence: Seq[T]): Seq[T] = {
+      if (sequence.isEmpty) acc
+      else aux(sequence.head +: acc, sequence.tail)
+    }
+    aux(Seq.empty[T], xs)
   }
 
   /** Builds a sequence with the same elements as the argument, in reverse

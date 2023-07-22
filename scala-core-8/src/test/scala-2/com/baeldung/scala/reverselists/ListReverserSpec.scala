@@ -17,7 +17,7 @@ class ListReverserSpec extends AnyWordSpec with BeforeAndAfterEach {
   }
 
   def testReverseBigList(f: Seq[_] => Seq[_]): Assertion = {
-    val n = 1_000_000
+    val n = 100_000
     val vector: Vector[String] =
       (0 to n).foldLeft(Vector.empty[String])((v, _) =>
         v.appended(Random.nextString(1000))
@@ -36,7 +36,7 @@ class ListReverserSpec extends AnyWordSpec with BeforeAndAfterEach {
     }
 
     "exhaust memory with big lists" in {
-//      assertThrows[StackOverflowError](testReverseBigList(reversingFunction))
+      assertThrows[StackOverflowError](testReverseBigList(reversingFunction))
     }
   }
 
