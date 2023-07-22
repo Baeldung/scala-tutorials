@@ -50,8 +50,7 @@ object ListReverser {
     * @return
     *   sequence with the input elements in reverse order
     */
-  def foldBasedReverse[T](xs: Seq[T]): Seq[T] = {
-    xs
-  }
+  def foldBasedReverse[T](xs: Seq[T]): Seq[T] =
+    xs.foldLeft(Seq.empty[T])((sequence, element) => element +: sequence)
 
 }
