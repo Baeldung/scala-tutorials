@@ -32,10 +32,10 @@ object ListReverser {
     */
   def tailRecursiveReverse[T](xs: Seq[T]): Seq[T] = {
     @tailrec
-    def aux(acc: Seq[T], sequence: Seq[T]): Seq[T] = {
+    def aux(acc: Seq[T], sequence: Seq[T]): Seq[T] =
       if (sequence.isEmpty) acc
       else aux(sequence.head +: acc, sequence.tail)
-    }
+
     aux(Seq.empty[T], xs)
   }
 
