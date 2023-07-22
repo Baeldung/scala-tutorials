@@ -16,10 +16,9 @@ object ListReverser {
     * @return
     *   sequence with the input elements in reverse order
     */
-  def naiveRecursiveReverse[T](xs: Seq[T]): Seq[T] = {
+  def naiveRecursiveReverse[T](xs: Seq[T]): Seq[T] =
     if (xs.isEmpty) xs
     else naiveRecursiveReverse(xs.drop(1)) :+ xs.head
-  }
 
   /** Builds a sequence with the same elements as the argument, in reverse
     * order. It uses a tail-recursive pattern, so the heap is safe.
