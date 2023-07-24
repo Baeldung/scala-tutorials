@@ -220,7 +220,7 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % "it,test",
       "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % "it,test",
-"com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test
+      "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test
     ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test")))
   )
 val monocleVersion = "2.1.0"
