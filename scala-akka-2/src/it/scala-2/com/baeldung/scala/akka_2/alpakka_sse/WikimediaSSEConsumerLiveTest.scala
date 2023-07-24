@@ -5,7 +5,7 @@ import akka.testkit.TestKit
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.wordspec.AsyncWordSpecLike
 
-class WikimediaSSEConsumerTest
+class WikimediaSSEConsumerLiveTest
   extends TestKit(ActorSystem("wikimediaSSESpec"))
   with AsyncWordSpecLike
   with BeforeAndAfterAll {
