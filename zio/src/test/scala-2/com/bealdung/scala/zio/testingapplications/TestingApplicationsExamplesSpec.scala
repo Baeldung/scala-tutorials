@@ -28,7 +28,7 @@ object TestingApplicationsExamplesSpec extends ZIOSpecDefault {
     test("String assertions"){
       assert("Hello World!")(containsString("Hello"))
       assert("Hello World!")(equalsIgnoreCase("WORLD"))
-      assert("Hello World!")(hasSizeString(equalTo(11)))
+      assert("Hello World!")(hasSizeString(equalTo(12)))
     },
     test("Numeric assertions"){
       assert(0)(isZero)
