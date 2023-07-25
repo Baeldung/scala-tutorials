@@ -10,6 +10,7 @@ trait ServiceComponents {
 
   self: ApiComponents =>
 
-  lazy val serviceWithRemoteCall: ServiceWithRemoteCall = wire[ServiceWithRemoteCall]
+  lazy val serviceWithRemoteCall: ServiceWithRemoteCall =
+    wire[ServiceWithRemoteCall]
 
 }

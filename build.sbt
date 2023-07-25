@@ -6,8 +6,8 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.0"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.0" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.1"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.1" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.8"
 val embedMongoVersion = "4.7.0"
@@ -175,7 +175,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "4.9.1",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "4.10.1",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -205,8 +205,10 @@ lazy val scala_akka = (project in file("scala-akka"))
 
 lazy val scala_akka_2 = (project in file("scala-akka-2"))
   .enablePlugins(AkkaGrpcPlugin)
+  .configs(IntegrationTest)
   .settings(
     name := "scala-akka-2",
+    Defaults.itSettings,
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
@@ -216,9 +218,9 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion,
       "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
       "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
-      "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test
-    ) ++ scalaTestDeps
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % "it,test",
+      "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % "it,test"
+    ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test")))
   )
 val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
@@ -228,6 +230,7 @@ val fs2Version = "3.7.0"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
+val spireVersion = "0.18.0"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -257,8 +260,8 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.5"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.7.0"
-val sparkVersion = "3.4.0"
+val elastic4sVersion = "8.7.1"
+val sparkVersion = "3.4.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -305,7 +308,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   )
 
 val http4sBlaze = "0.23.15"
-val http4sVersion = "0.23.20"
+val http4sVersion = "0.23.22"
 val osLibVersion = "0.9.1"
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
@@ -370,10 +373,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.18.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.85",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.488" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.16" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.16" % IntegrationTest
+      "software.amazon.awssdk" % "s3" % "2.20.98",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.501" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.17" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.17" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "com.github.seratch" %% "awscala" % "0.9.2"
@@ -390,7 +393,8 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       sparkSqlDep,
-      sparkCoreDep
+      sparkCoreDep,
+      "org.typelevel" %% "spire" % spireVersion
     )
   )
 
@@ -488,7 +492,23 @@ addCommandAlias(
   "ci",
   ";clean;compile;test:compile;it:compile;scalafmtCheckAll;test"
 )
+
+addCommandAlias(
+  "integrationTests",
+  """;set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
+)
+
 addCommandAlias(
   "ciFull",
-  ";ci;it:test"
+  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
+)
+
+addCommandAlias(
+  "manualTests",
+  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("ManualTest")); it:test""".stripMargin
+)
+
+addCommandAlias(
+  "liveTests",
+  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("LiveTest")); it:test""".stripMargin
 )

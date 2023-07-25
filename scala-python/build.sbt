@@ -7,8 +7,8 @@ lazy val python = Python()
 //lazy val pythonLdFlags = python.ldflags.get
 //nativeLinkingOptions ++= pythonLdFlags
 
-lazy val javaOpts = python.scalapyProperties.get.map {
-  case (k, v) => s"""-D$k=$v"""
+lazy val javaOpts = python.scalapyProperties.get.map { case (k, v) =>
+  s"""-D$k=$v"""
 }.toSeq
 
 javaOptions ++= javaOpts
