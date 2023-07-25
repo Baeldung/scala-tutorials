@@ -7,50 +7,51 @@ import com.baeldung.scala.zio.testingapplications.TestingApplicationsExamples._
 
 object TestingApplicationsExamplesSpec extends ZIOSpecDefault {
   override def spec = suite("TestingApplicationsExamplesSpec")(
-    test("returnString correctly returns string"){
+    test("returnString correctly returns string") {
       val testString = "Hello World!"
       for {
         output <- returnString(testString)
       } yield assertTrue(output == testString)
     },
-    test("using logical operations"){
+    test("using logical operations") {
       val testString = "Hello World!"
       val andAssertion: Assertion[String] =
-        Assertion.startsWithString("Hello") && Assertion.endsWithString("World!")
+        Assertion.startsWithString("Hello") && Assertion.endsWithString(
+          "World!"
+        )
 
       for {
         output <- returnString(testString)
       } yield assert(output)(andAssertion)
     },
-    test("nested assertions"){
+    test("nested assertions") {
       assert(Some(1))(isSome(equalTo(1)))
     },
-    test("String assertions"){
+    test("String assertions") {
       assert("Hello World!")(containsString("Hello"))
       assert("Hello World!")(equalsIgnoreCase("WORLD"))
       assert("Hello World!")(hasSizeString(equalTo(12)))
     },
-    test("Numeric assertions"){
+    test("Numeric assertions") {
       assert(0)(isZero)
       assert(1)(isPositive)
       assert(-1)(isNegative)
       assert(102)(approximatelyEquals(100, 2))
     },
-    test("Iterator assertions"){
+    test("Iterator assertions") {
       assert(List(1, 2, 3))(contains(2))
       assert(List(1, 2, 3))(hasSize(equalTo((3))))
       assert(List(1, 2, 3))(hasNoneOf(List(5, 6)))
     },
-    test("Either assertions"){
+    test("Either assertions") {
       assert(Right(1))(isRight)
       assert(Left("Oh no"))(isLeft)
     },
-    test("Boolean assertions"){
+    test("Boolean assertions") {
       assert(true)(isTrue)
       assert(false)(isFalse)
-    }
-    ,
-    test("Option assertions"){
+    },
+    test("Option assertions") {
       assert(Some(1))(isSome)
       assert(Some(1))(isSome(equalTo(1)))
       assert(None)(isNone)
