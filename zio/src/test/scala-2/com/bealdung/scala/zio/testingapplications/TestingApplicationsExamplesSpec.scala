@@ -28,33 +28,33 @@ object TestingApplicationsExamplesSpec extends ZIOSpecDefault {
       assert(Some(1))(isSome(equalTo(1)))
     },
     test("String assertions") {
-      assert("Hello World!")(containsString("Hello"))
-      assert("Hello World!")(equalsIgnoreCase("WORLD"))
+      assert("Hello World!")(containsString("Hello")) &&
+      assert("Hello World!")(equalsIgnoreCase("HELLO WORLD!")) &&
       assert("Hello World!")(hasSizeString(equalTo(12)))
     },
     test("Numeric assertions") {
-      assert(0)(isZero)
-      assert(1)(isPositive)
-      assert(-1)(isNegative)
+      assert(0)(isZero) &&
+      assert(1)(isPositive) &&
+      assert(-1)(isNegative) &&
       assert(102)(approximatelyEquals(100, 2))
     },
     test("Iterator assertions") {
-      assert(List(1, 2, 3))(contains(2))
-      assert(List(1, 2, 3))(hasSize(equalTo((3))))
+      assert(List(1, 2, 3))(contains(2)) &&
+      assert(List(1, 2, 3))(hasSize(equalTo((3)))) &&
       assert(List(1, 2, 3))(hasNoneOf(List(5, 6)))
     },
     test("Either assertions") {
-      assert(Right(1))(isRight)
+      assert(Right(1))(isRight) &&
       assert(Left("Oh no"))(isLeft)
     },
     test("Boolean assertions") {
-      assert(true)(isTrue)
+      assert(true)(isTrue) &&
       assert(false)(isFalse)
     },
     test("Option assertions") {
-      assert(Some(1))(isSome)
+      assert(None)(isNone) &&
+      assert(Some(1))(isSome) &&
       assert(Some(1))(isSome(equalTo(1)))
-      assert(None)(isNone)
     }
   )
 }
