@@ -8,7 +8,7 @@ class CaseInsensitiveStringComparisonUnitTest extends AnyFlatSpec with Matchers 
   "operating equals ignore case method on a string" should "return true if strings are the same when ignoring case" in {
     val str = "Hello World"
     val result = str.equalsIgnoreCase("hello world")
-    result should be (true)
+    result should be(true)
   }
 
   "operating toLowerCase.contains on a string" should "return if strings are the same when ignoring case" in {
