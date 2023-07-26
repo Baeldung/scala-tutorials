@@ -14,12 +14,16 @@ class H2Module extends AbstractModule {
   }
 
   @Provides
-  def dbProfile(@NamedDatabase("h2") dbConfigProvider: DatabaseConfigProvider): JdbcProfile = {
+  def dbProfile(
+    @NamedDatabase("h2") dbConfigProvider: DatabaseConfigProvider
+  ): JdbcProfile = {
     dbConfigProvider.get[H2Profile].profile
   }
 
   @Provides
-  def dbConfig(@NamedDatabase("h2") dbConfigProvider: DatabaseConfigProvider): DatabaseConfig[H2Profile] = {
+  def dbConfig(
+    @NamedDatabase("h2") dbConfigProvider: DatabaseConfigProvider
+  ): DatabaseConfig[H2Profile] = {
     dbConfigProvider.get[H2Profile]
   }
 
