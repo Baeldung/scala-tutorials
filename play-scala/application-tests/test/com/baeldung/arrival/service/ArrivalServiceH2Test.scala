@@ -8,7 +8,11 @@ import org.scalatestplus.play.guice.GuiceOneAppPerTest
 
 import scala.language.postfixOps
 
-class ArrivalServiceH2Test extends AnyWordSpec with GuiceOneAppPerTest with ScalaFutures with H2ApplicationFactory {
+class ArrivalServiceH2Test
+  extends AnyWordSpec
+  with GuiceOneAppPerTest
+  with ScalaFutures
+  with H2ApplicationFactory {
 
   "ArrivalService" should {
     "fetch data from H2" in {
@@ -19,6 +23,9 @@ class ArrivalServiceH2Test extends AnyWordSpec with GuiceOneAppPerTest with Scal
     }
   }
 
-  override implicit def patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(10, Seconds)), interval = scaled(Span(300, Millis)))
+  override implicit def patienceConfig: PatienceConfig = PatienceConfig(
+    timeout = scaled(Span(10, Seconds)),
+    interval = scaled(Span(300, Millis))
+  )
 
 }

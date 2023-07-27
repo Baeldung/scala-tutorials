@@ -15,12 +15,18 @@ import slick.dbio.{DBIO, SuccessAction}
 
 import scala.concurrent.Future
 
-class ArrivalServiceMocksTest extends AnyWordSpec with GuiceOneAppPerTest with ScalaFutures with MockitoSugar {
+class ArrivalServiceMocksTest
+  extends AnyWordSpec
+  with GuiceOneAppPerTest
+  with ScalaFutures
+  with MockitoSugar {
 
   private val mockDbManager: DbManager = {
     val mocked = mock[DbManager]
     when(mocked.execute(ArgumentMatchers.any[DBIO[Seq[Arrival]]]))
-      .thenReturn(Future.successful(Seq(Arrival(33L, "Athens", "Gatwick", "DC10"))))
+      .thenReturn(
+        Future.successful(Seq(Arrival(33L, "Athens", "Gatwick", "DC10")))
+      )
     mocked
   }
 
@@ -35,10 +41,15 @@ class ArrivalServiceMocksTest extends AnyWordSpec with GuiceOneAppPerTest with S
     GuiceApplicationBuilder(
       modules = Seq(new ServiceModule)
     )
-      .loadConfig(env => Configuration.load(env, Map("config.resource" -> "application.test.conf")))
+      .loadConfig(env =>
+        Configuration
+          .load(env, Map("config.resource" -> "application.test.conf"))
+      )
       .configure("play.http.router" -> "play.api.routing.Router")
       .bindings(inject.bind[DbManager].toInstance(mockDbManager))
-      .bindings(inject.bind[ArrivalRepository].toInstance(mockArrivalRepository))
+      .bindings(
+        inject.bind[ArrivalRepository].toInstance(mockArrivalRepository)
+      )
       .build()
   }
 

@@ -19,7 +19,7 @@ class HomeControllerUnitTest
   with Injecting
   with MockitoSugar {
 
-  "HomeController GET" should {
+  "ConfigAccess HomeController GET" should {
 
     "render the index page from a new instance of controller" in {
       val myService = inject[MyService]

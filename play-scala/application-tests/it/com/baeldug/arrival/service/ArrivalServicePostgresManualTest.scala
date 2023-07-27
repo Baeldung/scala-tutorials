@@ -7,7 +7,11 @@ import org.scalatestplus.play.guice.GuiceOneAppPerTest
 
 import scala.language.postfixOps
 
-class ArrivalServicePostgresTest extends AnyWordSpec with GuiceOneAppPerTest with ScalaFutures with PostgresApplicationFactory {
+class ArrivalServicePostgresManualTest
+  extends AnyWordSpec
+  with GuiceOneAppPerTest
+  with ScalaFutures
+  with PostgresApplicationFactory {
 
   "ArrivalService" should {
     "fetch data from Postgres" in {
