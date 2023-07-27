@@ -11,6 +11,7 @@ In this repository, we have classified the tests in 4 categories.
 
 
 Here is a table describing about the different categories of tests and how they can be executed in this project.
+Note that these commands are defined at the root level of the project and hence are accessible only from the root project(not directly within each submodule).
 
 | Category                | Sbt command       | Test class location                    | Test class name format                                                                                                  |
 |-------------------------|-------------------|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
