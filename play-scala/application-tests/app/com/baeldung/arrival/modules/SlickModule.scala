@@ -1,6 +1,9 @@
 package com.baeldung.arrival.modules
 
-import com.baeldung.arrival.db.repository.{ArrivalRepository, SlickArrivalRepository}
+import com.baeldung.arrival.db.repository.{
+  ArrivalRepository,
+  SlickArrivalRepository
+}
 import com.google.inject.AbstractModule
 
 class SlickModule extends AbstractModule {

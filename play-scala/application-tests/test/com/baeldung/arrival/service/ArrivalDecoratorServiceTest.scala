@@ -11,7 +11,10 @@ class ArrivalDecoratorServiceTest extends MixedPlaySpec {
     "mark as short an arrival with plane name length = 5" in new App(
       GuiceApplicationBuilder()
         .configure("play.http.router" -> "play.api.routing.Router")
-        .loadConfig(env => Configuration.load(env, Map("config.resource" -> "application.test.conf")))
+        .loadConfig(env =>
+          Configuration
+            .load(env, Map("config.resource" -> "application.test.conf"))
+        )
         .build()
     ) {
       private val testee = app.injector.instanceOf[ArrivalDecoratorService]
@@ -24,7 +27,10 @@ class ArrivalDecoratorServiceTest extends MixedPlaySpec {
     "mark as medium an arrival with plane name length = 5 with overridden configuration" in new App(
       GuiceApplicationBuilder()
         .configure("play.http.router" -> "play.api.routing.Router")
-        .loadConfig(env => Configuration.load(env, Map("config.resource" -> "application.test.conf")))
+        .loadConfig(env =>
+          Configuration
+            .load(env, Map("config.resource" -> "application.test.conf"))
+        )
         .configure(
           "short-name-max" -> "3",
           "medium-name-max" -> "6"
