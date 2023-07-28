@@ -46,7 +46,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection,
-    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.1.0"
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
   )
 
 lazy val scala_core_4 = (project in file("scala-core-4"))
