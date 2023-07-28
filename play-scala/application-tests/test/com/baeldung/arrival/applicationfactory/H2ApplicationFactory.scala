@@ -9,7 +9,8 @@ trait H2ApplicationFactory {
 
   override def fakeApplication(): Application = {
     GuiceApplicationBuilder(
-      loadConfiguration = env => Configuration.load(env, Map("config.resource" -> "application.h2.conf"))
+      loadConfiguration = env =>
+        Configuration.load(env, Map("config.resource" -> "application.h2.conf"))
     ).build()
   }
 }
