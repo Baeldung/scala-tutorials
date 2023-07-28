@@ -11,7 +11,7 @@ import play.api.libs.ws.{WSClient, WSResponse}
 
 import scala.concurrent.Future
 
-class ArrivalControllerPostgresTest
+class ArrivalControllerPostgresManualTest
   extends AnyWordSpec
   with WsScalaTestClient
   with GuiceOneServerPerTest

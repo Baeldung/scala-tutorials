@@ -7,7 +7,7 @@ import org.scalatestplus.play.guice.GuiceOneAppPerTest
 
 import scala.language.postfixOps
 
-class ArrivalServicePostgresTest
+class ArrivalServicePostgresManualTest
   extends AnyWordSpec
   with GuiceOneAppPerTest
   with ScalaFutures
