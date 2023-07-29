@@ -14,12 +14,16 @@ class PostgresModule extends AbstractModule {
   }
 
   @Provides
-  def dbProfile(@NamedDatabase("postgres") dbConfigProvider: DatabaseConfigProvider): JdbcProfile = {
+  def dbProfile(
+    @NamedDatabase("postgres") dbConfigProvider: DatabaseConfigProvider
+  ): JdbcProfile = {
     dbConfigProvider.get[PostgresProfile].profile
   }
 
   @Provides
-  def dbConfig(@NamedDatabase("postgres") dbConfigProvider: DatabaseConfigProvider): DatabaseConfig[PostgresProfile] = {
+  def dbConfig(
+    @NamedDatabase("postgres") dbConfigProvider: DatabaseConfigProvider
+  ): DatabaseConfig[PostgresProfile] = {
     dbConfigProvider.get[PostgresProfile]
   }
 

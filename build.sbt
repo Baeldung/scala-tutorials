@@ -1,5 +1,5 @@
-val scalaV = "2.13.11"
-val scala3Version = "3.2.2"
+val scalaV = ScalaVersions.scala2Version
+val scala3Version = ScalaVersions.scala3Version
 ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.1"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.1" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.8"
-val embedMongoVersion = "4.7.0"
+val embedMongoVersion = "4.7.1"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.16" % Test,
@@ -46,7 +46,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection,
-    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.1.0"
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
   )
 
 lazy val scala_core_4 = (project in file("scala-core-4"))
@@ -175,7 +175,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "4.10.1",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "4.10.2",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -241,7 +241,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "2.1.214",
+      "com.h2database" % "h2" % "2.2.220",
       "com.chuusai" %% "shapeless" % shapelessVersion,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
@@ -260,7 +260,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.5"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.7.1"
+val elastic4sVersion = "8.8.1"
 val sparkVersion = "3.4.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -280,7 +280,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.github.cb372" %% "scalacache-guava" % "0.28.0",
       "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
       "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
-      "com.beachape" %% "enumeratum" % "1.7.2"
+      "com.beachape" %% "enumeratum" % "1.7.3"
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "5.1.0",
@@ -308,7 +308,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   )
 
 val http4sBlaze = "0.23.15"
-val http4sVersion = "0.23.22"
+val http4sVersion = "0.23.23"
 val osLibVersion = "0.9.1"
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
@@ -322,7 +322,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.http4s" %% "http4s-dsl" % http4sVersion,
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
-      "com.beachape" %% "enumeratum" % "1.7.2",
+      "com.beachape" %% "enumeratum" % "1.7.3",
       "com.github.pureconfig" %% "pureconfig" % "0.17.4",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.4",
       "com.typesafe" % "config" % "1.4.2",
@@ -373,7 +373,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.18.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.98",
+      "software.amazon.awssdk" % "s3" % "2.20.111",
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.501" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.17" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.17" % IntegrationTest
@@ -483,7 +483,7 @@ Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
 
 lazy val scala212 = (project in file("scala-2-modules/scala212"))
   .settings(
-    scalaVersion := "2.12.18",
+    scalaVersion := ScalaVersions.scala212Version,
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
   )
@@ -512,3 +512,5 @@ addCommandAlias(
   "liveTests",
   """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("LiveTest")); it:test""".stripMargin
 )
+
+lazy val playGroup = (project in file("play-scala"))
