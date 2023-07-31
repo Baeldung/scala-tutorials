@@ -12,7 +12,7 @@ networks:
 
 services:
   kafka:
-    image: docker.io/bitnami/kafka:3.4
+    image: docker.io/bitnami/kafka:3.4.0-debian-11-r23
     networks:
       - kafka_net
     ports:
