@@ -1,6 +1,6 @@
 package com.baeldung.scala.scalatest
 
-import org.scalatest.flatspec.AnyFunSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 class TestIfCompiles extends AnyFlatSpec {
 
