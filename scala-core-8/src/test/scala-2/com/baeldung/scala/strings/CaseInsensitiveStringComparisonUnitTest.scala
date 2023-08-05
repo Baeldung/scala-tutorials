@@ -13,7 +13,7 @@ class CaseInsensitiveStringComparisonUnitTest extends AnyFlatSpec with Matchers 
 
   "operating toLowerCase.contains on a string" should "return if strings are the same when ignoring case" in {
     val str = "Hello World"
-    val result = str.toLowerCase.contains("hello world".toLowerCase)
+    val result = str.toLowerCase.contains("hello".toLowerCase)
 
     result should be(true)
   }
