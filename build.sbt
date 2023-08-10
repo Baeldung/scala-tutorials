@@ -1,5 +1,4 @@
 val scalaV = ScalaVersions.scala2Version
-val scala3Version = ScalaVersions.scala3Version
 ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
@@ -35,7 +34,8 @@ lazy val scala_core_collection_2 = (project in file("scala-core-collection-2"))
 
 lazy val scala_core_collections = (project in file("scala-core-collections"))
 
-lazy val scala_core_collections_2 = (project in file("scala-core-collections-2"))
+lazy val scala_core_collections_2 =
+  (project in file("scala-core-collections-2"))
 
 lazy val scala_test = (project in file("scala-test"))
 
@@ -85,33 +85,8 @@ lazy val reflection = (project in file("reflection"))
 
 lazy val scala3_libraries = (project in file("scala3-libraries"))
 
-Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
-
 lazy val scala212 = (project in file("scala-2-modules/scala212"))
 
-addCommandAlias(
-  "ci",
-  ";clean;compile;test:compile;it:compile;scalafmtCheckAll;test"
-)
-
-addCommandAlias(
-  "integrationTests",
-  """;set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
-)
-
-addCommandAlias(
-  "ciFull",
-  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
-)
-
-addCommandAlias(
-  "manualTests",
-  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("ManualTest")); it:test""".stripMargin
-)
-
-addCommandAlias(
-  "liveTests",
-  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => t.endsWith("LiveTest")); it:test""".stripMargin
-)
-
 lazy val playGroup = (project in file("play-scala"))
+
+Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
