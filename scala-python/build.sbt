@@ -12,3 +12,6 @@ lazy val javaOpts = python.scalapyProperties.get.map { case (k, v) =>
 }.toSeq
 
 javaOptions ++= javaOpts
+name := "scala-python"
+libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.5.2"
+fork := true
