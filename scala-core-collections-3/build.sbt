@@ -6,7 +6,7 @@ val scalaTestDeps = Seq(
 )
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 
-name := "scala-core-collection-2"
+name := "scala-core-collections-3"
 libraryDependencies ++= scalaTestDeps
 val scalaV = "2.13.11"
 scalaVersion := scalaV

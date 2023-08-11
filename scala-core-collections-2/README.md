@@ -6,3 +6,6 @@
 - [Get a Subarray in Scala](https://www.baeldung.com/scala/extract-subarray)
 - [Finding the First Element Matching a Condition in a Collection](https://www.baeldung.com/scala/find-first-match-in-collection)
 - [Append an Element to an Array in Scala](https://www.baeldung.com/scala/array-append-element)
+- [LazyList in Scala](https://www.baeldung.com/scala/lazylist)
+- [How to Flatten Collections in Scala](https://www.baeldung.com/scala/flattening-collections)
+- [Get a List Item by Index in Scala](https://www.baeldung.com/scala/list-get-item-by-index)

@@ -30,7 +30,8 @@ lazy val scala_lang = (project in file("scala-lang"))
 
 lazy val scala_lang_2 = (project in file("scala-lang-2"))
 
-lazy val scala_core_collection_2 = (project in file("scala-core-collection-2"))
+lazy val scala_core_collections_3 =
+  (project in file("scala-core-collections-3"))
 
 lazy val scala_core_collections = (project in file("scala-core-collections"))
 
