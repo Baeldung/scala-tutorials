@@ -1,7 +1,7 @@
 package com.baedung.scala.flattening
 
 import org.scalatest.wordspec.AnyWordSpec
-
+import com.baeldung.scala.flattening.Flattener._
 import scala.collection.immutable.Queue
 
 class FlattenerSpec extends AnyWordSpec {
