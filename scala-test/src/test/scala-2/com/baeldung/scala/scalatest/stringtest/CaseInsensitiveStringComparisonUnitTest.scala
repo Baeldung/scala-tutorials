@@ -1,4 +1,4 @@
-package com.baeldung.scala.strings
+package com.baeldung.scala.scalatest.stringtest
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
