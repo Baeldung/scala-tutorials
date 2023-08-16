@@ -25,4 +25,4 @@ Note that these commands are defined at the root level of the project and hence 
 
 # Code fomatting
 
-Before creating a PR, make sure the code is correctly formatted running `sbt scalafmt`. 
+Before creating a PR, run `sbt scalafmtAll` to automatically format the entire codebase. To check if there are any formatting issues(without fixing them), you may run `sbt scalafmtCheckAll` 
