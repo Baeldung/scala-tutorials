@@ -9,4 +9,3 @@ class IfCompilesTest extends AnyFlatSpec with Matchers {
   "val x: Int = 2.0" shouldNot typeCheck
   "val x: Int = 2" should compile
 }
-
