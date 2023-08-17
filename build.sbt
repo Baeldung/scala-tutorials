@@ -9,7 +9,7 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.1"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.1" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.3.8"
+val logback = "ch.qos.logback" % "logback-classic" % "1.3.11"
 val embedMongoVersion = "4.7.1"
 
 val scalaTestDeps = Seq(
