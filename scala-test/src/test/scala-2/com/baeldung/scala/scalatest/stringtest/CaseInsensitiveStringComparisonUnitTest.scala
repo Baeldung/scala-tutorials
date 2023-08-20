@@ -3,7 +3,9 @@ package com.baeldung.scala.scalatest.stringtest
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class CaseInsensitiveStringComparisonUnitTest extends AnyFlatSpec with Matchers {
+class CaseInsensitiveStringComparisonUnitTest
+  extends AnyFlatSpec
+  with Matchers {
   "operating equals ignore case method on a string" should "return true if strings are the same when ignoring case" in {
     val str = "Hello World"
     val result = str.equalsIgnoreCase("hello world")
