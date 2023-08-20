@@ -7,7 +7,11 @@ import play.api.mvc.{BaseController, ControllerComponents}
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext
 
-class ArrivalController @Inject()(arrivalService: ArrivalService, val controllerComponents: ControllerComponents)(implicit ec: ExecutionContext) extends BaseController {
+class ArrivalController @Inject() (
+  arrivalService: ArrivalService,
+  val controllerComponents: ControllerComponents
+)(implicit ec: ExecutionContext)
+  extends BaseController {
 
   def index() = Action.async { _ =>
     arrivalService.getArrivals().map(arrivals => Ok(Json.toJson(arrivals)))

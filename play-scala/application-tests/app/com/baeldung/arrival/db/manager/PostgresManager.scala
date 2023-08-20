@@ -5,4 +5,5 @@ import slick.jdbc.PostgresProfile
 
 import javax.inject.Inject
 
-class PostgresManager @Inject()(val dbConfig: DatabaseConfig[PostgresProfile]) extends DbManager
+class PostgresManager @Inject() (val dbConfig: DatabaseConfig[PostgresProfile])
+  extends DbManager

@@ -35,3 +35,12 @@ buildInfoOptions := Seq(
   BuildInfoOption.BuildTime, // Add timestamp values
   BuildInfoOption.Traits("com.baeldung.XMLTranformer")
 )
+
+//settings for scoverage
+ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
+
+ThisBuild / coverageEnabled := true
+
+ThisBuild / coverageExcludedFiles := """.*SlickTables;.*/scalaz/.*"""
+
+ThisBuild / coverageExcludedPackages := "<empty>;.*CollectionMonoid.*;.*reactivemongo.*"
