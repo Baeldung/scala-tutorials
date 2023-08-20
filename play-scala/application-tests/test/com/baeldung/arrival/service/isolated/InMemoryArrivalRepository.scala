@@ -5,9 +5,11 @@ import slick.dbio.{DBIO, SuccessAction}
 
 class InMemoryArrivalRepository extends ArrivalRepository {
   override def getArrivals: DBIO[Seq[Arrival]] = {
-    SuccessAction(Seq(
-      Arrival(12L, "Istanbul", "Athens", "A380"),
-      Arrival(17L, "Dublin", "Oslo", "A380")
-    ))
+    SuccessAction(
+      Seq(
+        Arrival(12L, "Istanbul", "Athens", "A380"),
+        Arrival(17L, "Dublin", "Oslo", "A380")
+      )
+    )
   }
 }

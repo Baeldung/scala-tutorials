@@ -5,8 +5,9 @@ import slick.jdbc.JdbcProfile
 import javax.inject.Inject
 import scala.concurrent.ExecutionContext
 
-class SlickArrivalRepository @Inject()(val dbProfile: JdbcProfile)(implicit ec: ExecutionContext) extends ArrivalRepository {
-
+class SlickArrivalRepository @Inject() (val dbProfile: JdbcProfile)(implicit
+  ec: ExecutionContext
+) extends ArrivalRepository {
 
   import dbProfile.api._
 
@@ -20,12 +21,16 @@ class SlickArrivalRepository @Inject()(val dbProfile: JdbcProfile)(implicit ec: 
 
     def plane = column[String]("plane")
 
-    def * = (id, origin, destination, plane) <> ((Arrival.apply _).tupled, Arrival.unapply)
+    def * = (
+      id,
+      origin,
+      destination,
+      plane
+    ) <> ((Arrival.apply _).tupled, Arrival.unapply)
   }
 
-  /**
-   * The starting point for all queries on the people table.
-   */
+  /** The starting point for all queries on the people table.
+    */
   private val arrivals = TableQuery[ArrivalTable]
 
   def getArrivals: DBIO[Seq[Arrival]] = arrivals.result

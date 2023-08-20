@@ -11,13 +11,20 @@ import play.api.libs.ws.{WSClient, WSResponse}
 
 import scala.concurrent.Future
 
-class ArrivalControllerPostgresTest extends AnyWordSpec with WsScalaTestClient with GuiceOneServerPerTest with ScalaFutures with PostgresApplicationFactory {
+class ArrivalControllerPostgresManualTest
+  extends AnyWordSpec
+  with WsScalaTestClient
+  with GuiceOneServerPerTest
+  with ScalaFutures
+  with PostgresApplicationFactory {
 
   private implicit def wsClient = app.injector.instanceOf[WSClient]
 
   "ArrivalController#index" should {
     "return arrivals using postgres" in {
-      val controllerResponseF: Future[WSResponse] = wsCall(com.baeldung.arrival.controller.routes.ArrivalController.index()).get()
+      val controllerResponseF: Future[WSResponse] = wsCall(
+        com.baeldung.arrival.controller.routes.ArrivalController.index()
+      ).get()
       whenReady(controllerResponseF)(controllerResponse => {
         val arrivals = controllerResponse.json.as[JsArray].value
         assert(arrivals.length === 5)
@@ -25,5 +32,8 @@ class ArrivalControllerPostgresTest extends AnyWordSpec with WsScalaTestClient w
     }
   }
 
-  override implicit def patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(5, Seconds)), interval = scaled(Span(200, Millis)))
+  override implicit def patienceConfig: PatienceConfig = PatienceConfig(
+    timeout = scaled(Span(5, Seconds)),
+    interval = scaled(Span(200, Millis))
+  )
 }

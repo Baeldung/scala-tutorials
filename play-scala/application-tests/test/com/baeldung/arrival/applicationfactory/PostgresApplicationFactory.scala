@@ -9,7 +9,11 @@ trait PostgresApplicationFactory {
 
   override def fakeApplication(): Application = {
     GuiceApplicationBuilder(
-      loadConfiguration = env => Configuration.load(env, Map("config.resource" -> "application.postgres.conf"))
+      loadConfiguration = env =>
+        Configuration.load(
+          env,
+          Map("config.resource" -> "application.postgres.conf")
+        )
     ).build()
   }
 }

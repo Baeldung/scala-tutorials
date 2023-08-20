@@ -5,4 +5,5 @@ import slick.jdbc.H2Profile
 
 import javax.inject.Inject
 
-class H2Manager @Inject()(val dbConfig: DatabaseConfig[H2Profile]) extends DbManager
+class H2Manager @Inject() (val dbConfig: DatabaseConfig[H2Profile])
+  extends DbManager
