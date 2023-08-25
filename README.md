@@ -1,7 +1,24 @@
 [![Scala Steward badge](https://img.shields.io/badge/Scala_Steward-helping-blue.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xwmckutAR1nkm4ggbyEcg/wWmlGLDAA3oL50xi6fk5ffZ3E2E3QfZDCcCN2YtbEWZt+Drc6u6rlqv7Uk0LdKqqr5rk2UCRXOk0vmQKGfc94nOJyQjouF9H/wCc9gECEYfONoAAAAASUVORK5CYII=)](https://scala-steward.org)
 
 # scala-tutorials
+This is the main repo for all the sample code used in the scala tutorials.
 
+# Compiling and Running Tests
+This repo uses a multi-module build with many sub modules.
+To compile the entire module, you may use the command `sbt compile`. However, this loads all the modules and compiles all of them, which might take some time.
+If you are interested in only a particular module, you can compile it by starting sbt shell and using the command `<sub-module-name>/compile`.
+Similarly, you can run the tests per module as `<module-name>/test`. 
+
+Here are some of the useful commands that can be used within tbe sbt shell
+
+| SBT Command               | Description                                                                                           |
+|---------------------------|-------------------------------------------------------------------------------------------------------|
+| project <sub-module-name> | Switch to a particular module. After this, the command `compile`, `test` etc runs only on that module |
+| <sub-module>/compile | Compile only the provided module |
+| projects | Lists all the sub modules |
+| <sub-module>/run | Run the main class within the sub-module |
+
+# Test Naming Standards
 In this repository, we have classified the tests in 4 categories. 
 
 | Category | Description                                                                                                                                                   |
