@@ -23,6 +23,6 @@ Note that these commands are defined at the root level of the project and hence 
 | Live Test               | `sbt liveTests`   | `src/it/scala` or `src/it/scala-2` | Test class name must end with `LiveTest`                                                                                |
 | Manual Test             | `sbt manualTests` | `src/it/scala` or `src/it/scala-2` | Test class name must end with `ManualTest`                                                                              |
 
-# Code fomatting
+# Code formatting
 
 Before creating a PR, run `sbt scalafmtAll` to automatically format the entire codebase. To check if there are any formatting issues(without fixing them), you may run `sbt scalafmtCheckAll` 
