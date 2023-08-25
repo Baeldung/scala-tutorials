@@ -12,8 +12,9 @@ object RepeatSamples extends ZIOAppDefault {
       optionB: Option[Any]
     ) =
       optionB match {
-        case Some(b) => ZIO.succeed(println("inside fallback")) *> ZIO.succeed(b)
-        case None    => ZIO.fail(new Exception("Unhandled case: " + error))
+        case Some(b) =>
+          ZIO.succeed(println("inside fallback")) *> ZIO.succeed(b)
+        case None => ZIO.fail(new Exception("Unhandled case: " + error))
       }
     for {
       repeat_recurs <- simpleZio.repeat(
