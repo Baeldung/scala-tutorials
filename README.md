@@ -1,6 +1,6 @@
 # scala-tutorials
 
-In this repository, we have classified the tests in 4 categories.
+In this repository, we have classified the tests in 4 categories. 
 
 | Category | Description                                                                                                                                                   |
 | -- |---------------------------------------------------------------------------------------------------------------------------------------------------------------|
