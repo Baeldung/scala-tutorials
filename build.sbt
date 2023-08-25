@@ -533,3 +533,7 @@ addCommandAlias(
 )
 
 lazy val playGroup = (project in file("play-scala"))
+
+lazy val scalajs = project in file("scala-js")
+lazy val scalatra = project in file("scalatra")
+lazy val benchmark = project in file("specialized-benchmark")
