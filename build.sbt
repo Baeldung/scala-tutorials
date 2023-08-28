@@ -509,7 +509,7 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
 
 addCommandAlias(
   "ci",
-  ";clean;compile;test:compile;it:compile;scalafmtCheckAll;test"
+  ";compile;test:compile;it:compile;scalafmtCheckAll;test"
 )
 
 addCommandAlias(
@@ -519,7 +519,7 @@ addCommandAlias(
 
 addCommandAlias(
   "ciFull",
-  """;ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
+  """;clean; ci; set ThisBuild/IntegrationTest/testOptions += Tests.Filter(t => !t.endsWith("ManualTest") && !t.endsWith("LiveTest") ); it:test""".stripMargin
 )
 
 addCommandAlias(
@@ -533,3 +533,8 @@ addCommandAlias(
 )
 
 lazy val playGroup = (project in file("play-scala"))
+
+//Uncomment this to enable scala-js module. It needs nodejs module as well in local machine
+//lazy val scalajs = project in file("scala-js")
+lazy val scalatra = project in file("scalatra")
+lazy val benchmark = project in file("specialized-benchmark")
