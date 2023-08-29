@@ -8,3 +8,4 @@
 - [Reading Query Parameters in Akka HTTP](https://www.baeldung.com/scala/akka-http-reading-query-parameters)
 - [Difference Between tell and forward in Akka Actor](https://www.baeldung.com/scala/akka-actor-tell-vs-forward)
 - [Testing an Akka HTTP Application](https://www.baeldung.com/scala/akka-http-testing)
+- [Introduction to Akka-Streams in Scala](https://www.baeldung.com/scala/akka-streams)
