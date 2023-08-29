@@ -18,6 +18,8 @@ Here are some of the useful commands that can be used within tbe sbt shell
 | `projects`                  | Lists all the sub modules |                    |
 | `<sub-module-name>/run`      | Run the main class within the sub-module | scala_core/run |        
 
+** Note: The project name may not be same as directory name. Instead, it is the `lay val` variable used to define each module **
+
 # Test Naming Standards
 In this repository, we have classified the tests in 4 categories. 
 
