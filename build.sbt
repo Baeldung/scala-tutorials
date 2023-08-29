@@ -365,7 +365,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       sparkCoreDep,
       logback,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
-      "org.typelevel" %% "cats-core" % "2.9.0"
+      "org.typelevel" %% "cats-core" % "2.10.0"
     ),
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
