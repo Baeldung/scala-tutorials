@@ -6,8 +6,6 @@ import scala.collection.immutable.Queue
 
 class FlattenerSpec extends AnyWordSpec {
 
-  import com.baeldung.scala.flattening.Flattener.sequenceFlattener
-
   "A full flattener" should {
     "respect the contents of an already flat sequence" in {
       val flatList = List(3, 7, 2, 7, 1, 3, 4)

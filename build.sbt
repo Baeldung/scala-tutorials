@@ -134,13 +134,6 @@ lazy val scala_lang_2 = (project in file("scala-lang-2"))
       Seq(jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_collection_2 =
-  (project in file("scala-core-collection-2"))
-    .settings(
-      name := "scala-core-collection-2",
-      libraryDependencies ++= scalaTestDeps
-    )
-
 lazy val scala_core_collections = (project in file("scala-core-collections"))
   .settings(
     name := "scala-core-collections",
@@ -153,6 +146,11 @@ lazy val scala_core_collections_2 =
   (project in file("scala-core-collections-2"))
     .settings(
       name := "scala-core-collections-2",
+      libraryDependencies ++= scalaTestDeps
+    )
+lazy val scala_core_collections_3 =
+  (project in file("scala-core-collections-3"))
+    .settings(
       libraryDependencies ++= scalaTestDeps
     )
 
