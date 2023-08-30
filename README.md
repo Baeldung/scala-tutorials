@@ -11,12 +11,14 @@ Similarly, you can run the tests per module as `<module-name>/test`.
 
 Here are some of the useful commands that can be used within tbe sbt shell
 
-| SBT Command               | Description                                                                                           |
-|---------------------------|-------------------------------------------------------------------------------------------------------|
-| project <sub-module-name> | Switch to a particular module. After this, the command `compile`, `test` etc runs only on that module |
-| <sub-module>/compile | Compile only the provided module |
-| projects | Lists all the sub modules |
-| <sub-module>/run | Run the main class within the sub-module |
+| SBT Command                 | Description                                                                                           | Example            |
+|-----------------------------|-------------------------------------------------------------------------------------------------------|--------------------|
+| `project <sub-module-name>` | Switch to a particular module. After this, the command `compile`, `test` etc runs only on that module | project scala_core |
+| `<sub-module-name>/compile` | Compile only the provided module | scala_core/compile |
+| `projects`                  | Lists all the sub modules |                    |
+| `<sub-module-name>/run`      | Run the main class within the sub-module | scala_core/run |        
+
+**Note: The project name may not be same as directory name. Instead, it is the `lay val` variable used to define each module**
 
 # Test Naming Standards
 In this repository, we have classified the tests in 4 categories. 
