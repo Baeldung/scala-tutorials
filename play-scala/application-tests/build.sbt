@@ -7,7 +7,7 @@ enablePlugins(PlayScala)
 
 scalaVersion := ScalaVersions.scala2Version
 
-libraryDependencies += "com.google.inject" % "guice" % "6.0.0"
+libraryDependencies += guice
 libraryDependencies += "com.h2database" % "h2" % "1.4.200"
 libraryDependencies += "org.postgresql" % "postgresql" % "42.2.27"
 libraryDependencies += "com.typesafe.play" %% "play-slick" % "5.1.0"
