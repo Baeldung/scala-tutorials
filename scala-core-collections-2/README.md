@@ -7,3 +7,5 @@
 - [Finding the First Element Matching a Condition in a Collection](https://www.baeldung.com/scala/find-first-match-in-collection)
 - [Append an Element to an Array in Scala](https://www.baeldung.com/scala/array-append-element)
 - [Create a Random Sample of Fixed Size From a Scala List](https://www.baeldung.com/scala/list-uniform-sample)
+- [LazyList in Scala](https://www.baeldung.com/scala/lazylist)
+- [How to Flatten Collections in Scala](https://www.baeldung.com/scala/flattening-collections)
