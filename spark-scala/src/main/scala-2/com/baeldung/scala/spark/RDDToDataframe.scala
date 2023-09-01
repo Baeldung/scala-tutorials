@@ -8,11 +8,11 @@ import org.apache.spark.sql.types.{
   StructType
 }
 import org.apache.spark.rdd.RDD
-
 object RDDToDataframe extends App {
 
   val spark: SparkSession = SparkSession.builder().master("local").getOrCreate
   val sc = spark.sparkContext
+  import spark.implicits._
 
   val rdd = sc.parallelize(
     Seq(
@@ -71,8 +71,6 @@ object RDDToDataframe extends App {
   /** \|-- Name: string (nullable = false) \|-- Job: string (nullable = true)
     * \|-- Age: integer (nullable = true)
     */
-
-  import spark.implicits._
 
   val dfUsingToDFMethod = rdd.toDF("Name", "Job", "Age")
 

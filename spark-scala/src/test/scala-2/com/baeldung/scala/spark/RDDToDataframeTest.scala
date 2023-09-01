@@ -1,20 +1,13 @@
 package com.baeldung.scala.spark
 
+import com.baeldung.scala.spark.RDDToDataframe.convertRowRDDToDataframe
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.types.{
-  IntegerType,
-  StringType,
-  StructField,
-  StructType
-}
+import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-
 class RDDToDataframeTest extends AnyFlatSpec with should.Matchers {
 
   val spark: SparkSession = SparkSession.builder.master("local").getOrCreate
-
-  import com.baeldung.scala.spark.RDDToDataframe.convertRowRDDToDataframe
   "convertRowRDDToDataframe" should "be able to convert an RDD[Row] and return a DataFrame" in {
     val rdd = spark.sparkContext.parallelize(
       Seq(
