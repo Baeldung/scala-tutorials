@@ -1,3 +1,5 @@
+[![Scala Steward badge](https://img.shields.io/badge/Scala_Steward-helping-blue.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xwmckutAR1nkm4ggbyEcg/wWmlGLDAA3oL50xi6fk5ffZ3E2E3QfZDCcCN2YtbEWZt+Drc6u6rlqv7Uk0LdKqqr5rk2UCRXOk0vmQKGfc94nOJyQjouF9H/wCc9gECEYfONoAAAAASUVORK5CYII=)](https://scala-steward.org)
+
 # scala-tutorials
 This is the main repo for all the sample code used in the scala tutorials.
 
@@ -42,4 +44,4 @@ Note that these commands are defined at the root level of the project and hence 
 
 # Code formatting
 
-Before creating a PR, make sure the code is correctly formatted running `sbt scalafmt`. 
+Before creating a PR, run `sbt scalafmtAll` to automatically format the entire codebase. To check if there are any formatting issues(without fixing them), you may run `sbt scalafmtCheckAll` 
