@@ -2,7 +2,12 @@ package com.baeldung.scala.spark
 
 import com.baeldung.scala.spark.RDDToDataframe.convertRowRDDToDataframe
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
+import org.apache.spark.sql.types.{
+  IntegerType,
+  StringType,
+  StructField,
+  StructType
+}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 class RDDToDataframeTest extends AnyFlatSpec with should.Matchers {
