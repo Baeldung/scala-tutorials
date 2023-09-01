@@ -1,12 +1,11 @@
 package com.baeldung.scala.flattening
 
 import org.scalatest.wordspec.AnyWordSpec
+import Flattener._
 
 import scala.collection.immutable.Queue
 
 class FlattenerSpec extends AnyWordSpec {
-
-  import com.baeldung.scala.flattening.Flattener.sequenceFlattener
 
   "A full flattener" should {
     "respect the contents of an already flat sequence" in {

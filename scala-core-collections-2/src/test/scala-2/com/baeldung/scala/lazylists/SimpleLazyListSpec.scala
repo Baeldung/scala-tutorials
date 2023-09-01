@@ -1,6 +1,5 @@
-package com.baedung.scala.lazylists
+package com.baeldung.scala.lazylists
 
-import com.baeldung.scala.lazylists.{#:@:, SLNil, SimpleLazyList}
 import org.scalatest.wordspec.AnyWordSpec
 
 class SimpleLazyListSpec extends AnyWordSpec {
