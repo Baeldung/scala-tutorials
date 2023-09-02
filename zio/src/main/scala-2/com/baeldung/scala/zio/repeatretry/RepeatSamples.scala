@@ -23,6 +23,7 @@ object RepeatSamples extends ZIOAppDefault {
         Schedule.recurs(3)
       ) // executes 1 + 3 times
       repeatN <- simpleZio.repeatN(2) // executes 1 + 2 times
+      repeatUntil <- simpleZio.repeatUntil(_ => isEven)
       repeatOrElse <- aFailingZio.repeatOrElse(Schedule.recurs(3), fallback)
       repeatUntilZIO <- simpleZio.repeatUntilZIO(_ =>
         isOdd
@@ -35,6 +36,7 @@ object RepeatSamples extends ZIOAppDefault {
   }
   def isOdd: ZIO[Any, Nothing, Boolean] =
     ZIO.succeed(Random.nextInt(100) % 2 == 1)
+  def isEven = scala.util.Random.nextInt(100) % 2 == 0
 }
 
 object FailingRepeatSamples extends ZIOAppDefault {
