@@ -1,6 +1,6 @@
 package com.baeldung.scala.zio.repeatretry
 
-import zio.{Schedule, Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
+import zio.{Schedule, Scope, Task, ZIO, ZIOAppArgs, ZIOAppDefault}
 
 import scala.util.Random
 
@@ -24,11 +24,17 @@ object RepeatSamples extends ZIOAppDefault {
       ) // executes 1 + 3 times
       repeatN <- simpleZio.repeatN(2) // executes 1 + 2 times
       repeatOrElse <- aFailingZio.repeatOrElse(Schedule.recurs(3), fallback)
+      repeatUntilZIO <- simpleZio.repeatUntilZIO(_ =>
+        isOdd
+      ) // repeat until odd number
+      repeatWhileZIO <- simpleZio.repeatWhileZIO(_ =>
+        isOdd
+      ) // repeat while odd number
     } yield ()
 
   }
-  def isOdd: ZIO[Any, Nothing, Option[Boolean]] =
-    ZIO.when(Random.nextInt(100) % 2 == 1)(ZIO.succeed(true))
+  def isOdd: ZIO[Any, Nothing, Boolean] =
+    ZIO.succeed(Random.nextInt(100) % 2 == 1)
 }
 
 object FailingRepeatSamples extends ZIOAppDefault {
