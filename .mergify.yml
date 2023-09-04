@@ -6,7 +6,7 @@ pull_request_rules:
       - "#files=1"
       - "#approved-reviews-by>=1"    
       - check-success=CI - Jenkins
-      - author=scala-steward
+      - author=scala-steward-baeldung
       - or:
         - label=early-semver-minor
         - label=early-semver-patch
