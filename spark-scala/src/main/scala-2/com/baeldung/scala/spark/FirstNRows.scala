@@ -1,5 +1,6 @@
 package com.baeldung.scala.spark
-import sparkUtil.getSpark
+
+import com.baeldung.scala.spark.sparkUtil.getSpark
 
 object info {
   val spark = getSpark("FirstNRows")
@@ -16,8 +17,7 @@ object info {
 }
 
 object FirstNRows extends App {
-  import info.data
-  import info.spark
+  import info.{data, spark}
 
   data.show(3)
 

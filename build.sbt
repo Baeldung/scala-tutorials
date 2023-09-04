@@ -313,10 +313,6 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     name := "scala-libraries",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      sparkSqlDep,
-      sparkCoreDep
-    ),
-    libraryDependencies ++= Seq(
       "org.http4s" %% "http4s-dsl" % http4sVersion,
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
@@ -359,8 +355,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
       "org.tpolecat" %% "skunk-core" % "0.6.0",
-      sparkSqlDep,
-      sparkCoreDep,
       logback,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "org.typelevel" %% "cats-core" % "2.10.0"
@@ -390,7 +384,7 @@ val pureconfigVersion = "0.17.4"
 val jackSonVersion = "2.15.2"
 val log4jApiScalaVersion = "12.0"
 val log4jVersion = "2.20.0"
-val avro4sVersion = "3.1.1"
+val avro4sVersion = "4.1.1"
 val kafkaAvroSerializer = "6.0.14"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
@@ -400,8 +394,6 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     scalaVersion := scalaV,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      sparkSqlDep,
-      sparkCoreDep,
       "org.typelevel" %% "spire" % spireVersion,
       "org.apache.kafka" % "kafka-clients" % kafkaVersion,
       "com.github.pureconfig" %% "pureconfig" % pureconfigVersion,
@@ -503,6 +495,14 @@ lazy val scala212 = (project in file("scala-2-modules/scala212"))
     scalaVersion := ScalaVersions.scala212Version,
     name := "scala212",
     libraryDependencies ++= scalaTestDeps
+  )
+
+lazy val spark_scala = (project in file("spark-scala"))
+  .settings(
+    libraryDependencies ++= Seq(
+      sparkSqlDep,
+      sparkCoreDep
+    ) ++ scalaTestDeps
   )
 
 addCommandAlias(
