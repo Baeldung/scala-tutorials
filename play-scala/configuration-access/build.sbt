@@ -9,7 +9,7 @@ scalaVersion := ScalaVersions.scala2Version
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
-libraryDependencies += "org.mockito" % "mockito-scala_2.13" % "1.15.1" % Test
+libraryDependencies += "org.mockito" % "mockito-scala_2.13" % "1.17.22" % Test
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.baeldung.controllers._"
