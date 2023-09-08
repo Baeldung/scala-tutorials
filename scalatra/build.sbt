@@ -1,4 +1,4 @@
-val ScalatraVersion = "2.8.2"
+val ScalatraVersion = "2.8.4"
 
 ThisBuild / scalaVersion := "2.13.10"
 ThisBuild / organization := "baeldung"
@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
   "org.eclipse.jetty" % "jetty-webapp" % "9.4.35.v20201120" % "container",
   "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
   "org.scalatra" %% "scalatra-auth" % ScalatraVersion,
-  "org.scalatra" %% "scalatra-json" % "2.8.2",
+  "org.scalatra" %% "scalatra-json" % "2.8.4",
   "org.json4s" %% "json4s-jackson" % "4.0.1",
   "com.typesafe.slick" %% "slick" % "3.3.2",
   "com.h2database" % "h2" % "1.4.196",
