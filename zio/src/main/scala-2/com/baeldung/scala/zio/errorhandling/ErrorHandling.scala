@@ -55,6 +55,9 @@ object ErrorHandling {
   }
 
   def usingRetryOrElse: ZIO[Any, IOException, String] = {
-    stubbedResource(true).retryOrElse(Schedule.recurs(3), (_, _: Long) => stubbedResource(false))
+    stubbedResource(true).retryOrElse(
+      Schedule.recurs(3),
+      (_, _: Long) => stubbedResource(false)
+    )
   }
 }

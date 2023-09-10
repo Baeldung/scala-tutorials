@@ -39,7 +39,8 @@ object ErrorHandlingSpec extends ZIOSpecDefault {
         } yield assertTrue(result == successResult)
       },
       test("usingRetry returns an IOException") {
-        val failureResult = ErrorHandling.usingRetryOrElse.catchAll(ZIO.succeed(_))
+        val failureResult =
+          ErrorHandling.usingRetryOrElse.catchAll(ZIO.succeed(_))
         for {
           error <- failureResult
         } yield assertTrue(error == error)
