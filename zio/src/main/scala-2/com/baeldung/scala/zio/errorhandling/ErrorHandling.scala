@@ -1,6 +1,6 @@
 package com.baeldung.scala.zio.errorhandling
 
-import zio.ZIO
+import zio.{Schedule, ZIO}
 
 import java.io.IOException
 
@@ -43,11 +43,18 @@ object ErrorHandling {
     )
   }
 
-  def usingFoldZIO = {
+  def usingFoldZIO: ZIO[Any, IOException, String] = {
     stubbedResource(true).foldZIO(
       fail => stubbedResource(false),
       success => ZIO.succeed(success)
     )
   }
 
+  def usingRetry: ZIO[Any, IOException, String] = {
+    stubbedResource(true).retry(Schedule.recurs(3))
+  }
+
+  def usingRetryOrElse: ZIO[Any, IOException, String] = {
+    stubbedResource(true).retryOrElse(Schedule.recurs(3), (_, _: Long) => stubbedResource(false))
+  }
 }

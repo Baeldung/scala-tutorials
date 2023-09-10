@@ -1,6 +1,6 @@
 package com.baeldung.scala.zio.errorhandling
 
-import zio.Scope
+import zio.{Scope, ZIO}
 import zio.test.{Spec, TestEnvironment, ZIOSpecDefault}
 import zio.test._
 
@@ -36,6 +36,17 @@ object ErrorHandlingSpec extends ZIOSpecDefault {
       test("usingFoldZIO returns success") {
         for {
           result <- ErrorHandling.usingFoldZIO
+        } yield assertTrue(result == successResult)
+      },
+      test("usingRetry returns an IOException") {
+        val failureResult = ErrorHandling.usingRetryOrElse.catchAll(ZIO.succeed(_))
+        for {
+          error <- failureResult
+        } yield assertTrue(error == error)
+      },
+      test("usingRetryOrElse returns success") {
+        for {
+          result <- ErrorHandling.usingRetryOrElse
         } yield assertTrue(result == successResult)
       }
     )
