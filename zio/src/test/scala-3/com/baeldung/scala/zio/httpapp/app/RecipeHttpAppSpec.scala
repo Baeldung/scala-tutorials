@@ -7,7 +7,7 @@ import zio.http.*
 import zio.*
 import zio.http.netty.server.NettyDriver
 
-object RecipeHttpAppSpec extends ZIOSpecDefault :
+object RecipeHttpAppSpec extends ZIOSpecDefault:
 
   def status(response: Response): Status = response.status
 
@@ -70,8 +70,7 @@ object RecipeHttpAppSpec extends ZIOSpecDefault :
       port <- ZIO.serviceWith[Server](_.port)
     } yield Request
       .post(
-        Body.fromString(
-          """
+        Body.fromString("""
             |{
             | "id": 1,
             | "name": "test-recipe",
@@ -81,4 +80,3 @@ object RecipeHttpAppSpec extends ZIOSpecDefault :
         url = URL(Path.root / "recipes").withPort(port)
       )
       .addHeaders(Headers(Header.Accept(MediaType.text.`plain`)))
-
