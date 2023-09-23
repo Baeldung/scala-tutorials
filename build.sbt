@@ -430,6 +430,10 @@ lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
   libraryDependencies ++= scalaTestDeps
 )
 
+lazy val scala3_lang_3 = (project in file("scala3-lang-3")).settings(
+  libraryDependencies ++= scalaTestDeps
+)
+
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
