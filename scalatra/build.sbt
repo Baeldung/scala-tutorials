@@ -1,6 +1,6 @@
 val ScalatraVersion = "2.8.2"
 
-ThisBuild / scalaVersion := "2.13.10"
+ThisBuild / scalaVersion := "2.13.12"
 ThisBuild / organization := "baeldung"
 
 name := "scalatratutorial"
