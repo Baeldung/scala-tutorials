@@ -239,7 +239,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "2.2.220",
+      "com.h2database" % "h2" % "2.2.224",
       "com.chuusai" %% "shapeless" % shapelessVersion,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "co.fs2" %% "fs2-core" % fs2Version,
