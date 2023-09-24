@@ -185,7 +185,7 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
     name := "scala-test-junit4",
     libraryDependencies ++=
       Seq(
-        "org.scalatestplus" %% "junit-4-13" % "3.2.16.0" % Test,
+        "org.scalatestplus" %% "junit-4-13" % "3.2.17.0" % Test,
         jUnitInterface
       )
   )
