@@ -13,10 +13,10 @@ val logback = "ch.qos.logback" % "logback-classic" % "1.3.11"
 val embedMongoVersion = "4.7.2"
 
 val scalaTestDeps = Seq(
-  "org.scalatest" %% "scalatest" % "3.2.16" % Test,
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.16" % Test,
-  "org.scalatest" %% "scalatest-wordspec" % "3.2.16" % Test,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.16" % Test
+  "org.scalatest" %% "scalatest" % "3.2.17" % Test,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.17" % Test,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.17" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.17" % Test
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
