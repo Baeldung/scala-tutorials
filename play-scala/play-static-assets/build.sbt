@@ -7,7 +7,7 @@ enablePlugins(PlayScala)
 enablePlugins(SbtWeb)
 
 // scalaVersion := ScalaVersions.scala2Version
-scalaVersion := "2.13.11"
+scalaVersion := "2.13.12"
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
