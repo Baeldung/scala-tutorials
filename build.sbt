@@ -13,14 +13,14 @@ val logback = "ch.qos.logback" % "logback-classic" % "1.3.11"
 val embedMongoVersion = "4.7.2"
 
 val scalaTestDeps = Seq(
-  "org.scalatest" %% "scalatest" % "3.2.16" % Test,
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.16" % Test,
-  "org.scalatest" %% "scalatest-wordspec" % "3.2.16" % Test,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.16" % Test
+  "org.scalatest" %% "scalatest" % "3.2.17" % Test,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.17" % Test,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.17" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.17" % Test
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
-val zioVersion = "2.0.15"
+val zioVersion = "2.0.17"
 
 lazy val scala_core = (project in file("scala-core"))
   .settings(
@@ -185,7 +185,7 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
     name := "scala-test-junit4",
     libraryDependencies ++=
       Seq(
-        "org.scalatestplus" %% "junit-4-13" % "3.2.16.0" % Test,
+        "org.scalatestplus" %% "junit-4-13" % "3.2.17.0" % Test,
         jUnitInterface
       )
   )
@@ -225,7 +225,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.7"
-val fs2Version = "3.8.0"
+val fs2Version = "3.9.2"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
@@ -366,7 +366,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     ),
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.20.128",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.532" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.556" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.40.17" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.40.17" % IntegrationTest
     ),

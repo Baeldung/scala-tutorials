@@ -5,3 +5,5 @@
 - [Resource Handling in ZIO](https://www.baeldung.com/scala/zio-resource-handling)
 - [Different Ways to Create ZIO Effects](https://www.baeldung.com/scala/zio-effects)
 - [Testing ZIO Applications Using ZIO Test](https://www.baeldung.com/scala/zio-test)
+- [Repeat and Retry in ZIO](https://www.baeldung.com/scala/zio-repeat-retry)
+- [Introduction to Fibers in ZIO](https://www.baeldung.com/scala/zio-fibers-tutorial)
