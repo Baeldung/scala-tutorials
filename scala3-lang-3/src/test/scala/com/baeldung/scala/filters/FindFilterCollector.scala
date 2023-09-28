@@ -78,26 +78,34 @@ class FindFilterCollector extends AnyWordSpec with Matchers {
 
     "collect the elements matching the condition and square it" in {
       val numbers = List(1, 2, 3, 4, 5, 6)
-      val even = numbers.collect {
+      val evenSquared = numbers.collect {
         case n if n % 2 == 0 => n * n
       }
-      even shouldBe List(4, 16, 36)
+      evenSquared shouldBe List(4, 16, 36)
     }
 
-    "collectFirst should return the first element matching the partial function" in {
+    "collect and filter map be equivalent" in {
       val numbers = List(1, 2, 3, 4, 5, 6)
-      val firstEven = numbers.collectFirst {
-        case n if n % 2 == 0 => n
-      }
-      firstEven shouldBe Some(2)
+      val evenSquared = numbers.filter(_ % 2 == 0).map(n => n * n)
+      evenSquared shouldBe List(4, 16, 36)
     }
 
-    "collectFirst should return the first element matching the partial function in the same order of collection" in {
-      val numbers = SortedSet(6, 5, 4, 3, 2, 1)
-      val firstEven = numbers.collectFirst {
-        case n if n % 2 == 0 => n
+    "collectFirst" should {
+      "return the first element matching the partial function" in {
+        val numbers = List(1, 2, 3, 4, 5, 6)
+        val firstEven = numbers.collectFirst {
+          case n if n % 2 == 0 => n
+        }
+        firstEven shouldBe Some(2)
       }
-      firstEven shouldBe Some(2)
+
+      "return the first element matching the partial function in the same order of collection" in {
+        val numbers = SortedSet(6, 5, 4, 3, 2, 1)
+        val firstEven = numbers.collectFirst {
+          case n if n % 2 == 0 => n
+        }
+        firstEven shouldBe Some(2)
+      }
     }
   }
 
