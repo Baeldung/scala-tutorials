@@ -8,9 +8,9 @@ import java.io.*
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 class YamlExampleSuite
-  extends AnyFlatSpec
-  with Matchers
-  with TableDrivenPropertyChecks:
+    extends AnyFlatSpec
+    with Matchers
+    with TableDrivenPropertyChecks:
   val myServer = Server("localhost", 8080)
   val myOC = OrdersConfig("test", myServer, List("Http", "Grpc"))
 
@@ -45,7 +45,7 @@ class YamlExampleSuite
 
   "ordersFileConfig" should "be of type Either[Throwable, OrdersConfig] " in {
     ordersFileConfig2 shouldBe an[
-      Either[Throwable, OrdersConfig] 
+      Either[Throwable, OrdersConfig]
     ]
   }
 
@@ -56,7 +56,9 @@ class YamlExampleSuite
   }
 
   "fileWriter" should "be of type Either[Throwable, FileWriter]" in {
-    fileWriter("src/test/resources/sample.yaml") shouldBe an[Either[Throwable, FileWriter]]
+    fileWriter("src/test/resources/sample.yaml") shouldBe an[
+      Either[Throwable, FileWriter]
+    ]
   }
 
   "jsonString" should "be of type String" in {
@@ -64,11 +66,17 @@ class YamlExampleSuite
   }
 
   "writeJsonStr" should "be of type Either[Throwable, String]" in {
-    writeJsonStr("src/test/resources/sample.yaml", jsonString) shouldBe an[Either[Throwable, String]]
+    writeJsonStr(
+      "src/test/resources/sample.yaml",
+      jsonString
+    ) shouldBe an[Either[Throwable, String]]
   }
 
   "writeOrdersConfig" should "be of type String" in {
-    writeOrdersConfig("src/test/resources/sample2.yaml", myCaseClass) shouldBe an[String]
+    writeOrdersConfig(
+      "src/test/resources/sample2.yaml",
+      myCaseClass
+    ) shouldBe an[String]
   }
 
 end YamlExampleSuite
