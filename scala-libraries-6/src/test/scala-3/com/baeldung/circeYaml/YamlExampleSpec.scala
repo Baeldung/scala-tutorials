@@ -8,9 +8,9 @@ import java.io.*
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 class YamlExampleSuite
-    extends AnyFlatSpec
-    with Matchers
-    with TableDrivenPropertyChecks:
+  extends AnyFlatSpec
+  with Matchers
+  with TableDrivenPropertyChecks:
   val myServer = Server("localhost", 8080)
   val myOC = OrdersConfig("test", myServer, List("Http", "Grpc"))
 

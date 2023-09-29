@@ -16,9 +16,9 @@ import io.circe.syntax.*
 object YamlExample:
   case class Server(host: String, port: Int)
   case class OrdersConfig(
-      name: String,
-      server: Server,
-      serverType: List[String]
+    name: String,
+    server: Server,
+    serverType: List[String]
   )
 
   val ordersYamlConfig: String =
@@ -35,7 +35,7 @@ object YamlExample:
     yaml.parser.parse(ordersYamlConfig)
 
   def processJson(
-      json: Either[ParsingFailure, Json]
+    json: Either[ParsingFailure, Json]
   ): Either[Error, OrdersConfig] =
     json
       .leftMap(err => err: Error)
@@ -106,8 +106,8 @@ object YamlExample:
     yield writeYaml(jsnValue, fw, path)
 
   val myCaseClass =
-    OrdersConfig("Orders", Server("localhost", 8080), List("Http", "Grpc"))  
-  
+    OrdersConfig("Orders", Server("localhost", 8080), List("Http", "Grpc"))
+
   def writeOrdersConfig(path: String, oc: OrdersConfig): String =
     fileWriter(path) match
       case Right(fw) => writeYaml(oc.asJson, fw, path)
@@ -152,5 +152,5 @@ def program =
     writeOrdersConfig("src/main/resources/sample2.yaml", myCaseClass)
   )
 
-  /**sample2.yaml has been written
+  /** sample2.yaml has been written
     */
