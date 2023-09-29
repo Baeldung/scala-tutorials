@@ -7,3 +7,4 @@
 - [Testing ZIO Applications Using ZIO Test](https://www.baeldung.com/scala/zio-test)
 - [Repeat and Retry in ZIO](https://www.baeldung.com/scala/zio-repeat-retry)
 - [Introduction to Fibers in ZIO](https://www.baeldung.com/scala/zio-fibers-tutorial)
+- [Error Handling in ZIO](https://www.baeldung.com/scala/zio-error-handling)
