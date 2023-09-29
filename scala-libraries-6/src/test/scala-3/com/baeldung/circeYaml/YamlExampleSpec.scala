@@ -43,22 +43,32 @@ class YamlExampleSuite
     }
   }
 
+  "ordersFileConfig" should "be of type Either[Throwable, OrdersConfig] " in {
+    ordersFileConfig2 shouldBe an[
+      Either[Throwable, OrdersConfig] 
+    ]
+  }
+
   "ordersFileConfig2" should "be of type Either[Throwable, List[Either[Error, OrdersConfig]]]" in {
     ordersFileConfig2 shouldBe an[
       Either[Throwable, List[Either[Error, OrdersConfig]]]
     ]
   }
 
+  "fileWriter" should "be of type Either[Throwable, FileWriter]" in {
+    fileWriter("src/test/resources/sample.yaml") shouldBe an[Either[Throwable, FileWriter]]
+  }
+
   "jsonString" should "be of type String" in {
     jsonString shouldBe an[String]
   }
 
-  "fileWriter" should "be of type Either[Throwable, FileWriter]" in {
-    fileWriter shouldBe an[Either[Throwable, FileWriter]]
+  "writeJsonStr" should "be of type Either[Throwable, String]" in {
+    writeJsonStr("src/test/resources/sample.yaml", jsonString) shouldBe an[Either[Throwable, String]]
   }
 
-  "writer" should "be of type Either[Throwable, String]" in {
-    writer shouldBe an[Either[Throwable, String]]
+  "writeOrdersConfig" should "be of type String" in {
+    writeOrdersConfig("src/test/resources/sample2.yaml", myCaseClass) shouldBe an[String]
   }
 
 end YamlExampleSuite

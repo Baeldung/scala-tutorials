@@ -6,17 +6,19 @@ import cats.syntax.either.*
 import io.circe.generic.auto.*
 import java.io.FileReader
 import java.io.File
+import java.nio.file.Paths
 import scala.util.Try
 import io.circe.parser.*
 import java.io.FileWriter
 import io.circe.yaml.syntax.*
+import io.circe.syntax.*
 
 object YamlExample:
   case class Server(host: String, port: Int)
   case class OrdersConfig(
-    name: String,
-    server: Server,
-    serverType: List[String]
+      name: String,
+      server: Server,
+      serverType: List[String]
   )
 
   val ordersYamlConfig: String =
@@ -33,7 +35,7 @@ object YamlExample:
     yaml.parser.parse(ordersYamlConfig)
 
   def processJson(
-    json: Either[ParsingFailure, Json]
+      json: Either[ParsingFailure, Json]
   ): Either[Error, OrdersConfig] =
     json
       .leftMap(err => err: Error)
@@ -70,6 +72,20 @@ object YamlExample:
       .map(fileReader => yaml.parser.parseDocuments(fileReader).toList)
       .map(_.map(processJson))
 
+  def fileWriter(path: String): Either[Throwable, FileWriter] =
+    Try {
+      new FileWriter(new File(path))
+    }.toEither
+
+  def writeYaml(jsnValue: Json, fw: FileWriter, path: String): String =
+    Try {
+      fw.write(jsnValue.asYaml.spaces2)
+      fw.close()
+    }.fold(
+      e => e.getMessage(),
+      _ => s"${Paths.get(path).getFileName().toString()} has been written"
+    )
+
   val jsonString =
     """
       {
@@ -83,24 +99,20 @@ object YamlExample:
       }
     """
 
-  val jsonConfig: Either[ParsingFailure, Json] = parse(jsonString)
-
-  val fileWriter: Either[Throwable, FileWriter] =
-    Try {
-      new FileWriter(new File("src/main/scala/resources/sample.yaml"))
-    }.toEither
-
-  val writer: Either[Throwable, String] =
+  def writeJsonStr(path: String, jsonStr: String): Either[Throwable, String] =
     for
-      jsnValue <- jsonConfig
-      fw <- fileWriter
-    yield Try {
-      fw.write(jsnValue.asYaml.spaces2)
-      fw.close()
-    }.fold(
-      e => e.getMessage(),
-      _ => "sample.yaml has been written"
-    )
+      jsnValue <- parse(jsonString)
+      fw <- fileWriter(path)
+    yield writeYaml(jsnValue, fw, path)
+
+  val myCaseClass =
+    OrdersConfig("Orders", Server("localhost", 8080), List("Http", "Grpc"))  
+  
+  def writeOrdersConfig(path: String, oc: OrdersConfig): String =
+    fileWriter(path) match
+      case Right(fw) => writeYaml(oc.asJson, fw, path)
+      case Left(err) => err.getMessage
+
 end YamlExample
 
 @main
@@ -127,10 +139,18 @@ def program =
     * OrdersConfig(Test,Server(localhost,9999),List(Http, Grpc))
     */
 
-  // write yaml
-  writer match
+  // write json String to yaml file
+  writeJsonStr("src/main/resources/sample.yaml", jsonString) match
     case Right(v)  => println(v)
     case Left(err) => println(err.getMessage)
 
   /** sample.yaml has been written
+    */
+
+  // write case class to yaml file
+  println(
+    writeOrdersConfig("src/main/resources/sample2.yaml", myCaseClass)
+  )
+
+  /**sample2.yaml has been written
     */
