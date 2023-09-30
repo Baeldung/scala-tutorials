@@ -1,0 +1,15 @@
+pull_request_rules:
+  - name: Automatic merge on approval
+    conditions:
+      - label!=early-semver-major
+      - label!=semver-spec-major
+      - "#files=1"
+      - "#approved-reviews-by>=1"    
+      - check-success=CI - Jenkins
+      - author=scala-steward-baeldung
+      - or:
+        - label=early-semver-minor
+        - label=early-semver-patch
+    actions:
+      merge:
+        method: merge
