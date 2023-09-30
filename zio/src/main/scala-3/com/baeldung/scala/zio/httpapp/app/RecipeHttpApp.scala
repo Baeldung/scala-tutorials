@@ -14,6 +14,28 @@ object RecipeHttpApp:
 
   private type RecipeEffect = ZIO[RecipeService, Throwable, Response]
 
+  private def jsonErrorResponse(error: String) = {
+    ZIO
+      .debug(s"Failed to parse the input: $error")
+      .as(
+        Response.text(error).withStatus(Status.BadRequest)
+      )
+  }
+
+  val postHandler: PartialFunction[Request, RecipeEffect] = {
+    case req @ (Method.POST -> Root / RecipeHttpApp.appContext) =>
+      (for {
+        u <- req.body.asString.map(_.fromJson[Recipe])
+        response <- u match {
+          case Left(e) => jsonErrorResponse(e)
+          case Right(recipe) =>
+            ZIO
+              .serviceWithZIO[RecipeService](_.save(recipe))
+              .map(recipe => Response.json(recipe.toJson))
+        }
+      } yield response).orDie
+  }
+
   val getHandler: PartialFunction[Request, RecipeEffect] = {
     case Method.GET -> Root / RecipeHttpApp.appContext / id =>
       (for {
@@ -27,36 +49,12 @@ object RecipeHttpApp:
       } yield response).orDie
   }
 
-  val postHandler: PartialFunction[Request, RecipeEffect] = {
-    case req @ (Method.POST -> Root / RecipeHttpApp.appContext) =>
-      (for {
-        u <- req.body.asString.map(_.fromJson[Recipe])
-        response <- u match {
-          case Left(e) =>
-            ZIO
-              .debug(s"Failed to parse the input: $e")
-              .as(
-                Response.text(e).withStatus(Status.BadRequest)
-              )
-          case Right(recipe) =>
-            ZIO
-              .serviceWithZIO[RecipeService](_.save(recipe))
-              .map(recipe => Response.json(recipe.toJson))
-        }
-      } yield response).orDie
-  }
-
   private val putHandler: PartialFunction[Request, RecipeEffect] = {
     case req @ Method.PUT -> Root / RecipeHttpApp.appContext =>
       (for {
         u <- req.body.asString.map(_.fromJson[Recipe])
         response <- u match {
-          case Left(e) =>
-            ZIO
-              .debug(s"Failed to parse the input: $e")
-              .as(
-                Response.text(e).withStatus(Status.BadRequest)
-              )
+          case Left(e) => jsonErrorResponse(e)
           case Right(recipe) =>
             ZIO
               .serviceWithZIO[RecipeService](_.update(recipe))
@@ -82,7 +80,15 @@ object RecipeHttpApp:
   }
 
   def apply(): Http[RecipeService, Throwable, Request, Response] =
-    Http.collectZIO[Request] { getHandler } ++
-      Http.collectZIO[Request] { postHandler } ++
-      Http.collectZIO[Request] { putHandler } ++
-      Http.collectZIO[Request] { deleteHandler }
+    Http.collectZIO[Request] {
+      postHandler
+    } ++
+      Http.collectZIO[Request] {
+        getHandler
+      } ++
+      Http.collectZIO[Request] {
+        putHandler
+      } ++
+      Http.collectZIO[Request] {
+        deleteHandler
+      }
