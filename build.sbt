@@ -6,8 +6,8 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.1"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.1" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.2"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.2" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.3.11"
 val embedMongoVersion = "4.7.2"
