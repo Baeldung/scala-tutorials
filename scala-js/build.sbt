@@ -5,7 +5,7 @@ version := "1.0-SNAPSHOT"
 
 enablePlugins(ScalaJSPlugin)
 
-scalaVersion := "2.13.10"
+scalaVersion := "2.13.12"
 
 scalaJSUseMainModuleInitializer := true
 libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.2.0"
