@@ -411,7 +411,8 @@ lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface
+    libraryDependencies += jUnitInterface,
+    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
   )
 
 lazy val scala_design_patterns = (project in file("scala-design-patterns"))
