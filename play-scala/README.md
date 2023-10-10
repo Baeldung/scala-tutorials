@@ -7,3 +7,4 @@
 - [Error Handling in the Play Framework Using Scala](https://www.baeldung.com/scala/play-error-handling)
 - [Dependency Injection with Play](https://www.baeldung.com/scala/play-di)
 - [Testing a Play Application](https://www.baeldung.com/scala/scalatest-play-app)
+- [Serving Static Assets in Play](https://www.baeldung.com/scala/play-serve-static-assets)

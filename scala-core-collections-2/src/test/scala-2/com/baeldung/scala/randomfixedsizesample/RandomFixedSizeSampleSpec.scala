@@ -28,7 +28,8 @@ class RandomFixedSizeSampleSpec extends AnyWordSpec with Matchers {
       isSorted(list_1) shouldBe false
       isSorted(list_2) shouldBe false
     }
-    "ensure getRandomSampleShuffle is the most performant, then goes getRandomSampleZip and then getRandomSampleRec" in {
+    // We can't really depend on this test to check performance. So commenting this out
+    /*"ensure getRandomSampleShuffle is the most performant, then goes getRandomSampleZip and then getRandomSampleRec" in {
       val list = List.range(0, 10_000)
       val sampleSize = 100
 
@@ -49,7 +50,7 @@ class RandomFixedSizeSampleSpec extends AnyWordSpec with Matchers {
 
       duration_0 should be > duration_1
       duration_1 should be > duration_2
-    }
+    }*/
 
   }
 
