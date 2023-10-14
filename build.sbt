@@ -424,14 +424,17 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
   )
 
 lazy val scala3_lang = (project in file("scala3-lang")).settings(
+  scalaVersion := scala3Version,
   libraryDependencies ++= scalaTestDeps
 )
 
 lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
+  scalaVersion := scala3Version,
   libraryDependencies ++= scalaTestDeps
 )
 
 lazy val scala3_lang_3 = (project in file("scala3-lang-3")).settings(
+  scalaVersion := scala3Version,
   libraryDependencies ++= scalaTestDeps
 )
 
