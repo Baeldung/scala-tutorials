@@ -10,19 +10,27 @@ class MatchExpressionImprovementsTest extends AnyWordSpec with Matchers {
 
   "wordFromOptionNoBraces" should {
     "return Option is None for None" in {
-      MatchExpressionImprovements.wordFromOptionNoBraces(testNone) mustBe "Option is None"
+      MatchExpressionImprovements.wordFromOptionNoBraces(
+        testNone
+      ) mustBe "Option is None"
     }
     "return String in sentence for Some" in {
-      MatchExpressionImprovements.wordFromOptionNoBraces(testSome) mustBe "Option contains Hello World!"
+      MatchExpressionImprovements.wordFromOptionNoBraces(
+        testSome
+      ) mustBe "Option contains Hello World!"
     }
   }
 
   "wordFromOption" should {
     "return Option is None for None" in {
-      MatchExpressionImprovements.wordFromOption(testNone) mustBe "Option is None"
+      MatchExpressionImprovements.wordFromOption(
+        testNone
+      ) mustBe "Option is None"
     }
     "return String in sentence for Some" in {
-      MatchExpressionImprovements.wordFromOption(testSome) mustBe "Option contains Hello World!"
+      MatchExpressionImprovements.wordFromOption(
+        testSome
+      ) mustBe "Option contains Hello World!"
     }
   }
 
@@ -34,7 +42,6 @@ class MatchExpressionImprovementsTest extends AnyWordSpec with Matchers {
       MatchExpressionImprovements.isOptionEmpty(testSome) mustBe false
     }
   }
-
 
   "optionContains" should {
     "return 'nothing' for None" in {
