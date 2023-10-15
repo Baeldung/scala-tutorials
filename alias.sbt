@@ -4,3 +4,8 @@ addCommandAlias(
 )
 
 addCommandAlias("compileAndRunSpecialTest", "compile;specialTests")
+
+addCommandAlias(
+  "onlyUnitTests",
+  """; set ThisBuild/Test/testOptions += Tests.Filter(t => t.endsWith("UnitTest")); test""".stripMargin
+)
