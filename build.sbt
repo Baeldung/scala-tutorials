@@ -173,7 +173,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "4.10.2",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "4.11.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -258,7 +258,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.6"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.9.3"
+val elastic4sVersion = "8.9.4"
 val sparkVersion = "3.5.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -354,7 +354,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
-      "org.tpolecat" %% "skunk-core" % "0.6.0",
+      "org.tpolecat" %% "skunk-core" % "0.6.1",
       logback,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "org.typelevel" %% "cats-core" % "2.10.0"
@@ -365,8 +365,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.1" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.158",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.556" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.20.162",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.566" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
@@ -379,13 +379,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.5.0-ce"
+val kafkaVersion = "7.5.1-ce"
 val pureconfigVersion = "0.17.4"
-val jackSonVersion = "2.15.2"
+val jackSonVersion = "2.15.3"
 val log4jApiScalaVersion = "12.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.1"
-val kafkaAvroSerializer = "6.2.11"
+val kafkaAvroSerializer = "6.2.12"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
