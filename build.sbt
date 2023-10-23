@@ -424,15 +424,18 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
   )
 
 lazy val scala3_lang = (project in file("scala3-lang")).settings(
-  libraryDependencies ++= scalaTestDeps
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
 )
 
 lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
-  libraryDependencies ++= scalaTestDeps
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
 )
 
 lazy val scala3_lang_3 = (project in file("scala3-lang-3")).settings(
-  libraryDependencies ++= scalaTestDeps
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
 )
 
 lazy val cats_effects = (project in file("cats-effects"))
