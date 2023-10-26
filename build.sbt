@@ -385,7 +385,7 @@ val jackSonVersion = "2.15.3"
 val log4jApiScalaVersion = "13.0.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.1"
-val kafkaAvroSerializer = "6.2.12"
+val kafkaAvroSerializer = "7.5.1"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
