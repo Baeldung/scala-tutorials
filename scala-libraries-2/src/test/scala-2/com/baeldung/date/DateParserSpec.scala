@@ -53,7 +53,7 @@ class DateParserSpec extends AnyWordSpec with Matchers {
   "a library-based parser" should {
     "retrieve date elements when a complex date/time string is passed" in {
       val attemptedParse =
-        Try(ZonedDateTime.parse("2022-02-14T20:30:00.00+01:00[Europe/Paris]"))
+        Try(ZonedDateTime.parse("2022-02-14T20:30:00.00Z[Europe/Paris]"))
       assert(attemptedParse.isSuccess)
       // This parsing is different in JDK 8 and 11 due to a bug in JDK 8
       // https://bugs.openjdk.org/browse/JDK-8066982
