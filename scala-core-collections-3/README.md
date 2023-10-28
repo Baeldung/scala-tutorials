@@ -2,3 +2,4 @@
 - [Guide to Scala ListSet](https://www.baeldung.com/scala/listset)
 - [Guide to Scala ListMap](https://www.baeldung.com/scala/listmap)
 - [Get a List Item by Index in Scala](https://www.baeldung.com/scala/list-get-item-by-index)
+- [Moving Averages in Scala: A Tale of Two Approaches](https://www.baeldung.com/scala/moving-averages)
