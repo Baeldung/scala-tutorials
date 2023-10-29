@@ -3,6 +3,9 @@
 # scala-tutorials
 This is the main repo for all the sample code used in the scala tutorials.
 
+# Pre-requisites
+Suggested JDK version : JDK 11
+
 # Compiling and Running Tests
 This repo uses a multi-module build with many sub modules.
 To compile the entire module, you may use the command `sbt compile`. However, this loads all the modules and compiles all of them, which might take some time.
