@@ -12,7 +12,7 @@ class ImmutableArraySpec extends AnyWordSpec {
 
   "dogs and cats" should {
     "get along together" in {
-      val myPets: IArray[Pet] = cats ++ dogs
+      val myPets = cats ++ dogs   // myPets is an IArray[Pet]
       assertResult(4)(myPets.length)
       assert(myPets.contains(Dog("barky")))
       assert(myPets.contains(Cat("silky")))
