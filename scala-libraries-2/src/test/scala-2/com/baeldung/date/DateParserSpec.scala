@@ -61,7 +61,7 @@ class DateParserSpec extends AnyWordSpec with Matchers {
       assert(zdt.get(ChronoField.YEAR) == 2022)
       assert(zdt.get(ChronoField.MONTH_OF_YEAR) == 2)
       assert(zdt.get(ChronoField.DAY_OF_MONTH) == 14)
-      // assert(zdt.get(ChronoField.HOUR_OF_DAY) == 21) // 21 due to timezone DST
+      assert(zdt.get(ChronoField.HOUR_OF_DAY) == 21) // 21 due to timezone DST
       assert(zdt.get(ChronoField.MINUTE_OF_HOUR) == 30)
       assert(zdt.getZone == ZoneId.of("Europe/Paris"))
     }
