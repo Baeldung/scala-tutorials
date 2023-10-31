@@ -33,7 +33,8 @@ object PlayerInfo {
         config.getString("name"),
         config.getString("email"),
         config.getInt("age"),
-        new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(config.getString("signUpDate")),
+        new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+          .parse(config.getString("signUpDate")),
         Try(config.getString("twitterHandle")).toOption
       )
     }
