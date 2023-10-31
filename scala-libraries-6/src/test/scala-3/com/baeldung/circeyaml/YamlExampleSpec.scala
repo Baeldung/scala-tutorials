@@ -1,4 +1,4 @@
-package com.baeldung.circeYaml
+package com.baeldung.circeyaml
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
