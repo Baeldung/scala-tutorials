@@ -1,4 +1,4 @@
-package com.baeldung.circeYaml
+package com.baeldung.circeyaml
 
 import io.circe.yaml
 import io.circe.*
