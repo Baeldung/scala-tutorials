@@ -21,15 +21,15 @@ class ArrivalControllerH2Test
   private implicit def wsClient: WSClient = app.injector.instanceOf[WSClient]
 
   "ArrivalController#index" should {
-//    "return arrivals using h2" in {
-//      val controllerResponseF: Future[WSResponse] = wsCall(
-//        com.baeldung.arrival.controller.routes.ArrivalController.index()
-//      ).get()
-//      whenReady(controllerResponseF)(controllerResponse => {
-//        val arrivals = controllerResponse.json.as[JsArray].value
-//        assert(arrivals.length === 6)
-//      })
-//    }
+    "return arrivals using h2" in {
+      val controllerResponseF: Future[WSResponse] = wsCall(
+        com.baeldung.arrival.controller.routes.ArrivalController.index()
+      ).get()
+      whenReady(controllerResponseF)(controllerResponse => {
+        val arrivals = controllerResponse.json.as[JsArray].value
+        assert(arrivals.length === 6)
+      })
+    }
   }
 
   override implicit def patienceConfig: PatienceConfig = PatienceConfig(
