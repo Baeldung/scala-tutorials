@@ -4,6 +4,11 @@ ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
+ThisBuild / Test / fork := true
+
+javaOptions ++= Seq(
+  "--add-exports java.base/sun.nio.ch=ALL-UNNAMED"
+)
 
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.2"
