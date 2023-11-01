@@ -8,7 +8,7 @@ version := "0.1.0-SNAPSHOT"
 libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % ScalatraVersion,
   "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
-  "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
+  "ch.qos.logback" % "logback-classic" % "1.4.11" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "11.0.17" % "container",
   "javax.servlet" % "javax.servlet-api" % "4.0.1" % "provided",
   "org.scalatra" %% "scalatra-auth" % ScalatraVersion,
@@ -18,6 +18,6 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.196",
   "com.mchange" % "c3p0" % "0.9.5.5"
 )
-
+libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
 enablePlugins(SbtTwirl)
 enablePlugins(JettyPlugin)
