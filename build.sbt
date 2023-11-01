@@ -407,6 +407,18 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     )
   )
 
+lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
+  .settings(
+    name := "scala-libraries-6",
+    scalaVersion := scala3Version,
+    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies ++= Seq(
+      "io.circe" %% "circe-yaml" % "0.14.2",
+      "io.circe" %% "circe-generic" % "0.14.6",
+      "io.circe" %% "circe-parser" % "0.14.6"
+    )
+  )
+
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
