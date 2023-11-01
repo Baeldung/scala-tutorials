@@ -1,17 +1,19 @@
 package services
 
 import java.util.Date
-
 import com.typesafe.config.Config
+
 import javax.inject.Inject
 import play.api.{ConfigLoader, Configuration}
 
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import scala.util.Try
 
 object ISO8601DateConfigLoader {
   implicit val iso8601DateConfigLoader: ConfigLoader[Date] = {
     ConfigLoader(_.getString)
-      .map[Date](javax.xml.bind.DatatypeConverter.parseDateTime(_).getTime)
+      .map[Date](new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(_))
   }
 }
 
@@ -31,9 +33,8 @@ object PlayerInfo {
         config.getString("name"),
         config.getString("email"),
         config.getInt("age"),
-        javax.xml.bind.DatatypeConverter
-          .parseDateTime(config.getString("signUpDate"))
-          .getTime,
+        new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+          .parse(config.getString("signUpDate")),
         Try(config.getString("twitterHandle")).toOption
       )
     }

@@ -53,7 +53,7 @@ class DateParserSpec extends AnyWordSpec with Matchers {
   "a library-based parser" should {
     "retrieve date elements when a complex date/time string is passed" in {
       val attemptedParse =
-        Try(ZonedDateTime.parse("2022-02-14T20:30:00.00+01:00[Europe/Paris]"))
+        Try(ZonedDateTime.parse("2022-02-14T20:30:00.00Z[Europe/Paris]"))
       assert(attemptedParse.isSuccess)
       // This parsing is different in JDK 8 and 11 due to a bug in JDK 8
       // https://bugs.openjdk.org/browse/JDK-8066982
@@ -61,7 +61,7 @@ class DateParserSpec extends AnyWordSpec with Matchers {
       assert(zdt.get(ChronoField.YEAR) == 2022)
       assert(zdt.get(ChronoField.MONTH_OF_YEAR) == 2)
       assert(zdt.get(ChronoField.DAY_OF_MONTH) == 14)
-      // assert(zdt.get(ChronoField.HOUR_OF_DAY) == 21) // 21 due to timezone DST
+      assert(zdt.get(ChronoField.HOUR_OF_DAY) == 21) // 21 due to timezone DST
       assert(zdt.get(ChronoField.MINUTE_OF_HOUR) == 30)
       assert(zdt.getZone == ZoneId.of("Europe/Paris"))
     }

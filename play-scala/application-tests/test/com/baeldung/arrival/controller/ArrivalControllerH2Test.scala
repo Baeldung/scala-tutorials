@@ -18,7 +18,7 @@ class ArrivalControllerH2Test
   with ScalaFutures
   with H2ApplicationFactory {
 
-  private implicit def wsClient = app.injector.instanceOf[WSClient]
+  private implicit def wsClient: WSClient = app.injector.instanceOf[WSClient]
 
   "ArrivalController#index" should {
     "return arrivals using h2" in {
