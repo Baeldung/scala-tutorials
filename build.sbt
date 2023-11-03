@@ -413,7 +413,7 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "io.circe" %% "circe-yaml" % "0.14.2",
+      "io.circe" %% "circe-yaml" % "1.15.0",
       "io.circe" %% "circe-generic" % "0.14.6",
       "io.circe" %% "circe-parser" % "0.14.6"
     )
@@ -525,7 +525,7 @@ lazy val spark_scala = (project in file("spark-scala"))
     ) ++ scalaTestDeps,
     fork := true,
     javaOptions ++= Seq(
-      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" //Added for JDK 17 issue with Spark
+      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" // Added for JDK 17 issue with Spark
     )
   )
 
