@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.2"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.2" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.4.11"
-val embedMongoVersion = "4.9.2"
+val embedMongoVersion = "4.9.3"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.17" % Test,
@@ -525,7 +525,7 @@ lazy val spark_scala = (project in file("spark-scala"))
     ) ++ scalaTestDeps,
     fork := true,
     javaOptions ++= Seq(
-      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" //Added for JDK 17 issue with Spark
+      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" // Added for JDK 17 issue with Spark
     )
   )
 
