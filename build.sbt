@@ -365,7 +365,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.1" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.21.7",
+      "software.amazon.awssdk" % "s3" % "2.21.14",
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.573" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
@@ -525,7 +525,7 @@ lazy val spark_scala = (project in file("spark-scala"))
     ) ++ scalaTestDeps,
     fork := true,
     javaOptions ++= Seq(
-      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" //Added for JDK 17 issue with Spark
+      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" // Added for JDK 17 issue with Spark
     )
   )
 
