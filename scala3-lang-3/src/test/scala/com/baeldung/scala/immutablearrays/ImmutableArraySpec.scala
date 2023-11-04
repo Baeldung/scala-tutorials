@@ -9,8 +9,8 @@ class ImmutableArraySpec extends AnyWordSpec {
   case class Cat(override val name: String, override val age: Int)
     extends Pet(name = name, age = age)
 
-  val dogs: IArray[Dog] = IArray(Dog("champ", 2), Dog("barky", 3))
-  val cats: IArray[Cat] = IArray(Cat("overlord", 3), Cat("silky", 5))
+  val dogs = IArray(Dog("champ", 2), Dog("barky", 3))
+  val cats = IArray(Cat("overlord", 3), Cat("silky", 5))
 
   "dogs and cats" should {
     "get along together" in {
