@@ -11,7 +11,7 @@ class FS2SampleTest extends AsyncFlatSpec with AsyncIOSpec with Matchers {
 
   it should "read from a file and calculate word count" in {
     val outFile = "wc-fs2-output.log"
-    val loc = "scala-libraries/src/test/resources/fs2data.txt"
+    val loc = "scala-libraries/scala-libraries-1/src/test/resources/fs2data.txt"
     val io = Fs2Examples.readAndWriteFile(loc, outFile).compile.drain
     val res = io.map { _ =>
       Source.fromFile(outFile).getLines().toList
