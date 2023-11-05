@@ -10,3 +10,4 @@
 - [Difference Between NonFatal and Exception in Scala](https://www.baeldung.com/scala/nonfatal-vs-exception)
 - [Introduction to the @threadUnsafe Annotation in Scala 3](https://www.baeldung.com/scala/scala-3-threadunsafe)
 - [locally Block In Scala](https://www.baeldung.com/scala/locally-block)
+- [Match Expression Improvements in Scala 3](https://www.baeldung.com/scala/scala-3-match-expression)
