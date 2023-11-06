@@ -1,4 +1,4 @@
-package com.baedung.scala.collections
+package com.baeldung.scala.collections
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

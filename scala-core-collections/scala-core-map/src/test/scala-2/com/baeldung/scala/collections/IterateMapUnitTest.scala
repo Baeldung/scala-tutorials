@@ -1,7 +1,6 @@
-package com.baedung.scala.collections
+package com.baeldung.scala.collections
 
 import org.scalatest.flatspec.AnyFlatSpec
-import com.baeldung.scala.collections.IterateMap
 
 class IterateMapUnitTest extends AnyFlatSpec {
   "Keys" should "return four chars" in {

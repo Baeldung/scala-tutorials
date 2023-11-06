@@ -148,8 +148,15 @@ lazy val scala_core_collections_2 =
       name := "scala-core-collections-2",
       libraryDependencies ++= scalaTestDeps
     )
+
 lazy val scala_core_collections_3 =
   (project in file("scala-core-collections/scala-core-collections-3"))
+    .settings(
+      libraryDependencies ++= scalaTestDeps
+    )
+
+lazy val scala_core_map =
+  (project in file("scala-core-collections/scala-core-map"))
     .settings(
       libraryDependencies ++= scalaTestDeps
     )

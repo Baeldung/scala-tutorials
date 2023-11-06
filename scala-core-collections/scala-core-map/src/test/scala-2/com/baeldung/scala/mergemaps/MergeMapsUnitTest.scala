@@ -1,6 +1,5 @@
-package com.baedung.scala.mergemaps
+package com.baeldung.scala.mergemaps
 
-import com.baeldung.scala.mergemaps.CombineIterables
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
