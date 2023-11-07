@@ -450,6 +450,11 @@ lazy val scala3_lang_3 = (project in file("scala3-lang-3")).settings(
   scalaVersion := scala3Version
 )
 
+lazy val scala3_lang_collections = (project in file("scala3-lang-collections")).settings(
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
+)
+
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
