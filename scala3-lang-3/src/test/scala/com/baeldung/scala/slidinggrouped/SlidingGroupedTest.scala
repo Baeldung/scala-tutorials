@@ -1,4 +1,4 @@
-package com.baeldung.scala.sliding_grouped
+package com.baeldung.scala.slidinggrouped
 
 import org.scalatest.wordspec.AnyWordSpec
 
