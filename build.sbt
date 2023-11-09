@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.2"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.2" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.4.11"
-val embedMongoVersion = "4.9.2"
+val embedMongoVersion = "4.9.3"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.17" % Test,
@@ -365,8 +365,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.1" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.21.7",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.573" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.21.14",
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.580" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
@@ -413,7 +413,7 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "io.circe" %% "circe-yaml" % "0.14.2",
+      "io.circe" %% "circe-yaml" % "1.15.0",
       "io.circe" %% "circe-generic" % "0.14.6",
       "io.circe" %% "circe-parser" % "0.14.6"
     )
@@ -525,7 +525,7 @@ lazy val spark_scala = (project in file("spark-scala"))
     ) ++ scalaTestDeps,
     fork := true,
     javaOptions ++= Seq(
-      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" //Added for JDK 17 issue with Spark
+      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" // Added for JDK 17 issue with Spark
     )
   )
 
