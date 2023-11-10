@@ -1,6 +1,6 @@
 package guice.filter
 
-import akka.stream.Materializer
+import org.apache.pekko.stream.Materializer
 import play.api.Logger
 import play.api.mvc.{Filter, RequestHeader, Result}
 import play.api.routing.{HandlerDef, Router}

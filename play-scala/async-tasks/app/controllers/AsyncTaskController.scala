@@ -1,6 +1,6 @@
 package controllers
 
-import akka.actor.{ActorRef, ActorSystem}
+import org.apache.pekko.actor.{ActorRef, ActorSystem}
 
 import javax.inject._
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}

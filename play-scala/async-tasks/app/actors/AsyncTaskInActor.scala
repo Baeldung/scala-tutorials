@@ -1,6 +1,7 @@
 package actors
 
-import akka.actor.Actor
+
+import org.apache.pekko.actor.Actor
 
 import java.time.LocalDateTime
 
