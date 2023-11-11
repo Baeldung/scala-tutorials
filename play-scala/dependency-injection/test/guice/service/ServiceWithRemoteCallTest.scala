@@ -1,6 +1,11 @@
 package guice.service
 
-import guice.modules.{ApiModule, MockApiModule, ServiceModule, ServiceWithRemoteCall}
+import guice.modules.{
+  ApiModule,
+  MockApiModule,
+  ServiceModule,
+  ServiceWithRemoteCall
+}
 import org.scalatest.wordspec.FixtureAnyWordSpecLike
 import org.scalatestplus.play.MixedFixtures
 import play.api.inject.guice.GuiceApplicationBuilder
