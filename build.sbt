@@ -347,7 +347,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   .settings(
     name := "scala-libraries-4",
     scalaVersion := scalaV,
-    libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
+    libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.2" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
