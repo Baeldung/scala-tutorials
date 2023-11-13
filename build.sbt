@@ -214,6 +214,7 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
       "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
       "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion,
+      "com.lightbend.akka" %% "akka-stream-alpakka-csv" % "5.0.0",
       "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
       "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % "it,test",
