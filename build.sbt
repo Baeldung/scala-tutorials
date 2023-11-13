@@ -20,9 +20,9 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
-val zioVersion = "2.0.18"
+val zioVersion = "2.0.19"
 
-lazy val scala_core = (project in file("scala-core"))
+lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
     name := "scala-core",
     libraryDependencies ++=
@@ -32,7 +32,7 @@ lazy val scala_core = (project in file("scala-core"))
       ) ++ scalaTestDeps
   )
 
-lazy val scala_core_2 = (project in file("scala-core-2"))
+lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
   .settings(
     name := "scala-core-2",
     libraryDependencies ++= scalaTestDeps,
@@ -40,7 +40,7 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
     libraryDependencies += jUnitInterface
   )
 
-lazy val scala_core_3 = (project in file("scala-core-3"))
+lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
   .settings(
     name := "scala-core-3",
     libraryDependencies ++= scalaTestDeps,
@@ -49,7 +49,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
   )
 
-lazy val scala_core_4 = (project in file("scala-core-4"))
+lazy val scala_core_4 = (project in file("scala-core-modules/scala-core-4"))
   .settings(
     name := "scala-core-4",
     libraryDependencies ++= scalaTestDeps,
@@ -57,7 +57,7 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
     libraryDependencies += scalaReflection
   )
 
-lazy val scala_core_5 = (project in file("scala-core-5"))
+lazy val scala_core_5 = (project in file("scala-core-modules/scala-core-5"))
   .settings(
     name := "scala-core-5",
     libraryDependencies ++= scalaTestDeps,
@@ -68,14 +68,14 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0"
   )
 
-lazy val scala_core_6 = (project in file("scala-core-6"))
+lazy val scala_core_6 = (project in file("scala-core-modules/scala-core-6"))
   .settings(
     name := "scala-core-6",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface
   )
 
-lazy val scala_core_7 = (project in file("scala-core-7"))
+lazy val scala_core_7 = (project in file("scala-core-modules/scala-core-7"))
   .settings(
     name := "scala-core-7",
     libraryDependencies ++= scalaTestDeps,
@@ -87,7 +87,7 @@ lazy val scala_core_7 = (project in file("scala-core-7"))
     libraryDependencies += "args4j" % "args4j" % "2.33"
   )
 
-lazy val scala_core_8 = (project in file("scala-core-8"))
+lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
   .settings(
     name := "scala-core-8",
     libraryDependencies += scalaReflection,
@@ -98,7 +98,7 @@ lazy val scala_core_8 = (project in file("scala-core-8"))
     // scalacOptions += "-Ymacro-debug-lite"
   )
 
-lazy val scala_core_io = (project in file("scala-core-io"))
+lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
     name := "scala-core-io",
     libraryDependencies ++= scalaTestDeps,
@@ -106,35 +106,35 @@ lazy val scala_core_io = (project in file("scala-core-io"))
     libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value
   )
 
-lazy val scala_core_oop = (project in file("scala-core-oop"))
+lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
   .settings(
     name := "scala-core-oop",
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_fp = (project in file("scala-core-fp"))
+lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
     name := "scala-core-fp",
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_lang = (project in file("scala-lang"))
+lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
   .settings(
     name := "scala-lang",
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_lang_2 = (project in file("scala-lang-2"))
+lazy val scala_lang_2 = (project in file("scala-lang-modules/scala-lang-2"))
   .settings(
     name := "scala-lang",
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_collections = (project in file("scala-core-collections"))
+lazy val scala_core_collections = (project in file("scala-core-collections-modules/scala-core-collections"))
   .settings(
     name := "scala-core-collections",
     libraryDependencies ++= Seq(
@@ -143,13 +143,20 @@ lazy val scala_core_collections = (project in file("scala-core-collections"))
   )
 
 lazy val scala_core_collections_2 =
-  (project in file("scala-core-collections-2"))
+  (project in file("scala-core-collections-modules/scala-core-collections-2"))
     .settings(
       name := "scala-core-collections-2",
       libraryDependencies ++= scalaTestDeps
     )
+
 lazy val scala_core_collections_3 =
-  (project in file("scala-core-collections-3"))
+  (project in file("scala-core-collections-modules/scala-core-collections-3"))
+    .settings(
+      libraryDependencies ++= scalaTestDeps
+    )
+
+lazy val scala_core_map =
+  (project in file("scala-core-collections-modules/scala-core-map"))
     .settings(
       libraryDependencies ++= scalaTestDeps
     )
@@ -224,7 +231,7 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
 val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
-val scalazVersion = "7.3.7"
+val scalazVersion = "7.3.8"
 val fs2Version = "3.9.3"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
@@ -365,7 +372,9 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.1" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.21.14",
+      "software.amazon.awssdk" % "s3" % "2.21.21"
+    ),
+    libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.587" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
@@ -385,7 +394,7 @@ val jackSonVersion = "2.15.3"
 val log4jApiScalaVersion = "13.0.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.1"
-val kafkaAvroSerializer = "7.5.1"
+val kafkaAvroSerializer = "7.5.2"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
@@ -435,17 +444,22 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
-lazy val scala3_lang = (project in file("scala3-lang")).settings(
+lazy val scala3_lang = (project in file("scala-lang-modules/scala3-lang")).settings(
   libraryDependencies ++= scalaTestDeps,
   scalaVersion := scala3Version
 )
 
-lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
+lazy val scala3_lang_2 = (project in file("scala-lang-modules/scala3-lang-2")).settings(
   libraryDependencies ++= scalaTestDeps,
   scalaVersion := scala3Version
 )
 
-lazy val scala3_lang_3 = (project in file("scala3-lang-3")).settings(
+lazy val scala3_lang_3 = (project in file("scala-lang-modules/scala3-lang-3")).settings(
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
+)
+
+lazy val scala3_lang_collections = (project in file("scala3-lang-collections")).settings(
   libraryDependencies ++= scalaTestDeps,
   scalaVersion := scala3Version
 )
