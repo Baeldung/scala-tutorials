@@ -6,10 +6,11 @@ pull_request_rules:
       - "#files=1"
       - "#approved-reviews-by>=1"    
       - check-success=CI - Jenkins
-      - author=scala-steward-baeldung
+      - author=scala-steward-baeldung[bot]
       - or:
         - label=early-semver-minor
         - label=early-semver-patch
     actions:
       merge:
         method: merge
+      delete_head_branch:

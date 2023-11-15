@@ -9,8 +9,8 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.2"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.2" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.3.11"
-val embedMongoVersion = "4.9.2"
+val logback = "ch.qos.logback" % "logback-classic" % "1.4.11"
+val embedMongoVersion = "4.10.1"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.17" % Test,
@@ -20,9 +20,9 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
-val zioVersion = "2.0.18"
+val zioVersion = "2.0.19"
 
-lazy val scala_core = (project in file("scala-core"))
+lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
     name := "scala-core",
     libraryDependencies ++=
@@ -32,7 +32,7 @@ lazy val scala_core = (project in file("scala-core"))
       ) ++ scalaTestDeps
   )
 
-lazy val scala_core_2 = (project in file("scala-core-2"))
+lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
   .settings(
     name := "scala-core-2",
     libraryDependencies ++= scalaTestDeps,
@@ -40,7 +40,7 @@ lazy val scala_core_2 = (project in file("scala-core-2"))
     libraryDependencies += jUnitInterface
   )
 
-lazy val scala_core_3 = (project in file("scala-core-3"))
+lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
   .settings(
     name := "scala-core-3",
     libraryDependencies ++= scalaTestDeps,
@@ -49,7 +49,7 @@ lazy val scala_core_3 = (project in file("scala-core-3"))
     libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
   )
 
-lazy val scala_core_4 = (project in file("scala-core-4"))
+lazy val scala_core_4 = (project in file("scala-core-modules/scala-core-4"))
   .settings(
     name := "scala-core-4",
     libraryDependencies ++= scalaTestDeps,
@@ -57,7 +57,7 @@ lazy val scala_core_4 = (project in file("scala-core-4"))
     libraryDependencies += scalaReflection
   )
 
-lazy val scala_core_5 = (project in file("scala-core-5"))
+lazy val scala_core_5 = (project in file("scala-core-modules/scala-core-5"))
   .settings(
     name := "scala-core-5",
     libraryDependencies ++= scalaTestDeps,
@@ -68,26 +68,26 @@ lazy val scala_core_5 = (project in file("scala-core-5"))
     libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0"
   )
 
-lazy val scala_core_6 = (project in file("scala-core-6"))
+lazy val scala_core_6 = (project in file("scala-core-modules/scala-core-6"))
   .settings(
     name := "scala-core-6",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface
   )
 
-lazy val scala_core_7 = (project in file("scala-core-7"))
+lazy val scala_core_7 = (project in file("scala-core-modules/scala-core-7"))
   .settings(
     name := "scala-core-7",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += "com.github.scopt" %% "scopt" % "4.1.0",
-    libraryDependencies += "org.rogach" %% "scallop" % "5.0.0",
+    libraryDependencies += "org.rogach" %% "scallop" % "5.0.1",
     libraryDependencies += "org.backuity.clist" %% "clist-core" % "3.5.1",
     libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
     libraryDependencies += "args4j" % "args4j" % "2.33"
   )
 
-lazy val scala_core_8 = (project in file("scala-core-8"))
+lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
   .settings(
     name := "scala-core-8",
     libraryDependencies += scalaReflection,
@@ -98,7 +98,7 @@ lazy val scala_core_8 = (project in file("scala-core-8"))
     // scalacOptions += "-Ymacro-debug-lite"
   )
 
-lazy val scala_core_io = (project in file("scala-core-io"))
+lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
     name := "scala-core-io",
     libraryDependencies ++= scalaTestDeps,
@@ -106,35 +106,35 @@ lazy val scala_core_io = (project in file("scala-core-io"))
     libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value
   )
 
-lazy val scala_core_oop = (project in file("scala-core-oop"))
+lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
   .settings(
     name := "scala-core-oop",
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_fp = (project in file("scala-core-fp"))
+lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
     name := "scala-core-fp",
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_lang = (project in file("scala-lang"))
+lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
   .settings(
     name := "scala-lang",
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_lang_2 = (project in file("scala-lang-2"))
+lazy val scala_lang_2 = (project in file("scala-lang-modules/scala-lang-2"))
   .settings(
     name := "scala-lang",
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_collections = (project in file("scala-core-collections"))
+lazy val scala_core_collections = (project in file("scala-core-collections-modules/scala-core-collections"))
   .settings(
     name := "scala-core-collections",
     libraryDependencies ++= Seq(
@@ -143,13 +143,20 @@ lazy val scala_core_collections = (project in file("scala-core-collections"))
   )
 
 lazy val scala_core_collections_2 =
-  (project in file("scala-core-collections-2"))
+  (project in file("scala-core-collections-modules/scala-core-collections-2"))
     .settings(
       name := "scala-core-collections-2",
       libraryDependencies ++= scalaTestDeps
     )
+
 lazy val scala_core_collections_3 =
-  (project in file("scala-core-collections-3"))
+  (project in file("scala-core-collections-modules/scala-core-collections-3"))
+    .settings(
+      libraryDependencies ++= scalaTestDeps
+    )
+
+lazy val scala_core_map =
+  (project in file("scala-core-collections-modules/scala-core-map"))
     .settings(
       libraryDependencies ++= scalaTestDeps
     )
@@ -173,7 +180,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "4.10.2",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "4.11.1",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -195,7 +202,7 @@ lazy val scala_akka = (project in file("scala-akka"))
   .settings(
     name := "scala-akka",
     libraryDependencies ++= scala_akka_dependencies ++ Seq(
-      "ch.qos.logback" % "logback-classic" % "1.2.3", // scala-steward:off
+      "ch.qos.logback" % "logback-classic" % "1.4.11", // scala-steward:off
       embeddedMongo % "it,compile"
     ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     Defaults.itSettings
@@ -224,8 +231,8 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
 val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
-val scalazVersion = "7.3.7"
-val fs2Version = "3.9.2"
+val scalazVersion = "7.3.8"
+val fs2Version = "3.9.3"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
@@ -258,7 +265,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.6"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.9.3"
+val elastic4sVersion = "8.9.5"
 val sparkVersion = "3.5.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -281,7 +288,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.beachape" %% "enumeratum" % "1.7.3"
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-slick" % "5.1.0",
+      "com.typesafe.play" %% "play-slick" % "5.2.0-RC2",
       "org.postgresql" % "postgresql" % "42.6.0"
     ),
     libraryDependencies ++= Seq(
@@ -307,7 +314,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
 
 val http4sBlaze = "0.23.15"
 val http4sVersion = "0.23.23"
-val osLibVersion = "0.9.1"
+val osLibVersion = "0.9.2"
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
     name := "scala-libraries",
@@ -319,14 +326,14 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "com.beachape" %% "enumeratum" % "1.7.3",
       "com.github.pureconfig" %% "pureconfig" % "0.17.4",
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.4",
-      "com.typesafe" % "config" % "1.4.2",
+      "com.typesafe" % "config" % "1.4.3",
       "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
     libraryDependencies += scalaMock,
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
-      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "13.0.0",
+      "org.apache.logging.log4j" % "log4j-core" % "2.21.1" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
   )
@@ -336,8 +343,8 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     name := "scala-libraries",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
-      "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % Runtime
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "13.0.0",
+      "org.apache.logging.log4j" % "log4j-core" % "2.21.1" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
   )
@@ -347,14 +354,14 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   .settings(
     name := "scala-libraries-4",
     scalaVersion := scalaV,
-    libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.1" % "test",
+    libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.2" % "test",
     testFrameworks += new TestFramework("utest.runner.Framework"),
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
-      "org.tpolecat" %% "skunk-core" % "0.6.0",
+      "org.tpolecat" %% "skunk-core" % "0.6.1",
       logback,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "org.typelevel" %% "cats-core" % "2.10.0"
@@ -365,8 +372,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.1" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.20.158",
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.556" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.21.21"
+    ),
+    libraryDependencies ++= Seq(
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.587" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
@@ -379,13 +388,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.5.0-ce"
+val kafkaVersion = "7.5.2-ce"
 val pureconfigVersion = "0.17.4"
-val jackSonVersion = "2.15.2"
-val log4jApiScalaVersion = "12.0"
+val jackSonVersion = "2.15.3"
+val log4jApiScalaVersion = "13.0.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.1"
-val kafkaAvroSerializer = "6.2.11"
+val kafkaAvroSerializer = "7.5.2"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
@@ -407,6 +416,18 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     )
   )
 
+lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
+  .settings(
+    name := "scala-libraries-6",
+    scalaVersion := scala3Version,
+    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies ++= Seq(
+      "io.circe" %% "circe-yaml" % "1.15.0",
+      "io.circe" %% "circe-generic" % "0.14.6",
+      "io.circe" %% "circe-parser" % "0.14.6"
+    )
+  )
+
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
@@ -423,19 +444,24 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
-lazy val scala3_lang = (project in file("scala3-lang")).settings(
-  scalaVersion := scala3Version,
-  libraryDependencies ++= scalaTestDeps
+lazy val scala3_lang = (project in file("scala-lang-modules/scala3-lang")).settings(
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
 )
 
-lazy val scala3_lang_2 = (project in file("scala3-lang-2")).settings(
-  scalaVersion := scala3Version,
-  libraryDependencies ++= scalaTestDeps
+lazy val scala3_lang_2 = (project in file("scala-lang-modules/scala3-lang-2")).settings(
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
 )
 
-lazy val scala3_lang_3 = (project in file("scala3-lang-3")).settings(
-  scalaVersion := scala3Version,
-  libraryDependencies ++= scalaTestDeps
+lazy val scala3_lang_3 = (project in file("scala-lang-modules/scala3-lang-3")).settings(
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
+)
+
+lazy val scala3_lang_collections = (project in file("scala3-lang-collections")).settings(
+  libraryDependencies ++= scalaTestDeps,
+  scalaVersion := scala3Version
 )
 
 lazy val cats_effects = (project in file("cats-effects"))
@@ -510,7 +536,11 @@ lazy val spark_scala = (project in file("spark-scala"))
     libraryDependencies ++= Seq(
       sparkSqlDep,
       sparkCoreDep
-    ) ++ scalaTestDeps
+    ) ++ scalaTestDeps,
+    fork := true,
+    javaOptions ++= Seq(
+      "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED" // Added for JDK 17 issue with Spark
+    )
   )
 
 addCommandAlias(
@@ -544,3 +574,5 @@ lazy val playGroup = (project in file("play-scala"))
 //lazy val scalajs = project in file("scala-js")
 lazy val scalatra = project in file("scalatra")
 lazy val benchmark = project in file("specialized-benchmark")
+
+ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always

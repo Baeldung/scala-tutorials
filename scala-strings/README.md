@@ -9,3 +9,4 @@ This module contains articles about Scala's core features
 - [String Comparison in Scala](https://www.baeldung.com/scala/string-comparison)
 - [Convert a String to Camel Case in Scala](https://www.baeldung.com/scala/string-to-camel-case)
 - [Convert Byte Array to String in Scala](https://www.baeldung.com/scala/convert-byte-array-to-string)
+- [Scala Keyword Matching: A Library-First Guide](https://www.baeldung.com/scala/keyword-matching)
