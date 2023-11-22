@@ -1,9 +1,9 @@
 package macwire.service
 
 import macwire.components.{ApiComponents, MockApiComponents, ServiceComponents}
-import org.scalatest.WordSpec
+import org.scalatest.wordspec.AnyWordSpec
 
-class ServiceWithRemoteCallTest extends WordSpec {
+class ServiceWithRemoteCallTest extends AnyWordSpec {
 
   "ServiceWithRemoteCall call" should {
 

@@ -11,9 +11,11 @@ lib_managed/
 src_managed/
 project/boot/
 project/plugins/project/
+**/.scala-build/
 
 # Scala-IDE specific
 .scala_dependencies
+.scala-build
 .worksheet
 .idea
 !/project/Versions.scala

@@ -1,0 +1,11 @@
+@()
+
+@main("Play Static Assets!") {
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/salute.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/hello-world.js")"></script>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/style.css")">
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/salute.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+    <h3>This header is styled using LESS!</h3>
+}

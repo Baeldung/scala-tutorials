@@ -6,13 +6,13 @@ import guice.modules.{
   ServiceModule,
   ServiceWithRemoteCall
 }
-import org.scalatest.{WordSpec, fixture}
+import org.scalatest.wordspec.FixtureAnyWordSpecLike
 import org.scalatestplus.play.MixedFixtures
 import play.api.inject.guice.GuiceApplicationBuilder
 
 class ServiceWithRemoteCallTest
   extends MixedFixtures
-  with fixture.WordSpecLike {
+  with FixtureAnyWordSpecLike {
 
   "ServiceWithRemoteCall call" should {
     "invoke mock when remote api is mocked" in {
