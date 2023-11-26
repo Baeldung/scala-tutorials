@@ -290,7 +290,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       "com.beachape" %% "enumeratum" % "1.7.3"
     ),
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-slick" % "5.2.0",
+      "org.playframework" %% "play-slick" % "6.0.0",
       "org.postgresql" % "postgresql" % "42.6.0"
     ),
     libraryDependencies ++= Seq(
