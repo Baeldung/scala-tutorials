@@ -491,8 +491,8 @@ lazy val zio = (project in file("zio"))
 lazy val doobie = (project in file("doobie"))
   .settings(
     name := "doobie",
-    libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC2",
-    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2"
+    libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC5",
+    libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC5"
   )
 
 // Scala Native Project is disabled as it needs clang to installed in the target machine.
