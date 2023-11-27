@@ -325,16 +325,10 @@ object Version11:
         country: String,
         age: Int,
         cgpa: Double
-    ): ValidatedNec[
-      QualificationError | ScholarshipValidationError,
-      MastersScholarship
-    ] =
-      MastersQualification(qualification)
-        .map2[Scholarship, MastersScholarship](
-          Scholarship(country, age, cgpa)
-        ) { (qualification, scholarship) =>
-          new MastersScholarship(qualification, scholarship)
-        }
+    ): ValidatedNec[ScholarshipValidationError, MastersScholarship] =
+      Scholarship(country, age, cgpa).map2(MastersQualification(qualification)){
+        (s, m) => new MastersScholarship(m, s)
+      }
 
 object Program extends IOApp.Simple:
   import Version11.*
