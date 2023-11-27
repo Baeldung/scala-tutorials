@@ -330,11 +330,13 @@ object Version11:
       MastersScholarship
     ] =
       MastersQualification(qualification)
-        .map2(Scholarship(country, age, cgpa)) { (qualification, scholarship) =>
+        .map2[Scholarship, MastersScholarship](
+          Scholarship(country, age, cgpa)
+        ) { (qualification, scholarship) =>
           new MastersScholarship(qualification, scholarship)
         }
 
-object BaeldungDv extends IOApp.Simple:
+object Program extends IOApp.Simple:
   import Version11.*
   def run: IO[Unit] =
     MastersScholarship("diploma", "rwanda", 23, 2.0) match
