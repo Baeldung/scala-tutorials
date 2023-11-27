@@ -15,7 +15,7 @@ object Version1:
   private def checkCgpa(value: Double): Boolean =
     if (value >= 3.0) true else false
   class ScholarshipValidationError
-      extends Exception("Failed to create scholarship")
+    extends Exception("Failed to create scholarship")
   def getScholarship(country: String, age: Int, cgpa: Double): Scholarship =
     if (checkCountry(country) && checkAge(age) && checkCgpa(cgpa))
       Scholarship(country, age, cgpa)
@@ -46,9 +46,9 @@ object Version2:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): Option[Scholarship] =
       for
         country <- Country(value1)
@@ -62,9 +62,9 @@ object Version3:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): Either[String, Scholarship] =
       for
         country <- Country(value1).toRight("Invalid Country")
@@ -78,9 +78,9 @@ object Version4:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): Either[List[String], Scholarship] =
       (
         Country(value1).toRight(List("Invalid Country")),
@@ -96,9 +96,9 @@ object Version5:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): EitherNel[String, Scholarship] =
       (
         Country(value1).toRightNel("Invalid Coutry"),
@@ -114,9 +114,9 @@ object Version6:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): EitherNec[String, Scholarship] =
       (
         Country(value1).toRightNec("Invalid Coutry"),
@@ -132,9 +132,9 @@ object Version7:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): ValidatedNec[String, Scholarship] =
       (
         Country(value1).toValidNec("Invalid Coutry"),
@@ -161,7 +161,7 @@ object Utilities2:
   object Country:
     private val countries = List("uganda", "kenya", "tanzania")
     def apply(
-        value: String
+      value: String
     ): ValidatedNec[ScholarshipValidationError, Country] =
       Validated.condNec(
         countries.contains(value.toLowerCase),
@@ -192,9 +192,9 @@ object Version8:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): ValidatedNec[ScholarshipValidationError, Scholarship] =
       (
         Country(value1),
@@ -213,8 +213,8 @@ object Version9:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def excludeCountry(
-        country: Country,
-        value: String
+      country: Country,
+      value: String
     ): ValidatedNec[ScholarshipValidationError, Country] =
       Validated
         .condNec(
@@ -224,9 +224,9 @@ object Version9:
         )
 
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): ValidatedNec[ScholarshipValidationError, Scholarship] =
       (
         Country(value1)
@@ -243,9 +243,9 @@ object Version10:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): ValidatedNec[ScholarshipValidationError, Scholarship] =
       (
         Country(value1),
@@ -257,7 +257,7 @@ object Version10:
 
   extension (s: ValidatedNec[ScholarshipValidationError, Scholarship])
     def excludeCountry(
-        value: String
+      value: String
     ): ValidatedNec[ScholarshipValidationError, Scholarship] =
       case object CountryNotSupportted extends ScholarshipValidationError:
         override val errMsg: String = "Your country is not supported this year"
@@ -276,9 +276,9 @@ object Version11:
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
     def apply(
-        value1: String,
-        value2: Int,
-        value3: Double
+      value1: String,
+      value2: Int,
+      value3: Double
     ): ValidatedNec[ScholarshipValidationError, Scholarship] =
       (
         Country(value1),
@@ -303,7 +303,7 @@ object Version11:
   case class MastersQualification(value: Qualification)
   object MastersQualification:
     def apply(
-        value: String
+      value: String
     ): ValidatedNec[QualificationError, MastersQualification] =
       Validated.condNec(
         value.toLowerCase == "bachelors" || value.toLowerCase == "masters",
@@ -315,22 +315,24 @@ object Version11:
       )
 
   case class MastersScholarship(
-      qualification: MastersQualification,
-      scholarship: Scholarship
+    qualification: MastersQualification,
+    scholarship: Scholarship
   )
 
   object MastersScholarship:
     def apply(
-        qualification: String,
-        country: String,
-        age: Int,
-        cgpa: Double
+      qualification: String,
+      country: String,
+      age: Int,
+      cgpa: Double
     ): ValidatedNec[ScholarshipValidationError, MastersScholarship] =
-      Scholarship(country, age, cgpa).map2(MastersQualification(qualification)){
-        (s, m) => new MastersScholarship(m, s)
+      Scholarship(country, age, cgpa).map2(
+        MastersQualification(qualification)
+      ) { (s, m) =>
+        new MastersScholarship(m, s)
       }
 
-object Program extends IOApp.Simple:
+object BaeldungDv extends IOApp.Simple:
   import Version11.*
   def run: IO[Unit] =
     MastersScholarship("diploma", "rwanda", 23, 2.0) match
