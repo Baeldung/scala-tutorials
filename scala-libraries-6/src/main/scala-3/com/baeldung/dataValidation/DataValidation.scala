@@ -2,12 +2,7 @@ package com.baeldung.dataValidation
 
 import cats.syntax.all.*
 import cats.effect.{IOApp, IO, ExitCode}
-import cats.data.{
-  EitherNel,
-  EitherNec,
-  ValidatedNec,
-  Validated
-}
+import cats.data.{EitherNel, EitherNec, ValidatedNec, Validated}
 import cats.data.Validated.{Invalid, Valid}
 
 object Version1:
@@ -20,7 +15,7 @@ object Version1:
   private def checkCgpa(value: Double): Boolean =
     if (value >= 3.0) true else false
   class ScholarshipValidationError
-      extends Exception("Failed to create scholarship")
+    extends Exception("Failed to create scholarship")
   def getScholarship(country: String, age: Int, cgpa: Double): Scholarship =
     if (checkCountry(country) && checkAge(age) && checkCgpa(cgpa))
       Scholarship(country, age, cgpa)

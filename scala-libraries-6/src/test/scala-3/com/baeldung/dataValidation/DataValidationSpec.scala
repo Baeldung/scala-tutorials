@@ -7,9 +7,9 @@ import cats.data.{NonEmptyList, NonEmptyChain}
 import cats.data.Validated.Invalid
 
 class BaeldungDvSuite
-    extends AnyFlatSpec
-    with Matchers
-    with TableDrivenPropertyChecks:
+  extends AnyFlatSpec
+  with Matchers
+  with TableDrivenPropertyChecks:
   "Version1 getScholarship" should "produce a ScholarshipValidationError" in {
     import Version1.{getScholarship, ScholarshipValidationError}
     assertThrows[ScholarshipValidationError] {
