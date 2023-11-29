@@ -62,10 +62,7 @@ lazy val scala_core_5 = (project in file("scala-core-modules/scala-core-5"))
     name := "scala-core-5",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
-    libraryDependencies += scalaReflection,
-    libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
-    libraryDependencies += "org.joda" % "joda-convert" % "2.2.3",
-    libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0"
+    libraryDependencies += scalaReflection
   )
 
 lazy val scala_core_6 = (project in file("scala-core-modules/scala-core-6"))
@@ -123,7 +120,10 @@ lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
 lazy val scala_core_dates = (project in file("scala-core-modules/scala-core-dates"))
   .settings(
     name := "scala-core-dates",
-    libraryDependencies ++= scalaTestDeps
+    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
+    libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
+    libraryDependencies += "com.typesafe" % "config" % "1.4.3",
   )
 
 lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))

@@ -5,6 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import java.time.temporal.ChronoUnit
 import java.time.{LocalDate, Period}
+import DifferenceBetweenDates._
 
 class DifferenceBetweenDatesTest extends AnyWordSpec with Matchers {
 
