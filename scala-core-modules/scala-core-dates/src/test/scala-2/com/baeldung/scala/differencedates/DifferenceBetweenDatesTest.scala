@@ -1,7 +1,6 @@
 package com.baeldung.scala.differencedates
 
 import org.scalatest.wordspec.AnyWordSpec
-import com.baeldung.scala.differencedates.DifferenceBetweenDates._
 import org.scalatest.matchers.should.Matchers
 
 import java.time.temporal.ChronoUnit

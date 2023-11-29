@@ -120,6 +120,12 @@ lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
+lazy val scala_core_dates = (project in file("scala-core-modules/scala-core-dates"))
+  .settings(
+    name := "scala-core-dates",
+    libraryDependencies ++= scalaTestDeps
+  )
+
 lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
   .settings(
     name := "scala-lang",
