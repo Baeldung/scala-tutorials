@@ -1,6 +1,9 @@
 package com.baeldung.scala.duration
 
-import com.baeldung.scala.duration.JavaToScalaDuration.{asFiniteDuration, asFiniteDurationFromConf}
+import com.baeldung.scala.duration.JavaToScalaDuration.{
+  asFiniteDuration,
+  asFiniteDurationFromConf
+}
 import org.scalatest.funsuite.AnyFunSuite
 
 import java.time.Duration
