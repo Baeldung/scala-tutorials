@@ -1,4 +1,4 @@
-package com.baeldung.date
+package com.baeldung.scala.date
 
 import java.util.GregorianCalendar
 import scala.util.Try
