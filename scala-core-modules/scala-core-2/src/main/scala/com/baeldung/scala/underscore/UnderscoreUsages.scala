@@ -36,11 +36,11 @@ object UnderscoreUsages {
   def list_++(list: List[_]): List[_] = List.concat(list, list)
 
   trait ObjectContainer[T[_]] { // higher kinded type parameter
-    def checkIfEmpty(collection: T[_]): Boolean
+    def checkIfEmpty[A](collection: T[A]): Boolean
   }
 
   object SeqContainer extends ObjectContainer[Seq] {
-    override def checkIfEmpty(collection: Seq[_]): Boolean =
+    override def checkIfEmpty[A](collection: Seq[A]): Boolean =
       !collection.nonEmpty
   }
 

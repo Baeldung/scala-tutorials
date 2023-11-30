@@ -36,8 +36,8 @@ lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
   .settings(
     name := "scala-core-2",
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += scalaMock,
-    libraryDependencies += jUnitInterface
+    libraryDependencies += jUnitInterface,
+    scalaVersion := scala3Version
   )
 
 lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
