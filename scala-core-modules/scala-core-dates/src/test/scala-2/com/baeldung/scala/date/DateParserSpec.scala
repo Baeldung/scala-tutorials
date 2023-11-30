@@ -1,4 +1,4 @@
-package com.baeldung.date
+package com.baeldung.scala.date
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

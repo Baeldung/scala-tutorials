@@ -1,16 +1,15 @@
 package com.baeldung.scala.duration
 
+import com.baeldung.scala.duration.JavaToScalaDuration.{
+  asFiniteDuration,
+  asFiniteDurationFromConf
+}
 import org.scalatest.funsuite.AnyFunSuite
 
 import java.time.Duration
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 import scala.concurrent.duration.{FiniteDuration, HOURS}
-import com.baeldung.scala.duration.JavaToScalaDuration.{
-  asFiniteDuration,
-  asFiniteDurationFromConf
-}
-
 import scala.jdk.DurationConverters.JavaDurationOps
 
 class DurationTest extends AnyFunSuite {

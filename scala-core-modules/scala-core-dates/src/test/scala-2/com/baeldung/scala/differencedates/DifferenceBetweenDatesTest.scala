@@ -1,11 +1,11 @@
 package com.baeldung.scala.differencedates
 
 import org.scalatest.wordspec.AnyWordSpec
-import com.baeldung.scala.differencedates.DifferenceBetweenDates._
 import org.scalatest.matchers.should.Matchers
 
 import java.time.temporal.ChronoUnit
 import java.time.{LocalDate, Period}
+import DifferenceBetweenDates._
 
 class DifferenceBetweenDatesTest extends AnyWordSpec with Matchers {
 
