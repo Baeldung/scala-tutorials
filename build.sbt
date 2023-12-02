@@ -443,6 +443,7 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
