@@ -9,7 +9,7 @@ object UnitReturnType extends App {
   }
   println("result of function returning Unit: %s".format(functionReturnUnit))
 
-  def functionReturnImplicitUnit {
+  def functionReturnImplicitUnit: Unit = {
     s"""
       do something, don't return anything
     """

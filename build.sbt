@@ -137,7 +137,8 @@ lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
 
 lazy val scala_lang_2 = (project in file("scala-lang-modules/scala-lang-2"))
   .settings(
-    name := "scala-lang",
+    name := "scala-lang-2",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
