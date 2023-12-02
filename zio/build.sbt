@@ -1,7 +1,3 @@
-val scala3Version = "3.3.0"
-
-scalaVersion := scala3Version
-
 libraryDependencies ++= Seq(
   "dev.zio" %% "zio" % "2.0.15",
   "dev.zio" %% "zio-json" % "0.6.2",

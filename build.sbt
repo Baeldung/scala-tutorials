@@ -496,6 +496,7 @@ lazy val cats_effects = (project in file("cats-effects"))
 lazy val zio = (project in file("zio"))
   .settings(
     name := "zio",
+    scalaVersion := scala3Version,
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
