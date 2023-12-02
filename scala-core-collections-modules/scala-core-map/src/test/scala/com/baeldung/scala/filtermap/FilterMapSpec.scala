@@ -23,7 +23,7 @@ class FilterMapSpec
       filterKeysSet.toMap,
       withFilterMap.map(x => x)
     )
-    forAll(filteredMapTable) { map: Map[Rank, Option[String]] =>
+    forAll(filteredMapTable) { (map: Map[Rank, Option[String]]) =>
       map.valuesIterator.exists(_.contains(None)) shouldBe false
     }
   }

@@ -7,7 +7,7 @@ class MapKeyValue extends AnyWordSpec with Matchers {
   "Map::map" should {
     "map both keys and values to a new Iterable" in {
       val m = Map(1 -> "A", 2 -> "B")
-      val f = { t: (Int, String) => s"${t._1}${t._2}" }
+      val f = { (t: (Int, String)) => s"${t._1}${t._2}" }
       (m map f) shouldBe Iterable("1A", "2B")
     }
 
