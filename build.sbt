@@ -144,6 +144,7 @@ lazy val scala_core_collections =
   (project in file("scala-core-collections-modules/scala-core-collections"))
     .settings(
       name := "scala-core-collections",
+      scalaVersion := scala3Version,
       libraryDependencies ++= Seq(
         "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
       ) ++ scalaTestDeps
@@ -153,18 +154,21 @@ lazy val scala_core_collections_2 =
   (project in file("scala-core-collections-modules/scala-core-collections-2"))
     .settings(
       name := "scala-core-collections-2",
+      scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps
     )
 
 lazy val scala_core_collections_3 =
   (project in file("scala-core-collections-modules/scala-core-collections-3"))
     .settings(
+      scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps
     )
 
 lazy val scala_core_map =
   (project in file("scala-core-collections-modules/scala-core-map"))
     .settings(
+      scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps
     )
 
