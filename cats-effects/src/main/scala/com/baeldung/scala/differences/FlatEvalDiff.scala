@@ -32,7 +32,7 @@ object FlatEvalDiff extends IOApp.Simple {
   }
 
   val resource: Resource[IO, SimpleConnection] =
-    Resource.make(acquireResource)(releaseResource)
+    Resource.make(acquireResource())(releaseResource)
   val simpleResourceData: IO[Unit] =
     resource.use(simpleConn => IO.println("Result using Simple Resource"))
 

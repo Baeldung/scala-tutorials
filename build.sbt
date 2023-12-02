@@ -486,6 +486,7 @@ lazy val scala3_lang_collections =
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
+    scalaVersion := scala3Version,
     libraryDependencies += catsEffect,
     libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
     libraryDependencies ++= scalaTestDeps,

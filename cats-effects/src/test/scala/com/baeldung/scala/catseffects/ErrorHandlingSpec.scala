@@ -205,18 +205,19 @@ class ErrorHandlingSpec extends AnyWordSpec with Matchers {
 
       def calculateOrRaise[F[_]](f: => Int)(implicit
         me: MonadThrow[F]
-      ): F[Int] =
+      ): F[Int] = {
         calculate(f).attemptTap {
           case Left(_) =>
             new RuntimeException("Calculation failed").raiseError[F, Unit]
           case Right(_) => ().pure[F]
         }
+      }
 
-        val resInvalid = calculateOrRaise[IO](5 / 0).attempt
-        val resValid = calculateOrRaise[IO](5 / 1)
+      val resInvalid = calculateOrRaise[IO](5 / 0).attempt
+      val resValid = calculateOrRaise[IO](5 / 1)
 
-        resInvalid.unsafeRunSync().isLeft shouldBe true
-        resValid.unsafeRunSync() shouldBe 5
+      resInvalid.unsafeRunSync().isLeft shouldBe true
+      resValid.unsafeRunSync() shouldBe 5
     }
 
     "if recover throws the error, then this error will be returned" in {
@@ -288,8 +289,6 @@ class ErrorHandlingSpec extends AnyWordSpec with Matchers {
         case NotFound     => IO.pure("Not found")
         case InvalidInput => IO.pure("Invalid input")
       }
-
-      implicit val i = implicitly[MonadError[IO, Throwable]]
 
       resNone.unsafeRunSync() shouldBe "Not found"
       resEmpty.unsafeRunSync() shouldBe "Invalid input"
