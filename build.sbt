@@ -130,6 +130,7 @@ lazy val scala_core_dates =
 lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
   .settings(
     name := "scala-lang",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
