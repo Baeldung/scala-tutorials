@@ -8,7 +8,7 @@ class STAssertionsTests extends AssertionsForJUnit {
   private final val myInt = 1
 
   @Test
-  def testAssertJUnitStyle() {
+  def testAssertJUnitStyle() = {
     assertEquals(myInt, 1)
     assertTrue(myInt > 0)
 
@@ -21,7 +21,7 @@ class STAssertionsTests extends AssertionsForJUnit {
   }
 
   @Test
-  def testAssertScalaTestStyle() {
+  def testAssertScalaTestStyle() = {
     assert(myInt == 1)
     assert(myInt.isValidInt)
     intercept[ArithmeticException] {

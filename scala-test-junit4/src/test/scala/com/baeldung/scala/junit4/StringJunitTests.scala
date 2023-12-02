@@ -6,7 +6,7 @@ import org.junit.Assert._
 class StringJunitTests {
 
   @Test
-  def testEmptyStringLengthIsZero {
+  def testEmptyStringLengthIsZero = {
     assertEquals("".length, 0)
   }
 }

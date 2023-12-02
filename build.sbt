@@ -201,6 +201,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
         "org.scalatestplus" %% "junit-4-13" % "3.2.17.0" % Test,

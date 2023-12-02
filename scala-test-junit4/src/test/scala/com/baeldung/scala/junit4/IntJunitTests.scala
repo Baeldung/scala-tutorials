@@ -6,12 +6,12 @@ import org.junit.Assert._
 class IntJunitTests {
 
   @Test
-  def testOneIsPositive {
+  def testOneIsPositive = {
     assertTrue(1 > 0)
   }
 
   @Test
-  def testMinusOneIsNegative {
+  def testMinusOneIsNegative = {
     assertTrue(-1 < 0)
   }
 }
