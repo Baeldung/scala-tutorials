@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers
 class CurryingUnitTest extends Matchers {
 
   @Test
-  def givenMultipleArgumentsFunction_whenCurried_thenReturnCurriedFunction() {
+  def givenMultipleArgumentsFunction_whenCurried_thenReturnCurriedFunction() = {
     val sum: (Int, Int) => Int = (x, y) => x + y
     val curriedSum: Int => Int => Int = sum.curried
 
@@ -15,7 +15,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenMultipleArgumentsMethod_whenCurried_thenReturnCurriedFunction() {
+  def givenMultipleArgumentsMethod_whenCurried_thenReturnCurriedFunction() = {
     def sum(x: Int, y: Int): Int = x + y
 
     val curriedSum: Int => Int => Int = (sum _).curried
@@ -25,7 +25,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenMultipleArgumentListsMethod_whenCurried_thenReturnCurriedFunction() {
+  def givenMultipleArgumentListsMethod_whenCurried_thenReturnCurriedFunction() = {
     def sum(x: Int)(y: Int): Int = x + y
 
     val curriedSum: Int => Int => Int = sum
@@ -35,7 +35,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenCurriedFunction_whenPartialApplied_thenReturnLowerArityFunction() {
+  def givenCurriedFunction_whenPartialApplied_thenReturnLowerArityFunction() = {
     val sum: Int => Int => Int = x => y => x + y
     val increment: Int => Int = sum(1)
 
@@ -43,7 +43,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenMultipleArgumentListsMethod_whenPartialApplied_thenReturnLowerArityMethod() {
+  def givenMultipleArgumentListsMethod_whenPartialApplied_thenReturnLowerArityMethod() = {
     def sum(x: Int)(y: Int): Int = x + y
 
     val increment: Int => Int = sum(1)
@@ -52,7 +52,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenMultipleArgumentsFindMethod_whenCalled_thenPredicateFunctionNeedsExplicitType() {
+  def givenMultipleArgumentsFindMethod_whenCalled_thenPredicateFunctionNeedsExplicitType() = {
     def find[A](xs: List[A], predicate: A => Boolean): Option[A] = {
       xs match {
         case Nil => None
@@ -65,7 +65,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenMultipleArgumentListFindMethod_whenCalled_thenPredicateFunctionDoesNotNeedExplicitType() {
+  def givenMultipleArgumentListFindMethod_whenCalled_thenPredicateFunctionDoesNotNeedExplicitType() = {
     def find[A](xs: List[A])(predicate: A => Boolean): Option[A] = {
       xs match {
         case Nil => None
@@ -78,7 +78,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenGenericMultipleArgumentListSumMethod_whenPartialApplied_thenReturnSimpleMethods() {
+  def givenGenericMultipleArgumentListSumMethod_whenPartialApplied_thenReturnSimpleMethods() = {
     def sumF(f: Int => Int)(x: Int, y: Int): Int = f(x) + f(y)
     val sum: (Int, Int) => Int = sumF(identity)
     val sumSquare: (Int, Int) => Int = sumF(x => x * x)
@@ -92,7 +92,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenMultipleArgumentsFunction_whenUseItAsOneArgumentFunction_thenNeedsExplicitArgumentPassing() {
+  def givenMultipleArgumentsFunction_whenUseItAsOneArgumentFunction_thenNeedsExplicitArgumentPassing() = {
     val sum: (Int, Int) => Int = (x, y) => x + y
     val numbers: List[Int] = List(1, 2, 3)
 
@@ -100,7 +100,7 @@ class CurryingUnitTest extends Matchers {
   }
 
   @Test
-  def givenCurriedFunction_whenUseItAsOneArgumentFunction_thenDoesNotNeedExplicitArgumentPassing() {
+  def givenCurriedFunction_whenUseItAsOneArgumentFunction_thenDoesNotNeedExplicitArgumentPassing() = {
     val curriedSum: Int => Int => Int = x => y => x + y
     val numbers: List[Int] = List(1, 2, 3)
 

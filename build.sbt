@@ -113,6 +113,7 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
     name := "scala-core-fp",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
