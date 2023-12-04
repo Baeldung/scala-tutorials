@@ -117,14 +117,15 @@ lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_dates = (project in file("scala-core-modules/scala-core-dates"))
-  .settings(
-    name := "scala-core-dates",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
-    libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
-    libraryDependencies += "com.typesafe" % "config" % "1.4.3",
-  )
+lazy val scala_core_dates =
+  (project in file("scala-core-modules/scala-core-dates"))
+    .settings(
+      name := "scala-core-dates",
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
+      libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
+      libraryDependencies += "com.typesafe" % "config" % "1.4.3"
+    )
 
 lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
   .settings(
@@ -273,7 +274,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.6"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.11.1"
+val elastic4sVersion = "8.11.3"
 val sparkVersion = "3.5.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
