@@ -117,14 +117,15 @@ lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_dates = (project in file("scala-core-modules/scala-core-dates"))
-  .settings(
-    name := "scala-core-dates",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
-    libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
-    libraryDependencies += "com.typesafe" % "config" % "1.4.3",
-  )
+lazy val scala_core_dates =
+  (project in file("scala-core-modules/scala-core-dates"))
+    .settings(
+      name := "scala-core-dates",
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
+      libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
+      libraryDependencies += "com.typesafe" % "config" % "1.4.3"
+    )
 
 lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
   .settings(
@@ -383,7 +384,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "software.amazon.awssdk" % "s3" % "2.21.29"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.595" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.604" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
