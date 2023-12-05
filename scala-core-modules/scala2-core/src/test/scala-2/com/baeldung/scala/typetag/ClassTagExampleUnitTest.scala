@@ -1,4 +1,4 @@
-package scala.com.baeldung.scala.typetag
+package com.baeldung.scala.typetag
 
 import com.baeldung.scala.typtag.ClassTagExample.makeArrayFrom
 import org.scalatest.wordspec.AnyWordSpec

@@ -1,4 +1,5 @@
-package scala.com.baeldung.scala.typetag
+package com.baeldung.scala.typetag
+
 import com.baeldung.scala.typtag.TypeTagExample.checkType
 import org.scalatest.wordspec.AnyWordSpec
 

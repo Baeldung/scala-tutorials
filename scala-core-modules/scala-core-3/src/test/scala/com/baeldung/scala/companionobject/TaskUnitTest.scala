@@ -8,19 +8,19 @@ class TaskUnitTest extends AnyFlatSpec with Matchers {
   "Task" should "be instantiated with default constructor" in {
     val task = new Task("do something")
     task.description should be("do something")
-    task.status should be("pending")
+    task.status() should be("pending")
   }
 
   it should "be able to construct without new keywork" in {
     val task = Task("do something")
     task.description should be("do something")
-    task.status should be("pending")
+    task.status() should be("pending")
   }
 
   it should "have a contructor with status parameter" in {
     val task = Task("do something", "started")
     task.description should be("do something")
-    task.status should be("started")
+    task.status() should be("started")
   }
 
   it should "extract status" in {
