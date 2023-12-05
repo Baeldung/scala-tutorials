@@ -3,6 +3,8 @@ package com.baeldung.scala.structuraltypes
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
+import scala.language.reflectiveCalls
+
 class DuckUnitTest extends AnyFlatSpec with Matchers {
   type Flyer = { def fly(): Unit }
   def callFly(thing: Flyer): Unit = thing.fly()

@@ -1,5 +1,7 @@
 package com.baeldung.scala.uniontypes
 
+import scala.language.implicitConversions
+
 object ArbitraryArityUnionType extends App {
 
   def isIntOrStringOrBool[T: IntOrStringOrBool](t: T): String = t match {
