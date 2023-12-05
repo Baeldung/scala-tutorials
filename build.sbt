@@ -36,8 +36,8 @@ lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
   .settings(
     name := "scala-core-2",
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += scalaMock,
-    libraryDependencies += jUnitInterface
+    libraryDependencies += jUnitInterface,
+    scalaVersion := scala3Version
   )
 
 lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
@@ -113,6 +113,7 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
     name := "scala-core-fp",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
@@ -121,6 +122,7 @@ lazy val scala_core_dates =
   (project in file("scala-core-modules/scala-core-dates"))
     .settings(
       name := "scala-core-dates",
+      scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps,
       libraryDependencies += "joda-time" % "joda-time" % "2.12.5",
       libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
@@ -130,13 +132,15 @@ lazy val scala_core_dates =
 lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
   .settings(
     name := "scala-lang",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
 
 lazy val scala_lang_2 = (project in file("scala-lang-modules/scala-lang-2"))
   .settings(
-    name := "scala-lang",
+    name := "scala-lang-2",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(jUnitInterface) ++ scalaTestDeps
   )
@@ -145,6 +149,7 @@ lazy val scala_core_collections =
   (project in file("scala-core-collections-modules/scala-core-collections"))
     .settings(
       name := "scala-core-collections",
+      scalaVersion := scala3Version,
       libraryDependencies ++= Seq(
         "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
       ) ++ scalaTestDeps
@@ -154,18 +159,21 @@ lazy val scala_core_collections_2 =
   (project in file("scala-core-collections-modules/scala-core-collections-2"))
     .settings(
       name := "scala-core-collections-2",
+      scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps
     )
 
 lazy val scala_core_collections_3 =
   (project in file("scala-core-collections-modules/scala-core-collections-3"))
     .settings(
+      scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps
     )
 
 lazy val scala_core_map =
   (project in file("scala-core-collections-modules/scala-core-map"))
     .settings(
+      scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps
     )
 
@@ -198,6 +206,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
 lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
   .settings(
     name := "scala-test-junit4",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
         "org.scalatestplus" %% "junit-4-13" % "3.2.17.0" % Test,
@@ -440,6 +449,7 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
 lazy val scala_strings = (project in file("scala-strings"))
   .settings(
     name := "scala-strings",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
@@ -480,6 +490,7 @@ lazy val scala3_lang_collections =
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
+    scalaVersion := scala3Version,
     libraryDependencies += catsEffect,
     libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
     libraryDependencies ++= scalaTestDeps,
@@ -489,6 +500,7 @@ lazy val cats_effects = (project in file("cats-effects"))
 lazy val zio = (project in file("zio"))
   .settings(
     name := "zio",
+    scalaVersion := scala3Version,
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
@@ -498,6 +510,7 @@ lazy val zio = (project in file("zio"))
 lazy val doobie = (project in file("doobie"))
   .settings(
     name := "doobie",
+    scalaVersion := scala3Version,
     libraryDependencies += "org.tpolecat" %% "doobie-core" % "1.0.0-RC2",
     libraryDependencies += "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2"
   )
