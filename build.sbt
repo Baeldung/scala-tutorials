@@ -60,7 +60,8 @@ lazy val scala2_core = (project in file("scala-core-modules/scala2-core"))
     libraryDependencies += "org.rogach" %% "scallop" % "5.0.1",
     libraryDependencies += "org.backuity.clist" %% "clist-core" % "3.5.1",
     libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
-    libraryDependencies += "args4j" % "args4j" % "2.33"
+    libraryDependencies += "args4j" % "args4j" % "2.33",
+    libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test",
   )
 
 lazy val scala_core_4 = (project in file("scala-core-modules/scala-core-4"))
@@ -99,9 +100,7 @@ lazy val scala_core_7 = (project in file("scala-core-modules/scala-core-7"))
 lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
   .settings(
     name := "scala-core-8",
-    libraryDependencies += scalaReflection,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test",
     libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2",
     libraryDependencies += "com.typesafe" % "config" % "1.2.1"
     // scalacOptions += "-Ymacro-debug-lite"
