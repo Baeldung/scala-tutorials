@@ -16,8 +16,9 @@ class TuplesUnitTest extends AnyWordSpec with Matchers {
       name shouldBe "Joe"
       age shouldBe 34
     }
-    "not contain more then 22 elements" in {
-      "(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23)" shouldNot compile
+    // From Scala3 onwards, we can have more than 22 fields in tuple.
+    "allow more then 22 elements in Scala 3" in {
+      "(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23)" should compile
     }
   }
 }
