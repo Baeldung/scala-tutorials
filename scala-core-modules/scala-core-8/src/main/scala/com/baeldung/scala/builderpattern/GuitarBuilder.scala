@@ -31,3 +31,6 @@ case class GuitarBuilder private (
     delay = delay
   )
 }
+object GuitarBuilder {
+  def apply(): GuitarBuilder = new GuitarBuilder()
+}
