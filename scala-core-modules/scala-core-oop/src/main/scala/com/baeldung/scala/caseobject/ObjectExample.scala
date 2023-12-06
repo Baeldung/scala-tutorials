@@ -20,7 +20,7 @@ object ObjectExample extends App {
   }
 
   // Throws exception in case we call FlyingObject other than airplane and bird
-  def nonExhaustive(objects: FlyingObject.Value) {
+  def nonExhaustive(objects: FlyingObject.Value) = {
     objects match {
       case FlyingObject.airplane => println("I am an airplane")
       case FlyingObject.bird     => println("I am a bird")

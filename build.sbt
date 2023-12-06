@@ -118,6 +118,7 @@ lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
 lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
   .settings(
     name := "scala-core-oop",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )

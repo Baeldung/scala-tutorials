@@ -5,15 +5,15 @@ object ClassExamples {
   val constA = "A"
   val constB = 4
   class Abc(var a: String, var b: Int) {
-    def this(a: String) {
+    def this(a: String) = {
       this(a, constB)
       this.a = a
     }
-    def this(b: Int) {
+    def this(b: Int) = {
       this(constA, b)
       this.b = b
     }
-    def this() {
+    def this() = {
       this(constA, constB)
     }
   }
