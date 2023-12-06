@@ -70,9 +70,9 @@ lazy val scala_core_4 = (project in file("scala-core-modules/scala-core-4"))
 lazy val scala_core_5 = (project in file("scala-core-modules/scala-core-5"))
   .settings(
     name := "scala-core-5",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    libraryDependencies += scalaReflection
+    libraryDependencies += jUnitInterface
   )
 
 lazy val scala_core_6 = (project in file("scala-core-modules/scala-core-6"))

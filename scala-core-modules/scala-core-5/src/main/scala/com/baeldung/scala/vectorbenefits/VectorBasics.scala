@@ -7,5 +7,7 @@ object VectorBasics extends App {
   val vecAppended: Vector[Int] = vec :+ 4
   val vecPrepended: Vector[Int] = 0 +: vec
 
-  println(vec, vecPrepended, vecAppended)
+  println(vec)
+  println(vecPrepended)
+  println(vecAppended)
 }

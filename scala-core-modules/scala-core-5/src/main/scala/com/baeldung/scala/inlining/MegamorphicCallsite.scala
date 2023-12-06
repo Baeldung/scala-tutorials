@@ -6,9 +6,9 @@ object MegamorphicCallsite extends App {
     fun(n) // callsite
   }
 
-  val f1 = { n: Int => n * n }
-  val f2 = { n: Int => n + n }
-  val f3 = { n: Int => n }
+  val f1 = { (n: Int) => n * n }
+  val f2 = { (n: Int) => n + n }
+  val f3 = { (n: Int) => n }
 
   execute(f1)(5)
   execute(f2)(5)
