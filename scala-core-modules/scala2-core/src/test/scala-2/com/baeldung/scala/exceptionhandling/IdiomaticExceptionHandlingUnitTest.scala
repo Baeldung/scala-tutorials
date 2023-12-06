@@ -2,15 +2,8 @@ package com.baeldung.scala.exceptionhandling
 
 import cats.data.NonEmptyList
 import cats.data.Validated.{Invalid, Valid}
-import com.baeldung.scala.exceptionhandling.LegacyErrors.{
-  ResourceNotFound,
-  ServerError,
-  UserNotFound
-}
-import com.baeldung.scala.exceptionhandling.ValidationErrors.{
-  IllegalLogin,
-  IllegalPassword
-}
+import com.baeldung.scala.exceptionhandling.LegacyErrors._
+import com.baeldung.scala.exceptionhandling.ValidationErrors._
 import org.scalatest.GivenWhenThen
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers

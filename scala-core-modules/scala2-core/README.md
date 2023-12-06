@@ -7,3 +7,5 @@
 - [Introduction to Scala Macros](https://www.baeldung.com/scala/scala2-macros)
 - [Introduction to Macros in Scala 2](https://www.baeldung.com/scala/scala2-macros)
 - [Demystifying View and Context Bounds](https://www.baeldung.com/scala/view-context-bounds)
+- [Introduction to Scala](https://www.baeldung.com/scala/scala-intro)
+- [Exception Handling in Scala](https://www.baeldung.com/scala/exception-handling)

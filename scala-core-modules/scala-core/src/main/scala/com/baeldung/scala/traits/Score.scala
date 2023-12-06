@@ -18,7 +18,7 @@ class Score(
 
   override def produce(): String = s"The score is produced by $engineer"
 
-  override def algorithm(): MixingAlgorithm = {
+  override def algorithm: MixingAlgorithm = {
     if (qualityRatio < 3) LowInstrumentalQuality
     else super.algorithm
   }

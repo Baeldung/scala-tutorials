@@ -1,10 +1,6 @@
 package com.baeldung.scala.exceptionhandling
 
-import com.baeldung.scala.exceptionhandling.LegacyErrors.{
-  ResourceNotFound,
-  ServerError,
-  UserNotFound
-}
+import com.baeldung.scala.exceptionhandling.LegacyErrors._
 
 import scala.util.{Failure, Success, Try}
 

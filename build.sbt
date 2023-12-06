@@ -25,10 +25,10 @@ val zioVersion = "2.0.19"
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
     name := "scala-core",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
-        jUnitInterface,
-        catsEffect
+        jUnitInterface
       ) ++ scalaTestDeps
   )
 
@@ -62,6 +62,7 @@ lazy val scala2_core = (project in file("scala-core-modules/scala2-core"))
     libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
     libraryDependencies += "args4j" % "args4j" % "2.33",
     libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test",
+    libraryDependencies += catsEffect
   )
 
 lazy val scala_core_4 = (project in file("scala-core-modules/scala-core-4"))

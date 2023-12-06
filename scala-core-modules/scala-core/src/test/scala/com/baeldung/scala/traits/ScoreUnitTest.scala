@@ -46,7 +46,7 @@ class ScoreUnitTest {
     val studio = "Abbey Studios"
     val score = new Score(composer, engineer, orchestra, mixer, 1, studio)
 
-    assertEquals(score.algorithm().toString, "Low instrumental quality")
+    assertEquals(score.algorithm.toString, "Low instrumental quality")
   }
 
   @Test
@@ -59,7 +59,7 @@ class ScoreUnitTest {
     val studio = "Abbey Studios"
     val score = new Score(composer, engineer, orchestra, mixer, 10, studio)
 
-    assertEquals(score.algorithm().toString, "High instrumental quality")
+    assertEquals(score.algorithm.toString, "High instrumental quality")
   }
 
   @Test
