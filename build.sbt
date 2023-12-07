@@ -542,8 +542,9 @@ lazy val doobie = (project in file("doobie"))
 // lazy val scala_python = (project in file("scala-python"))
 //   .settings(
 //     name := "scala-python",
-//     libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.5.2",
-//     fork := true
+//     libraryDependencies += "dev.scalapy" %%% "scalapy-core" % "0.5.3",
+//     fork := true,
+//     scalaVersion := scala3Version
 //   )
 
 lazy val reflection = (project in file("reflection"))
