@@ -559,7 +559,9 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
     name := "scala3-libraries",
     libraryDependencies ++= Seq(
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
-      "org.scalameta" %% "munit" % "0.7.29" % Test
+      "org.scalameta" %% "munit" % "0.7.29" % Test,
+      "org.tpolecat" %% "doobie-core" % "1.0.0-RC2",
+      "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2"
     )
   )
 
