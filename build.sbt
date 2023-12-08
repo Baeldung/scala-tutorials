@@ -25,10 +25,10 @@ val zioVersion = "2.0.19"
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
     name := "scala-core",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
-        jUnitInterface,
-        catsEffect
+        jUnitInterface
       ) ++ scalaTestDeps
   )
 
@@ -43,15 +43,32 @@ lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
 lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
   .settings(
     name := "scala-core-3",
+    scalaVersion := scala3Version,
+    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies += jUnitInterface,
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
+  )
+
+lazy val scala2_core = (project in file("scala-core-modules/scala2-core"))
+  .settings(
+    name := "scala2-core",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection,
-    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
+    libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.2.0",
+    libraryDependencies += "com.github.scopt" %% "scopt" % "4.1.0",
+    libraryDependencies += "org.rogach" %% "scallop" % "5.0.1",
+    libraryDependencies += "org.backuity.clist" %% "clist-core" % "3.5.1",
+    libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
+    libraryDependencies += "args4j" % "args4j" % "2.33",
+    libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test",
+    libraryDependencies += catsEffect
   )
 
 lazy val scala_core_4 = (project in file("scala-core-modules/scala-core-4"))
   .settings(
     name := "scala-core-4",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
     libraryDependencies += scalaReflection
@@ -60,14 +77,15 @@ lazy val scala_core_4 = (project in file("scala-core-modules/scala-core-4"))
 lazy val scala_core_5 = (project in file("scala-core-modules/scala-core-5"))
   .settings(
     name := "scala-core-5",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    libraryDependencies += scalaReflection
+    libraryDependencies += jUnitInterface
   )
 
 lazy val scala_core_6 = (project in file("scala-core-modules/scala-core-6"))
   .settings(
     name := "scala-core-6",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface
   )
@@ -75,21 +93,16 @@ lazy val scala_core_6 = (project in file("scala-core-modules/scala-core-6"))
 lazy val scala_core_7 = (project in file("scala-core-modules/scala-core-7"))
   .settings(
     name := "scala-core-7",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
-    libraryDependencies += "com.github.scopt" %% "scopt" % "4.1.0",
-    libraryDependencies += "org.rogach" %% "scallop" % "5.0.1",
-    libraryDependencies += "org.backuity.clist" %% "clist-core" % "3.5.1",
-    libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
-    libraryDependencies += "args4j" % "args4j" % "2.33"
   )
 
 lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
   .settings(
     name := "scala-core-8",
-    libraryDependencies += scalaReflection,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % "test",
+    scalaVersion := scala3Version,
     libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2",
     libraryDependencies += "com.typesafe" % "config" % "1.2.1"
     // scalacOptions += "-Ymacro-debug-lite"
@@ -106,6 +119,7 @@ lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
 lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
   .settings(
     name := "scala-core-oop",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
