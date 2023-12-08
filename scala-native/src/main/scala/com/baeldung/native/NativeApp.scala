@@ -41,10 +41,10 @@ object NativeApp {
   }
 
   def main(args: Array[String]): Unit = {
-    printFromNative
-    simpleNative
-    nativeFromCFile
-    testCurl
+    printFromNative()
+    simpleNative()
+    nativeFromCFile()
+    testCurl()
   }
 
 }

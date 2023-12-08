@@ -535,7 +535,8 @@ lazy val doobie = (project in file("doobie"))
 // lazy val scala_native = (project in file("scala-native"))
 //   .settings(
 //     name := "scala-native",
-//     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
+//     scalaVersion := scala3Version,
+//     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.4.0"
 //   )
 
 // ScalaPy Python Project is disabled as it needs clang and python to installed in the target machine.
