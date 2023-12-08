@@ -73,7 +73,7 @@ class CollectionTest extends AnyFlatSpec with Matchers {
     val cities2 = List("Barcelona", "Hamburg")
     Random.shuffle(cities) should contain theSameElementsAs (cities2)
     cities shouldBe cities2
-    cities ++ cities should contain only cities2 // but duplicates are allowed
+    cities ++ cities should contain only ("Barcelona", "Hamburg") // but duplicates are allowed
     cities should contain only cities2
   }
 
