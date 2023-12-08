@@ -373,6 +373,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
     name := "scala-libraries",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "13.0.0",
