@@ -1,11 +1,12 @@
 package com.baeldung.scala.datesandtimes
+
 import java.text.SimpleDateFormat
 import scala.concurrent.duration.Duration
-import scala.concurrent.{Await, Future}
+import scala.concurrent.{Await, ExecutionContext, Future}
 
 object JavaUtilDate extends App {
 
-  implicit val ec = scala.concurrent.ExecutionContext.Implicits.global
+  implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
   val format: ThreadLocal[SimpleDateFormat] =
     new ThreadLocal[SimpleDateFormat] {
@@ -31,5 +32,5 @@ object JavaUtilDate extends App {
   val date1 = Await.result(r1, Duration.Inf)
   val date2 = Await.result(r2, Duration.Inf)
 
-  println(date1 + ", " + date2) // Prints "Wed Jul 01 2020, Fri Aug 21 2020"
+  println(s"$date1, $date2") // Prints "Wed Jul 01 2020, Fri Aug 21 2020"
 }
