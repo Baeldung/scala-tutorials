@@ -22,11 +22,15 @@ object MagnetPattern extends App {
 
   def combineElements(magnet: CombineMagnet): magnet.Result = magnet()
 
-  implicit def intCombineMagnet(intList: List[Int]): CombineMagnet {type Result = Int} = new CombineMagnet {
+  implicit def intCombineMagnet(
+    intList: List[Int]
+  ): CombineMagnet { type Result = Int } = new CombineMagnet {
     override type Result = Int
     override def apply(): Result = intList.reduce((i, c) => i + c)
   }
-  implicit def strCombineMagnet(stringList: List[String]): CombineMagnet {type Result = String} = new CombineMagnet {
+  implicit def strCombineMagnet(
+    stringList: List[String]
+  ): CombineMagnet { type Result = String } = new CombineMagnet {
     override type Result = String
     override def apply(): Result = stringList.reduce((s, c) => s.concat(c))
   }
