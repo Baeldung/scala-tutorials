@@ -6,12 +6,6 @@ import java.nio.file.{FileVisitResult, Files, Path, SimpleFileVisitor}
 import scala.reflect.io.Directory
 
 object FileDeletion {
-
-  def deletePureScalaDeletion(path: String): Unit = {
-    new Directory(new File(path))
-      .deleteRecursively()
-  }
-
   def deleteRecursively(file: File): Unit = {
     if (file.isDirectory) {
       file.listFiles.foreach(deleteRecursively)

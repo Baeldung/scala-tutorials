@@ -111,9 +111,9 @@ lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
     name := "scala-core-io",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value
+    libraryDependencies += jUnitInterface
   )
 
 lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
