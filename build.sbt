@@ -194,11 +194,11 @@ lazy val scala_core_map =
 lazy val scala_test = (project in file("scala-test"))
   .settings(
     name := "scala-test",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
-        jUnitInterface,
-        scalaMock
+        jUnitInterface
       ) ++ scalaTestDeps
   )
 
