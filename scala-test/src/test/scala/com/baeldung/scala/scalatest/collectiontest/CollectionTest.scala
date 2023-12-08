@@ -74,7 +74,7 @@ class CollectionTest extends AnyFlatSpec with Matchers {
     Random.shuffle(cities) should contain theSameElementsAs (cities2)
     cities shouldBe cities2
     cities ++ cities should contain only ("Barcelona", "Hamburg") // but duplicates are allowed
-    cities should contain only cities2
+    cities should contain only ("Barcelona", "Hamburg")
   }
 
   it should "pass if both collections contains exactly same elements in same order" in {
