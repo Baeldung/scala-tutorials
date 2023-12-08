@@ -616,7 +616,10 @@ addCommandAlias(
 lazy val playGroup = (project in file("play-scala"))
 
 //Uncomment this to enable scala-js module. It needs nodejs module as well in local machine
-//lazy val scalajs = project in file("scala-js")
+//lazy val scalajs = (project in file("scala-js"))
+//  .settings(
+//    scalaVersion := scala3Version
+//  )
 lazy val scalatra = project in file("scalatra")
 lazy val benchmark = project in file("specialized-benchmark")
 
