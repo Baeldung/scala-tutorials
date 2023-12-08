@@ -3,7 +3,6 @@ package com.baeldung.scala
 import java.io.{File, IOException}
 import java.nio.file.attribute.BasicFileAttributes
 import java.nio.file.{FileVisitResult, Files, Path, SimpleFileVisitor}
-import scala.reflect.io.Directory
 
 object FileDeletion {
   def deleteRecursively(file: File): Unit = {
