@@ -35,11 +35,6 @@ class FileDeletionTest
     assert(!new File(path).exists())
   }
 
-  "delete with pure scala" should "delete all directory" in {
-    FileDeletion.deletePureScalaDeletion(path)
-    assert(!new File(path).exists())
-  }
-
   "delete recursively" should "delete all directory" in {
     FileDeletion.deleteRecursively(new File(path))
     assert(!new File(path).exists())

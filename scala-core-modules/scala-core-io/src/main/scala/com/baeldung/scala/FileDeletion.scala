@@ -3,14 +3,8 @@ package com.baeldung.scala
 import java.io.{File, IOException}
 import java.nio.file.attribute.BasicFileAttributes
 import java.nio.file.{FileVisitResult, Files, Path, SimpleFileVisitor}
-import scala.reflect.io.Directory
 
 object FileDeletion {
-
-  def deletePureScalaDeletion(path: String): Unit = {
-    new Directory(new File(path))
-      .deleteRecursively()
-  }
 
   def deleteRecursively(file: File): Unit = {
     if (file.isDirectory) {
