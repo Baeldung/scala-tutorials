@@ -16,7 +16,7 @@ class MagicNumberUnitTest
     sumOfDigitsUsingFold,
     sumOfDigitsUsingIterator
   )
-  private val table= Table(
+  private val table = Table(
     ("number", "sum", "functions", "isMagicNumber"),
     (100, 1, sumFunctions, true),
     (99, 9, sumFunctions, false),
