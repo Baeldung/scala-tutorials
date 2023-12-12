@@ -95,7 +95,7 @@ lazy val scala_core_7 = (project in file("scala-core-modules/scala-core-7"))
     name := "scala-core-7",
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
+    libraryDependencies += jUnitInterface
   )
 
 lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
@@ -111,9 +111,9 @@ lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
     name := "scala-core-io",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value
+    libraryDependencies += jUnitInterface
   )
 
 lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
@@ -194,11 +194,11 @@ lazy val scala_core_map =
 lazy val scala_test = (project in file("scala-test"))
   .settings(
     name := "scala-test",
+    scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
-        jUnitInterface,
-        scalaMock
+        jUnitInterface
       ) ++ scalaTestDeps
   )
 
@@ -321,7 +321,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.0.0",
-      "org.postgresql" % "postgresql" % "42.7.0"
+      "org.postgresql" % "postgresql" % "42.7.1"
     ),
     libraryDependencies ++= Seq(
       "io.monix" %% "monix" % monixVersion
@@ -373,6 +373,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
     name := "scala-libraries",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "org.apache.logging.log4j" %% "log4j-api-scala" % "13.0.0",
@@ -404,10 +405,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.21.37"
+      "software.amazon.awssdk" % "s3" % "2.21.43"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.604" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.610" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
@@ -472,8 +473,9 @@ lazy val scala_strings = (project in file("scala-strings"))
 lazy val scala_design_patterns = (project in file("scala-design-patterns"))
   .settings(
     name := "scala-design-patterns",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += scalaMock,
+    libraryDependencies += "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
@@ -534,7 +536,8 @@ lazy val doobie = (project in file("doobie"))
 // lazy val scala_native = (project in file("scala-native"))
 //   .settings(
 //     name := "scala-native",
-//     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.3.0"
+//     scalaVersion := scala3Version,
+//     libraryDependencies += "com.lihaoyi" %%% "fansi" % "0.4.0"
 //   )
 
 // ScalaPy Python Project is disabled as it needs clang and python to installed in the target machine.
@@ -542,8 +545,9 @@ lazy val doobie = (project in file("doobie"))
 // lazy val scala_python = (project in file("scala-python"))
 //   .settings(
 //     name := "scala-python",
-//     libraryDependencies += "me.shadaj" %% "scalapy-core" % "0.5.2",
-//     fork := true
+//     libraryDependencies += "dev.scalapy" %%% "scalapy-core" % "0.5.3",
+//     fork := true,
+//     scalaVersion := scala3Version
 //   )
 
 lazy val reflection = (project in file("reflection"))
@@ -559,7 +563,9 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
     name := "scala3-libraries",
     libraryDependencies ++= Seq(
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
-      "org.scalameta" %% "munit" % "0.7.29" % Test
+      "org.scalameta" %% "munit" % "0.7.29" % Test,
+      "org.tpolecat" %% "doobie-core" % "1.0.0-RC2",
+      "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2"
     )
   )
 
@@ -612,7 +618,10 @@ addCommandAlias(
 lazy val playGroup = (project in file("play-scala"))
 
 //Uncomment this to enable scala-js module. It needs nodejs module as well in local machine
-//lazy val scalajs = project in file("scala-js")
+//lazy val scalajs = (project in file("scala-js"))
+//  .settings(
+//    scalaVersion := scala3Version
+//  )
 lazy val scalatra = project in file("scalatra")
 lazy val benchmark = project in file("specialized-benchmark")
 
