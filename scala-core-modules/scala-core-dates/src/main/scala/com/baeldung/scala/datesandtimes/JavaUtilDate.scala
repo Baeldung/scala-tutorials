@@ -5,7 +5,8 @@ import scala.concurrent.{Await, ExecutionContext, Future}
 
 object JavaUtilDate extends App {
 
-  implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
+  implicit val ec: ExecutionContext =
+    scala.concurrent.ExecutionContext.Implicits.global
 
   val format: ThreadLocal[SimpleDateFormat] =
     new ThreadLocal[SimpleDateFormat] {
