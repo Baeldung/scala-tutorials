@@ -95,7 +95,7 @@ lazy val scala_core_7 = (project in file("scala-core-modules/scala-core-7"))
     name := "scala-core-7",
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
+    libraryDependencies += jUnitInterface
   )
 
 lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
@@ -407,7 +407,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "software.amazon.awssdk" % "s3" % "2.21.37"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.604" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.610" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
