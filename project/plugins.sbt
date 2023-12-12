@@ -1,6 +1,6 @@
-addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.0")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.2")
 
-addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.4.10")
+addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.4.16")
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.13.0")
 
 addSbtPlugin("com.lightbend.akka.grpc" % "sbt-akka-grpc" % "2.2.1")
@@ -12,7 +12,7 @@ addSbtPlugin("org.playframework" % "sbt-plugin" % "3.0.0")
 addSbtPlugin("org.playframework.twirl" % "sbt-twirl" % "2.0.1")
 addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "4.2.1")
 
-addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.4.3")
+addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.4.7")
 libraryDependencies += "org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.1.0"
 
 resolvers += Resolver.jcenterRepo
