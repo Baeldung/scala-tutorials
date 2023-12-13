@@ -1,25 +1,9 @@
 package com.baeldung.dataValidation
 
-import cats.syntax.all.*
 import cats.effect.{IOApp, IO, ExitCode}
-import cats.data.{EitherNel, EitherNec, ValidatedNec, Validated}
-import cats.data.Validated.{Invalid, Valid}
-
-object Version1:
-  case class Scholarship(country: String, age: Int, cgpa: Double)
-  val countries = List("uganda", "kenya", "tanzania")
-  private def checkCountry(value: String): Boolean =
-    if (countries.contains(value.toLowerCase)) true else false
-  private def checkAge(value: Int): Boolean =
-    if (value >= 25) true else false
-  private def checkCgpa(value: Double): Boolean =
-    if (value >= 3.0) true else false
-  class ScholarshipValidationError
-    extends Exception("Failed to create scholarship")
-  def getScholarship(country: String, age: Int, cgpa: Double): Scholarship =
-    if (checkCountry(country) && checkAge(age) && checkCgpa(cgpa))
-      Scholarship(country, age, cgpa)
-    else throw new ScholarshipValidationError
+import cats.data.{EitherNec, ValidatedNec, Validated}
+import cats.data.Validated.{Valid, Invalid}
+import cats.syntax.all.*
 
 object Utilities:
   case class Country(value: String)
@@ -40,75 +24,7 @@ object Utilities:
     def apply(value: Double): Option[Cgpa] =
       Some(value).filter(_ >= 3.0).map(new Cgpa(_))
 
-object Version2:
-  import Utilities.*
-
-  case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
-  object Scholarship:
-    def apply(
-      value1: String,
-      value2: Int,
-      value3: Double
-    ): Option[Scholarship] =
-      for
-        country <- Country(value1)
-        age <- Age(value2)
-        cgpa <- Cgpa(value3)
-      yield new Scholarship(country, age, cgpa)
-
-object Version3:
-  import Utilities.*
-
-  case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
-  object Scholarship:
-    def apply(
-      value1: String,
-      value2: Int,
-      value3: Double
-    ): Either[String, Scholarship] =
-      for
-        country <- Country(value1).toRight("Invalid Country")
-        age <- Age(value2).toRight("Invalid Age")
-        cgpa <- Cgpa(value3).toRight("Invalid Cgpa")
-      yield new Scholarship(country, age, cgpa)
-
-object Version4:
-  import Utilities.*
-
-  case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
-  object Scholarship:
-    def apply(
-      value1: String,
-      value2: Int,
-      value3: Double
-    ): Either[List[String], Scholarship] =
-      (
-        Country(value1).toRight(List("Invalid Country")),
-        Age(value2).toRight(List("Invalid Age")),
-        Cgpa(value3).toRight(List("Invalid Cgpa"))
-      ).parMapN(
-        Scholarship.apply
-      )
-
-object Version5:
-  import Utilities.*
-
-  case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
-  object Scholarship:
-    def apply(
-      value1: String,
-      value2: Int,
-      value3: Double
-    ): EitherNel[String, Scholarship] =
-      (
-        Country(value1).toRightNel("Invalid Coutry"),
-        Age(value2).toRightNel("Invalid Age"),
-        Cgpa(value3).toRightNel("Invalid Cgpa")
-      ).parMapN(
-        Scholarship.apply
-      )
-
-object Version6:
+object Version1:
   import Utilities.*
 
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
@@ -126,7 +42,7 @@ object Version6:
         Scholarship.apply
       )
 
-object Version7:
+object Version2:
   import Utilities.*
 
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
@@ -187,7 +103,7 @@ object Utilities2:
         CgpaValdiationError
       )
 
-object Version8:
+object Version3:
   import Utilities2.*
   case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
   object Scholarship:
@@ -203,105 +119,11 @@ object Version8:
       ).mapN(
         Scholarship.apply
       )
-
-object Version9:
-  import Utilities2.*
-
-  case object CountryNotSupportted extends ScholarshipValidationError:
-    override val errMsg: String = "Your country is not supported this year"
-
-  case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
-  object Scholarship:
-    def excludeCountry(
-      country: Country,
-      value: String
-    ): ValidatedNec[ScholarshipValidationError, Country] =
-      Validated
-        .condNec(
-          country.value != value.toLowerCase,
-          country,
-          CountryNotSupportted
-        )
-
-    def apply(
-      value1: String,
-      value2: Int,
-      value3: Double
-    ): ValidatedNec[ScholarshipValidationError, Scholarship] =
-      (
-        Country(value1)
-          .andThen(excludeCountry(_, "kenya")),
-        Age(value2),
-        Cgpa(value3)
-      ).mapN(
-        Scholarship.apply
-      )
-
-object Version10:
-  import Utilities2.*
-
-  case class Scholarship(country: Country, age: Age, cgpa: Cgpa)
-  object Scholarship:
-    def apply(
-      value1: String,
-      value2: Int,
-      value3: Double
-    ): ValidatedNec[ScholarshipValidationError, Scholarship] =
-      (
-        Country(value1),
-        Age(value2),
-        Cgpa(value3)
-      ).mapN(
-        Scholarship.apply
-      )
-
-  sealed trait QualificationError extends ScholarshipValidationError:
-    val errMsg: String
-  object QualificationError:
-    case object MastersQualificationError extends QualificationError:
-      override val errMsg: String =
-        "A minimum of a bachelors is required for this scholarship"
-
-  import QualificationError.*
-
-  enum Qualification:
-    case Diploma, Bachelors, Masters, Phd
-
-  case class MastersQualification(value: Qualification)
-  object MastersQualification:
-    def apply(
-      value: String
-    ): ValidatedNec[QualificationError, MastersQualification] =
-      Validated.condNec(
-        value.toLowerCase == "bachelors" || value.toLowerCase == "masters",
-        if (value.toLowerCase == "bachelors")
-          new MastersQualification(Qualification.Bachelors)
-        else
-          new MastersQualification(Qualification.Masters),
-        MastersQualificationError
-      )
-
-  case class MastersScholarship(
-    qualification: MastersQualification,
-    scholarship: Scholarship
-  )
-
-  object MastersScholarship:
-    def apply(
-      qualification: String,
-      country: String,
-      age: Int,
-      cgpa: Double
-    ): ValidatedNec[ScholarshipValidationError, MastersScholarship] =
-      Scholarship(country, age, cgpa).map2(
-        MastersQualification(qualification)
-      ) { (s, m) =>
-        new MastersScholarship(m, s)
-      }
 
 object BaeldungDv extends IOApp.Simple:
-  import Version10.*
+  import Version1.*
   def run: IO[Unit] =
-    MastersScholarship("diploma", "rwanda", 23, 2.0) match
-      case Valid(x)   => IO.println(x)
-      case Invalid(y) => IO.println(y.toChain)
+    Scholarship("Uganda", 23, 2.5) match
+      case Right(x) => IO.println(x)
+      case Left(y)  => IO.println(y.toChain)
+// Chain(Invalid Age, Invalid Cgpa)
