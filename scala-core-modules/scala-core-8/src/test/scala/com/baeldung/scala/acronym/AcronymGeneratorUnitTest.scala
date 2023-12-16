@@ -4,6 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import org.scalacheck.Gen
 import org.scalatest.matchers.should.Matchers
+import AcronymGenerator.*
 
 class AcronymGeneratorUnitTest
   extends AnyFlatSpec
@@ -21,6 +22,7 @@ class AcronymGeneratorUnitTest
 
   it should "generate acronym for random generated string correctly" in {
     forAll(sentenceGenerator) { sentence =>
+      println("sentence -=> "+sentence)
       val acronym = AcronymGenerator.acronymUsingSplit(sentence)
       withClue(s"Gen sentence = $sentence , acronym = $acronym") {
         acronym.forall(_.isLetter) shouldBe true
@@ -31,25 +33,28 @@ class AcronymGeneratorUnitTest
   }
 
   it should "generate empty acronym for empty string" in {
-    val acronym = AcronymGenerator.acronymUsingSplit("    ")
+    val acronym = acronymUsingSplit("    ")
     acronym shouldBe empty
   }
 
   it should "generate correct acronym for alpha numeric string" in {
-    val acronym =
-      AcronymGenerator.acronymUsingSplit("This is a sentence with 9numbers")
+    val acronym = acronymUsingSplit("This is a sentence with 9numbers")
     acronym shouldBe "TIASW"
   }
 
   it should "generate empty acronym for numeric/special char starting string" in {
-    val acronym = AcronymGenerator.acronymUsingSplit("1is 7m @num")
-    acronym shouldBe ""
+    val acronym = acronymUsingSplit("1is 7m @num")
+    acronym shouldBe empty
+  }
+
+  it should "generate acronym for FAQ" in {
+    val acronym = acronymUsingSplit("Frequently Asked Questions")
+    acronym shouldBe "FAQ"
   }
 
   it should "generate acronym for NASA with extra spaces in between" in {
-    val acronym = AcronymGenerator.acronymUsingSplit(
-      "National Aeronautics & Space   Administration "
-    )
+    val acronym =
+      acronymUsingSplit("National Aeronautics & Space   Administration ")
     acronym shouldBe "NASA"
   }
 
