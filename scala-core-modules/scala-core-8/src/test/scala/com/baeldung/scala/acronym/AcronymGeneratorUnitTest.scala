@@ -22,7 +22,7 @@ class AcronymGeneratorUnitTest
 
   it should "generate acronym for random generated string correctly" in {
     forAll(sentenceGenerator) { sentence =>
-      println("sentence -=> "+sentence)
+      println("sentence -=> " + sentence)
       val acronym = AcronymGenerator.acronymUsingSplit(sentence)
       withClue(s"Gen sentence = $sentence , acronym = $acronym") {
         acronym.forall(_.isLetter) shouldBe true
