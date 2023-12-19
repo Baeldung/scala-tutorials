@@ -228,6 +228,12 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
       )
   )
 
+lazy val scala_test_junit5 = (project in file("scala-test-junit5"))
+  .settings(
+    name := "scala-test-junit5",
+    scalaVersion := scala3Version
+  )
+
 lazy val scala_akka = (project in file("scala-akka"))
   .configs(IntegrationTest)
   .settings(
