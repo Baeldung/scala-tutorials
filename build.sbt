@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.2"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.2" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.4.14"
-val embedMongoVersion = "4.11.1"
+val embedMongoVersion = "4.12.0"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.17" % Test,
@@ -303,7 +303,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val circeVersion = "0.14.6"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.11.3"
+val elastic4sVersion = "8.11.5"
 val sparkVersion = "3.5.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -411,10 +411,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.21.43"
+      "software.amazon.awssdk" % "s3" % "2.21.46"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.610" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.622" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
@@ -526,6 +526,18 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
+    libraryDependencies ++= Seq(
+      "dev.zio" %% "zio-json" % "0.6.2",
+      "dev.zio" %% "zio-http" % "3.0.0-RC2",
+      "io.getquill" %% "quill-zio" % "4.6.0",
+      "io.getquill" %% "quill-jdbc-zio" % "4.6.0",
+      "com.h2database" % "h2" % "2.2.220"
+    ),
+    libraryDependencies ++= Seq(
+      "dev.zio" %% "zio-test" % zioVersion % Test,
+      "dev.zio" %% "zio-test-magnolia" % zioVersion % Test,
+      "dev.zio" %% "zio-http-testkit" % "3.0.0-RC2" % Test
+    ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
