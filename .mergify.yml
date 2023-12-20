@@ -3,7 +3,9 @@ pull_request_rules:
     conditions:
       - label!=early-semver-major
       - label!=semver-spec-major
-      - "#files=1"
+      - or:
+        - files~=\.sbt$
+        - files~=ScalaVersions.scala
       - "#approved-reviews-by>=1"    
       - check-success=CI - Jenkins
       - author=scala-steward-baeldung[bot]
