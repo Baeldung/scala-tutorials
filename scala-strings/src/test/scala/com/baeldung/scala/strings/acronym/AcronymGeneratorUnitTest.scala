@@ -1,4 +1,4 @@
-package com.baeldung.scala.acronym
+package com.baeldung.scala.strings.acronym
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks

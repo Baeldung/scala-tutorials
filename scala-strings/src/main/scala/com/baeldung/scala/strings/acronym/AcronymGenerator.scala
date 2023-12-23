@@ -1,4 +1,4 @@
-package com.baeldung.scala.acronym
+package com.baeldung.scala.strings.acronym
 
 object AcronymGenerator {
   def acronymUsingSplit(text: String): String = {

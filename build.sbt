@@ -105,7 +105,6 @@ lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
     scalaVersion := scala3Version,
     libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2",
     libraryDependencies += "com.typesafe" % "config" % "1.2.1",
-    libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.17.0" % Test
     // scalacOptions += "-Ymacro-debug-lite"
   )
 
@@ -468,7 +467,8 @@ lazy val scala_strings = (project in file("scala-strings"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += jUnitInterface,
-    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
+    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
+    libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.17.0" % Test
   )
 
 lazy val scala_design_patterns = (project in file("scala-design-patterns"))
