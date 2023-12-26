@@ -56,7 +56,8 @@ object RandomPasswordGenerator {
     val lowerLetters = 'a' to 'z'
     val upperLetters = 'A' to 'Z'
     val numbers = '0' to '9'
-    val specialChars = IndexedSeq('!', '@', '#', '$', '&', '*', '?', '^', '(', ')')
+    val specialChars =
+      IndexedSeq('!', '@', '#', '$', '&', '*', '?', '^', '(', ')')
     val fullCharset = lowerLetters ++ upperLetters ++ numbers ++ specialChars
     val random = new SecureRandom()
 

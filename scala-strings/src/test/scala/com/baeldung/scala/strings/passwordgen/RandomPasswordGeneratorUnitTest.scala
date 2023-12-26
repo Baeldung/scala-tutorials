@@ -63,13 +63,15 @@ class RandomPasswordGeneratorUnitTest
     }
 
     "generate secure password with mix of condition" in {
-      forAll { (_:Unit) =>
+      forAll { (_: Unit) =>
         val password = RandomPasswordGenerator.randomSecurePwdWithMix
         password.length shouldBe 16
         password.exists(_.isLower) shouldBe true
         password.exists(_.isUpper) shouldBe true
         password.exists(_.isDigit) shouldBe true
-        password.exists(IndexedSeq('!', '@', '#', '$', '&', '*', '?', '^', '(', ')').contains) shouldBe true
+        password.exists(
+          IndexedSeq('!', '@', '#', '$', '&', '*', '?', '^', '(', ')').contains
+        ) shouldBe true
       }
     }
   }
