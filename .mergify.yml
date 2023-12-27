@@ -6,6 +6,7 @@ pull_request_rules:
       - or:
         - files~=\.sbt$
         - files~=ScalaVersions.scala
+        - files~=build.properties
       - "#approved-reviews-by>=1"    
       - check-success=CI - Jenkins
       - author=scala-steward-baeldung[bot]
