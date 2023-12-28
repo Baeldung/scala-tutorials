@@ -463,7 +463,8 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-yaml" % "1.15.0",
       "io.circe" %% "circe-generic" % "0.14.6",
-      "io.circe" %% "circe-parser" % "0.14.6"
+      "io.circe" %% "circe-parser" % "0.14.6",
+      catsEffect
     )
   )
 
