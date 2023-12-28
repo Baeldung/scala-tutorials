@@ -1,4 +1,4 @@
-package com.baeldung.dataValidation
+package com.baeldung.datavalidation
 
 import cats.effect.{IOApp, IO, ExitCode}
 import cats.data.{EitherNec, ValidatedNec, Validated}
@@ -120,7 +120,7 @@ object Version3:
         Scholarship.apply
       )
 
-object BaeldungDv extends IOApp.Simple:
+object DataValidation extends IOApp.Simple:
   import Version1.*
   def run: IO[Unit] =
     Scholarship("Uganda", 23, 2.5) match
