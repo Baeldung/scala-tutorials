@@ -464,7 +464,6 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
       "io.circe" %% "circe-yaml" % "1.15.0",
       "io.circe" %% "circe-generic" % "0.14.6",
       "io.circe" %% "circe-parser" % "0.14.6",
-      catsEffect
     )
   )
 
@@ -581,11 +580,13 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
   .settings(
     scalaVersion := scala3Version,
     name := "scala3-libraries",
+    libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
       "org.scalameta" %% "munit" % "0.7.29" % Test,
       "org.tpolecat" %% "doobie-core" % "1.0.0-RC2",
-      "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2"
+      "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2",
+      catsEffect
     )
   )
 
