@@ -351,8 +351,9 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   )
 
 val http4sBlaze = "0.23.15"
-val http4sVersion = "0.23.24"
+val http4sVersion = "0.23.25"
 val osLibVersion = "0.9.3"
+
 lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
   .settings(
     name := "scala-libraries",
@@ -411,7 +412,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.22.7"
+      "software.amazon.awssdk" % "s3" % "2.22.11"
     ),
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.627" % IntegrationTest,
