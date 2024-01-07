@@ -16,10 +16,10 @@ import io.circe.syntax.*
 object YamlExample:
   case class Server(host: String, port: Int)
   case class OrdersConfig(
-                           name: String,
-                           server: Server,
-                           serverType: List[String]
-                         )
+   name: String,
+   server: Server,
+   serverType: List[String]
+  )
 
   val ordersYamlConfig: String =
     """
@@ -35,8 +35,8 @@ object YamlExample:
     yaml.parser.parse(ordersYamlConfig)
 
   def processJson(
-                   json: Either[ParsingFailure, Json]
-                 ): Either[Error, OrdersConfig] =
+    json: Either[ParsingFailure, Json]
+  ): Either[Error, OrdersConfig] =
     json
       .leftMap(err => err: Error)
       .flatMap(_.as[OrdersConfig])
@@ -152,5 +152,5 @@ def program =
     writeOrdersConfig("src/main/resources/sample2.yaml", myCaseClass)
   )
 
-/** sample2.yaml has been written
-  */
+  /** sample2.yaml has been written
+    */
