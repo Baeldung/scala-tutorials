@@ -1,18 +1,25 @@
 package com.baeldung.circeyaml
 
-import io.circe.{Error, Json, ParsingFailure, yaml}
-
-import java.io.{File, FileReader, FileWriter}
+import io.circe.yaml
+import io.circe.*
+import cats.syntax.either.*
+import io.circe.generic.auto.*
+import java.io.FileReader
+import java.io.File
 import java.nio.file.Paths
 import scala.util.Try
+import io.circe.parser.*
+import java.io.FileWriter
+import io.circe.yaml.syntax.*
+import io.circe.syntax.*
 
 object YamlExample:
   case class Server(host: String, port: Int)
   case class OrdersConfig(
-    name: String,
-    server: Server,
-    serverType: List[String]
-  )
+                           name: String,
+                           server: Server,
+                           serverType: List[String]
+                         )
 
   val ordersYamlConfig: String =
     """
@@ -28,8 +35,8 @@ object YamlExample:
     yaml.parser.parse(ordersYamlConfig)
 
   def processJson(
-    json: Either[ParsingFailure, Json]
-  ): Either[Error, OrdersConfig] =
+                   json: Either[ParsingFailure, Json]
+                 ): Either[Error, OrdersConfig] =
     json
       .leftMap(err => err: Error)
       .flatMap(_.as[OrdersConfig])
@@ -107,3 +114,43 @@ object YamlExample:
       case Left(err) => err.getMessage
 
 end YamlExample
+
+@main
+def program =
+  import YamlExample.*
+  // Reading a Yaml String
+  printValue(processJson(ordersStringConfig))
+
+  /** OrdersConfig(Orders String,Server(localhost,8080),List(Http, Grpc))
+    */
+
+  // Reading from a yaml File
+  printValue(ordersFileConfig)
+
+  /** OrdersConfig(Orders File,Server(localhost,8080),List(Http, Grpc))
+    */
+
+  ordersFileConfig2 match
+    case Right(lst) =>
+      lst.foreach(printValue)
+    case Left(err) => println(err.getMessage)
+
+  /** OrdersConfig(Orders,Server(localhost,8080),List(Http, Grpc))
+    * OrdersConfig(Test,Server(localhost,9999),List(Http, Grpc))
+    */
+
+  // write json String to yaml file
+  writeJsonStr("src/main/resources/sample.yaml", jsonString) match
+    case Right(v)  => println(v)
+    case Left(err) => println(err.getMessage)
+
+  /** sample.yaml has been written
+    */
+
+  // write case class to yaml file
+  println(
+    writeOrdersConfig("src/main/resources/sample2.yaml", myCaseClass)
+  )
+
+/** sample2.yaml has been written
+  */
