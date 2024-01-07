@@ -16,9 +16,9 @@ import io.circe.syntax.*
 object YamlExample:
   case class Server(host: String, port: Int)
   case class OrdersConfig(
-   name: String,
-   server: Server,
-   serverType: List[String]
+    name: String,
+    server: Server,
+    serverType: List[String]
   )
 
   val ordersYamlConfig: String =
