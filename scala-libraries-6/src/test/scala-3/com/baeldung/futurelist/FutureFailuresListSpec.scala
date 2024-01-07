@@ -17,16 +17,22 @@ class FutureFailuresListSpec extends AnyFlatSpec with Matchers {
   )
 
   "getSuccessfulUsingTransform" should "return all successful futures" in {
-    val result = Await.result(FutureFailuresList.getSuccessfulUsingTransform(testList), 2.seconds)
+    val result = Await.result(
+      FutureFailuresList.getSuccessfulUsingTransform(testList),
+      2.seconds
+    )
     result shouldBe List(
-        "success 1",
-        "success 2",
-        "success 3"
-      )
+      "success 1",
+      "success 2",
+      "success 3"
+    )
   }
 
   "getFailuresUsingTransform" should "return all failed futures" in {
-    val result = Await.result(FutureFailuresList.getFailuresUsingTransform(testList), 2.seconds)
+    val result = Await.result(
+      FutureFailuresList.getFailuresUsingTransform(testList),
+      2.seconds
+    )
     result.map(_.getMessage) shouldBe List(
       "failure 1",
       "failure 2"
@@ -34,7 +40,10 @@ class FutureFailuresListSpec extends AnyFlatSpec with Matchers {
   }
 
   "getSuccessfulUsingRecover" should "return all successful futures" in {
-    val result = Await.result(FutureFailuresList.getSuccessfulUsingRecover(testList), 2.seconds)
+    val result = Await.result(
+      FutureFailuresList.getSuccessfulUsingRecover(testList),
+      2.seconds
+    )
     result shouldBe List(
       "success 1",
       "success 2",
@@ -43,7 +52,10 @@ class FutureFailuresListSpec extends AnyFlatSpec with Matchers {
   }
 
   "getFailuresUsingRecover" should "return all failed futures" in {
-    val result = Await.result(FutureFailuresList.getFailuresUsingRecover(testList), 2.seconds)
+    val result = Await.result(
+      FutureFailuresList.getFailuresUsingRecover(testList),
+      2.seconds
+    )
     result.map(_.getMessage) shouldBe List(
       "failure 1",
       "failure 2"
