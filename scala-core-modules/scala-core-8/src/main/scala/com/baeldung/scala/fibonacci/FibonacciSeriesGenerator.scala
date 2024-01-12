@@ -18,8 +18,8 @@ object FibonacciSeriesGenerator {
   def fibTailRec(seriesSize: Int): Seq[Long] = {
     @tailrec
     def fib(n: Int, a: Long, b: Long, acc: List[Long]): List[Long] = {
-      if (n <= 0) acc.reverse
-      else fib(n - 1, b, a + b, a :: acc)
+      if (n <= 0) acc
+      else fib(n - 1, b, a + b, acc :+ a)
     }
     fib(seriesSize, 0L, 1, Nil)
   }
