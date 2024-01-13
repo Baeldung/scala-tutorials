@@ -350,7 +350,6 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     Defaults.itSettings
   )
 
-
 val http4sBlaze = "0.23.16"
 val http4sVersion = "0.23.25"
 val osLibVersion = "0.9.3"
@@ -416,7 +415,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "software.amazon.awssdk" % "s3" % "2.22.11"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.631" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.636" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
