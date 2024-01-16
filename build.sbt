@@ -610,6 +610,11 @@ lazy val spark_scala = (project in file("spark-scala"))
     )
   )
 
+// This is here to prevent the accidental addition of the stand-alone module for SCALA-156
+// Do not uncomment the next line
+// lazy val spark_scala = (project in file("sbt-standalone"))
+
+
 addCommandAlias(
   "ci",
   ";compile;test:compile;it:compile;scalafmtCheckAll;test"
