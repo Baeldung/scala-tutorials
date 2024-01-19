@@ -11,3 +11,4 @@ This module contains articles about Scala's core features
 - [Convert Byte Array to String in Scala](https://www.baeldung.com/scala/convert-byte-array-to-string)
 - [Scala Keyword Matching: A Library-First Guide](https://www.baeldung.com/scala/keyword-matching)
 - [Generate Secure Random Passwords in Scala](https://www.baeldung.com/scala/generate-secure-random-passwords)
+- [Generate an Acronym for a Given String in Scala](https://www.baeldung.com/scala/string-derive-acronym)
