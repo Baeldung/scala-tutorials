@@ -266,6 +266,20 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test
     ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test")))
   )
+
+lazy val scala_akka_3 = (project in file("scala-akka-3"))
+  .enablePlugins(AkkaGrpcPlugin)
+  .configs(IntegrationTest)
+  .settings(
+    name := "scala-akka-3",
+    Defaults.itSettings,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-stream" % "2.8.5",
+      "com.typesafe.akka" %% "akka-discovery" % "2.8.5",
+      "com.typesafe.akka" %% "akka-stream-testkit" % "2.8.5" % Test
+    ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test")))
+  )
+
 val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
