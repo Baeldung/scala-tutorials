@@ -12,3 +12,4 @@ This module contains articles about the ScalaTest framework in Scala.
 - [How to Check If Code Compiles in ScalaTest](https://www.baeldung.com/scala/scalatest-check-compilation)
 - [Case-Insensitive String Comparison Scala](https://www.baeldung.com/scala/case-insensitive-comparison)
 - [ScalaTest Assertions: A Comprehensive Guide](https://www.baeldung.com/scala/scalatest-assertions)
+- [Test for Exceptions in ScalaTest](https://www.baeldung.com/scala/scalatest-test-exceptions)
