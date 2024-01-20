@@ -2,9 +2,9 @@ package com.baeldung.scala.fibonacci
 
 import scala.annotation.tailrec
 
-object FibonacciSeriesGenerator {
+object FibonacciSequenceGenerator {
 
-  def fibSeriesRecursion(seriesSize: Int): Seq[Long] = {
+  def fibSequenceRecursion(seriesSize: Int): Seq[Long] = {
     def getNextNum(num: Long): Long = {
       if (num <= 1) {
         num

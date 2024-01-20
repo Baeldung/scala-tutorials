@@ -5,13 +5,13 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 import FibonacciSeriesGenerator._
 
-class FibonacciSeriesGeneratorTest
+class FibonacciSequenceGeneratorTest
   extends AnyFlatSpec
   with Matchers
   with TableDrivenPropertyChecks {
 
   private val fns = List(
-    ("Recursion", fibSeriesRecursion),
+    ("Recursion", fibSequenceRecursion),
     ("Tail Recursion", fibTailRec),
     ("LazyList", fibLazyList),
     ("Iterator", fibIterator)
@@ -28,7 +28,7 @@ class FibonacciSeriesGeneratorTest
   )
 
   fns.foreach { (name, fn) =>
-    it should s"[$name] generate fibonacci series correctly for each implementations" in {
+    it should s"[$name] generate fibonacci sequence correctly for each implementations" in {
       forAll(fibTables) { (num, exp) =>
         withClue(s"Executing function ${name} for input $num") {
           fn(num) shouldBe exp
