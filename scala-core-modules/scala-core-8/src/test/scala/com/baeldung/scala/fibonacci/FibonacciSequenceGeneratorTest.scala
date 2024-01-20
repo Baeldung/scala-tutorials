@@ -3,7 +3,7 @@ package com.baeldung.scala.fibonacci
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
-import FibonacciSeriesGenerator._
+import FibonacciSequenceGenerator._
 
 class FibonacciSequenceGeneratorTest
   extends AnyFlatSpec
@@ -18,7 +18,7 @@ class FibonacciSequenceGeneratorTest
   )
 
   private val fibTables = Table(
-    ("fib limit", "series"),
+    ("fib limit", "sequence"),
     (3, List(0L, 1L, 1L)),
     (-5, List()),
     (0, List()),
