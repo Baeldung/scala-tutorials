@@ -27,7 +27,7 @@ object YamlExample:
       server:
           host: localhost
           port: 8080
-      serverType: 
+      serverType:
           - Http
           - Grpc
     """

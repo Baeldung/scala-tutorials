@@ -6,11 +6,11 @@ ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.2"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.2" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.3"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.3" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.4.14"
-val embedMongoVersion = "4.12.0"
+val embedMongoVersion = "4.12.2"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.17" % Test,
@@ -363,8 +363,8 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       "com.beachape" %% "enumeratum" % "1.7.3",
-      "com.github.pureconfig" %% "pureconfig" % "0.17.4",
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.4",
+      "com.github.pureconfig" %% "pureconfig" % "0.17.5",
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.5",
       "com.typesafe" % "config" % "1.4.3",
       "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
@@ -412,10 +412,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.22.13"
+      "software.amazon.awssdk" % "s3" % "2.23.7"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.636" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.641" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
@@ -429,7 +429,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
 
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.5.3-ce"
-val pureconfigVersion = "0.17.4"
+val pureconfigVersion = "0.17.5"
 val jackSonVersion = "2.16.1"
 val log4jApiScalaVersion = "13.0.0"
 val log4jVersion = "2.20.0"
