@@ -9,13 +9,18 @@ class TableDrivenUnitTest
   with Matchers
   with TableDrivenPropertyChecks {
 
-  def isPalindrome(str: String): Boolean = str == str.reverse
+  def isPalindrome(str: String): Boolean = {
+    val sanitizedStr = str.replaceAll("[^A-Za-z0-9]", "").toLowerCase
+    sanitizedStr == sanitizedStr.reverse
+  }
 
   private val palindromeTable = Table(
     ("Text", "Is Palindrome"),
-    ("madam", false),
-    ("Madam", false),
-    ("Hello", true)
+    ("madam", true),
+    ("Madam", true),
+    ("Tacocat", true),
+    ("TACO, CAT", true),
+    ("Hello", false),
   )
 
   it should "check for palindrome" in {
@@ -33,8 +38,8 @@ class TableDrivenUnitTest
   it should "check for palindrome for string 'madam'" in {
     isPalindrome("madam") shouldBe true
   }
-  it should "check for palindrome for string 'Madam'" in {
-    isPalindrome("Madam") shouldBe false
+  it should "check for palindrome for string 'Tacocat' with special character" in {
+    isPalindrome("Taco, cat") shouldBe true
   }
   it should "check for palindrome for string 'Hello'" in {
     isPalindrome("Hello") shouldBe false
