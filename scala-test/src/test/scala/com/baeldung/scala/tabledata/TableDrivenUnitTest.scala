@@ -20,7 +20,7 @@ class TableDrivenUnitTest
     ("Madam", true),
     ("Tacocat", true),
     ("TACO, CAT", true),
-    ("Hello", false),
+    ("Hello", false)
   )
 
   it should "check for palindrome" in {
