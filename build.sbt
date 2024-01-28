@@ -270,7 +270,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.4.1"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.8"
-val fs2Version = "3.9.3"
+val fs2Version = "3.9.4"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
 val reactiveMongo = "1.0.10"
@@ -613,7 +613,6 @@ lazy val spark_scala = (project in file("spark-scala"))
 // This is here to prevent the accidental addition of the stand-alone module for SCALA-156
 // Do not uncomment the next line
 // lazy val spark_scala = (project in file("sbt-standalone"))
-
 
 addCommandAlias(
   "ci",
