@@ -409,7 +409,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.0",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.0",
-      "org.testcontainers" % "pulsar" % "1.19.3" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.19.4" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.23.7"
@@ -613,7 +613,6 @@ lazy val spark_scala = (project in file("spark-scala"))
 // This is here to prevent the accidental addition of the stand-alone module for SCALA-156
 // Do not uncomment the next line
 // lazy val spark_scala = (project in file("sbt-standalone"))
-
 
 addCommandAlias(
   "ci",
