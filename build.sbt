@@ -412,7 +412,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.23.7"
+      "software.amazon.awssdk" % "s3" % "2.23.12"
     ),
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.641" % IntegrationTest,
@@ -613,7 +613,6 @@ lazy val spark_scala = (project in file("spark-scala"))
 // This is here to prevent the accidental addition of the stand-alone module for SCALA-156
 // Do not uncomment the next line
 // lazy val spark_scala = (project in file("sbt-standalone"))
-
 
 addCommandAlias(
   "ci",
