@@ -10,7 +10,7 @@ object IsSortedCollection {
     case ASC, DESC
 
   def isSortedBySorting[A](list: List[A], direction: Direction)(using
-                                                                ord: Ordering[A]
+    ord: Ordering[A]
   ): Boolean = {
     direction match {
       case Direction.ASC  => list.sorted == list
@@ -19,7 +19,7 @@ object IsSortedCollection {
   }
 
   def isSortedBySliding[A](list: List[A], direction: Direction)(using
-                                                                ord: Ordering[A]
+    ord: Ordering[A]
   ): Boolean = {
     val comparator = if (direction == ASC) ord.lteq else ord.gteq
     list match {
@@ -29,7 +29,7 @@ object IsSortedCollection {
   }
 
   def isSortedByZip[A](list: List[A], direction: Direction)(using
-                                                            ord: Ordering[A]
+    ord: Ordering[A]
   ): Boolean = {
     val comparator = if (direction == ASC) ord.lteq else ord.gteq
     if (list.size < 2)
@@ -39,7 +39,7 @@ object IsSortedCollection {
   }
 
   def isSortedByLazyZip[A](list: List[A], direction: Direction)(using
-                                                                ord: Ordering[A]
+    ord: Ordering[A]
   ): Boolean = {
     val comparator = if (direction == ASC) ord.lteq else ord.gteq
     if (list.size < 2)
@@ -50,12 +50,13 @@ object IsSortedCollection {
 
   @tailrec
   def isSortedRecursive[A](list: List[A], direction: Direction)(using
-                                                                ord: Ordering[A]
+    ord: Ordering[A]
   ): Boolean = {
     val comparator = if (direction == ASC) ord.lteq else ord.gteq
     list match {
       case Nil | _ :: Nil => true
-      case a :: b :: tail => comparator(a, b) && isSortedRecursive(b :: tail, direction)
+      case a :: b :: tail =>
+        comparator(a, b) && isSortedRecursive(b :: tail, direction)
     }
   }
 }
