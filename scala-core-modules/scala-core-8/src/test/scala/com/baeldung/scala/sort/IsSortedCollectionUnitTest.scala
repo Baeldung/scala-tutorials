@@ -10,7 +10,7 @@ class IsSortedCollectionUnitTest
   with Matchers
   with TableDrivenPropertyChecks {
 
-  val fnsToTest = List(
+  private val fnsToTest = List(
     (("isSortedBySorting", isSortedBySorting[Int])),
     (("isSortedBySliding", isSortedBySliding[Int])),
     (("isSortedByZip", isSortedByZip[Int])),
@@ -18,50 +18,25 @@ class IsSortedCollectionUnitTest
     (("isSortedRecursive", isSortedRecursive[Int]))
   )
 
-  // format: off - to read the table more easily
+  // format: off
   private val intTable = Table(
     ("Functions", "Input", "Direction", "IsSorted"),
-    (fnsToTest, List(1, 2, 3, 4), Direction.ASC, true),
-    (fnsToTest, List(1, 2, 3, 4), Direction.DESC, false),
-    (fnsToTest, List(4, 3, 2, 1), Direction.DESC, true),
+    (fnsToTest, List(1,2,3,4), Direction.ASC, true),
+    (fnsToTest, List(1,2,3,4), Direction.DESC, false),
+    (fnsToTest, List(4,3,2,1), Direction.DESC, true),
     (fnsToTest, List(1), Direction.DESC, true),
     (fnsToTest, List(1), Direction.ASC, true),
     (fnsToTest, Nil, Direction.ASC, true),
-    (fnsToTest, Nil, Direction.DESC, true)
+    (fnsToTest, Nil, Direction.DESC, true),
   )
 
   private val stringTable = Table(
     ("Function Name", "Function", "Input", "Direction", "IsSorted"),
-    (
-      "isSortedBySorting",
-      isSortedBySorting[String],
-      List("a", "b", "c"),
-      Direction.ASC,
-      true
-    ),
-    (
-      "isSortedBySorting",
-      isSortedBySorting[String],
-      List("a", "b", "c"),
-      Direction.DESC,
-      false
-    ),
-    (
-      "isSortedBySorting",
-      isSortedBySorting[String],
-      List("a", "aa", "aab", "bcd"),
-      Direction.ASC,
-      true
-    ),
-    (
-      "isSortedBySorting",
-      isSortedBySorting[String],
-      List("ccc", "bbb", "a"),
-      Direction.DESC,
-      true
-    )
+    ("isSortedBySorting", isSortedBySorting[String], List("a", "b", "c"), Direction.ASC, true),
+    ("isSortedBySorting", isSortedBySorting[String], List("a", "b", "c"), Direction.DESC, false),
+    ("isSortedBySorting", isSortedBySorting[String], List("a", "aa", "aab", "bcd"), Direction.ASC, true),
+    ("isSortedBySorting", isSortedBySorting[String], List("ccc", "bbb", "a"), Direction.DESC, true),
   )
-
   // format: on
 
   it should "check if a list is ordered for numbers" in {
