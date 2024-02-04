@@ -416,8 +416,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     ),
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.646" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.2" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.2" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "com.github.seratch" %% "awscala" % "0.9.2"
@@ -464,7 +464,7 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-yaml" % "1.15.0",
       "io.circe" %% "circe-generic" % "0.14.6",
-      "io.circe" %% "circe-parser" % "0.14.6",
+      "io.circe" %% "circe-parser" % "0.14.6"
     )
   )
 
@@ -550,7 +550,7 @@ lazy val zio3 = (project in file("zio3"))
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
     run / fork := true
-)
+  )
 
 lazy val doobie = (project in file("doobie"))
   .settings(
