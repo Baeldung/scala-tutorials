@@ -415,7 +415,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "software.amazon.awssdk" % "s3" % "2.23.12"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.646" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.651" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.0" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.0" % IntegrationTest
     ),
@@ -528,7 +528,7 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
-    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.7.0",
+    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.7.2",
     libraryDependencies += "dev.zio" %% "zio-json" % "0.6.2",
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
@@ -538,14 +538,14 @@ lazy val zio3 = (project in file("zio3"))
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio-json" % "0.6.2",
       "dev.zio" %% "zio-http" % "3.0.0-RC2",
-      "io.getquill" %% "quill-zio" % "4.6.0",
-      "io.getquill" %% "quill-jdbc-zio" % "4.6.0",
+      "io.getquill" %% "quill-zio" % "4.6.1",
+      "io.getquill" %% "quill-jdbc-zio" % "4.6.1",
       "com.h2database" % "h2" % "2.2.220"
     ),
     libraryDependencies ++= Seq(
-      "dev.zio" %% "zio-test" % "2.0.19" % Test,
+      "dev.zio" %% "zio-test" % "2.0.21" % Test,
       "dev.zio" %% "zio-test-sbt" % "2.0.21" % Test,
-      "dev.zio" %% "zio-test-magnolia" % "2.0.19" % Test,
+      "dev.zio" %% "zio-test-magnolia" % "2.0.21" % Test,
       "dev.zio" %% "zio-http-testkit" % "3.0.0-RC2" % Test
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
