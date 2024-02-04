@@ -464,7 +464,7 @@ lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-yaml" % "1.15.0",
       "io.circe" %% "circe-generic" % "0.14.6",
-      "io.circe" %% "circe-parser" % "0.14.6",
+      "io.circe" %% "circe-parser" % "0.14.6"
     )
   )
 
@@ -543,14 +543,14 @@ lazy val zio3 = (project in file("zio3"))
       "com.h2database" % "h2" % "2.2.220"
     ),
     libraryDependencies ++= Seq(
-      "dev.zio" %% "zio-test" % "2.0.19" % Test,
+      "dev.zio" %% "zio-test" % "2.0.21" % Test,
       "dev.zio" %% "zio-test-sbt" % "2.0.16" % Test,
-      "dev.zio" %% "zio-test-magnolia" % "2.0.19" % Test,
+      "dev.zio" %% "zio-test-magnolia" % "2.0.21" % Test,
       "dev.zio" %% "zio-http-testkit" % "3.0.0-RC2" % Test
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
     run / fork := true
-)
+  )
 
 lazy val doobie = (project in file("doobie"))
   .settings(
