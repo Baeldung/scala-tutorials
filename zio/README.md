@@ -8,3 +8,4 @@
 - [Repeat and Retry in ZIO](https://www.baeldung.com/scala/zio-repeat-retry)
 - [Introduction to Fibers in ZIO](https://www.baeldung.com/scala/zio-fibers-tutorial)
 - [Error Handling in ZIO](https://www.baeldung.com/scala/zio-error-handling)
+- [Introduction to zio-kafka](https://www.baeldung.com/scala/zio-kafka-intro)
