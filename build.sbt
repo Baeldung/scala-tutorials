@@ -412,7 +412,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.4" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.23.17"
+      "software.amazon.awssdk" % "s3" % "2.23.21"
     ),
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.651" % IntegrationTest,
