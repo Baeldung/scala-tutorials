@@ -13,10 +13,10 @@ val logback = "ch.qos.logback" % "logback-classic" % "1.4.14"
 val embedMongoVersion = "4.12.2"
 
 val scalaTestDeps = Seq(
-  "org.scalatest" %% "scalatest" % "3.2.17" % Test,
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.17" % Test,
-  "org.scalatest" %% "scalatest-wordspec" % "3.2.17" % Test,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.17" % Test
+  "org.scalatest" %% "scalatest" % "3.2.18" % Test,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.18" % Test,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.18" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.18" % Test
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
@@ -138,7 +138,7 @@ lazy val scala_core_dates =
       name := "scala-core-dates",
       scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps,
-      libraryDependencies += "joda-time" % "joda-time" % "2.12.6",
+      libraryDependencies += "joda-time" % "joda-time" % "2.12.7",
       libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
       libraryDependencies += "com.typesafe" % "config" % "1.4.3"
     )
@@ -371,7 +371,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies += scalaMock,
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
-      "org.apache.logging.log4j" %% "log4j-api-scala" % "13.0.0",
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.22.1" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
@@ -383,7 +383,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "org.apache.logging.log4j" %% "log4j-api-scala" % "13.0.0",
+      "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0",
       "org.apache.logging.log4j" % "log4j-core" % "2.22.1" % Runtime
     ),
     libraryDependencies += "com.lihaoyi" %% "os-lib" % osLibVersion
@@ -409,13 +409,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
-      "org.testcontainers" % "pulsar" % "1.19.4" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.19.5" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.23.17"
+      "software.amazon.awssdk" % "s3" % "2.23.21"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.651" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.656" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.2" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.2" % IntegrationTest
     ),
@@ -428,13 +428,13 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.5.3-ce"
+val kafkaVersion = "7.6.0-ce"
 val pureconfigVersion = "0.17.5"
 val jackSonVersion = "2.16.1"
-val log4jApiScalaVersion = "13.0.0"
+val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.1"
-val kafkaAvroSerializer = "7.5.3"
+val kafkaAvroSerializer = "7.6.0"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
   .settings(
@@ -538,8 +538,8 @@ lazy val zio3 = (project in file("zio3"))
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio-json" % "0.6.2",
       "dev.zio" %% "zio-http" % "3.0.0-RC2",
-      "io.getquill" %% "quill-zio" % "4.6.1",
-      "io.getquill" %% "quill-jdbc-zio" % "4.6.1",
+      "io.getquill" %% "quill-zio" % "4.8.1",
+      "io.getquill" %% "quill-jdbc-zio" % "4.8.1",
       "com.h2database" % "h2" % "2.2.220"
     ),
     libraryDependencies ++= Seq(
