@@ -428,7 +428,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.5.3-ce"
+val kafkaVersion = "7.6.0-ce"
 val pureconfigVersion = "0.17.5"
 val jackSonVersion = "2.16.1"
 val log4jApiScalaVersion = "13.0.0"
