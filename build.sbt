@@ -202,6 +202,13 @@ lazy val scala_test = (project in file("scala-test"))
       ) ++ scalaTestDeps
   )
 
+lazy val scala_test_2 = (project in file("scala-test-2"))
+  .settings(
+    name := "scala-test-2",
+    scalaVersion := scala3Version,
+    libraryDependencies ++= scalaTestDeps
+  )
+
 val embeddedMongo =
   "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion
 
