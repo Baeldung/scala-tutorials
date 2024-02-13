@@ -197,7 +197,7 @@ lazy val scala_test = (project in file("scala-test"))
     scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
-        "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
+        "org.scalatestplus" %% "mockito-5-10" % "3.2.18.0" % Test,
         jUnitInterface
       ) ++ scalaTestDeps
   )
@@ -483,7 +483,7 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     name := "scala-design-patterns",
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test,
+    libraryDependencies += "org.scalatestplus" %% "mockito-5-10" % "3.2.18.0" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
