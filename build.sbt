@@ -108,6 +108,13 @@ lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
     // scalacOptions += "-Ymacro-debug-lite"
   )
 
+lazy val scala_core_9 = (project in file("scala-core-modules/scala-core-9"))
+  .settings(
+    name := "scala-core-9",
+    libraryDependencies ++= scalaTestDeps,
+    scalaVersion := scala3Version
+  )
+
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
     name := "scala-core-io",
