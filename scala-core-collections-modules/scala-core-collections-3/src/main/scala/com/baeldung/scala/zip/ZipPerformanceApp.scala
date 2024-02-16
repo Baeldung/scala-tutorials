@@ -12,7 +12,7 @@ object ZipPerformanceApp {
     res
   }
 
-@
+  @main
   def main(): Unit = {
     val largeList = (1 to 10000000).toList
     println("--- zip ---")
