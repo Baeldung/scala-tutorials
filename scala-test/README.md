@@ -13,3 +13,4 @@ This module contains articles about the ScalaTest framework in Scala.
 - [Case-Insensitive String Comparison Scala](https://www.baeldung.com/scala/case-insensitive-comparison)
 - [ScalaTest Assertions: A Comprehensive Guide](https://www.baeldung.com/scala/scalatest-assertions)
 - [Test for Exceptions in ScalaTest](https://www.baeldung.com/scala/scalatest-test-exceptions)
+- [Guide to Parameterized Tests in ScalaTest](https://www.baeldung.com/scala/scalatest-parameterized-tests)
