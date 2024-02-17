@@ -16,15 +16,16 @@ object ZipPerformanceApp {
   def main(): Unit = {
     val largeList = (1 to 10000000).toList
     println("--- zip ---")
-    timed(largeList.zip(largeList)) // force evaluation of lazyZip
+    timed(largeList.zip(largeList).take(100)) // eager evaluation
     println("--- lazyZip without eval ---")
     timed(largeList.lazyZip(largeList)) // lazy evaluation of lazyZip
     println("--- lazyZip with partial eval ---")
     timed(
       largeList.lazyZip(largeList).take(100).toList
-    ) // force evaluation of lazyZip
+    ) // force partial evaluation of lazyZip
     println("--- lazyZip with full eval ---")
-    timed(largeList.lazyZip(largeList).toList) // force evaluation of lazyZip
-
+    timed(
+      largeList.lazyZip(largeList).toList
+    ) // force full evaluation of lazyZip
   }
 }
