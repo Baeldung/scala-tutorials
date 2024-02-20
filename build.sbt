@@ -9,7 +9,7 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.3"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.3" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.4.14"
+val logback = "ch.qos.logback" % "logback-classic" % "1.5.0"
 val embedMongoVersion = "4.12.2"
 
 val scalaTestDeps = Seq(
@@ -207,6 +207,13 @@ lazy val scala_test = (project in file("scala-test"))
         "org.scalatestplus" %% "mockito-5-10" % "3.2.18.0" % Test,
         jUnitInterface
       ) ++ scalaTestDeps
+  )
+
+lazy val scala_test_2 = (project in file("scala-test-2"))
+  .settings(
+    name := "scala-test-2",
+    scalaVersion := scala3Version,
+    libraryDependencies ++= scalaTestDeps
   )
 
 val embeddedMongo =
@@ -423,8 +430,8 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     ),
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.662" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.2" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.2" % IntegrationTest
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "com.github.seratch" %% "awscala" % "0.9.2"
@@ -440,7 +447,7 @@ val pureconfigVersion = "0.17.5"
 val jackSonVersion = "2.16.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
-val avro4sVersion = "4.1.1"
+val avro4sVersion = "4.1.2"
 val kafkaAvroSerializer = "7.6.0"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
