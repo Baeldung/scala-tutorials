@@ -440,7 +440,7 @@ val pureconfigVersion = "0.17.5"
 val jackSonVersion = "2.16.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
-val avro4sVersion = "4.1.1"
+val avro4sVersion = "4.1.2"
 val kafkaAvroSerializer = "7.6.0"
 
 lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
