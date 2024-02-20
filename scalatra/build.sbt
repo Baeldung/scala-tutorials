@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "org.json4s" %% "json4s-jackson" % "4.0.7",
   "com.typesafe.slick" %% "slick" % "3.4.1",
   "com.h2database" % "h2" % "2.1.214",
-  "com.mchange" % "c3p0" % "0.9.5.5"
+  "com.mchange" % "c3p0" % "0.10.0-pre3"
 )
 libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
 enablePlugins(SbtTwirl)
