@@ -7,10 +7,10 @@ import zio.kafka.producer.{Producer, ProducerSettings}
 
 object KafkaProducer {
   def produce(
-               topic: String,
-               key: String,
-               value: CustomMessage
-             ): RIO[Any with Producer, RecordMetadata] =
+    topic: String,
+    key: String,
+    value: CustomMessage
+  ): RIO[Any with Producer, RecordMetadata] =
     Producer.produce[Any, String, CustomMessage](
       topic = topic,
       key = key,
@@ -20,8 +20,8 @@ object KafkaProducer {
     )
 
   def producerLayer(
-                     bootstrapServers: List[String]
-                   ): ZLayer[Any, Throwable, Producer] =
+    bootstrapServers: List[String]
+  ): ZLayer[Any, Throwable, Producer] =
     ZLayer.scoped(
       Producer.make(
         ProducerSettings().withBootstrapServers(bootstrapServers)
