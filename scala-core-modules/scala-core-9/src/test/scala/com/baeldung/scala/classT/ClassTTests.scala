@@ -43,4 +43,14 @@ class ClassTSpec extends AnyFlatSpec with Matchers {
     personInstance should not be empty
     personInstance.get.toString should include("Person with name: Jane Doe")
   }
+
+  "createInstance with .getClass" should "use the type of the variable to bound the type" in {
+    val dummyPerson: Object = new Person("Dummy")
+    val personClass: Class[_ <: AnyRef] = dummyPerson.getClass
+    val personInstance = createInstance(personClass, Array("Jane Doe": AnyRef))
+
+    personInstance should not be empty
+    personInstance.get.toString should include("Person with name: Jane Doe")
+  }
+
 }
