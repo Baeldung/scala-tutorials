@@ -25,7 +25,7 @@ trait Logging {
 // Companion object containing accessor methods
 object Logging {
   def log(line: String): URIO[Logging, Unit] =
-    ZIO.serviceWith[Logging](_.log(line))
+    ZIO.serviceWithZIO[Logging](_.log(line))
 }
 
 // Live implementation of Logging service

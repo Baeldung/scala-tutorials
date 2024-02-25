@@ -6,10 +6,10 @@ import zio.kafka.consumer.{Consumer, ConsumerSettings, Subscription}
 
 object KafkaConsumer {
   def consume(
-               bootstrapServers: List[String],
-               groupId: String,
-               topic: String
-             ): RIO[Any, Unit] =
+    bootstrapServers: List[String],
+    groupId: String,
+    topic: String
+  ): RIO[Any, Unit] =
     Consumer.consumeWith(
       settings = ConsumerSettings(bootstrapServers)
         .withGroupId(groupId),

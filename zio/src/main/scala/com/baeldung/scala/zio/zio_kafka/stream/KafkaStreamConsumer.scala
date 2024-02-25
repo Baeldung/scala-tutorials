@@ -6,9 +6,9 @@ import zio.kafka.consumer.{Consumer, ConsumerSettings}
 object KafkaStreamConsumer {
 
   def consumerLayer(
-                     bootstrapServers: List[String],
-                     groupId: String
-                   ): ZLayer[Any, Throwable, Consumer] =
+    bootstrapServers: List[String],
+    groupId: String
+  ): ZLayer[Any, Throwable, Consumer] =
     ZLayer.scoped(
       Consumer.make(
         ConsumerSettings(bootstrapServers)
