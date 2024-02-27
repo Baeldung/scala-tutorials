@@ -170,7 +170,8 @@ lazy val scala_lang_2 = (project in file("scala-lang-modules/scala-lang-2"))
       Seq(jUnitInterface) ++ scalaTestDeps
   )
 
-val scalaParColDep = "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
+val scalaParColDep =
+  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
 
 lazy val scala_core_collections =
   (project in file("scala-core-collections-modules/scala-core-collections"))
@@ -225,11 +226,13 @@ lazy val scala_test_2 = (project in file("scala-test-2"))
 val embeddedMongo =
   "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion
 
-val akkaTypedTestkit = "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % "it,test"
+val akkaTypedTestkit =
+  "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % "it,test"
 val akkaStreamDep = "com.typesafe.akka" %% "akka-stream" % AkkaVersion
 val akkaHttpDep = "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion
 val akkaActorTyped = "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion
-val akkaHttpTestkitDep = "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion
+val akkaHttpTestkitDep =
+  "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion
 
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaActorTyped,
@@ -398,7 +401,8 @@ val osLibVersion = "0.9.3"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
-val log4jApiScalaDep = "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
+val log4jApiScalaDep =
+  "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
 val munitDep = "org.scalameta" %% "munit" % "0.7.29" % Test
 
@@ -412,7 +416,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       enumeratumDep,
       pureConfigDep,
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.5",
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
       "com.typesafe" % "config" % "1.4.3",
       munitDep
     ),
@@ -477,7 +481,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
 
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.6.0-ce"
-val pureconfigVersion = "0.17.5"
+val pureconfigVersion = "0.17.6"
 val jackSonVersion = "2.16.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
@@ -528,7 +532,8 @@ lazy val scala_strings = (project in file("scala-strings"))
     libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
   )
 
-val scalaTestPlusMockito = "org.scalatestplus" %% "mockito-5-10" % "3.2.18.0" % Test
+val scalaTestPlusMockito =
+  "org.scalatestplus" %% "mockito-5-10" % "3.2.18.0" % Test
 
 lazy val scala_design_patterns = (project in file("scala-design-patterns"))
   .settings(
