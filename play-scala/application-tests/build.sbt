@@ -9,7 +9,7 @@ scalaVersion := ScalaVersions.scala2Version
 
 libraryDependencies += guice
 libraryDependencies += "com.h2database" % "h2" % "1.4.200"
-libraryDependencies += "org.postgresql" % "postgresql" % "42.2.27"
+libraryDependencies += "org.postgresql" % "postgresql" % "42.2.28"
 libraryDependencies += "org.playframework" %% "play-slick" % "6.0.0"
 libraryDependencies += "org.playframework" %% "play-slick-evolutions" % "6.0.0"
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.1" % Test
