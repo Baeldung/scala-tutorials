@@ -3,7 +3,7 @@ organization := "com.baeldung"
 
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.13.12"
+scalaVersion := "2.13.13"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.8.0",
   "com.typesafe.akka" %% "akka-stream" % "2.8.0",
