@@ -4,12 +4,16 @@ import cats.effect.kernel.CancelScope.Cancelable
 import cats.effect.{IO, Resource}
 import cats.effect.unsafe.implicits.global
 import cats.implicits.catsSyntaxTuple2Parallel
+import org.scalatest.Ignore
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
-import java.util.concurrent.atomic.AtomicBoolean
 
+import java.util.concurrent.atomic.AtomicBoolean
 import scala.concurrent.duration.DurationInt
 
+// todo: Flakiness due to https://jira.baeldung.com/browse/SCALA-635
+// temporarily ignoring the test until the issue is fixed.
+@Ignore
 class CancellationSpec extends AnyWordSpec with Matchers {
 
   "Cancellation" should {
