@@ -9,7 +9,7 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.3"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.3" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.5.0"
+val logback = "ch.qos.logback" % "logback-classic" % "1.5.3"
 val embedMongoVersion = "4.12.2"
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
@@ -396,7 +396,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   )
 
 val http4sBlaze = "0.23.16"
-val http4sVersion = "0.23.25"
+val http4sVersion = "0.23.26"
 val osLibVersion = "0.9.3"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
@@ -461,10 +461,10 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
-      "org.testcontainers" % "pulsar" % "1.19.6" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.24.10"
+      "software.amazon.awssdk" % "s3" % "2.24.13"
     ),
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.674" % IntegrationTest,
