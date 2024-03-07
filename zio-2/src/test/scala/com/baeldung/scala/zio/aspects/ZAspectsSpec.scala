@@ -9,6 +9,9 @@ object ZAspectsSpec extends ZIOSpecDefault {
   override def spec = suite("ZAspectSpec")(
     test("Tautology test") {
       assertTrue(true)
+    },
+    test("Tautology test") {
+      assertTrue(true)
     } @@ ignore,
     test("Run effects around a test") {
       for {
