@@ -461,7 +461,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
-      "org.testcontainers" % "pulsar" % "1.19.6" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.24.10"
