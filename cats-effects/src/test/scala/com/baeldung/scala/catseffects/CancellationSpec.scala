@@ -4,41 +4,45 @@ import cats.effect.kernel.CancelScope.Cancelable
 import cats.effect.{IO, Resource}
 import cats.effect.unsafe.implicits.global
 import cats.implicits.catsSyntaxTuple2Parallel
-import org.scalatest.Ignore
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
-
 import java.util.concurrent.atomic.AtomicBoolean
+
 import scala.concurrent.duration.DurationInt
 
-// todo: Flakiness due to https://jira.baeldung.com/browse/SCALA-635
-// temporarily ignoring the test until the issue is fixed.
-@Ignore
 class CancellationSpec extends AnyWordSpec with Matchers {
 
   "Cancellation" should {
-
     "cancel the fiber directly and execute the action on cancellation" in {
-      val flag = new AtomicBoolean(false)
-      val io = IO.println("ready to cancel the fiber") >> IO.sleep(
-        5.seconds
+      val io = IO.println(s"ready to cancel the fiber") >> IO.sleep(
+        15.millisecond
       ) >> IO.println("Hello, World!")
-      val onCancel =
-        IO.println("cancellation signal received") >> IO.delay(flag.set(true))
-      val cancelFiber = Cancellation.cancelFiberDirectly(io, onCancel)
-      cancelFiber.unsafeRunSync()
-      flag.get() shouldBe true
+      def onCancel(flag: AtomicBoolean) =
+        IO.println(s"cancellation signal received") >> IO.delay(
+          flag.set(true)
+        ) >>
+          IO.println(s"flag after the cancellation = ${flag.get()}")
+      val flag = new AtomicBoolean(false)
+
+      val cancelFiber = Cancellation.cancelFiberDirectlySafe(io, onCancel(flag))
+      val res = cancelFiber
+        .flatMap(_ =>
+          IO.println(s"checking the flag: flag = ${flag.get()}") >>
+            IO.delay(flag.get())
+        )
+        .unsafeRunSync()
+      res shouldBe true
     }
 
     "naive parMap works" in {
       def tickingClock: IO[Unit] =
         for {
           _ <- IO.println(s"current time = ${System.currentTimeMillis()}")
-          _ <- IO.sleep(250.millisecond)
+          _ <- IO.sleep(15.millisecond)
           _ <- tickingClock
         } yield ()
       val error: IO[Unit] =
-        IO.sleep(1.second) *> IO.raiseError(new RuntimeException("boom!"))
+        IO.sleep(60.millisecond) *> IO.raiseError(new RuntimeException("boom!"))
 
       val parMapNaive_2 = Cancellation.naiveParMap_2(
         tickingClock,
@@ -63,11 +67,11 @@ class CancellationSpec extends AnyWordSpec with Matchers {
     "if one of the effects running in parallel throws an error, the second one in cancelled, but it won't affect uncancelalble regions" in {
       val flag = new AtomicBoolean(false)
       val res = (
-        IO.sleep(500.millisecond) >> IO.raiseError(
+        IO.sleep(15.millisecond) >> IO.raiseError(
           new RuntimeException("Boom!")
         ),
         IO.uncancelable(_ =>
-          IO.sleep(1.second) >> IO.println("Hey there") >> IO.delay(
+          IO.sleep(30.millisecond) >> IO.println("Hey there") >> IO.delay(
             flag.set(true)
           )
         )
@@ -83,7 +87,7 @@ class CancellationSpec extends AnyWordSpec with Matchers {
         val flag = new AtomicBoolean(false)
         val ioa = IO.blocking {
           while (!flag.get()) {
-            Thread.sleep(100)
+            Thread.sleep(15)
             println(s"counter = $counter")
             counter += 1
           }
@@ -96,7 +100,7 @@ class CancellationSpec extends AnyWordSpec with Matchers {
 
       (for {
         fiber <- example.start
-        _ <- IO.sleep(500.millisecond)
+        _ <- IO.sleep(75.millisecond)
         _ <- IO.println("cancelling the fiber")
         _ <- fiber.cancel
         _ <- fiber.join
