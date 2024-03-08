@@ -1,6 +1,6 @@
 package com.baeldung.scala.catseffects
 
-import cats.effect.{IO, Resource}
+import cats.effect.{IO, Resource, Deferred}
 import cats.implicits.{catsSyntaxParallelTraverse1, toTraverseOps}
 
 import java.io.{InputStream, OutputStream}
@@ -14,6 +14,22 @@ object Cancellation {
       fiber <- io.onCancel(onCancellation).start
       _ <- fiber.cancel
       _ <- fiber.join
+    } yield ()
+
+  def cancelFiberDirectlySafe[A](
+    io: IO[A],
+    onCancellation: => IO[Unit]
+  ): IO[Unit] =
+    for {
+      completionSignal <- Deferred[IO, Unit]
+      fiber <- io
+        .onCancel(onCancellation >> completionSignal.complete(()).void)
+        .start
+      _ <- fiber.cancel
+      _ <- completionSignal.get
+      _ <- IO.println(s"joining the fiber")
+      _ <- fiber.join
+      _ <- IO.println(s"fiber is joined")
     } yield ()
 
   def naiveParMap_1[A, B, C](
