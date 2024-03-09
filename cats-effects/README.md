@@ -6,3 +6,4 @@
 - [Resource Handling in Cats Effect](https://www.baeldung.com/scala/cats-effect-resource-handling)
 - [Difference Between flatMap(), flatTap(), evalMap() and evalTap() in Cats Effect](https://www.baeldung.com/scala/cats-effect)
 - [Error Handling in Cats Effect](https://www.baeldung.com/scala/cats-effect-error-handling)
+- [Cancellation in Cats Effect](https://www.baeldung.com/scala/cats-effect-cancellation)
