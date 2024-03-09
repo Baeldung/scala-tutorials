@@ -593,6 +593,16 @@ lazy val zio = (project in file("zio"))
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
+lazy val zio2 = (project in file("zio-2"))
+  .settings(
+    name := "zio-2",
+    scalaVersion := scala3Version,
+    libraryDependencies += "dev.zio" %% "zio" % zioVersion,
+    libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
+    libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
+    testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
+  )
+
 lazy val zio3 = (project in file("zio3"))
   .settings(
     libraryDependencies ++= Seq(
