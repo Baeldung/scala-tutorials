@@ -310,7 +310,7 @@ lazy val scala_akka_3 = (project in file("scala-akka-3"))
   )
 
 val monocleVersion = "2.1.0"
-val slickVersion = "3.4.1"
+val slickVersion = "3.5.0"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.9.4"
@@ -424,7 +424,7 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.23.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -436,7 +436,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.23.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -464,7 +464,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.24.13"
+      "software.amazon.awssdk" % "s3" % "2.25.9"
     ),
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.674" % IntegrationTest,
@@ -482,7 +482,7 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.6.0-ce"
 val pureconfigVersion = "0.17.6"
-val jackSonVersion = "2.16.1"
+val jackSonVersion = "2.16.2"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
