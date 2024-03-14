@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.baeldung</groupId>
+    <artifactId>scala-with-maven</artifactId>
+    <version>${revision}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>hello-rest</artifactId>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala3-library_3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.typelevel</groupId>
+      <artifactId>cats-effect_3</artifactId>
+      <version>3.5.4</version> <!-- Use the latest version -->
+    </dependency>
+    <dependency>
+      <groupId>org.http4s</groupId>
+      <artifactId>http4s-blaze-server_3</artifactId>
+      <version>1.0.0-M39</version>
+    </dependency>
+    <dependency>
+      <groupId>org.http4s</groupId>
+      <artifactId>http4s-dsl_3</artifactId>
+      <version>1.0.0-M41</version> 
+    </dependency>
+  </dependencies>
+
+</project>

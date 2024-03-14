@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.baeldung</groupId>
+  <artifactId>scala-with-maven</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <revision>1.0-SNAPSHOT</revision>
+    <scala.version>3.4.0</scala.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala3-library_3</artifactId>
+        <version>${scala.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.scalatest</groupId>
+        <artifactId>scalatest_3</artifactId>
+        <version>3.2.18</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>  
+  </dependencyManagement>
+  
+  <modules>
+    <module>hello-world</module>
+    <module>hello-rest</module>
+  </modules>
+</project>  
