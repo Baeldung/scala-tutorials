@@ -23,4 +23,17 @@ class CapitalizeWordsUnitTest
     }
   }
 
+  val tableWithExclusions = Table(
+    ("Input", "Expected"),
+    ("This is scala 3", "This is Scala 3"),
+    ("baeldung   articles", "Baeldung Articles"),
+    ("   ", ""),
+    ("the quick brown fox jumps over the lazy Dog", "The Quick Brown Fox Jumps Over the Lazy Dog")
+  )
+  it should "capitalize every words of a sentence with exclusion" in {
+    forAll(tableWithExclusions) { (input, expected) =>
+      CapitalizeWords.capitalizeTitleCase(input) shouldBe expected
+    }
+  }
+
 }
