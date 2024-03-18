@@ -3,7 +3,7 @@ package configuration
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
-import configuration.*
+import Configuration.*
 import ciris.*
 import cats.effect.IO
 
