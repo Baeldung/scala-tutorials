@@ -98,7 +98,7 @@ object Configuration:
       .attempt[F]
 
 object program extends IOApp.Simple:
-  import configuration.*
+  import Configuration.*
 
   override def run: IO[Unit] =
     // blows up application
