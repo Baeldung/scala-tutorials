@@ -29,7 +29,14 @@ class ConfigurationSuite
   }
 
   "postgresConfig5, postgresConfig6, postgresConfig7" should "be of type IO[Either[ConfigError, PostgresConfig4]]" in {
-    forAll(Table("postgresConfig567", postgresConfig5[IO], postgresConfig6[IO], postgresConfig7[IO])){ v =>
+    forAll(
+      Table(
+        "postgresConfig567",
+        postgresConfig5[IO],
+        postgresConfig6[IO],
+        postgresConfig7[IO]
+      )
+    ) { v =>
       v shouldBe an[IO[Either[ConfigError, PostgresConfig4]]]
     }
   }

@@ -20,8 +20,8 @@ object Configuration:
     ).parMapN(PostgresConfig.apply)
 
   final case class PostgresConfig2(
-      username: Option[String],
-      password: Option[String]
+    username: Option[String],
+    password: Option[String]
   )
 
   def postgresConfig2: ConfigValue[Effect, PostgresConfig2] =
@@ -41,8 +41,8 @@ object Configuration:
       ConfigDecoder[String, String].map(Password.apply)
 
   final case class PostgresConfig3(
-      username: Option[Username],
-      password: Option[Password]
+    username: Option[Username],
+    password: Option[Password]
   )
 
   def postgresConfig3: ConfigValue[Effect, PostgresConfig3] =
