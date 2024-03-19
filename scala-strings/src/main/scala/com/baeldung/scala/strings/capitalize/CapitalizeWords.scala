@@ -12,7 +12,8 @@ object CapitalizeWords {
       .split("\\s+")
       .zipWithIndex
       .map { (word, index) =>
-        if (index != 0 && exclusions.contains(word.toLowerCase)) word else word.capitalize
+        if (index != 0 && exclusions.contains(word.toLowerCase)) word
+        else word.capitalize
       }
       .mkString(" ")
   }

@@ -28,7 +28,10 @@ class CapitalizeWordsUnitTest
     ("This is scala 3", "This is Scala 3"),
     ("baeldung   articles", "Baeldung Articles"),
     ("   ", ""),
-    ("the quick brown fox jumps over the lazy Dog", "The Quick Brown Fox Jumps Over the Lazy Dog")
+    (
+      "the quick brown fox jumps over the lazy Dog",
+      "The Quick Brown Fox Jumps Over the Lazy Dog"
+    )
   )
   it should "capitalize every word of a sentence with exclusion" in {
     forAll(tableWithExclusions) { (input, expected) =>
