@@ -39,4 +39,18 @@ class CapitalizeWordsUnitTest
     }
   }
 
+  val tablePreservingSpace = Table(
+    ("Input", "Expected"),
+    ("This is scala 3", "This Is Scala 3"),
+    ("hello world", "Hello World"),
+    ("baeldung   articles", "Baeldung   Articles"),
+    ("   ", "   "),
+    ("1000", "1000")
+  )
+  it should "capitalize every words of a sentence preserving the spaces" in {
+    forAll(tablePreservingSpace) { (input, expected) =>
+      CapitalizeWords.capitalizeWordsPreserveSpaces(input) shouldBe expected
+    }
+  }
+
 }

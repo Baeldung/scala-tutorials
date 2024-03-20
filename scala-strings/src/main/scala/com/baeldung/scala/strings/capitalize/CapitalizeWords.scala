@@ -17,4 +17,12 @@ object CapitalizeWords {
       }
       .mkString(" ")
   }
+
+  def capitalizeWordsPreserveSpaces(sentence: String): String = {
+    sentence.zipWithIndex.map { (char, index) =>
+      if(index == 0) char.toUpper
+      else if(sentence.charAt(index-1).isSpaceChar) char.toUpper
+      else char
+    }.mkString
+  }
 }
