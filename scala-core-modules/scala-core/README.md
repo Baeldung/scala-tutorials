@@ -12,3 +12,4 @@ This module contains articles about Scala's core features
 - [Introduction to Traits in Scala](https://www.baeldung.com/scala/traits)
 - [Sealed Keyword in Scala](https://www.baeldung.com/scala/sealed-keyword)
 - [Pattern Matching in Scala](https://www.baeldung.com/scala/pattern-matching)
+- [Using java.lang.class Objects in Scala](https://www.baeldung.com/scala/java-lang-class)
