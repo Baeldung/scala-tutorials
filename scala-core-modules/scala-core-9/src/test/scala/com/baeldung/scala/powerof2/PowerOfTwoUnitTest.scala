@@ -13,7 +13,8 @@ class PowerOfTwoUnitTest
   private val powerOfTwoFunctions = Seq(
     ("Division", PowerOfTwo.isPowerOfTwoByDivision),
     ("Counting Ones", PowerOfTwo.isPowerOfTwoByCountingOnes),
-    ("Bitwise AND", PowerOfTwo.isPowerOfTwoByBitwiseAnd)
+    ("Bitwise AND", PowerOfTwo.isPowerOfTwoByBitwiseAnd),
+    ("LazyList", PowerOfTwo.isPowerOfTwoByLazyList)
   )
 
   powerOfTwoFunctions.foreach { (desc, fn) =>

@@ -22,4 +22,8 @@ object PowerOfTwo {
     num > 0 && (num & (num - 1)) == 0
   }
 
+  def isPowerOfTwoByLazyList(num: Long): Boolean = {
+    num > 0 && LazyList.iterate(num)(_ / 2).takeWhile(_ > 1).forall(_ % 2 == 0)
+  }
+
 }
