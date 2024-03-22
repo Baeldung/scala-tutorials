@@ -313,7 +313,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.5.0"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.8"
-val fs2Version = "3.9.4"
+val fs2Version = "3.10.0"
 val reactiveMongo = "1.0.10"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
