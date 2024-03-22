@@ -1,7 +1,7 @@
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.2")
 
 addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.4.17")
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.15.0")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.16.0")
 
 addSbtPlugin("com.lightbend.akka.grpc" % "sbt-akka-grpc" % "2.2.1")
 libraryDependencies += "ai.kien" %% "python-native-libs" % "0.2.4"
