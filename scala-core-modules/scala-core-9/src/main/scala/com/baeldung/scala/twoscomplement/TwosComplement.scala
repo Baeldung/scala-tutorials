@@ -34,17 +34,17 @@ object TwosComplement {
 
   private def addOneWithRec(bin: String): String = {
     @tailrec
-    def addOne(needsAdding: Boolean, acc: String)(bytes: String): String = {
+    def addOne(needsAdding: Boolean, acc: String)(binString: String): String = {
       if (needsAdding) {
-        bytes match
+        binString match
           case "" => acc
           case _ => {
-            val (bit, tail) = bytes.splitAt(1)
+            val (bit, tail) = binString.splitAt(1)
             if (bit == "0") addOne(false, acc + '1')(tail.mkString)
             else addOne(true, acc + '0')(tail.mkString)
           }
       } else {
-        acc + bytes
+        acc + binString
       }
     }
 
