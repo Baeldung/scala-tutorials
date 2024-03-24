@@ -20,12 +20,12 @@ object TwosComplement {
 
   private def addOneWithFold(bin: String): String = {
     bin.reverse
-      .foldLeft((true, ""))((added, byte) => {
+      .foldLeft((true, ""))((added, bit) => {
         val (needsAdding, acc) = added
         if (needsAdding) {
-          if (byte == '0') (false, acc + '1') else (true, acc + '0')
+          if (bit == '0') (false, acc + '1') else (true, acc + '0')
         } else {
-          (false, acc + byte)
+          (false, acc + bit)
         }
       })
       ._2
@@ -39,8 +39,8 @@ object TwosComplement {
         bytes match
           case "" => acc
           case _ => {
-            val (byte, tail) = bytes.splitAt(1)
-            if (byte == "0") addOne(false, acc + '1')(tail.mkString)
+            val (bit, tail) = bytes.splitAt(1)
+            if (bit == "0") addOne(false, acc + '1')(tail.mkString)
             else addOne(true, acc + '0')(tail.mkString)
           }
       } else {
