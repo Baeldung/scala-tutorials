@@ -5,6 +5,8 @@ import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome}
+import slick.jdbc.H2Profile.api._
+import com.baeldung.scala.slick.SlickTables.PlayerTable
 
 import java.sql.SQLException
 import java.time.LocalDate

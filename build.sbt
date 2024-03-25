@@ -448,7 +448,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
-      "org.tpolecat" %% "skunk-core" % "0.6.3",
       logback,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
     ),
@@ -554,6 +553,7 @@ lazy val scala_libraries_persistence = (project in file("scala-libraries-persist
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % slickVersion,
       "com.h2database" % "h2" % "2.2.224",
+      "org.tpolecat" %% "skunk-core" % "0.6.3",
     )
   )
 
