@@ -333,7 +333,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
       "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
-      logback % Test
+      logback % Test,
+      akkaActorTyped,
+      akkaStreamDep
     )
   )
 
