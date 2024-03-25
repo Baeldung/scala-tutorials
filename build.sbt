@@ -11,7 +11,7 @@ val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.3"
 val embedMongoVersion = "4.12.2"
-val AkkaVersion = "2.8.0"
+val AkkaVersion = "2.8.5"
 val AkkaHttpVersion = "10.5.0"
 
 val scalaTestDeps = Seq(
@@ -303,9 +303,9 @@ lazy val scala_akka_3 = (project in file("scala-akka-3"))
     name := "scala-akka-3",
     Defaults.itSettings,
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-stream" % "2.8.5",
-      "com.typesafe.akka" %% "akka-discovery" % "2.8.5",
-      "com.typesafe.akka" %% "akka-stream-testkit" % "2.8.5" % Test,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test,
       akkaActorTyped,
       akkaStreamDep,
       akkaTypedTestkit
