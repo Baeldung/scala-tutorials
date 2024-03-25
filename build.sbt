@@ -554,6 +554,8 @@ lazy val scala_libraries_persistence = (project in file("scala-libraries-persist
       "com.typesafe.slick" %% "slick" % slickVersion,
       "com.h2database" % "h2" % "2.2.224",
       "org.tpolecat" %% "skunk-core" % "0.6.3",
+      doobieCore,
+      doobiePGDep,
     )
   )
 
@@ -704,8 +706,6 @@ lazy val scala3_libraries = (project in file("scala3-libraries"))
     libraryDependencies ++= Seq(
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
       munitDep,
-      doobieCore,
-      doobiePGDep,
       catsEffect
     )
   )

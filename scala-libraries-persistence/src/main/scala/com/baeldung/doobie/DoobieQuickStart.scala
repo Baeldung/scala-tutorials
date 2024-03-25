@@ -1,4 +1,4 @@
-package com.baledung.doobie
+package com.baeldung.doobie
 
 import cats.effect.{IO, IOApp}
 import doobie.implicits._
