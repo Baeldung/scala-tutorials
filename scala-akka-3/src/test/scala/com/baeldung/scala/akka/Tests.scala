@@ -1,4 +1,4 @@
-package com.baeldung.akka
+package com.baeldung.scala.akka
 
 import akka.actor.typed.scaladsl.AskPattern.{Askable, schedulerFromActorSystem}
 import akka.actor.typed.{ActorRef, Behavior}

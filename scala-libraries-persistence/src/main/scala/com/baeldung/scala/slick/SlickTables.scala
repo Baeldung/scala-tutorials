@@ -7,7 +7,7 @@ import slick.jdbc.H2Profile.api._
 object SlickTables {
 
   class PlayerTable(tag: Tag) extends Table[Player](tag, None, "Player") {
-    override def * = (id, name, country, dob) <> (Player.tupled, Player.unapply)
+    override def * = (id, name, country, dob).mapTo[Player]
 
     val id: Rep[Long] = column[Long]("player_id", O.AutoInc, O.PrimaryKey)
     val name: Rep[String] = column[String]("name")
