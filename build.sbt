@@ -336,6 +336,10 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       logback % Test,
       akkaActorTyped,
       akkaStreamDep
+    ),
+    libraryDependencies ++= Seq(
+      "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.h2database" % "h2" % "2.2.224",
     )
   )
 
