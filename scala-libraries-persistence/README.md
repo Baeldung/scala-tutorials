@@ -4,3 +4,5 @@
 - [Introduction to Skunk – Scala Driver for PostgreSQL](https://www.baeldung.com/scala/skunk-postgresql-driver)
 //from scala3-libraries
 - [Introduction to doobie – a JDBC Layer for Scala](https://www.baeldung.com/scala/doobie-intro)
+//from scala-libraries
+- [Introduction to Reactive Mongo](https://www.baeldung.com/scala/mongo-reactive-intro)

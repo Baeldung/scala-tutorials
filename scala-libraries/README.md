@@ -5,4 +5,3 @@
 - [The Principles Behind Scalaz](https://www.baeldung.com/scala/scalaz-principles)
 - [Introduction to Scalaz](https://www.baeldung.com/scala/scalaz-intro)
 - [Introduction to Generic Programming in Scala with shapeless](https://www.baeldung.com/scala/generic-programming)
-- [Introduction to Reactive Mongo](https://www.baeldung.com/scala/mongo-reactive-intro)

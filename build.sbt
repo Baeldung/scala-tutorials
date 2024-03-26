@@ -556,6 +556,7 @@ lazy val scala_libraries_persistence = (project in file("scala-libraries-persist
       "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
       "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
+      logback
     )
   )
 
