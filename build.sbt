@@ -499,18 +499,6 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     )
   )
 
-lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
-  .settings(
-    name := "scala-libraries-6",
-    scalaVersion := scala3Version,
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies ++= Seq(
-      "io.circe" %% "circe-yaml" % "1.15.0",
-      circeDep,
-      circeParserDep
-    )
-  )
-
 lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
   .settings(
     name := "scala-libraries-fp",
@@ -571,7 +559,10 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
       "com.typesafe" % "config" % "1.4.3",
       munitDep,
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
-      catsEffect
+      catsEffect,
+      "io.circe" %% "circe-yaml" % "1.15.0",
+      circeDep,
+      circeParserDep
     )
   )
 

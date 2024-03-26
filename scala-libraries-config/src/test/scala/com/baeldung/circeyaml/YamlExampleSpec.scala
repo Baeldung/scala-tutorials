@@ -7,7 +7,7 @@ import io.circe.*
 import java.io.*
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-class YamlExampleSuite
+class YamlExampleSpec
   extends AnyFlatSpec
   with Matchers
   with TableDrivenPropertyChecks:
@@ -79,4 +79,4 @@ class YamlExampleSuite
     ) shouldBe an[String]
   }
 
-end YamlExampleSuite
+end YamlExampleSpec
