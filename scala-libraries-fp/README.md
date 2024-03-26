@@ -11,3 +11,4 @@
 - [Data Validation With Cats](https://www.baeldung.com/scala/cats-data-validation)
 //from scala-libraries
 - [Introduction to Scalaz](https://www.baeldung.com/scala/scalaz-intro)
+- [The Principles Behind Scalaz](https://www.baeldung.com/scala/scalaz-principles)
