@@ -1,6 +1,6 @@
 package com.baeldung.scala.scalaz.principles
 
-import com.baeldung.scala.scalaz.principles.ScalazPrinciplesExamples._
+import com.baeldung.scala.scalaz.principles.ScalazPrinciplesExamples.*
 import org.scalatest.flatspec.AnyFlatSpec
 
 class ScalazPrinciplesExamplesUnitTest extends AnyFlatSpec {

@@ -1,13 +1,12 @@
 package com.baeldung.scala.scalaz
 
-import java.util.NoSuchElementException
-
-import com.baeldung.scala.scalaz.ScalazExamples._
+import com.baeldung.scala.scalaz.ScalazExamples.*
+import org.junit.Assert.*
 import org.junit.Test
-import org.junit.Assert._
+import scalaz.*
+import scalaz.Scalaz.*
 
-import scalaz.Scalaz._
-import scalaz._
+import java.util.NoSuchElementException
 
 class ScalazExamplesUnitTest {
 
@@ -20,13 +19,15 @@ class ScalazExamplesUnitTest {
     assertTrue(val1 === val3)
     assertTrue(val1 =/= val2)
   }
-  @Test
-  def givenValuesOfDifferentTypes_whenComparedWithScala_thenItWorks: Unit = {
-    val intValue = 10
-    val strValue = "10"
 
-    assertFalse(intValue == strValue)
-  }
+// Scala 3 gives compilation error when wrong types are compared.
+//  @Test
+//  def givenValuesOfDifferentTypes_whenComparedWithScala_thenItWorks: Unit = {
+//    val intValue = 10
+//    val strValue = "10"
+//
+//    assertFalse(intValue == strValue)
+//  }
 
   @Test
   def givenScores_thenGreaterThanCheckWorks: Unit = {
@@ -69,13 +70,13 @@ class ScalazExamplesUnitTest {
 
   @Test
   def givenCharRange_thenGenerateAsEnum: Unit = {
-    val enum = 'a' |-> 'g'
-    val enumAsList = enum.toList
+    val enumLike = 'a' |-> 'g'
+    val enumAsList = enumLike.toList
 
     val expectedResult = IList('a', 'b', 'c', 'd', 'e', 'f', 'g')
     val expectedResultAsList = List('a', 'b', 'c', 'd', 'e', 'f', 'g')
 
-    assertEquals(expectedResult, enum)
+    assertEquals(expectedResult, enumLike)
     assertEquals(expectedResultAsList, enumAsList)
   }
 

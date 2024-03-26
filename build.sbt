@@ -328,7 +328,6 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
       "com.chuusai" %% "shapeless" % shapelessVersion,
-      "org.scalaz" %% "scalaz-core" % scalazVersion,
       "junit" % "junit" % "4.13.2" % Test,
       logback % Test,
       akkaActorTyped,
@@ -525,7 +524,9 @@ lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       catEffectTest,
-      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
+      "org.scalaz" %% "scalaz-core" % scalazVersion,
+      "junit" % "junit" % "4.13.2" % Test,
     )
   )
 
