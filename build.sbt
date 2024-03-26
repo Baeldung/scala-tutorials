@@ -335,7 +335,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "2.2.224",
+      "com.h2database" % "h2" % "2.2.224"
     )
   )
 
@@ -526,7 +526,7 @@ lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
       catEffectTest,
       "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
-      "junit" % "junit" % "4.13.2" % Test,
+      "junit" % "junit" % "4.13.2" % Test
     )
   )
 
@@ -543,21 +543,35 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
     )
   )
 
-lazy val scala_libraries_persistence = (project in file("scala-libraries-persistence"))
+lazy val scala_libraries_persistence =
+  (project in file("scala-libraries-persistence"))
+    .settings(
+      name := "scala-libraries-persistence",
+      scalaVersion := scala3Version,
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies ++= Seq(
+        "com.typesafe.slick" %% "slick" % slickVersion,
+        "com.h2database" % "h2" % "2.2.224",
+        "org.tpolecat" %% "skunk-core" % "0.6.3",
+        doobieCore,
+        doobiePGDep,
+        "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
+        "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
+        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
+        logback
+      )
+    )
+
+lazy val scala_libraries_config = (project in file("scala-libraries-config"))
   .settings(
-    name := "scala-libraries-persistence",
+    name := "scala-libraries-config",
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "2.2.224",
-      "org.tpolecat" %% "skunk-core" % "0.6.3",
-      doobieCore,
-      doobiePGDep,
-      "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
-      "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
-      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
-      logback
+      "com.typesafe" % "config" % "1.4.3",
+      munitDep,
+      "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
+      catsEffect
     )
   )
 
@@ -698,18 +712,6 @@ lazy val reflection = (project in file("reflection"))
     name := "reflection",
     libraryDependencies += scalaReflection,
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
-  )
-
-lazy val scala3_libraries = (project in file("scala3-libraries"))
-  .settings(
-    scalaVersion := scala3Version,
-    name := "scala3-libraries",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies ++= Seq(
-      "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
-      munitDep,
-      catsEffect
-    )
   )
 
 Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
