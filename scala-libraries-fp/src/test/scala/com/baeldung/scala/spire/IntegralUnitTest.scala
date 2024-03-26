@@ -1,6 +1,6 @@
 package com.baeldung.scala.spire
 
-import com.baeldung.scala.spire.Integral._
+import com.baeldung.scala.spire.Integral.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import spire.implicits._

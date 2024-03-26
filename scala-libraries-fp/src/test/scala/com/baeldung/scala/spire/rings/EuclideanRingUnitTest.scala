@@ -1,8 +1,9 @@
 package com.baeldung.scala.spire.rings
 
-import com.baeldung.scala.spire.rings.EuclideanRings._
+import com.baeldung.scala.spire.rings.EuclideanRings.*
 import org.scalatest.wordspec.AnyWordSpec
 import spire.implicits._
+import spire.math._
 
 class EuclideanRingUnitTest extends AnyWordSpec {
 

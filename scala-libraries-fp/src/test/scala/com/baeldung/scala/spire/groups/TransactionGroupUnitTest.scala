@@ -2,6 +2,8 @@ package com.baeldung.scala.spire.groups
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
+import spire.implicits._
+import spire.math._
 
 class TransactionGroupUnitTest extends AnyWordSpec with Matchers {
 

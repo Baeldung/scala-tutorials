@@ -1,9 +1,10 @@
 package com.baeldung.scala.spire.monoids
 
-import com.baeldung.scala.spire.monoids.AdditiveMonoid._
+import com.baeldung.scala.spire.monoids.AdditiveMonoid.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import spire.implicits._
+import spire.math._
 
 class AdditiveMonoidUnitTest extends AnyWordSpec with Matchers {
 

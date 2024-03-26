@@ -12,3 +12,5 @@
 //from scala-libraries
 - [Introduction to Scalaz](https://www.baeldung.com/scala/scalaz-intro)
 - [The Principles Behind Scalaz](https://www.baeldung.com/scala/scalaz-principles)
+//from scala-libraries-5
+- [Introduction to Spire](https://www.baeldung.com/scala/spire-intro)

@@ -1,6 +1,9 @@
 package com.baeldung.scala.spire.rings
-import com.baeldung.scala.spire.rings.Rings._
+
+import com.baeldung.scala.spire.rings.Rings.*
 import org.scalatest.wordspec.AnyWordSpec
+import spire.implicits._
+import spire.math._
 
 class RingsUnitTest extends AnyWordSpec {
 

@@ -486,7 +486,6 @@ lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
     scalaVersion := scalaV,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "spire" % spireVersion,
       "org.apache.kafka" % "kafka-clients" % kafkaVersion,
       pureConfigDep,
       "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
@@ -514,7 +513,8 @@ lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
       catEffectTest,
       "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
-      "junit" % "junit" % "4.13.2" % Test
+      "junit" % "junit" % "4.13.2" % Test,
+      "org.typelevel" %% "spire" % spireVersion,
     )
   )
 
