@@ -317,7 +317,7 @@ val slickVersion = "3.5.0"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.9.4"
-val reactiveMongo = "1.0.10"
+val reactiveMongo = "1.1.0-RC12"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
   .settings(
@@ -330,9 +330,6 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.chuusai" %% "shapeless" % shapelessVersion,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "junit" % "junit" % "4.13.2" % Test,
-      "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
-      "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
-      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
       logback % Test,
       akkaActorTyped,
       akkaStreamDep
@@ -556,6 +553,9 @@ lazy val scala_libraries_persistence = (project in file("scala-libraries-persist
       "org.tpolecat" %% "skunk-core" % "0.6.3",
       doobieCore,
       doobiePGDep,
+      "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
+      "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
+      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
     )
   )
 

@@ -1,9 +1,9 @@
 package com.baeldung.scala.reactivemongo
 
 import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
+import akka.stream.Materializer
 import akka.stream.scaladsl.Sink
-import com.baeldung.scala.reactivemongo.MongoEntityImplicits._
+import com.baeldung.scala.reactivemongo.MongoEntityImplicits.*
 import de.flapdoodle.embed.mongo.config.Net
 import de.flapdoodle.embed.mongo.distribution.Version
 import de.flapdoodle.embed.mongo.transitions.{ImmutableMongod, Mongod}
@@ -11,8 +11,10 @@ import de.flapdoodle.reverse.transitions.Start
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FutureOutcome}
+import reactivemongo.akkastream.cursorProducer
 import reactivemongo.api.Cursor
 import reactivemongo.api.bson.BSONDocument
+import reactivemongo.api.bson.collection.BSONCollection
 
 class ReactiveMongoUnitTest
   extends AsyncWordSpec
@@ -208,9 +210,8 @@ class ReactiveMongoUnitTest
 
     "stream the movies and calculate total duration using akka stream api" in {
       // Note: This import(cursorProducer) is required for reactive mongo and akka stream integration
-      import reactivemongo.akkastream.cursorProducer
       implicit val system = ActorSystem("reactive-mongo-stream")
-      implicit val materializer = ActorMaterializer()
+      implicit val materializer = Materializer.matFromSystem(system)
       connection.getCollection("Movie").flatMap { col =>
         val source = col
           .find(BSONDocument())
