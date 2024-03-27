@@ -23,7 +23,8 @@ object Main extends App {
       .build()
 
     Try {
-      s3.createBucket { req: CreateBucketRequest.Builder => req.bucket(name) }
+
+      s3.createBucket(CreateBucketRequest.builder().bucket(name).build())
 
       s3.headBucket(
         HeadBucketRequest.builder().bucket(name).build()

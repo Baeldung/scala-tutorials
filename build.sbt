@@ -380,7 +380,10 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       circeParserDep,
       "com.softwaremill.retry" %% "retry" % "0.3.6",
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime,
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+      "software.amazon.awssdk" % "s3" % "2.25.9",
+      "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.1.0",
@@ -436,14 +439,11 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       scalaReflection % Provided,
-      logback,
-      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
+
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.25.9"
     ),
     libraryDependencies ++= Seq(
-      "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
