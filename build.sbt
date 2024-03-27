@@ -320,9 +320,10 @@ val fs2Version = "3.9.4"
 val reactiveMongo = "1.1.0-RC12"
 
 lazy val scala_libraries = (project in file("scala-libraries"))
+  .configs(IntegrationTest)
   .settings(
     name := "scala-libraries",
-    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
@@ -341,13 +342,17 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       pureConfigDep,
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
       "com.typesafe" % "config" % "1.4.3",
-      "org.scala-lang.modules" %% "scala-async" % "1.0.1"
+      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
+      "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
+      "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
+      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % slickVersion,
       "com.h2database" % "h2" % "2.2.224"
     ),
     scalacOptions += "-Xasync",
+    Defaults.itSettings
   )
 
 val circeVersion = "0.14.6"
@@ -445,11 +450,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       scalaReflection % Provided,
       logback,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
-    ),
-    libraryDependencies ++= Seq(
-      "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
-      "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
-      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest
     ),
     libraryDependencies ++= Seq(
       "software.amazon.awssdk" % "s3" % "2.25.9"

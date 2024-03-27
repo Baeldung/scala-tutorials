@@ -8,4 +8,5 @@
 - [Better Enumerations in Scala Using Enumeratum](https://www.baeldung.com/scala/enumeratum)
 - [Load Configuration Files In Scala Using PureConfig](https://www.baeldung.com/scala/pureconfig-load-config-files)
 - [Introduction to scala-async](https://www.baeldung.com/scala/scala-async)
+- [Apache Pulsar Scala Client – pulsar4s](https://www.baeldung.com/scala/pulsar4s)
 - 
