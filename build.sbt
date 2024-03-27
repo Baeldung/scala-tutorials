@@ -319,7 +319,7 @@ val scalazVersion = "7.3.8"
 val fs2Version = "3.9.4"
 val reactiveMongo = "1.1.0-RC12"
 
-lazy val scala2_libraries = (project in file("scala2-libraries"))
+lazy val scala2_libraries = (project in file("scala-2-modules/scala2-libraries"))
   .configs(IntegrationTest)
   .settings(
     name := "scala2-libraries",
