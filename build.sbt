@@ -331,7 +331,13 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "junit" % "junit" % "4.13.2" % Test,
       logback % Test,
       akkaActorTyped,
-      akkaStreamDep
+      akkaStreamDep,
+      "com.github.cb372" %% "scalacache-core" % "0.28.0",
+      "com.github.cb372" %% "scalacache-guava" % "0.28.0",
+      "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
+      "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
+      enumeratumDep,
+      "io.monix" %% "monix" % monixVersion
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % slickVersion,
@@ -354,25 +360,18 @@ val circeParserDep = "io.circe" %% "circe-parser" % circeVersion
 lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   .configs(IntegrationTest)
   .settings(
-    name := "scala-libraries",
+    name := "scala-libraries-2",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       circeDep,
-      circeParserDep,
-      "com.github.cb372" %% "scalacache-core" % "0.28.0",
-      "com.github.cb372" %% "scalacache-guava" % "0.28.0",
-      "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
-      "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
-      enumeratumDep
+      circeParserDep
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.1.0",
       "org.postgresql" % "postgresql" % "42.7.2"
-    ),
-    libraryDependencies ++= Seq(
-      "io.monix" %% "monix" % monixVersion
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % AkkaVersion,

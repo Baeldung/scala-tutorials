@@ -24,7 +24,7 @@ class RequestsScalaHttpClientLiveTest
   "Requests" should {
     "invoke a simple GET request" in {
       val r: Response = requests.get("https://api.github.com/users/baeldung")
-      assert(r.text.contains("http://www.baeldung.com"))
+      assert(r.text().contains("http://www.baeldung.com"))
       assert(r.statusCode == 200)
       assert(r.contentType.exists(_.contains("application/json")))
       assert(r.is2xx)
@@ -134,7 +134,7 @@ class RequestsScalaHttpClientLiveTest
           requests.MultiItem("hint", "This is file upload")
         )
       )
-      assert(r.text contains ("multipart/form-data"))
+      assert(r.text() contains ("multipart/form-data"))
     }
 
   }
