@@ -6,7 +6,10 @@ import org.mockito.Mockito._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatestplus.mockito.MockitoSugar
 
-class CacheThroughManualTest extends AnyFlatSpec with RedisManualTest with MockitoSugar {
+class CacheThroughManualTest
+  extends AnyFlatSpec
+  with RedisManualTest
+  with MockitoSugar {
 
   "CacheThrough" should "fetch from DB only the first time" in {
     val mockDb = mock[VirtualDatabase]
