@@ -456,11 +456,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
       "software.amazon.awssdk" % "s3" % "2.25.9"
     ),
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.679" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest
-    ),
-    libraryDependencies ++= Seq(
       "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     scalacOptions += "-Xasync",
@@ -519,16 +514,23 @@ lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
   )
 
 lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
+  .configs(IntegrationTest)
   .settings(
     name := "scala-libraries-testing",
     scalaVersion := scala3Version,
-    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.2" % "test",
-      munitDep
-    )
+      munitDep,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.679" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.25.9"
+    ),
+    Defaults.itSettings,
+    IntegrationTest / fork := true
   )
 
 lazy val scala_libraries_persistence =

@@ -39,7 +39,7 @@ class DockerComposeManualTest
     getClass.getClassLoader.getResource("s3-test.txt").getFile
   )
 
-  override lazy val containerDef: DockerComposeContainer.Def = {
+  override val containerDef: DockerComposeContainer.Def = {
     DockerComposeContainer.Def(
       new File(
         this.getClass.getClassLoader.getResource("docker-compose.yml").getFile
@@ -90,7 +90,7 @@ class DockerComposeManualTest
     ).fold(
       {
         case ex: NoSuchKeyException => fail("File not found: " + ex)
-        case _                      => fail
+        case _                      => fail()
       },
       _ => succeed
     )

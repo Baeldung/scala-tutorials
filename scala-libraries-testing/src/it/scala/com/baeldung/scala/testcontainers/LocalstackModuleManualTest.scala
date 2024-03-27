@@ -67,7 +67,7 @@ class LocalstackModuleManualTest
       ).fold(
         {
           case _: NoSuchKeyException => fail("File not found")
-          case _                     => fail
+          case _                     => fail()
         },
         _ => succeed
       )
