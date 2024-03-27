@@ -337,7 +337,10 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
       "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
       enumeratumDep,
-      "io.monix" %% "monix" % monixVersion
+      "io.monix" %% "monix" % monixVersion,
+      pureConfigDep,
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
+      "com.typesafe" % "config" % "1.4.3",
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % slickVersion,
@@ -407,10 +410,6 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
     name := "scala-libraries",
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      enumeratumDep,
-      pureConfigDep,
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
-      "com.typesafe" % "config" % "1.4.3",
       munitDep
     ),
     libraryDependencies ++= Seq(
