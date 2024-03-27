@@ -1,6 +1,6 @@
 val scalaV = ScalaVersions.scala2Version
 val scala3Version = ScalaVersions.scala3Version
-ThisBuild / scalaVersion := scalaV
+ThisBuild / scalaVersion := scala3Version
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
