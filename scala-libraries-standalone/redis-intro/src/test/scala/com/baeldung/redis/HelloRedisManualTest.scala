@@ -1,9 +1,9 @@
 package com.baeldung.redis
 
-import com.baeldung.redis.util.RedisSpec
+import com.baeldung.redis.util.RedisManualTest
 import org.scalatest.flatspec.AnyFlatSpec
 
-class HelloRedisSpec extends AnyFlatSpec with RedisSpec {
+class HelloRedisManualTest extends AnyFlatSpec with RedisManualTest {
 
   "The Hello Redis object" should "retrieve stored values" in {
     getJedis().set("key1", "value1")

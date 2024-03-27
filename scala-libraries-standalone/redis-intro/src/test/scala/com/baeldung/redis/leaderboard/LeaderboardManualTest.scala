@@ -1,10 +1,10 @@
 package com.baeldung.redis.leaderboard
 
 import com.baeldung.redis.leaderboard.model.EmployDB
-import com.baeldung.redis.util.RedisSpec
+import com.baeldung.redis.util.RedisManualTest
 import org.scalatest.flatspec.AnyFlatSpec
 
-class LeaderboardSpec extends AnyFlatSpec with RedisSpec {
+class LeaderboardManualTest extends AnyFlatSpec with RedisManualTest {
 
   "Leaderboard#count" should "return correct counts for Employees after plus one calls" in {
     val commitLeaderboardKey = "commits"

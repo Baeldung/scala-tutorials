@@ -319,10 +319,10 @@ val scalazVersion = "7.3.8"
 val fs2Version = "3.9.4"
 val reactiveMongo = "1.1.0-RC12"
 
-lazy val scala_libraries = (project in file("scala-libraries"))
+lazy val scala2_libraries = (project in file("scala2-libraries"))
   .configs(IntegrationTest)
   .settings(
-    name := "scala-libraries",
+    name := "scala2-libraries",
     scalaVersion := scalaV,
     libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     resolvers += "Kafka avro serializer" at "https://packages.confluent.io/maven",
@@ -377,10 +377,10 @@ val enumeratumDep = "com.beachape" %% "enumeratum" % "1.7.3"
 val circeDep = "io.circe" %% "circe-generic" % circeVersion
 val circeParserDep = "io.circe" %% "circe-parser" % circeVersion
 
-lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
+lazy val scala_libraries = (project in file("scala-libraries"))
   .configs(IntegrationTest)
   .settings(
-    name := "scala-libraries-2",
+    name := "scala-libraries",
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),

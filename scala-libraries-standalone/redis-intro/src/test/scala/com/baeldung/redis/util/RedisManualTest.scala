@@ -3,7 +3,7 @@ package com.baeldung.redis.util
 import org.scalatest.{BeforeAndAfter, BeforeAndAfterEach, Suite}
 import redis.clients.jedis.args.FlushMode
 
-trait RedisSpec extends WithRedis with BeforeAndAfter with BeforeAndAfterEach {
+trait RedisManualTest extends WithRedis with BeforeAndAfter with BeforeAndAfterEach {
 
   this: Suite =>
 

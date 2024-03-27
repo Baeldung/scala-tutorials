@@ -1,12 +1,12 @@
 package com.baeldung.redis.ratelimit
 
-import com.baeldung.redis.util.RedisSpec
+import com.baeldung.redis.util.RedisManualTest
 import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-class RateLimitSpec extends AnyFlatSpec with RedisSpec {
+class RateLimitManualTest extends AnyFlatSpec with RedisManualTest {
 
   "RateLimit" should "respond with not allowed for the given duration" in {
     val limitedKey = "limited-key"

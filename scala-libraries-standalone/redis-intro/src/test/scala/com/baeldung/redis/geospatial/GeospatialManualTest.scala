@@ -9,10 +9,10 @@ import com.baeldung.redis.geospatial.GeoPoints.{
   MethanaIndex,
   Vromolimni
 }
-import com.baeldung.redis.util.RedisSpec
+import com.baeldung.redis.util.RedisManualTest
 import org.scalatest.flatspec.AnyFlatSpec
 
-class GeospatialSpec extends AnyFlatSpec with RedisSpec {
+class GeospatialManualTest extends AnyFlatSpec with RedisManualTest {
 
   private def loadGeopoints(geoSpatial: Geospatial): Unit = {
     geoSpatial.add(MethanaIndex)(Methana.name)(Methana.latLon)

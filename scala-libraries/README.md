@@ -1,13 +1,10 @@
-### Relevant Articles:
+## Relevant Articles:
 
-- [Introduction to Optics in Scala Using Monocle](https://www.baeldung.com/scala/monocle-optics)
-- [Building REST APIs in Scala with Finch](https://www.baeldung.com/scala/finch-rest-apis)
-- [Introduction to Generic Programming in Scala with shapeless](https://www.baeldung.com/scala/generic-programming)
-- [Asynchronous and Reactive Programming With Monix in Scala](https://www.baeldung.com/scala/monix)
-- [ScalaCache: A Caching Library To Rule Them All](https://www.baeldung.com/scala/scalacache)
-- [Better Enumerations in Scala Using Enumeratum](https://www.baeldung.com/scala/enumeratum)
-- [Load Configuration Files In Scala Using PureConfig](https://www.baeldung.com/scala/pureconfig-load-config-files)
-- [Introduction to scala-async](https://www.baeldung.com/scala/scala-async)
-- [Apache Pulsar Scala Client – pulsar4s](https://www.baeldung.com/scala/pulsar4s)
-- [Introduction to Kafka With Scala](https://www.baeldung.com/scala/kafka)
-- 
+- [Parsing JSON with Circe](https://www.baeldung.com/scala/circe-json)
+- [Database Access with Play](https://www.baeldung.com/scala/play-database-access)
+- [Simple REST Requests Using Requests-Scala](https://www.baeldung.com/scala/rest-with-requests-scala)
+- [Guide to elastic4s – Elasticsearch Scala Client](https://www.baeldung.com/scala/elastic4s-elasticsearch-client)
+- [A Guide to the Scala Retry Library](https://www.baeldung.com/scala/retry-library)
+- [Introduction to Apache Log4j in Scala](https://www.baeldung.com/scala/apache-log4j)
+- [Logging in Scala Applications Using Scala-Logging](https://www.baeldung.com/scala/scala-logging)
+- [AWScala – AWS SDK for Scala](https://www.baeldung.com/scala/awscala-aws-sdk-for-scala)
