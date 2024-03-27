@@ -7,4 +7,5 @@
 - [ScalaCache: A Caching Library To Rule Them All](https://www.baeldung.com/scala/scalacache)
 - [Better Enumerations in Scala Using Enumeratum](https://www.baeldung.com/scala/enumeratum)
 - [Load Configuration Files In Scala Using PureConfig](https://www.baeldung.com/scala/pureconfig-load-config-files)
+- [Introduction to scala-async](https://www.baeldung.com/scala/scala-async)
 - 

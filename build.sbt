@@ -341,11 +341,13 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       pureConfigDep,
       "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
       "com.typesafe" % "config" % "1.4.3",
+      "org.scala-lang.modules" %% "scala-async" % "1.0.1"
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % slickVersion,
       "com.h2database" % "h2" % "2.2.224"
-    )
+    ),
+    scalacOptions += "-Xasync",
   )
 
 val circeVersion = "0.14.6"
@@ -440,7 +442,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       scalaReflection % Provided,
       logback,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
@@ -456,7 +457,6 @@ lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
     libraryDependencies ++= Seq(
       "com.github.seratch" %% "awscala" % "0.9.2"
     ),
-    scalacOptions += "-Xasync",
     Defaults.itSettings,
     IntegrationTest / fork := true
   )

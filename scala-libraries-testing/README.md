@@ -7,3 +7,4 @@
 - [Introduction to uTest](https://www.baeldung.com/scala/utest-intro)
 //from scala3-libraries
 - [Introduction to MUnit](https://www.baeldung.com/scala/munit-introduction)
+- [Making Integration Testing Easier With TestContainers-scala](https://www.baeldung.com/scala/testcontainers-scala)
