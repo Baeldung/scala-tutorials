@@ -367,7 +367,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       circeDep,
-      circeParserDep
+      circeParserDep,
+      "com.softwaremill.retry" %% "retry" % "0.3.6",
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.1.0",
@@ -412,7 +413,6 @@ lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
       "com.typesafe" % "config" % "1.4.3",
       munitDep
     ),
-    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
       "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
