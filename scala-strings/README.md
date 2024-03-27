@@ -12,3 +12,4 @@ This module contains articles about Scala's core features
 - [Scala Keyword Matching: A Library-First Guide](https://www.baeldung.com/scala/keyword-matching)
 - [Generate Secure Random Passwords in Scala](https://www.baeldung.com/scala/generate-secure-random-passwords)
 - [Generate an Acronym for a Given String in Scala](https://www.baeldung.com/scala/string-derive-acronym)
+- [Capitalizing Every Word in a Sentence in Scala](https://www.baeldung.com/scala/capitalize-each-word)
