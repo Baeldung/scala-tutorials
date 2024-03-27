@@ -1,8 +1,7 @@
-val scalaV = "2.12.16"
-val tapirV = "1.0.3"
-ThisBuild / scalaVersion := scalaV
+val tapirV = "1.10.0"
 ThisBuild / version := "1.0.0"
 ThisBuild / organization := "com.baeldung"
+scalaVersion := ScalaVersions.scala3Version
 
 lazy val endpoint = (project in file("endpoint"))
   .settings(

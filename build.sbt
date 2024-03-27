@@ -442,6 +442,12 @@ lazy val redis_intro = (project in file("scala-libraries-standalone/redis-intro"
     )
   )
 
+lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
+  .settings(
+    name := "tapir",
+    scalaVersion := scala3Version
+  )
+
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.6.0-ce"
 val pureconfigVersion = "0.17.6"
