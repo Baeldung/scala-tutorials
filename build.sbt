@@ -323,7 +323,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
   .configs(IntegrationTest)
   .settings(
     name := "scala-libraries",
+    scalaVersion := scalaV,
     libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    resolvers += "Kafka avro serializer" at "https://packages.confluent.io/maven",
     libraryDependencies ++= Seq(
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
@@ -345,7 +347,15 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.scala-lang.modules" %% "scala-async" % "1.0.1",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
       "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
-      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest
+      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest,
+      "org.apache.kafka" % "kafka-clients" % kafkaVersion,
+      "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
+      "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % jackSonVersion,
+      "com.sksamuel.avro4s" %% "avro4s-core" % avro4sVersion,
+      "io.confluent" % "kafka-avro-serializer" % kafkaAvroSerializer,
+      log4jApiScalaDep,
+      "org.apache.logging.log4j" % "log4j-core" % log4jVersion % Runtime
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % slickVersion,
@@ -458,25 +468,6 @@ val avro4sVersion = "4.1.2"
 val kafkaAvroSerializer = "7.6.0"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
-
-lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
-  .settings(
-    name := "scala-libraries-5",
-    resolvers += "Kafka avro serializer" at "https://packages.confluent.io/maven",
-    scalaVersion := scalaV,
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies ++= Seq(
-      "org.apache.kafka" % "kafka-clients" % kafkaVersion,
-      pureConfigDep,
-      "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
-      "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
-      "com.fasterxml.jackson.module" %% "jackson-module-scala" % jackSonVersion,
-      "com.sksamuel.avro4s" %% "avro4s-core" % avro4sVersion,
-      "io.confluent" % "kafka-avro-serializer" % kafkaAvroSerializer,
-      log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % log4jVersion % Runtime
-    )
-  )
 
 lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
   .settings(
