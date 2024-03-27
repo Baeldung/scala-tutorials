@@ -379,6 +379,8 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
       circeDep,
       circeParserDep,
       "com.softwaremill.retry" %% "retry" % "0.3.6",
+      log4jApiScalaDep,
+      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.1.0",
@@ -411,20 +413,6 @@ val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
 val munitDep = "org.scalameta" %% "munit" % "0.7.29" % Test
-
-lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
-  .settings(
-    name := "scala-libraries",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies ++= Seq(
-      munitDep
-    ),
-    libraryDependencies ++= Seq(
-      log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
-    ),
-    libraryDependencies += osLibDep
-  )
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(

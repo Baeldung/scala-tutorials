@@ -5,4 +5,5 @@
 - [Simple REST Requests Using Requests-Scala](https://www.baeldung.com/scala/rest-with-requests-scala)
 - [Guide to elastic4s – Elasticsearch Scala Client](https://www.baeldung.com/scala/elastic4s-elasticsearch-client)
 - [A Guide to the Scala Retry Library](https://www.baeldung.com/scala/retry-library)
+- [Introduction to Apache Log4j in Scala](https://www.baeldung.com/scala/apache-log4j)
 - 
