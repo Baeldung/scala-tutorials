@@ -429,24 +429,17 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies += osLibDep
   )
 
-lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
-  .configs(IntegrationTest)
+lazy val redis_intro = (project in file("scala-libraries-standalone/redis-intro"))
   .settings(
-    name := "scala-libraries-4",
-    scalaVersion := scalaV,
-    testFrameworks += new TestFramework("utest.runner.Framework"),
+    name := "redis-intro",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
-      scalaReflection % Provided,
-
-    ),
-    libraryDependencies ++= Seq(
-    ),
-    libraryDependencies ++= Seq(
-    ),
-    Defaults.itSettings,
-    IntegrationTest / fork := true
+      "redis.clients" % "jedis" % "4.3.1",
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1",
+      "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test
+    )
   )
 
 val spireVersion = "0.18.0"
@@ -504,6 +497,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
   .settings(
     name := "scala-libraries-testing",
     scalaVersion := scala3Version,
+    testFrameworks += new TestFramework("utest.runner.Framework"),
     libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
