@@ -653,14 +653,6 @@ val doobieVersion = "1.0.0-RC2"
 val doobiePGDep = "org.tpolecat" %% "doobie-postgres" % doobieVersion
 val doobieCore = "org.tpolecat" %% "doobie-core" % doobieVersion
 
-lazy val doobie = (project in file("doobie"))
-  .settings(
-    name := "doobie",
-    scalaVersion := scala3Version,
-    libraryDependencies += doobieCore,
-    libraryDependencies += doobiePGDep
-  )
-
 // Scala Native Project is disabled as it needs clang to installed in the target machine.
 // To test the scala-native code, install clang and then uncomment this build
 // lazy val scala_native = (project in file("scala-native"))
