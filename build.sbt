@@ -450,7 +450,7 @@ lazy val redis_intro = (project in file("scala-libraries-standalone/redis-intro"
     libraryDependencies ++= Seq(
       "redis.clients" % "jedis" % "4.3.1",
       "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1",
-      "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test
+      "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
     ),
     Defaults.itSettings
   )
