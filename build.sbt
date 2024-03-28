@@ -441,6 +441,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   )
 
 lazy val redis_intro = (project in file("scala-libraries-standalone/redis-intro"))
+  .configs(IntegrationTest)
   .settings(
     name := "redis-intro",
     scalaVersion := scala3Version,
@@ -450,7 +451,8 @@ lazy val redis_intro = (project in file("scala-libraries-standalone/redis-intro"
       "redis.clients" % "jedis" % "4.3.1",
       "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1",
       "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test
-    )
+    ),
+    Defaults.itSettings
   )
 
 lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
