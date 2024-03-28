@@ -1,6 +1,6 @@
 val scalaV = ScalaVersions.scala2Version
 val scala3Version = ScalaVersions.scala3Version
-ThisBuild / scalaVersion := scalaV
+ThisBuild / scalaVersion := scala3Version
 ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
@@ -11,7 +11,7 @@ val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.3"
 val embedMongoVersion = "4.12.2"
-val AkkaVersion = "2.8.0"
+val AkkaVersion = "2.8.5"
 val AkkaHttpVersion = "10.5.0"
 
 val scalaTestDeps = Seq(
@@ -21,7 +21,7 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.18" % Test
 )
 
-val scalaMock = "org.scalamock" %% "scalamock" % "5.2.0" % Test
+val scalaMock = "org.scalamock" %% "scalamock" % "6.0.0-M2" % Test
 val zioVersion = "2.0.21"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
@@ -304,9 +304,12 @@ lazy val scala_akka_3 = (project in file("scala-akka-3"))
     name := "scala-akka-3",
     Defaults.itSettings,
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-stream" % "2.8.5",
-      "com.typesafe.akka" %% "akka-discovery" % "2.8.5",
-      "com.typesafe.akka" %% "akka-stream-testkit" % "2.8.5" % Test
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test,
+      akkaActorTyped,
+      akkaStreamDep,
+      akkaTypedTestkit
     ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test")))
   )
 
@@ -315,32 +318,52 @@ val slickVersion = "3.5.0"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.10.0"
-val reactiveMongo = "1.0.10"
+val reactiveMongo = "1.1.0-RC12"
 
-lazy val scala_libraries = (project in file("scala-libraries"))
+lazy val scala2_libraries = (project in file("scala-2-modules/scala2-libraries"))
+  .configs(IntegrationTest)
   .settings(
-    name := "scala-libraries",
-    libraryDependencies ++= scalaTestDeps,
+    name := "scala2-libraries",
+    scalaVersion := scalaV,
+    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    resolvers += "Kafka avro serializer" at "https://packages.confluent.io/maven",
     libraryDependencies ++= Seq(
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
-      "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.h2database" % "h2" % "2.2.224",
       "com.chuusai" %% "shapeless" % shapelessVersion,
-      "org.scalaz" %% "scalaz-core" % scalazVersion,
-      "co.fs2" %% "fs2-core" % fs2Version,
-      "co.fs2" %% "fs2-io" % fs2Version,
       "junit" % "junit" % "4.13.2" % Test,
-      "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
-      "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
-      "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
       logback % Test,
       akkaActorTyped,
       akkaStreamDep,
-      catEffectTest,
-      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
-    )
+      "com.github.cb372" %% "scalacache-core" % "0.28.0",
+      "com.github.cb372" %% "scalacache-guava" % "0.28.0",
+      "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
+      "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
+      enumeratumDep,
+      "io.monix" %% "monix" % monixVersion,
+      pureConfigDep,
+      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
+      "com.typesafe" % "config" % "1.4.3",
+      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
+      "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
+      "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
+      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest,
+      "org.apache.kafka" % "kafka-clients" % kafkaVersion,
+      "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
+      "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % jackSonVersion,
+      "com.sksamuel.avro4s" %% "avro4s-core" % avro4sVersion,
+      "io.confluent" % "kafka-avro-serializer" % kafkaAvroSerializer,
+      log4jApiScalaDep,
+      "org.apache.logging.log4j" % "log4j-core" % log4jVersion % Runtime
+    ),
+    libraryDependencies ++= Seq(
+      "com.typesafe.slick" %% "slick" % slickVersion,
+      "com.h2database" % "h2" % "2.2.224"
+    ),
+    scalacOptions += "-Xasync",
+    Defaults.itSettings
   )
 
 val circeVersion = "0.14.6"
@@ -355,28 +378,27 @@ val enumeratumDep = "com.beachape" %% "enumeratum" % "1.7.3"
 val circeDep = "io.circe" %% "circe-generic" % circeVersion
 val circeParserDep = "io.circe" %% "circe-parser" % circeVersion
 
-lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
+lazy val scala_libraries = (project in file("scala-libraries"))
   .configs(IntegrationTest)
   .settings(
     name := "scala-libraries",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       circeDep,
       circeParserDep,
-      "com.github.cb372" %% "scalacache-core" % "0.28.0",
-      "com.github.cb372" %% "scalacache-guava" % "0.28.0",
-      "com.github.cb372" %% "scalacache-cats-effect" % "0.28.0",
-      "com.github.cb372" %% "scalacache-caffeine" % "0.28.0",
-      enumeratumDep
+      "com.softwaremill.retry" %% "retry" % "0.3.6",
+      log4jApiScalaDep,
+      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime,
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+      "software.amazon.awssdk" % "s3" % "2.25.9",
+      "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.1.0",
       "org.postgresql" % "postgresql" % "42.7.3"
-    ),
-    libraryDependencies ++= Seq(
-      "io.monix" %% "monix" % monixVersion
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % AkkaVersion,
@@ -385,7 +407,6 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     ),
     libraryDependencies ++= Seq(
       akkaTypedTestkit,
-      "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
       "com.lihaoyi" %% "requests" % "0.8.0"
     ),
     libraryDependencies ++= Seq(
@@ -407,29 +428,6 @@ val log4jApiScalaDep =
 
 val munitDep = "org.scalameta" %% "munit" % "0.7.29" % Test
 
-lazy val scala_libraries_3 = (project in file("scala-libraries-3"))
-  .settings(
-    name := "scala-libraries",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies ++= Seq(
-      "org.http4s" %% "http4s-dsl" % http4sVersion,
-      "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
-      "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
-      enumeratumDep,
-      pureConfigDep,
-      "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
-      "com.typesafe" % "config" % "1.4.3",
-      munitDep
-    ),
-    libraryDependencies += scalaMock,
-    libraryDependencies += "com.softwaremill.retry" %% "retry" % "0.3.6",
-    libraryDependencies ++= Seq(
-      log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
-    ),
-    libraryDependencies += osLibDep
-  )
-
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
     name := "scala-libraries",
@@ -442,42 +440,25 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies += osLibDep
   )
 
-lazy val scala_libraries_4 = (project in file("scala-libraries-4"))
+lazy val redis_intro = (project in file("scala-libraries-standalone/redis-intro"))
   .configs(IntegrationTest)
   .settings(
-    name := "scala-libraries-4",
-    scalaVersion := scalaV,
-    libraryDependencies += "com.lihaoyi" %% "utest" % "0.8.2" % "test",
-    testFrameworks += new TestFramework("utest.runner.Framework"),
+    name := "redis-intro",
+    scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
-      scalaReflection % Provided,
-      "org.tpolecat" %% "skunk-core" % "0.6.3",
-      logback,
-      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
-      "org.typelevel" %% "cats-core" % "2.10.0"
+      "redis.clients" % "jedis" % "4.3.1",
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1",
+      "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
     ),
-    libraryDependencies ++= Seq(
-      "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
-      "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
-      "org.testcontainers" % "pulsar" % "1.19.7" % IntegrationTest
-    ),
-    libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "s3" % "2.25.15"
-    ),
-    libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.685" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest
-    ),
-    libraryDependencies ++= Seq(
-      "com.github.seratch" %% "awscala" % "0.9.2"
-    ),
-    scalacOptions += "-Xasync",
-    Defaults.itSettings,
-    IntegrationTest / fork := true
+    Defaults.itSettings
+  )
+
+lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
+  .settings(
+    name := "tapir",
+    scalaVersion := scala3Version
   )
 
 val spireVersion = "0.18.0"
@@ -491,32 +472,76 @@ val kafkaAvroSerializer = "7.6.0"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
-lazy val scala_libraries_5 = (project in file("scala-libraries-5"))
+lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
   .settings(
-    name := "scala-libraries-5",
-    resolvers += "Kafka avro serializer" at "https://packages.confluent.io/maven",
-    scalaVersion := scalaV,
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies ++= Seq(
-      "org.typelevel" %% "spire" % spireVersion,
-      "org.apache.kafka" % "kafka-clients" % kafkaVersion,
-      pureConfigDep,
-      "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
-      "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
-      "com.fasterxml.jackson.module" %% "jackson-module-scala" % jackSonVersion,
-      "com.sksamuel.avro4s" %% "avro4s-core" % avro4sVersion,
-      "io.confluent" % "kafka-avro-serializer" % kafkaAvroSerializer,
-      log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % log4jVersion % Runtime
-    )
-  )
-
-lazy val scala_libraries_6 = (project in file("scala-libraries-6"))
-  .settings(
-    name := "scala-libraries-6",
+    name := "scala-libraries-fp",
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
+      "co.fs2" %% "fs2-core" % fs2Version,
+      "co.fs2" %% "fs2-io" % fs2Version,
+      "org.typelevel" %% "cats-core" % "2.10.0",
+      "org.http4s" %% "http4s-dsl" % http4sVersion,
+      "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
+      "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
+      catEffectTest,
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
+      "org.scalaz" %% "scalaz-core" % scalazVersion,
+      "junit" % "junit" % "4.13.2" % Test,
+      "org.typelevel" %% "spire" % spireVersion,
+    )
+  )
+
+lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
+  .configs(IntegrationTest)
+  .settings(
+    name := "scala-libraries-testing",
+    scalaVersion := scala3Version,
+    testFrameworks += new TestFramework("utest.runner.Framework"),
+    libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+    libraryDependencies ++= Seq(
+      "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
+      scalaMock,
+      "com.lihaoyi" %% "utest" % "0.8.2" % "test",
+      munitDep,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.685" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
+      "software.amazon.awssdk" % "s3" % "2.25.15"
+    ),
+    Defaults.itSettings,
+    IntegrationTest / fork := true
+  )
+
+lazy val scala_libraries_persistence =
+  (project in file("scala-libraries-persistence"))
+    .settings(
+      name := "scala-libraries-persistence",
+      scalaVersion := scala3Version,
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies ++= Seq(
+        "com.typesafe.slick" %% "slick" % slickVersion,
+        "com.h2database" % "h2" % "2.2.224",
+        "org.tpolecat" %% "skunk-core" % "0.6.3",
+        doobieCore,
+        doobiePGDep,
+        "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
+        "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
+        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
+        logback
+      )
+    )
+
+lazy val scala_libraries_config = (project in file("scala-libraries-config"))
+  .settings(
+    name := "scala-libraries-config",
+    scalaVersion := scala3Version,
+    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies ++= Seq(
+      "com.typesafe" % "config" % "1.4.3",
+      munitDep,
+      "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
+      catsEffect,
       "io.circe" %% "circe-yaml" % "1.15.0",
       circeDep,
       circeParserDep
@@ -660,20 +685,6 @@ lazy val reflection = (project in file("reflection"))
     name := "reflection",
     libraryDependencies += scalaReflection,
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
-  )
-
-lazy val scala3_libraries = (project in file("scala3-libraries"))
-  .settings(
-    scalaVersion := scala3Version,
-    name := "scala3-libraries",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies ++= Seq(
-      "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
-      munitDep,
-      doobieCore,
-      doobiePGDep,
-      catsEffect
-    )
   )
 
 Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-eG")
