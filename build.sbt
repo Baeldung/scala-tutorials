@@ -61,7 +61,7 @@ lazy val scala2_core = (project in file("scala-core-modules/scala2-core"))
     libraryDependencies += scalaReflection,
     libraryDependencies += scalaXmlDep,
     libraryDependencies += "com.github.scopt" %% "scopt" % "4.1.0",
-    libraryDependencies += "org.rogach" %% "scallop" % "5.0.1",
+    libraryDependencies += "org.rogach" %% "scallop" % "5.1.0",
     libraryDependencies += "org.backuity.clist" %% "clist-core" % "3.5.1",
     libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
     libraryDependencies += "args4j" % "args4j" % "2.37",
@@ -116,7 +116,8 @@ lazy val scala_core_9 = (project in file("scala-core-modules/scala-core-9"))
   .settings(
     name := "scala-core-9",
     libraryDependencies ++= scalaTestDeps,
-    scalaVersion := scala3Version
+    scalaVersion := scala3Version,
+    libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
   )
 
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
@@ -316,7 +317,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.5.0"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.8"
-val fs2Version = "3.9.4"
+val fs2Version = "3.10.0"
 val reactiveMongo = "1.1.0-RC12"
 
 lazy val scala2_libraries = (project in file("scala-2-modules/scala2-libraries"))
@@ -397,7 +398,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % "6.1.0",
-      "org.postgresql" % "postgresql" % "42.7.2"
+      "org.postgresql" % "postgresql" % "42.7.3"
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % AkkaVersion,
@@ -461,7 +462,7 @@ lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.6.0-ce"
 val pureconfigVersion = "0.17.6"
-val jackSonVersion = "2.16.2"
+val jackSonVersion = "2.17.0"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
@@ -501,10 +502,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.2" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.679" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.685" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.25.9"
+      "software.amazon.awssdk" % "s3" % "2.25.15"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -611,7 +612,7 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += zioTestSbt,
-    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.7.3",
+    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.7.4",
     libraryDependencies += zioJsonDep,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
@@ -631,8 +632,8 @@ lazy val zio3 = (project in file("zio3"))
     libraryDependencies ++= Seq(
       zioJsonDep,
       "dev.zio" %% "zio-http" % "3.0.0-RC2",
-      "io.getquill" %% "quill-zio" % "4.8.1",
-      "io.getquill" %% "quill-jdbc-zio" % "4.8.1",
+      "io.getquill" %% "quill-zio" % "4.8.3",
+      "io.getquill" %% "quill-jdbc-zio" % "4.8.3",
       "com.h2database" % "h2" % "2.2.220"
     ),
     libraryDependencies ++= Seq(
