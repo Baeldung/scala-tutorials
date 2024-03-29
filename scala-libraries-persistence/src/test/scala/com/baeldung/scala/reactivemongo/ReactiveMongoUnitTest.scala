@@ -16,13 +16,16 @@ import reactivemongo.api.Cursor
 import reactivemongo.api.bson.BSONDocument
 import reactivemongo.api.bson.collection.BSONCollection
 
+import java.net.ServerSocket
+
 class ReactiveMongoUnitTest
   extends AsyncWordSpec
   with Matchers
   with BeforeAndAfterAll
   with BeforeAndAfterEach {
 
-  val PORT = 27079
+  private val serverSocket = new ServerSocket(0)
+  val PORT: Int = serverSocket.getLocalPort
   val IP = "localhost"
 
   val mongodInstance: ImmutableMongod = Mongod
