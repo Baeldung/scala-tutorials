@@ -29,7 +29,7 @@ class PalindromeUnitTest
     ("", true),
     ("@#$%", true),
     ("hello", false),
-    ("10101", true),
+    ("10101", true)
   )
 
   functions.foreach { (name, fn) =>
