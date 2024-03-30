@@ -317,7 +317,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.5.0"
 val shapelessVersion = "2.3.10"
 val scalazVersion = "7.3.8"
-val fs2Version = "3.10.0"
+val fs2Version = "3.10.2"
 val reactiveMongo = "1.1.0-RC12"
 
 lazy val scala2_libraries =
@@ -508,10 +508,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.2" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.685" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.691" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.25.15"
+      "software.amazon.awssdk" % "s3" % "2.25.21"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
