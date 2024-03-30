@@ -451,7 +451,7 @@ lazy val redis_intro =
       libraryDependencies ++= scalaTestDeps
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
-        "redis.clients" % "jedis" % "4.3.1",
+        "redis.clients" % "jedis" % "4.3.2",
         "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.3",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
@@ -511,7 +511,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.691" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.25.15"
+      "software.amazon.awssdk" % "s3" % "2.25.21"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
