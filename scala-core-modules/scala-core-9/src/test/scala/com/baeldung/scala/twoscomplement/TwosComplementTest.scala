@@ -28,5 +28,4 @@ class TwosComplementTest extends AnyFlatSpec with Matchers {
   )(tests: List[(String, String)]): Unit = {
     tests.foreach((input, expected) => fn(input) shouldBe expected)
   }
-  
 }
