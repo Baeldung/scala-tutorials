@@ -549,7 +549,10 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
       "io.circe" %% "circe-yaml" % "1.15.0",
       circeDep,
       circeParserDep
-    )
+    ),
+    libraryDependencies += "is.cir" %% "ciris" % "3.5.0",
+    libraryDependencies += "is.cir" %% "ciris-circe" % "3.5.0",
+    libraryDependencies += "is.cir" %% "ciris-circe-yaml" % "3.5.0"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
