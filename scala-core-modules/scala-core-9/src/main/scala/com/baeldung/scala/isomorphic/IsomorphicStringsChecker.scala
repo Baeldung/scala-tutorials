@@ -7,7 +7,6 @@ object IsomorphicStringsChecker {
     else
       false
 
-
   private def checkIsomorphic(str1: String, str2: String): Boolean =
     val z = str1.zip(str2)
     val distinctCounts = z.map(tup => {
