@@ -2,7 +2,7 @@ package com.baeldung.scala.isomorphic
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import com.baeldung.scala.isomorphic.IsomorphicStringsChecker.checkIsomorphicBothWays
+import com.baeldung.scala.isomorphic.IsomorphicStringsChecker.*
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 class IsomorphicStringsUnitTest
@@ -10,7 +10,8 @@ class IsomorphicStringsUnitTest
   with TableDrivenPropertyChecks
   with Matchers {
   private val isomorphicStringChecker = Seq(
-    ("isomorphicChecker", checkIsomorphicBothWays)
+    ("isomorphicChecker", checkIsomorphicBothWays),
+    ("isomorphicChecker2", checkIsomorphic2BothWays)
   )
 
   private val table = Table(
@@ -23,6 +24,7 @@ class IsomorphicStringsUnitTest
     ("aab", "xxb", true),
     (" ", "x", true),
     ("", "x", false),
+    ("aab", "xyy", false),
     ("xxm", "aab", true)
   )
   isomorphicStringChecker.foreach { (name, fn) =>
