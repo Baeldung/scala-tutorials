@@ -53,7 +53,7 @@ lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
     libraryDependencies += scalaXmlDep
   )
 
-lazy val scala2_core = (project in file("scala-core-modules/scala2-core"))
+lazy val scala2_core = (project in file("scala-2-modules/scala2-core"))
   .settings(
     name := "scala2-core",
     libraryDependencies ++= scalaTestDeps,
@@ -596,12 +596,6 @@ lazy val scala3_lang_2 =
 
 lazy val scala3_lang_3 =
   (project in file("scala-lang-modules/scala3-lang-3")).settings(
-    libraryDependencies ++= scalaTestDeps,
-    scalaVersion := scala3Version
-  )
-
-lazy val scala3_lang_collections =
-  (project in file("scala3-lang-collections")).settings(
     libraryDependencies ++= scalaTestDeps,
     scalaVersion := scala3Version
   )
