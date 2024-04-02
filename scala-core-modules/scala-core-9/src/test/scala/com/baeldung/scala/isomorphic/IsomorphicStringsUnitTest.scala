@@ -5,10 +5,13 @@ import org.scalatest.matchers.should
 import com.baeldung.scala.isomorphic.IsomorphicStringsChecker.checkIsomorphicBothWays
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
-class IsomorphicStringsUnitTest extends AnyFlatSpec
+class IsomorphicStringsUnitTest
+  extends AnyFlatSpec
   with TableDrivenPropertyChecks
   with Matchers {
-  private val isomorphicStringChecker = Seq(("isomorphicChecker", checkIsomorphicBothWays))
+  private val isomorphicStringChecker = Seq(
+    ("isomorphicChecker", checkIsomorphicBothWays)
+  )
 
   private val table = Table(
     ("str1", "str2", "Isomorphic"),
