@@ -3,7 +3,7 @@ package com.baeldung.scala.primecheck
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.wordspec.AnyWordSpec
-import PrimeNumber.*
+import com.baeldung.scala.primecheck.PrimeNumber.*
 
 class PrimeCheckUnitTest
   extends AnyWordSpec
