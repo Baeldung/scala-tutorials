@@ -19,7 +19,7 @@ import reactivemongo.api.bson.collection.BSONCollection
 import org.scalatest.Ignore
 
 @Ignore
-// fixing in JAVA-33525 
+// fixing in JAVA-33525
 class ReactiveMongoUnitTest
   extends AsyncWordSpec
   with Matchers
