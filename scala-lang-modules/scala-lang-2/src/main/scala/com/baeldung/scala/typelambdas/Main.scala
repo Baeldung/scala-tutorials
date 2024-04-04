@@ -1,3 +1,5 @@
+package com.baeldung.scala.typelambdas
+
 type MyTry = [X] =>> Either[Throwable, X]
 
 type MyTuple = [X] =>> [Y] =>> (X, Y)

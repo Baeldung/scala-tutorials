@@ -582,8 +582,8 @@ lazy val scala_design_patterns = (project in file("scala-design-patterns"))
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
-lazy val scala_lang_5 =
-  (project in file("scala-lang-modules/scala-lang-5")).settings(
+lazy val scala_lang_3 =
+  (project in file("scala-lang-modules/scala-lang-3")).settings(
     libraryDependencies ++= scalaTestDeps,
     scalaVersion := scala3Version
   )
@@ -594,11 +594,6 @@ lazy val scala_lang_4 =
     scalaVersion := scala3Version
   )
 
-lazy val scala_lang_3 =
-  (project in file("scala-lang-modules/scala-lang-3")).settings(
-    libraryDependencies ++= scalaTestDeps,
-    scalaVersion := scala3Version
-  )
 
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(

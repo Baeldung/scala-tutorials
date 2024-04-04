@@ -1,5 +1,12 @@
-## Relevant Articles
-- [Different Ways to Filter Elements From a Scala Collection](https://www.baeldung.com/scala/filter-collections)
-- [Type Lambdas in Scala 3](https://www.baeldung.com/scala/type-lambdas-scala-3)
-- [Immutable Arrays in Scala 3 Using IArray](https://www.baeldung.com/scala/iarray-immutable-arrays)
-- [Difference Between NonFatal and Exception in Scala](https://www.baeldung.com/scala/nonfatal-vs-exception)
+### Relevant Articles:
+
+- [Opaque Type Alias in Scala 3](https://www.baeldung.com/scala/opaque-type-alias)
+- [Introduction to Dotty and Scala 3](https://www.baeldung.com/scala/dotty-scala-3)
+- [Scala 3 Implicit Redesign](https://www.baeldung.com/scala/scala-3-implicit-redesign)
+- [Main Methods in Scala 3](https://www.baeldung.com/scala/scala-3-main-methods)
+- [Multiversal Equality in Scala 3](https://www.baeldung.com/scala/multiversal-equality)
+- [Intersection Types in Scala 3](https://www.baeldung.com/scala/intersection-types-scala-3)
+- [Open Classes in Scala 3](https://www.baeldung.com/scala/open-classes)
+- [Extension Methods in Scala 3](https://www.baeldung.com/scala/extension-methods)
+- [The inline Modifier in Scala 3](https://www.baeldung.com/scala/inline-modifier)
+- [New Control and Quiet Syntax in Scala 3](https://www.baeldung.com/scala/control-quiet-syntax)
