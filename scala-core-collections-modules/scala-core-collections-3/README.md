@@ -7,3 +7,4 @@
 - [Implement a Fixed-Size List in Scala](https://www.baeldung.com/scala/list-finite-size)
 - [Difference Between zip() and lazyZip() in Scala](https://www.baeldung.com/scala/zip-vs-lazyzip)
 - [Implementing an LRU Cache in Scala 3: A Step-by-Step Guide](https://www.baeldung.com/scala/least-recently-used-cache)
+- [Using the sliding() and grouped() Methods With Scala Collections](https://www.baeldung.com/scala/sliding-grouped-methods-with-collections)
