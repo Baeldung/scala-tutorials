@@ -1,7 +1,6 @@
 package com.baeldung.scala.bitset
 
 import org.scalatest.Assertions
-import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
 import scala.collection.immutable.BitSet
@@ -56,6 +55,15 @@ class BitSetTest extends AnyWordSpec with Assertions {
   "BitSet.concat" should {
     "return a BitSet containing the elements of both sets" in {
       assert(BitSet(3, 4).concat(BitSet(2, 3)) == BitSet(2, 3, 4))
+    }
+  }
+
+  "BitSet.union" should {
+    "return a BitSet containing the elements of both sets" in {
+      assert(BitSet(3, 4).union(BitSet(2, 3)) == BitSet(2, 3, 4))
+      assert(
+        BitSet(3, 4).union(BitSet(2, 3)) == BitSet(3, 4).concat(BitSet(2, 3))
+      )
     }
   }
 
