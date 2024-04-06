@@ -37,6 +37,24 @@ class DestructuringTests extends AnyFlatSpec with Matchers {
     }
   }
 
+  "We" should "be able to pattern match on the types without @" in {
+    getRandomElement(notifications, random) match {
+      case email: Email =>
+        println(
+          s"Logging Email to ${email.recipient} with subject ${email.subject}"
+        )
+        // Reassemble and call the specific handler
+        processEmail(
+          email
+        ).msg startsWith ("Sent email to ")
+
+      case sms: SMS =>
+        println(s"Logging SMS to ${sms.number}: ${sms.message}")
+        // Reassemble and call the specific handler
+        processSMS(sms).msg startsWith ("Sending SMS to")
+    }
+  }
+
   "We" should "be able to pattern match with @" in {
     getRandomElement(notifications, random) match {
       case email @ Email(subject, _, recipient) =>
@@ -60,6 +78,17 @@ class DestructuringTests extends AnyFlatSpec with Matchers {
     for (email @ Email(subject, _, recipient) <- emails) {
       println(s"Logging Email to $recipient with subject $subject")
       processEmail(email).msg startsWith ("Sent email to ")
+    }
+  }
+
+  "We" should "be able to use @ in a subpattern" in {
+    emails match {
+      case _ :: (email2 @ Email(subject, _, recipient)) :: _ =>
+        println(s"Logging 2nd Email to $recipient with subject $subject")
+        processEmail(email2).msg startsWith ("Sent email to ")
+
+      case _ =>
+        println(s"Only one message")
     }
   }
 
