@@ -120,13 +120,14 @@ lazy val scala_core_9 = (project in file("scala-core-modules/scala-core-9"))
     libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
   )
 
-lazy val scala_core_numbers = (project in file("scala-core-modules/scala-core-numbers"))
-  .settings(
-    name := "scala-core-numbers",
-    libraryDependencies ++= scalaTestDeps,
-    scalaVersion := scala3Version,
-    libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
-  )
+lazy val scala_core_numbers =
+  (project in file("scala-core-modules/scala-core-numbers"))
+    .settings(
+      name := "scala-core-numbers",
+      libraryDependencies ++= scalaTestDeps,
+      scalaVersion := scala3Version,
+      libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
+    )
 
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
@@ -248,7 +249,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaTypedTestkit,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   akkaStreamDep,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "5.0.0",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "5.0.1",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -593,7 +594,6 @@ lazy val scala_lang_4 =
     libraryDependencies ++= scalaTestDeps,
     scalaVersion := scala3Version
   )
-
 
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
