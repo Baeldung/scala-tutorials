@@ -120,13 +120,14 @@ lazy val scala_core_9 = (project in file("scala-core-modules/scala-core-9"))
     libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
   )
 
-lazy val scala_core_numbers = (project in file("scala-core-modules/scala-core-numbers"))
-  .settings(
-    name := "scala-core-numbers",
-    libraryDependencies ++= scalaTestDeps,
-    scalaVersion := scala3Version,
-    libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
-  )
+lazy val scala_core_numbers =
+  (project in file("scala-core-modules/scala-core-numbers"))
+    .settings(
+      name := "scala-core-numbers",
+      libraryDependencies ++= scalaTestDeps,
+      scalaVersion := scala3Version,
+      libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
+    )
 
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
@@ -594,7 +595,6 @@ lazy val scala_lang_4 =
     scalaVersion := scala3Version
   )
 
-
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
     name := "cats-effects",
@@ -634,7 +634,7 @@ lazy val zio3 = (project in file("zio3"))
   .settings(
     libraryDependencies ++= Seq(
       zioJsonDep,
-      "dev.zio" %% "zio-http" % "3.0.0-RC2",
+      "dev.zio" %% "zio-http" % "3.0.0-RC6",
       "io.getquill" %% "quill-zio" % "4.8.3",
       "io.getquill" %% "quill-jdbc-zio" % "4.8.3",
       "com.h2database" % "h2" % "2.2.220"
@@ -643,7 +643,7 @@ lazy val zio3 = (project in file("zio3"))
       "dev.zio" %% "zio-test" % zioVersion % Test,
       zioTestSbt,
       "dev.zio" %% "zio-test-magnolia" % zioVersion % Test,
-      "dev.zio" %% "zio-http-testkit" % "3.0.0-RC2" % Test
+      "dev.zio" %% "zio-http-testkit" % "3.0.0-RC6" % Test
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
     run / fork := true
