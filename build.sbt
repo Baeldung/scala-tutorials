@@ -120,13 +120,14 @@ lazy val scala_core_9 = (project in file("scala-core-modules/scala-core-9"))
     libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
   )
 
-lazy val scala_core_numbers = (project in file("scala-core-modules/scala-core-numbers"))
-  .settings(
-    name := "scala-core-numbers",
-    libraryDependencies ++= scalaTestDeps,
-    scalaVersion := scala3Version,
-    libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
-  )
+lazy val scala_core_numbers =
+  (project in file("scala-core-modules/scala-core-numbers"))
+    .settings(
+      name := "scala-core-numbers",
+      libraryDependencies ++= scalaTestDeps,
+      scalaVersion := scala3Version,
+      libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
+    )
 
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
@@ -459,7 +460,7 @@ lazy val redis_intro =
       libraryDependencies ++= scalaTestDeps
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
-        "redis.clients" % "jedis" % "4.3.2",
+        "redis.clients" % "jedis" % "4.4.8",
         "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
@@ -593,7 +594,6 @@ lazy val scala_lang_4 =
     libraryDependencies ++= scalaTestDeps,
     scalaVersion := scala3Version
   )
-
 
 lazy val cats_effects = (project in file("cats-effects"))
   .settings(
