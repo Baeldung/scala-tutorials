@@ -418,7 +418,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       akkaTypedTestkit,
-      "com.lihaoyi" %% "requests" % "0.8.0"
+      "com.lihaoyi" %% "requests" % "0.8.2"
     ),
     libraryDependencies ++= Seq(
       "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
