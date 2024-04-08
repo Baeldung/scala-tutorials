@@ -527,10 +527,12 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
 
 lazy val scala_libraries_persistence =
   (project in file("scala-libraries-persistence"))
+    .configs(IntegrationTest)
     .settings(
       name := "scala-libraries-persistence",
       scalaVersion := scala3Version,
-      libraryDependencies ++= scalaTestDeps,
+      Defaults.itSettings,
+      libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.2.224",
@@ -539,7 +541,7 @@ lazy val scala_libraries_persistence =
         doobiePGDep,
         "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
         "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
-        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % Test,
+        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % IntegrationTest,
         logback
       )
     )
