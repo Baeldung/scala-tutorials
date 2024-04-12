@@ -22,6 +22,7 @@
     <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_3</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.typelevel</groupId>
