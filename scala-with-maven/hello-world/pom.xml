@@ -13,7 +13,6 @@
 
   <artifactId>hello-world</artifactId>
 
-
   <dependencies>
     <dependency>
       <groupId>org.scala-lang</groupId>
