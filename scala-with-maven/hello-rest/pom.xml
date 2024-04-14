@@ -20,13 +20,9 @@
       <artifactId>scala3-library_3</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_3</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.typelevel</groupId>
       <artifactId>cats-effect_3</artifactId>
-      <version>3.5.4</version> <!-- Use the latest version -->
+      <version>3.5.4</version>
     </dependency>
     <dependency>
       <groupId>org.http4s</groupId>
