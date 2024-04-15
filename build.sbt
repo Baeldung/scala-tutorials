@@ -474,7 +474,7 @@ lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.6.0-ce"
+val kafkaVersion = "7.6.1-ce"
 val pureconfigVersion = "0.17.6"
 val jackSonVersion = "2.17.0"
 val log4jApiScalaVersion = "13.1.0"
@@ -533,7 +533,8 @@ lazy val scala_libraries_persistence =
       name := "scala-libraries-persistence",
       scalaVersion := scala3Version,
       Defaults.itSettings,
-      libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+      libraryDependencies ++= scalaTestDeps
+        .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.2.224",
