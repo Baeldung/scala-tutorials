@@ -515,7 +515,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
     libraryDependencies ++= Seq(
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
       scalaMock,
-      "com.lihaoyi" %% "utest" % "0.8.2" % "test",
+      "com.lihaoyi" %% "utest" % "0.8.3" % "test",
       munitDep,
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.696" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
