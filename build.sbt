@@ -520,7 +520,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.696" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.25.26"
+      "software.amazon.awssdk" % "s3" % "2.25.31"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -533,7 +533,8 @@ lazy val scala_libraries_persistence =
       name := "scala-libraries-persistence",
       scalaVersion := scala3Version,
       Defaults.itSettings,
-      libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+      libraryDependencies ++= scalaTestDeps
+        .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.2.224",
