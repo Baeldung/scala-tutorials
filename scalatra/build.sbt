@@ -14,7 +14,7 @@ libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra-auth" % ScalatraVersion,
   "org.scalatra" %% "scalatra-json" % "2.8.4",
   "org.json4s" %% "json4s-jackson" % "4.0.7",
-  "com.typesafe.slick" %% "slick" % "3.5.0",
+  "com.typesafe.slick" %% "slick" % "3.5.1",
   "com.h2database" % "h2" % "2.1.214",
   "com.mchange" % "c3p0" % "0.10.0"
 )
