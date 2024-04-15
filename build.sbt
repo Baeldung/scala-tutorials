@@ -430,7 +430,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val http4sBlaze = "0.23.16"
 val http4sVersion = "0.23.26"
-val osLibVersion = "0.9.3"
+val osLibVersion = "0.10.0"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
@@ -533,7 +533,8 @@ lazy val scala_libraries_persistence =
       name := "scala-libraries-persistence",
       scalaVersion := scala3Version,
       Defaults.itSettings,
-      libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+      libraryDependencies ++= scalaTestDeps
+        .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.2.224",
