@@ -22,7 +22,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "6.0.0" % Test
-val zioVersion = "2.0.21"
+val zioVersion = "2.0.22"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -533,7 +533,8 @@ lazy val scala_libraries_persistence =
       name := "scala-libraries-persistence",
       scalaVersion := scala3Version,
       Defaults.itSettings,
-      libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+      libraryDependencies ++= scalaTestDeps
+        .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.2.224",
