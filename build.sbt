@@ -515,7 +515,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
     libraryDependencies ++= Seq(
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test,
       scalaMock,
-      "com.lihaoyi" %% "utest" % "0.8.2" % "test",
+      "com.lihaoyi" %% "utest" % "0.8.3" % "test",
       munitDep,
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.696" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
@@ -533,7 +533,8 @@ lazy val scala_libraries_persistence =
       name := "scala-libraries-persistence",
       scalaVersion := scala3Version,
       Defaults.itSettings,
-      libraryDependencies ++= scalaTestDeps.map(_.withConfigurations(Some("it,test"))),
+      libraryDependencies ++= scalaTestDeps
+        .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.2.224",
