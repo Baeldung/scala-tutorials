@@ -5,3 +5,4 @@
 - [Generating the Fibonacci Sequence in Scala](https://www.baeldung.com/scala/generating-fibonacci-series)
 - [Find Factorial of a Number in Scala](https://www.baeldung.com/scala/find-factorial)
 - [Check if a Number Is a Power of Two in Scala](https://www.baeldung.com/scala/check-power-of-two)
+- [Get the Individual Digits of a Number in Scala](https://www.baeldung.com/scala/number-extract-digits)
