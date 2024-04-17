@@ -9,3 +9,4 @@
 - [Introduction to Fibers in ZIO](https://www.baeldung.com/scala/zio-fibers-tutorial)
 - [Error Handling in ZIO](https://www.baeldung.com/scala/zio-error-handling)
 - [Introduction to zio-kafka](https://www.baeldung.com/scala/zio-kafka-intro)
+- [Functional Abstraction in Scala Using ZIO Prelude](https://www.baeldung.com/scala/zio-prelude-functional-abstraction)
