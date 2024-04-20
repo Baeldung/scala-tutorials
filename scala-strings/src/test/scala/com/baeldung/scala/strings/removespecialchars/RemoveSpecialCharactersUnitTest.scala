@@ -14,7 +14,7 @@ class RemoveSpecialCharactersUnitTest
   }
 
   def removeSomeSpecialCharUsingRegex(text: String): String = {
-    text.replaceAll("[^a-zA-Z0-9_\\s]", "")
+    text.replaceAll("[^a-zA-Z0-9_]", "")
   }
 
   def removeSpecialCharUsingWordRegex(text: String): String = {
@@ -22,7 +22,7 @@ class RemoveSpecialCharactersUnitTest
   }
 
   def removeSpecialCharUsingAnotherWordRegex(text: String): String = {
-    text.replaceAll("[^\\w\\s]", "")
+    text.replaceAll("[^\\w]", "")
   }
 
   def removeAllSpecialCharsUsingFilter(text: String): String = {
@@ -69,15 +69,15 @@ class RemoveSpecialCharactersUnitTest
 
   it should "remove some special characters using removeSomeSpecialCharUsingRegex" in {
     assert(
-      removeSomeSpecialCharUsingRegex("Hello Baeldung_!") == "Hello Baeldung_"
+      removeSomeSpecialCharUsingRegex("Hello Baeldung_!") == "HelloBaeldung_"
     )
   }
 
   it should "remove special characters using removeSpecialCharUsingWordRegex" in {
     assert(
-      removeSomeSpecialCharUsingRegex(
+      removeSpecialCharUsingWordRegex(
         "Hello Baeldung_*()!"
-      ) == "Hello Baeldung_"
+      ) == "HelloBaeldung_"
     )
   }
 
@@ -91,8 +91,15 @@ class RemoveSpecialCharactersUnitTest
     assert(
       removeSpecialCharUsingAnotherWordRegex(
         "Hello Baeldung_*()!"
-      ) == "Hello Baeldung_"
+      ) == "HelloBaeldung_"
     )
+  }
+
+  it should "filter only required character from string" in {
+    val text = "Hello Baeldung_!*&$"
+    val sanitized =
+      text.filter(c => c.isLetterOrDigit || Set(' ', '_').contains(c))
+    assert(sanitized == "Hello Baeldung_")
   }
 
 }
