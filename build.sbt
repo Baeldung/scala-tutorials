@@ -42,7 +42,7 @@ lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
     scalaVersion := scala3Version
   )
 
-val scalaXmlDep = "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
+val scalaXmlDep = "org.scala-lang.modules" %% "scala-xml" % "2.3.0"
 
 lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
   .settings(
