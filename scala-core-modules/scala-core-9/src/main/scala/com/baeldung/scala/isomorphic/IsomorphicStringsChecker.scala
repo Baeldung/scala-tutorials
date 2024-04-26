@@ -2,10 +2,16 @@ package com.baeldung.scala.isomorphic
 
 object IsomorphicStringsChecker:
   def checkIsomorphicBothWays(str1: String, str2: String): Boolean =
-    (str1.length == str2.length) && checkIsomorphic(str1, str2) && checkIsomorphic(str2, str1)
+    (str1.length == str2.length) && checkIsomorphic(
+      str1,
+      str2
+    ) && checkIsomorphic(str2, str1)
 
   def checkIsomorphic2BothWays(str1: String, str2: String): Boolean =
-    (str1.length == str2.length) && checkIsomorphic2(str1, str2) && checkIsomorphic2(str2, str1)
+    (str1.length == str2.length) && checkIsomorphic2(
+      str1,
+      str2
+    ) && checkIsomorphic2(str2, str1)
 
   private def checkIsomorphic(str1: String, str2: String): Boolean =
     val z = str1.zip(str2)
