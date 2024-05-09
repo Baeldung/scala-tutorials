@@ -643,8 +643,8 @@ lazy val zio3 = (project in file("zio3"))
     libraryDependencies ++= Seq(
       zioJsonDep,
       "dev.zio" %% "zio-http" % "3.0.0-RC6",
-      "io.getquill" %% "quill-zio" % "4.8.3",
-      "io.getquill" %% "quill-jdbc-zio" % "4.8.3",
+      "io.getquill" %% "quill-zio" % "4.8.4",
+      "io.getquill" %% "quill-jdbc-zio" % "4.8.4",
       "com.h2database" % "h2" % "2.2.220"
     ),
     libraryDependencies ++= Seq(
