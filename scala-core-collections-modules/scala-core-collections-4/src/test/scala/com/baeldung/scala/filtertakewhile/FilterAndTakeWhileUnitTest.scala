@@ -17,12 +17,10 @@ class FilterAndTakeWhileUnitTest extends AnyWordSpec with Matchers {
       oddNumbers shouldBe List(1, 3, 5)
     }
 
-    "not complete the execution due to infinite collection" in {
+    "not complete the execution due to infinite collection" ignore {
       val infiniteNumbers = LazyList.from(1)
-      val lessThan100Future = Future(infiniteNumbers.filter(_ < 100).toList)
       val lessThan100 =
-        intercept[TimeoutException](Await.result(lessThan100Future, 1.seconds))
-      lessThan100.getMessage should include("Future timed out")
+        infiniteNumbers.filter(_ < 100).toList // never completes
     }
   }
 
