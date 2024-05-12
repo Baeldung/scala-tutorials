@@ -467,6 +467,15 @@ lazy val redis_intro =
       Defaults.itSettings
     )
 
+lazy val refined_intro =
+  (project in file("scala-libraries-standalone/refined-intro"))
+    .settings(
+      name := "refined-intro",
+      scalaVersion := scalaV,
+      libraryDependencies += "eu.timepit" %% "refined" % "0.11.1",
+      scalaTestDeps
+    )
+
 lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
   .settings(
     name := "tapir",
