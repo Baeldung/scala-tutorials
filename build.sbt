@@ -473,7 +473,7 @@ lazy val refined_intro =
       name := "refined-intro",
       scalaVersion := scalaV,
       libraryDependencies += "eu.timepit" %% "refined" % "0.11.1",
-      scalaTestDeps
+      libraryDependencies ++= scalaTestDeps
     )
 
 lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
