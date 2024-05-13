@@ -480,6 +480,14 @@ lazy val tapir = (project in file("scala-libraries-standalone/tapir"))
     scalaVersion := scala3Version
   )
 
+lazy val refined = (project in file("scala-libraries-standalone/refined"))
+  .settings(
+    name := "refined",
+    scalaVersion := scalaV,
+    libraryDependencies += "eu.timepit" %% "refined" % "0.11.1",
+    libraryDependencies ++= scalaTestDeps
+  )
+
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.6.1-ce"
 val pureconfigVersion = "0.17.6"
