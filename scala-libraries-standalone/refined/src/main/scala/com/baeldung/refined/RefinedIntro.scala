@@ -71,6 +71,6 @@ object RefinedIntro {
 }
 
 object Hello extends App {
-  import RefinedProject._
+  import RefinedIntro._
   println(refineV[Short](Person("Herbert", 4.0)))
 }
