@@ -14,7 +14,7 @@ import eu.timepit.refined.api.Validate
 import scala.util.{Right, Left}
 
 class RefinedIntroSpec extends AnyFlatSpec with Matchers {
-  import RefinedProject.{size => sizeTest, _}
+  import RefinedIntro.{size => sizeTest, _}
 
   "Int checks" should "pass with refined types" in {
     assert(refineV[Odd](8) == Left("Predicate (8 % 2 == 0) did not fail."))
