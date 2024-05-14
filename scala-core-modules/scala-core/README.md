@@ -13,3 +13,4 @@ This module contains articles about Scala's core features
 - [Sealed Keyword in Scala](https://www.baeldung.com/scala/sealed-keyword)
 - [Pattern Matching in Scala](https://www.baeldung.com/scala/pattern-matching)
 - [Using java.lang.class Objects in Scala](https://www.baeldung.com/scala/java-lang-class)
+- [Handling Multiple Patterns with Scala Pattern Matching](https://www.baeldung.com/scala/multiple-pattern-matching)
