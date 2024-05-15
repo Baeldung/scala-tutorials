@@ -4,7 +4,9 @@ import akka.actor.testkit.typed.scaladsl.ScalaTestWithActorTestKit
 import akka.pattern.StatusReply
 import org.scalatest.wordspec.AnyWordSpecLike
 
-class BankAccountUnitTest extends ScalaTestWithActorTestKit with AnyWordSpecLike {
+class BankAccountUnitTest
+  extends ScalaTestWithActorTestKit
+  with AnyWordSpecLike {
 
   "A Bank Account" should {
     "deposit money to a bank account" in {

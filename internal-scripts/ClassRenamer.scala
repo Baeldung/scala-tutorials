@@ -1,6 +1,6 @@
 /** This is an internal scala-cli script written just to reduce manual work of
-  * renaming files and class names to follow naming standards. This doesn't fully correct all the class names,
-  * however reduces the manual effort by 90%. 
+  * renaming files and class names to follow naming standards. This doesn't
+  * fully correct all the class names, however reduces the manual effort by 90%.
   */
 //> using toolkit default
 import os._
@@ -14,7 +14,10 @@ object RenameClassNames {
       .filter(_.toString.contains("src/test/scala"))
       .filterNot(_.toString.endsWith("UnitTest.scala"))
       .filter(f =>
-        f.toString.endsWith("Test.scala") || f.toString.endsWith("Spec.scala") || f.toString.endsWith("Tests.scala") || f.toString.endsWith("Suite.scala")
+        f.toString.endsWith("Test.scala") || f.toString.endsWith(
+          "Spec.scala"
+        ) || f.toString.endsWith("Tests.scala") || f.toString
+          .endsWith("Suite.scala")
       )
       .foreach { _filePath =>
         val _fileName = _filePath.last

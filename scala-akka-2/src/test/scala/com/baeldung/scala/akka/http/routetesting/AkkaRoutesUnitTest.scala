@@ -7,7 +7,10 @@ import com.baeldung.scala.akka.http.routetesting.AkkaRoutes.routes
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class AkkaRoutesUnitTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
+class AkkaRoutesUnitTest
+  extends AnyFlatSpec
+  with Matchers
+  with ScalatestRouteTest {
   "/hello" should "return Hello World!" in {
     Get("/hello") ~> routes ~> check {
       status shouldEqual StatusCodes.OK

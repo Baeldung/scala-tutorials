@@ -5,7 +5,10 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import akka.actor.testkit.typed.scaladsl.ActorTestKit
 
-class TestServiceUnitTest extends AnyWordSpec with BeforeAndAfterAll with Matchers {
+class TestServiceUnitTest
+  extends AnyWordSpec
+  with BeforeAndAfterAll
+  with Matchers {
   val testKit = ActorTestKit()
   implicit val system = testKit.system
 
