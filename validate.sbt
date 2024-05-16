@@ -12,17 +12,17 @@ validateUnitTestNames := {
   if (invalidTestName.nonEmpty) {
     log.error(
       s""" ***************************************************
-         | Found unit test files not matching with naming standards. Unit test files must end with UnitTest.scala.
-         | Refer to README.md file in the GitHub for more information.
-         | Invalid files:
-         | ${invalidTestNameFormatted}
-         | ***************************************************
+         |Found unit test classes not matching with naming standards. Unit test class must end with `UnitTest`.
+         |Refer to README.md file in the GitHub for more information.
+         |Invalid test classes:
+         |${invalidTestNameFormatted}
+         |***************************************************
          |""".stripMargin
     )
   }
   require(
     invalidTestName.isEmpty,
-    s"Found ${invalidTestName.size} tests that doesn't follow naming convention, check the logs above for list of files!"
+    s"Found ${invalidTestName.size} tests that doesn't follow naming convention, check the logs above for list of test classes!"
   )
   0
 }
