@@ -3,7 +3,7 @@ package com.baeldung.scala.implicitparameter
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-class ImplicitParameterTest extends AnyWordSpec with Matchers {
+class ImplicitParameterUnitTest extends AnyWordSpec with Matchers {
 
   import ImplicitParameter._
   "Implicit Parameter" should {
