@@ -66,7 +66,7 @@ class MUnitTest extends munit.FunSuite {
   )
 }
 
-class MacOnlyTest extends munit.FunSuite {
+class MacOnlyUnitTest extends munit.FunSuite {
   override def munitIgnore: Boolean = !scala.util.Properties.isWin
   test("This is a mac only test") {
     println("mac only test")

@@ -715,7 +715,7 @@ lazy val spark_scala = (project in file("spark-scala"))
 
 addCommandAlias(
   "ci",
-  ";compile;test:compile;it:compile;scalafmtCheckAll;test"
+  ";compile;test:compile;it:compile;scalafmtCheckAll;validateUnitTestNames;test"
 )
 
 addCommandAlias(
