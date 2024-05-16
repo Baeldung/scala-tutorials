@@ -13,7 +13,7 @@ import eu.timepit.refined.boolean._
 import eu.timepit.refined.api.Validate
 import scala.util.{Right, Left}
 
-class RefinedIntroSpec extends AnyFlatSpec with Matchers {
+class RefinedUnitTest extends AnyFlatSpec with Matchers {
   import RefinedIntro.{size => sizeTest, _}
 
   "Int checks" should "pass with refined types" in {
