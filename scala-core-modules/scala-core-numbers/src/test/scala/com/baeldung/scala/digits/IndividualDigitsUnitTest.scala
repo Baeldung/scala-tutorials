@@ -4,7 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-class IndividualDigitsUnitTest
+class IndividualDigitsUnitTests
   extends AnyFlatSpec
   with Matchers
   with TableDrivenPropertyChecks {

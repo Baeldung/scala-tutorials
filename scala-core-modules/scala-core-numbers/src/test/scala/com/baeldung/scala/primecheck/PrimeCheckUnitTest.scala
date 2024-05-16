@@ -5,7 +5,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.wordspec.AnyWordSpec
 import com.baeldung.scala.primecheck.PrimeNumber.*
 
-class PrimeCheckUnitTest
+class PrimeCheckUnitSpec
   extends AnyWordSpec
   with Matchers
   with TableDrivenPropertyChecks {

@@ -3,7 +3,7 @@ package com.baeldung.scala.twoscomplement
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class TwosComplementUnitTest extends AnyFlatSpec with Matchers {
+class TwosComplementTest extends AnyFlatSpec with Matchers {
 
   val testExamples = List(
     ("00110100", "11001100"),
