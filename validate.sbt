@@ -11,15 +11,18 @@ validateUnitTestNames := {
   val invalidTestNameFormatted = invalidTestName.mkString("\n")
   if (invalidTestName.nonEmpty) {
     log.error(
-      s"""Found unit test files not matching with naming standards. Unit test files must end with UnitTest.scala.
+      s""" ***************************************************
+         | Found unit test files not matching with naming standards. Unit test files must end with UnitTest.scala.
+         | Refer to README.md file in the GitHub for more information.
          | Invalid files:
          | ${invalidTestNameFormatted}
+         | ***************************************************
          |""".stripMargin
     )
   }
   require(
     invalidTestName.isEmpty,
-    s"Found ${invalidTestName.size} tests that doesn't follow naming convention!"
+    s"Found ${invalidTestName.size} tests that doesn't follow naming convention, check the logs above for list of files!"
   )
   0
 }
