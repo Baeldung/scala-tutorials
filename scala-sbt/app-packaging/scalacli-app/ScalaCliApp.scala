@@ -1,4 +1,4 @@
-//> using scala "3.1.0"
+//> using scala "3.1.3"
 package com.baeldung.scalacli
 import $dep.`com.lihaoyi::os-lib:0.7.8`
 import os._
