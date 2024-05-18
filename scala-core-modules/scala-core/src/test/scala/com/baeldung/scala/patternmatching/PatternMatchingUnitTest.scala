@@ -156,6 +156,30 @@ class PatternMatchingUnitTest {
   }
 
   @Test
+  def whenEmailIsPassedWithComDomain_itShouldExtractParts(): Unit = {
+    val result = new PatternMatching().stringInterpolationMatching("james.kirk@starfleet.com")
+    assertEquals("Hey James Kirk, starfleet.com is your email domain", result)
+  }
+
+  @Test
+  def whenEmailIsPassedWithCoInDomain_itShouldExtractParts(): Unit = {
+    val result = new PatternMatching().stringInterpolationMatching("james.kirk@starfleet.co.in")
+    assertEquals("Hey James Kirk, starfleet.co.in is your email domain", result)
+  }
+
+  @Test
+  def whenDateTimeIsPassed_itShouldExtractDate(): Unit = {
+    val result = new PatternMatching().stringInterpolationMatching("01-April-2024T10:20:30")
+    assertEquals("April 01, 2024", result)
+  }
+
+  @Test
+  def whenUnknownDataIsPassed_itShouldReturnDefaultString(): Unit = {
+    val result = new PatternMatching().stringInterpolationMatching("something-unknown.unmatched")
+    assertEquals("unknown pattern", result)
+  }
+
+  @Test
   def whenAFilledOptionIsPassed_ThenItShouldMatchTheSomeClause(): Unit = {
     val result =
       new PatternMatching().optionsPatternMatching(Option.apply("something"))
