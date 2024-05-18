@@ -1,6 +1,6 @@
-//> using scala "3.1.0"
+//> using scala 3.4.2
+//> using dep com.lihaoyi::os-lib:0.10.1
 package com.baeldung.scalacli
-import $dep.`com.lihaoyi::os-lib:0.7.8`
 import os._
 
 object ScalaCliApp {
