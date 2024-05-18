@@ -48,7 +48,7 @@ class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
       b shouldBe "b"
 
       text = "a,b,c,d,e"
-      val Array(a2, _*) = text.split(",")
+      val Array(a2, _*) = text.split(","): @unchecked
       a2 shouldBe "a"
 
       val Array(a3, b3, _, d, e) = text.split(",")
@@ -58,12 +58,12 @@ class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
       e shouldBe "e"
     }
     "work in reassigning a a function to a value" in {
-      val times = multiplier _
+      val times = multiplier
       multiplier(8, 13) shouldBe times(8, 13)
     }
     "work in converting a sequence to variable arguments" in {
       val sumable = Seq(4, 5, 10, 3)
-      val sumOfSumable = sum(sumable: _*)
+      val sumOfSumable = sum(sumable*)
       sumOfSumable shouldBe 22
     }
     "generate a partially applied function" in {
@@ -71,7 +71,7 @@ class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
       val sumFiveAndTen = sumToTen(5)
       sumFiveAndTen shouldBe 15
 
-      val foo = bar(1, 2) _
+      val foo = bar(1, 2)
       foo("Some string", "Another string")(3 / 5, 6 / 5) shouldBe 1
     }
     "work in overriding a method's setter" in {

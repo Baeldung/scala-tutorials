@@ -16,7 +16,7 @@ class VotingUnitTest extends AnyWordSpec {
       val rightVotes =
         VoteState(Map(zioHttp -> Votes(2), zioTlsHttp -> Votes(2)))
 
-      val totalVotes = leftVotes combine rightVotes
+      val totalVotes = leftVotes `combine` rightVotes
 
       assertResult(Votes(6))(totalVotes.map(zioHttp))
       assertResult(Votes(2))(totalVotes.map(uziHttp))

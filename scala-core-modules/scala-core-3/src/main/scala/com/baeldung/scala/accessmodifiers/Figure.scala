@@ -3,12 +3,12 @@ package com.baeldung.scala.accessmodifiers
 import java.util.UUID.randomUUID
 
 abstract class Figure {
-  private[this] val code =
+  private val code =
     randomUUID.toString // accessible in the scope of the object-only
   def printCode: Unit = println(s"$code") // public access
 
   protected[accessmodifiers] val color: String // accessible in the scope of the package
-  protected[this] val lineWidth: Int // accessible for instances of this class and its subclasses instances
+  protected val lineWidth: Int // accessible for instances of this class and its subclasses instances
 
   protected val topPoint: Double // accessible in the scope of the class and subclasses
   protected val rightMostPoint: Double

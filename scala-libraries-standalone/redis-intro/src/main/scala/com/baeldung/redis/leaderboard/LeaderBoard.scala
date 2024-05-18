@@ -15,9 +15,9 @@ class LeaderBoard(hllKey: String, jedis: Jedis) {
 
   def plusN(key: LeaderboardKey, n: Int): Unit = {
     val randValues = (0 until n) map (_ => random())
-    jedis.pfadd(s"$hllKey:${key.firstLevelKey}", randValues: _*)
-    jedis.pfadd(s"$hllKey:${key.secondLevelKey}", randValues: _*)
-    jedis.pfadd(s"$hllKey:${key.thirdLevelKey}", randValues: _*)
+    jedis.pfadd(s"$hllKey:${key.firstLevelKey}", randValues*)
+    jedis.pfadd(s"$hllKey:${key.secondLevelKey}", randValues*)
+    jedis.pfadd(s"$hllKey:${key.thirdLevelKey}", randValues*)
   }
 
   def count(key: String): Long = {

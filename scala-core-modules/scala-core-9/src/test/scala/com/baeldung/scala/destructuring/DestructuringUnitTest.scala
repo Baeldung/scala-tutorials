@@ -28,12 +28,12 @@ class DestructuringUnitTest extends AnyFlatSpec with Matchers {
         // Reassemble and call the specific handler
         processEmail(
           Email(subject, body, recipient)
-        ).msg startsWith ("Sent email to ")
+        ).msg `startsWith` ("Sent email to ")
 
       case SMS(number, message) =>
         println(s"Logging SMS to $number: $message")
         // Reassemble and call the specific handler
-        processSMS(SMS(number, message)).msg startsWith ("Sending SMS to")
+        processSMS(SMS(number, message)).msg `startsWith` ("Sending SMS to")
     }
   }
 
@@ -46,12 +46,12 @@ class DestructuringUnitTest extends AnyFlatSpec with Matchers {
         // Reassemble and call the specific handler
         processEmail(
           email
-        ).msg startsWith ("Sent email to ")
+        ).msg `startsWith` ("Sent email to ")
 
       case sms: SMS =>
         println(s"Logging SMS to ${sms.number}: ${sms.message}")
         // Reassemble and call the specific handler
-        processSMS(sms).msg startsWith ("Sending SMS to")
+        processSMS(sms).msg `startsWith` ("Sending SMS to")
     }
   }
 
@@ -59,25 +59,25 @@ class DestructuringUnitTest extends AnyFlatSpec with Matchers {
     getRandomElement(notifications, random) match {
       case email @ Email(subject, _, recipient) =>
         println(s"Logging Email to $recipient with subject $subject")
-        processEmail(email).msg startsWith ("Sent email to ")
+        processEmail(email).msg `startsWith` ("Sent email to ")
 
       case sms @ SMS(number, message) =>
         println(s"Logging SMS to $number: $message")
         // Reassemble and call the specific handler
-        processSMS(sms).msg startsWith ("Sending SMS to")
+        processSMS(sms).msg `startsWith` ("Sending SMS to")
     }
   }
 
   "We" should "be able to use @ while declaring a variable" in {
     val email @ Email(subject, _, recipient) = getRandomElement(emails, random)
     println(s"Logging Email to $recipient with subject $subject")
-    processEmail(email).msg startsWith ("Sent email to ")
+    processEmail(email).msg `startsWith` ("Sent email to ")
   }
 
   "We" should "be able to use @ in for comprehensions" in {
     for (email @ Email(subject, _, recipient) <- emails) {
       println(s"Logging Email to $recipient with subject $subject")
-      processEmail(email).msg startsWith ("Sent email to ")
+      processEmail(email).msg `startsWith` ("Sent email to ")
     }
   }
 
@@ -85,7 +85,7 @@ class DestructuringUnitTest extends AnyFlatSpec with Matchers {
     emails match {
       case _ :: (email2 @ Email(subject, _, recipient)) :: _ =>
         println(s"Logging 2nd Email to $recipient with subject $subject")
-        processEmail(email2).msg startsWith ("Sent email to ")
+        processEmail(email2).msg `startsWith` ("Sent email to ")
 
       case _ =>
         println(s"Only one message")

@@ -39,7 +39,7 @@ class TypeErasureUnitTest extends AnyWordSpec with Matchers {
     "work with varargs" in {
       def varargFn(str: String*) = str.length
       val input = Seq("Hello", "World")
-      assert(varargFn(input: _*) == 2)
+      assert(varargFn(input*) == 2)
     }
   }
 }

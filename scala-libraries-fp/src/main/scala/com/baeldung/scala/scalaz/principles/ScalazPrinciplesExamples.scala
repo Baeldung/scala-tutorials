@@ -10,7 +10,7 @@ object ScalazPrinciplesExamples {
     }
 
     implicit object stringListDoubler extends Doubler[List, String] {
-      def makeDouble(xs: List[String]): List[String] = xs.map(s => s concat s)
+      def makeDouble(xs: List[String]): List[String] = xs.map(s => s `concat` s)
     }
 
     implicit object intOptionDoubler extends Doubler[Option, Int] {

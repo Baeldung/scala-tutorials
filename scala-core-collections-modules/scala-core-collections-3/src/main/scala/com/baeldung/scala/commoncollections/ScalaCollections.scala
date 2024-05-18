@@ -10,7 +10,7 @@ object ScalaCollections {
 
   val numbersListWithOperator: List[Int] = 1 :: 2 :: 3 :: 4 :: Nil
   val emptyListWithNil: List[Int] = Nil
-  val x :: xs = numbersList
+  val x :: xs = numbersList: @unchecked
 
   // Scala Set
   val emptySet: Set[Int] = Set()

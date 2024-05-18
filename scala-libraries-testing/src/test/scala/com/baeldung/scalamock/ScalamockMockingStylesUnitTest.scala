@@ -11,9 +11,9 @@ class ScalamockMockingStylesUnitTest extends AnyWordSpec with MockFactory {
     }
     "record and then verify" in {
       val mockedWannabe = stub[MockitoWannabe]
-      (mockedWannabe.foo _).when(*).onCall((i: Int) => i * 2)
+      (mockedWannabe.foo).when(*).onCall((i: Int) => i * 2)
       assert(mockedWannabe.foo(12) === 24)
-      (mockedWannabe.foo _).verify(12)
+      (mockedWannabe.foo).verify(12)
     }
   }
 

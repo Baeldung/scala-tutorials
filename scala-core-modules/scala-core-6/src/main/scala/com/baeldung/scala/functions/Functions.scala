@@ -35,8 +35,8 @@ object Functions {
   // getNameLengthDef.andThen(multiplyByTwoDef) //doesn't compile
 
   /** Method to Function value */
-  val getNameLengthDefFnValue = getNameLengthDef _
-  val multiplyByTwoDefFnValue = multiplyByTwoDef _
+  val getNameLengthDefFnValue = getNameLengthDef
+  val multiplyByTwoDefFnValue = multiplyByTwoDef
 
   getNameLengthDefFnValue.andThen(multiplyByTwoDefFnValue) // compiles
 

@@ -15,6 +15,6 @@ object FailureRetryExample extends ZIOAppDefault {
   val failingStream: ZStream[Any, Throwable, Int] =
     ZStream.range(0, 5).flatMap(_ => ZStream.fromZIO(Generator.getNext()))
 
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] =
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] =
     failingStream.retry(Schedule.once).runSum
 }

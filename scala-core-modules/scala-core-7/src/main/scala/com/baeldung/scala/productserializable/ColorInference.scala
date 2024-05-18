@@ -14,7 +14,7 @@ object ColorV2 {
 
 object Inference {
   def isError: Boolean = true
-  val consoleColor: Product with Serializable with Color =
+  val consoleColor: Product & Serializable & Color =
     if (isError) Color.Red else Color.Green
 
   val consoleColorV2: Color = if (isError) Color.Red else Color.Green

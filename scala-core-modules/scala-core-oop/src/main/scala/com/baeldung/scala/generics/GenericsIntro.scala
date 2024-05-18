@@ -69,7 +69,7 @@ object GenericsIntro {
   }
 
   object NonGenericMethods {
-    def totalSize(list1: List[_], list2: List[_]): Int =
+    def totalSize(list1: List[?], list2: List[?]): Int =
       list1.length + list2.length
     def run() = {
       val rabbits = List[Rabbit](Rabbit(2), Rabbit(3), Rabbit(7))

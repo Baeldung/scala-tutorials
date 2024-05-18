@@ -59,7 +59,7 @@ object Fs2Examples {
       src
         .through(text.utf8.decode)
         .through(text.lines)
-        .flatMap(line => Stream.apply(line.split("\\W+"): _*))
+        .flatMap(line => Stream.apply(line.split("\\W+")*))
         .fold(Map.empty[String, Int]) { (count, word) =>
           count + (word -> (count.getOrElse(word, 0) + 1))
         }
@@ -80,7 +80,7 @@ object Fs2Examples {
   }
 
   // Batching in Fs2
-  Stream((1 to 100): _*)
+  Stream((1 to 100)*)
     .chunkN(10) // group 10 elements together
     .map(println)
     .compile
@@ -97,7 +97,7 @@ object Fs2Examples {
 
   }
 
-  Stream((1 to 100).map(_.toString): _*)
+  Stream((1 to 100).map(_.toString)*)
     .chunkN(10)
     .covary[IO]
     .parEvalMapUnordered(10)(writeToSocket[IO])

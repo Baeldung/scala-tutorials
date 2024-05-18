@@ -20,7 +20,7 @@ class ScalamockFunctionUnitTest extends AnyWordSpec with MockFactory {
         def call(f: Int => String, i: Int): String
       }
       val mockedFoo = mock[Foo]
-      (mockedFoo.call _)
+      (mockedFoo.call)
         .expects(*, *)
         .onCall((f: Int => String, i: Int) => Range(0, i).mkString(","))
       assert(mockedFoo.call(_ => "bla", 3) === "0,1,2")
