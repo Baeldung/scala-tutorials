@@ -174,6 +174,12 @@ class PatternMatchingUnitTest {
   }
 
   @Test
+  def whenStringIsPassed_itShouldExtractDataBetweenParenthesis(): Unit = {
+    val result = new PatternMatching().stringInterpolationMatching("Here is a (special) string")
+    assertEquals("String between parenthesis: special", result)
+  }
+
+  @Test
   def whenUnknownDataIsPassed_itShouldReturnDefaultString(): Unit = {
     val result = new PatternMatching().stringInterpolationMatching("something-unknown.unmatched")
     assertEquals("unknown pattern", result)

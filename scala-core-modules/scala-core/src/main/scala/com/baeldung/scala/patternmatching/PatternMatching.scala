@@ -96,6 +96,7 @@ class PatternMatching {
       case s"$firstName.$lastName@$domain.$extension" =>
         s"Hey ${firstName.capitalize} ${lastName.capitalize}, $domain.$extension is your email domain"
       case s"$day-$month-${year}T$time" => s"$month $day, $year"
+      case s"$something($parenthesis)${_}" => s"String between parenthesis: $parenthesis"
       case _                            => "unknown pattern"
     }
   }
