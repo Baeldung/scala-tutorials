@@ -31,6 +31,12 @@ class FilterAndTakeWhileUnitTest extends AnyWordSpec with Matchers {
       numbersBeforeFirstEven shouldBe List(1)
     }
 
+    "select different list of elements if the list item changes" in {
+      val numbers = List(1, 3, 4, 5, 6)
+      val numbersBeforeFirstEven = numbers.takeWhile(_ % 2 != 0)
+      numbersBeforeFirstEven shouldBe List(1, 3)
+    }
+
     "successfully get result from an infinite collection" in {
       val infiniteNumbers = LazyList.from(1)
       val first100 = infiniteNumbers.takeWhile(_ < 100).toList
