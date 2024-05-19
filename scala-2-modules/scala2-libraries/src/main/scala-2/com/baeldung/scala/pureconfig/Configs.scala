@@ -18,12 +18,15 @@ object Protocol {
 }
 
 object impl {
-  implicit val localDateConvert: pureconfig.ConfigConvert[java.time.LocalDate] = localDateConfigConvert(
-    DateTimeFormatter.ISO_DATE
-  )
-  implicit val localDateTimeConvert: pureconfig.ConfigConvert[java.time.LocalDateTime] = localDateTimeConfigConvert(
-    DateTimeFormatter.ISO_DATE_TIME
-  )
+  implicit val localDateConvert: pureconfig.ConfigConvert[java.time.LocalDate] =
+    localDateConfigConvert(
+      DateTimeFormatter.ISO_DATE
+    )
+  implicit val localDateTimeConvert
+    : pureconfig.ConfigConvert[java.time.LocalDateTime] =
+    localDateTimeConfigConvert(
+      DateTimeFormatter.ISO_DATE_TIME
+    )
 }
 
 final case class Port(number: Int) extends AnyVal

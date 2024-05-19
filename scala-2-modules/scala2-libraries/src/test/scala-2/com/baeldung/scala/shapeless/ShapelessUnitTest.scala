@@ -138,9 +138,12 @@ class ShapelessUnitTest extends AnyWordSpec with Matchers {
     "calculate length of variant input types" in {
       import shapeless._
       object polyLength extends Poly1 {
-        implicit val listCase: polyLength.Case.Aux[List[Int], Int] = at[List[Int]](i => i.length)
-        implicit val stringCase: polyLength.Case.Aux[String, Int] = at[String](d => d.length)
-        implicit val arrayCase: polyLength.Case.Aux[Array[Int], Int] = at[Array[Int]](d => d.length)
+        implicit val listCase: polyLength.Case.Aux[List[Int], Int] =
+          at[List[Int]](i => i.length)
+        implicit val stringCase: polyLength.Case.Aux[String, Int] =
+          at[String](d => d.length)
+        implicit val arrayCase: polyLength.Case.Aux[Array[Int], Int] =
+          at[Array[Int]](d => d.length)
       }
 
       val list = List(1, 2) :: "123" :: Array(1, 2, 3, 4) :: HNil

@@ -15,7 +15,9 @@ object MovieServer extends App {
 
   implicit val system: akka.actor.ActorSystem = ActorSystem("MoviesServer")
   val movieService = new MovieService()
-  implicit val movieFormat: spray.json.RootJsonFormat[com.baeldung.scala.akka.http.Movie] = jsonFormat3(Movie)
+  implicit val movieFormat
+    : spray.json.RootJsonFormat[com.baeldung.scala.akka.http.Movie] =
+    jsonFormat3(Movie)
 
   val route = path("movies" / "heartbeat") {
     get {

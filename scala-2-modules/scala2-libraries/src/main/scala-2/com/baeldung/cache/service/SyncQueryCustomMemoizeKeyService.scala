@@ -28,9 +28,10 @@ object GuavaCacheCustomMemoizationKeyConfig {
   val memoizedUnderlyingCustomKeyGuavaCache =
     CacheBuilder.newBuilder().maximumSize(10000L).build[String, Entry[User]]
 
-  implicit val customKeyCacheConfig: scalacache.CacheConfig = CacheConfig(memoization =
-    MemoizationConfig(toStringConverter = CustomKeyGenerator)
-  )
+  implicit val customKeyCacheConfig: scalacache.CacheConfig =
+    CacheConfig(memoization =
+      MemoizationConfig(toStringConverter = CustomKeyGenerator)
+    )
 
   implicit val guavaCache: Cache[User] = GuavaCache(
     memoizedUnderlyingCustomKeyGuavaCache
