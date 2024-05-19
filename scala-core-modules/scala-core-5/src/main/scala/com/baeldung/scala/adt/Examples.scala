@@ -2,16 +2,16 @@ package com.baeldung.scala.adt
 
 object Examples {
   sealed trait Color
-  final case object White extends Color
-  final case object Black extends Color
+  case object White extends Color
+  case object Black extends Color
 
   sealed trait Name
-  final case object Pawn extends Name
-  final case object Rook extends Name
-  final case object Knight extends Name
-  final case object Bishop extends Name
-  final case object Queen extends Name
-  final case object King extends Name
+  case object Pawn extends Name
+  case object Rook extends Name
+  case object Knight extends Name
+  case object Bishop extends Name
+  case object Queen extends Name
+  case object King extends Name
 
   case class ChessPiece(color: Color, name: Name)
 
