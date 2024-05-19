@@ -25,9 +25,9 @@ object Examples {
   }
 
   sealed trait SemaphoreColor
-  final case object Green extends SemaphoreColor
-  final case object Amber extends SemaphoreColor
-  final case object Red extends SemaphoreColor
+  case object Green extends SemaphoreColor
+  case object Amber extends SemaphoreColor
+  case object Red extends SemaphoreColor
 
   trait Feline
   trait Animal

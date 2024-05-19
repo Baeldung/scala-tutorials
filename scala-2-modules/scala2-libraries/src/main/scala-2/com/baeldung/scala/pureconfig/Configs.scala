@@ -18,10 +18,10 @@ object Protocol {
 }
 
 object impl {
-  implicit val localDateConvert = localDateConfigConvert(
+  implicit val localDateConvert: pureconfig.ConfigConvert[java.time.LocalDate] = localDateConfigConvert(
     DateTimeFormatter.ISO_DATE
   )
-  implicit val localDateTimeConvert = localDateTimeConfigConvert(
+  implicit val localDateTimeConvert: pureconfig.ConfigConvert[java.time.LocalDateTime] = localDateTimeConfigConvert(
     DateTimeFormatter.ISO_DATE_TIME
   )
 }

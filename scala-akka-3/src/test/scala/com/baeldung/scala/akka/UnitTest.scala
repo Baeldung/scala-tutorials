@@ -110,7 +110,7 @@ class TrafficLightTestFutUnitTest extends TestServiceUnitTest {
   import scala.concurrent.duration._
   val sender = testKit.spawn(TrafficLight(), "traffic")
   val duration = 300.millis
-  implicit val timeout = Timeout(duration)
+  implicit val timeout: akka.util.Timeout = Timeout(duration)
 
   val signalFut =
     sender.ask(replyTo => TrafficLight.SignalCommand.GetSignal(replyTo))

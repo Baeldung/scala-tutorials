@@ -14,8 +14,8 @@ class TodoListController @Inject() (
   todoList += TodoListItem(1, "test", true)
   todoList += TodoListItem(2, "some other value", false)
 
-  implicit val todoListJson = Json.format[TodoListItem]
-  implicit val newTodoListJson = Json.format[NewTodoListItem]
+  implicit val todoListJson: play.api.libs.json.OFormat[models.TodoListItem] = Json.format[TodoListItem]
+  implicit val newTodoListJson: play.api.libs.json.OFormat[models.NewTodoListItem] = Json.format[NewTodoListItem]
 
   // curl localhost:9000/todo
   def getAll(): Action[AnyContent] = Action {
