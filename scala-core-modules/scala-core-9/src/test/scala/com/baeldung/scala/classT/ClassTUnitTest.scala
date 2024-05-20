@@ -19,7 +19,7 @@ class ClassTUnitTest extends AnyFlatSpec with Matchers {
         )
 
       // Instantiate the class with arguments
-      Some(constructor.newInstance(args: _*).asInstanceOf[T])
+      Some(constructor.newInstance(args*).asInstanceOf[T])
     } catch {
       case e: Exception =>
         println(s"Error creating instance of ${clazz.getName}: ${e.getMessage}")
@@ -37,7 +37,7 @@ class ClassTUnitTest extends AnyFlatSpec with Matchers {
 
   "createInstance with .getClass" should "successfully create another instance of Person" in {
     val dummyPerson = new Person("Dummy")
-    val personClass: Class[_ <: Person] = dummyPerson.getClass
+    val personClass: Class[? <: Person] = dummyPerson.getClass
     val personInstance = createInstance(personClass, Array("Jane Doe": AnyRef))
 
     personInstance should not be empty
@@ -46,7 +46,7 @@ class ClassTUnitTest extends AnyFlatSpec with Matchers {
 
   "createInstance with .getClass" should "use the type of the variable to bound the type" in {
     val dummyPerson: Object = new Person("Dummy")
-    val personClass: Class[_ <: AnyRef] = dummyPerson.getClass
+    val personClass: Class[? <: AnyRef] = dummyPerson.getClass
     val personInstance = createInstance(personClass, Array("Jane Doe": AnyRef))
 
     personInstance should not be empty

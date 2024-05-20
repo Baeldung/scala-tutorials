@@ -25,8 +25,8 @@ object ArbitraryArityUnionType extends App {
 
   sealed trait AOrB[A, B]
   object AOrB {
-    implicit def aInstance[A, B](a: A) = new AOrB[A, B] {}
-    implicit def bInstance[A, B](b: B) = new AOrB[A, B] {}
+    implicit def aInstance[A, B](a: A): AOrB[A, B] = new AOrB[A, B] {}
+    implicit def bInstance[A, B](b: B): AOrB[A, B] = new AOrB[A, B] {}
   }
 
   def isIntOrString[T <% String AOrB Int](t: T): String = t match {

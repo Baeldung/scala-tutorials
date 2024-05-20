@@ -3,7 +3,7 @@ package com.baeldung.scala.zio.repeatretry
 import zio.{Random, Schedule, Scope, ZIO, ZIOAppArgs, ZIOAppDefault}
 
 object RetrySamples extends ZIOAppDefault {
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = {
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] = {
     val mayBeFailingZIO = for {
       num <- Random.nextIntBounded(100)
       _ <- zio.Console.printLine("Calculating with number: " + num)

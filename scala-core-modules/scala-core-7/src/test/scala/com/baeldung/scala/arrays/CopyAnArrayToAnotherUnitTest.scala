@@ -7,7 +7,7 @@ class CopyAnArrayToAnotherUnitTest extends AnyFlatSpec with Matchers {
   val array1 = Array(1, 2, 3, 4)
 
   "splat operator" should "copy an entire array to another" in {
-    var array2 = Array(array1: _*)
+    var array2 = Array(array1*)
     array1(1) should be(array2(1))
     array1 should not be (array2)
 

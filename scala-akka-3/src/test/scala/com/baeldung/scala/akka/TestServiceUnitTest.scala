@@ -10,7 +10,7 @@ class TestServiceUnitTest
   with BeforeAndAfterAll
   with Matchers {
   val testKit = ActorTestKit()
-  implicit val system = testKit.system
+  implicit val system: akka.actor.typed.ActorSystem[Nothing] = testKit.system
 
   // responsible for shutting down the ActorSystem
   override def afterAll(): Unit = testKit.shutdownTestKit()

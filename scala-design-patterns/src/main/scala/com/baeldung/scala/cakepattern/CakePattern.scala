@@ -36,7 +36,7 @@ object CakePattern {
   }
 
   trait TestExecutorComponentWithLogging {
-    this: TestEnvironmentComponent with LoggingComponent =>
+    this: TestEnvironmentComponent & LoggingComponent =>
     val testExecutor: TestExecutor
     class TestExecutor {
       def execute(tests: List[Test]): Boolean = {

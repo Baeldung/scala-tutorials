@@ -10,7 +10,7 @@ object KafkaProducer {
     topic: String,
     key: String,
     value: CustomMessage
-  ): RIO[Any with Producer, RecordMetadata] =
+  ): RIO[Any & Producer, RecordMetadata] =
     Producer.produce[Any, String, CustomMessage](
       topic = topic,
       key = key,

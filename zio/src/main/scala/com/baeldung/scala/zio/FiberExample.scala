@@ -22,5 +22,5 @@ object FiberExample extends zio.ZIOAppDefault {
       result <- (fiber1 <*> fiber2).join
     } yield result
 
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = myApp
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] = myApp
 }

@@ -56,7 +56,7 @@ object ForComprehension {
     def foreach(f: A => Unit): Unit = f(result)
     def map[B](f: A => B): Result[B] = Result(f(result))
     def flatMap[B](f: A => Result[B]): Result[B] = f(result)
-    def withFilter(f: A => Boolean): Result[_] =
+    def withFilter(f: A => Boolean): Result[?] =
       if (f(result)) this else EmptyResult
   }
 

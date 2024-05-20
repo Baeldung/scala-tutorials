@@ -1,8 +1,9 @@
 package com.baeldung.scala.underscore
 
-import com.baeldung.scala.underscore.UnderscoreUsages._
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
+import UnderscoreUsages._
+
 class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
 
   "The underscore" should {
@@ -48,7 +49,7 @@ class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
       b shouldBe "b"
 
       text = "a,b,c,d,e"
-      val Array(a2, _*) = text.split(",")
+      val Array(a2, _*) = text.split(","): @unchecked
       a2 shouldBe "a"
 
       val Array(a3, b3, _, d, e) = text.split(",")

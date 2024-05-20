@@ -9,6 +9,6 @@ object NoParenthesis extends App {
   // greet "Alice"
 
   // But this works and it equivalent to greet("Alice")
-  this greet "Alice"
+  this `greet` "Alice"
 
 }

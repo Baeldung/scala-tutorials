@@ -51,28 +51,28 @@ object WithTraitSpec {
   val pat: Person =
     new Person("Pat", "123 Main St.", LocalDate.of(1933, 10, 11))
 
-  val mary: Person with Musician =
+  val mary: Person & Musician =
     new Person("Mary", "456 Second St.", LocalDate.of(1982, 9, 9))
       with Musician {
       override val instrument: String = "guitar"
     }
 
-  val prudence: Person with Politician =
+  val prudence: Person & Politician =
     new Person("Prudence", "789 Third St.", LocalDate.of(1972, 6, 3))
       with Politician
 
-  val giorgio: Person with Politician with Musician =
+  val giorgio: Person & Politician & Musician =
     new Person("Giorgio", "121 Fourth St.", LocalDate.of(1980, 2, 19))
       with Politician
       with Musician {
       override val instrument: String = "flute"
     }
 
-  val ellie: Animal with Musician =
+  val ellie: Animal & Musician =
     new Animal("Ellie", "elephant") with Musician {
       override val instrument: String = "trombone"
     }
 
-  val vasily: Animal with Politician =
+  val vasily: Animal & Politician =
     new Animal("Vasily", "monkey") with Politician
 }

@@ -9,14 +9,14 @@ class ListReverserUnitTest extends AnyWordSpec with BeforeAndAfterEach {
 
   import ListReverser._
 
-  def testReverseSmallList(f: Seq[_] => Seq[_]): Assertion = {
+  def testReverseSmallList(f: Seq[?] => Seq[?]): Assertion = {
     val list = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     val expectedReversedList = List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
     val actualReversedList = f(list)
     assertResult(expectedReversedList)(actualReversedList)
   }
 
-  def testReverseBigList(f: Seq[_] => Seq[_]): Assertion = {
+  def testReverseBigList(f: Seq[?] => Seq[?]): Assertion = {
     val n = 100_000
     val vector: Vector[String] =
       (0 to n).foldLeft(Vector.empty[String])((v, _) =>
@@ -29,7 +29,7 @@ class ListReverserUnitTest extends AnyWordSpec with BeforeAndAfterEach {
   }
 
   "The naive list reverser" should {
-    val reversingFunction: Seq[_] => Seq[_] = naiveRecursiveReverse
+    val reversingFunction: Seq[?] => Seq[?] = naiveRecursiveReverse
 
     "reverse small lists" in {
       testReverseSmallList(reversingFunction)
@@ -41,7 +41,7 @@ class ListReverserUnitTest extends AnyWordSpec with BeforeAndAfterEach {
   }
 
   "The tail-recursive list reverser" should {
-    val reversingFunction: Seq[_] => Seq[_] = tailRecursiveReverse
+    val reversingFunction: Seq[?] => Seq[?] = tailRecursiveReverse
 
     "reverse small lists" in {
       testReverseSmallList(reversingFunction)
@@ -53,7 +53,7 @@ class ListReverserUnitTest extends AnyWordSpec with BeforeAndAfterEach {
   }
 
   "The folding list reverser" should {
-    val reversingFunction: Seq[_] => Seq[_] = foldBasedReverse
+    val reversingFunction: Seq[?] => Seq[?] = foldBasedReverse
 
     "reverse small lists" in {
       testReverseSmallList(reversingFunction)

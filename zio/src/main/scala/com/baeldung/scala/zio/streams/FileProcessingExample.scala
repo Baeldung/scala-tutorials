@@ -14,9 +14,9 @@ object FileProcessingExample extends ZIOAppDefault {
   val fileSink = ZSink.fromFile(new File("outputFile.txt"))
   val fileOutputStream = fileInputStream
     .intersperse("\n")
-    .flatMap(line => ZStream(line.getBytes.toList: _*))
+    .flatMap(line => ZStream(line.getBytes.toList*))
     .run(fileSink)
 
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] =
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] =
     fileOutputStream
 }

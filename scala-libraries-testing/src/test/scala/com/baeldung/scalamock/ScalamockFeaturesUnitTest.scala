@@ -13,7 +13,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
       val m1 = Model1(1L, "Jim")
       val m2 = Model2(2L, "Timmy")
       val mockUnitService1 = mock[UnitService1]
-      (mockUnitService1.doSomething _).expects(m1, m2)
+      (mockUnitService1.doSomething).expects(m1, m2)
       val unitService2 = new UnitService2Impl(mockUnitService1)
       unitService2.doSomething(m1, m2)
       succeed
@@ -23,7 +23,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
       val m1 = Model1(1L, "Jim")
       val m2 = Model2(2L, "Timmy")
       val mockUnitService1 = mock[UnitService1]
-      (mockUnitService1.doSomething _).expects(m1, *)
+      (mockUnitService1.doSomething).expects(m1, *)
       val unitService2 = new UnitService2Impl(mockUnitService1)
       unitService2.doSomething(m1, m2)
       succeed
@@ -33,7 +33,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
       val m1 = Model1(1L, "Jim")
       val m2 = Model2(2L, "Timmy")
       val mockUnitService1 = mock[UnitService1]
-      (mockUnitService1.doSomething _).expects(where {
+      (mockUnitService1.doSomething).expects(where {
         (_m1: Model1, _m2: Model2) => _m1.id == 1L && _m2.id == 2L
       })
       val unitService2 = new UnitService2Impl(mockUnitService1)
@@ -49,7 +49,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
     }
     "match close numbers" in {
       val mockedModel3 = mock[Model3]
-      (mockedModel3.numFunc _).expects(~71.5f)
+      (mockedModel3.numFunc).expects(~71.5f)
       mockedModel3.numFunc(71.50002f) // success
       // mockedModel3.numFunc(71.502f) // failure
       succeed
@@ -62,8 +62,8 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
       val m2 = Model2(2L, "Timmy")
       val mockUnitService1 = mock[UnitService1]
       inSequence {
-        (mockUnitService1.doSomething _).expects(m1, m2)
-        (mockUnitService1.doSomethingElse _).expects(m1, m2)
+        (mockUnitService1.doSomething).expects(m1, m2)
+        (mockUnitService1.doSomethingElse).expects(m1, m2)
       }
       val unitService2 = new UnitService2Impl(mockUnitService1)
       unitService2.doManyThings(m1, m2) // success
@@ -76,8 +76,8 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
       val m2 = Model2(2L, "Timmy")
       val mockUnitService1 = mock[UnitService1]
       inAnyOrder {
-        (mockUnitService1.doSomething _).expects(m1, m2)
-        (mockUnitService1.doSomethingElse _).expects(m1, m2)
+        (mockUnitService1.doSomething).expects(m1, m2)
+        (mockUnitService1.doSomethingElse).expects(m1, m2)
       }
       val unitService2 = new UnitService2Impl(mockUnitService1)
       // unitService2.doManyThings(m1, m2) // also success
@@ -92,7 +92,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
     }
     "verify the number of calls" in {
       val mockedModel3 = mock[Model3]
-      (mockedModel3.emptyFunc _).expects().once()
+      ((() => mockedModel3.emptyFunc())).expects().once()
       // (mockedModel3.emptyFunc _).expects().twice() // exactly 2 times
       // (mockedModel3.emptyFunc _).expects().never() // never called
       // (mockedModel3.emptyFunc _).expects().repeat(4) // exactly 4 times
@@ -108,7 +108,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
     }
     "verify the number of calls" in {
       val mockedModel3 = mock[Model3]
-      (mockedModel3.getInt _).expects().returning(12)
+      ((() => mockedModel3.getInt())).expects().returning(12)
       assert(mockedModel3.getInt() === 12)
     }
   }
@@ -119,7 +119,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
     }
     "throw exception on mock call" in {
       val mockedModel3 = mock[Model3]
-      (mockedModel3.getInt _)
+      ((() => mockedModel3.getInt()))
         .expects()
         .throwing(new RuntimeException("getInt called"))
       assertThrows[RuntimeException](mockedModel3.getInt())
@@ -132,7 +132,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
     }
     "return argument plus 1" in {
       val mockedModel3 = mock[Model3]
-      (mockedModel3.get _).expects(*).onCall((i: Int) => i + 1)
+      (mockedModel3.get).expects(*).onCall((i: Int) => i + 1)
       assert(mockedModel3.get(4) === 5)
     }
   }
@@ -144,7 +144,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
     "capture arguments" in {
       val mockedOneArg = mock[OneArg]
       val captor = CaptureOne[Int]()
-      (mockedOneArg.func _).expects(capture(captor)).atLeastOnce()
+      (mockedOneArg.func).expects(capture(captor)).atLeastOnce()
       mockedOneArg.func(32)
       assert(captor.value === 32)
     }
@@ -156,7 +156,7 @@ class ScalamockFeaturesUnitTest extends AnyWordSpec with MockFactory {
         def call[A](arg: A): A
       }
       val mockPolymorphic = mock[Polymorphic]
-      (mockPolymorphic.call[Int] _).expects(1).onCall((i: Int) => i * 2)
+      (mockPolymorphic.call[Int]).expects(1).onCall((i: Int) => i * 2)
       assert(mockPolymorphic.call(1) === 2)
     }
   }

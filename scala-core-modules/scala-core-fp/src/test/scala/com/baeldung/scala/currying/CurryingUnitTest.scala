@@ -20,7 +20,7 @@ class CurryingUnitTest extends Matchers {
     : Unit = {
     def sum(x: Int, y: Int): Int = x + y
 
-    val curriedSum: Int => Int => Int = (sum _).curried
+    val curriedSum: Int => Int => Int = (sum).curried
 
     sum(1, 2) shouldBe 3
     curriedSum(1)(2) shouldBe 3

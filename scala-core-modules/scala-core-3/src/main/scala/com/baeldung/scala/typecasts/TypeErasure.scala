@@ -13,6 +13,6 @@ object TypeErasure {
 
   // Simply function that converts a variable number of values to a List of that type
   def convertValuesToList[T](values: T*): List[T] = {
-    List[T](values: _*)
+    List[T](values*)
   }
 }

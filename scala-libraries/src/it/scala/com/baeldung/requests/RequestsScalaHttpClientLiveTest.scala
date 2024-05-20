@@ -134,7 +134,7 @@ class RequestsScalaHttpClientLiveTest
           requests.MultiItem("hint", "This is file upload")
         )
       )
-      assert(r.text() contains ("multipart/form-data"))
+      assert(r.text() `contains` ("multipart/form-data"))
     }
 
   }

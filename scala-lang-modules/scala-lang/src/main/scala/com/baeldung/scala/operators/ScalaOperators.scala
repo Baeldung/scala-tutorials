@@ -9,11 +9,11 @@ object ScalaOperators {
   assert(1.+(2) == 3)
 
   assert("Baeldung".charAt(0) == 'B')
-  val char: Char = "Baeldung" charAt 0
+  val char: Char = "Baeldung" `charAt` 0
   assert(char == 'B')
 
   assert("Baeldung".replace('g', 'G') == "BaeldunG")
-  val str: String = "Baeldung" replace ('g', 'G')
+  val str: String = "Baeldung" `replace` ('g', 'G')
   assert(str == "BaeldunG")
 
   // Unary operator notation

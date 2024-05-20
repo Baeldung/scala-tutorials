@@ -43,7 +43,7 @@ class CaseClassesUnitTest {
   @Test
   def givenTuple_whenCallingApply_thenCreatesNewInstance() = {
     val tuple = ("PL", 776, 15366)
-    val covidPL = (CovidCountryStats.apply _).tupled(tuple)
+    val covidPL = (CovidCountryStats.apply).tupled(tuple)
 
     assertEquals(CovidCountryStats("PL", 776, 15366), covidPL)
   }
