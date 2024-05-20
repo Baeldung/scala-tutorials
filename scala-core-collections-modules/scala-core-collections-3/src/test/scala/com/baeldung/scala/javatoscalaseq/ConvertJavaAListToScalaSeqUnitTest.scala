@@ -4,7 +4,7 @@ import java.util
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class ConvertJavaAListToScalaSeqSpec extends AnyFlatSpec with Matchers {
+class ConvertJavaAListToScalaSeqUnitTest extends AnyFlatSpec with Matchers {
   val list: util.List[String] = util.ArrayList[String]()
   list.add("hello")
   list.add(" world")
