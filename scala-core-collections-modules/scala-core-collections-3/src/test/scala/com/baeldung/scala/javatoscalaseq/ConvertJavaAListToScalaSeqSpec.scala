@@ -16,4 +16,12 @@ class ConvertJavaAListToScalaSeqSpec extends AnyFlatSpec with Matchers {
   "213" should "return String" in {
     ConvertJavaAListToScalaSeq.in213(list) shouldBe "hello world"
   }
+
+  "convertToList212" should "return String" in {
+    ConvertJavaAListToScalaSeq.convertToList212(list) shouldBe "hello world"
+  }
+
+  "convertToList213" should "return String" in {
+    ConvertJavaAListToScalaSeq.convertToList213(list) shouldBe "hello world"
+  }
 }
