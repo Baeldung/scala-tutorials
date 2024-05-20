@@ -4,3 +4,4 @@
 - [Scala’s Destructuring with the @ Operator](https://www.baeldung.com/scala/destructuring-operator)
 - [Check if Two Strings Are Isomorphic in Scala](https://www.baeldung.com/scala/string-isomorphism)
 - [Find Two’s Complement of a Number in Scala](https://www.baeldung.com/scala/compute-twos-complement)
+- [The Practical Difference between Abstract Classes and Traits in Scala](https://drafts.baeldung.com/?p=200593&preview=true)
