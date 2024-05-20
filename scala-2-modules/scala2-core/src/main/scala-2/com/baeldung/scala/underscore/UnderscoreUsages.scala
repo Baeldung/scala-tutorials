@@ -2,7 +2,7 @@ package com.baeldung.scala.underscore
 
 object UnderscoreUsages {
 
-  def getLength(x: List[List[?]]): Int = x.length
+  def getLength(x: List[List[_]]): Int = x.length
 
   def itemTransaction(price: Double): String = {
     price match {
@@ -33,7 +33,7 @@ object UnderscoreUsages {
     }
   }
 
-  def list_++(list: List[?]): List[?] = List.concat(list, list)
+  def list_++(list: List[_]): List[_] = List.concat(list, list)
 
   trait ObjectContainer[T[_]] { // higher kinded type parameter
     def checkIfEmpty[A](collection: T[A]): Boolean

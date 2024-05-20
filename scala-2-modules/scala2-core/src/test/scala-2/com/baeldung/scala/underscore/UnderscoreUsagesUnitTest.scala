@@ -1,8 +1,9 @@
 package com.baeldung.scala.underscore
 
-import com.baeldung.scala.underscore.UnderscoreUsages._
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
+import UnderscoreUsages._
+
 class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
 
   "The underscore" should {
@@ -58,12 +59,12 @@ class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
       e shouldBe "e"
     }
     "work in reassigning a a function to a value" in {
-      val times = multiplier
+      val times = multiplier _
       multiplier(8, 13) shouldBe times(8, 13)
     }
     "work in converting a sequence to variable arguments" in {
       val sumable = Seq(4, 5, 10, 3)
-      val sumOfSumable = sum(sumable*)
+      val sumOfSumable = sum(sumable: _*)
       sumOfSumable shouldBe 22
     }
     "generate a partially applied function" in {
@@ -71,7 +72,7 @@ class UnderscoreUsagesUnitTest extends AnyWordSpec with Matchers {
       val sumFiveAndTen = sumToTen(5)
       sumFiveAndTen shouldBe 15
 
-      val foo = bar(1, 2)
+      val foo = bar(1, 2) _
       foo("Some string", "Another string")(3 / 5, 6 / 5) shouldBe 1
     }
     "work in overriding a method's setter" in {
