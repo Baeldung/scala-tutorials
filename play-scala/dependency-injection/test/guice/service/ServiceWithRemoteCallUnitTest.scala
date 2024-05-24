@@ -20,8 +20,10 @@ class ServiceWithRemoteCallUnitTest
         .overrides(new MockApiModule, new ServiceModule)
         .build()
       new App(application) {
-        val srv = app.injector.instanceOf[ServiceWithRemoteCall]
-        assert(srv.call() == "Mock remote api call")
+        override def running() = {
+          val srv = app.injector.instanceOf[ServiceWithRemoteCall]
+          assert(srv.call() == "Mock remote api call")
+        }
       }
     }
 
@@ -30,8 +32,10 @@ class ServiceWithRemoteCallUnitTest
         .overrides(new ApiModule, new ServiceModule)
         .build()
       new App(application) {
-        val srv = app.injector.instanceOf[ServiceWithRemoteCall]
-        assert(srv.call() == "Real remote api call")
+        override def running() = {
+          val srv = app.injector.instanceOf[ServiceWithRemoteCall]
+          assert(srv.call() == "Real remote api call")
+        }
       }
     }
 
