@@ -8,7 +8,7 @@ case class Article(title: String, url: String)
 class ViewTemplateController @Inject() (cc: ControllerComponents)
   extends AbstractController(cc) {
 
-  def index = Action { 
+  def index = Action {
     val articles = List(
       (
         "Introduction to Play Framework",
@@ -22,7 +22,7 @@ class ViewTemplateController @Inject() (cc: ControllerComponents)
     Ok(views.html.Baeldung.index(articles))
   }
 
-  def withClass = Action { 
+  def withClass = Action {
     val articles = List(
       Article(
         "Introduction to Play Framework",

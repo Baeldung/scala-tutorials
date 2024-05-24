@@ -21,7 +21,8 @@ class SourceActionsUnitTest
 
   "SourceAction" should {
     "return BAD_REQUEST status for missing source header" in {
-      val testee: Action[AnyContent] = SourceAction(anyContentParser)(globalEc) { _ => NoContent }
+      val testee: Action[AnyContent] =
+        SourceAction(anyContentParser)(globalEc) { _ => NoContent }
 
       whenReady(testee.apply(FakeRequest())) { result =>
         assert(result.header.status === BAD_REQUEST)
@@ -29,7 +30,8 @@ class SourceActionsUnitTest
     }
 
     "return NO_CONTENT status for when source header is present" in {
-      val testee: Action[AnyContent] = SourceAction(anyContentParser)(globalEc) { _ => NoContent }
+      val testee: Action[AnyContent] =
+        SourceAction(anyContentParser)(globalEc) { _ => NoContent }
       whenReady(
         testee.apply(FakeRequest().withHeaders(Headers("source" -> "foo")))
       ) { result =>
