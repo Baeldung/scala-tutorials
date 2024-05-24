@@ -18,12 +18,12 @@ class MenuControllerUnitTest
       val controller = new MenuController(template, stubControllerComponents())
 
       val result = controller
-        .availableProducts()
+        .availableProducts
         .apply(
           FakeRequest(GET, "/menu")
         )
 
-      contentAsString(result) must include("coffee 8,99 €")
+      contentAsString(result) `must` include("coffee 8,99 €")
     }
   }
 }

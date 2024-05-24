@@ -14,7 +14,7 @@ class ViewTemplateControllerUnitTest
     "should return two articles" in {
       val controller = new ViewTemplateController(stubControllerComponents())
       val result = controller
-        .index()
+        .index
         .apply(
           FakeRequest(GET, "/template")
         )
@@ -28,7 +28,7 @@ class ViewTemplateControllerUnitTest
     "with_class function returns the same two articles" in {
       val controller = new ViewTemplateController(stubControllerComponents())
       val result = controller
-        .withClass()
+        .withClass
         .apply(
           FakeRequest(GET, "/withclass")
         )

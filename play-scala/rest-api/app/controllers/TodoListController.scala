@@ -54,7 +54,7 @@ class TodoListController @Inject() (
   }
 
   // curl -v -d '{"description": "some new item"}' -H 'Content-Type: application/json' -X POST localhost:9000/todo
-  def addNewItem() = Action { implicit request =>
+  def addNewItem(): Action[AnyContent] = Action { request =>
     val content = request.body
     val jsonObject = content.asJson
 

@@ -19,7 +19,7 @@ class ArrivalDecoratorService @Inject() (configuration: Configuration) {
   private val maximumMediumNameLength =
     configuration.get[Int]("medium-name-max")
 
-  def decorate(undecorated: Arrival): Arrival with Size = new Arrival(
+  def decorate(undecorated: Arrival): Arrival & Size = new Arrival(
     undecorated.planeId,
     undecorated.origin,
     undecorated.destination,
