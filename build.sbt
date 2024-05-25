@@ -444,7 +444,7 @@ val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
-val munitDep = "org.scalameta" %% "munit" % "0.7.29" % Test
+val munitDep = "org.scalameta" %% "munit" % "1.0.0" % Test
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
@@ -613,7 +613,7 @@ lazy val cats_effects = (project in file("cats-effects"))
     name := "cats-effects",
     scalaVersion := scala3Version,
     libraryDependencies += catsEffect,
-    libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
+    libraryDependencies += "org.typelevel" %% "munit-cats-effect" % "2.0.0" % Test,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
