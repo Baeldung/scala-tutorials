@@ -331,7 +331,7 @@ lazy val scala_akka_3 = (project in file("scala-akka-3"))
 
 val monocleVersion = "2.1.0"
 val slickVersion = "3.5.1"
-val shapelessVersion = "2.3.11"
+val shapelessVersion = "2.3.12"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.10.2"
 val reactiveMongo = "1.1.0-RC12"
