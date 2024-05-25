@@ -613,7 +613,7 @@ lazy val cats_effects = (project in file("cats-effects"))
     name := "cats-effects",
     scalaVersion := scala3Version,
     libraryDependencies += catsEffect,
-    libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
+    libraryDependencies += "org.typelevel" %% "munit-cats-effect" % "2.0.0" % Test,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
