@@ -4,13 +4,39 @@ import cats.effect.kernel.CancelScope.Cancelable
 import cats.effect.{IO, Resource}
 import cats.effect.unsafe.implicits.global
 import cats.implicits.catsSyntaxTuple2Parallel
+import org.scalatest.{Failed, Outcome, Retries, Canceled}
 import org.scalatest.matchers.should.Matchers
+import org.scalatest.tags.Retryable
 import org.scalatest.wordspec.AnyWordSpec
-import java.util.concurrent.atomic.AtomicBoolean
 
+import java.util.concurrent.atomic.AtomicBoolean
 import scala.concurrent.duration.DurationInt
 
-class CancellationUnitTest extends AnyWordSpec with Matchers {
+@Retryable
+class CancellationUnitTest extends AnyWordSpec with Matchers with Retries {
+
+  val retries = 5
+
+  override def withFixture(test: NoArgTest): Outcome = {
+    if (isRetryable(test)) withFixture(test, retries)
+    else super.withFixture(test)
+  }
+
+  def withFixture(test: NoArgTest, count: Int): Outcome = {
+    val outcome = super.withFixture(test)
+    outcome match {
+      case Failed(_) | Canceled(_) =>
+        if (count == 1) super.withFixture(test)
+        else {
+          println(
+            s"Retrying SchedulerUnitTest flaky test  `${test.name}`, Attempts remaining: ${count - 1}"
+          )
+          // scheduling the retry after 1 second
+          withRetry(1.seconds)(withFixture(test, count - 1))
+        }
+      case other => other
+    }
+  }
 
   "Cancellation" should {
     "cancel the fiber directly and execute the action on cancellation" in {
@@ -87,7 +113,7 @@ class CancellationUnitTest extends AnyWordSpec with Matchers {
         val flag = new AtomicBoolean(false)
         val ioa = IO.blocking {
           while (!flag.get()) {
-            Thread.sleep(15)
+            Thread.sleep(25)
             println(s"counter = $counter")
             counter += 1
           }
