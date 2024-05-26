@@ -10,7 +10,7 @@ class MenuController @Inject() (
   cc: ControllerComponents
 ) extends AbstractController(cc) {
 
-  def availableProducts = Action { implicit request =>
+  def availableProducts = Action {
     val products = List(
       Product("coffee", 8.99, true),
       Product("cake", 12.00, true),

@@ -12,7 +12,7 @@ import macwire.services.{
   OrderService
 }
 
-trait OrderComponents extends {
+trait OrderComponents {
 
   lazy val p1: OrderPipelineProcessor = (order: Order) =>
     println("Processor 1 processed")

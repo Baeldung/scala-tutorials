@@ -17,11 +17,13 @@ class ArrivalDecoratorServiceUnitTest extends MixedPlaySpec {
         )
         .build()
     ) {
-      private val testee = app.injector.instanceOf[ArrivalDecoratorService]
-      private val arrival = Arrival(1L, "Athens", "Heathrow", "12345")
-      assert(testee.decorate(arrival).short)
-      assert(!testee.decorate(arrival).medium)
-      assert(!testee.decorate(arrival).long)
+      override def running() = {
+        val testee = app.injector.instanceOf[ArrivalDecoratorService]
+        val arrival = Arrival(1L, "Athens", "Heathrow", "12345")
+        assert(testee.decorate(arrival).short)
+        assert(!testee.decorate(arrival).medium)
+        assert(!testee.decorate(arrival).long)
+      }
     }
 
     "mark as medium an arrival with plane name length = 5 with overridden configuration" in new App(
@@ -37,11 +39,13 @@ class ArrivalDecoratorServiceUnitTest extends MixedPlaySpec {
         )
         .build()
     ) {
-      private val testee = app.injector.instanceOf[ArrivalDecoratorService]
-      private val arrival = Arrival(1L, "Athens", "Heathrow", "12345")
-      assert(!testee.decorate(arrival).short)
-      assert(testee.decorate(arrival).medium)
-      assert(!testee.decorate(arrival).long)
+      override def running() = {
+        val testee = app.injector.instanceOf[ArrivalDecoratorService]
+        val arrival = Arrival(1L, "Athens", "Heathrow", "12345")
+        assert(!testee.decorate(arrival).short)
+        assert(testee.decorate(arrival).medium)
+        assert(!testee.decorate(arrival).long)
+      }
     }
   }
 

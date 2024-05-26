@@ -7,6 +7,7 @@ import play.api.http.Status.{BAD_REQUEST, NO_CONTENT}
 import play.api.mvc.Headers
 import play.api.mvc.Results.NoContent
 import play.api.test.{FakeRequest, Helpers}
+import play.api.mvc.{Action, AnyContent}
 
 class SourceActionsUnitTest
   extends AnyWordSpec
@@ -20,7 +21,8 @@ class SourceActionsUnitTest
 
   "SourceAction" should {
     "return BAD_REQUEST status for missing source header" in {
-      val testee = SourceAction(anyContentParser)(globalEc) { _ => NoContent }
+      val testee: Action[AnyContent] =
+        SourceAction(anyContentParser)(globalEc) { _ => NoContent }
 
       whenReady(testee.apply(FakeRequest())) { result =>
         assert(result.header.status === BAD_REQUEST)
@@ -28,7 +30,8 @@ class SourceActionsUnitTest
     }
 
     "return NO_CONTENT status for when source header is present" in {
-      val testee = SourceAction(anyContentParser)(globalEc) { _ => NoContent }
+      val testee: Action[AnyContent] =
+        SourceAction(anyContentParser)(globalEc) { _ => NoContent }
       whenReady(
         testee.apply(FakeRequest().withHeaders(Headers("source" -> "foo")))
       ) { result =>

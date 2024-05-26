@@ -26,7 +26,7 @@ class SlickArrivalRepository @Inject() (val dbProfile: JdbcProfile)(implicit
       origin,
       destination,
       plane
-    ) <> ((Arrival.apply _).tupled, Arrival.unapply)
+    ) <> ((Arrival.apply).tupled, Arrival.unapply)
   }
 
   /** The starting point for all queries on the people table.
