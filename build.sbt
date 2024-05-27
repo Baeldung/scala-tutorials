@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.4"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.6"
-val embedMongoVersion = "4.13.0"
+val embedMongoVersion = "4.13.1"
 val AkkaVersion = "2.8.5"
 val AkkaHttpVersion = "10.5.0"
 
@@ -22,7 +22,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "6.0.0" % Test
-val zioVersion = "2.0.22"
+val zioVersion = "2.1.1"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -208,6 +208,13 @@ lazy val scala_core_collections_3 =
       libraryDependencies ++= scalaTestDeps
     )
 
+lazy val scala_core_collections_4 =
+  (project in file("scala-core-collections-modules/scala-core-collections-4"))
+    .settings(
+      scalaVersion := scala3Version,
+      libraryDependencies ++= scalaTestDeps
+    )
+
 lazy val scala_core_map =
   (project in file("scala-core-collections-modules/scala-core-map"))
     .settings(
@@ -324,7 +331,7 @@ lazy val scala_akka_3 = (project in file("scala-akka-3"))
 
 val monocleVersion = "2.1.0"
 val slickVersion = "3.5.1"
-val shapelessVersion = "2.3.10"
+val shapelessVersion = "2.3.12"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.10.2"
 val reactiveMongo = "1.1.0-RC12"
@@ -430,14 +437,14 @@ lazy val scala_libraries = (project in file("scala-libraries"))
 
 val http4sBlaze = "0.23.16"
 val http4sVersion = "0.23.27"
-val osLibVersion = "0.10.0"
+val osLibVersion = "0.10.1"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
 val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
-val munitDep = "org.scalameta" %% "munit" % "0.7.29" % Test
+val munitDep = "org.scalameta" %% "munit" % "1.0.0" % Test
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
@@ -460,7 +467,7 @@ lazy val redis_intro =
       libraryDependencies ++= scalaTestDeps
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
-        "redis.clients" % "jedis" % "5.1.2",
+        "redis.clients" % "jedis" % "5.1.3",
         "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
@@ -517,10 +524,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.3" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.718" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.730" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.25.48"
+      "software.amazon.awssdk" % "s3" % "2.25.60"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -538,7 +545,7 @@ lazy val scala_libraries_persistence =
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.2.224",
-        "org.tpolecat" %% "skunk-core" % "0.6.3",
+        "org.tpolecat" %% "skunk-core" % "0.6.4",
         doobieCore,
         doobiePGDep,
         "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
@@ -606,7 +613,7 @@ lazy val cats_effects = (project in file("cats-effects"))
     name := "cats-effects",
     scalaVersion := scala3Version,
     libraryDependencies += catsEffect,
-    libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test,
+    libraryDependencies += "org.typelevel" %% "munit-cats-effect" % "2.0.0" % Test,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
@@ -715,7 +722,7 @@ lazy val spark_scala = (project in file("spark-scala"))
 
 addCommandAlias(
   "ci",
-  ";compile;test:compile;it:compile;scalafmtCheckAll;test"
+  ";compile;test:compile;it:compile;scalafmtCheckAll;validateUnitTestNames;test"
 )
 
 addCommandAlias(

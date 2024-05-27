@@ -2,7 +2,6 @@ package com.baeldung.munit
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import munit.GenericBeforeEach
 
 class MUnitTest extends munit.FunSuite {
 
@@ -66,7 +65,7 @@ class MUnitTest extends munit.FunSuite {
   )
 }
 
-class MacOnlyTest extends munit.FunSuite {
+class MacOnlyUnitTest extends munit.FunSuite {
   override def munitIgnore: Boolean = !scala.util.Properties.isWin
   test("This is a mac only test") {
     println("mac only test")

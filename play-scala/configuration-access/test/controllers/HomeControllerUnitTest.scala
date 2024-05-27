@@ -1,11 +1,11 @@
 package controllers
 
-import org.mockito.MockitoSugar
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice._
 import play.api.test.Helpers._
 import play.api.test._
 import services.MyService
+import org.scalatestplus.mockito.MockitoSugar
 
 /** Add your spec here. You can mock out a whole application including requests,
   * plugins etc.

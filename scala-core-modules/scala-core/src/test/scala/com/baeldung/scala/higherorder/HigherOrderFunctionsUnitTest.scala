@@ -40,7 +40,7 @@ class HigherOrderFunctionsUnitTest {
 
     // partial application of curried function
     // trailing underscore is required to make function type explicit
-    val sumMod5 = sum(mod(5)) _
+    val sumMod5 = sum(mod(5))
 
     assertEquals(10, sumMod5(6, 10))
   }

@@ -64,8 +64,8 @@ class ExampleFlatSpecWithMatchersUnitTest extends AnyFlatSpec with Matchers {
   }
 
   it should "let us check the type of an object" in {
-    List(1, 2, 3) shouldBe a[List[_]]
-    List(1, 2, 3) should not be a[Map[_, _]]
+    List(1, 2, 3) shouldBe a[List[?]]
+    List(1, 2, 3) should not be a[Map[?, ?]]
   }
 
 }

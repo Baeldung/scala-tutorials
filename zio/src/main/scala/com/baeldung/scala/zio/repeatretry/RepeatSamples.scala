@@ -5,7 +5,7 @@ import zio.{Schedule, Scope, Task, ZIO, ZIOAppArgs, ZIOAppDefault}
 import scala.util.Random
 
 object RepeatSamples extends ZIOAppDefault {
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = {
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] = {
     val simpleZio: ZIO[Any, Nothing, Unit] = ZIO.succeed(println("Hello ZIO!"))
     val aFailingZio = ZIO.fail(new Exception("failed!"))
 
@@ -40,7 +40,7 @@ object RepeatSamples extends ZIOAppDefault {
 }
 
 object FailingRepeatSamples extends ZIOAppDefault {
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = {
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] = {
     val aFailingZIO = ZIO.attempt {
       println("A failing action here")
       throw new Exception("Failure block")

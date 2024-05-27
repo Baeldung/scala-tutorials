@@ -16,5 +16,5 @@ object ZPipelineExample extends ZIOAppDefault {
   val totalSum: ZIO[Any, Nothing, Int] =
     firstStreamMapped.concat(secondStreamMapped).runSum
 
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = totalSum
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] = totalSum
 }

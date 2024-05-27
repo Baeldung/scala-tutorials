@@ -31,8 +31,8 @@ object Examples {
   def add5(x: Int) = x + 5
   def isEven(x: Int) = x % 2 == 0
 
-  val funcAdd5 = add5 _
-  val funcIsEven = isEven _
+  val funcAdd5 = add5
+  val funcIsEven = isEven
 
   val sayHello: Future[Option[String]] = Future.successful(Some("Say hello to"))
   val firstname: Future[String] = Future.successful("Fabio")

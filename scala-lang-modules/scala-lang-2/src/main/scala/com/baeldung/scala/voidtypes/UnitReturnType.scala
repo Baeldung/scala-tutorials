@@ -2,21 +2,21 @@ package com.baeldung.scala.voidtypes
 
 object UnitReturnType extends App {
 
-  def functionReturnUnit: Unit = {
+  def functionReturnUnit(): Unit = {
     """
       do something, don't return anything
     """
   }
-  println("result of function returning Unit: %s".format(functionReturnUnit))
+  println("result of function returning Unit: %s".format(functionReturnUnit()))
 
-  def functionReturnImplicitUnit: Unit = {
+  def functionReturnImplicitUnit(): Unit = {
     s"""
       do something, don't return anything
     """
   }
   println(
     "result of function returning implicit Unit: %s".format(
-      functionReturnImplicitUnit
+      functionReturnImplicitUnit()
     )
   )
 }

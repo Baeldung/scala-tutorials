@@ -8,7 +8,7 @@ import java.time.Clock
 import java.util.UUID
 import scala.util.{Success, Try}
 
-object TrafficLightCommandsTest extends Properties("TrafficLightCommands") {
+object TrafficLightCommandsUnitTest extends Properties("TrafficLightCommands") {
   property("TrafficLight") = CommandsUnitTest.property()
 }
 

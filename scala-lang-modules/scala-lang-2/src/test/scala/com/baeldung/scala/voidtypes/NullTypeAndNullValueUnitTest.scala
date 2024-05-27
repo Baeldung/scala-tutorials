@@ -13,7 +13,7 @@ class NullTypeAndNullValueUnitTest extends AnyFunSuite {
 
   test("null equality check using equals ") {
     val exceptionThrown = intercept[NullPointerException] {
-      NullTypeAndnullValue.nullValue equals NullTypeAndnullValue.nullRefCar
+      NullTypeAndnullValue.nullValue `equals` NullTypeAndnullValue.nullRefCar
     }
   }
 

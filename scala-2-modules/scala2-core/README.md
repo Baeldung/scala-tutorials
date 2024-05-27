@@ -9,3 +9,4 @@
 - [Demystifying View and Context Bounds](https://www.baeldung.com/scala/view-context-bounds)
 - [Introduction to Scala](https://www.baeldung.com/scala/scala-intro)
 - [Exception Handling in Scala](https://www.baeldung.com/scala/exception-handling)
+- [Usages of Underscore (_) in Scala](https://www.baeldung.com/scala/underscore)

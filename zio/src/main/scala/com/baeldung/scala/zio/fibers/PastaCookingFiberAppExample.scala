@@ -61,5 +61,5 @@ object PastaCookingFiberAppExample extends ZIOAppDefault {
       _ <- orderFiber.join.ensuring(cleanup)
     } yield ()
 
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = pastaApp
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] = pastaApp
 }

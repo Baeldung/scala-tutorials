@@ -8,7 +8,7 @@ object NonStrictDataStructures {
   val stream = data.toStream
   // todo: check if this is ok, better to separate into separate module
   // val view: AnyRef with SeqView[Int, Seq[Int]] = data.view
-  val view: AnyRef with SeqView[Int] = data.view
+  val view: AnyRef & SeqView[Int] = data.view
 }
 
 case class Factorial() {

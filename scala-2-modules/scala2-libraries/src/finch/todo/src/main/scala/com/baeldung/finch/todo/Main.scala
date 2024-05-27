@@ -55,17 +55,16 @@ object Main extends IOApp {
       } yield Created(created)
   }
 
-  val getTodo: Endpoint[IO, Todo] = get(todosPath :: path[Int]) {
-    id: Int =>
-      for {
-        todos <- sql"select * from todo where id = $id"
-          .query[Todo]
-          .to[Set]
-          .transact(xa)
-      } yield todos.headOption match {
-        case None       => NotFound(new Exception("Record not found"))
-        case Some(todo) => Ok(todo)
-      }
+  val getTodo: Endpoint[IO, Todo] = get(todosPath :: path[Int]) { id: Int =>
+    for {
+      todos <- sql"select * from todo where id = $id"
+        .query[Todo]
+        .to[Set]
+        .transact(xa)
+    } yield todos.headOption match {
+      case None       => NotFound(new Exception("Record not found"))
+      case Some(todo) => Ok(todo)
+    }
   }
 
   val updateTodo: Endpoint[IO, Todo] =

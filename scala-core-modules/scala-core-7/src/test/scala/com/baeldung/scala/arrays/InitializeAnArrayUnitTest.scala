@@ -30,7 +30,7 @@ class InitializeAnArrayUnitTest extends AnyFlatSpec with Matchers {
 
   "splat operator" should "copy an entire list to an array" in {
     var list = List(1, 2, 3, 4)
-    var array = Array[Int](list: _*)
+    var array = Array[Int](list*)
 
     array(1) should be(list(1))
     array.length should be(4)

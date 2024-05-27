@@ -19,7 +19,7 @@ object StringWrapper {
 
   val useMapReduce: String => String = { spacedString =>
     val first :: rest =
-      spacedString.split(Array(' ', '_')).toList.map(_.toLowerCase)
+      spacedString.split(Array(' ', '_')).toList.map(_.toLowerCase): @unchecked
     val changedRest = rest.map(w => w.take(1).toUpperCase + w.drop(1))
     val reunited = first :: changedRest
     reunited.mkString
