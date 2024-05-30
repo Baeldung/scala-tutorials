@@ -25,6 +25,10 @@ class DecodingSpec extends AnyWordSpec with Matchers {
         Start(100)
       )
       """{"Stop":{}}""".fromJson[Command] shouldBe Right(Stop)
+      """{"Kill":{"reason":"Random reason","force":false}}"""
+        .fromJson[Command] shouldBe Right(
+        Kill("Random reason", false)
+      )
     }
 
     "decode Stop to JSON" in {
@@ -35,6 +39,10 @@ class DecodingSpec extends AnyWordSpec with Matchers {
         Start(100)
       )
       """"Stop"""".fromJson[Stop.type] shouldBe Right(Stop)
+      """{"Kill":{"reason":"Random reason","force":false}}"""
+        .fromJson[Command] shouldBe Right(
+        Kill("Random reason", false)
+      )
     }
 
     "use a discriminator" in {
@@ -42,6 +50,10 @@ class DecodingSpec extends AnyWordSpec with Matchers {
         Start2(100)
       )
       """{"type":"Stop2"}""".fromJson[Command2] shouldBe Right(Stop2)
+      """{"type":"Kill2","reason":"Random reason","force":false}"""
+        .fromJson[Command2] shouldBe Right(
+        Kill2("Random reason", false)
+      )
     }
 
     "fail if there's no discriminator" in {

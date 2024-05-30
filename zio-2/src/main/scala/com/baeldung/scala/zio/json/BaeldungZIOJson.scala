@@ -5,11 +5,13 @@ import zio.json.*
 sealed trait Command
 case class Start(timeout: Long) extends Command
 case object Stop extends Command
+case class Kill(reason: String, force: Boolean) extends Command
 
 @jsonDiscriminator("type")
 sealed trait Command2
 case class Start2(timeout: Long) extends Command2
 case object Stop2 extends Command2
+case class Kill2(reason: String, force: Boolean) extends Command2
 
 object Start {
   implicit val encoder: JsonEncoder[Start] = DeriveJsonEncoder.gen[Start]
