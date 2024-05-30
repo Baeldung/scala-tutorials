@@ -4,7 +4,7 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import zio.json.*
 
-class DecodingSpec extends AnyWordSpec with Matchers {
+class DecodingUnitTest extends AnyWordSpec with Matchers {
   "zio-json" should {
     "decode a JSON object to a case class" in {
       """{"timeout":789}""".fromJson[Start] shouldBe Right(Start(789))

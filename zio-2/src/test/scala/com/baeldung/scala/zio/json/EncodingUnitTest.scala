@@ -4,7 +4,7 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import zio.json.*
 
-class EncodingSpec extends AnyWordSpec with Matchers {
+class EncodingUnitTest extends AnyWordSpec with Matchers {
   "zio-json" should {
     "encode a case class to JSON" in {
       Start(100).toJson shouldBe """{"timeout":100}"""
