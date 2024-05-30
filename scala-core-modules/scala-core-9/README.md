@@ -4,3 +4,4 @@
 - [Scala’s Destructuring with the @ Operator](https://www.baeldung.com/scala/destructuring-operator)
 - [Check if Two Strings Are Isomorphic in Scala](https://www.baeldung.com/scala/string-isomorphism)
 - [Find Two’s Complement of a Number in Scala](https://www.baeldung.com/scala/compute-twos-complement)
+- [Convert Option to Either in Scala](https://www.baeldung.com/scala/option-either-conversion)
