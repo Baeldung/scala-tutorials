@@ -16,5 +16,4 @@ class RootImportUnitTest extends AnyFlatSpec {
     assert(scalaList.toString == "List(100)")
   }
 
-
 }
