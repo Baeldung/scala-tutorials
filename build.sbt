@@ -630,7 +630,7 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += zioTestSbt,
     libraryDependencies += "dev.zio" %% "zio-kafka" % "2.7.4",
     libraryDependencies += zioJsonDep,
-    libraryDependencies += "dev.zio" %% "zio-prelude" % "1.0.0-RC23",
+    libraryDependencies += "dev.zio" %% "zio-prelude" % "1.0.0-RC27",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.18" % Test,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
