@@ -13,7 +13,7 @@ import eu.timepit.refined.api.Validate
 object RefinedIntro {
   // val oddNumber: Refined[Int, Odd] = 8
   // val oddNumber: Int Refined Odd = 8
-  
+
   val age: Int Refined Less[35] = 30
   val ageInterval: Int Refined Interval.Closed[30, 35] = 35
   val age2: Int Refined GreaterEqual[35] = 35
