@@ -648,8 +648,10 @@ lazy val zio2 = (project in file("zio-2"))
     name := "zio-2",
     scalaVersion := scala3Version,
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
+    libraryDependencies += "dev.zio" %% "zio-json" % "0.6.2",
     libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
+    libraryDependencies ++= scalaTestDeps,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
