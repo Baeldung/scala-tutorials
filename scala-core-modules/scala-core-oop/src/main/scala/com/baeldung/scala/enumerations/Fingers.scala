@@ -1,5 +1,7 @@
 package com.baeldung.scala.enumerations
 
+// This is Scala 2 based enumeration. It still works in Scala 3 for compatibility.
+// However, this might become unsupported in future release. In scala 3, use the keyword `enum`
 object Fingers extends Enumeration {
   type Finger = Value
 
