@@ -10,7 +10,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.4"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.6"
-val embedMongoVersion = "4.13.1"
+val embedMongoVersion = "4.14.0"
 val AkkaVersion = "2.8.5"
 val AkkaHttpVersion = "10.5.0"
 
@@ -22,7 +22,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "6.0.0" % Test
-val zioVersion = "2.1.2"
+val zioVersion = "2.1.3"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -361,7 +361,7 @@ lazy val scala2_libraries =
         enumeratumDep,
         "io.monix" %% "monix" % monixVersion,
         pureConfigDep,
-        "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.6",
+        "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.7",
         "com.typesafe" % "config" % "1.4.3",
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
@@ -490,7 +490,7 @@ lazy val refined = (project in file("scala-libraries-standalone/refined"))
 
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.6.1-ce"
-val pureconfigVersion = "0.17.6"
+val pureconfigVersion = "0.17.7"
 val jackSonVersion = "2.17.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
@@ -636,7 +636,7 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += zioTestSbt,
-    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.7.4",
+    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.7.5",
     libraryDependencies += zioJsonDep,
     libraryDependencies += "dev.zio" %% "zio-prelude" % "1.0.0-RC23",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.18" % Test,
