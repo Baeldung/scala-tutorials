@@ -532,9 +532,9 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.3" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.739" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.4" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.4" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.745" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
       "software.amazon.awssdk" % "s3" % "2.25.69"
     ),
     Defaults.itSettings,
