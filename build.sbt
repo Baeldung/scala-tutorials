@@ -145,6 +145,15 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
+lazy val scala_core_strings = (project in file("scala-core-modules/scala-core-strings"))
+  .settings(
+    name := "scala-core-strings",
+    libraryDependencies ++= scalaTestDeps,
+    libraryDependencies += jUnitInterface,
+    scalaVersion := scala3Version
+  )
+
+
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
     name := "scala-core-fp",
