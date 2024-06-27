@@ -8,4 +8,4 @@ enablePlugins(PlayScala)
 scalaVersion := ScalaVersions.scala3Version
 
 libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.1" % Test
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % LibraryVersions.scalatestPlayVersion % Test

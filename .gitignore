@@ -19,6 +19,7 @@ project/plugins/project/
 .worksheet
 .idea
 !/project/Versions.scala
+!/project/LibraryVersions.scala
 /project/
 !project/build.properties
 out

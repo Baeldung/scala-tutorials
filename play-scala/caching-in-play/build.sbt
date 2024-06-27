@@ -10,7 +10,7 @@ scalaVersion := ScalaVersions.scala3Version
 libraryDependencies += guice
 libraryDependencies += caffeine
 libraryDependencies += ws
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.1" % Test
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % LibraryVersions.scalatestPlayVersion % Test
 libraryDependencies += "org.mockito" % "mockito-core" % "5.12.0" % Test
 
 PlayKeys.devSettings += "play.server.http.port" -> "9000"
