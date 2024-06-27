@@ -14,3 +14,4 @@ This module contains articles about Scala's Functional Programming features
 - [Functors in Functional Programming](https://www.baeldung.com/scala/functors-functional-programming)
 - [Case Objects vs Enumerations in Scala](https://www.baeldung.com/scala/case-objects-vs-enumerations)
 - [Function Composition in Scala](https://www.baeldung.com/scala/function-composition)
+- [Free Monads in Scala] https://www.baeldung.com/scala/free-monads-in-scala
