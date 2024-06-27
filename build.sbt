@@ -415,7 +415,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.seratch" %% "awscala" % "0.9.2"
     ),
     libraryDependencies ++= Seq(
-      "org.playframework" %% "play-slick" % "6.1.0",
+      "org.playframework" %% "play-slick" % "6.1.1",
       "org.postgresql" % "postgresql" % "42.7.3"
     ),
     dependencyOverrides := Seq(
