@@ -1,10 +1,8 @@
 val scalaV = ScalaVersions.scala2Version
 val scala3Version = ScalaVersions.scala3Version
 ThisBuild / scalaVersion := scala3Version
-ThisBuild / version := "1.0-SNAPSHOT"
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
-
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.4"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
