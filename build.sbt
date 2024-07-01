@@ -145,7 +145,7 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_core_strings = (project in file("scala-core-modules/scala-core-strings"))
+lazy val scala_strings_2 = (project in file("scala-core-modules/scala-strings-2"))
   .settings(
     name := "scala-core-strings",
     libraryDependencies ++= scalaTestDeps,
