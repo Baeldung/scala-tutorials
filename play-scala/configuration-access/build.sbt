@@ -8,7 +8,7 @@ enablePlugins(PlayScala)
 scalaVersion := ScalaVersions.scala3Version
 
 libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.1" % Test
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % LibraryVersions.scalatestPlayVersion % Test
 libraryDependencies += "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0"
 
 // Adds additional packages into Twirl
