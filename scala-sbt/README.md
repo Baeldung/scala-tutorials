@@ -4,3 +4,4 @@
 - [Setting up Global Configurations in SBT](https://www.baeldung.com/scala/sbt-global-configurations)
 - [Safer Scala Code by Using WartRemover](https://www.baeldung.com/scala/wartremover)
 - [Integration Testing with SBT](https://www.baeldung.com/scala/sbt-integration-testing)
+- [Introduction to Scalafix](https://www.baeldung.com/scala/scalafix)
