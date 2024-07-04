@@ -6,3 +6,4 @@
 - [Find Two’s Complement of a Number in Scala](https://www.baeldung.com/scala/compute-twos-complement)
 - [Convert Option to Either in Scala](https://www.baeldung.com/scala/option-either-conversion)
 - [Meaning of _root_ In Scala Import Clause](https://www.baeldung.com/scala/root-import-clause)
+- [Check if All Characters in a Scala String Are Either Upper or Lower Case](https://www.baeldung.com/scala/string-check-all-characters-upper-lower-case)
