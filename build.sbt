@@ -20,7 +20,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "6.0.0" % Test
-val zioVersion = "2.1.4"
+val zioVersion = "2.1.5"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -382,7 +382,7 @@ lazy val scala2_libraries =
       Defaults.itSettings
     )
 
-val circeVersion = "0.14.8"
+val circeVersion = "0.14.9"
 val monixVersion = "3.4.1"
 val elastic4sVersion = "8.13.1"
 val sparkVersion = "3.5.1"
@@ -533,7 +533,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.751" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.26.10"
+      "software.amazon.awssdk" % "s3" % "2.26.15"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -624,7 +624,7 @@ lazy val cats_effects = (project in file("cats-effects"))
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
 
-val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.0"
+val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.1"
 val zioTestSbt = "dev.zio" %% "zio-test-sbt" % zioVersion % Test
 
 lazy val zio = (project in file("zio"))
@@ -646,7 +646,7 @@ lazy val zio2 = (project in file("zio-2"))
     name := "zio-2",
     scalaVersion := scala3Version,
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
-    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.0",
+    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.1",
     libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
     libraryDependencies ++= scalaTestDeps,
