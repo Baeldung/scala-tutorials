@@ -4,7 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class ListAverageUnitTest extends AnyFlatSpec with Matchers {
-  val lst = List(1, 2, 3, 4, 5)
+  val lst = List(1, 2, 3, 4)
 
   "naive" should "return rounded average 2" in {
     ListAverage.naive(lst) shouldBe 2
