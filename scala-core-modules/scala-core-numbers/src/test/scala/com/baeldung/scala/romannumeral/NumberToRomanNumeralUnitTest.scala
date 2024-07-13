@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.wordspec.AnyWordSpec
 
-class NumberToRomanNumeralTest
+class NumberToRomanNumeralUnitTest
   extends AnyWordSpec
   with Matchers
   with TableDrivenPropertyChecks {
