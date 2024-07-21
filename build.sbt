@@ -143,14 +143,14 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_strings_2 = (project in file("scala-core-modules/scala-strings-2"))
-  .settings(
-    name := "scala-core-strings",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    scalaVersion := scala3Version
-  )
-
+lazy val scala_strings_2 =
+  (project in file("scala-core-modules/scala-strings-2"))
+    .settings(
+      name := "scala-core-strings",
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies += jUnitInterface,
+      scalaVersion := scala3Version
+    )
 
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
@@ -393,7 +393,7 @@ lazy val scala2_libraries =
 
 val circeVersion = "0.14.9"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.13.1"
+val elastic4sVersion = "8.14.0"
 val sparkVersion = "3.5.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
