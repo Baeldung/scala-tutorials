@@ -385,7 +385,7 @@ lazy val scala2_libraries =
       ),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.2.224"
+        "com.h2database" % "h2" % "2.3.230"
       ),
       scalacOptions += "-Xasync",
       Defaults.itSettings
@@ -559,7 +559,7 @@ lazy val scala_libraries_persistence =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.2.224",
+        "com.h2database" % "h2" % "2.3.230",
         "org.tpolecat" %% "skunk-core" % "0.6.4",
         doobieCore,
         doobiePGDep,
