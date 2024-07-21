@@ -143,14 +143,14 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_strings_2 = (project in file("scala-core-modules/scala-strings-2"))
-  .settings(
-    name := "scala-core-strings",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    scalaVersion := scala3Version
-  )
-
+lazy val scala_strings_2 =
+  (project in file("scala-core-modules/scala-strings-2"))
+    .settings(
+      name := "scala-core-strings",
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies += jUnitInterface,
+      scalaVersion := scala3Version
+    )
 
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
@@ -502,7 +502,7 @@ val jackSonVersion = "2.17.2"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "7.6.1"
+val kafkaAvroSerializer = "7.6.2"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
