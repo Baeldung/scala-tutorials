@@ -143,14 +143,14 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_strings_2 = (project in file("scala-core-modules/scala-strings-2"))
-  .settings(
-    name := "scala-core-strings",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    scalaVersion := scala3Version
-  )
-
+lazy val scala_strings_2 =
+  (project in file("scala-core-modules/scala-strings-2"))
+    .settings(
+      name := "scala-core-strings",
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies += jUnitInterface,
+      scalaVersion := scala3Version
+    )
 
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
@@ -385,7 +385,7 @@ lazy val scala2_libraries =
       ),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.2.224"
+        "com.h2database" % "h2" % "2.3.230"
       ),
       scalacOptions += "-Xasync",
       Defaults.itSettings
@@ -559,7 +559,7 @@ lazy val scala_libraries_persistence =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.2.224",
+        "com.h2database" % "h2" % "2.3.230",
         "org.tpolecat" %% "skunk-core" % "0.6.4",
         doobieCore,
         doobiePGDep,
