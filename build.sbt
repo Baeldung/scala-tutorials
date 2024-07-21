@@ -143,14 +143,14 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_strings_2 = (project in file("scala-core-modules/scala-strings-2"))
-  .settings(
-    name := "scala-core-strings",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    scalaVersion := scala3Version
-  )
-
+lazy val scala_strings_2 =
+  (project in file("scala-core-modules/scala-strings-2"))
+    .settings(
+      name := "scala-core-strings",
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies += jUnitInterface,
+      scalaVersion := scala3Version
+    )
 
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
@@ -373,7 +373,7 @@ lazy val scala2_libraries =
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.9.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.9.1",
-        "org.testcontainers" % "pulsar" % "1.19.8" % IntegrationTest,
+        "org.testcontainers" % "pulsar" % "1.20.0" % IntegrationTest,
         "org.apache.kafka" % "kafka-clients" % kafkaVersion,
         "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
         "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
