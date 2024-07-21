@@ -143,14 +143,14 @@ lazy val scala_core_oop = (project in file("scala-core-modules/scala-core-oop"))
       Seq(catsEffect, jUnitInterface) ++ scalaTestDeps
   )
 
-lazy val scala_strings_2 = (project in file("scala-core-modules/scala-strings-2"))
-  .settings(
-    name := "scala-core-strings",
-    libraryDependencies ++= scalaTestDeps,
-    libraryDependencies += jUnitInterface,
-    scalaVersion := scala3Version
-  )
-
+lazy val scala_strings_2 =
+  (project in file("scala-core-modules/scala-strings-2"))
+    .settings(
+      name := "scala-core-strings",
+      libraryDependencies ++= scalaTestDeps,
+      libraryDependencies += jUnitInterface,
+      scalaVersion := scala3Version
+    )
 
 lazy val scala_core_fp = (project in file("scala-core-modules/scala-core-fp"))
   .settings(
@@ -539,7 +539,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.3" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.761" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.762" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
       "software.amazon.awssdk" % "s3" % "2.26.20"
