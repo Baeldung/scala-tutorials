@@ -10,4 +10,3 @@
 - [Using the sliding() and grouped() Methods With Scala Collections](https://www.baeldung.com/scala/sliding-grouped-methods-with-collections)
 - [Introduction to BitSet in Scala](https://www.baeldung.com/scala/bitiset)
 - [zip(), zipAll(), and zipWithIndex() Methods in Scala](https://www.baeldung.com/scala/zip-zipall-zipwithindex)
-- [Convert Java List to Scala Seq](https://www.baeldung.com/scala/java-list-seq-conversion)
