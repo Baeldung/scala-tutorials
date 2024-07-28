@@ -5,7 +5,7 @@ import com.baeldung.scala.tastyfiles.*
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class PowerMacroTest extends AnyFlatSpec with Matchers:
+class PowerMacroUnitTest extends AnyFlatSpec with Matchers:
 
   "PowerMacro.showAsPowerTerm" should "generate compile-time term structure" in:
     val expr: String = PowerMacro.showAsPowerTerm(2.0, 3)
