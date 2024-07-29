@@ -8,4 +8,3 @@
 - [Introduction to Apache Log4j in Scala](https://www.baeldung.com/scala/apache-log4j)
 - [Logging in Scala Applications Using Scala-Logging](https://www.baeldung.com/scala/scala-logging)
 - [AWScala – AWS SDK for Scala](https://www.baeldung.com/scala/awscala-aws-sdk-for-scala)
-- [Introduction to ElasticMQ] https://baeldung.com/scala/introduction-to-elasticmq
