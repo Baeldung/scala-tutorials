@@ -49,7 +49,7 @@ class ConcatStringUnitTest extends AnyFlatSpec with Matchers {
   it should "concat strings using StringBuilder" in {
     val str1 = "Hello"
     val str2 = "Baeldung"
-    val combined = new StringBuilder().append(str1).append(str2).toString()
+    val combined = new StringBuilder(str1).append(str2).toString()
     combined shouldBe "HelloBaeldung"
   }
 
