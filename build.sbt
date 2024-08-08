@@ -580,7 +580,7 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
       munitDep,
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
       catsEffect,
-      "io.circe" %% "circe-yaml" % "0.15.3",
+      "io.circe" %% "circe-yaml" % "0.16.0",
       circeDep,
       circeParserDep
     ),
