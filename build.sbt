@@ -263,7 +263,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaTypedTestkit,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   akkaStreamDep,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "5.1.2",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "5.1.3",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -385,7 +385,7 @@ lazy val scala2_libraries =
       ),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.3.230"
+        "com.h2database" % "h2" % "2.3.232"
       ),
       scalacOptions += "-Xasync",
       Defaults.itSettings
@@ -393,7 +393,7 @@ lazy val scala2_libraries =
 
 val circeVersion = "0.14.9"
 val monixVersion = "3.4.1"
-val elastic4sVersion = "8.14.0"
+val elastic4sVersion = "8.14.1"
 val sparkVersion = "3.5.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -440,9 +440,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       logback
     ),
     libraryDependencies ++= Seq(
-      "org.elasticmq" %% "elasticmq-core" % "1.6.5",
-      "org.elasticmq" %% "elasticmq-server" % "1.6.5",
-      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.5",
+      "org.elasticmq" %% "elasticmq-core" % "1.6.6",
+      "org.elasticmq" %% "elasticmq-server" % "1.6.6",
+      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.6",
       "software.amazon.awssdk" % "sqs" % "2.26.31"
     ),
     Defaults.itSettings
@@ -457,7 +457,7 @@ val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
-val munitDep = "org.scalameta" %% "munit" % "1.0.0" % Test
+val munitDep = "org.scalameta" %% "munit" % "1.0.1" % Test
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
@@ -543,7 +543,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
     libraryDependencies ++= Seq(
       "org.scalacheck" %% "scalacheck" % "1.18.0" % Test,
       scalaMock,
-      "com.lihaoyi" %% "utest" % "0.8.3" % "test",
+      "com.lihaoyi" %% "utest" % "0.8.4" % "test",
       munitDep,
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.767" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
@@ -565,7 +565,7 @@ lazy val scala_libraries_persistence =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.3.230",
+        "com.h2database" % "h2" % "2.3.232",
         "org.tpolecat" %% "skunk-core" % "0.6.4",
         doobieCore,
         doobiePGDep,
@@ -639,7 +639,7 @@ lazy val cats_effects = (project in file("cats-effects"))
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
 
-val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.1"
+val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.2"
 val zioTestSbt = "dev.zio" %% "zio-test-sbt" % zioVersion % Test
 
 lazy val zio = (project in file("zio"))
@@ -661,7 +661,7 @@ lazy val zio2 = (project in file("zio-2"))
     name := "zio-2",
     scalaVersion := scala3Version,
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
-    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.1",
+    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.2",
     libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
     libraryDependencies ++= scalaTestDeps,
