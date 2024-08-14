@@ -336,7 +336,7 @@ lazy val scala_akka_3 = (project in file("scala-akka-3"))
     ) ++ scalaTestDeps.map(_.withConfigurations(Some("it,test")))
   )
 
-val monocleVersion = "2.1.0"
+val monocleVersion = "3.3.0"
 val slickVersion = "3.5.1"
 val shapelessVersion = "2.3.12"
 val scalazVersion = "7.3.8"
@@ -353,8 +353,8 @@ lazy val scala2_libraries =
         .map(_.withConfigurations(Some("it,test"))),
       resolvers += "Kafka avro serializer" at "https://packages.confluent.io/maven",
       libraryDependencies ++= Seq(
-        "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
-        "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
+        "dev.optics" %% "monocle-core" % monocleVersion,
+        "dev.optics" %% "monocle-macro" % monocleVersion,
         "com.github.julien-truffaut" %% "monocle-law" % monocleVersion % "test",
         "com.chuusai" %% "shapeless" % shapelessVersion,
         "junit" % "junit" % "4.13.2" % Test,
