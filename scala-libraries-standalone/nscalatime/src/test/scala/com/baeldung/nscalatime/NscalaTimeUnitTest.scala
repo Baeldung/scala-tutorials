@@ -10,12 +10,12 @@ import java.util.Date
 import java.util.Calendar
 import com.github.nscala_time.time.DurationBuilder
 import org.joda.time.format.DateTimeFormatter
+import NScalaTime.*
 
 class nScalatimeSpec
   extends AnyFlatSpec
   with Matchers
   with TableDrivenPropertyChecks:
-  import NScalaTime.*
 
   "DateTime checks" should "pass as DateTime objects" in:
     val dateTimeObjects: TableFor1[DateTime] =
