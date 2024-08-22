@@ -8,3 +8,4 @@
 - [Meaning of _root_ In Scala Import Clause](https://www.baeldung.com/scala/root-import-clause)
 - [Check if All Characters in a Scala String Are Either Upper or Lower Case](https://www.baeldung.com/scala/string-check-all-characters-upper-lower-case)
 - [Convert a Number to Roman Numeral in Scala](https://www.baeldung.com/scala/convert-number-roman)
+- [TASTy Files in Scala 3](https://www.baeldung.com/scala/scala-3-tasty)
