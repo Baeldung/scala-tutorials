@@ -12,7 +12,7 @@ import com.github.nscala_time.time.DurationBuilder
 import org.joda.time.format.DateTimeFormatter
 import NScalaTime.*
 
-class nScalatimeSpec
+class NScalatimeSpec
   extends AnyFlatSpec
   with Matchers
   with TableDrivenPropertyChecks:
