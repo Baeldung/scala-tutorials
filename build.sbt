@@ -440,9 +440,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       logback
     ),
     libraryDependencies ++= Seq(
-      "org.elasticmq" %% "elasticmq-core" % "1.6.6",
-      "org.elasticmq" %% "elasticmq-server" % "1.6.6",
-      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.6",
+      "org.elasticmq" %% "elasticmq-core" % "1.6.7",
+      "org.elasticmq" %% "elasticmq-server" % "1.6.7",
+      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.7",
       "software.amazon.awssdk" % "sqs" % "2.26.31"
     ),
     Defaults.itSettings
