@@ -443,14 +443,14 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-core" % "1.6.7",
       "org.elasticmq" %% "elasticmq-server" % "1.6.7",
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.7",
-      "software.amazon.awssdk" % "sqs" % "2.26.31"
+      "software.amazon.awssdk" % "sqs" % "2.27.10"
     ),
     Defaults.itSettings
   )
 
 val http4sBlaze = "0.23.16"
 val http4sVersion = "0.23.27"
-val osLibVersion = "0.10.3"
+val osLibVersion = "0.10.4"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
@@ -545,10 +545,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.4" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.767" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.770" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.26.31"
+      "software.amazon.awssdk" % "s3" % "2.27.10"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -649,7 +649,7 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += zioTestSbt,
-    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.8.0",
+    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.8.2",
     libraryDependencies += zioJsonDep,
     libraryDependencies += "dev.zio" %% "zio-prelude" % "1.0.0-RC23",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
