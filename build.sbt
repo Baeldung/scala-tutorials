@@ -501,6 +501,14 @@ lazy val refined = (project in file("scala-libraries-standalone/refined"))
     libraryDependencies ++= scalaTestDeps
   )
 
+lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
+  .settings(
+    name := "nscalatime",
+    scalaVersion := scala3Version,
+    libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.32.0",
+    libraryDependencies ++= scalaTestDeps
+  )
+
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.7.0-ce"
 val pureconfigVersion = "0.17.7"
