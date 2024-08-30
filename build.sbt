@@ -423,7 +423,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
-      "org.postgresql" % "postgresql" % "42.7.3"
+      "org.postgresql" % "postgresql" % "42.7.4"
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % AkkaVersion,
