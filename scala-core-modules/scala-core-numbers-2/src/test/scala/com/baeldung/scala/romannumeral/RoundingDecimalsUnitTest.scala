@@ -2,14 +2,13 @@ package com.baeldung.scala.romannumeral
 
 import com.baeldung.scala.romannumerals.RoundingDecimals
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest.wordspec.AnyWordSpec
 
 class RoundingDecimalsUnitTest extends AnyWordSpec with Matchers {
 
   "RoundingDecimals" should {
     "Always round literals down" in {
-      5 / 3 shouldBe 1
+      3 / 4 shouldBe 0
     }
     "Always round up in roundUp" in {
       RoundingDecimals.roundUp(1.1) shouldBe 2
