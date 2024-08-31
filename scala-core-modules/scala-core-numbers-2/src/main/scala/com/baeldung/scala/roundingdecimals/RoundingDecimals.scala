@@ -1,4 +1,4 @@
-package com.baeldung.scala.romannumerals
+package com.baeldung.scala.roundingdecimals
 
 object RoundingDecimals {
   def roundUp(decimal: Double): Int =

@@ -1,6 +1,6 @@
-package com.baeldung.scala.romannumeral
+package com.baeldung.scala.roundingdecimals
 
-import com.baeldung.scala.romannumerals.RoundingDecimals
+import com.baeldung.scala.roundingdecimals.RoundingDecimals
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
