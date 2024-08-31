@@ -127,6 +127,14 @@ lazy val scala_core_numbers =
       libraryDependencies += "org.scalatestplus" %% "scalacheck-1-17" % "3.2.18.0" % Test
     )
 
+lazy val scala_core_numbers_2 =
+  (project in file("scala-core-modules/scala-core-numbers-2"))
+    .settings(
+      name := "scala-core-numbers",
+      libraryDependencies ++= scalaTestDeps,
+      scalaVersion := scala3Version
+    )
+
 lazy val scala_core_io = (project in file("scala-core-modules/scala-core-io"))
   .settings(
     name := "scala-core-io",
