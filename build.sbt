@@ -271,7 +271,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaTypedTestkit,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
   akkaStreamDep,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "5.1.3",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "5.1.4",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
   jUnitInterface,
   embeddedMongo % Test,
@@ -402,7 +402,7 @@ lazy val scala2_libraries =
 val circeVersion = "0.14.9"
 val monixVersion = "3.4.1"
 val sparkVersion = "3.5.2"
-val elastic4sVersion = "8.14.1"
+val elastic4sVersion = "8.15.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -424,7 +424,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       circeParserDep,
       "com.softwaremill.retry" %% "retry" % "0.3.6",
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime,
+      "org.apache.logging.log4j" % "log4j-core" % "2.24.0" % Runtime,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "software.amazon.awssdk" % "s3" % "2.25.9",
       "com.github.seratch" %% "awscala" % "0.9.2"
@@ -451,14 +451,14 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-core" % "1.6.7",
       "org.elasticmq" %% "elasticmq-server" % "1.6.7",
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.7",
-      "software.amazon.awssdk" % "sqs" % "2.27.16"
+      "software.amazon.awssdk" % "sqs" % "2.27.21"
     ),
     Defaults.itSettings
   )
 
 val http4sBlaze = "0.23.16"
 val http4sVersion = "0.23.27"
-val osLibVersion = "0.10.4"
+val osLibVersion = "0.10.5"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
@@ -474,7 +474,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.23.1" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.24.0" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -561,10 +561,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.4" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.770" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.771" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.27.16"
+      "software.amazon.awssdk" % "s3" % "2.27.21"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
