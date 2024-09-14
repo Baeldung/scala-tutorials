@@ -6,8 +6,8 @@ import org.scalatest.prop.TableDrivenPropertyChecks
 
 class RemoveMultipleSpacesUnitTest
   extends AnyFlatSpec
-    with Matchers
-    with TableDrivenPropertyChecks {
+  with Matchers
+  with TableDrivenPropertyChecks {
 
   private val table = Table(
     ("input string", "expected"),
@@ -22,7 +22,7 @@ class RemoveMultipleSpacesUnitTest
     ("usingReplaceAll", RemoveMultipleSpaces.usingReplaceAll),
     ("usingSplit", RemoveMultipleSpaces.usingSplit),
     ("usingZip", RemoveMultipleSpaces.usingZip),
-    ("usingStringBuilder", RemoveMultipleSpaces.usingStringBuilder),
+    ("usingStringBuilder", RemoveMultipleSpaces.usingStringBuilder)
   )
   it should "remove multiple spaces with a single space in the string" in {
     forAll(table) { (input, expected) =>
