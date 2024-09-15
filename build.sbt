@@ -451,13 +451,13 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-core" % "1.6.7",
       "org.elasticmq" %% "elasticmq-server" % "1.6.7",
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.7",
-      "software.amazon.awssdk" % "sqs" % "2.27.21"
+      "software.amazon.awssdk" % "sqs" % "2.27.24"
     ),
     Defaults.itSettings
   )
 
 val http4sBlaze = "0.23.16"
-val http4sVersion = "0.23.27"
+val http4sVersion = "0.23.28"
 val osLibVersion = "0.10.7"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
@@ -465,7 +465,7 @@ val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
-val munitDep = "org.scalameta" %% "munit" % "1.0.1" % Test
+val munitDep = "org.scalameta" %% "munit" % "1.0.2" % Test
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
@@ -524,7 +524,7 @@ val jackSonVersion = "2.17.2"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "7.7.0"
+val kafkaAvroSerializer = "7.7.1"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
@@ -561,10 +561,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.4" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.771" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.772" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.27.21"
+      "software.amazon.awssdk" % "s3" % "2.27.24"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
