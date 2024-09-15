@@ -518,7 +518,7 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.7.0-ce"
+val kafkaVersion = "7.7.1-ce"
 val pureconfigVersion = "0.17.7"
 val jackSonVersion = "2.17.2"
 val log4jApiScalaVersion = "13.1.0"
