@@ -465,7 +465,7 @@ val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
-val munitDep = "org.scalameta" %% "munit" % "1.0.1" % Test
+val munitDep = "org.scalameta" %% "munit" % "1.0.2" % Test
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
