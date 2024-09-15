@@ -451,7 +451,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-core" % "1.6.8",
       "org.elasticmq" %% "elasticmq-server" % "1.6.8",
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.8",
-      "software.amazon.awssdk" % "sqs" % "2.27.21"
+      "software.amazon.awssdk" % "sqs" % "2.27.24"
     ),
     Defaults.itSettings
   )
@@ -465,7 +465,7 @@ val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
-val munitDep = "org.scalameta" %% "munit" % "1.0.1" % Test
+val munitDep = "org.scalameta" %% "munit" % "1.0.2" % Test
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
@@ -564,7 +564,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.771" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.27.21"
+      "software.amazon.awssdk" % "s3" % "2.27.24"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
