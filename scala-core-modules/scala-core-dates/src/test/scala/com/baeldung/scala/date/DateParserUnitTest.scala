@@ -3,8 +3,9 @@ package com.baeldung.scala.date
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
+import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoField
-import java.time.{ZoneId, ZonedDateTime}
+import java.time.{LocalDate, LocalDateTime, ZoneId, ZonedDateTime}
 import java.util.Calendar
 import scala.util.Try
 
@@ -72,6 +73,22 @@ class DateParserUnitTest extends AnyWordSpec with Matchers {
       assert(
         attemptedParse.failed.get.getMessage.contains("could not be parsed")
       )
+    }
+
+    "parse date using java.time" in {
+      val dateStr = "2024-09-19"
+      LocalDate.parse(dateStr) shouldBe LocalDate.of(2024, 9, 19)
+    }
+    "parse non ISO date string" in {
+      val dateStr = "19.09.2024"
+      val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+      LocalDate.parse(dateStr, formatter) shouldBe LocalDate.of(2024, 9, 19)
+    }
+    "parse datetime using java.time" in {
+      val dateStr = "19.09.2024 10:20:30"
+      val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")
+      LocalDateTime.parse(dateStr, formatter) shouldBe LocalDateTime.of(2024, 9,
+        19, 10, 20, 30)
     }
   }
 }
