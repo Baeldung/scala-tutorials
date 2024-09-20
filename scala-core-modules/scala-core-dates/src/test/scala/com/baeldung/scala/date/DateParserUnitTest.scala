@@ -75,7 +75,7 @@ class DateParserUnitTest extends AnyWordSpec with Matchers {
       )
     }
 
-    "parse date using java.time" in {
+    "parse ISO date using java.time" in {
       val dateStr = "2024-09-19"
       LocalDate.parse(dateStr) shouldBe LocalDate.of(2024, 9, 19)
     }
