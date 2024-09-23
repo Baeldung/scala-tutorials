@@ -680,6 +680,13 @@ lazy val zio2 = (project in file("zio-2"))
     libraryDependencies += "dev.zio" %% "zio-json" % "0.7.3",
     libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
+    libraryDependencies += "dev.zio" %% "zio-logging" % "2.1.10",
+    libraryDependencies += "dev.zio" %% "zio-logging-slf4j2" % "2.1.10",
+    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.5.6",
+//    used in the article, but can't work with zio-logging-slf4j2 dependency
+//    libraryDependencies += "dev.zio" %% "zio-logging-slf4j2-bridge" % "2.1.10",
+    libraryDependencies += "dev.zio" %% "zio-metrics-connectors" % "2.1.0",
+    libraryDependencies += "dev.zio" %% "zio-metrics-connectors-prometheus" % "2.1.0",
     libraryDependencies ++= scalaTestDeps,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
