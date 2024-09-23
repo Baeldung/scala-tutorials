@@ -710,7 +710,7 @@ lazy val zio3 = (project in file("zio3"))
     run / fork := true
   )
 
-val doobieVersion = "1.0.0-RC2"
+val doobieVersion = "1.0.0-RC6"
 
 val doobiePGDep = "org.tpolecat" %% "doobie-postgres" % doobieVersion
 val doobieCore = "org.tpolecat" %% "doobie-core" % doobieVersion
