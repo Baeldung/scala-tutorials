@@ -557,7 +557,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies ++= Seq(
-      "org.scalacheck" %% "scalacheck" % "1.18.0" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.18.1" % Test,
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.4" % "test",
       munitDep,
