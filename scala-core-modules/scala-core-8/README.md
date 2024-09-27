@@ -6,3 +6,4 @@
 - [Different Ways to Reverse a Sequence in Scala](https://www.baeldung.com/scala/reverse-sequence)
 - [Transforming a List of Futures Ignoring Failures](https://www.baeldung.com/scala/transform-list-futures-ignore-failures)
 - [Difference Between Braces and Parentheses in Scala](https://www.baeldung.com/scala/braces-vs-parentheses)
+- [Stackable Trait Pattern in Scala](https://www.baeldung.com/scala/stackable-trait-pattern)
