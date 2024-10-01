@@ -695,7 +695,7 @@ lazy val zio3 = (project in file("zio3"))
   .settings(
     libraryDependencies ++= Seq(
       zioJsonDep,
-      "dev.zio" %% "zio-http" % "3.0.0-RC6",
+      "dev.zio" %% "zio-http" % "3.0.1",
       "io.getquill" %% "quill-zio" % "4.8.4",
       "io.getquill" %% "quill-jdbc-zio" % "4.8.4",
       "com.h2database" % "h2" % "2.2.220"
@@ -704,7 +704,7 @@ lazy val zio3 = (project in file("zio3"))
       "dev.zio" %% "zio-test" % zioVersion % Test,
       zioTestSbt,
       "dev.zio" %% "zio-test-magnolia" % zioVersion % Test,
-      "dev.zio" %% "zio-http-testkit" % "3.0.0-RC6" % Test
+      "dev.zio" %% "zio-http-testkit" % "3.0.1" % Test
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
     run / fork := true
