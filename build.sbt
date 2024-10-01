@@ -381,7 +381,7 @@ lazy val scala2_libraries =
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.10.0",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.10.0",
-        "org.testcontainers" % "pulsar" % "1.20.1" % IntegrationTest,
+        "org.testcontainers" % "pulsar" % "1.20.2" % IntegrationTest,
         "org.apache.kafka" % "kafka-clients" % kafkaVersion,
         "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
         "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
