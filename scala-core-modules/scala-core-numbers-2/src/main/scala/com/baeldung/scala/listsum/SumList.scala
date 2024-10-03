@@ -33,4 +33,8 @@ object SumList {
     rec(list, 0)
   }
 
+  def sumNumeric[T](list: List[T])(using numeric: Numeric[T]): T = {
+    list.sum
+  }
+
 }
