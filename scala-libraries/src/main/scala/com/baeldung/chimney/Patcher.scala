@@ -4,14 +4,31 @@ import io.scalaland.chimney.dsl.*
 
 object ChimneyPatcher extends App:
 
-  case class User(id: Int, email: Option[String], phone: Option[Long])
+  case class Book(
+    name: Title,
+    authors: List[Author],
+    doi: DOI
+  )
 
-  case class UserUpdateForm(email: String, phone: Long)
+  case class Title(name: String) extends AnyVal
+  case class Author(name: String, surname: String)
 
-  val user = User(10, Some("abc@@domain.com"), Some(1234567890L))
-  val updateForm = UserUpdateForm("xyz@@domain.com", 123123123L)
+  type DOI = Option[String]
 
-  val patchedValue: User = user.patchUsing(updateForm)
+  case class BookUpdateForm(name: String, authors: List[Author])
+
+  val book = Book(
+    name = Title("Synergetics"),
+    authors = List(Author("Buckminster", "Fuller")),
+    doi = None
+  )
+
+  val updateForm = BookUpdateForm(
+    name = "Godel, Escher, Bach",
+    authors = List(Author("Douglas", "Hofstadter"))
+  )
+
+  val patchedValue: Book = book.patchUsing(updateForm)
 
   // Standard Library Alternative
 

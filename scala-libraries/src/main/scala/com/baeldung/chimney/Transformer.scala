@@ -34,47 +34,36 @@ object ChimneyTransformers extends App:
 
   // Automatic Case Class Transformation
 
-  // UserDTO
+  // BookDTO
 
-  case class UserDTO(
+  case class BookDTO(
     name: String, // 1. primitive
-    addresses: Seq[AddressDTO], // 2. Seq collection
-    recovery: Option[RecoveryMethodDTO] // 3. Option type
+    authors: Seq[AuthorDTO], // 2. Seq collection
+    doi: Option[String] // 3. Option type
   )
 
-  case class AddressDTO(street: String, city: String)
+  case class AuthorDTO(name: String, surname: String)
 
-  sealed trait RecoveryMethodDTO
+  // Book Domain Model
 
-  object RecoveryMethodDTO:
-    case class Phone(value: PhoneDTO) extends RecoveryMethodDTO
-    case class Email(value: EmailDTO) extends RecoveryMethodDTO
-
-  case class PhoneDTO(number: String)
-  case class EmailDTO(email: String)
-
-  // User Domain Model
-
-  case class User(
-    name: Username,
-    addresses: List[Address],
-    recovery: RecoveryMethod
+  case class Book(
+    name: Title,
+    authors: List[Author],
+    doi: DOI
   )
 
-  case class Username(name: String) extends AnyVal
-  case class Address(street: String, city: String)
+  case class Title(name: String) extends AnyVal
+  case class Author(name: String, surname: String)
 
-  enum RecoveryMethod:
-    case Phone(number: String)
-    case Email(email: String)
+  type DOI = Option[String]
 
   // we can do a transformation:
 
-  User(
-    Username("John"),
-    List(Address("Paper St", "Somewhere")),
-    RecoveryMethod.Email("john@example.com")
-  ).transformInto[UserDTO]
+  Book(
+    name = Title("The Universal One"),
+    authors = List(Author("Walter", "Russell")),
+    doi = None
+  ).transformInto[BookDTO]
 
   // Standard Library alternatives
 

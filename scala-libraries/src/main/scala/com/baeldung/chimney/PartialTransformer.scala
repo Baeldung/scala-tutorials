@@ -13,3 +13,7 @@ object ChimneyPartialTransformer extends App:
     PartialTransformer.fromFunction(fn)
 
   val result: Result[Boolean] = 0.transformIntoPartial[Boolean]
+
+  result match
+    case Result.Value(bool)  => println(bool)
+    case Result.Errors(errs) => println(errs)
