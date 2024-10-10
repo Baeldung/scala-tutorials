@@ -453,6 +453,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.8",
       "software.amazon.awssdk" % "sqs" % "2.28.18"
     ),
+    libraryDependencies += "io.scalaland" %% "chimney" % "1.4.0",
     Defaults.itSettings
   )
 
