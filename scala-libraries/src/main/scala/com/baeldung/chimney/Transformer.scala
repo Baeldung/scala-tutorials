@@ -39,7 +39,7 @@ object ChimneyTransformers extends App:
   case class BookDTO(
     name: String, // 1. primitive
     authors: Seq[AuthorDTO], // 2. Seq collection
-    doi: Option[String] // 3. Option type
+    isbn: Option[String] // 3. Option type
   )
 
   case class AuthorDTO(name: String, surname: String)
@@ -49,21 +49,23 @@ object ChimneyTransformers extends App:
   case class Book(
     name: Title,
     authors: List[Author],
-    doi: DOI
+    isbn: ISBN
   )
 
   case class Title(name: String) extends AnyVal
   case class Author(name: String, surname: String)
 
-  type DOI = Option[String]
+  type ISBN = Option[String]
 
   // we can do a transformation:
 
-  Book(
+  val book = Book(
     name = Title("The Universal One"),
     authors = List(Author("Walter", "Russell")),
-    doi = None
-  ).transformInto[BookDTO]
+    isbn = None
+  )
+
+  val bookDTO: BookDTO = book.transformInto[BookDTO]
 
   // Standard Library alternatives
 
@@ -73,23 +75,21 @@ object ChimneyTransformers extends App:
     private val fields = elems.toMap
     def selectDynamic(name: String): Any = fields(name)
 
-  type Person = Record {
-    val name: String
-    val age: Int
+  type BookRecord = Record {
+    val name: Title
+    val authors: List[Author]
+    val isbn: ISBN
   }
 
-  val person = Record(
-    "name" -> "Emma",
-    "age" -> 42
-  ).asInstanceOf[Person]
+  val naturesOpenSecret: BookRecord = Record(
+    "name" -> Title("Nature's Open Secret"),
+    "authors" -> List(Author("Rudolph", "Steiner")),
+    "isbn" -> Some("978-0880103930")
+  ).asInstanceOf[BookRecord]
 
   // Tuple Generics
 
-  case class Employee(name: String, number: Int, manager: Boolean)
+  val bookTuple: (Title, List[Author], ISBN) = Tuple.fromProductTyped(book)
 
-  val bob: Employee = Employee("Bob", 42, false)
-
-  val bobTuple: (String, Int, Boolean) = Tuple.fromProductTyped(bob)
-
-  val bobAgain: Employee =
-    summon[deriving.Mirror.Of[Employee]].fromProduct(bobTuple)
+  val bookAgain: Book =
+    summon[deriving.Mirror.Of[Book]].fromProduct(bookTuple)

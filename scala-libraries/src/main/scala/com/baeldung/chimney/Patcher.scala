@@ -7,33 +7,33 @@ object ChimneyPatcher extends App:
   case class Book(
     name: Title,
     authors: List[Author],
-    doi: DOI
+    isbn: ISBN
   )
 
   case class Title(name: String) extends AnyVal
   case class Author(name: String, surname: String)
 
-  type DOI = Option[String]
+  type ISBN = Option[String]
 
-  case class BookUpdateForm(name: String, authors: List[Author])
+  case class UpdateISBN(isbn: ISBN)
 
   val book = Book(
     name = Title("Synergetics"),
     authors = List(Author("Buckminster", "Fuller")),
-    doi = None
+    isbn = None
   )
 
-  val updateForm = BookUpdateForm(
-    name = "Godel, Escher, Bach",
-    authors = List(Author("Douglas", "Hofstadter"))
+  val isbnUpdateForm = UpdateISBN(
+    isbn = Some("978-0206532048")
   )
 
-  val patchedValue: Book = book.patchUsing(updateForm)
+  val hardcover: Book = book.patchUsing(isbnUpdateForm)
 
   // Standard Library Alternative
 
-  case class SimpleCaseClass(a: Int, b: Int)
-
-  val simpleClass = SimpleCaseClass(0, 0)
-
-  simpleClass.copy(b = 2) // SimpleCaseClass(0, 2)
+  val softcover: Book =
+    book.copy(
+      authors =
+        List(Author("Buckminster", "Fuller"), Author("Edmund", "Applewhite")),
+      isbn = Some("978-0020653202")
+    )
