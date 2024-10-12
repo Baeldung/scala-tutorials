@@ -72,7 +72,10 @@ object EitherTErrorHandling {
     user: User
   ): Future[Either[String, String]] = ???
 
-  def performAction(userId: String, itemId: String): Future[Either[String, String]] = {
+  def performAction(
+    userId: String,
+    itemId: String
+  ): Future[Either[String, String]] = {
     (for {
       user <- EitherT(getUserProfile(userId))
       discount <- EitherT(calculateDiscount(user))
