@@ -445,6 +445,16 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.7",
       "software.amazon.awssdk" % "sqs" % "2.27.10"
     ),
+    Defaults.itSettings
+  )
+
+lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
+  .configs(IntegrationTest)
+  .settings(
+    name := "scala-libraries-2",
+    scalaVersion := scala3Version,
+    libraryDependencies ++= scalaTestDeps
+      .map(_.withConfigurations(Some("it,test"))),
     libraryDependencies += "io.scalaland" %% "chimney" % "1.4.0",
     Defaults.itSettings
   )
