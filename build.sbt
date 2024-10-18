@@ -9,8 +9,9 @@ val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.11"
 val embedMongoVersion = "4.17.0"
-val AkkaVersion = "2.8.5"
-val AkkaHttpVersion = "10.5.0"
+val AkkaVersion = "2.9.3"
+val AlpakkaVersion = "8.0.0"
+val AkkaHttpVersion = "10.6.3"
 
 val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest" % "3.2.19" % Test,
@@ -269,10 +270,10 @@ val akkaHttpTestkitDep =
 lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaActorTyped,
   akkaTypedTestkit,
-  "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % "5.0.0",
+  "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % AlpakkaVersion,
   akkaStreamDep,
   "org.mongodb.scala" %% "mongo-scala-driver" % "5.2.0",
-  "com.lightbend.akka" %% "akka-stream-alpakka-file" % "5.0.0",
+  "com.lightbend.akka" %% "akka-stream-alpakka-file" % AlpakkaVersion,
   jUnitInterface,
   embeddedMongo % Test,
   akkaHttpDep
@@ -319,8 +320,8 @@ lazy val scala_akka_2 = (project in file("scala-akka-2"))
       "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
       "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
       akkaHttpTestkitDep,
-      "com.lightbend.akka" %% "akka-stream-alpakka-csv" % "5.0.0",
-      "com.lightbend.akka" %% "akka-stream-alpakka-sse" % "5.0.0",
+      "com.lightbend.akka" %% "akka-stream-alpakka-csv" % AlpakkaVersion,
+      "com.lightbend.akka" %% "akka-stream-alpakka-sse" % AlpakkaVersion,
       "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
       akkaTypedTestkit,
       akkaHttpTestkitDep % "it,test",
@@ -802,3 +803,5 @@ lazy val scalatra = project in file("scalatra")
 lazy val benchmark = project in file("specialized-benchmark")
 
 ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
+
+ThisBuild / resolvers += "Akka dependencies" at "https://repo.akka.io/maven/"
