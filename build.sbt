@@ -9,7 +9,7 @@ val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.11"
 val embedMongoVersion = "4.17.0"
-val AkkaVersion = "2.9.5"
+val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
 val AkkaHttpVersion = "10.6.3"
 
