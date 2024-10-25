@@ -382,7 +382,7 @@ lazy val scala2_libraries =
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.10.0",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.10.0",
-        "org.testcontainers" % "pulsar" % "1.20.2" % IntegrationTest,
+        "org.testcontainers" % "pulsar" % "1.20.3" % IntegrationTest,
         "org.apache.kafka" % "kafka-clients" % kafkaVersion,
         "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
         "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
@@ -451,9 +451,11 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     libraryDependencies ++= Seq(
       "org.elasticmq" %% "elasticmq-core" % "1.6.9",
       "org.elasticmq" %% "elasticmq-server" % "1.6.9",
-      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.9",
-      "software.amazon.awssdk" % "sqs" % "2.28.23"
+      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.9"
     ),
+    libraryDependencies ++= Seq(
+      "software.amazon.awssdk" % "sqs" % "2.28.28"
+    )
     Defaults.itSettings
   )
 
@@ -576,7 +578,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.773" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.28.23"
+      "software.amazon.awssdk" % "s3" % "2.28.28"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -707,7 +709,7 @@ lazy val zio3 = (project in file("zio3"))
   .settings(
     libraryDependencies ++= Seq(
       zioJsonDep,
-      "dev.zio" %% "zio-http" % "3.0.0-RC6",
+      "dev.zio" %% "zio-http" % "3.0.1",
       "io.getquill" %% "quill-zio" % "4.8.4",
       "io.getquill" %% "quill-jdbc-zio" % "4.8.4",
       "com.h2database" % "h2" % "2.2.220"
@@ -716,7 +718,7 @@ lazy val zio3 = (project in file("zio3"))
       "dev.zio" %% "zio-test" % zioVersion % Test,
       zioTestSbt,
       "dev.zio" %% "zio-test-magnolia" % zioVersion % Test,
-      "dev.zio" %% "zio-http-testkit" % "3.0.0-RC6" % Test
+      "dev.zio" %% "zio-http-testkit" % "3.0.1" % Test
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
     run / fork := true
