@@ -22,7 +22,7 @@
     <dependency>
       <groupId>org.typelevel</groupId>
       <artifactId>cats-effect_3</artifactId>
-      <version>3.5.4</version>
+      <version>3.5.5</version>
     </dependency>
     <dependency>
       <groupId>org.http4s</groupId>
