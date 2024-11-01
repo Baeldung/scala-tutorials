@@ -4,10 +4,10 @@ ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.4"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.4" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.5"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.5" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.5.11"
+val logback = "ch.qos.logback" % "logback-classic" % "1.5.12"
 val embedMongoVersion = "4.18.0"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
@@ -452,7 +452,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-core" % "1.6.8",
       "org.elasticmq" %% "elasticmq-server" % "1.6.8",
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.8",
-      "software.amazon.awssdk" % "sqs" % "2.28.28"
+      "software.amazon.awssdk" % "sqs" % "2.28.29"
     ),
     Defaults.itSettings
   )
@@ -532,7 +532,7 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.7.1-ce"
 val pureconfigVersion = "0.17.7"
-val jackSonVersion = "2.18.0"
+val jackSonVersion = "2.18.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
@@ -576,7 +576,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.777" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.28.28"
+      "software.amazon.awssdk" % "s3" % "2.28.29"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
