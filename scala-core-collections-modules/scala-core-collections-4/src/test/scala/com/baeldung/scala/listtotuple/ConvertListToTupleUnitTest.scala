@@ -42,6 +42,11 @@ class ConvertListToTupleUnitTest extends AnyFlatSpec with Matchers {
     ConvertListToTuple.unknownSizeToTuple(testList) shouldBe ("", "")
   }
 
+  "unknownSizeToTuple" should "convert list of 1 element to tuple1" in {
+    val testList = List("Hello")
+    ConvertListToTuple.unknownSizeToTuple(testList) shouldBe Tuple1("Hello")
+  }
+
   "unknownSizeToTuple" should "convert list of 2 elements to tuple2" in {
     val testList = List("Hello", "world")
     ConvertListToTuple.unknownSizeToTuple(testList) shouldBe ("Hello", "world")

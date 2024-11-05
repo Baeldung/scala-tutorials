@@ -17,6 +17,7 @@ object ConvertListToTuple {
     list match {
       case first :: second :: third :: _ => (first, second, third)
       case first :: second :: _          => (first, second)
+      case first :: _                    => Tuple1(first)
       case _                             => ("", "")
     }
   }
