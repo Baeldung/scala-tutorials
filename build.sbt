@@ -350,7 +350,7 @@ val slickVersion = "3.5.2"
 val shapelessVersion = "2.3.12"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.11.0"
-val reactiveMongo = "1.1.0-RC12"
+val reactiveMongo = "1.1.0-RC14"
 
 lazy val scala2_libraries =
   (project in file("scala-2-modules/scala2-libraries"))
