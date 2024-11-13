@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16.4
+    environment:
+      - POSTGRES_DB=baeldung
+      - POSTGRES_USER=baeldung
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'
+    volumes:
+      - baeldung-postgresql-data:/var/lib/postgresql/data
+
+volumes:
+  baeldung-postgresql-data:
