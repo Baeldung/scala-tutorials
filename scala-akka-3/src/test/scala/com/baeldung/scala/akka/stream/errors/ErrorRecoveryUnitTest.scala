@@ -8,7 +8,7 @@ import org.scalatest.concurrent.ScalaFutures.convertScalaFuture
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class ErrorRecoveryTest extends AnyFlatSpec with Matchers {
+class ErrorRecoveryUnitTest extends AnyFlatSpec with Matchers {
   implicit val system: ActorSystem = ActorSystem("baeldung")
 
   "The \"parseWithRecover\" flow" should "parse recover from a parsing error" in {
