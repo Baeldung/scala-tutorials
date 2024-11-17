@@ -692,8 +692,8 @@ lazy val zio2 = (project in file("zio-2"))
     libraryDependencies += "dev.zio" %% "zio-json" % "0.7.3",
     libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
-    libraryDependencies += "dev.zio" %% "zio-logging" % "2.1.17",
-    libraryDependencies += "dev.zio" %% "zio-logging-slf4j2" % "2.1.17",
+    libraryDependencies += "dev.zio" %% "zio-logging" % "2.4.0",
+    libraryDependencies += "dev.zio" %% "zio-logging-slf4j2" % "2.4.0",
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.5.6",
 //    used in the article, but can't work with zio-logging-slf4j2 dependency
 //    libraryDependencies += "dev.zio" %% "zio-logging-slf4j2-bridge" % "2.1.10",
