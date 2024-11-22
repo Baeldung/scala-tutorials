@@ -351,6 +351,10 @@ val shapelessVersion = "2.3.12"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.11.0"
 val reactiveMongo = "1.1.0-RC14"
+val slickPgVersion = "0.22.2"
+val scalaTestContainersVersion = "0.41.4"
+val postgresqlVersion = "42.7.4"
+val json4sVersion = "4.0.7"
 
 lazy val scala2_libraries =
   (project in file("scala-2-modules/scala2-libraries"))
@@ -432,7 +436,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
-      "org.postgresql" % "postgresql" % "42.7.4"
+      "org.postgresql" % "postgresql" % postgresqlVersion
     ),
     dependencyOverrides := Seq(
       "com.typesafe.akka" %% "akka-protobuf-v3" % AkkaVersion,
@@ -574,8 +578,8 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.lihaoyi" %% "utest" % "0.8.4" % "test",
       munitDep,
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.777" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.41.3" % IntegrationTest,
-      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % "0.41.3" % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
+      "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
       "software.amazon.awssdk" % "s3" % "2.29.9"
     ),
     Defaults.itSettings,
@@ -598,9 +602,16 @@ lazy val scala_libraries_persistence =
         doobieCore,
         doobiePGDep,
         "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
-        "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo,
+        "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo exclude("org.scala-lang.modules", "scala-parser-combinators_2.13"),
         "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % IntegrationTest,
-        logback
+        logback,
+        "com.typesafe.slick" %% "slick-hikaricp" % slickVersion,
+        "org.postgresql" % "postgresql" % postgresqlVersion,
+        "com.github.tminglei" %% "slick-pg" % slickPgVersion,
+        "org.json4s" %% "json4s-native" % json4sVersion,
+        "com.github.tminglei" %% "slick-pg_json4s" % slickPgVersion,
+        "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
+        "com.dimafeng" %% "testcontainers-scala-postgresql" % scalaTestContainersVersion % IntegrationTest
       )
     )
 
