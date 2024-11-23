@@ -1,0 +1,13 @@
+@import helper._
+
+@(formWithConstraints: Form[InputFormWithConstraints])(implicit messages: Messages)
+
+
+@form(action = routes.FormController.formWithConstraintsPost()) {
+    @inputText(formWithConstraints("i"))
+    @inputText(formWithConstraints("msg"))
+    @inputText(formWithConstraints("msgOpt"))
+    @inputText(formWithConstraints("email"))
+    @inputDate(formWithConstraints("birthday"))
+    <input type="submit" value="Submit">
+}
