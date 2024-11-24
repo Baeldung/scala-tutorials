@@ -456,7 +456,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-core" % "1.6.8",
       "org.elasticmq" %% "elasticmq-server" % "1.6.8",
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.8",
-      "software.amazon.awssdk" % "sqs" % "2.29.9"
+      "software.amazon.awssdk" % "sqs" % "2.29.15"
     ),
     Defaults.itSettings
   )
@@ -581,6 +581,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
       "software.amazon.awssdk" % "s3" % "2.29.9"
+
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
