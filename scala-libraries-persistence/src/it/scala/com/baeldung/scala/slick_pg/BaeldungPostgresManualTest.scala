@@ -13,7 +13,7 @@ import slick.dbio.DBIO
 import java.time.OffsetDateTime
 import scala.concurrent.Future
 
-class BaeldungPostgresProfileSpec
+class BaeldungPostgresManualTest
   extends AsyncFlatSpec
   with TestContainerForAll {
 
@@ -24,7 +24,7 @@ class BaeldungPostgresProfileSpec
     password = "baeldung"
   )
 
-  "BaeldungPostgresProfile" should "insert entity" in {
+  "BaeldungPostgresManualTest" should "insert entity" in {
     withContainers { container =>
 
       val db: BaeldungPostgresProfile.backend.Database =
