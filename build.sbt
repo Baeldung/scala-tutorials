@@ -338,6 +338,8 @@ lazy val scala_akka_3 = (project in file("scala-akka-3"))
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "org.slf4j" % "slf4j-api" % "2.0.16",
+      "org.slf4j" % "slf4j-simple" % "2.0.16",
       "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test,
       akkaActorTyped,
       akkaStreamDep,
