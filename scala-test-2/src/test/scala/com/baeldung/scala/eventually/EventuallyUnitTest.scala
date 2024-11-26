@@ -54,7 +54,10 @@ class EventuallyUnitTest extends AnyFlatSpec with Matchers with Eventually {
   it should "retry with explicit timeout value" in {
     val op = AsyncOperation(400)
     op.writeToDatabase("new-key", "value")
-    eventually(timeout = Timeout(Span(2, Seconds)), interval = Interval(Span(50, Millis))) {
+    eventually(
+      timeout = Timeout(Span(2, Seconds)),
+      interval = Interval(Span(50, Millis))
+    ) {
       op.readFromDatabase("new-key") shouldBe Some("value")
     }
   }
