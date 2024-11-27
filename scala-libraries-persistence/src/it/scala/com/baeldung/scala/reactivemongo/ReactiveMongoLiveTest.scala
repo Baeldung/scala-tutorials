@@ -31,7 +31,7 @@ class ReactiveMongoLiveTest
     .build()
 
   override def beforeAll(): Unit = {
-    mongodInstance.start(Version.Main.V4_0)
+    mongodInstance.start(Version.Main.V7_0)
     super.beforeAll()
   }
 

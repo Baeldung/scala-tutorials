@@ -36,7 +36,7 @@ class AlpakkaIntegrationTest
     .build()
 
   override def beforeAll() = {
-    mongodInstance.start(Version.Main.V4_4)
+    mongodInstance.start(Version.Main.V7_0)
   }
 
   "Alpakka MongoDB integration service" must {
