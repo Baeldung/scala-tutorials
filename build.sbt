@@ -583,7 +583,6 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
       "software.amazon.awssdk" % "s3" % "2.29.20"
-
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -605,7 +604,7 @@ lazy val scala_libraries_persistence =
         doobieCore,
         doobiePGDep,
         "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
-        "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo exclude("org.scala-lang.modules", "scala-parser-combinators_2.13"),
+        "org.reactivemongo" %% "reactivemongo-akkastream" % reactiveMongo exclude ("org.scala-lang.modules", "scala-parser-combinators_2.13"),
         "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % embedMongoVersion % IntegrationTest,
         logback,
         "com.typesafe.slick" %% "slick-hikaricp" % slickVersion,
@@ -632,9 +631,9 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
       circeDep,
       circeParserDep
     ),
-    libraryDependencies += "is.cir" %% "ciris" % "3.6.0",
-    libraryDependencies += "is.cir" %% "ciris-circe" % "3.6.0",
-    libraryDependencies += "is.cir" %% "ciris-circe-yaml" % "3.6.0"
+    libraryDependencies += "is.cir" %% "ciris" % "3.7.0",
+    libraryDependencies += "is.cir" %% "ciris-circe" % "3.7.0",
+    libraryDependencies += "is.cir" %% "ciris-circe-yaml" % "3.7.0"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
