@@ -4,8 +4,8 @@ ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.6"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.6" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.7"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.7" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.12"
 val embedMongoVersion = "4.18.0"
@@ -409,7 +409,7 @@ lazy val scala2_libraries =
 val circeVersion = "0.14.10"
 val monixVersion = "3.4.1"
 val sparkVersion = "3.5.3"
-val elastic4sVersion = "8.15.4"
+val elastic4sVersion = "8.16.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -483,7 +483,7 @@ val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 val log4jApiScalaDep =
   "org.apache.logging.log4j" %% "log4j-api-scala" % "13.1.0"
 
-val munitDep = "org.scalameta" %% "munit" % "1.0.2" % Test
+val munitDep = "org.scalameta" %% "munit" % "1.0.3" % Test
 
 lazy val scala_libraries_os = (project in file("scala-libraries-os"))
   .settings(
@@ -536,13 +536,13 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.7.1-ce"
+val kafkaVersion = "7.7.2-ce"
 val pureconfigVersion = "0.17.8"
-val jackSonVersion = "2.18.1"
+val jackSonVersion = "2.18.2"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "7.7.1"
+val kafkaAvroSerializer = "7.7.2"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
@@ -631,9 +631,9 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
       circeDep,
       circeParserDep
     ),
-    libraryDependencies += "is.cir" %% "ciris" % "3.6.0",
-    libraryDependencies += "is.cir" %% "ciris-circe" % "3.6.0",
-    libraryDependencies += "is.cir" %% "ciris-circe-yaml" % "3.6.0"
+    libraryDependencies += "is.cir" %% "ciris" % "3.7.0",
+    libraryDependencies += "is.cir" %% "ciris-circe" % "3.7.0",
+    libraryDependencies += "is.cir" %% "ciris-circe-yaml" % "3.7.0"
   )
 
 lazy val scala_strings = (project in file("scala-strings"))
