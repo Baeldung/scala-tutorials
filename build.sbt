@@ -559,7 +559,7 @@ lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       catEffectTest,
-      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.6.0" % Test,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "junit" % "junit" % "4.13.2" % Test,
       "org.typelevel" %% "spire" % spireVersion
