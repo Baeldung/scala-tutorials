@@ -1,0 +1,12 @@
+@import helper._
+
+@(complexFormCustomField: Form[ComplexFormCustomField])(implicit messages: Messages)
+
+
+@form(action = routes.FormController.complexFormPostWithErrors()) {
+    @inputText(complexFormCustomField("i"))
+    @inputText(complexFormCustomField("active"))
+    @inputText(complexFormCustomField("msg"))
+    @inputText(complexFormCustomField("measurement"))
+    <input type="submit" value="Submit">
+}
