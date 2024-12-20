@@ -7,7 +7,7 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.7"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.7" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.5.12"
+val logback = "ch.qos.logback" % "logback-classic" % "1.5.13"
 val embedMongoVersion = "4.18.1"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
@@ -60,7 +60,7 @@ lazy val scala2_core = (project in file("scala-2-modules/scala2-core"))
     libraryDependencies += scalaReflection,
     libraryDependencies += scalaXmlDep,
     libraryDependencies += "com.github.scopt" %% "scopt" % "4.1.0",
-    libraryDependencies += "org.rogach" %% "scallop" % "5.1.0",
+    libraryDependencies += "org.rogach" %% "scallop" % "5.2.0",
     libraryDependencies += "org.backuity.clist" %% "clist-core" % "3.5.1",
     libraryDependencies += "org.backuity.clist" %% "clist-macros" % "3.5.1" % "provided",
     libraryDependencies += "args4j" % "args4j" % "2.37",
@@ -431,7 +431,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       circeParserDep,
       "com.softwaremill.retry" %% "retry" % "0.3.6",
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.24.2" % Runtime,
+      "org.apache.logging.log4j" % "log4j-core" % "2.24.3" % Runtime,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "software.amazon.awssdk" % "s3" % "2.25.9",
       "com.github.seratch" %% "awscala" % "0.9.2"
@@ -457,8 +457,10 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     libraryDependencies ++= Seq(
       "org.elasticmq" %% "elasticmq-core" % "1.6.10",
       "org.elasticmq" %% "elasticmq-server" % "1.6.10",
-      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.10",
-      "software.amazon.awssdk" % "sqs" % "2.29.24"
+      "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.10"
+    ),
+    libraryDependencies ++= Seq(
+      "software.amazon.awssdk" % "sqs" % "2.29.37"
     ),
     Defaults.itSettings
   )
@@ -492,7 +494,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.24.2" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.24.3" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -559,7 +561,7 @@ lazy val scala_libraries_fp = (project in file("scala-libraries-fp"))
       "org.http4s" %% "http4s-blaze-server" % http4sBlaze,
       "org.http4s" %% "http4s-blaze-client" % http4sBlaze,
       catEffectTest,
-      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test,
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.6.0" % Test,
       "org.scalaz" %% "scalaz-core" % scalazVersion,
       "junit" % "junit" % "4.13.2" % Test,
       "org.typelevel" %% "spire" % spireVersion
@@ -579,10 +581,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.4" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.779" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.780" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.29.24"
+      "software.amazon.awssdk" % "s3" % "2.29.37"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
