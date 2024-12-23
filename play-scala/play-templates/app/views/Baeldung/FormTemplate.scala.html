@@ -1,0 +1,10 @@
+@import helper._
+
+@(simpleForm: Form[SimpleForm])(implicit messages: Messages)
+
+@form(action = routes.FormController.formPost()) {
+    @inputText(simpleForm("i"))
+    @inputText(simpleForm("active"))
+    @inputText(simpleForm("msg"))
+    <input type="submit" value="Submit">
+}

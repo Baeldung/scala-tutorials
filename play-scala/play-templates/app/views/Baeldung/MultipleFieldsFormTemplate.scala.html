@@ -1,0 +1,15 @@
+@import helper._
+
+@(multipleFieldsForm: Form[MultipleFieldsForm])(implicit messages: Messages)
+
+@form(action = routes.FormController.multipleFieldsFormPost()) {
+    @inputText(multipleFieldsForm("i"))
+    @inputPassword(multipleFieldsForm("pwd"))
+    @checkbox(multipleFieldsForm("active"))
+    @inputText(multipleFieldsForm("msg"))
+    @inputDate(multipleFieldsForm("date"))
+    @inputText(multipleFieldsForm("uuid"))
+    @inputRadioGroup(multipleFieldsForm("favMovie"), MultipleFieldsForm.Movies.list)
+    @select(multipleFieldsForm("favDrink"), MultipleFieldsForm.Drinks.list)
+    <input type="submit" value="Submit">
+}
