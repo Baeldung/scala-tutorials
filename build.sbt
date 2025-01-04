@@ -525,7 +525,7 @@ lazy val refined = (project in file("scala-libraries-standalone/refined"))
   .settings(
     name := "refined",
     scalaVersion := scalaV,
-    libraryDependencies += "eu.timepit" %% "refined" % "0.11.2",
+    libraryDependencies += "eu.timepit" %% "refined" % "0.11.3",
     libraryDependencies ++= scalaTestDeps
   )
 
