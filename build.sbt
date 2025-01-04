@@ -472,7 +472,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
-    libraryDependencies += "io.scalaland" %% "chimney" % "1.5.0",
+    libraryDependencies += "io.scalaland" %% "chimney" % "1.6.0",
     Defaults.itSettings
   )
 
