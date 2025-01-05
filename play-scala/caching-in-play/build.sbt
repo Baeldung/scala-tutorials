@@ -11,6 +11,6 @@ libraryDependencies += guice
 libraryDependencies += caffeine
 libraryDependencies += ws
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % LibraryVersions.scalatestPlayVersion % Test
-libraryDependencies += "org.mockito" % "mockito-core" % "5.14.2" % Test
+libraryDependencies += "org.mockito" % "mockito-core" % "5.15.2" % Test
 
 PlayKeys.devSettings += "play.server.http.port" -> "9000"
