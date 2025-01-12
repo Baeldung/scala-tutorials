@@ -8,7 +8,7 @@ object ValInTraitExamples {
     def printCurrentTime(): Unit
   }
   object TimePrinterImpl extends CurrentTimePrinter {
-    override def currentTime: LocalDateTime = LocalDateTime.now()
+    override val currentTime: LocalDateTime = LocalDateTime.now()
     override def printCurrentTime(): Unit = println(currentTime)
   }
 
