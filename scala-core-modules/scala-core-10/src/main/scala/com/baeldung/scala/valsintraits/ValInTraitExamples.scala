@@ -17,7 +17,7 @@ object ValInTraitExamples {
     def printCurrentTime(): Unit
   }
   object TimePrinterWithDefImpl extends CurrentTimePrinterWithDef {
-    override var currentTime: LocalDateTime = LocalDateTime.now()
+    override def currentTime: LocalDateTime = LocalDateTime.now()
     override def printCurrentTime(): Unit = println(currentTime)
   }
 
