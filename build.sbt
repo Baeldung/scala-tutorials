@@ -197,7 +197,7 @@ lazy val scala_lang_2 = (project in file("scala-lang-modules/scala-lang-2"))
   )
 
 val scalaParColDep =
-  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.1.0"
+  "org.scala-lang.modules" %% "scala-parallel-collections" % "1.2.0"
 
 lazy val scala_core_collections =
   (project in file("scala-core-collections-modules/scala-core-collections"))
