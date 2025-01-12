@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers
 
 class ValInTraitExamplesUnitTest extends AnyFlatSpec with Matchers {
   "TimePrinterImpl" should "return same time every call" in {
-    val printer = new ValInTraitExamples.TimePrinterImpl()
+    val printer = ValInTraitExamples.TimePrinterImpl
     val first = printer.currentTime
     Thread.sleep(10)
     val second = printer.currentTime
@@ -15,7 +15,7 @@ class ValInTraitExamplesUnitTest extends AnyFlatSpec with Matchers {
   }
 
   "TimePrinterWithDefImpl" should "return different time every call" in {
-    val printer = new ValInTraitExamples.TimePrinterWithDefImpl()
+    val printer = ValInTraitExamples.TimePrinterWithDefImpl
     val first = printer.currentTime
     Thread.sleep(10)
     val second = printer.currentTime
