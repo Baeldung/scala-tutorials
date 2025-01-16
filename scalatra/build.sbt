@@ -8,7 +8,7 @@ version := "0.1.0-SNAPSHOT"
 libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % ScalatraVersion,
   "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
-  "ch.qos.logback" % "logback-classic" % "1.5.15" % "runtime",
+  "ch.qos.logback" % "logback-classic" % "1.5.16" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "11.0.24" % "container",
   "javax.servlet" % "javax.servlet-api" % "4.0.1" % "provided",
   "org.scalatra" %% "scalatra-auth" % ScalatraVersion,
