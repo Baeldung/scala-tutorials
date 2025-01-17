@@ -9,7 +9,7 @@ import scala.language.postfixOps
 object ScenariosProvider {
 
   private val httpProtocol =
-    http.baseUrl("http://localhost:8080").disableCaching.disableFollowRedirect
+    http.baseUrl("http://localhost:9000").disableCaching.disableFollowRedirect
 
   def getScenario(
     scenarioName: String,
