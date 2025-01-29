@@ -1,5 +1,5 @@
 lazy val customWarts = (project in file("custom-warts")).settings(
-  scalaVersion := "2.13.15",
+  scalaVersion := "2.13.16",
   name := "CustomWarts",
   version := "1.0.0",
   exportJars := true,
@@ -10,7 +10,7 @@ lazy val root = (project in file("."))
   .dependsOn(customWarts)
   .settings(
     name := "wart-remover",
-    scalaVersion := "2.13.15",
+    scalaVersion := "2.13.16",
     version := "1.0.0",
     wartremoverWarnings ++= Seq(Wart.AsInstanceOf, Wart.Null),
     wartremoverExcluded += baseDirectory.value / "src" / "main" / "scala" / "com" / "baeldung" / "scala" / "wartremover" / "Excluded.scala",
