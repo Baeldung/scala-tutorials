@@ -20,8 +20,8 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.19" % Test
 )
 
-val scalaMock = "org.scalamock" %% "scalamock" % "6.1.1" % Test
-val zioVersion = "2.1.14"
+val scalaMock = "org.scalamock" %% "scalamock" % "6.2.0" % Test
+val zioVersion = "2.1.15"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -468,7 +468,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.11"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.30.19"
+      "software.amazon.awssdk" % "sqs" % "2.30.20"
     ),
     Defaults.itSettings
   )
@@ -480,7 +480,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
-    libraryDependencies += "io.scalaland" %% "chimney" % "1.7.2",
+    libraryDependencies += "io.scalaland" %% "chimney" % "1.7.3",
     Defaults.itSettings
   )
 
@@ -546,13 +546,13 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.8.0-ce"
+val kafkaVersion = "7.8.1-ce"
 val pureconfigVersion = "0.17.8"
 val jackSonVersion = "2.18.2"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "7.8.0"
+val kafkaAvroSerializer = "7.8.1"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
@@ -589,10 +589,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.5" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.780" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.781" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.30.19"
+      "software.amazon.awssdk" % "s3" % "2.30.20"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -696,7 +696,7 @@ lazy val cats_effects = (project in file("cats-effects"))
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
 
-val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.14"
+val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.20"
 val zioTestSbt = "dev.zio" %% "zio-test-sbt" % zioVersion % Test
 
 lazy val zio = (project in file("zio"))
@@ -718,7 +718,7 @@ lazy val zio2 = (project in file("zio-2"))
     name := "zio-2",
     scalaVersion := scala3Version,
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
-    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.14",
+    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.20",
     libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-logging" % "2.1.17",
