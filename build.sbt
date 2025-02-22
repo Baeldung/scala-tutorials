@@ -486,7 +486,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
 
 val http4sBlaze = "0.23.17"
 val http4sVersion = "0.23.30"
-val osLibVersion = "0.11.3"
+val osLibVersion = "0.11.4"
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
