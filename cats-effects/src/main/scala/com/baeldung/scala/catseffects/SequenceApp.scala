@@ -12,5 +12,5 @@ object SequenceApp extends IOApp {
     sequenceAllTasks.map(_.mkString(", ")).flatMap(putStr)
 
   override def run(args: List[String]): IO[ExitCode] =
-    sequenceAllTasks.as(ExitCode.Success)
+    printTaskSequence.as(ExitCode.Success)
 }
