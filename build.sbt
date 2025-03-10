@@ -468,7 +468,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.11"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.30.26"
+      "software.amazon.awssdk" % "sqs" % "2.30.36"
     ),
     Defaults.itSettings
   )
@@ -592,7 +592,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.782" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.30.26"
+      "software.amazon.awssdk" % "s3" % "2.30.36"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
