@@ -7,7 +7,7 @@ import java.io.{File, PrintWriter}
 import java.nio.file.{Files, Path}
 import java.util.UUID
 
-class ScalaCSVReadersTest extends AnyWordSpec with should.Matchers {
+class ScalaCSVReadersUnitTest extends AnyWordSpec with should.Matchers {
 
   "SimpleCSVReader" should {
     "read a csv file" in {

@@ -8,7 +8,7 @@ import java.nio.file.{Files, Path}
 import java.util.UUID
 import scala.annotation.tailrec;
 
-class ScalaCSVWritersTest extends AnyWordSpec with should.Matchers {
+class ScalaCSVWritersUnitTest extends AnyWordSpec with should.Matchers {
 
   "SimpleCSVWriter" should {
     "write a csv file" in {
