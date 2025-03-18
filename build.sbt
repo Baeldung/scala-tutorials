@@ -443,7 +443,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "software.amazon.awssdk" % "s3" % "2.25.9",
       "com.github.seratch" %% "awscala" % "0.9.2",
-      "com.opencsv" % "opencsv" % "5.9",
+      "com.opencsv" % "opencsv" % "5.10",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
       "org.apache.commons" % "commons-csv" % "1.12.0"
     ),
