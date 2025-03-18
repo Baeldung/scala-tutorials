@@ -293,7 +293,7 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
     scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
-        "org.scalatestplus" %% "junit-4-13" % "3.2.19.0" % Test,
+        "org.scalatestplus" %% "junit-4-13" % "3.2.19.1" % Test,
         jUnitInterface
       )
   )
@@ -414,10 +414,10 @@ lazy val scala2_libraries =
       Defaults.itSettings
     )
 
-val circeVersion = "0.14.10"
+val circeVersion = "0.14.12"
 val monixVersion = "3.4.1"
 val sparkVersion = "3.5.5"
-val elastic4sVersion = "8.16.0"
+val elastic4sVersion = "8.17.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -443,9 +443,9 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "software.amazon.awssdk" % "s3" % "2.25.9",
       "com.github.seratch" %% "awscala" % "0.9.2",
-      "com.opencsv" % "opencsv" % "5.9",
+      "com.opencsv" % "opencsv" % "5.10",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
-      "org.apache.commons" % "commons-csv" % "1.12.0"
+      "org.apache.commons" % "commons-csv" % "1.13.0"
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
@@ -471,7 +471,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.11"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.30.36"
+      "software.amazon.awssdk" % "sqs" % "2.30.38"
     ),
     Defaults.itSettings
   )
@@ -595,7 +595,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.782" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.30.36"
+      "software.amazon.awssdk" % "s3" % "2.30.38"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -739,7 +739,7 @@ lazy val zio3 = (project in file("zio3"))
   .settings(
     libraryDependencies ++= Seq(
       zioJsonDep,
-      "dev.zio" %% "zio-http" % "3.0.1",
+      "dev.zio" %% "zio-http" % "3.1.0",
       "io.getquill" %% "quill-zio" % "4.8.5",
       "io.getquill" %% "quill-jdbc-zio" % "4.8.5",
       "com.h2database" % "h2" % "2.2.220"
@@ -748,7 +748,7 @@ lazy val zio3 = (project in file("zio3"))
       "dev.zio" %% "zio-test" % zioVersion % Test,
       zioTestSbt,
       "dev.zio" %% "zio-test-magnolia" % zioVersion % Test,
-      "dev.zio" %% "zio-http-testkit" % "3.0.1" % Test
+      "dev.zio" %% "zio-http-testkit" % "3.1.0" % Test
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
     run / fork := true
