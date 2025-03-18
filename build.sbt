@@ -362,7 +362,7 @@ val scalazVersion = "7.3.8"
 val fs2Version = "3.11.0"
 val reactiveMongo = "1.1.0-RC15"
 val slickPgVersion = "0.22.2"
-val scalaTestContainersVersion = "0.41.8"
+val scalaTestContainersVersion = "0.43.0"
 val postgresqlVersion = "42.7.5"
 val json4sVersion = "4.0.7"
 
@@ -446,7 +446,6 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.opencsv" % "opencsv" % "5.9",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
       "org.apache.commons" % "commons-csv" % "1.12.0"
-
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
