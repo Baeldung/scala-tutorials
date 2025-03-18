@@ -414,7 +414,7 @@ lazy val scala2_libraries =
       Defaults.itSettings
     )
 
-val circeVersion = "0.14.10"
+val circeVersion = "0.14.12"
 val monixVersion = "3.4.1"
 val sparkVersion = "3.5.5"
 val elastic4sVersion = "8.16.0"
@@ -446,7 +446,6 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.opencsv" % "opencsv" % "5.9",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
       "org.apache.commons" % "commons-csv" % "1.12.0"
-
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
