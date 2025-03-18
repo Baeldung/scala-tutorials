@@ -446,7 +446,6 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.opencsv" % "opencsv" % "5.9",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
       "org.apache.commons" % "commons-csv" % "1.12.0"
-
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
@@ -472,7 +471,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.11"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.30.36"
+      "software.amazon.awssdk" % "sqs" % "2.30.38"
     ),
     Defaults.itSettings
   )
@@ -596,7 +595,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.782" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.30.36"
+      "software.amazon.awssdk" % "s3" % "2.30.38"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
