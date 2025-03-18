@@ -293,7 +293,7 @@ lazy val scala_test_junit4 = (project in file("scala-test-junit4"))
     scalaVersion := scala3Version,
     libraryDependencies ++=
       Seq(
-        "org.scalatestplus" %% "junit-4-13" % "3.2.19.0" % Test,
+        "org.scalatestplus" %% "junit-4-13" % "3.2.19.1" % Test,
         jUnitInterface
       )
   )
@@ -446,7 +446,6 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.opencsv" % "opencsv" % "5.9",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
       "org.apache.commons" % "commons-csv" % "1.12.0"
-
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
