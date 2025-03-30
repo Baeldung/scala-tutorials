@@ -4,11 +4,11 @@ ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.5.7"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.5.7" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.0"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.0" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.18"
-val embedMongoVersion = "4.18.1"
+val embedMongoVersion = "4.20.0"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
 val AkkaHttpVersion = "10.6.3"
@@ -280,7 +280,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaTypedTestkit,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % AlpakkaVersion,
   akkaStreamDep,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "5.3.1",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "5.4.0",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % AlpakkaVersion,
   jUnitInterface,
   embeddedMongo % Test,
@@ -359,7 +359,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.5.2"
 val shapelessVersion = "2.3.13"
 val scalazVersion = "7.3.8"
-val fs2Version = "3.11.0"
+val fs2Version = "3.12.0"
 val reactiveMongo = "1.1.0-RC15"
 val slickPgVersion = "0.22.2"
 val scalaTestContainersVersion = "0.43.0"
@@ -445,7 +445,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.github.seratch" %% "awscala" % "0.9.2",
       "com.opencsv" % "opencsv" % "5.10",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
-      "org.apache.commons" % "commons-csv" % "1.13.0"
+      "org.apache.commons" % "commons-csv" % "1.14.0"
     ),
     libraryDependencies ++= Seq(
       "org.playframework" %% "play-slick" % LibraryVersions.playSlickVersion,
@@ -471,7 +471,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.11"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.30.38"
+      "software.amazon.awssdk" % "sqs" % "2.31.8"
     ),
     Defaults.itSettings
   )
@@ -595,7 +595,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.782" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.30.38"
+      "software.amazon.awssdk" % "s3" % "2.31.8"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -709,7 +709,7 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
     libraryDependencies += "dev.zio" %% "zio-streams" % zioVersion,
     libraryDependencies += zioTestSbt,
-    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.11.0",
+    libraryDependencies += "dev.zio" %% "zio-kafka" % "2.12.0",
     libraryDependencies += zioJsonDep,
     libraryDependencies += "dev.zio" %% "zio-prelude" % "1.0.0-RC39",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
