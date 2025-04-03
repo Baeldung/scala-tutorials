@@ -422,7 +422,7 @@ val elastic4sVersion = "8.17.1"
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
 
-val enumeratumDep = "com.beachape" %% "enumeratum" % "1.7.5"
+val enumeratumDep = "com.beachape" %% "enumeratum" % "1.7.6"
 val circeDep = "io.circe" %% "circe-generic" % circeVersion
 val circeParserDep = "io.circe" %% "circe-parser" % circeVersion
 
