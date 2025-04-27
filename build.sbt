@@ -391,7 +391,7 @@ lazy val scala2_libraries =
         enumeratumDep,
         "io.monix" %% "monix" % monixVersion,
         pureConfigDep,
-        "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.8",
+        "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.9",
         "com.typesafe" % "config" % "1.4.3",
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.10.0",
@@ -550,7 +550,7 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
 
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.9.0-ce"
-val pureconfigVersion = "0.17.8"
+val pureconfigVersion = "0.17.9"
 val jackSonVersion = "2.18.3"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
