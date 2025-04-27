@@ -391,12 +391,12 @@ lazy val scala2_libraries =
         enumeratumDep,
         "io.monix" %% "monix" % monixVersion,
         pureConfigDep,
-        "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.8",
+        "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.9",
         "com.typesafe" % "config" % "1.4.3",
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.10.0",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.10.0",
-        "org.testcontainers" % "pulsar" % "1.20.6" % IntegrationTest,
+        "org.testcontainers" % "pulsar" % "1.21.0" % IntegrationTest,
         "org.apache.kafka" % "kafka-clients" % kafkaVersion,
         "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
         "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
@@ -417,7 +417,7 @@ lazy val scala2_libraries =
 val circeVersion = "0.14.12"
 val monixVersion = "3.4.1"
 val sparkVersion = "3.5.5"
-val elastic4sVersion = "8.17.1"
+val elastic4sVersion = "8.18.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -471,7 +471,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.12"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.31.25"
+      "software.amazon.awssdk" % "sqs" % "2.31.30"
     ),
     Defaults.itSettings
   )
@@ -550,7 +550,7 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
 
 val spireVersion = "0.18.0"
 val kafkaVersion = "7.9.0-ce"
-val pureconfigVersion = "0.17.8"
+val pureconfigVersion = "0.17.9"
 val jackSonVersion = "2.19.0"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
@@ -595,7 +595,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.782" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.31.25"
+      "software.amazon.awssdk" % "s3" % "2.31.30"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
