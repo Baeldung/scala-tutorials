@@ -41,7 +41,7 @@ lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
     scalaVersion := scala3Version
   )
 
-val scalaXmlDep = "org.scala-lang.modules" %% "scala-xml" % "2.3.0"
+val scalaXmlDep = "org.scala-lang.modules" %% "scala-xml" % "2.4.0"
 
 lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
   .settings(
@@ -363,7 +363,7 @@ val fs2Version = "3.12.0"
 val reactiveMongo = "1.1.0-RC15"
 val slickPgVersion = "0.23.0"
 val scalaTestContainersVersion = "0.43.0"
-val postgresqlVersion = "42.7.5"
+val postgresqlVersion = "42.7.6"
 val json4sVersion = "4.0.7"
 
 lazy val scala2_libraries =
@@ -417,7 +417,7 @@ lazy val scala2_libraries =
 val circeVersion = "0.14.13"
 val monixVersion = "3.4.1"
 val sparkVersion = "3.5.6"
-val elastic4sVersion = "8.18.0"
+val elastic4sVersion = "8.18.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -471,7 +471,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.12"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.31.47"
+      "software.amazon.awssdk" % "sqs" % "2.31.52"
     ),
     Defaults.itSettings
   )
@@ -483,7 +483,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
-    libraryDependencies += "io.scalaland" %% "chimney" % "1.8.0",
+    libraryDependencies += "io.scalaland" %% "chimney" % "1.8.1",
     Defaults.itSettings
   )
 
@@ -595,7 +595,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.783" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.31.47"
+      "software.amazon.awssdk" % "s3" % "2.31.52"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
