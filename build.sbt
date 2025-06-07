@@ -21,7 +21,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "7.3.2" % Test
-val zioVersion = "2.1.18"
+val zioVersion = "2.1.19"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -41,7 +41,7 @@ lazy val scala_core_2 = (project in file("scala-core-modules/scala-core-2"))
     scalaVersion := scala3Version
   )
 
-val scalaXmlDep = "org.scala-lang.modules" %% "scala-xml" % "2.3.0"
+val scalaXmlDep = "org.scala-lang.modules" %% "scala-xml" % "2.4.0"
 
 lazy val scala_core_3 = (project in file("scala-core-modules/scala-core-3"))
   .settings(
@@ -361,9 +361,9 @@ val shapelessVersion = "2.3.13"
 val scalazVersion = "7.3.8"
 val fs2Version = "3.12.0"
 val reactiveMongo = "1.1.0-RC15"
-val slickPgVersion = "0.23.0"
+val slickPgVersion = "0.23.1"
 val scalaTestContainersVersion = "0.43.0"
-val postgresqlVersion = "42.7.5"
+val postgresqlVersion = "42.7.6"
 val json4sVersion = "4.0.7"
 
 lazy val scala2_libraries =
@@ -417,12 +417,12 @@ lazy val scala2_libraries =
 val circeVersion = "0.14.13"
 val monixVersion = "3.4.1"
 val sparkVersion = "4.0.0"
-val elastic4sVersion = "8.18.0"
+val elastic4sVersion = "8.18.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
 
-val enumeratumDep = "com.beachape" %% "enumeratum" % "1.7.6"
+val enumeratumDep = "com.beachape" %% "enumeratum" % "1.9.0"
 val circeDep = "io.circe" %% "circe-generic" % circeVersion
 val circeParserDep = "io.circe" %% "circe-parser" % circeVersion
 
@@ -443,7 +443,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "software.amazon.awssdk" % "s3" % "2.25.9",
       "com.github.seratch" %% "awscala" % "0.9.2",
-      "com.opencsv" % "opencsv" % "5.11",
+      "com.opencsv" % "opencsv" % "5.11.1",
       "com.github.tototoshi" %% "scala-csv" % "2.0.0",
       "org.apache.commons" % "commons-csv" % "1.14.0"
     ),
@@ -471,7 +471,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.12"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.31.47"
+      "software.amazon.awssdk" % "sqs" % "2.31.58"
     ),
     Defaults.itSettings
   )
@@ -483,7 +483,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
-    libraryDependencies += "io.scalaland" %% "chimney" % "1.8.0",
+    libraryDependencies += "io.scalaland" %% "chimney" % "1.8.1",
     Defaults.itSettings
   )
 
@@ -592,10 +592,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.5" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.783" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.785" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.31.47"
+      "software.amazon.awssdk" % "s3" % "2.31.58"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -739,7 +739,7 @@ lazy val zio3 = (project in file("zio3"))
   .settings(
     libraryDependencies ++= Seq(
       zioJsonDep,
-      "dev.zio" %% "zio-http" % "3.2.0",
+      "dev.zio" %% "zio-http" % "3.3.3",
       "io.getquill" %% "quill-zio" % "4.8.5",
       "io.getquill" %% "quill-jdbc-zio" % "4.8.5",
       "com.h2database" % "h2" % "2.2.220"
@@ -748,7 +748,7 @@ lazy val zio3 = (project in file("zio3"))
       "dev.zio" %% "zio-test" % zioVersion % Test,
       zioTestSbt,
       "dev.zio" %% "zio-test-magnolia" % zioVersion % Test,
-      "dev.zio" %% "zio-http-testkit" % "3.2.0" % Test
+      "dev.zio" %% "zio-http-testkit" % "3.3.3" % Test
     ),
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
     run / fork := true
