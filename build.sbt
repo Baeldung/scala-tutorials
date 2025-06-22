@@ -417,7 +417,7 @@ lazy val scala2_libraries =
 val circeVersion = "0.14.14"
 val monixVersion = "3.4.1"
 val sparkVersion = "3.5.6"
-val elastic4sVersion = "8.18.2"
+val elastic4sVersion = "9.0.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
