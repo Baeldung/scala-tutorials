@@ -418,7 +418,7 @@ val circeVersion = "0.14.14"
 val monixVersion = "3.4.1"
 
 val sparkVersion = "4.0.0"
-val elastic4sVersion = "8.18.2"
+val elastic4sVersion = "9.0.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -550,13 +550,13 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.9.2-ce"
+val kafkaVersion = "8.0.0-ce"
 val pureconfigVersion = "0.17.9"
 val jackSonVersion = "2.19.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "7.9.2"
+val kafkaAvroSerializer = "8.0.0"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
