@@ -20,7 +20,7 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.19" % Test
 )
 
-val scalaMock = "org.scalamock" %% "scalamock" % "7.3.2" % Test
+val scalaMock = "org.scalamock" %% "scalamock" % "7.3.3" % Test
 val zioVersion = "2.1.19"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
@@ -280,7 +280,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaTypedTestkit,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % AlpakkaVersion,
   akkaStreamDep,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "5.5.0",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "5.5.1",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % AlpakkaVersion,
   jUnitInterface,
   embeddedMongo % Test,
@@ -396,7 +396,7 @@ lazy val scala2_libraries =
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.11.0",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.11.0",
-        "org.testcontainers" % "pulsar" % "1.21.1" % IntegrationTest,
+        "org.testcontainers" % "pulsar" % "1.21.2" % IntegrationTest,
         "org.apache.kafka" % "kafka-clients" % kafkaVersion,
         "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
         "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
@@ -416,8 +416,9 @@ lazy val scala2_libraries =
 
 val circeVersion = "0.14.14"
 val monixVersion = "3.4.1"
+
 val sparkVersion = "4.0.0"
-val elastic4sVersion = "8.18.2"
+val elastic4sVersion = "9.0.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
@@ -439,7 +440,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       circeParserDep,
       "com.softwaremill.retry" %% "retry" % "0.3.6",
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.24.3" % Runtime,
+      "org.apache.logging.log4j" % "log4j-core" % "2.25.0" % Runtime,
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
       "software.amazon.awssdk" % "s3" % "2.25.9",
       "com.github.seratch" %% "awscala" % "0.9.2",
@@ -471,7 +472,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.12"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.31.63"
+      "software.amazon.awssdk" % "sqs" % "2.31.68"
     ),
     Defaults.itSettings
   )
@@ -505,7 +506,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.24.3" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.25.0" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -549,13 +550,13 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
   )
 
 val spireVersion = "0.18.0"
-val kafkaVersion = "7.9.2-ce"
+val kafkaVersion = "8.0.0-ce"
 val pureconfigVersion = "0.17.9"
-val jackSonVersion = "2.19.0"
+val jackSonVersion = "2.19.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.20.0"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "7.9.1"
+val kafkaAvroSerializer = "8.0.0"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
@@ -595,7 +596,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.787" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.31.63"
+      "software.amazon.awssdk" % "s3" % "2.31.68"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -699,7 +700,7 @@ lazy val cats_effects = (project in file("cats-effects"))
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test
   )
 
-val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.43"
+val zioJsonDep = "dev.zio" %% "zio-json" % "0.7.44"
 val zioTestSbt = "dev.zio" %% "zio-test-sbt" % zioVersion % Test
 
 lazy val zio = (project in file("zio"))
@@ -721,7 +722,7 @@ lazy val zio2 = (project in file("zio-2"))
     name := "zio-2",
     scalaVersion := scala3Version,
     libraryDependencies += "dev.zio" %% "zio" % zioVersion,
-    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.43",
+    libraryDependencies += "dev.zio" %% "zio-json" % "0.7.44",
     libraryDependencies += "dev.zio" %% "zio-test" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-test-sbt" % zioVersion % Test,
     libraryDependencies += "dev.zio" %% "zio-logging" % "2.1.17",
