@@ -1,5 +1,5 @@
 val scalaV = "2.12.16"
-val tapirV = "1.11.34"
+val tapirV = "1.11.35"
 ThisBuild / scalaVersion := scalaV
 ThisBuild / version := "1.0.0"
 ThisBuild / organization := "com.baeldung"
