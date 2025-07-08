@@ -1,4 +1,4 @@
-addSbtPlugin("org.playframework.twirl" % "sbt-twirl" % "2.0.8")
+addSbtPlugin("org.playframework.twirl" % "sbt-twirl" % "2.0.9")
 
 addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "4.2.5")
 
