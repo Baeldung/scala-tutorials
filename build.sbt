@@ -4,10 +4,10 @@ ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.1"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.1" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.2"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.2" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.5.17"
+val logback = "ch.qos.logback" % "logback-classic" % "1.5.18"
 val embedMongoVersion = "4.20.1"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
@@ -107,7 +107,7 @@ lazy val scala_core_8 = (project in file("scala-core-modules/scala-core-8"))
     libraryDependencies ++= scalaTestDeps,
     scalaVersion := scala3Version,
     libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2",
-    libraryDependencies += "com.typesafe" % "config" % "1.2.1"
+    libraryDependencies += "com.typesafe" % "config" % "1.4.4"
     // scalacOptions += "-Ymacro-debug-lite"
   )
 
@@ -185,7 +185,7 @@ lazy val scala_core_dates =
       libraryDependencies ++= scalaTestDeps,
       libraryDependencies += "joda-time" % "joda-time" % "2.14.0",
       libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "3.0.0",
-      libraryDependencies += "com.typesafe" % "config" % "1.4.3"
+      libraryDependencies += "com.typesafe" % "config" % "1.4.4"
     )
 
 lazy val scala_lang = (project in file("scala-lang-modules/scala-lang"))
@@ -392,7 +392,7 @@ lazy val scala2_libraries =
         "io.monix" %% "monix" % monixVersion,
         pureConfigDep,
         "com.github.pureconfig" %% "pureconfig-enumeratum" % "0.17.9",
-        "com.typesafe" % "config" % "1.4.3",
+        "com.typesafe" % "config" % "1.4.4",
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.11.0",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.11.0",
@@ -472,7 +472,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.12"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.31.77"
+      "software.amazon.awssdk" % "sqs" % "2.31.78"
     ),
     Defaults.itSettings
   )
@@ -484,7 +484,7 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps
       .map(_.withConfigurations(Some("it,test"))),
-    libraryDependencies += "io.scalaland" %% "chimney" % "1.8.1",
+    libraryDependencies += "io.scalaland" %% "chimney" % "1.8.2",
     Defaults.itSettings
   )
 
@@ -506,7 +506,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.25.0" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.25.1" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -521,7 +521,7 @@ lazy val redis_intro =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "redis.clients" % "jedis" % "6.0.0",
-        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1",
+        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.19.1",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
       Defaults.itSettings
@@ -554,7 +554,7 @@ val kafkaVersion = "8.0.0-ce"
 val pureconfigVersion = "0.17.9"
 val jackSonVersion = "2.19.1"
 val log4jApiScalaVersion = "13.1.0"
-val log4jVersion = "2.20.0"
+val log4jVersion = "2.25.1"
 val avro4sVersion = "4.1.2"
 val kafkaAvroSerializer = "8.0.0"
 
@@ -596,7 +596,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.787" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.31.77"
+      "software.amazon.awssdk" % "s3" % "2.31.78"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -637,7 +637,7 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
     scalaVersion := scala3Version,
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
-      "com.typesafe" % "config" % "1.4.3",
+      "com.typesafe" % "config" % "1.4.4",
       munitDep,
       "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
       catsEffect,
@@ -743,7 +743,7 @@ lazy val zio3 = (project in file("zio3"))
       "dev.zio" %% "zio-http" % "3.3.3",
       "io.getquill" %% "quill-zio" % "4.8.5",
       "io.getquill" %% "quill-jdbc-zio" % "4.8.5",
-      "com.h2database" % "h2" % "2.2.220"
+      "com.h2database" % "h2" % "2.3.232"
     ),
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio-test" % zioVersion % Test,
