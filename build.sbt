@@ -521,7 +521,7 @@ lazy val redis_intro =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "redis.clients" % "jedis" % "6.1.0",
-        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.19.2",
+        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.20.0",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
       Defaults.itSettings
@@ -552,7 +552,7 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
 val spireVersion = "0.18.0"
 val kafkaVersion = "8.0.0-ce"
 val pureconfigVersion = "0.17.9"
-val jackSonVersion = "2.19.2"
+val jackSonVersion = "2.20.0"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.25.1"
 val avro4sVersion = "4.1.2"
