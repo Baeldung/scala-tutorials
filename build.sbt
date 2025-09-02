@@ -472,7 +472,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.14"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.32.29"
+      "software.amazon.awssdk" % "sqs" % "2.32.33"
     ),
     Defaults.itSettings
   )
@@ -521,7 +521,7 @@ lazy val redis_intro =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "redis.clients" % "jedis" % "6.2.0",
-        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.19.2",
+        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.20.0",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
       Defaults.itSettings
@@ -552,7 +552,7 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
 val spireVersion = "0.18.0"
 val kafkaVersion = "8.0.0-ce"
 val pureconfigVersion = "0.17.9"
-val jackSonVersion = "2.19.2"
+val jackSonVersion = "2.20.0"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.25.1"
 val avro4sVersion = "4.1.2"
@@ -596,7 +596,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.788" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.32.29"
+      "software.amazon.awssdk" % "s3" % "2.32.33"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
