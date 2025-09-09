@@ -21,7 +21,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "7.4.2" % Test
-val zioVersion = "2.1.20"
+val zioVersion = "2.1.21"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -472,7 +472,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.14"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.32.33"
+      "software.amazon.awssdk" % "sqs" % "2.33.5"
     ),
     Defaults.itSettings
   )
@@ -596,7 +596,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.788" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.32.33"
+      "software.amazon.awssdk" % "s3" % "2.33.5"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
