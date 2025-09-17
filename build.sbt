@@ -441,7 +441,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "com.softwaremill.retry" %% "retry" % "0.3.6",
       log4jApiScalaDep,
       "org.apache.logging.log4j" % "log4j-core" % "2.25.0" % Runtime,
-      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.9.6",
       "software.amazon.awssdk" % "s3" % "2.25.9",
       "com.github.seratch" %% "awscala" % "0.9.2",
       "com.opencsv" % "opencsv" % "5.12.0",
