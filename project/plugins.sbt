@@ -7,7 +7,7 @@ addSbtPlugin("com.lightbend.akka.grpc" % "sbt-akka-grpc" % "2.2.1")
 libraryDependencies += "ai.kien" %% "python-native-libs" % "0.2.4"
 
 // Make sure to keep the play plugin in sync with the sub modules under play-scala group
-addSbtPlugin("org.playframework" % "sbt-plugin" % "3.0.8")
+addSbtPlugin("org.playframework" % "sbt-plugin" % "3.0.9")
 
 addSbtPlugin("org.playframework.twirl" % "sbt-twirl" % "2.0.1")
 addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "4.2.1")
