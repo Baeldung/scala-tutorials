@@ -408,7 +408,7 @@ lazy val scala2_libraries =
       ),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.3.232"
+        "com.h2database" % "h2" % "2.4.240"
       ),
       scalacOptions += "-Xasync",
       Defaults.itSettings
@@ -613,7 +613,7 @@ lazy val scala_libraries_persistence =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
-        "com.h2database" % "h2" % "2.3.232",
+        "com.h2database" % "h2" % "2.4.240",
         "org.tpolecat" %% "skunk-core" % "0.6.4",
         doobieCore,
         doobiePGDep,
@@ -743,7 +743,7 @@ lazy val zio3 = (project in file("zio3"))
       "dev.zio" %% "zio-http" % "3.5.1",
       "io.getquill" %% "quill-zio" % "4.8.5",
       "io.getquill" %% "quill-jdbc-zio" % "4.8.5",
-      "com.h2database" % "h2" % "2.3.232"
+      "com.h2database" % "h2" % "2.4.240"
     ),
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio-test" % zioVersion % Test,
