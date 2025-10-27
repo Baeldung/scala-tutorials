@@ -364,7 +364,7 @@ val reactiveMongo = "1.1.0-RC18"
 val slickPgVersion = "0.23.1"
 val scalaTestContainersVersion = "0.43.0"
 val postgresqlVersion = "42.7.8"
-val json4sVersion = "4.0.7"
+val json4sVersion = "4.1.0"
 
 lazy val scala2_libraries =
   (project in file("scala-2-modules/scala2-libraries"))
@@ -624,7 +624,7 @@ lazy val scala_libraries_persistence =
         "com.typesafe.slick" %% "slick-hikaricp" % slickVersion,
         "org.postgresql" % "postgresql" % postgresqlVersion,
         "com.github.tminglei" %% "slick-pg" % slickPgVersion,
-        "org.json4s" %% "json4s-native" % json4sVersion,
+        "io.github.json4s" %% "json4s-native" % json4sVersion,
         "com.github.tminglei" %% "slick-pg_json4s" % slickPgVersion,
         "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
         "com.dimafeng" %% "testcontainers-scala-postgresql" % scalaTestContainersVersion % IntegrationTest

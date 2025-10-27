@@ -13,7 +13,7 @@ libraryDependencies ++= Seq(
   "javax.servlet" % "javax.servlet-api" % "4.0.1" % "provided",
   "org.scalatra" %% "scalatra-auth" % ScalatraVersion,
   "org.scalatra" %% "scalatra-json" % "2.8.4",
-  "org.json4s" %% "json4s-jackson" % "4.0.7",
+  "io.github.json4s" %% "json4s-jackson" % "4.1.0",
   "com.typesafe.slick" %% "slick" % "3.6.1",
   "com.h2database" % "h2" % "2.1.214",
   "com.mchange" % "c3p0" % "0.11.2"
