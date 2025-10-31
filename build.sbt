@@ -362,7 +362,7 @@ val scalazVersion = "7.3.8"
 val fs2Version = "3.12.2"
 val reactiveMongo = "1.1.0-RC18"
 val slickPgVersion = "0.23.1"
-val scalaTestContainersVersion = "0.43.0"
+val scalaTestContainersVersion = "0.43.6"
 val postgresqlVersion = "42.7.8"
 val json4sVersion = "4.1.0"
 
