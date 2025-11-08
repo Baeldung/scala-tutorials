@@ -20,7 +20,7 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.19" % Test
 )
 
-val scalaMock = "org.scalamock" %% "scalamock" % "7.5.0" % Test
+val scalaMock = "org.scalamock" %% "scalamock" % "7.5.1" % Test
 val zioVersion = "2.1.22"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
@@ -472,7 +472,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.15"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.35.11"
+      "software.amazon.awssdk" % "sqs" % "2.37.3"
     ),
     Defaults.itSettings
   )
@@ -489,8 +489,9 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
   )
 
 val http4sBlaze = "0.23.17"
-val http4sVersion = "0.23.32"
+val http4sVersion = "0.23.33"
 val osLibVersion = "0.11.6"
+
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
@@ -521,7 +522,7 @@ lazy val redis_intro =
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
         "redis.clients" % "jedis" % "7.0.0",
-        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.20.0",
+        "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.20.1",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
       Defaults.itSettings
@@ -552,7 +553,7 @@ lazy val nscalatime = (project in file("scala-libraries-standalone/nscalatime"))
 val spireVersion = "0.18.0"
 val kafkaVersion = "8.1.0-ce"
 val pureconfigVersion = "0.17.9"
-val jackSonVersion = "2.20.0"
+val jackSonVersion = "2.20.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.25.2"
 val avro4sVersion = "4.1.2"
@@ -593,10 +594,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.9" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.792" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.793" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.35.11"
+      "software.amazon.awssdk" % "s3" % "2.37.3"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true

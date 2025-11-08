@@ -4,7 +4,7 @@ addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.9")
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.20.1")
 
 addSbtPlugin("com.lightbend.akka.grpc" % "sbt-akka-grpc" % "2.2.1")
-libraryDependencies += "ai.kien" %% "python-native-libs" % "0.2.4"
+libraryDependencies += "ai.kien" %% "python-native-libs" % "0.2.5"
 
 // Make sure to keep the play plugin in sync with the sub modules under play-scala group
 addSbtPlugin("org.playframework" % "sbt-plugin" % "3.0.9")
