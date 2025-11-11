@@ -20,7 +20,7 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.19" % Test
 )
 
-val scalaMock = "org.scalamock" %% "scalamock" % "7.5.1" % Test
+val scalaMock = "org.scalamock" %% "scalamock" % "7.5.2" % Test
 val zioVersion = "2.1.22"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
@@ -491,7 +491,6 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
 val http4sBlaze = "0.23.17"
 val http4sVersion = "0.23.33"
 val osLibVersion = "0.11.6"
-
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
