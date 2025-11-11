@@ -7,7 +7,7 @@ val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
 val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.3"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.3" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
-val logback = "ch.qos.logback" % "logback-classic" % "1.5.20"
+val logback = "ch.qos.logback" % "logback-classic" % "1.5.21"
 val embedMongoVersion = "4.21.0"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
@@ -491,7 +491,6 @@ lazy val scala_libraries_2 = (project in file("scala-libraries-2"))
 val http4sBlaze = "0.23.17"
 val http4sVersion = "0.23.33"
 val osLibVersion = "0.11.6"
-
 
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
