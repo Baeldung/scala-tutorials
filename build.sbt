@@ -492,7 +492,6 @@ val http4sBlaze = "0.23.17"
 val http4sVersion = "0.23.33"
 val osLibVersion = "0.11.6"
 
-
 val osLibDep = "com.lihaoyi" %% "os-lib" % osLibVersion
 
 val log4jApiScalaDep =
@@ -756,7 +755,7 @@ lazy val zio3 = (project in file("zio3"))
     run / fork := true
   )
 
-val doobieVersion = "1.0.0-RC2"
+val doobieVersion = "1.0.0-RC11"
 
 val doobiePGDep = "org.tpolecat" %% "doobie-postgres" % doobieVersion
 val doobieCore = "org.tpolecat" %% "doobie-core" % doobieVersion
