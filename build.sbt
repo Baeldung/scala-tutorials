@@ -556,7 +556,7 @@ val jackSonVersion = "2.20.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.25.2"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "8.1.0"
+val kafkaAvroSerializer = "8.1.1"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
