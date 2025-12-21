@@ -8,7 +8,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.3"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.3" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.22"
-val embedMongoVersion = "4.21.0"
+val embedMongoVersion = "4.22.0"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
 val AkkaHttpVersion = "10.6.3"
@@ -280,7 +280,7 @@ lazy val scala_akka_dependencies: Seq[ModuleID] = Seq(
   akkaTypedTestkit,
   "com.lightbend.akka" %% "akka-stream-alpakka-mongodb" % AlpakkaVersion,
   akkaStreamDep,
-  "org.mongodb.scala" %% "mongo-scala-driver" % "5.6.1",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "5.6.2",
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % AlpakkaVersion,
   jUnitInterface,
   embeddedMongo % Test,
@@ -417,7 +417,7 @@ lazy val scala2_libraries =
 val circeVersion = "0.14.15"
 val monixVersion = "3.4.1"
 
-val sparkVersion = "4.0.1"
+val sparkVersion = "4.1.0"
 val elastic4sVersion = "9.1.1"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -506,7 +506,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.25.2" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.25.3" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -520,7 +520,7 @@ lazy val redis_intro =
       libraryDependencies ++= scalaTestDeps
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
-        "redis.clients" % "jedis" % "7.1.0",
+        "redis.clients" % "jedis" % "7.2.0",
         "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.20.1",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
@@ -554,7 +554,7 @@ val kafkaVersion = "8.1.1-ce"
 val pureconfigVersion = "0.17.9"
 val jackSonVersion = "2.20.1"
 val log4jApiScalaVersion = "13.1.0"
-val log4jVersion = "2.25.2"
+val log4jVersion = "2.25.3"
 val avro4sVersion = "4.1.2"
 val kafkaAvroSerializer = "8.1.1"
 
@@ -614,7 +614,7 @@ lazy val scala_libraries_persistence =
       libraryDependencies ++= Seq(
         "com.typesafe.slick" %% "slick" % slickVersion,
         "com.h2database" % "h2" % "2.4.240",
-        "org.tpolecat" %% "skunk-core" % "0.6.4",
+        "org.tpolecat" %% "skunk-core" % "0.6.5",
         doobieCore,
         doobiePGDep,
         "org.reactivemongo" %% "reactivemongo" % reactiveMongo,
