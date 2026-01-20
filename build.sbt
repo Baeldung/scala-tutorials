@@ -8,7 +8,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.3"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.3" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.22"
-val embedMongoVersion = "4.22.0"
+val embedMongoVersion = "4.23.0"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
 val AkkaHttpVersion = "10.6.3"
@@ -21,7 +21,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "7.5.2" % Test
-val zioVersion = "2.1.23"
+val zioVersion = "2.1.24"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
@@ -396,7 +396,7 @@ lazy val scala2_libraries =
         "org.scala-lang.modules" %% "scala-async" % "1.0.1",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-core" % "2.11.0",
         "com.clever-cloud.pulsar4s" %% "pulsar4s-jackson" % "2.11.0",
-        "org.testcontainers" % "pulsar" % "1.21.3" % IntegrationTest,
+        "org.testcontainers" % "pulsar" % "1.21.4" % IntegrationTest,
         "org.apache.kafka" % "kafka-clients" % kafkaVersion,
         "com.fasterxml.jackson.core" % "jackson-databind" % jackSonVersion,
         "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jackSonVersion,
@@ -459,7 +459,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       akkaTypedTestkit,
-      "com.lihaoyi" %% "requests" % "0.9.0"
+      "com.lihaoyi" %% "requests" % "0.9.2"
     ),
     libraryDependencies ++= Seq(
       "nl.gn0s1s" %% "elastic4s-client-esjava" % elastic4sVersion,
@@ -472,7 +472,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.15"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.40.2"
+      "software.amazon.awssdk" % "sqs" % "2.40.17"
     ),
     Defaults.itSettings
   )
@@ -593,10 +593,10 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       scalaMock,
       "com.lihaoyi" %% "utest" % "0.8.9" % "test",
       munitDep,
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.794" % IntegrationTest,
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.12.796" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.40.2"
+      "software.amazon.awssdk" % "s3" % "2.40.17"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
