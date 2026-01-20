@@ -8,7 +8,7 @@ val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.3"
 val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.3" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.24"
-val embedMongoVersion = "4.22.0"
+val embedMongoVersion = "4.23.0"
 val AkkaVersion = "2.9.3"
 val AlpakkaVersion = "8.0.0"
 val AkkaHttpVersion = "10.6.3"
@@ -459,7 +459,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       akkaTypedTestkit,
-      "com.lihaoyi" %% "requests" % "0.9.0"
+      "com.lihaoyi" %% "requests" % "0.9.2"
     ),
     libraryDependencies ++= Seq(
       "nl.gn0s1s" %% "elastic4s-client-esjava" % elastic4sVersion,
