@@ -363,7 +363,7 @@ val fs2Version = "3.12.2"
 val reactiveMongo = "1.1.0-RC19"
 val slickPgVersion = "0.23.1"
 val scalaTestContainersVersion = "0.43.6"
-val postgresqlVersion = "42.7.8"
+val postgresqlVersion = "42.7.9"
 val json4sVersion = "4.1.0"
 
 lazy val scala2_libraries =
