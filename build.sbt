@@ -639,7 +639,7 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
     libraryDependencies ++= Seq(
       "com.typesafe" % "config" % "1.4.5",
       munitDep,
-      "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
+      "com.github.japgolly.clearconfig" %% "core" % "3.2.0",
       catsEffect,
       "io.circe" %% "circe-yaml" % "0.15.3",
       circeDep,
