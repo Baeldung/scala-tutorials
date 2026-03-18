@@ -520,7 +520,7 @@ lazy val redis_intro =
       libraryDependencies ++= scalaTestDeps
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
-        "redis.clients" % "jedis" % "7.2.1",
+        "redis.clients" % "jedis" % "7.4.0",
         "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.21.1",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
