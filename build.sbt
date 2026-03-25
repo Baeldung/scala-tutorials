@@ -4,8 +4,8 @@ ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "com.baeldung"
 ThisBuild / organizationName := "core-scala"
 val jUnitInterface = "com.github.sbt" % "junit-interface" % "0.13.3" % "test"
-val catsEffect = "org.typelevel" %% "cats-effect" % "3.6.3"
-val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.6.3" % Test
+val catsEffect = "org.typelevel" %% "cats-effect" % "3.7.0"
+val catEffectTest = "org.typelevel" %% "cats-effect-testkit" % "3.7.0" % Test
 val scalaReflection = "org.scala-lang" % "scala-reflect" % scalaV
 val logback = "ch.qos.logback" % "logback-classic" % "1.5.32"
 val embedMongoVersion = "4.23.0"
@@ -20,7 +20,7 @@ val scalaTestDeps = Seq(
   "org.scalatest" %% "scalatest-flatspec" % "3.2.19" % Test
 )
 
-val scalaMock = "org.scalamock" %% "scalamock" % "7.5.2" % Test
+val scalaMock = "org.scalamock" %% "scalamock" % "7.5.5" % Test
 val zioVersion = "2.1.24"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
@@ -183,7 +183,7 @@ lazy val scala_core_dates =
       name := "scala-core-dates",
       scalaVersion := scala3Version,
       libraryDependencies ++= scalaTestDeps,
-      libraryDependencies += "joda-time" % "joda-time" % "2.14.0",
+      libraryDependencies += "joda-time" % "joda-time" % "2.14.1",
       libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "3.0.0",
       libraryDependencies += "com.typesafe" % "config" % "1.4.6"
     )
@@ -359,7 +359,7 @@ val monocleVersion = "2.1.0"
 val slickVersion = "3.6.1"
 val shapelessVersion = "2.3.13"
 val scalazVersion = "7.3.8"
-val fs2Version = "3.12.2"
+val fs2Version = "3.13.0"
 val reactiveMongo = "1.1.0-RC20"
 val slickPgVersion = "0.23.1"
 val scalaTestContainersVersion = "0.44.1"
@@ -423,7 +423,7 @@ val elastic4sVersion = "9.1.1"
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
 
-val enumeratumDep = "com.beachape" %% "enumeratum" % "1.9.5"
+val enumeratumDep = "com.beachape" %% "enumeratum" % "1.9.6"
 val circeDep = "io.circe" %% "circe-generic" % circeVersion
 val circeParserDep = "io.circe" %% "circe-parser" % circeVersion
 
@@ -459,7 +459,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
     ),
     libraryDependencies ++= Seq(
       akkaTypedTestkit,
-      "com.lihaoyi" %% "requests" % "0.9.2"
+      "com.lihaoyi" %% "requests" % "0.9.3"
     ),
     libraryDependencies ++= Seq(
       "nl.gn0s1s" %% "elastic4s-client-esjava" % elastic4sVersion,
@@ -472,7 +472,7 @@ lazy val scala_libraries = (project in file("scala-libraries"))
       "org.elasticmq" %% "elasticmq-rest-sqs" % "1.6.16"
     ),
     libraryDependencies ++= Seq(
-      "software.amazon.awssdk" % "sqs" % "2.41.34"
+      "software.amazon.awssdk" % "sqs" % "2.42.15"
     ),
     Defaults.itSettings
   )
@@ -520,7 +520,7 @@ lazy val redis_intro =
       libraryDependencies ++= scalaTestDeps
         .map(_.withConfigurations(Some("it,test"))),
       libraryDependencies ++= Seq(
-        "redis.clients" % "jedis" % "7.2.0",
+        "redis.clients" % "jedis" % "7.4.0",
         "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.21.1",
         "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % "it"
       ),
@@ -556,7 +556,7 @@ val jackSonVersion = "2.21.1"
 val log4jApiScalaVersion = "13.1.0"
 val log4jVersion = "2.25.3"
 val avro4sVersion = "4.1.2"
-val kafkaAvroSerializer = "8.1.1"
+val kafkaAvroSerializer = "8.2.0"
 
 val pureConfigDep = "com.github.pureconfig" %% "pureconfig" % pureconfigVersion
 
@@ -596,7 +596,7 @@ lazy val scala_libraries_testing = (project in file("scala-libraries-testing"))
       "com.amazonaws" % "aws-java-sdk-s3" % "1.12.797" % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-scalatest" % scalaTestContainersVersion % IntegrationTest,
       "com.dimafeng" %% "testcontainers-scala-localstack-v2" % scalaTestContainersVersion % IntegrationTest,
-      "software.amazon.awssdk" % "s3" % "2.41.34"
+      "software.amazon.awssdk" % "s3" % "2.42.15"
     ),
     Defaults.itSettings,
     IntegrationTest / fork := true
@@ -639,7 +639,7 @@ lazy val scala_libraries_config = (project in file("scala-libraries-config"))
     libraryDependencies ++= Seq(
       "com.typesafe" % "config" % "1.4.6",
       munitDep,
-      "com.github.japgolly.clearconfig" %% "core" % "3.1.0",
+      "com.github.japgolly.clearconfig" %% "core" % "3.3.0",
       catsEffect,
       "io.circe" %% "circe-yaml" % "0.15.3",
       circeDep,
