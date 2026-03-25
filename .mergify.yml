@@ -8,7 +8,6 @@ pull_request_rules:
         - files~=ScalaVersions.scala
         - files~=build.properties
         - files~=LibraryVersions.scala
-      - "#approved-reviews-by>=1"    
       - check-success=CI - Jenkins
       - author=scala-steward-baeldung[bot]
       - or:
