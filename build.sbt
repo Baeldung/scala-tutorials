@@ -418,7 +418,7 @@ val circeVersion = "0.14.15"
 val monixVersion = "3.4.1"
 
 val sparkVersion = "4.1.1"
-val elastic4sVersion = "9.1.1"
+val elastic4sVersion = "9.3.0"
 
 val sparkCoreDep = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSqlDep = "org.apache.spark" %% "spark-sql" % sparkVersion
