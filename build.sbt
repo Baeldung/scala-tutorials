@@ -14,10 +14,10 @@ val AlpakkaVersion = "8.0.0"
 val AkkaHttpVersion = "10.6.3"
 
 val scalaTestDeps = Seq(
-  "org.scalatest" %% "scalatest" % "3.2.19" % Test,
-  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.19" % Test,
-  "org.scalatest" %% "scalatest-wordspec" % "3.2.19" % Test,
-  "org.scalatest" %% "scalatest-flatspec" % "3.2.19" % Test
+  "org.scalatest" %% "scalatest" % "3.2.20" % Test,
+  "org.scalatest" %% "scalatest-shouldmatchers" % "3.2.20" % Test,
+  "org.scalatest" %% "scalatest-wordspec" % "3.2.20" % Test,
+  "org.scalatest" %% "scalatest-flatspec" % "3.2.20" % Test
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "7.5.5" % Test
@@ -713,7 +713,7 @@ lazy val zio = (project in file("zio"))
     libraryDependencies += "dev.zio" %% "zio-kafka" % "2.12.0",
     libraryDependencies += zioJsonDep,
     libraryDependencies += "dev.zio" %% "zio-prelude" % "1.0.0-RC46",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.20" % Test,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
