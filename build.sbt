@@ -506,7 +506,7 @@ lazy val scala_libraries_os = (project in file("scala-libraries-os"))
     libraryDependencies ++= scalaTestDeps,
     libraryDependencies ++= Seq(
       log4jApiScalaDep,
-      "org.apache.logging.log4j" % "log4j-core" % "2.25.3" % Runtime
+      "org.apache.logging.log4j" % "log4j-core" % "2.25.4" % Runtime
     ),
     libraryDependencies += osLibDep
   )
@@ -554,7 +554,7 @@ val kafkaVersion = "8.2.0-ce"
 val pureconfigVersion = "0.17.10"
 val jackSonVersion = "2.21.2"
 val log4jApiScalaVersion = "13.1.0"
-val log4jVersion = "2.25.3"
+val log4jVersion = "2.25.4"
 val avro4sVersion = "4.1.2"
 val kafkaAvroSerializer = "8.2.0"
 
