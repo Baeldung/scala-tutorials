@@ -21,7 +21,7 @@ val scalaTestDeps = Seq(
 )
 
 val scalaMock = "org.scalamock" %% "scalamock" % "7.5.5" % Test
-val zioVersion = "2.1.24"
+val zioVersion = "2.1.25"
 
 lazy val scala_core = (project in file("scala-core-modules/scala-core"))
   .settings(
