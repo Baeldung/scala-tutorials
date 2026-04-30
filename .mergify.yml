@@ -4,17 +4,16 @@ pull_request_rules:
       - label!=early-semver-major
       - label!=semver-spec-major
       - or:
-        - files~=\.sbt$
-        - files~=ScalaVersions.scala
-        - files~=build.properties
-        - files~=LibraryVersions.scala
-      - "#approved-reviews-by>=1"    
+          - files~=\.sbt$
+          - files~=ScalaVersions.scala
+          - files~=build.properties
+          - files~=LibraryVersions.scala
+      - "#approved-reviews-by>=1"
       - check-success=CI - Jenkins
       - author=scala-steward-baeldung[bot]
       - or:
-        - label=early-semver-minor
-        - label=early-semver-patch
+          - label=early-semver-minor
+          - label=early-semver-patch
     actions:
       merge:
         method: merge
-      delete_head_branch:
